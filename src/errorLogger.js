@@ -1,12 +1,35 @@
 /* ─── Forjit AI · Global Error Logger ───────────────────────────────────────
  *  Catches all JS errors + unhandled promise rejections
  *  Stores last 200 errors in localStorage
- *  Exportable as JSON for debugging
+ *  Reports to Sentry.io for real-time monitoring
  * ─────────────────────────────────────────────────────────────────────────*/
 
-const LOG_KEY   = 'forjit_error_log';
-const MAX_LOGS  = 200;
-const APP_VER   = '1.0.0';
+import * as Sentry from '@sentry/browser';
+
+const LOG_KEY  = 'forjit_error_log';
+const MAX_LOGS = 200;
+const APP_VER  = '1.0.0';
+
+/* ── Init Sentry ────────────────────────────────────────────────────────── */
+Sentry.init({
+  dsn: 'https://9a3b4520b380e57d96a2d67780b82a35@o4511285859516416.ingest.us.sentry.io/4511285871771648',
+  release: `forjitai@${APP_VER}`,
+  environment: location.hostname === 'localhost' ? 'development' : 'production',
+  tracesSampleRate: 0.2,        // 20% of transactions traced
+  replaysOnErrorSampleRate: 1,  // 100% replay on errors
+  integrations: [
+    Sentry.browserTracingIntegration(),
+    Sentry.replayIntegration({
+      maskAllText: false,
+      blockAllMedia: false,
+    }),
+  ],
+  beforeSend(event) {
+    // Don't send errors from localhost
+    if (location.hostname === 'localhost') return null;
+    return event;
+  },
+});
 
 /* ── Helpers ────────────────────────────────────────────────────────────── */
 function getDevice() {

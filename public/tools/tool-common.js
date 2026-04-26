@@ -12,6 +12,21 @@
  * ──────────────────────────────────────────────────────────────────────────*/
 
 (function () {
+  /* ── Load Sentry for error tracking ────────────────────────────────────── */
+  if (location.hostname !== 'localhost') {
+    const s = document.createElement('script');
+    s.src = 'https://browser.sentry-cdn.com/7.99.0/bundle.min.js';
+    s.crossOrigin = 'anonymous';
+    s.onload = function() {
+      Sentry.init({
+        dsn: 'https://9a3b4520b380e57d96a2d67780b82a35@o4511285859516416.ingest.us.sentry.io/4511285871771648',
+        release: 'forjitai@1.0.0',
+        environment: 'production',
+        tracesSampleRate: 0.1,
+      });
+    };
+    document.head.appendChild(s);
+  }
   'use strict';
 
   /* ── All tools catalog (kept in sync with src/data/tools.js) ─────────── */

@@ -59,6 +59,17 @@ footer a{color:#a8a29e;text-decoration:none;margin:0 8px}
   <meta name="twitter:image"       content="https://www.forjitai.in/og-image.png"/>
   <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-5102938260449475" crossorigin="anonymous"></script>
   <meta name="google-site-verification" content="u11mSk2rQwaphaXMCcUwJU-6dRhN_ndessqEMeZdubk" />
+  <script src="https://browser.sentry-cdn.com/7.99.0/bundle.min.js" crossorigin="anonymous"></script>
+  <script>
+    if (location.hostname !== "localhost") {
+      Sentry.init({
+        dsn: "https://9a3b4520b380e57d96a2d67780b82a35@o4511285859516416.ingest.us.sentry.io/4511285871771648",
+        release: "forjitai@1.0.0",
+        environment: "production",
+        tracesSampleRate: 0.1
+      });
+    }
+  </script>
 </head>
 <body>
 <header>

@@ -94,5 +94,59 @@ function pasteIn(){navigator.clipboard.readText().then(t=>{document.getElementBy
 convert();
 </script>
 <script src="tool-common.js"></script>
+<style>
+.guide{max-width:700px;margin:32px auto 0;padding:0 16px 48px}
+.guide h2{font-size:18px;font-weight:700;margin-bottom:12px;color:#e7e5e4}
+.guide p{font-size:14px;color:#a8a29e;line-height:1.75;margin-bottom:14px}
+.guide ul{font-size:14px;color:#a8a29e;padding-left:20px;margin-bottom:14px}
+.guide ul li{margin-bottom:6px;line-height:1.6}
+.guide a{color:#fbbf24;text-decoration:none}
+.guide-card{background:#1c1917;border:1px solid #292524;border-radius:10px;padding:20px;margin-bottom:16px}
+.faq-q{font-size:14px;font-weight:700;color:#e7e5e4;margin-bottom:6px}
+.faq-a{font-size:13px;color:#a8a29e;line-height:1.7}
+</style>
+<div class="guide">
+  <div class="guide-card">
+    <h2>What Is a Case Converter?</h2>
+    <p>A case converter is a text tool that transforms the capitalisation of your text between different formats — instantly and accurately. Whether you need UPPERCASE for emphasis, lowercase for normalisation, Title Case for headings, or developer formats like camelCase and snake_case, this tool handles all conversions in one place.</p>
+    <p>Common use cases include:</p>
+    <ul>
+      <li><strong>Developers:</strong> Convert variable names between camelCase, snake_case, kebab-case, and PascalCase when switching between languages or frameworks</li>
+      <li><strong>Writers & bloggers:</strong> Fix accidental caps lock text or convert headings to Title Case</li>
+      <li><strong>Students:</strong> Quickly standardise text from copy-pasted content</li>
+      <li><strong>Data entry:</strong> Normalise inconsistent text (all-caps to sentence case)</li>
+    </ul>
+  </div>
+
+  <div class="guide-card">
+    <h2>Case Formats Explained</h2>
+    <ul>
+      <li><strong>UPPERCASE</strong> — All letters capitalised. Example: FORJIT AI TOOLS</li>
+      <li><strong>lowercase</strong> — All letters small. Example: forjit ai tools</li>
+      <li><strong>Title Case</strong> — First letter of each word capitalised. Example: Forjit Ai Tools</li>
+      <li><strong>Sentence case</strong> — First letter of first word capitalised. Example: Forjit ai tools</li>
+      <li><strong>camelCase</strong> — No spaces, each word capitalised except first. Example: forjitAiTools</li>
+      <li><strong>PascalCase</strong> — No spaces, every word capitalised. Example: ForjitAiTools</li>
+      <li><strong>snake_case</strong> — Words separated by underscores, all lowercase. Example: forjit_ai_tools</li>
+      <li><strong>kebab-case</strong> — Words separated by hyphens, all lowercase. Example: forjit-ai-tools</li>
+    </ul>
+  </div>
+
+  <div class="guide-card">
+    <h2>Frequently Asked Questions</h2>
+    <div style="margin-bottom:16px">
+      <div class="faq-q">How do I convert text to camelCase online?</div>
+      <div class="faq-a">Paste your text into the input box above and click "camelCase" — the tool instantly converts your text by removing spaces and capitalising each word except the first. No account needed.</div>
+    </div>
+    <div style="margin-bottom:16px">
+      <div class="faq-q">Is this case converter free?</div>
+      <div class="faq-a">Yes, completely free. No login, no subscription, no usage limits. Works on mobile and desktop browsers.</div>
+    </div>
+    <div>
+      <div class="faq-q">What other text tools does Forjit AI offer?</div>
+      <div class="faq-a">Forjit AI includes a <a href="/tools/word-counter.html">Word Counter</a>, <a href="/tools/lorem-ipsum.html">Lorem Ipsum Generator</a>, <a href="/tools/base64-encoder.html">Base64 Encoder</a>, <a href="/tools/json-formatter.html">JSON Formatter</a>, and <a href="/tools/">40+ more free tools</a> — all free, no login needed.</div>
+    </div>
+  </div>
+</div>
 </body>
 </html>

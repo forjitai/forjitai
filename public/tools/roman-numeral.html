@@ -125,6 +125,56 @@ document.getElementById('quickRef').innerHTML=QR.map(n=>{const {roman}=toRoman(n
 
 decToRom();
 </script>
+<style>
+.guide{max-width:700px;margin:32px auto 0;padding:0 16px 48px}
+.guide h2{font-size:18px;font-weight:700;margin-bottom:12px;color:#e7e5e4}
+.guide p{font-size:14px;color:#a8a29e;line-height:1.75;margin-bottom:14px}
+.guide ul{font-size:14px;color:#a8a29e;padding-left:20px;margin-bottom:14px}
+.guide ul li{margin-bottom:6px;line-height:1.6}
+.guide a{color:#fbbf24;text-decoration:none}
+.guide-card{background:#1c1917;border:1px solid #292524;border-radius:10px;padding:20px;margin-bottom:16px}
+.faq-q{font-size:14px;font-weight:700;color:#e7e5e4;margin-bottom:6px}
+.faq-a{font-size:13px;color:#a8a29e;line-height:1.7}
+</style>
+<div class="guide">
+  <div class="guide-card">
+    <h2>What Is a Roman Numeral?</h2>
+    <p>Roman numerals are a numeral system originating from ancient Rome, using letters from the Latin alphabet: I (1), V (5), X (10), L (50), C (100), D (500), and M (1000). They are still used today in clocks, book chapters, movie titles, Super Bowl numbering, Olympic Games, and formal document sections.</p>
+    <p>Common uses of Roman numerals today:</p>
+    <ul>
+      <li><strong>Books and documents:</strong> Chapter numbering (Chapter IV), page numbering in front matter</li>
+      <li><strong>Movies and TV:</strong> Release year in credits (MMXXVI = 2026), sequel numbering (Rocky III)</li>
+      <li><strong>Clocks and watches:</strong> Many traditional clocks use Roman numerals on their faces</li>
+      <li><strong>Events:</strong> Super Bowl LVIII, Olympic Games, World Cup editions</li>
+      <li><strong>Academic use:</strong> Exam sections, legal documents, formal outlines</li>
+    </ul>
+  </div>
+  <div class="guide-card">
+    <h2>Roman Numeral Rules</h2>
+    <ul>
+      <li>Symbols are generally written largest to smallest, left to right</li>
+      <li>I before V or X means subtract (IV = 4, IX = 9)</li>
+      <li>X before L or C means subtract (XL = 40, XC = 90)</li>
+      <li>C before D or M means subtract (CD = 400, CM = 900)</li>
+      <li>A symbol cannot be repeated more than 3 times (III = 3, but 4 = IV not IIII)</li>
+    </ul>
+  </div>
+  <div class="guide-card">
+    <h2>Frequently Asked Questions</h2>
+    <div style="margin-bottom:16px">
+      <div class="faq-q">What is 2026 in Roman numerals?</div>
+      <div class="faq-a">2026 in Roman numerals is MMXXVI. M=1000, M=1000, XX=20, VI=6. Total: 2026.</div>
+    </div>
+    <div style="margin-bottom:16px">
+      <div class="faq-q">What is the largest Roman numeral?</div>
+      <div class="faq-a">The standard Roman numeral system goes up to 3,999 (MMMCMXCIX). Numbers above 3,999 require special notation like a bar over a numeral to indicate multiplication by 1,000.</div>
+    </div>
+    <div>
+      <div class="faq-q">What other converter tools does Forjit AI have?</div>
+      <div class="faq-a">Forjit AI offers a <a href="/tools/number-converter.html">Number Converter</a> (binary, hex, octal), <a href="/tools/unit-converter.html">Unit Converter</a>, <a href="/tools/color-converter.html">Color Converter</a>, and <a href="/tools/">40+ more free tools</a>.</div>
+    </div>
+  </div>
+</div>
 <script src="tool-common.js"></script>
 </body>
 </html>

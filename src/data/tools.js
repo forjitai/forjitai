@@ -209,9 +209,9 @@ export const TOOLS = [
   {
     slug: "nursing-hub",
     name: "Nursing Toolkit",
-    desc: "12 tools in one: drug dose, IV drip rate, fluid balance, GCS, APGAR, paediatric dose, burns TBSA, Parkland formula, insulin sliding scale, wound care, vitals reference & SBAR handover.",
+    desc: "15 clinical tools: vasopressor/inotrope drip calculator, NG tube feeding, O2 therapy guide, drug dose, IV drip, burns TBSA, insulin scale, GCS, APGAR, paediatric dose, wound care, SBAR handover & more.",
     icon: "🩺", cat: "health",
-    tags: "nursing nurse drug dose calculator iv drip rate fluid balance gcs glasgow coma scale apgar score paediatric dose burns tbsa parkland formula insulin sliding scale wound care sbar handover vital signs indian hospital nmc",
+    tags: "nursing nurse vasopressor drip dopamine noradrenaline inotrope ICU NG tube feeding calculator oxygen therapy FiO2 drug dose iv drip rate fluid balance gcs apgar paediatric burns tbsa parkland insulin sliding scale wound care sbar handover vital signs indian hospital nmc",
     priority: 0.9, changefreq: "monthly",
     new: true,
   },

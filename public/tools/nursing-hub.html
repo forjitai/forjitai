@@ -360,7 +360,7 @@ select option{background:#1c1917}
   <h1>Indian <span>Nurse's</span> Toolkit</h1>
   <p>Drug dose, IV drip rate, fluid balance, GCS, and vitals reference — all in one free tool. Built for Indian nurses and nursing students.</p>
   <div class="hero-stats">
-    <div class="hero-stat"><div class="hero-stat-val">6</div><div class="hero-stat-lab">Tools inside</div></div>
+    <div class="hero-stat"><div class="hero-stat-val">9</div><div class="hero-stat-lab">Tools inside</div></div>
     <div class="hero-stat"><div class="hero-stat-val">100%</div><div class="hero-stat-lab">Free forever</div></div>
     <div class="hero-stat"><div class="hero-stat-val">0</div><div class="hero-stat-lab">Login needed</div></div>
   </div>
@@ -374,6 +374,9 @@ select option{background:#1c1917}
   <button class="tab-btn" onclick="switchTab('gcs')">🧠 GCS Score</button>
   <button class="tab-btn" onclick="switchTab('vitals')">❤️ Vitals Ref</button>
   <button class="tab-btn" onclick="switchTab('drugs')">📋 Drug Chart</button>
+  <button class="tab-btn" onclick="switchTab('apgar')">👶 APGAR</button>
+  <button class="tab-btn" onclick="switchTab('peds')">🧒 Paed Dose</button>
+  <button class="tab-btn" onclick="switchTab('handover')">📝 Handover</button>
 </div>
 
 <!-- ── Main Container ─────────────────────────────────────── -->
@@ -791,6 +794,272 @@ select option{background:#1c1917}
   <div class="ad-slot">Advertisement</div>
 </div>
 
+<!-- ══════════════════════════════════════════════════════════
+     TAB 7 — APGAR Score
+═══════════════════════════════════════════════════════════ -->
+<div class="tab-section" id="tab-apgar">
+  <div class="card">
+    <div class="card-title">👶 APGAR Score Calculator</div>
+    <div class="card-sub">Neonatal assessment at 1 min and 5 min after birth. Click each row to score.</div>
+
+    <div style="display:flex;gap:8px;margin-bottom:16px">
+      <button class="btn btn-nurse" style="width:auto;padding:8px 18px;font-size:13px" onclick="setApgarTime(1)" id="apgar1btn">1 min</button>
+      <button class="btn btn-nurse" style="width:auto;padding:8px 18px;font-size:13px" onclick="setApgarTime(5)" id="apgar5btn">5 min</button>
+      <button class="btn btn-nurse" style="width:auto;padding:8px 18px;font-size:13px" onclick="setApgarTime(10)" id="apgar10btn">10 min</button>
+    </div>
+
+    <!-- Appearance -->
+    <div class="gcs-section">
+      <div class="gcs-title">🎨 Appearance (Skin Colour)</div>
+      <div class="gcs-row" onclick="selectApgar('app',2,this)"><span class="gcs-score">2</span><span class="gcs-desc">Pink all over</span><span class="gcs-check">✓</span></div>
+      <div class="gcs-row" onclick="selectApgar('app',1,this)"><span class="gcs-score">1</span><span class="gcs-desc">Body pink, extremities blue (acrocyanosis)</span><span class="gcs-check">✓</span></div>
+      <div class="gcs-row" onclick="selectApgar('app',0,this)"><span class="gcs-score">0</span><span class="gcs-desc">Blue/pale all over</span><span class="gcs-check">✓</span></div>
+    </div>
+
+    <!-- Pulse -->
+    <div class="gcs-section">
+      <div class="gcs-title">💓 Pulse (Heart Rate)</div>
+      <div class="gcs-row" onclick="selectApgar('pulse',2,this)"><span class="gcs-score">2</span><span class="gcs-desc">≥ 100 bpm</span><span class="gcs-check">✓</span></div>
+      <div class="gcs-row" onclick="selectApgar('pulse',1,this)"><span class="gcs-score">1</span><span class="gcs-desc">&lt; 100 bpm</span><span class="gcs-check">✓</span></div>
+      <div class="gcs-row" onclick="selectApgar('pulse',0,this)"><span class="gcs-score">0</span><span class="gcs-desc">Absent</span><span class="gcs-check">✓</span></div>
+    </div>
+
+    <!-- Grimace -->
+    <div class="gcs-section">
+      <div class="gcs-title">😣 Grimace (Reflex Irritability)</div>
+      <div class="gcs-row" onclick="selectApgar('grim',2,this)"><span class="gcs-score">2</span><span class="gcs-desc">Cries, coughs or sneezes</span><span class="gcs-check">✓</span></div>
+      <div class="gcs-row" onclick="selectApgar('grim',1,this)"><span class="gcs-score">1</span><span class="gcs-desc">Grimace only</span><span class="gcs-check">✓</span></div>
+      <div class="gcs-row" onclick="selectApgar('grim',0,this)"><span class="gcs-score">0</span><span class="gcs-desc">No response</span><span class="gcs-check">✓</span></div>
+    </div>
+
+    <!-- Activity -->
+    <div class="gcs-section">
+      <div class="gcs-title">💪 Activity (Muscle Tone)</div>
+      <div class="gcs-row" onclick="selectApgar('act',2,this)"><span class="gcs-score">2</span><span class="gcs-desc">Active motion, flexed limbs</span><span class="gcs-check">✓</span></div>
+      <div class="gcs-row" onclick="selectApgar('act',1,this)"><span class="gcs-score">1</span><span class="gcs-desc">Some flexion</span><span class="gcs-check">✓</span></div>
+      <div class="gcs-row" onclick="selectApgar('act',0,this)"><span class="gcs-score">0</span><span class="gcs-desc">Limp / no movement</span><span class="gcs-check">✓</span></div>
+    </div>
+
+    <!-- Respiration -->
+    <div class="gcs-section">
+      <div class="gcs-title">🫁 Respiration (Breathing Effort)</div>
+      <div class="gcs-row" onclick="selectApgar('resp',2,this)"><span class="gcs-score">2</span><span class="gcs-desc">Good cry, regular breathing</span><span class="gcs-check">✓</span></div>
+      <div class="gcs-row" onclick="selectApgar('resp',1,this)"><span class="gcs-score">1</span><span class="gcs-desc">Slow / irregular / weak cry</span><span class="gcs-check">✓</span></div>
+      <div class="gcs-row" onclick="selectApgar('resp',0,this)"><span class="gcs-score">0</span><span class="gcs-desc">Absent</span><span class="gcs-check">✓</span></div>
+    </div>
+
+    <!-- Total -->
+    <div class="gcs-total-bar" id="apgarTotal">
+      <div class="gcs-total-num" id="apgarTotalNum">—</div>
+      <div class="gcs-total-info">
+        <div id="apgarLabel" style="font-size:16px;font-weight:700">Select all 5 criteria</div>
+        <div id="apgarDesc" style="font-size:13px;color:var(--muted)">A + P + G + A + R</div>
+        <div id="apgarSeverity" class="gcs-severity" style="display:none"></div>
+      </div>
+    </div>
+
+    <!-- Score history -->
+    <div id="apgarHistory" style="display:none;margin-top:14px">
+      <div style="font-size:12px;font-weight:700;color:var(--muted);text-transform:uppercase;letter-spacing:0.05em;margin-bottom:10px">Score History</div>
+      <div id="apgarHistoryRows" style="display:flex;gap:10px;flex-wrap:wrap"></div>
+    </div>
+
+    <div class="card-dark" style="margin-top:14px">
+      <div style="font-size:12px;font-weight:700;color:var(--muted);text-transform:uppercase;letter-spacing:0.05em;margin-bottom:8px">📊 APGAR Interpretation</div>
+      <div style="display:grid;gap:6px;font-size:13px">
+        <div><span class="gcs-severity sev-mild">7–10</span><span style="color:var(--muted);margin-left:8px">Normal — routine newborn care</span></div>
+        <div><span class="gcs-severity sev-moderate">4–6</span><span style="color:var(--muted);margin-left:8px">Moderate — stimulation, O₂, reassess at 5 min</span></div>
+        <div><span class="gcs-severity sev-severe">0–3</span><span style="color:var(--muted);margin-left:8px">Severe — immediate resuscitation (NRP protocol)</span></div>
+        <div style="color:var(--faint);font-size:12px;margin-top:4px">A score of 10 is uncommon — most healthy newborns score 7–9 at 1 min due to acrocyanosis.</div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- ══════════════════════════════════════════════════════════
+     TAB 8 — Paediatric Dose Calculator
+═══════════════════════════════════════════════════════════ -->
+<div class="tab-section" id="tab-peds">
+  <div class="card">
+    <div class="card-title">🧒 Paediatric Dose Calculator</div>
+    <div class="card-sub">Weight-based doses for common paediatric drugs. Always recheck with paediatric formulary.</div>
+
+    <div class="input-row">
+      <div>
+        <label>Child's Weight</label>
+        <div class="input-group">
+          <input type="number" id="pedWt" placeholder="e.g. 15" min="1" max="80" step="0.1" oninput="calcPeds()"/>
+          <span class="unit">kg</span>
+        </div>
+      </div>
+      <div>
+        <label>Age Group</label>
+        <div class="input-group">
+          <select id="pedAge" onchange="calcPeds()">
+            <option value="neonate">Neonate (0–28 days)</option>
+            <option value="infant">Infant (1–12 months)</option>
+            <option value="toddler" selected>Toddler (1–5 years)</option>
+            <option value="child">Child (6–12 years)</option>
+            <option value="adolescent">Adolescent (12–18 years)</option>
+          </select>
+        </div>
+      </div>
+    </div>
+
+    <div id="pedResults" style="display:none">
+      <div style="font-size:13px;font-weight:700;color:var(--muted);text-transform:uppercase;letter-spacing:0.05em;margin-bottom:10px">Calculated Doses</div>
+      <div style="overflow-x:auto">
+        <table class="drug-table" id="pedTable">
+          <thead><tr><th>Drug</th><th>Per-dose</th><th>Max/dose</th><th>Route</th><th>Freq</th></tr></thead>
+          <tbody id="pedBody"></tbody>
+        </table>
+      </div>
+      <div class="alert alert-danger show" style="margin-top:12px">🚨 Paediatric doses are for reference only. Always verify with a paediatrician or BNF for Children before administration. Never exceed stated maximum doses.</div>
+    </div>
+
+    <div id="pedPrompt" style="text-align:center;padding:30px;color:var(--faint);font-size:14px">
+      Enter child's weight above to see calculated doses
+    </div>
+
+    <div class="card-dark" style="margin-top:14px">
+      <div style="font-size:12px;font-weight:700;color:var(--muted);text-transform:uppercase;letter-spacing:0.05em;margin-bottom:8px">📏 Weight Estimation (If not available)</div>
+      <div style="font-size:13px;color:var(--muted);line-height:1.8">
+        <strong style="color:var(--text)">APLS Formula (1–10 yr):</strong> Weight (kg) = (Age + 4) × 2<br>
+        <strong style="color:var(--text)">Broselow tape:</strong> Colour-coded — most accurate in emergency<br>
+        <strong style="color:var(--text)">Neonate:</strong> Average term baby ≈ 3.0–3.5 kg
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- ══════════════════════════════════════════════════════════
+     TAB 9 — Shift Handover Notes
+═══════════════════════════════════════════════════════════ -->
+<div class="tab-section" id="tab-handover">
+  <div class="card">
+    <div class="card-title">📝 SBAR Shift Handover Generator</div>
+    <div class="card-sub">Generate a structured SBAR handover note. Fill in the fields and copy to clipboard.</div>
+
+    <div style="display:flex;gap:8px;margin-bottom:16px;flex-wrap:wrap">
+      <button class="btn btn-nurse" style="width:auto;padding:7px 14px;font-size:12px" onclick="setShift('morning')">🌅 Morning (6–2)</button>
+      <button class="btn btn-nurse" style="width:auto;padding:7px 14px;font-size:12px" onclick="setShift('evening')">🌆 Evening (2–10)</button>
+      <button class="btn btn-nurse" style="width:auto;padding:7px 14px;font-size:12px" onclick="setShift('night')">🌙 Night (10–6)</button>
+    </div>
+
+    <!-- S — Situation -->
+    <div class="card-dark">
+      <div style="font-size:12px;font-weight:700;color:var(--nurse);text-transform:uppercase;letter-spacing:0.07em;margin-bottom:10px">S — Situation</div>
+      <div class="input-row">
+        <div>
+          <label>Patient Name / ID</label>
+          <div class="input-group"><input type="text" id="hoPt" placeholder="e.g. Ramesh K, Bed 4" style="padding:11px 12px" oninput="genNote()"/></div>
+        </div>
+        <div>
+          <label>Age / Gender</label>
+          <div class="input-group"><input type="text" id="hoAge" placeholder="e.g. 56M" style="padding:11px 12px" oninput="genNote()"/></div>
+        </div>
+      </div>
+      <div class="input-wrap">
+        <label>Admission Diagnosis</label>
+        <div class="input-group"><input type="text" id="hoDx" placeholder="e.g. Acute MI, post PCI Day 2" style="padding:11px 12px" oninput="genNote()"/></div>
+      </div>
+      <div class="input-wrap">
+        <label>Current Concern / Reason for Handover</label>
+        <div class="input-group"><input type="text" id="hoConcern" placeholder="e.g. Stable, routine handover" style="padding:11px 12px" oninput="genNote()"/></div>
+      </div>
+    </div>
+
+    <!-- B — Background -->
+    <div class="card-dark">
+      <div style="font-size:12px;font-weight:700;color:var(--accent);text-transform:uppercase;letter-spacing:0.07em;margin-bottom:10px">B — Background</div>
+      <div class="input-wrap">
+        <label>Relevant History / Comorbidities</label>
+        <div class="input-group"><input type="text" id="hoHx" placeholder="e.g. HTN, DM Type 2, CKD Stage 3" style="padding:11px 12px" oninput="genNote()"/></div>
+      </div>
+      <div class="input-row">
+        <div>
+          <label>Current IV Access</label>
+          <div class="input-group"><input type="text" id="hoIV" placeholder="e.g. 18G R hand, 22G L AC" style="padding:11px 12px" oninput="genNote()"/></div>
+        </div>
+        <div>
+          <label>Known Allergies</label>
+          <div class="input-group"><input type="text" id="hoAllergy" placeholder="e.g. Penicillin — rash" style="padding:11px 12px" oninput="genNote()"/></div>
+        </div>
+      </div>
+    </div>
+
+    <!-- A — Assessment -->
+    <div class="card-dark">
+      <div style="font-size:12px;font-weight:700;color:var(--green);text-transform:uppercase;letter-spacing:0.07em;margin-bottom:10px">A — Assessment (Latest Vitals)</div>
+      <div class="input-row-3">
+        <div>
+          <label>Temp (°C)</label>
+          <div class="input-group"><input type="number" id="hoTemp" placeholder="37.1" step="0.1" oninput="genNote()"/><span class="unit">°C</span></div>
+        </div>
+        <div>
+          <label>Pulse</label>
+          <div class="input-group"><input type="number" id="hoPulse" placeholder="82" oninput="genNote()"/><span class="unit">bpm</span></div>
+        </div>
+        <div>
+          <label>SpO₂</label>
+          <div class="input-group"><input type="number" id="hoSpo2" placeholder="98" oninput="genNote()"/><span class="unit">%</span></div>
+        </div>
+      </div>
+      <div class="input-row">
+        <div>
+          <label>Blood Pressure</label>
+          <div class="input-group"><input type="text" id="hoBP" placeholder="118/76" style="padding:11px 12px" oninput="genNote()"/><span class="unit">mmHg</span></div>
+        </div>
+        <div>
+          <label>RR (/min)</label>
+          <div class="input-group"><input type="number" id="hoRR" placeholder="16" oninput="genNote()"/><span class="unit">/min</span></div>
+        </div>
+      </div>
+      <div class="input-row">
+        <div>
+          <label>Pain Score (0–10)</label>
+          <div class="input-group"><input type="number" id="hoPain" placeholder="2" min="0" max="10" oninput="genNote()"/><span class="unit">/10</span></div>
+        </div>
+        <div>
+          <label>GCS</label>
+          <div class="input-group"><input type="text" id="hoGCS" placeholder="E4V5M6 = 15" style="padding:11px 12px" oninput="genNote()"/></div>
+        </div>
+      </div>
+      <div class="input-wrap" style="margin-bottom:0">
+        <label>Fluid Balance (24hr)</label>
+        <div class="input-group"><input type="text" id="hoFluid" placeholder="e.g. +350 mL, urine output 1200 mL" style="padding:11px 12px" oninput="genNote()"/></div>
+      </div>
+    </div>
+
+    <!-- R — Recommendation -->
+    <div class="card-dark">
+      <div style="font-size:12px;font-weight:700;color:var(--purple);text-transform:uppercase;letter-spacing:0.07em;margin-bottom:10px">R — Recommendation</div>
+      <div class="input-wrap">
+        <label>Pending Investigations / Results</label>
+        <div class="input-group"><input type="text" id="hoPending" placeholder="e.g. Echo report awaited, CBC due at 8 AM" style="padding:11px 12px" oninput="genNote()"/></div>
+      </div>
+      <div class="input-wrap">
+        <label>Current IV Fluids / Medications Running</label>
+        <div class="input-group"><input type="text" id="hoMeds" placeholder="e.g. NS 500mL @ 63 mL/hr, IV Ceftriaxone 1g BD" style="padding:11px 12px" oninput="genNote()"/></div>
+      </div>
+      <div class="input-wrap" style="margin-bottom:0">
+        <label>Instructions for Incoming Nurse / Actions Needed</label>
+        <div class="input-group"><input type="text" id="hoAction" placeholder="e.g. Check drain output q2h, call doctor if SBP <90" style="padding:11px 12px" oninput="genNote()"/></div>
+      </div>
+    </div>
+
+    <!-- Output note -->
+    <div style="margin-top:14px">
+      <div style="display:flex;align-items:center;justify-content:space-between;margin-bottom:8px">
+        <div style="font-size:12px;font-weight:700;color:var(--muted);text-transform:uppercase;letter-spacing:0.05em">Generated Handover Note</div>
+        <button class="btn btn-nurse" style="width:auto;padding:7px 16px;font-size:12px" onclick="copyNote()">📋 Copy</button>
+      </div>
+      <div id="handoverNote" style="background:var(--bg);border:1px solid var(--border);border-radius:8px;padding:16px;font-family:monospace;font-size:12px;color:var(--muted);line-height:1.8;white-space:pre-wrap;min-height:120px">Fill in the fields above to generate your handover note…</div>
+    </div>
+    <div class="alert alert-safe" id="copyAlert"></div>
+  </div>
+</div>
+
 <!-- ═══════════════════════════════════════════════════════ -->
 <!-- FAQ Section (always visible below tabs) -->
 <!-- ═══════════════════════════════════════════════════════ -->
@@ -854,11 +1123,11 @@ select option{background:#1c1917}
       <div class="tool-desc">Exact patient age in years, months and days from DOB</div>
       <span class="tool-badge badge-live">Live</span>
     </a>
-    <a class="tool-card soon" href="#">
+    <a class="tool-card" href="/tools/nursing-hub.html">
       <div class="tool-icon">👶</div>
       <div class="tool-name">APGAR Score</div>
-      <div class="tool-desc">Neonatal APGAR assessment calculator</div>
-      <span class="tool-badge badge-soon">Coming Soon</span>
+      <div class="tool-desc">Neonatal APGAR assessment — tap the Nursing Hub APGAR tab</div>
+      <span class="tool-badge badge-live">Live</span>
     </a>
   </div>
 </div>
@@ -1108,7 +1377,229 @@ function renderDrugs() {
 
 renderDrugs();
 
-/* ── FAQ Toggle ────────────────────────────────────────── */
+/* ── APGAR Score ────────────────────────────────────────── */
+const apgarScores  = { app:null, pulse:null, grim:null, act:null, resp:null };
+const apgarHistory = {};
+let   apgarTime    = 1;
+
+function setApgarTime(t) {
+  apgarTime = t;
+  ['apgar1btn','apgar5btn','apgar10btn'].forEach(id => {
+    document.getElementById(id).style.background = 'rgba(56,189,248,0.15)';
+    document.getElementById(id).style.color = 'var(--nurse)';
+  });
+  const map = {1:'apgar1btn',5:'apgar5btn',10:'apgar10btn'};
+  document.getElementById(map[t]).style.background = 'var(--nurse)';
+  document.getElementById(map[t]).style.color = '#0c0a09';
+
+  // Restore previous selections for this time if any
+  const prev = apgarHistory[t];
+  document.querySelectorAll('#tab-apgar .gcs-row').forEach(r => r.classList.remove('selected'));
+  Object.keys(apgarScores).forEach(k => apgarScores[k] = null);
+  if (prev) {
+    Object.entries(prev).forEach(([k,v]) => {
+      apgarScores[k] = v;
+      // Find and re-select the right row
+      const section = {app:0,pulse:1,grim:2,act:3,resp:4}[k];
+      const rows = document.querySelectorAll('#tab-apgar .gcs-section')[section].querySelectorAll('.gcs-row');
+      rows.forEach(r => { if (+r.querySelector('.gcs-score').textContent === v) r.classList.add('selected'); });
+    });
+    updateApgar();
+  } else {
+    document.getElementById('apgarTotalNum').textContent = '—';
+    document.getElementById('apgarLabel').textContent = 'Select all 5 criteria';
+    document.getElementById('apgarDesc').textContent = 'A + P + G + A + R';
+    document.getElementById('apgarSeverity').style.display = 'none';
+  }
+}
+
+function selectApgar(domain, score, el) {
+  const allRows = el.parentElement.querySelectorAll('.gcs-row');
+  allRows.forEach(r => r.classList.remove('selected'));
+  el.classList.add('selected');
+  apgarScores[domain] = score;
+  updateApgar();
+}
+
+function updateApgar() {
+  const vals = Object.values(apgarScores);
+  if (vals.some(v => v === null)) return;
+  const total = vals.reduce((a,b) => a+b, 0);
+
+  document.getElementById('apgarTotalNum').textContent = total;
+  document.getElementById('apgarDesc').textContent =
+    `A${apgarScores.app} + P${apgarScores.pulse} + G${apgarScores.grim} + A${apgarScores.act} + R${apgarScores.resp}`;
+
+  const sevEl = document.getElementById('apgarSeverity');
+  const labEl = document.getElementById('apgarLabel');
+  sevEl.style.display = 'inline-block';
+  if (total >= 7) {
+    labEl.textContent = 'Normal Newborn';
+    sevEl.textContent = 'Normal (7–10)'; sevEl.className = 'gcs-severity sev-mild';
+  } else if (total >= 4) {
+    labEl.textContent = 'Moderate Depression';
+    sevEl.textContent = 'Moderate (4–6)'; sevEl.className = 'gcs-severity sev-moderate';
+  } else {
+    labEl.textContent = 'Severe — Resuscitate Now';
+    sevEl.textContent = 'Severe (0–3)'; sevEl.className = 'gcs-severity sev-severe';
+  }
+
+  // Save to history
+  apgarHistory[apgarTime] = {...apgarScores};
+  renderApgarHistory();
+}
+
+function renderApgarHistory() {
+  const histEl = document.getElementById('apgarHistory');
+  const rowsEl = document.getElementById('apgarHistoryRows');
+  const entries = Object.entries(apgarHistory);
+  if (!entries.length) { histEl.style.display='none'; return; }
+  histEl.style.display = 'block';
+  rowsEl.innerHTML = entries.map(([t,s]) => {
+    const tot = Object.values(s).reduce((a,b)=>a+b,0);
+    const cls = tot>=7?'sev-mild':tot>=4?'sev-moderate':'sev-severe';
+    return `<div style="background:var(--bg);border:1px solid var(--border);border-radius:8px;padding:12px 16px;text-align:center">
+      <div style="font-size:11px;color:var(--faint);margin-bottom:4px">${t} min</div>
+      <div style="font-size:28px;font-weight:800;color:var(--nurse)">${tot}</div>
+      <div class="gcs-severity ${cls}" style="margin-top:4px">${tot>=7?'Normal':tot>=4?'Moderate':'Severe'}</div>
+    </div>`;
+  }).join('');
+}
+
+// init APGAR time
+setApgarTime(1);
+
+/* ── Paediatric Dose Calculator ─────────────────────────── */
+const PED_DRUGS = [
+  { name:'Paracetamol',    dosePerKg:15,    max:1000, unit:'mg', route:'Oral/IV',  freq:'q4–6h',   cls:'analgesic' },
+  { name:'Ibuprofen',      dosePerKg:10,    max:400,  unit:'mg', route:'Oral',     freq:'q6–8h',   cls:'analgesic' },
+  { name:'Amoxicillin',    dosePerKg:25,    max:500,  unit:'mg', route:'Oral',     freq:'TDS',     cls:'antibiotic' },
+  { name:'Azithromycin',   dosePerKg:10,    max:500,  unit:'mg', route:'Oral',     freq:'OD×3d',   cls:'antibiotic' },
+  { name:'Ceftriaxone',    dosePerKg:50,    max:2000, unit:'mg', route:'IV/IM',    freq:'OD–BD',   cls:'antibiotic' },
+  { name:'Salbutamol neb', dosePerKg:0.15,  max:5,    unit:'mg', route:'Nebulised',freq:'q20min×3', cls:'respiratory' },
+  { name:'Ondansetron',    dosePerKg:0.1,   max:4,    unit:'mg', route:'IV/Oral',  freq:'q8h',     cls:'antiemetic' },
+  { name:'Metronidazole',  dosePerKg:7.5,   max:500,  unit:'mg', route:'Oral/IV',  freq:'TDS',     cls:'antibiotic' },
+  { name:'Diazepam (seizure)', dosePerKg:0.3, max:10, unit:'mg', route:'IV/PR',    freq:'Once',    cls:'emergency' },
+  { name:'Adrenaline (anaphylaxis)', dosePerKg:0.01, max:0.5, unit:'mg', route:'IM 1:1000', freq:'PRN', cls:'emergency' },
+  { name:'Dextrose 10%',   dosePerKg:2,     max:null, unit:'mL', route:'IV slow',  freq:'PRN hypoglycaemia', cls:'emergency' },
+  { name:'Normal Saline (bolus)', dosePerKg:10, max:null, unit:'mL', route:'IV',   freq:'Over 10–20 min', cls:'fluid' },
+];
+
+function calcPeds() {
+  const wt = parseFloat(document.getElementById('pedWt').value);
+  if (!wt || wt < 0.5) {
+    document.getElementById('pedResults').style.display = 'none';
+    document.getElementById('pedPrompt').style.display = 'block';
+    return;
+  }
+  document.getElementById('pedPrompt').style.display = 'none';
+  document.getElementById('pedResults').style.display = 'block';
+
+  const rows = PED_DRUGS.map(d => {
+    const raw  = d.dosePerKg * wt;
+    const calc = d.max ? Math.min(raw, d.max) : raw;
+    const maxStr = d.max ? d.max + ' ' + d.unit : '—';
+    return `<tr>
+      <td class="drug-name">${d.name}</td>
+      <td class="drug-dose">${calc.toFixed(1)} ${d.unit}</td>
+      <td style="font-size:12px;color:var(--faint)">${maxStr}</td>
+      <td class="drug-route">${d.route}</td>
+      <td style="font-size:12px;color:var(--muted)">${d.freq}</td>
+    </tr>`;
+  }).join('');
+  document.getElementById('pedBody').innerHTML = rows;
+}
+
+/* ── Shift Handover Generator ───────────────────────────── */
+function setShift(shift) {
+  const times = { morning:'06:00–14:00', evening:'14:00–22:00', night:'22:00–06:00' };
+  const labels = { morning:'Morning Shift 🌅', evening:'Evening Shift 🌆', night:'Night Shift 🌙' };
+  document.getElementById('hoShift').value = labels[shift] + ' (' + times[shift] + ')';
+  genNote();
+}
+
+// inject a hidden shift input
+(function(){
+  const input = document.createElement('input');
+  input.type = 'hidden'; input.id = 'hoShift'; input.value = '';
+  document.body.appendChild(input);
+})();
+
+function genNote() {
+  const get = id => (document.getElementById(id)||{}).value || '';
+  const now  = new Date();
+  const ts   = now.toLocaleDateString('en-IN',{day:'2-digit',month:'short',year:'numeric'}) +
+               ' ' + now.toLocaleTimeString('en-IN',{hour:'2-digit',minute:'2-digit'});
+
+  const shift   = get('hoShift') || 'Shift';
+  const pt      = get('hoPt')     || '[Patient Name/ID]';
+  const age     = get('hoAge')    || '[Age/Gender]';
+  const dx      = get('hoDx')     || '[Diagnosis]';
+  const concern = get('hoConcern')|| '[Current concern]';
+  const hx      = get('hoHx')     || '[History]';
+  const iv      = get('hoIV')     || '[IV access]';
+  const allergy = get('hoAllergy')|| 'NKDA';
+  const temp    = get('hoTemp')   || '—';
+  const pulse   = get('hoPulse')  || '—';
+  const spo2    = get('hoSpo2')   || '—';
+  const bp      = get('hoBP')     || '—';
+  const rr      = get('hoRR')     || '—';
+  const pain    = get('hoPain')   || '—';
+  const gcs     = get('hoGCS')    || '—';
+  const fluid   = get('hoFluid')  || '—';
+  const pending = get('hoPending')|| '[Pending investigations]';
+  const meds    = get('hoMeds')   || '[Current medications/IVF]';
+  const action  = get('hoAction') || '[Actions for incoming nurse]';
+
+  const note =
+`━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+  SBAR HANDOVER NOTE — ${shift}
+  Date/Time: ${ts}
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+
+[S] SITUATION
+  Patient  : ${pt}
+  Age/Sex  : ${age}
+  Diagnosis: ${dx}
+  Concern  : ${concern}
+
+[B] BACKGROUND
+  History  : ${hx}
+  IV Access: ${iv}
+  Allergies: ${allergy}
+
+[A] ASSESSMENT (Latest Vitals)
+  Temp : ${temp}°C   |  Pulse: ${pulse} bpm
+  BP   : ${bp} mmHg  |  RR   : ${rr}/min
+  SpO₂ : ${spo2}%    |  Pain : ${pain}/10
+  GCS  : ${gcs}
+  Fluid Balance (24hr): ${fluid}
+
+[R] RECOMMENDATION
+  Pending  : ${pending}
+  Meds/IVF : ${meds}
+  Action   : ${action}
+
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+Generated by Forjit AI Nursing Hub
+forjitai.in/tools/nursing-hub.html
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━`;
+
+  document.getElementById('handoverNote').textContent = note;
+}
+
+function copyNote() {
+  const note = document.getElementById('handoverNote').textContent;
+  navigator.clipboard.writeText(note).then(() => {
+    const el = document.getElementById('copyAlert');
+    el.textContent = '✓ Handover note copied to clipboard!';
+    el.className = 'alert alert-safe show';
+    setTimeout(() => el.classList.remove('show'), 3000);
+  });
+}
+
+// Generate empty note on load
+genNote();
 function toggleFAQ(el) {
   el.parentElement.classList.toggle('open');
 }

@@ -209,9 +209,9 @@ export const TOOLS = [
   {
     slug: "nursing-hub",
     name: "Nursing Toolkit",
-    desc: "Drug dose, IV drip rate, fluid balance, GCS score, vitals reference & drug chart — all-in-one for Indian nurses.",
+    desc: "12 tools in one: drug dose, IV drip rate, fluid balance, GCS, APGAR, paediatric dose, burns TBSA, Parkland formula, insulin sliding scale, wound care, vitals reference & SBAR handover.",
     icon: "🩺", cat: "health",
-    tags: "nursing nurse drug dose calculator iv drip rate fluid balance gcs glasgow coma scale vitals vital signs indian hospital",
+    tags: "nursing nurse drug dose calculator iv drip rate fluid balance gcs glasgow coma scale apgar score paediatric dose burns tbsa parkland formula insulin sliding scale wound care sbar handover vital signs indian hospital nmc",
     priority: 0.9, changefreq: "monthly",
     new: true,
   },

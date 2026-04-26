@@ -484,6 +484,94 @@ function calcPrepay(){
 }());
 </script>
 <script src="tool-common.js"></script>
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "SoftwareApplication",
+  "name": "EMI Calculator",
+  "applicationCategory": "FinanceApplication",
+  "operatingSystem": "Web",
+  "url": "https://www.forjitai.in/tools/emi-calculator.html",
+  "description": "Free EMI calculator for home loan, car loan, and personal loan in India. Calculate monthly EMI, view full amortization schedule, and see prepayment savings.",
+  "offers": { "@type": "Offer", "price": "0", "priceCurrency": "INR" },
+  "author": { "@type": "Organization", "name": "Forjit AI" }
+}
+</script>
+
+<!-- SEO Content Section -->
+<div style="max-width:920px;margin:0 auto;padding:0 16px 32px">
+
+  <div style="background:#1c1917;border:1px solid #292524;border-radius:12px;padding:24px;margin-bottom:16px">
+    <h2 style="font-size:20px;font-weight:700;color:#e7e5e4;margin-bottom:12px">How to Use This EMI Calculator</h2>
+    <p style="color:#a8a29e;font-size:14px;line-height:1.8;margin-bottom:10px">Enter your <strong style="color:#e7e5e4">loan amount</strong>, <strong style="color:#e7e5e4">interest rate</strong>, and <strong style="color:#e7e5e4">loan tenure</strong> to instantly see your monthly EMI. Switch between Home Loan, Car Loan, and Personal Loan tabs — each pre-fills typical interest rate ranges used by Indian banks in 2026.</p>
+    <p style="color:#a8a29e;font-size:14px;line-height:1.8;margin-bottom:10px">The <strong style="color:#e7e5e4">Affordability Check</strong> tab lets you enter your monthly income and the calculator tells you the maximum loan amount you qualify for — based on the standard 40–50% EMI-to-income ratio used by Indian banks (SBI, HDFC, ICICI, Axis).</p>
+    <p style="color:#a8a29e;font-size:14px;line-height:1.8">The <strong style="color:#e7e5e4">Prepayment Impact</strong> tab shows exactly how much interest you save — and how many months earlier you close the loan — by paying extra every month or making a one-time lumpsum payment.</p>
+  </div>
+
+  <div style="background:#1c1917;border:1px solid #292524;border-radius:12px;padding:24px;margin-bottom:16px">
+    <h2 style="font-size:20px;font-weight:700;color:#e7e5e4;margin-bottom:12px">EMI Formula Used in This Calculator</h2>
+    <p style="color:#a8a29e;font-size:14px;line-height:1.8;margin-bottom:10px">This calculator uses the standard reducing-balance EMI formula used by all Indian banks and the RBI:</p>
+    <div style="background:#0c0a09;border:1px solid #292524;border-radius:8px;padding:14px;margin-bottom:12px;font-family:monospace;font-size:14px;color:#fbbf24">
+      EMI = [P × R × (1+R)^N] ÷ [(1+R)^N − 1]
+    </div>
+    <p style="color:#a8a29e;font-size:13px;line-height:1.8">Where <strong style="color:#e7e5e4">P</strong> = Principal loan amount · <strong style="color:#e7e5e4">R</strong> = Monthly interest rate (Annual rate ÷ 12 ÷ 100) · <strong style="color:#e7e5e4">N</strong> = Total number of monthly instalments</p>
+    <p style="color:#a8a29e;font-size:13px;line-height:1.8;margin-top:8px"><strong style="color:#e7e5e4">Example:</strong> ₹50 lakh home loan at 8.5% for 20 years → R = 8.5÷12÷100 = 0.00708 · N = 240 · EMI = ₹43,391/month · Total interest paid = ₹54.1 lakh</p>
+  </div>
+
+  <div style="background:#1c1917;border:1px solid #292524;border-radius:12px;padding:24px;margin-bottom:16px">
+    <h2 style="font-size:20px;font-weight:700;color:#e7e5e4;margin-bottom:16px">Current Home Loan Interest Rates in India (2026)</h2>
+    <div style="overflow-x:auto">
+      <table style="width:100%;border-collapse:collapse;font-size:13px">
+        <thead>
+          <tr style="border-bottom:1px solid #292524">
+            <th style="text-align:left;padding:8px 12px;color:#78716c;font-weight:600">Bank</th>
+            <th style="text-align:left;padding:8px 12px;color:#78716c;font-weight:600">Rate (p.a.)</th>
+            <th style="text-align:left;padding:8px 12px;color:#78716c;font-weight:600">Processing Fee</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr style="border-bottom:1px solid #1c1917"><td style="padding:8px 12px;color:#e7e5e4">SBI Home Loan</td><td style="padding:8px 12px;color:#fbbf24">8.50%–9.85%</td><td style="padding:8px 12px;color:#a8a29e">Nil–₹10,000</td></tr>
+          <tr style="border-bottom:1px solid #1c1917;background:#111"><td style="padding:8px 12px;color:#e7e5e4">HDFC Bank</td><td style="padding:8px 12px;color:#fbbf24">8.75%–9.65%</td><td style="padding:8px 12px;color:#a8a29e">Up to 0.50%</td></tr>
+          <tr style="border-bottom:1px solid #1c1917"><td style="padding:8px 12px;color:#e7e5e4">ICICI Bank</td><td style="padding:8px 12px;color:#fbbf24">8.75%–9.80%</td><td style="padding:8px 12px;color:#a8a29e">Up to 0.50%</td></tr>
+          <tr style="border-bottom:1px solid #1c1917;background:#111"><td style="padding:8px 12px;color:#e7e5e4">Axis Bank</td><td style="padding:8px 12px;color:#fbbf24">8.75%–13.30%</td><td style="padding:8px 12px;color:#a8a29e">Up to 1%</td></tr>
+          <tr><td style="padding:8px 12px;color:#e7e5e4">Kotak Mahindra</td><td style="padding:8px 12px;color:#fbbf24">8.75%+</td><td style="padding:8px 12px;color:#a8a29e">Up to 0.25%</td></tr>
+        </tbody>
+      </table>
+    </div>
+    <p style="color:#57534e;font-size:11px;margin-top:10px">* Rates indicative. Actual rate depends on credit score, income, and lender policy. Verify with your bank before applying.</p>
+  </div>
+
+  <div style="background:#1c1917;border:1px solid #292524;border-radius:12px;padding:24px;margin-bottom:16px">
+    <h2 style="font-size:20px;font-weight:700;color:#e7e5e4;margin-bottom:12px">Tips to Reduce Your Home Loan EMI Burden</h2>
+    <div style="display:grid;gap:10px">
+      <div style="background:#0c0a09;border-radius:8px;padding:12px 14px;border-left:3px solid #fbbf24">
+        <p style="color:#fbbf24;font-size:12px;font-weight:700;margin-bottom:4px">IMPROVE YOUR CREDIT SCORE FIRST</p>
+        <p style="color:#a8a29e;font-size:13px;line-height:1.6">A CIBIL score above 750 gets you the lowest interest rates. Each 0.25% reduction on a ₹50L loan saves ~₹8,000/year in interest.</p>
+      </div>
+      <div style="background:#0c0a09;border-radius:8px;padding:12px 14px;border-left:3px solid #fbbf24">
+        <p style="color:#fbbf24;font-size:12px;font-weight:700;margin-bottom:4px">CHOOSE THE LONGEST TENURE YOU CAN AFFORD</p>
+        <p style="color:#a8a29e;font-size:13px;line-height:1.6">A 30-year loan has lower EMI than 20 years — freeing cash flow. Then prepay aggressively to cut the actual interest paid. Best of both worlds.</p>
+      </div>
+      <div style="background:#0c0a09;border-radius:8px;padding:12px 14px;border-left:3px solid #fbbf24">
+        <p style="color:#fbbf24;font-size:12px;font-weight:700;margin-bottom:4px">PREPAY WITH EVERY ANNUAL BONUS</p>
+        <p style="color:#a8a29e;font-size:13px;line-height:1.6">A ₹1 lakh prepayment in the first 5 years of a 20-year loan at 8.5% saves approximately ₹2–2.5 lakh in total interest.</p>
+      </div>
+    </div>
+  </div>
+
+  <div style="background:#1c1917;border:1px solid #292524;border-radius:12px;padding:24px">
+    <h2 style="font-size:20px;font-weight:700;color:#e7e5e4;margin-bottom:14px">Related Free Finance Tools</h2>
+    <div style="display:flex;flex-wrap:wrap;gap:8px">
+      <a href="/tools/loan-eligibility-calculator.html" style="padding:8px 14px;background:#0c0a09;border:1px solid #292524;border-radius:8px;color:#a8a29e;font-size:13px;text-decoration:none">🏦 Loan Eligibility</a>
+      <a href="/tools/sip-calculator.html" style="padding:8px 14px;background:#0c0a09;border:1px solid #292524;border-radius:8px;color:#a8a29e;font-size:13px;text-decoration:none">📈 SIP Calculator</a>
+      <a href="/tools/income-tax-calculator.html" style="padding:8px 14px;background:#0c0a09;border:1px solid #292524;border-radius:8px;color:#a8a29e;font-size:13px;text-decoration:none">🧾 Income Tax</a>
+      <a href="/tools/fd-calculator.html" style="padding:8px 14px;background:#0c0a09;border:1px solid #292524;border-radius:8px;color:#a8a29e;font-size:13px;text-decoration:none">💰 FD Calculator</a>
+      <a href="/tools/salary-calculator.html" style="padding:8px 14px;background:#0c0a09;border:1px solid #292524;border-radius:8px;color:#a8a29e;font-size:13px;text-decoration:none">💵 Salary / CTC</a>
+      <a href="/tools/gst-calculator.html" style="padding:8px 14px;background:#0c0a09;border:1px solid #292524;border-radius:8px;color:#a8a29e;font-size:13px;text-decoration:none">🧮 GST Calculator</a>
+    </div>
+  </div>
+
+</div>
 
 <!-- Internal SEO links -->
 <div id="related-tools-seo" style="margin:20px 0;padding:14px;background:#0c0a09;border:1px solid #292524;border-radius:10px">

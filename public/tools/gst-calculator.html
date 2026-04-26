@@ -429,6 +429,111 @@ updateInvoice();
 calcGST();
 </script>
 <script src="tool-common.js"></script>
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "SoftwareApplication",
+  "name": "GST Calculator India",
+  "applicationCategory": "FinanceApplication",
+  "operatingSystem": "Web",
+  "url": "https://www.forjitai.in/tools/gst-calculator.html",
+  "description": "Free GST calculator for India. Add or remove GST at 5%, 12%, 18%, 28%. Get CGST, SGST, IGST breakdown instantly. For freelancers, businesses, and shopkeepers.",
+  "offers": { "@type": "Offer", "price": "0", "priceCurrency": "INR" },
+  "author": { "@type": "Organization", "name": "Forjit AI" }
+}
+</script>
+
+<!-- SEO Content Section -->
+<div style="max-width:960px;margin:0 auto;padding:0 16px 32px">
+
+  <div style="background:#1c1917;border:1px solid #292524;border-radius:12px;padding:24px;margin-bottom:16px">
+    <h2 style="font-size:20px;font-weight:700;color:#e7e5e4;margin-bottom:12px">How to Calculate GST in India</h2>
+    <p style="color:#a8a29e;font-size:14px;line-height:1.8;margin-bottom:12px">GST (Goods and Services Tax) is calculated in two ways depending on whether the price you have is <strong style="color:#e7e5e4">exclusive</strong> or <strong style="color:#e7e5e4">inclusive</strong> of GST:</p>
+    <div style="display:grid;grid-template-columns:1fr 1fr;gap:12px">
+      <div style="background:#0c0a09;border-radius:10px;padding:14px">
+        <p style="color:#fbbf24;font-size:12px;font-weight:700;margin-bottom:8px">ADD GST (Exclusive Price)</p>
+        <div style="font-family:monospace;font-size:13px;color:#e7e5e4;line-height:1.8">
+          GST = Price × Rate ÷ 100<br>
+          Total = Price + GST<br>
+          <span style="color:#78716c">e.g. ₹1,000 + 18% = ₹1,180</span>
+        </div>
+      </div>
+      <div style="background:#0c0a09;border-radius:10px;padding:14px">
+        <p style="color:#fbbf24;font-size:12px;font-weight:700;margin-bottom:8px">REMOVE GST (Inclusive Price)</p>
+        <div style="font-family:monospace;font-size:13px;color:#e7e5e4;line-height:1.8">
+          Base = Total ÷ (1 + Rate÷100)<br>
+          GST = Total − Base<br>
+          <span style="color:#78716c">e.g. ₹1,180 − 18% = ₹1,000</span>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div style="background:#1c1917;border:1px solid #292524;border-radius:12px;padding:24px;margin-bottom:16px">
+    <h2 style="font-size:20px;font-weight:700;color:#e7e5e4;margin-bottom:16px">GST Rate List — Common Items & Services (2026)</h2>
+    <div style="overflow-x:auto">
+      <table style="width:100%;border-collapse:collapse;font-size:13px">
+        <thead>
+          <tr style="border-bottom:1px solid #292524">
+            <th style="text-align:left;padding:8px 12px;color:#78716c">Rate</th>
+            <th style="text-align:left;padding:8px 12px;color:#78716c">Common Items / Services</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr style="border-bottom:1px solid #292524"><td style="padding:8px 12px;color:#4ade80;font-weight:700">0% (Exempt)</td><td style="padding:8px 12px;color:#a8a29e">Fresh vegetables, milk, eggs, curd, bread, educational services, healthcare, fresh fruits</td></tr>
+          <tr style="border-bottom:1px solid #292524;background:#111"><td style="padding:8px 12px;color:#fbbf24;font-weight:700">5%</td><td style="padding:8px 12px;color:#a8a29e">Packed foods, coffee/tea, economy class air tickets, kerosene, fertilizers, transport services</td></tr>
+          <tr style="border-bottom:1px solid #292524"><td style="padding:8px 12px;color:#fbbf24;font-weight:700">12%</td><td style="padding:8px 12px;color:#a8a29e">Processed foods, computers, mobile phones, business class air tickets, medicines</td></tr>
+          <tr style="border-bottom:1px solid #292524;background:#111"><td style="padding:8px 12px;color:#f97316;font-weight:700">18%</td><td style="padding:8px 12px;color:#a8a29e">Most services, restaurants, electronics, IT services, telecom, insurance, hotel rooms ₹2,500–₹7,500</td></tr>
+          <tr><td style="padding:8px 12px;color:#ef4444;font-weight:700">28%</td><td style="padding:8px 12px;color:#a8a29e">Luxury cars, tobacco, aerated drinks, 5-star hotels, casinos, cement, pan masala</td></tr>
+        </tbody>
+      </table>
+    </div>
+  </div>
+
+  <div style="background:#1c1917;border:1px solid #292524;border-radius:12px;padding:24px;margin-bottom:16px">
+    <h2 style="font-size:20px;font-weight:700;color:#e7e5e4;margin-bottom:12px">CGST vs SGST vs IGST — What's the Difference?</h2>
+    <div style="display:grid;gap:10px">
+      <div style="background:#0c0a09;border-radius:8px;padding:12px 14px;display:flex;justify-content:space-between;align-items:start">
+        <div>
+          <p style="color:#fbbf24;font-weight:700;font-size:13px">CGST + SGST (Intra-state)</p>
+          <p style="color:#a8a29e;font-size:13px;margin-top:4px">Transaction within the same state. GST is split 50-50 between Centre and State. At 18% GST: 9% goes to Centre (CGST) + 9% to your State (SGST).</p>
+        </div>
+      </div>
+      <div style="background:#0c0a09;border-radius:8px;padding:12px 14px">
+        <p style="color:#fbbf24;font-weight:700;font-size:13px">IGST (Inter-state)</p>
+        <p style="color:#a8a29e;font-size:13px;margin-top:4px">Transaction between two different states. The full GST is IGST — collected by the Centre, then distributed to the destination state. At 18% GST: 18% IGST (not split).</p>
+      </div>
+    </div>
+  </div>
+
+  <div style="background:#1c1917;border:1px solid #292524;border-radius:12px;padding:24px;margin-bottom:16px">
+    <h2 style="font-size:20px;font-weight:700;color:#e7e5e4;margin-bottom:12px">GST Registration Threshold in India (2026)</h2>
+    <p style="color:#a8a29e;font-size:14px;line-height:1.8">GST registration is mandatory if your annual turnover exceeds:</p>
+    <div style="display:grid;grid-template-columns:1fr 1fr;gap:10px;margin-top:12px">
+      <div style="background:#0c0a09;border-radius:8px;padding:12px 14px;text-align:center">
+        <p style="color:#fbbf24;font-size:22px;font-weight:800">₹40 Lakh</p>
+        <p style="color:#a8a29e;font-size:12px;margin-top:4px">Goods / Manufacturing (most states)</p>
+      </div>
+      <div style="background:#0c0a09;border-radius:8px;padding:12px 14px;text-align:center">
+        <p style="color:#fbbf24;font-size:22px;font-weight:800">₹20 Lakh</p>
+        <p style="color:#a8a29e;font-size:12px;margin-top:4px">Services / Special category states</p>
+      </div>
+    </div>
+    <p style="color:#57534e;font-size:12px;margin-top:10px">* Freelancers providing services: ₹20L threshold. E-commerce sellers: mandatory registration regardless of turnover. Verify current thresholds with a CA.</p>
+  </div>
+
+  <div style="background:#1c1917;border:1px solid #292524;border-radius:12px;padding:24px">
+    <h2 style="font-size:20px;font-weight:700;color:#e7e5e4;margin-bottom:14px">Related Business & Finance Tools</h2>
+    <div style="display:flex;flex-wrap:wrap;gap:8px">
+      <a href="/tools/income-tax-calculator.html" style="padding:8px 14px;background:#0c0a09;border:1px solid #292524;border-radius:8px;color:#a8a29e;font-size:13px;text-decoration:none">🧾 Income Tax Calculator</a>
+      <a href="/tools/salary-calculator.html" style="padding:8px 14px;background:#0c0a09;border:1px solid #292524;border-radius:8px;color:#a8a29e;font-size:13px;text-decoration:none">💵 Salary / CTC Calculator</a>
+      <a href="/tools/discount-calculator.html" style="padding:8px 14px;background:#0c0a09;border:1px solid #292524;border-radius:8px;color:#a8a29e;font-size:13px;text-decoration:none">🏷️ Discount Calculator</a>
+      <a href="/tools/percentage-calculator.html" style="padding:8px 14px;background:#0c0a09;border:1px solid #292524;border-radius:8px;color:#a8a29e;font-size:13px;text-decoration:none">% Percentage Calculator</a>
+      <a href="/tools/emi-calculator.html" style="padding:8px 14px;background:#0c0a09;border:1px solid #292524;border-radius:8px;color:#a8a29e;font-size:13px;text-decoration:none">🏦 EMI Calculator</a>
+    </div>
+  </div>
+
+</div>
 
 <!-- Internal SEO links -->
 <div id="related-tools-seo" style="margin:20px 0;padding:14px;background:#0c0a09;border:1px solid #292524;border-radius:10px">

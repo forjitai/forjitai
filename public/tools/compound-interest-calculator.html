@@ -1,0 +1,193 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="UTF-8"/><meta name="viewport" content="width=device-width,initial-scale=1.0"/>
+<title>Compound Interest Calculator India — CI Formula Online Free | Forjit AI</title>
+<meta name="description" content="Free compound interest calculator. Calculate CI for FD, RD, loans and investments with monthly, quarterly and yearly compounding."/>
+<meta name="keywords" content="compound interest calculator India, CI calculator online free, compound interest formula calculator, FD compound interest"/>
+<link rel="canonical" href="https://www.forjitai.in/tools/compound-interest-calculator.html"/>
+<link rel="stylesheet" href="tools.css"/>
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-DYR402JFVG"></script>
+<script>window.dataLayer=window.dataLayer||[];function gtag(){dataLayer.push(arguments);}gtag('js',new Date());gtag('config','G-DYR402JFVG');</script>
+  <meta name="robots" content="index,follow,max-snippet:-1,max-image-preview:large"/>
+  <meta property="og:type"         content="website"/>
+  <meta property="og:site_name"    content="Forjit AI"/>
+  <meta property="og:url"          content="https://www.forjitai.in/tools/compound-interest-calculator.html"/>
+  <meta property="og:title"        content="Compound Interest Calculator — Forjit AI | Simple vs Compound Interest"/>
+  <meta property="og:description"  content="Compare simple vs compound interest. Rule of 72. Year-by-year growth."/>
+  <meta property="og:image"        content="https://www.forjitai.in/og-image.png"/>
+  <meta property="og:image:width"  content="1200"/>
+  <meta property="og:image:height" content="630"/>
+  <meta property="og:locale"       content="en_IN"/>
+  <meta name="twitter:card"        content="summary_large_image"/>
+  <meta name="twitter:site"        content="@forjitai"/>
+  <meta name="twitter:title"       content="Compound Interest Calculator — Forjit AI | Simple vs Compound Interest"/>
+  <meta name="twitter:description" content="Free compound interest calculator. Calculate CI for FD, RD, loans and investments with monthly, quarterly and yearly compounding."/>
+  <meta name="twitter:image"       content="https://www.forjitai.in/og-image.png"/>
+  <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-5102938260449475" crossorigin="anonymous"></script>
+  <meta name="google-site-verification" content="u11mSk2rQwaphaXMCcUwJU-6dRhN_ndessqEMeZdubk" />
+
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "FAQPage",
+  "mainEntity": [
+    {
+      "@type": "Question",
+      "name": "What is the compound interest formula?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "CI = P \u00d7 (1 + r/n)^(nt) - P, where P is principal, r is annual rate, n is compounding frequency and t is time in years."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "What is the difference between simple and compound interest?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "Simple interest is calculated only on principal. Compound interest is calculated on principal plus accumulated interest, giving higher returns over time."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "How often does FD compound interest?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "Most Indian bank FDs compound quarterly. Some compound monthly. Select the frequency in the calculator for accurate results."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "Is this compound interest calculator free?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "Yes, completely free at forjitai.in. No signup required."
+      }
+    }
+  ]
+}
+</script>
+</head>
+<body>
+<header>
+  <a class="logo" href="/"><div class="logo-mark">F</div><div><div class="logo-name">Forjit AI</div><div class="logo-sub">Tools</div></div></a>
+  <a class="back-link" href="/tools/">← All Tools</a>
+</header>
+<div class="container-sm">
+  <h1>Compound Interest Calculator</h1>
+  <p class="page-desc">Calculate compound and simple interest. See how money grows over time.</p>
+  <div class="ad-slot">Advertisement · <a href="https://adsense.google.com" target="_blank">Connect AdSense</a></div>
+  <div class="card">
+    <div class="field"><span class="label">Principal Amount (₹)</span>
+      <div class="input-wrap"><span class="prefix">₹</span><input type="number" id="P" value="100000" min="1" oninput="calc()"/></div>
+    </div>
+    <div class="field"><span class="label">Annual Interest Rate (%)</span>
+      <div class="input-wrap"><span class="prefix">%</span><input type="number" id="R" value="10" min="0.1" max="100" step="0.1" oninput="calc()"/></div>
+    </div>
+    <div class="field"><span class="label">Time Period (Years)</span>
+      <div class="input-wrap"><span class="prefix">Yr</span><input type="number" id="T" value="5" min="1" max="50" oninput="syncR('T','rT');calc()"/></div>
+      <input type="range" id="rT" min="1" max="50" value="5" oninput="syncI('rT','T');calc()"/>
+      <div class="range-row"><span>1 yr</span><span>50 yrs</span></div>
+    </div>
+    <div class="field"><span class="label">Compounding Frequency</span>
+      <div class="input-wrap"><select id="N" onchange="calc()">
+        <option value="1">Annually</option>
+        <option value="2">Half-Yearly</option>
+        <option value="4" selected>Quarterly</option>
+        <option value="12">Monthly</option>
+        <option value="365">Daily</option>
+      </select></div>
+    </div>
+  </div>
+  <div class="results-grid cols2" style="margin-bottom:16px">
+    <div style="background:rgba(251,191,36,.08);border:2px solid rgba(251,191,36,.3);border-radius:12px;padding:18px;text-align:center">
+      <div class="result-label" style="margin-bottom:8px">Compound Interest</div>
+      <div style="font-size:30px;font-weight:800;color:var(--accent)" id="ciAmount">₹0</div>
+      <div style="font-size:12px;color:var(--muted);margin-top:4px">Interest: <span id="ciInterest">₹0</span></div>
+    </div>
+    <div style="background:rgba(59,130,246,.08);border:2px solid rgba(59,130,246,.3);border-radius:12px;padding:18px;text-align:center">
+      <div class="result-label" style="margin-bottom:8px">Simple Interest</div>
+      <div style="font-size:30px;font-weight:800;color:#60a5fa" id="siAmount">₹0</div>
+      <div style="font-size:12px;color:var(--muted);margin-top:4px">Interest: <span id="siInterest">₹0</span></div>
+    </div>
+  </div>
+  <div class="result-hero" style="margin-bottom:16px">
+    <div class="result-hero-label">Compound earns more by</div>
+    <div class="result-hero-value" id="diff">₹0</div>
+  </div>
+  <div class="card">
+    <h3 style="font-size:14px;font-weight:700;margin-bottom:12px">Year-wise Growth</h3>
+    <div class="table-wrap"><table>
+      <thead><tr><th>Year</th><th>CI Value (₹)</th><th>SI Value (₹)</th><th>CI Advantage (₹)</th></tr></thead>
+      <tbody id="ciTable"></tbody>
+    </table></div>
+  </div>
+  <div class="card-dark">
+    <h3 style="font-size:14px;font-weight:700;margin-bottom:10px;color:var(--accent)">📐 Formulas</h3>
+    <div style="font-family:monospace;font-size:14px;line-height:2;color:var(--muted)">
+      <div><b style="color:var(--fg)">Compound Interest:</b> A = P × (1 + r/n)^(nt)</div>
+      <div><b style="color:var(--fg)">Simple Interest:</b> A = P × (1 + r × t)</div>
+      <div><b style="color:var(--fg)">Rule of 72:</b> Money doubles in ≈ 72/r years</div>
+    </div>
+    <div id="rule72" class="info-box" style="margin-top:10px"></div>
+  </div>
+  <div class="ad-slot">Advertisement</div>
+</div>
+<script>
+const fmt=n=>'₹'+Math.round(n).toLocaleString('en-IN');
+function syncR(i,r){document.getElementById(r).value=document.getElementById(i).value}
+function syncI(r,i){document.getElementById(i).value=document.getElementById(r).value}
+function calc(){
+  const P=parseFloat(document.getElementById('P').value)||0;
+  const R=parseFloat(document.getElementById('R').value)/100||0;
+  const T=parseInt(document.getElementById('T').value)||0;
+  const N=parseInt(document.getElementById('N').value)||1;
+  const ciA=P*Math.pow(1+R/N,N*T);
+  const siA=P*(1+R*T);
+  document.getElementById('ciAmount').textContent=fmt(ciA);
+  document.getElementById('ciInterest').textContent=fmt(ciA-P);
+  document.getElementById('siAmount').textContent=fmt(siA);
+  document.getElementById('siInterest').textContent=fmt(siA-P);
+  document.getElementById('diff').textContent=fmt(ciA-siA);
+  document.getElementById('rule72').innerHTML=`<b>Rule of 72:</b> At ${R*100}%, your money doubles approximately every <b>${(72/(R*100)).toFixed(1)} years</b>`;
+  const tbody=document.getElementById('ciTable');
+  tbody.innerHTML='';
+  for(let y=1;y<=T;y++){
+    const ci=P*Math.pow(1+R/N,N*y);
+    const si=P*(1+R*y);
+    const tr=document.createElement('tr');
+    tr.innerHTML=`<td>Year ${y}</td><td style="color:var(--accent)">${Math.round(ci).toLocaleString('en-IN')}</td><td style="color:#60a5fa">${Math.round(si).toLocaleString('en-IN')}</td><td style="color:var(--green)">${Math.round(ci-si).toLocaleString('en-IN')}</td>`;
+    tbody.appendChild(tr);
+  }
+}
+calc();
+</script>
+<script>
+// Auto-save inputs to localStorage
+(function(){
+  const KEY = 'forjit_compound_interest_calculator';
+  // Restore saved values
+  try {
+    const saved = JSON.parse(localStorage.getItem(KEY) || '{}');
+    Object.entries(saved).forEach(([id, val]) => {
+      const el = document.getElementById(id);
+      if (el) el.value = val;
+    });
+  } catch(e) {}
+  // Save on every input change
+  document.querySelectorAll('input[type=number], input[type=text], select').forEach(el => {
+    if (el.id) el.addEventListener('input', () => {
+      try {
+        const data = {};
+        document.querySelectorAll('input[type=number], input[type=text], select').forEach(e => {
+          if (e.id) data[e.id] = e.value;
+        });
+        localStorage.setItem(KEY, JSON.stringify(data));
+      } catch(e) {}
+    });
+  });
+})();
+</script>
+<script src="tool-common.js"></script>
+</body>
+</html>

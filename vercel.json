@@ -1,0 +1,18 @@
+{
+  "buildCommand": "npm run build",
+  "outputDirectory": "dist",
+  "framework": "vite",
+  "rewrites": [
+    { "source": "/sitemap",          "destination": "/sitemap.html"      },
+    { "source": "/community",        "destination": "/community.html"    },
+    { "source": "/forjit-ai",        "destination": "/forjit-ai.html"    },
+    { "source": "/about",            "destination": "/about.html"        },
+    { "source": "/privacy",          "destination": "/privacy.html"      },
+    { "source": "/terms",            "destination": "/terms.html"        },
+    { "source": "/disclaimer",       "destination": "/disclaimer.html"   },
+    { "source": "/contact",          "destination": "/contact.html"      },
+    { "source": "/blog",             "destination": "/blog/index.html"   },
+    { "source": "/blog/",            "destination": "/blog/index.html"   },
+    { "source": "/blog/:path",       "destination": "/blog/post.html"    }
+  ]
+}

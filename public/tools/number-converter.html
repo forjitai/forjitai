@@ -1,0 +1,112 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="UTF-8"/><meta name="viewport" content="width=device-width,initial-scale=1.0"/>
+<title>Number System Converter — Forjit AI | Binary Hex Octal Decimal Converter</title>
+<meta name="description" content="Free number system converter. Convert between binary, decimal, octal, hexadecimal instantly. Shows step-by-step conversion. Useful for students and developers."/>
+<meta name="keywords" content="binary to decimal, decimal to binary, hex to decimal, binary converter, number system converter, octal to decimal"/>
+<link rel="canonical" href="https://www.forjitai.in/tools/number-converter.html"/>
+<link rel="stylesheet" href="tools.css"/>
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-DYR402JFVG"></script>
+<script>window.dataLayer=window.dataLayer||[];function gtag(){dataLayer.push(arguments);}gtag('js',new Date());gtag('config','G-DYR402JFVG');</script>
+  <meta name="robots" content="index,follow,max-snippet:-1,max-image-preview:large"/>
+  <meta property="og:type"         content="website"/>
+  <meta property="og:site_name"    content="Forjit AI"/>
+  <meta property="og:url"          content="https://www.forjitai.in/tools/number-converter.html"/>
+  <meta property="og:title"        content="Number System Converter — Forjit AI | Binary Hex Octal Decimal Converter"/>
+  <meta property="og:description"  content="Binary ↔ Decimal ↔ Octal ↔ Hexadecimal with step-by-step breakdown."/>
+  <meta property="og:image"        content="https://www.forjitai.in/og-image.png"/>
+  <meta property="og:image:width"  content="1200"/>
+  <meta property="og:image:height" content="630"/>
+  <meta property="og:locale"       content="en_IN"/>
+  <meta name="twitter:card"        content="summary_large_image"/>
+  <meta name="twitter:site"        content="@forjitai"/>
+  <meta name="twitter:title"       content="Number System Converter — Forjit AI | Binary Hex Octal Decimal Converter"/>
+  <meta name="twitter:description" content="Binary ↔ Decimal ↔ Octal ↔ Hexadecimal with step-by-step breakdown."/>
+  <meta name="twitter:image"       content="https://www.forjitai.in/og-image.png"/>
+  <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-5102938260449475" crossorigin="anonymous"></script>
+  <meta name="google-site-verification" content="u11mSk2rQwaphaXMCcUwJU-6dRhN_ndessqEMeZdubk" />
+</head>
+<body>
+<header>
+  <a class="logo" href="/"><div class="logo-mark">F</div><div><div class="logo-name">Forjit AI</div><div class="logo-sub">Tools</div></div></a>
+  <a class="back-link" href="/tools/">← All Tools</a>
+</header>
+<div class="container-sm">
+  <h1>Number System Converter</h1>
+  <p class="page-desc">Convert between Binary, Decimal, Octal, and Hexadecimal with step-by-step explanation.</p>
+  <div class="ad-slot">Advertisement · <a href="https://adsense.google.com" target="_blank">Connect AdSense</a></div>
+
+  <div class="card">
+    <div class="field"><span class="label">Decimal (Base 10)</span>
+      <div class="input-wrap"><input type="number" id="dec" value="255" min="0" step="1" oninput="fromDec()" style="font-family:monospace;font-size:18px;font-weight:600"/></div>
+    </div>
+    <div class="field"><span class="label">Binary (Base 2 — only 0s and 1s)</span>
+      <div class="input-wrap"><input type="text" id="bin" value="11111111" oninput="fromBin()" style="font-family:monospace;font-size:18px;font-weight:600;letter-spacing:2px"/><button onclick="copyVal('bin')" class="copy-btn">Copy</button></div>
+    </div>
+    <div class="field"><span class="label">Octal (Base 8 — digits 0–7)</span>
+      <div class="input-wrap"><input type="text" id="oct" value="377" oninput="fromOct()" style="font-family:monospace;font-size:18px;font-weight:600"/><button onclick="copyVal('oct')" class="copy-btn">Copy</button></div>
+    </div>
+    <div class="field"><span class="label">Hexadecimal (Base 16 — 0–9, A–F)</span>
+      <div class="input-wrap"><span class="prefix" style="font-family:monospace">0x</span><input type="text" id="hex" value="FF" oninput="fromHex()" style="font-family:monospace;font-size:18px;font-weight:600;text-transform:uppercase"/><button onclick="copyVal('hex')" class="copy-btn">Copy</button></div>
+    </div>
+  </div>
+
+  <div class="card">
+    <h3 style="font-size:14px;font-weight:700;margin-bottom:14px">Step-by-Step: Decimal → Binary</h3>
+    <div id="steps" style="font-family:monospace;font-size:13px;color:var(--muted)"></div>
+  </div>
+
+  <div class="card">
+    <h3 style="font-size:14px;font-weight:700;margin-bottom:12px">Quick Reference Table</h3>
+    <div class="table-wrap"><table>
+      <thead><tr><th>Decimal</th><th>Binary</th><th>Octal</th><th>Hex</th></tr></thead>
+      <tbody id="refTable"></tbody>
+    </table></div>
+  </div>
+
+  <div class="card-dark">
+    <h3 style="font-size:14px;font-weight:700;margin-bottom:12px;color:var(--accent)">Bit Operations on Current Value</h3>
+    <div class="results-grid cols2">
+      <div class="result-card"><div class="result-label">AND with 0xFF</div><div class="result-value rv-blue" id="andFF">—</div></div>
+      <div class="result-card"><div class="result-label">OR with 0x01</div><div class="result-value rv-green" id="or01">—</div></div>
+      <div class="result-card"><div class="result-label">XOR with 0xFF</div><div class="result-value rv-accent" id="xorFF">—</div></div>
+      <div class="result-card"><div class="result-label">Left Shift (×2)</div><div class="result-value" id="lshift">—</div></div>
+    </div>
+  </div>
+  <div class="ad-slot">Advertisement</div>
+</div>
+<script>
+let updating=false;
+function safeInt(n){return isNaN(n)||n<0?null:Math.floor(n);}
+
+function fromDec(){if(updating)return;updating=true;const n=safeInt(parseInt(document.getElementById('dec').value));if(n!==null){document.getElementById('bin').value=n.toString(2);document.getElementById('oct').value=n.toString(8);document.getElementById('hex').value=n.toString(16).toUpperCase();updateSteps(n);updateBitOps(n);}updating=false;}
+function fromBin(){if(updating)return;updating=true;const v=document.getElementById('bin').value.replace(/[^01]/g,'');document.getElementById('bin').value=v;const n=parseInt(v,2);if(!isNaN(n)){document.getElementById('dec').value=n;document.getElementById('oct').value=n.toString(8);document.getElementById('hex').value=n.toString(16).toUpperCase();updateSteps(n);updateBitOps(n);}updating=false;}
+function fromOct(){if(updating)return;updating=true;const v=document.getElementById('oct').value.replace(/[^0-7]/g,'');document.getElementById('oct').value=v;const n=parseInt(v,8);if(!isNaN(n)){document.getElementById('dec').value=n;document.getElementById('bin').value=n.toString(2);document.getElementById('hex').value=n.toString(16).toUpperCase();updateSteps(n);updateBitOps(n);}updating=false;}
+function fromHex(){if(updating)return;updating=true;const v=document.getElementById('hex').value.replace(/[^0-9a-fA-F]/g,'').toUpperCase();document.getElementById('hex').value=v;const n=parseInt(v,16);if(!isNaN(n)){document.getElementById('dec').value=n;document.getElementById('bin').value=n.toString(2);document.getElementById('oct').value=n.toString(8);updateSteps(n);updateBitOps(n);}updating=false;}
+
+function updateSteps(n){
+  const el=document.getElementById('steps');
+  if(n===0){el.textContent='0 in decimal = 0 in binary';return;}
+  let steps='',num=n,result=[];
+  while(num>0){steps+=`${num} ÷ 2 = ${Math.floor(num/2)} remainder <b style="color:var(--accent)">${num%2}</b>\n`;result.unshift(num%2);num=Math.floor(num/2);}
+  el.innerHTML=`<pre style="margin:0;white-space:pre-wrap">${steps.trim()}</pre><br><b style="color:var(--fg)">Reading remainders bottom-to-top: ${result.join('')}</b><br><span style="color:var(--muted)">= 0b${n.toString(2)} = 0x${n.toString(16).toUpperCase()}</span>`;
+}
+function updateBitOps(n){
+  document.getElementById('andFF').textContent=(n&0xFF).toString()+' (0x'+(n&0xFF).toString(16).toUpperCase()+')';
+  document.getElementById('or01').textContent=(n|0x01).toString()+' (0x'+(n|0x01).toString(16).toUpperCase()+')';
+  document.getElementById('xorFF').textContent=(n^0xFF).toString()+' (0x'+(n^0xFF).toString(16).toUpperCase()+')';
+  document.getElementById('lshift').textContent=(n<<1).toString()+' (0x'+(n<<1).toString(16).toUpperCase()+')';
+}
+
+// Build reference table
+const tbody=document.getElementById('refTable');
+for(let i=0;i<=15;i++){
+  tbody.innerHTML+=`<tr><td>${i}</td><td style="font-family:monospace;color:var(--accent)">${i.toString(2).padStart(4,'0')}</td><td style="font-family:monospace;color:#60a5fa">${i.toString(8)}</td><td style="font-family:monospace;color:var(--green)">${i.toString(16).toUpperCase()}</td></tr>`;
+}
+function copyVal(id){navigator.clipboard.writeText(document.getElementById(id).value);event.target.textContent='✓';setTimeout(()=>event.target.textContent='Copy',1500);}
+fromDec();
+</script>
+<script src="tool-common.js"></script>
+</body>
+</html>

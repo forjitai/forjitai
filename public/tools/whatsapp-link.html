@@ -1,0 +1,141 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="UTF-8"/><meta name="viewport" content="width=device-width,initial-scale=1.0"/>
+<title>WhatsApp Link Generator — Forjit AI | Click-to-Chat Link Free</title>
+<meta name="description" content="Free WhatsApp click-to-chat link generator. Create wa.me links with pre-filled messages. No phone number saved. Great for businesses, freelancers and websites."/>
+<meta name="keywords" content="WhatsApp link generator, WhatsApp click to chat, wa.me link, WhatsApp business link, WhatsApp direct link India"/>
+<link rel="canonical" href="https://www.forjitai.in/tools/whatsapp-link.html"/>
+<link rel="stylesheet" href="tools.css"/>
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-DYR402JFVG"></script>
+<script>window.dataLayer=window.dataLayer||[];function gtag(){dataLayer.push(arguments);}gtag('js',new Date());gtag('config','G-DYR402JFVG');</script>
+  <meta name="robots" content="index,follow,max-snippet:-1,max-image-preview:large"/>
+  <meta property="og:type"         content="website"/>
+  <meta property="og:site_name"    content="Forjit AI"/>
+  <meta property="og:url"          content="https://www.forjitai.in/tools/whatsapp-link.html"/>
+  <meta property="og:title"        content="WhatsApp Link Generator — Forjit AI | Click-to-Chat Link Free"/>
+  <meta property="og:description"  content="Create click-to-chat WhatsApp links with pre-filled messages."/>
+  <meta property="og:image"        content="https://www.forjitai.in/og-image.png"/>
+  <meta property="og:image:width"  content="1200"/>
+  <meta property="og:image:height" content="630"/>
+  <meta property="og:locale"       content="en_IN"/>
+  <meta name="twitter:card"        content="summary_large_image"/>
+  <meta name="twitter:site"        content="@forjitai"/>
+  <meta name="twitter:title"       content="WhatsApp Link Generator — Forjit AI | Click-to-Chat Link Free"/>
+  <meta name="twitter:description" content="Create click-to-chat WhatsApp links with pre-filled messages."/>
+  <meta name="twitter:image"       content="https://www.forjitai.in/og-image.png"/>
+  <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-5102938260449475" crossorigin="anonymous"></script>
+  <meta name="google-site-verification" content="u11mSk2rQwaphaXMCcUwJU-6dRhN_ndessqEMeZdubk" />
+</head>
+<body>
+<header>
+  <a class="logo" href="/"><div class="logo-mark">F</div><div><div class="logo-name">Forjit AI</div><div class="logo-sub">Tools</div></div></a>
+  <a class="back-link" href="/tools/">← All Tools</a>
+</header>
+<div class="container-sm">
+  <h1>WhatsApp Link Generator</h1>
+  <p class="page-desc">Create a WhatsApp click-to-chat link. Share on websites, Instagram bios, business cards.</p>
+  <div class="ad-slot">Advertisement · <a href="https://adsense.google.com" target="_blank">Connect AdSense</a></div>
+
+  <div class="card">
+    <div class="field"><span class="label">Country</span>
+      <div class="input-wrap"><select id="country" onchange="gen()">
+        <option value="91">India (+91)</option>
+        <option value="1">USA (+1)</option>
+        <option value="44">UK (+44)</option>
+        <option value="971">UAE (+971)</option>
+        <option value="61">Australia (+61)</option>
+        <option value="65">Singapore (+65)</option>
+        <option value="60">Malaysia (+60)</option>
+        <option value="966">Saudi Arabia (+966)</option>
+        <option value="974">Qatar (+974)</option>
+        <option value="973">Bahrain (+973)</option>
+      </select></div>
+    </div>
+    <div class="field"><span class="label">Phone Number (without country code)</span>
+      <div class="input-wrap"><span class="prefix" id="ccPrefix">+91</span><input type="tel" id="phone" value="9876543210" maxlength="12" oninput="gen()" placeholder="Phone number"/></div>
+    </div>
+    <div class="field"><span class="label">Pre-filled Message (optional)</span>
+      <div class="input-wrap"><textarea id="msg" rows="3" oninput="gen()" placeholder="Hello! I found you via your website and would like to enquire about…"></textarea></div>
+      <div style="text-align:right;font-size:11px;color:var(--muted);margin-top:4px"><span id="msgLen">0</span>/1000 characters</div>
+    </div>
+
+    <div class="field"><span class="label">Quick Messages</span>
+      <div style="display:flex;flex-wrap:wrap;gap:6px">
+        <button onclick="setMsg('Hi! I saw your profile and would like to connect.')" style="padding:6px 10px;background:var(--border);border:none;border-radius:6px;cursor:pointer;color:var(--muted);font-size:12px;font-family:inherit">👋 Greeting</button>
+        <button onclick="setMsg('Hello! I\'d like to enquire about your products/services.')" style="padding:6px 10px;background:var(--border);border:none;border-radius:6px;cursor:pointer;color:var(--muted);font-size:12px;font-family:inherit">🛍️ Business</button>
+        <button onclick="setMsg('Hi! I saw your listing and have a query.')" style="padding:6px 10px;background:var(--border);border:none;border-radius:6px;cursor:pointer;color:var(--muted);font-size:12px;font-family:inherit">❓ Query</button>
+        <button onclick="setMsg('Hello! I need support with my order.')" style="padding:6px 10px;background:var(--border);border:none;border-radius:6px;cursor:pointer;color:var(--muted);font-size:12px;font-family:inherit">🆘 Support</button>
+      </div>
+    </div>
+  </div>
+
+  <div class="card-dark" id="resultCard">
+    <div style="margin-bottom:12px">
+      <div class="label">Generated Link</div>
+      <div style="display:flex;align-items:center;gap:8px;background:var(--surface);border:1px solid var(--border);border-radius:8px;padding:12px;word-break:break-all">
+        <span id="linkDisplay" style="flex:1;font-size:14px;color:var(--accent);font-family:monospace">—</span>
+        <button class="copy-btn" onclick="copyLink()">Copy</button>
+      </div>
+    </div>
+    <div style="display:flex;gap:10px;flex-wrap:wrap">
+      <a id="testLink" href="#" target="_blank" rel="noreferrer" class="btn" style="flex:1;text-decoration:none;text-align:center;max-width:200px">📱 Test on WhatsApp</a>
+      <button onclick="copyLink()" class="btn btn-outline" style="flex:1;max-width:200px">📋 Copy Link</button>
+    </div>
+  </div>
+
+  <div class="card">
+    <h3 style="font-size:14px;font-weight:700;margin-bottom:12px">HTML Code for Your Website</h3>
+    <div style="background:var(--bg);border:1px solid var(--border);border-radius:8px;padding:12px;margin-bottom:8px">
+      <pre id="htmlCode" style="font-size:12px;color:var(--muted);white-space:pre-wrap;word-break:break-all;margin:0"></pre>
+    </div>
+    <button class="copy-btn" onclick="copyHtml()">Copy HTML</button>
+  </div>
+
+  <div class="card-dark">
+    <h3 style="font-size:14px;font-weight:700;margin-bottom:12px;color:var(--accent)">💡 Where to use this link</h3>
+    <ul style="color:var(--muted);font-size:13px;line-height:1.8;padding-left:18px">
+      <li>Instagram Bio — paste the wa.me link</li>
+      <li>Business website — "Chat with us" button</li>
+      <li>Visiting cards — print as a QR code (use QR Generator tool)</li>
+      <li>Google My Business — add as contact option</li>
+      <li>Email signature — add a WhatsApp icon with this link</li>
+      <li>Facebook Page — add as Contact button</li>
+      <li>Linktree / Bento — add as one of your links</li>
+    </ul>
+  </div>
+  <div class="ad-slot">Advertisement</div>
+</div>
+<script>
+function setMsg(m){document.getElementById('msg').value=m;gen();}
+function gen(){
+  const cc=document.getElementById('country').value;
+  document.getElementById('ccPrefix').textContent='+'+cc;
+  const phone=document.getElementById('phone').value.replace(/\D/g,'');
+  const msg=document.getElementById('msg').value;
+  document.getElementById('msgLen').textContent=msg.length;
+  const full=cc+phone;
+  const link=`https://wa.me/${full}${msg?'?text='+encodeURIComponent(msg):''}`;
+  document.getElementById('linkDisplay').textContent=link;
+  document.getElementById('testLink').href=link;
+  const htmlBtn=`<a href="${link}" target="_blank" rel="noopener noreferrer" style="display:inline-flex;align-items:center;gap:8px;background:#25d366;color:#fff;padding:10px 20px;border-radius:8px;text-decoration:none;font-weight:600;">
+  <svg viewBox="0 0 24 24" width="20" height="20" fill="currentColor"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347z"/><path d="M12 0C5.373 0 0 5.373 0 12c0 2.123.554 4.117 1.522 5.847L.057 23.5l5.785-1.452A11.94 11.94 0 0 0 12 24c6.627 0 12-5.373 12-12S18.627 0 12 0zm0 21.818a9.8 9.8 0 0 1-5.002-1.37l-.36-.214-3.734.935.984-3.608-.236-.37A9.818 9.818 0 1 1 12 21.818z"/></svg>
+  Chat on WhatsApp
+</a>`;
+  document.getElementById('htmlCode').textContent=htmlBtn;
+}
+function copyLink(){
+  navigator.clipboard.writeText(document.getElementById('linkDisplay').textContent);
+  const btn=event.target;btn.textContent='✓ Copied!';btn.classList.add('copied');
+  setTimeout(()=>{btn.textContent='Copy';btn.classList.remove('copied');},1500);
+}
+function copyHtml(){
+  navigator.clipboard.writeText(document.getElementById('htmlCode').textContent);
+  event.target.textContent='✓ Copied!';
+  setTimeout(()=>event.target.textContent='Copy HTML',1500);
+}
+gen();
+</script>
+<script src="tool-common.js"></script>
+</body>
+</html>

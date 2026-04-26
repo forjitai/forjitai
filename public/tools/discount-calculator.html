@@ -1,0 +1,150 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="UTF-8"/><meta name="viewport" content="width=device-width,initial-scale=1.0"/>
+<title>Discount Calculator — Forjit AI | Sale Price, Percentage Off Calculator</title>
+<meta name="description" content="Free discount calculator. Calculate sale price after discount, percentage savings, original price, and profit margin. Useful for shopping and business."/>
+<meta name="keywords" content="discount calculator, percentage off calculator, sale price calculator, markdown calculator, profit margin calculator"/>
+<link rel="canonical" href="https://www.forjitai.in/tools/discount-calculator.html"/>
+<link rel="stylesheet" href="tools.css"/>
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-DYR402JFVG"></script>
+<script>window.dataLayer=window.dataLayer||[];function gtag(){dataLayer.push(arguments);}gtag('js',new Date());gtag('config','G-DYR402JFVG');</script>
+  <meta name="robots" content="index,follow,max-snippet:-1,max-image-preview:large"/>
+  <meta property="og:type"         content="website"/>
+  <meta property="og:site_name"    content="Forjit AI"/>
+  <meta property="og:url"          content="https://www.forjitai.in/tools/discount-calculator.html"/>
+  <meta property="og:title"        content="Discount Calculator — Forjit AI | Sale Price, Percentage Off Calculator"/>
+  <meta property="og:description"  content="Calculate sale price, savings amount, and stacked discounts."/>
+  <meta property="og:image"        content="https://www.forjitai.in/og-image.png"/>
+  <meta property="og:image:width"  content="1200"/>
+  <meta property="og:image:height" content="630"/>
+  <meta property="og:locale"       content="en_IN"/>
+  <meta name="twitter:card"        content="summary_large_image"/>
+  <meta name="twitter:site"        content="@forjitai"/>
+  <meta name="twitter:title"       content="Discount Calculator — Forjit AI | Sale Price, Percentage Off Calculator"/>
+  <meta name="twitter:description" content="Calculate sale price, savings amount, and stacked discounts."/>
+  <meta name="twitter:image"       content="https://www.forjitai.in/og-image.png"/>
+  <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-5102938260449475" crossorigin="anonymous"></script>
+  <meta name="google-site-verification" content="u11mSk2rQwaphaXMCcUwJU-6dRhN_ndessqEMeZdubk" />
+</head>
+<body>
+<header>
+  <a class="logo" href="/"><div class="logo-mark">F</div><div><div class="logo-name">Forjit AI</div><div class="logo-sub">Tools</div></div></a>
+  <a class="back-link" href="/tools/">← All Tools</a>
+</header>
+<div class="container-sm">
+  <h1>Discount Calculator</h1>
+  <p class="page-desc">Calculate sale prices, discount amounts, and savings instantly.</p>
+  <div class="ad-slot">Advertisement · <a href="https://adsense.google.com" target="_blank">Connect AdSense</a></div>
+
+  <!-- Mode tabs -->
+  <div class="toggle-row" style="margin-bottom:16px">
+    <button class="toggle-btn on" onclick="setMode(0,this)">Price + Discount%</button>
+    <button class="toggle-btn" onclick="setMode(1,this)">Price + Saved Amt</button>
+    <button class="toggle-btn" onclick="setMode(2,this)">Original + Final</button>
+  </div>
+
+  <div class="card" id="mode0">
+    <div class="field"><span class="label">Original Price (₹)</span><div class="input-wrap"><span class="prefix">₹</span><input type="number" id="origPrice" value="2000" oninput="calcMode0()"/></div></div>
+    <div class="field"><span class="label">Discount (%)</span><div class="input-wrap"><input type="number" id="discPct" value="20" min="0" max="100" oninput="calcMode0()"/><span class="suffix">%</span></div></div>
+    <div class="results-grid cols3" style="margin-top:10px">
+      <div class="result-card"><div class="result-label">Final Price</div><div class="result-value rv-accent" id="m0Final">₹0</div></div>
+      <div class="result-card"><div class="result-label">You Save</div><div class="result-value rv-green" id="m0Save">₹0</div></div>
+      <div class="result-card"><div class="result-label">Savings %</div><div class="result-value rv-blue" id="m0Pct">0%</div></div>
+    </div>
+  </div>
+
+  <div class="card" id="mode1" style="display:none">
+    <div class="field"><span class="label">Original Price (₹)</span><div class="input-wrap"><span class="prefix">₹</span><input type="number" id="m1Orig" value="2000" oninput="calcMode1()"/></div></div>
+    <div class="field"><span class="label">Amount Saved (₹)</span><div class="input-wrap"><span class="prefix">₹</span><input type="number" id="m1Saved" value="400" oninput="calcMode1()"/></div></div>
+    <div class="results-grid cols3" style="margin-top:10px">
+      <div class="result-card"><div class="result-label">Final Price</div><div class="result-value rv-accent" id="m1Final">₹0</div></div>
+      <div class="result-card"><div class="result-label">Discount</div><div class="result-value rv-green" id="m1Disc">0%</div></div>
+      <div class="result-card"><div class="result-label">You Save</div><div class="result-value rv-blue" id="m1Save">₹0</div></div>
+    </div>
+  </div>
+
+  <div class="card" id="mode2" style="display:none">
+    <div class="field"><span class="label">Original Price (₹)</span><div class="input-wrap"><span class="prefix">₹</span><input type="number" id="m2Orig" value="2000" oninput="calcMode2()"/></div></div>
+    <div class="field"><span class="label">Final (Sale) Price (₹)</span><div class="input-wrap"><span class="prefix">₹</span><input type="number" id="m2Final" value="1600" oninput="calcMode2()"/></div></div>
+    <div class="results-grid cols3" style="margin-top:10px">
+      <div class="result-card"><div class="result-label">Discount %</div><div class="result-value rv-accent" id="m2Disc">0%</div></div>
+      <div class="result-card"><div class="result-label">You Save</div><div class="result-value rv-green" id="m2Save">₹0</div></div>
+      <div class="result-card"><div class="result-label">Savings Ratio</div><div class="result-value rv-blue" id="m2Ratio">0x</div></div>
+    </div>
+  </div>
+
+  <!-- Multi discount stacker -->
+  <div class="card">
+    <h3 style="font-size:14px;font-weight:700;margin-bottom:12px">🔢 Stacked Discounts Calculator</h3>
+    <p style="font-size:13px;color:var(--muted);margin-bottom:12px">Apply multiple discounts sequentially (e.g. 20% + 10% off).</p>
+    <div style="display:grid;grid-template-columns:1fr 1fr 1fr 1fr;gap:8px;margin-bottom:12px">
+      <div class="input-wrap"><input type="number" id="s0" value="2000" placeholder="Price" oninput="calcStack()"/></div>
+      <div class="input-wrap"><input type="number" id="s1" value="20" placeholder="D1 %" oninput="calcStack()"/><span class="suffix">%</span></div>
+      <div class="input-wrap"><input type="number" id="s2" value="10" placeholder="D2 %" oninput="calcStack()"/><span class="suffix">%</span></div>
+      <div class="input-wrap"><input type="number" id="s3" value="5" placeholder="D3 %" oninput="calcStack()"/><span class="suffix">%</span></div>
+    </div>
+    <div class="results-grid cols2">
+      <div class="result-card"><div class="result-label">Final Price</div><div class="result-value rv-accent" id="stackFinal">₹0</div></div>
+      <div class="result-card"><div class="result-label">Total Effective Discount</div><div class="result-value rv-green" id="stackEff">0%</div></div>
+    </div>
+    <div class="info-box" id="stackNote" style="margin-top:10px"></div>
+  </div>
+  <div class="ad-slot">Advertisement</div>
+</div>
+<script>
+const fmt=n=>'₹'+parseFloat(n).toFixed(2).replace(/\B(?=(\d{3})+(?!\d))/g,',');
+const pct=n=>n.toFixed(2)+'%';
+let mode=0;
+function setMode(m,btn){
+  mode=m;
+  [0,1,2].forEach(i=>{document.getElementById('mode'+i).style.display=i===m?'block':'none'});
+  document.querySelectorAll('.toggle-btn').forEach(b=>b.classList.remove('on'));
+  btn.classList.add('on');
+}
+function calcMode0(){
+  const orig=parseFloat(document.getElementById('origPrice').value)||0;
+  const disc=parseFloat(document.getElementById('discPct').value)||0;
+  const saved=orig*disc/100;
+  const final=orig-saved;
+  document.getElementById('m0Final').textContent=fmt(final);
+  document.getElementById('m0Save').textContent=fmt(saved);
+  document.getElementById('m0Pct').textContent=pct(disc);
+}
+function calcMode1(){
+  const orig=parseFloat(document.getElementById('m1Orig').value)||0;
+  const saved=parseFloat(document.getElementById('m1Saved').value)||0;
+  const final=orig-saved;
+  const disc=orig?saved/orig*100:0;
+  document.getElementById('m1Final').textContent=fmt(final);
+  document.getElementById('m1Disc').textContent=pct(disc);
+  document.getElementById('m1Save').textContent=fmt(saved);
+}
+function calcMode2(){
+  const orig=parseFloat(document.getElementById('m2Orig').value)||0;
+  const fin=parseFloat(document.getElementById('m2Final').value)||0;
+  const saved=orig-fin;
+  const disc=orig?saved/orig*100:0;
+  document.getElementById('m2Disc').textContent=pct(disc);
+  document.getElementById('m2Save').textContent=fmt(saved);
+  document.getElementById('m2Ratio').textContent=orig?(fin/orig).toFixed(2)+'x':'—';
+}
+function calcStack(){
+  let price=parseFloat(document.getElementById('s0').value)||0;
+  const orig=price;
+  const d1=parseFloat(document.getElementById('s1').value)||0;
+  const d2=parseFloat(document.getElementById('s2').value)||0;
+  const d3=parseFloat(document.getElementById('s3').value)||0;
+  const discounts=[d1,d2,d3].filter(d=>d>0);
+  discounts.forEach(d=>price=price*(1-d/100));
+  const totalDisc=orig?(orig-price)/orig*100:0;
+  document.getElementById('stackFinal').textContent=fmt(price);
+  document.getElementById('stackEff').textContent=pct(totalDisc);
+  const vs=(d1+d2+d3);
+  document.getElementById('stackNote').innerHTML=`<b>Note:</b> Stacked discounts of ${discounts.join('% + ')}% give an effective discount of <b>${pct(totalDisc)}</b> — not ${vs.toFixed(0)}% (discounts apply sequentially, not additively).`;
+}
+calcMode0();calcStack();
+</script>
+<script src="tool-common.js"></script>
+</body>
+</html>

@@ -1,0 +1,98 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="UTF-8"/><meta name="viewport" content="width=device-width,initial-scale=1.0"/>
+<title>Case Converter — Forjit AI | Text Case Changer Online</title>
+<meta name="description" content="Free text case converter. Convert text to UPPERCASE, lowercase, Title Case, camelCase, snake_case, kebab-case, PascalCase, Sentence case instantly."/>
+<meta name="keywords" content="case converter, text case converter, uppercase to lowercase, title case converter, camelcase converter, snake case online"/>
+<link rel="canonical" href="https://www.forjitai.in/tools/case-converter.html"/>
+<link rel="stylesheet" href="tools.css"/>
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-DYR402JFVG"></script>
+<script>window.dataLayer=window.dataLayer||[];function gtag(){dataLayer.push(arguments);}gtag('js',new Date());gtag('config','G-DYR402JFVG');</script>
+  <meta name="robots" content="index,follow,max-snippet:-1,max-image-preview:large"/>
+  <meta property="og:type"         content="website"/>
+  <meta property="og:site_name"    content="Forjit AI"/>
+  <meta property="og:url"          content="https://www.forjitai.in/tools/case-converter.html"/>
+  <meta property="og:title"        content="Case Converter — Forjit AI | Text Case Changer Online"/>
+  <meta property="og:description"  content="UPPERCASE, lowercase, Title, camelCase, snake_case, kebab-case, PascalCase."/>
+  <meta property="og:image"        content="https://www.forjitai.in/og-image.png"/>
+  <meta property="og:image:width"  content="1200"/>
+  <meta property="og:image:height" content="630"/>
+  <meta property="og:locale"       content="en_IN"/>
+  <meta name="twitter:card"        content="summary_large_image"/>
+  <meta name="twitter:site"        content="@forjitai"/>
+  <meta name="twitter:title"       content="Case Converter — Forjit AI | Text Case Changer Online"/>
+  <meta name="twitter:description" content="UPPERCASE, lowercase, Title, camelCase, snake_case, kebab-case, PascalCase."/>
+  <meta name="twitter:image"       content="https://www.forjitai.in/og-image.png"/>
+  <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-5102938260449475" crossorigin="anonymous"></script>
+  <meta name="google-site-verification" content="u11mSk2rQwaphaXMCcUwJU-6dRhN_ndessqEMeZdubk" />
+</head>
+<body>
+<header>
+  <a class="logo" href="/"><div class="logo-mark">F</div><div><div class="logo-name">Forjit AI</div><div class="logo-sub">Tools</div></div></a>
+  <a class="back-link" href="/tools/">← All Tools</a>
+</header>
+<div class="container">
+  <h1>Text Case Converter</h1>
+  <p class="page-desc">Convert text between any case format — uppercase, lowercase, title, camelCase, snake_case, and more.</p>
+  <div class="ad-slot">Advertisement · <a href="https://adsense.google.com" target="_blank">Connect AdSense</a></div>
+
+  <div class="card">
+    <div style="display:flex;justify-content:space-between;align-items:center;margin-bottom:8px">
+      <span class="label" style="margin:0">Input Text</span>
+      <div style="display:flex;gap:6px">
+        <button onclick="pasteIn()" style="padding:4px 10px;background:var(--border);border:none;border-radius:5px;cursor:pointer;color:var(--muted);font-size:11px">Paste</button>
+        <button onclick="document.getElementById('inp').value='';convert()" style="padding:4px 10px;background:var(--border);border:none;border-radius:5px;cursor:pointer;color:var(--muted);font-size:11px">Clear</button>
+      </div>
+    </div>
+    <textarea id="inp" rows="5" placeholder="Type or paste your text here…" oninput="convert()" style="width:100%;background:var(--bg);border:1px solid var(--border);border-radius:8px;padding:12px;color:var(--fg);font-size:14px;font-family:inherit;resize:vertical;outline:none;line-height:1.6;transition:border-color .15s"></textarea>
+    <div style="font-size:11px;color:var(--muted);margin-top:4px" id="inpStats">0 words · 0 chars</div>
+  </div>
+
+  <div id="results" style="display:grid;gap:10px"></div>
+  <div class="ad-slot" style="margin-top:16px">Advertisement</div>
+</div>
+<script>
+const CASES=[
+  {id:'upper',label:'UPPERCASE',fn:t=>t.toUpperCase(),icon:'🔠'},
+  {id:'lower',label:'lowercase',fn:t=>t.toLowerCase(),icon:'🔡'},
+  {id:'title',label:'Title Case',fn:t=>t.replace(/\w\S*/g,w=>w.charAt(0).toUpperCase()+w.slice(1).toLowerCase()),icon:'📝'},
+  {id:'sentence',label:'Sentence case',fn:t=>t.toLowerCase().replace(/(^\s*\w|[.!?]\s+\w)/g,c=>c.toUpperCase()),icon:'✏️'},
+  {id:'camel',label:'camelCase',fn:t=>t.toLowerCase().replace(/[^a-zA-Z0-9]+(.)/g,(m,c)=>c.toUpperCase()).replace(/^[A-Z]/,c=>c.toLowerCase()),icon:'🐪'},
+  {id:'pascal',label:'PascalCase',fn:t=>t.toLowerCase().replace(/(^|[^a-zA-Z0-9]+)(.)/g,(m,s,c)=>c.toUpperCase()),icon:'🅿️'},
+  {id:'snake',label:'snake_case',fn:t=>t.trim().toLowerCase().replace(/[^a-zA-Z0-9]+/g,'_').replace(/^_|_$/g,''),icon:'🐍'},
+  {id:'kebab',label:'kebab-case',fn:t=>t.trim().toLowerCase().replace(/[^a-zA-Z0-9]+/g,'-').replace(/^-|-$/g,''),icon:'🔗'},
+  {id:'constant',label:'CONSTANT_CASE',fn:t=>t.trim().toUpperCase().replace(/[^A-Z0-9]+/g,'_').replace(/^_|_$/g,''),icon:'📌'},
+  {id:'dot',label:'dot.notation',fn:t=>t.trim().toLowerCase().replace(/[^a-zA-Z0-9]+/g,'.').replace(/^\.|\.$/g,''),icon:'•'},
+  {id:'toggle',label:'tOGGLE cASE',fn:t=>t.split('').map(c=>c===c.toUpperCase()?c.toLowerCase():c.toUpperCase()).join(''),icon:'🔀'},
+  {id:'reverse',label:'esreveR',fn:t=>t.split('').reverse().join(''),icon:'↩'},
+];
+
+function convert(){
+  const inp=document.getElementById('inp').value;
+  const words=inp.trim()?inp.trim().split(/\s+/).length:0;
+  document.getElementById('inpStats').textContent=`${words} words · ${inp.length} chars`;
+  document.getElementById('results').innerHTML=CASES.map(c=>{
+    let out='';
+    try{out=c.fn(inp);}catch{out='Error';}
+    return `<div style="background:var(--surface);border:1px solid var(--border);border-radius:10px;padding:14px;display:flex;align-items:flex-start;gap:12px">
+      <span style="font-size:20px;margin-top:2px">${c.icon}</span>
+      <div style="flex:1;min-width:0">
+        <div style="font-size:11px;font-weight:700;color:var(--muted);text-transform:uppercase;letter-spacing:.06em;margin-bottom:4px">${c.label}</div>
+        <div style="font-family:monospace;font-size:14px;color:var(--fg);word-break:break-all;line-height:1.5">${out||'—'}</div>
+      </div>
+      <button onclick="copyCase('${c.id}')" id="btn-${c.id}" class="copy-btn" style="flex-shrink:0;margin-top:2px" data-val="${out.replace(/'/g,'&#39;').replace(/"/g,'&quot;')}">Copy</button>
+    </div>`;
+  }).join('');
+}
+function copyCase(id){
+  const btn=document.getElementById('btn-'+id);
+  const val=btn.getAttribute('data-val');
+  navigator.clipboard.writeText(val).then(()=>{btn.textContent='✓';btn.classList.add('copied');setTimeout(()=>{btn.textContent='Copy';btn.classList.remove('copied');},1500);});
+}
+function pasteIn(){navigator.clipboard.readText().then(t=>{document.getElementById('inp').value=t;convert();}).catch(()=>{});}
+convert();
+</script>
+<script src="tool-common.js"></script>
+</body>
+</html>

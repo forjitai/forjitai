@@ -1,0 +1,195 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="UTF-8"/><meta name="viewport" content="width=device-width,initial-scale=1.0"/>
+<title>Fuel Cost Calculator India — Petrol Diesel Trip Cost 2025 | Forjit AI</title>
+<meta name="description" content="Free fuel cost calculator India. Calculate trip petrol/diesel cost, compare vehicles, check mileage cost at current fuel prices 2025."/>
+<meta name="keywords" content="fuel cost calculator India, petrol cost calculator, trip fuel cost calculator, diesel cost per km India 2025"/>
+<link rel="canonical" href="https://www.forjitai.in/tools/fuel-cost-calculator.html"/>
+<link rel="stylesheet" href="tools.css"/>
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-DYR402JFVG"></script>
+<script>window.dataLayer=window.dataLayer||[];function gtag(){dataLayer.push(arguments);}gtag('js',new Date());gtag('config','G-DYR402JFVG');</script>
+  <meta name="robots" content="index,follow,max-snippet:-1,max-image-preview:large"/>
+  <meta property="og:type"         content="website"/>
+  <meta property="og:site_name"    content="Forjit AI"/>
+  <meta property="og:url"          content="https://www.forjitai.in/tools/fuel-cost-calculator.html"/>
+  <meta property="og:title"        content="Fuel Cost Calculator — Forjit AI | Trip Petrol Diesel Cost Calculator India"/>
+  <meta property="og:description"  content="Body Mass Index, ideal weight, BMR, and body fat % — metric & imperial."/>
+  <meta property="og:image"        content="https://www.forjitai.in/og-image.png"/>
+  <meta property="og:image:width"  content="1200"/>
+  <meta property="og:image:height" content="630"/>
+  <meta property="og:locale"       content="en_IN"/>
+  <meta name="twitter:card"        content="summary_large_image"/>
+  <meta name="twitter:site"        content="@forjitai"/>
+  <meta name="twitter:title"       content="Fuel Cost Calculator — Forjit AI | Trip Petrol Diesel Cost Calculator India"/>
+  <meta name="twitter:description" content="Free fuel cost calculator India. Calculate trip petrol/diesel cost, compare vehicles, check mileage cost at current fuel prices 2025."/>
+  <meta name="twitter:image"       content="https://www.forjitai.in/og-image.png"/>
+  <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-5102938260449475" crossorigin="anonymous"></script>
+  <meta name="google-site-verification" content="u11mSk2rQwaphaXMCcUwJU-6dRhN_ndessqEMeZdubk" />
+
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "FAQPage",
+  "mainEntity": [
+    {
+      "@type": "Question",
+      "name": "How do I calculate fuel cost for a trip?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "Fuel cost = (Distance / Mileage) \u00d7 Fuel price per litre. Example: 200 km trip with 15 kmpl car at \u20b9100/L = \u20b91,333."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "What is the current petrol price in India 2025?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "Petrol prices vary by city. Mumbai ~\u20b9104, Delhi ~\u20b994, Bangalore ~\u20b999 per litre as of 2025."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "Is this fuel calculator free?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "Yes. The Forjit AI fuel cost calculator is completely free with current India fuel prices built in."
+      }
+    }
+  ]
+}
+</script>
+</head>
+<body>
+<header>
+  <a class="logo" href="/"><div class="logo-mark">F</div><div><div class="logo-name">Forjit AI</div><div class="logo-sub">Tools</div></div></a>
+  <a class="back-link" href="/tools/">← All Tools</a>
+</header>
+<div class="container-sm">
+  <h1>Fuel Cost Calculator</h1>
+  <p class="page-desc">Calculate petrol, diesel, or CNG trip cost. Compare different vehicles for any journey.</p>
+  <div class="ad-slot">Advertisement · <a href="https://adsense.google.com" target="_blank">Connect AdSense</a></div>
+
+  <div class="card">
+    <div class="field"><span class="label">Trip Distance (km)</span>
+      <div class="input-wrap"><span class="prefix">km</span><input type="number" id="dist" value="300" oninput="syncR('dist','rD');calc()"/></div>
+      <input type="range" id="rD" min="1" max="5000" value="300" oninput="syncI('rD','dist');calc()"/>
+      <div class="range-row"><span>1 km</span><span>5,000 km</span></div>
+    </div>
+    <div class="field"><span class="label">Fuel Type</span>
+      <div class="input-wrap"><select id="fuelType" onchange="setFuelDefaults();calc()">
+        <option value="petrol">Petrol</option>
+        <option value="diesel">Diesel</option>
+        <option value="cng">CNG</option>
+        <option value="ev">Electric (EV)</option>
+      </select></div>
+    </div>
+    <div class="field"><span class="label" id="priceLabel">Fuel Price (₹/litre)</span>
+      <div class="input-wrap"><span class="prefix">₹</span><input type="number" id="fuelPrice" value="104" step="0.1" oninput="calc()"/><span class="suffix" id="priceSuffix">/L</span></div>
+      <div class="info-box" id="priceNote" style="margin-top:6px">Approximate Delhi rates. Check local prices.</div>
+    </div>
+    <div class="field"><span class="label" id="mileageLabel">Vehicle Mileage (km/L)</span>
+      <div class="input-wrap"><span class="prefix">km</span><input type="number" id="mileage" value="15" step="0.1" oninput="calc()"/><span class="suffix" id="mileageSuffix">/L</span></div>
+    </div>
+    <div style="display:grid;grid-template-columns:1fr 1fr;gap:10px" class="field">
+      <div><span class="label">Number of Passengers</span><div class="input-wrap"><input type="number" id="passengers" value="1" min="1" max="10" oninput="calc()"/></div></div>
+      <div><span class="label">Trips (one-way = 1)</span><div class="input-wrap"><select id="trips" onchange="calc()"><option value="1">One-way (1×)</option><option value="2">Round trip (2×)</option></select></div></div>
+    </div>
+  </div>
+
+  <div class="result-hero">
+    <div class="result-hero-label">Total Fuel Cost</div>
+    <div class="result-hero-value" id="totalCost">₹0</div>
+    <div class="result-hero-sub" id="costSub">—</div>
+  </div>
+  <div class="results-grid cols3">
+    <div class="result-card"><div class="result-label">Fuel Required</div><div class="result-value rv-accent" id="rFuel">0 L</div></div>
+    <div class="result-card"><div class="result-label">Per Person</div><div class="result-value rv-green" id="rPerPerson">₹0</div></div>
+    <div class="result-card"><div class="result-label">Cost per km</div><div class="result-value rv-blue" id="rPerKm">₹0</div></div>
+  </div>
+
+  <div class="card">
+    <h3 style="font-size:14px;font-weight:700;margin-bottom:14px">🚗 Compare Popular Vehicles</h3>
+    <div class="table-wrap"><table>
+      <thead><tr><th>Vehicle</th><th>Mileage</th><th>Trip Cost</th><th>Per Person</th></tr></thead>
+      <tbody id="compTable"></tbody>
+    </table></div>
+  </div>
+
+  <div class="card-dark">
+    <h3 style="font-size:14px;font-weight:700;margin-bottom:12px;color:var(--accent)">⛽ Approx. Fuel Prices (India, 2024)</h3>
+    <div class="table-wrap"><table>
+      <thead><tr><th>City</th><th>Petrol</th><th>Diesel</th><th>CNG</th></tr></thead>
+      <tbody>
+        <tr><td>Delhi</td><td>₹94.72</td><td>₹87.62</td><td>₹75/kg</td></tr>
+        <tr><td>Mumbai</td><td>₹103.44</td><td>₹89.97</td><td>₹79/kg</td></tr>
+        <tr><td>Bengaluru</td><td>₹102.86</td><td>₹88.94</td><td>₹79/kg</td></tr>
+        <tr><td>Chennai</td><td>₹100.85</td><td>₹92.44</td><td>₹82/kg</td></tr>
+        <tr><td>Hyderabad</td><td>₹107.41</td><td>₹95.65</td><td>₹88/kg</td></tr>
+        <tr><td>Kolkata</td><td>₹104.95</td><td>₹91.76</td><td>₹75/kg</td></tr>
+      </tbody>
+    </table></div>
+    <div class="warning-box" style="margin-top:10px">Prices vary daily. Check local fuel station apps for exact rates.</div>
+  </div>
+  <div class="ad-slot">Advertisement</div>
+</div>
+<script>
+const fmt=n=>'₹'+parseFloat(n).toFixed(2).replace(/\B(?=(\d{3})+(?!\d))/g,',');
+function syncR(i,r){document.getElementById(r).value=document.getElementById(i).value}
+function syncI(r,i){document.getElementById(i).value=document.getElementById(r).value}
+const VEHICLES=[
+  {name:'Maruti Swift (Petrol)',type:'petrol',mileage:21.21,price:94.72},
+  {name:'Hyundai i20 (Petrol)',type:'petrol',mileage:20.35,price:94.72},
+  {name:'Maruti Swift Dzire (Diesel)',type:'diesel',mileage:23.26,price:87.62},
+  {name:'Honda City Hybrid',type:'petrol',mileage:26.5,price:94.72},
+  {name:'Tata Nexon EV',type:'ev',mileage:7.8,price:8},
+  {name:'Bajaj CNG Bike',type:'cng',mileage:85,price:75},
+];
+
+function setFuelDefaults(){
+  const type=document.getElementById('fuelType').value;
+  const defaults={petrol:[94.72,'Fuel Price (₹/litre)','km/L','/L'],diesel:[87.62,'Fuel Price (₹/litre)','km/L','/L'],cng:[75,'CNG Price (₹/kg)','km/kg','/kg'],ev:[8,'Electricity Rate (₹/unit)','km/kWh','/kWh']};
+  const [price,plabel,mlabel,suffix]=defaults[type]||defaults.petrol;
+  document.getElementById('fuelPrice').value=price;
+  document.getElementById('priceLabel').textContent=plabel;
+  document.getElementById('mileageLabel').textContent=`Vehicle Mileage (${mlabel})`;
+  document.getElementById('priceSuffix').textContent=suffix;
+  document.getElementById('mileageSuffix').textContent=suffix.replace('/','');
+  const mileages={petrol:15,diesel:18,cng:25,ev:7};
+  document.getElementById('mileage').value=mileages[type]||15;
+  const notes={petrol:'Approximate Delhi petrol rate. Check local prices.',diesel:'Approximate Delhi diesel rate.',cng:'CNG rates vary by city. Check your city.',ev:'Average electricity tariff. Check your utility.'};
+  document.getElementById('priceNote').textContent=notes[type];
+}
+
+function calc(){
+  const dist=+document.getElementById('dist').value||0;
+  const price=+document.getElementById('fuelPrice').value||0;
+  const mileage=+document.getElementById('mileage').value||1;
+  const pax=+document.getElementById('passengers').value||1;
+  const trips=+document.getElementById('trips').value||1;
+  const totalDist=dist*trips;
+  const fuel=totalDist/mileage;
+  const cost=fuel*price;
+  const perPerson=cost/pax;
+  const perKm=cost/Math.max(1,totalDist);
+  document.getElementById('totalCost').textContent=fmt(cost);
+  document.getElementById('costSub').textContent=`${totalDist} km · ${fuel.toFixed(2)} litres/units of fuel`;
+  document.getElementById('rFuel').textContent=fuel.toFixed(2)+' L/kg';
+  document.getElementById('rPerPerson').textContent=fmt(perPerson);
+  document.getElementById('rPerKm').textContent='₹'+perKm.toFixed(2);
+
+  // Compare table
+  const tbody=document.getElementById('compTable');
+  tbody.innerHTML='';
+  VEHICLES.forEach(v=>{
+    const f=totalDist/v.mileage;
+    const c=f*v.price;
+    const pp=c/pax;
+    tbody.innerHTML+=`<tr><td>${v.name}</td><td>${v.mileage} km/L</td><td style="color:var(--accent)">${fmt(c)}</td><td style="color:var(--green)">${fmt(pp)}</td></tr>`;
+  });
+}
+setFuelDefaults();calc();
+</script>
+<script src="tool-common.js"></script>
+</body>
+</html>

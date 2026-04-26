@@ -1,0 +1,537 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="UTF-8"/><meta name="viewport" content="width=device-width,initial-scale=1.0"/>
+<title>SIP Calculator — Forjit AI | Goal-Based SIP + Step-Up SIP Calculator India</title>
+<meta name="description" content="Free SIP calculator India. Calculate SIP returns, reverse goal-based SIP, step-up SIP, and SIP vs lumpsum comparison. Plan your financial goals with clarity."/>
+<meta name="keywords" content="SIP calculator, goal based SIP, step up SIP, SIP vs lumpsum, mutual fund SIP calculator India, reverse SIP calculator"/>
+<link rel="canonical" href="https://www.forjitai.in/tools/sip-calculator.html"/>
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-DYR402JFVG"></script>
+<script>window.dataLayer=window.dataLayer||[];function gtag(){dataLayer.push(arguments);}gtag('js',new Date());gtag('config','G-DYR402JFVG');</script>
+<style>
+*{box-sizing:border-box;margin:0;padding:0}
+:root{--bg:#0c0a09;--sur:#1c1917;--bor:#292524;--fg:#e7e5e4;--mu:#a8a29e;--su:#78716c;--ac:#fbbf24;--gr:#22c55e;--bl:#3b82f6}
+body{font-family:'Segoe UI',system-ui,sans-serif;background:var(--bg);color:var(--fg);min-height:100vh}
+header{background:var(--sur);border-bottom:1px solid var(--bor);padding:12px 20px;display:flex;align-items:center;justify-content:space-between;position:sticky;top:0;z-index:10}
+.logo{display:flex;align-items:center;gap:10px;text-decoration:none;color:var(--fg)}
+.lm{width:32px;height:32px;background:var(--ac);border-radius:6px;display:flex;align-items:center;justify-content:center;font-weight:800;font-size:16px;color:var(--bg)}
+.back{color:var(--mu);text-decoration:none;font-size:13px}.back:hover{color:var(--ac)}
+.wrap{max-width:920px;margin:0 auto;padding:22px 16px}
+h1{font-size:26px;font-weight:700;margin-bottom:4px}
+.sub{color:var(--mu);font-size:14px;margin-bottom:20px}
+.card{background:var(--sur);border:1px solid var(--bor);border-radius:12px;padding:20px;margin-bottom:14px}
+.mode-tabs{display:flex;background:var(--bg);border:1px solid var(--bor);border-radius:8px;padding:3px;margin-bottom:18px;gap:3px}
+.mt{flex:1;padding:8px 4px;border:none;border-radius:6px;cursor:pointer;font-size:13px;font-weight:500;background:transparent;color:var(--mu);transition:all .15s;font-family:inherit}
+.mt.on{background:var(--ac);color:var(--bg)}
+.lbl{display:block;font-size:11px;color:var(--mu);margin-bottom:5px;font-weight:600;text-transform:uppercase;letter-spacing:.06em}
+.ig{display:flex;align-items:stretch;background:var(--bg);border:1px solid var(--bor);border-radius:8px;overflow:hidden;margin-bottom:5px;transition:border-color .15s}
+.ig:focus-within{border-color:var(--ac)}
+.pfx{padding:10px 12px;background:var(--bor);color:var(--mu);font-size:13px;display:flex;align-items:center;white-space:nowrap}
+input[type=number]{flex:1;background:transparent;border:none;outline:none;color:var(--fg);font-size:15px;padding:10px 12px;width:100%;font-family:inherit}
+input[type=range]{width:100%;margin:4px 0 2px;accent-color:var(--ac);cursor:pointer}
+.rl{display:flex;justify-content:space-between;font-size:10px;color:var(--su);margin-bottom:10px}
+.row2{display:grid;grid-template-columns:1fr 1fr;gap:12px}
+.hero{background:linear-gradient(135deg,rgba(251,191,36,.12),rgba(251,191,36,.04));border:2px solid rgba(251,191,36,.3);border-radius:12px;padding:20px;text-align:center;margin-bottom:12px}
+.hero-val{font-size:40px;font-weight:800;color:var(--ac);line-height:1}
+.hero-lbl{font-size:11px;color:var(--mu);text-transform:uppercase;letter-spacing:.06em;margin-bottom:6px}
+.hero-sub{font-size:13px;color:var(--mu);margin-top:6px}
+.g3{display:grid;grid-template-columns:repeat(3,1fr);gap:10px;margin-bottom:12px}
+.rc{background:var(--bg);border:1px solid var(--bor);border-radius:10px;padding:12px;text-align:center}
+.rl2{font-size:10px;color:var(--su);text-transform:uppercase;letter-spacing:.05em;margin-bottom:4px}
+.rv{font-size:18px;font-weight:700}
+.rv-ac{color:var(--ac)}.rv-gr{color:#4ade80}.rv-bl{color:#60a5fa}
+.badge{display:inline-block;padding:2px 7px;border-radius:999px;font-size:9px;font-weight:700;text-transform:uppercase;letter-spacing:.05em;background:rgba(34,197,94,.15);color:#4ade80;border:1px solid rgba(34,197,94,.25);margin-left:6px;vertical-align:middle}
+.bar-t{background:var(--bor);border-radius:999px;height:10px;overflow:hidden;margin:4px 0 10px}
+.bar-f{height:100%;border-radius:999px;transition:width .5s}
+.tbl-w{overflow-x:auto;border-radius:8px;border:1px solid var(--bor)}
+table{width:100%;border-collapse:collapse;font-size:13px}
+th{background:var(--bor);padding:8px 12px;text-align:left;font-size:10px;font-weight:700;text-transform:uppercase;letter-spacing:.06em;color:var(--mu)}
+td{padding:8px 12px;border-top:1px solid var(--sur);color:var(--fg)}
+tr:hover td{background:rgba(255,255,255,.015)}
+.goal-result{background:linear-gradient(135deg,rgba(34,197,94,.1),rgba(34,197,94,.04));border:2px solid rgba(34,197,94,.3);border-radius:12px;padding:20px;text-align:center;margin-bottom:12px}
+.goal-val{font-size:38px;font-weight:800;color:#4ade80;line-height:1}
+.goal-lbl{font-size:11px;color:var(--mu);text-transform:uppercase;letter-spacing:.06em;margin-bottom:6px}
+.goal-sub{font-size:13px;color:var(--mu);margin-top:6px}
+.preset-grid{display:flex;gap:8px;flex-wrap:wrap;margin-bottom:16px}
+.preset{padding:7px 14px;background:var(--bg);border:1px solid var(--bor);border-radius:8px;cursor:pointer;font-size:13px;color:var(--mu);transition:all .15s;font-family:inherit}
+.preset:hover{border-color:var(--ac);color:var(--ac)}
+.vs-grid{display:grid;grid-template-columns:1fr 1fr;gap:12px;margin-bottom:12px}
+.vs-card{padding:18px;border-radius:10px;text-align:center}
+.vs-sip{background:rgba(251,191,36,.08);border:2px solid rgba(251,191,36,.3)}
+.vs-lump{background:rgba(59,130,246,.08);border:2px solid rgba(59,130,246,.3)}
+.vs-val{font-size:26px;font-weight:800;margin:6px 0 4px}
+.ad{background:var(--sur);border:1px dashed var(--bor);border-radius:8px;padding:13px;text-align:center;color:var(--su);font-size:11px;margin:12px 0}
+.ad a{color:var(--ac);text-decoration:none}
+.tips li{color:var(--mu);font-size:13px;line-height:1.8;margin-left:16px}
+@media(max-width:580px){.g3{grid-template-columns:1fr 1fr}.vs-grid,.row2{grid-template-columns:1fr}}
+</style>
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "FAQPage",
+  "mainEntity": [
+    {
+      "@type": "Question",
+      "name": "What is SIP?",
+      "acceptedAnswer": { "@type": "Answer", "text": "SIP (Systematic Investment Plan) is a method of investing a fixed amount in mutual funds at regular intervals — typically monthly. It builds wealth through rupee cost averaging and compounding." }
+    },
+    {
+      "@type": "Question",
+      "name": "What returns can I expect from SIP?",
+      "acceptedAnswer": { "@type": "Answer", "text": "Equity mutual fund SIPs have historically returned 12-15% CAGR over 10+ year periods in India. However, returns are not guaranteed and depend on market conditions." }
+    },
+    {
+      "@type": "Question",
+      "name": "What is Step-Up SIP?",
+      "acceptedAnswer": { "@type": "Answer", "text": "Step-Up SIP means increasing your SIP amount by a fixed percentage (e.g., 10%) every year. This aligns with salary growth and significantly increases your final corpus." }
+    },
+    {
+      "@type": "Question",
+      "name": "Is SIP better than lumpsum investment?",
+      "acceptedAnswer": { "@type": "Answer", "text": "SIP is generally better for regular investors as it averages out market ups and downs (rupee cost averaging). Lumpsum can outperform in a strongly rising market but requires better timing." }
+    },
+    {
+      "@type": "Question",
+      "name": "What is the minimum SIP amount?",
+      "acceptedAnswer": { "@type": "Answer", "text": "Most mutual funds allow SIPs starting from ₹500 per month. Some allow ₹100. There is no maximum limit." }
+    }
+  ]
+}
+</script>
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "BreadcrumbList",
+  "itemListElement": [
+    { "@type": "ListItem", "position": 1, "name": "Forjit AI", "item": "https://www.forjitai.in/" },
+    { "@type": "ListItem", "position": 2, "name": "Free Tools", "item": "https://www.forjitai.in/tools/" },
+    { "@type": "ListItem", "position": 3, "name": "SIP Calculator — Forjit AI", "item": "https://www.forjitai.in/tools/sip-calculator.html" }
+  ]
+}
+</script>
+  <meta name="robots" content="index,follow,max-snippet:-1,max-image-preview:large"/>
+  <meta property="og:type"         content="website"/>
+  <meta property="og:site_name"    content="Forjit AI"/>
+  <meta property="og:url"          content="https://www.forjitai.in/tools/sip-calculator.html"/>
+  <meta property="og:title"        content="SIP Calculator — Forjit AI | Goal-Based SIP + Step-Up SIP Calculator India"/>
+  <meta property="og:description"  content="Mutual fund SIP returns, maturity amount, and year-by-year growth."/>
+  <meta property="og:image"        content="https://www.forjitai.in/og-image.png"/>
+  <meta property="og:image:width"  content="1200"/>
+  <meta property="og:image:height" content="630"/>
+  <meta property="og:locale"       content="en_IN"/>
+  <meta name="twitter:card"        content="summary_large_image"/>
+  <meta name="twitter:site"        content="@forjitai"/>
+  <meta name="twitter:title"       content="SIP Calculator — Forjit AI | Goal-Based SIP + Step-Up SIP Calculator India"/>
+  <meta name="twitter:description" content="Mutual fund SIP returns, maturity amount, and year-by-year growth."/>
+  <meta name="twitter:image"       content="https://www.forjitai.in/og-image.png"/>
+  <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-5102938260449475" crossorigin="anonymous"></script>
+  <meta name="google-site-verification" content="u11mSk2rQwaphaXMCcUwJU-6dRhN_ndessqEMeZdubk" />
+</head>
+<body>
+<header>
+  <a class="logo" href="/"><div class="lm">F</div><span style="font-size:15px;font-weight:600;margin-left:2px">Forjit AI</span></a>
+  <a class="back" href="/tools/">← All Tools</a>
+</header>
+<div class="wrap">
+  <h1>SIP Calculator</h1>
+  <p class="sub">Calculate SIP returns, find how much to invest for a goal, step-up SIP, and SIP vs Lumpsum.</p>
+
+  <div class="ad">Advertisement · <a href="https://adsense.google.com" target="_blank">Connect AdSense</a></div>
+
+  <div class="card">
+    <div class="mode-tabs">
+      <button class="mt on" onclick="setMode('sip',this)">📈 SIP Returns</button>
+      <button class="mt" onclick="setMode('goal',this)">🎯 Goal Calculator</button>
+      <button class="mt" onclick="setMode('stepup',this)">⬆️ Step-Up SIP</button>
+      <button class="mt" onclick="setMode('vs',this)">⚡ SIP vs Lumpsum</button>
+    </div>
+
+    <!-- Mode 0: Regular SIP -->
+    <div id="m-sip">
+      <div style="margin-bottom:14px">
+        <span class="lbl">Monthly SIP Amount (₹)</span>
+        <div class="ig"><span class="pfx">₹</span><input type="number" id="sip" value="10000" min="500" oninput="syncR('sip','rSip');save();calcSIP()"/></div>
+        <input type="range" id="rSip" min="500" max="100000" value="10000" step="500" oninput="syncI('rSip','sip');save();calcSIP()"/>
+        <div class="rl"><span>₹500</span><span>₹1L/mo</span></div>
+      </div>
+      <div class="row2">
+        <div>
+          <span class="lbl">Expected Return (% p.a.)</span>
+          <div class="ig"><span class="pfx">%</span><input type="number" id="sipR" value="12" min="1" max="30" step="0.5" oninput="save();calcSIP()"/></div>
+        </div>
+        <div>
+          <span class="lbl">Investment Period (Years)</span>
+          <div class="ig"><span class="pfx">Yr</span><input type="number" id="sipT" value="10" min="1" max="40" oninput="syncR('sipT','rSipT');save();calcSIP()"/></div>
+        </div>
+      </div>
+      <input type="range" id="rSipT" min="1" max="40" value="10" oninput="syncI('rSipT','sipT');save();calcSIP()"/>
+      <div class="rl"><span>1 yr</span><span>40 yrs</span></div>
+    </div>
+
+    <!-- Mode 1: Goal-based -->
+    <div id="m-goal" style="display:none">
+      <p style="font-size:13px;color:var(--mu);margin-bottom:14px">Tell me your goal — I'll tell you how much to invest monthly.</p>
+      <div class="preset-grid">
+        <button class="preset" onclick="setGoal(500000,5)">₹5L in 5yr</button>
+        <button class="preset" onclick="setGoal(2000000,10)">₹20L in 10yr</button>
+        <button class="preset" onclick="setGoal(5000000,15)">₹50L in 15yr</button>
+        <button class="preset" onclick="setGoal(10000000,20)">₹1Cr in 20yr</button>
+        <button class="preset" onclick="setGoal(30000000,25)">₹3Cr in 25yr</button>
+      </div>
+      <div class="row2">
+        <div>
+          <span class="lbl">Target Amount (₹)</span>
+          <div class="ig"><span class="pfx">₹</span><input type="number" id="goalAmt" value="10000000" min="10000" oninput="save();calcGoal()"/></div>
+        </div>
+        <div>
+          <span class="lbl">Time to Achieve (Years)</span>
+          <div class="ig"><span class="pfx">Yr</span><input type="number" id="goalT" value="20" min="1" max="40" oninput="save();calcGoal()"/></div>
+        </div>
+      </div>
+      <div>
+        <span class="lbl">Expected Return (% p.a.)</span>
+        <div class="ig"><span class="pfx">%</span><input type="number" id="goalR" value="12" min="1" max="30" step="0.5" oninput="save();calcGoal()"/></div>
+      </div>
+    </div>
+
+    <!-- Mode 2: Step-up SIP -->
+    <div id="m-stepup" style="display:none">
+      <p style="font-size:13px;color:var(--mu);margin-bottom:14px">Increase your SIP by a fixed % every year — matches salary growth.</p>
+      <div>
+        <span class="lbl">Starting Monthly SIP (₹)</span>
+        <div class="ig"><span class="pfx">₹</span><input type="number" id="suSIP" value="10000" min="500" oninput="calcStepUp()"/></div>
+      </div>
+      <div class="row2">
+        <div>
+          <span class="lbl">Annual Step-Up (%)</span>
+          <div class="ig"><span class="pfx">%</span><input type="number" id="suStep" value="10" min="1" max="50" step="1" oninput="calcStepUp()"/></div>
+        </div>
+        <div>
+          <span class="lbl">Expected Return (% p.a.)</span>
+          <div class="ig"><span class="pfx">%</span><input type="number" id="suR" value="12" min="1" max="30" step="0.5" oninput="calcStepUp()"/></div>
+        </div>
+      </div>
+      <div>
+        <span class="lbl">Investment Period (Years)</span>
+        <div class="ig"><span class="pfx">Yr</span><input type="number" id="suT" value="10" min="1" max="40" oninput="calcStepUp()"/></div>
+      </div>
+    </div>
+
+    <!-- Mode 3: SIP vs Lumpsum -->
+    <div id="m-vs" style="display:none">
+      <p style="font-size:13px;color:var(--mu);margin-bottom:14px">Compare investing ₹X as a lumpsum vs spreading it as a monthly SIP.</p>
+      <div>
+        <span class="lbl">Total Amount to Invest (₹)</span>
+        <div class="ig"><span class="pfx">₹</span><input type="number" id="vsAmt" value="1200000" min="10000" oninput="calcVS()"/></div>
+      </div>
+      <div class="row2">
+        <div>
+          <span class="lbl">Expected Return (% p.a.)</span>
+          <div class="ig"><span class="pfx">%</span><input type="number" id="vsR" value="12" min="1" max="30" step="0.5" oninput="calcVS()"/></div>
+        </div>
+        <div>
+          <span class="lbl">Period (Years)</span>
+          <div class="ig"><span class="pfx">Yr</span><input type="number" id="vsT" value="10" min="1" max="40" oninput="calcVS()"/></div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- SIP Results -->
+  <div id="r-sip">
+    <div class="hero">
+      <div class="hero-lbl">Maturity Amount</div>
+      <div class="hero-val" id="sipMaturity">₹0</div>
+      <div class="hero-sub" id="sipSub">—</div>
+    </div>
+    <div class="g3">
+      <div class="rc"><div class="rl2">Total Invested</div><div class="rv" id="sipInvested">₹0</div></div>
+      <div class="rc"><div class="rl2">Wealth Gained</div><div class="rv rv-gr" id="sipGained">₹0</div></div>
+      <div class="rc"><div class="rl2">Total Returns</div><div class="rv rv-ac" id="sipRet">0%</div></div>
+    </div>
+    <div class="card" style="padding:16px">
+      <div style="font-size:12px;color:var(--mu);margin-bottom:3px">Invested <span id="sipIPct" style="color:var(--fg);font-weight:600"></span></div>
+      <div class="bar-t"><div class="bar-f" id="barSipI" style="background:var(--mu)"></div></div>
+      <div style="font-size:12px;color:var(--mu);margin-bottom:3px">Returns <span id="sipRPct" style="color:#4ade80;font-weight:600"></span></div>
+      <div class="bar-t"><div class="bar-f" id="barSipR" style="background:#4ade80"></div></div>
+    </div>
+    <div class="card">
+      <h3 style="font-size:14px;font-weight:700;margin-bottom:12px">Year-by-Year Growth</h3>
+      <div class="tbl-w"><table>
+        <thead><tr><th>Year</th><th>Monthly SIP</th><th>Invested (₹)</th><th>Returns (₹)</th><th>Value (₹)</th></tr></thead>
+        <tbody id="sipTable"></tbody>
+      </table></div>
+    </div>
+  </div>
+
+  <!-- Goal Results -->
+  <div id="r-goal" style="display:none">
+    <div class="goal-result">
+      <div class="goal-lbl">Monthly SIP Required</div>
+      <div class="goal-val" id="goalSIP">₹0</div>
+      <div class="goal-sub" id="goalSub">—</div>
+    </div>
+    <div class="g3">
+      <div class="rc"><div class="rl2">Total Invested</div><div class="rv" id="goalInvested">₹0</div></div>
+      <div class="rc"><div class="rl2">Returns Generated</div><div class="rv rv-gr" id="goalGained">₹0</div></div>
+      <div class="rc"><div class="rl2">Target Amount</div><div class="rv rv-ac" id="goalTarget">₹0</div></div>
+    </div>
+    <div class="card" style="background:var(--bg)">
+      <h3 style="font-size:13px;font-weight:700;color:var(--ac);margin-bottom:8px">Popular Financial Goals</h3>
+      <div class="tbl-w"><table>
+        <thead><tr><th>Goal</th><th>Target</th><th>@12% for 10yr</th><th>@12% for 20yr</th></tr></thead>
+        <tbody>
+          <tr><td>Emergency Fund</td><td>₹5L</td><td style="color:#4ade80">₹2,224/mo</td><td>₹549/mo</td></tr>
+          <tr><td>Car</td><td>₹10L</td><td style="color:#4ade80">₹4,448/mo</td><td>₹1,101/mo</td></tr>
+          <tr><td>Child Education</td><td>₹50L</td><td>₹22,244/mo</td><td style="color:#4ade80">₹5,502/mo</td></tr>
+          <tr><td>Home Down Payment</td><td>₹20L</td><td>₹8,897/mo</td><td style="color:#4ade80">₹2,202/mo</td></tr>
+          <tr><td>Retirement</td><td>₹2Cr</td><td>₹88,988/mo</td><td style="color:#4ade80">₹22,013/mo</td></tr>
+        </tbody>
+      </table></div>
+    </div>
+  </div>
+
+  <!-- Step-up Results -->
+  <div id="r-stepup" style="display:none">
+    <div class="hero">
+      <div class="hero-lbl">Step-Up SIP Maturity</div>
+      <div class="hero-val" id="suMaturity">₹0</div>
+      <div class="hero-sub" id="suVsNormal">vs regular SIP: ₹0</div>
+    </div>
+    <div class="g3">
+      <div class="rc"><div class="rl2">Total Invested</div><div class="rv" id="suInvested">₹0</div></div>
+      <div class="rc"><div class="rl2">Wealth Gained</div><div class="rv rv-gr" id="suGained">₹0</div></div>
+      <div class="rc"><div class="rl2">Extra vs Regular</div><div class="rv rv-ac" id="suExtra">₹0</div></div>
+    </div>
+    <div class="card">
+      <h3 style="font-size:14px;font-weight:700;margin-bottom:12px">Year-by-Year (Step-Up)</h3>
+      <div class="tbl-w"><table>
+        <thead><tr><th>Year</th><th>Monthly SIP</th><th>Invested (₹)</th><th>Value (₹)</th></tr></thead>
+        <tbody id="suTable"></tbody>
+      </table></div>
+    </div>
+  </div>
+
+  <!-- SIP vs Lumpsum Results -->
+  <div id="r-vs" style="display:none">
+    <div class="vs-grid">
+      <div class="vs-card vs-sip">
+        <div style="font-size:11px;color:var(--mu);text-transform:uppercase;letter-spacing:.06em;margin-bottom:4px">Monthly SIP</div>
+        <div class="vs-val" style="color:var(--ac)" id="vsSIPVal">₹0</div>
+        <div style="font-size:12px;color:var(--mu);margin-top:4px" id="vsSIPAmt">₹0/month</div>
+      </div>
+      <div class="vs-card vs-lump">
+        <div style="font-size:11px;color:var(--mu);text-transform:uppercase;letter-spacing:.06em;margin-bottom:4px">Lumpsum</div>
+        <div class="vs-val" style="color:#60a5fa" id="vsLumpVal">₹0</div>
+        <div style="font-size:12px;color:var(--mu);margin-top:4px" id="vsLumpAmt">₹0 today</div>
+      </div>
+    </div>
+    <div class="card" style="background:var(--bg)">
+      <div id="vsVerdict" style="font-size:14px;line-height:1.6;color:var(--mu)"></div>
+    </div>
+  </div>
+
+  <div class="ad">Advertisement</div>
+
+  <div class="card" style="background:var(--bg)">
+    <h3 style="font-size:14px;font-weight:700;color:var(--ac);margin-bottom:10px">💡 SIP Tips</h3>
+    <ul class="tips">
+      <li>Start early — ₹5K/month from age 25 vs 35 creates a <strong>3× difference</strong> at retirement</li>
+      <li>Step-up SIP by 10% each year as your salary grows — massively boosts corpus</li>
+      <li>ELSS funds give SIP returns + Section 80C tax deduction</li>
+      <li>SIP averages out market ups and downs (rupee cost averaging)</li>
+      <li>Don't stop SIP during market crashes — that's when you buy more units cheaply</li>
+      <li>Long-term equity SIP returns (15+ years): historically 12–15% CAGR in India</li>
+    </ul>
+  </div>
+</div>
+
+<script>
+const fmt  = n => '₹' + Math.round(n).toLocaleString('en-IN');
+const fmtK = n => n >= 10000000 ? '₹'+(n/10000000).toFixed(2)+'Cr'
+                : n >= 100000   ? '₹'+(n/100000).toFixed(2)+'L'
+                : fmt(n);
+
+function syncR(i,r){document.getElementById(r).value=document.getElementById(i).value;}
+function syncI(r,i){document.getElementById(i).value=document.getElementById(r).value;}
+
+function save(){
+  try{localStorage.setItem('forjit_sip',JSON.stringify({
+    sip:document.getElementById('sip').value,
+    sipR:document.getElementById('sipR').value,
+    sipT:document.getElementById('sipT').value,
+  }));}catch(e){}
+}
+
+let mode='sip';
+function setMode(m,btn){
+  mode=m;
+  document.querySelectorAll('.mt').forEach(b=>b.classList.remove('on'));
+  btn.classList.add('on');
+  ['sip','goal','stepup','vs'].forEach(id=>{
+    document.getElementById('m-'+id).style.display=id===m?'block':'none';
+    document.getElementById('r-'+id).style.display=id===m?'block':'none';
+  });
+  if(m==='sip') calcSIP();
+  if(m==='goal') calcGoal();
+  if(m==='stepup') calcStepUp();
+  if(m==='vs') calcVS();
+}
+
+function setGoal(amt,yrs){
+  document.getElementById('goalAmt').value=amt;
+  document.getElementById('goalT').value=yrs;
+  calcGoal();
+}
+
+/* ── Regular SIP ─────────────────────────────────────────────────────────── */
+function calcSIP(){
+  const sip=parseFloat(document.getElementById('sip').value)||0;
+  const R=parseFloat(document.getElementById('sipR').value)||0;
+  const T=parseInt(document.getElementById('sipT').value)||0;
+  const r=R/12/100, n=T*12;
+  const maturity=sip*((Math.pow(1+r,n)-1)/r)*(1+r);
+  const invested=sip*n;
+  const gained=maturity-invested;
+  const retPct=((maturity/invested-1)*100).toFixed(1);
+  const iPct=Math.round(invested/maturity*100);
+
+  document.getElementById('sipMaturity').textContent=fmtK(maturity);
+  document.getElementById('sipSub').textContent=`${T} years · ₹${sip.toLocaleString('en-IN')}/mo at ${R}%`;
+  document.getElementById('sipInvested').textContent=fmtK(invested);
+  document.getElementById('sipGained').textContent=fmtK(gained);
+  document.getElementById('sipRet').textContent=retPct+'%';
+  document.getElementById('sipIPct').textContent=`(${iPct}%)`;
+  document.getElementById('sipRPct').textContent=`(${100-iPct}%)`;
+  document.getElementById('barSipI').style.width=iPct+'%';
+  document.getElementById('barSipR').style.width=(100-iPct)+'%';
+
+  const tbody=document.getElementById('sipTable');
+  tbody.innerHTML='';
+  for(let y=1;y<=T;y++){
+    const nm=y*12;
+    const val=sip*((Math.pow(1+r,nm)-1)/r)*(1+r);
+    const inv=sip*nm;
+    const tr=document.createElement('tr');
+    tr.innerHTML=`<td>Year ${y}</td><td>₹${sip.toLocaleString('en-IN')}</td><td>${Math.round(inv).toLocaleString('en-IN')}</td><td style="color:#4ade80">${Math.round(val-inv).toLocaleString('en-IN')}</td><td style="color:var(--ac);font-weight:600">${Math.round(val).toLocaleString('en-IN')}</td>`;
+    tbody.appendChild(tr);
+  }
+}
+
+/* ── Goal-based SIP ──────────────────────────────────────────────────────── */
+function calcGoal(){
+  const goal=parseFloat(document.getElementById('goalAmt').value)||0;
+  const R=parseFloat(document.getElementById('goalR').value)||0;
+  const T=parseInt(document.getElementById('goalT').value)||0;
+  const r=R/12/100, n=T*12;
+  const sipNeeded=goal/(((Math.pow(1+r,n)-1)/r)*(1+r));
+  const totalInvested=sipNeeded*n;
+  const gained=goal-totalInvested;
+
+  document.getElementById('goalSIP').textContent=fmt(sipNeeded);
+  document.getElementById('goalSub').textContent=`Invest ₹${Math.round(sipNeeded).toLocaleString('en-IN')}/month for ${T} years at ${R}% to reach ${fmtK(goal)}`;
+  document.getElementById('goalInvested').textContent=fmtK(totalInvested);
+  document.getElementById('goalGained').textContent=fmtK(gained);
+  document.getElementById('goalTarget').textContent=fmtK(goal);
+}
+
+/* ── Step-up SIP ─────────────────────────────────────────────────────────── */
+function calcStepUp(){
+  const startSIP=parseFloat(document.getElementById('suSIP').value)||0;
+  const step=parseFloat(document.getElementById('suStep').value)/100||0;
+  const R=parseFloat(document.getElementById('suR').value)||0;
+  const T=parseInt(document.getElementById('suT').value)||0;
+  const r=R/12/100;
+
+  let corpus=0, invested=0, sip=startSIP;
+  const tbody=document.getElementById('suTable');
+  tbody.innerHTML='';
+
+  for(let y=1;y<=T;y++){
+    let yInvested=0;
+    for(let m=0;m<12;m++){
+      corpus=(corpus+sip)*(1+r);
+      invested+=sip; yInvested+=sip;
+    }
+    const tr=document.createElement('tr');
+    tr.innerHTML=`<td>Year ${y}</td><td>₹${Math.round(sip).toLocaleString('en-IN')}</td><td>${Math.round(invested).toLocaleString('en-IN')}</td><td style="color:var(--ac);font-weight:600">${Math.round(corpus).toLocaleString('en-IN')}</td>`;
+    tbody.appendChild(tr);
+    sip=sip*(1+step);
+  }
+
+  // Compare with flat SIP
+  const flatSIP=startSIP;
+  const n=T*12;
+  const flatCorpus=flatSIP*((Math.pow(1+r,n)-1)/r)*(1+r);
+
+  document.getElementById('suMaturity').textContent=fmtK(corpus);
+  document.getElementById('suVsNormal').textContent=`vs flat SIP: ${fmtK(flatCorpus)} (you earn ${fmtK(corpus-flatCorpus)} more)`;
+  document.getElementById('suInvested').textContent=fmtK(invested);
+  document.getElementById('suGained').textContent=fmtK(corpus-invested);
+  document.getElementById('suExtra').textContent=fmtK(corpus-flatCorpus);
+}
+
+/* ── SIP vs Lumpsum ──────────────────────────────────────────────────────── */
+function calcVS(){
+  const total=parseFloat(document.getElementById('vsAmt').value)||0;
+  const R=parseFloat(document.getElementById('vsR').value)||0;
+  const T=parseInt(document.getElementById('vsT').value)||0;
+  const r=R/12/100, n=T*12;
+  const monthlySIP=total/n;
+  const sipVal=monthlySIP*((Math.pow(1+r,n)-1)/r)*(1+r);
+  const lumpVal=total*Math.pow(1+R/100,T);
+
+  document.getElementById('vsSIPVal').textContent=fmtK(sipVal);
+  document.getElementById('vsSIPAmt').textContent=`${fmt(monthlySIP)}/month`;
+  document.getElementById('vsLumpVal').textContent=fmtK(lumpVal);
+  document.getElementById('vsLumpAmt').textContent=`${fmtK(total)} today`;
+
+  const winner=lumpVal>sipVal?'Lumpsum':'SIP';
+  const diff=Math.abs(lumpVal-sipVal);
+  document.getElementById('vsVerdict').innerHTML=
+    `<strong style="color:${lumpVal>sipVal?'#60a5fa':'var(--ac)'}">${winner}</strong> wins by <strong>${fmtK(diff)}</strong> in this scenario.<br><br>
+    <span style="font-size:12px">Lumpsum beats SIP in rising markets (invests all at once at lower price). SIP beats Lumpsum in volatile/falling markets (rupee cost averaging). For most investors, SIP is safer due to consistent investing discipline.</span>`;
+}
+
+// Init — URL params take priority over localStorage
+(function initSIP() {
+  const p = (typeof ForjitTool !== 'undefined') ? ForjitTool.getParams() : {};
+  if (p.sip || p.r || p.t) {
+    if (p.sip) { document.getElementById('sip').value = p.sip; syncR('sip','rSip'); }
+    if (p.r)   document.getElementById('sipR').value = p.r;
+    if (p.t)   { document.getElementById('sipT').value = p.t; syncR('sipT','rSipT'); }
+  } else {
+    try {
+      const d = JSON.parse(localStorage.getItem('forjit_sip') || '{}');
+      if (d.sip) { document.getElementById('sip').value = d.sip; syncR('sip','rSip'); }
+      if (d.sipR) document.getElementById('sipR').value = d.sipR;
+      if (d.sipT) { document.getElementById('sipT').value = d.sipT; syncR('sipT','rSipT'); }
+    } catch(e) {}
+  }
+  calcSIP();
+  // Sync URL params on input
+  ['sip','sipR','sipT'].forEach(id => {
+    const el = document.getElementById(id);
+    if (el) el.addEventListener('input', () => {
+      if (typeof ForjitTool !== 'undefined') {
+        ForjitTool.setParams({
+          sip: document.getElementById('sip').value,
+          r:   document.getElementById('sipR').value,
+          t:   document.getElementById('sipT').value,
+        });
+      }
+    });
+  });
+}());
+</script>
+<script src="tool-common.js"></script>
+
+<!-- Internal SEO links -->
+<div id="related-tools-seo" style="margin:20px 0;padding:14px;background:#0c0a09;border:1px solid #292524;border-radius:10px">
+  <p style="font-size:11px;color:#57534e;text-transform:uppercase;letter-spacing:.07em;margin-bottom:8px;font-weight:700">Related Free Tools</p>
+  <a href="/tools/retirement-calculator.html" style="display:inline-block;margin:4px;padding:6px 12px;background:#1c1917;border:1px solid #292524;border-radius:999px;color:#a8a29e;font-size:12px;text-decoration:none">Retirement Calculator</a>
+<a href="/tools/ppf-calculator.html" style="display:inline-block;margin:4px;padding:6px 12px;background:#1c1917;border:1px solid #292524;border-radius:999px;color:#a8a29e;font-size:12px;text-decoration:none">PPF Calculator</a>
+<a href="/tools/fd-calculator.html" style="display:inline-block;margin:4px;padding:6px 12px;background:#1c1917;border:1px solid #292524;border-radius:999px;color:#a8a29e;font-size:12px;text-decoration:none">FD Calculator</a>
+</div>
+</body>
+</html>

@@ -1,0 +1,137 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="UTF-8"/><meta name="viewport" content="width=device-width,initial-scale=1.0"/>
+<title>Tip Calculator & Bill Splitter — Forjit AI | Restaurant Bill Calculator</title>
+<meta name="description" content="Free tip calculator and bill splitter. Calculate tip amount, total with tip, and split the bill equally among friends. Works for restaurants, cafes, travel."/>
+<meta name="keywords" content="tip calculator, bill splitter, restaurant bill calculator, how much to tip, split bill calculator"/>
+<link rel="canonical" href="https://www.forjitai.in/tools/tip-calculator.html"/>
+<link rel="stylesheet" href="tools.css"/>
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-DYR402JFVG"></script>
+<script>window.dataLayer=window.dataLayer||[];function gtag(){dataLayer.push(arguments);}gtag('js',new Date());gtag('config','G-DYR402JFVG');</script>
+  <meta name="robots" content="index,follow,max-snippet:-1,max-image-preview:large"/>
+  <meta property="og:type"         content="website"/>
+  <meta property="og:site_name"    content="Forjit AI"/>
+  <meta property="og:url"          content="https://www.forjitai.in/tools/tip-calculator.html"/>
+  <meta property="og:title"        content="Tip Calculator & Bill Splitter — Forjit AI | Restaurant Bill Calculator"/>
+  <meta property="og:description"  content="Calculate tip amount and split bills equally or unequally among friends."/>
+  <meta property="og:image"        content="https://www.forjitai.in/og-image.png"/>
+  <meta property="og:image:width"  content="1200"/>
+  <meta property="og:image:height" content="630"/>
+  <meta property="og:locale"       content="en_IN"/>
+  <meta name="twitter:card"        content="summary_large_image"/>
+  <meta name="twitter:site"        content="@forjitai"/>
+  <meta name="twitter:title"       content="Tip Calculator & Bill Splitter — Forjit AI | Restaurant Bill Calculator"/>
+  <meta name="twitter:description" content="Calculate tip amount and split bills equally or unequally among friends."/>
+  <meta name="twitter:image"       content="https://www.forjitai.in/og-image.png"/>
+  <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-5102938260449475" crossorigin="anonymous"></script>
+  <meta name="google-site-verification" content="u11mSk2rQwaphaXMCcUwJU-6dRhN_ndessqEMeZdubk" />
+</head>
+<body>
+<header>
+  <a class="logo" href="/"><div class="logo-mark">F</div><div><div class="logo-name">Forjit AI</div><div class="logo-sub">Tools</div></div></a>
+  <a class="back-link" href="/tools/">← All Tools</a>
+</header>
+<div class="container-sm">
+  <h1>Tip & Bill Split Calculator</h1>
+  <p class="page-desc">Calculate tip and split bills among friends — for restaurants, trips, and shared expenses.</p>
+  <div class="ad-slot">Advertisement · <a href="https://adsense.google.com" target="_blank">Connect AdSense</a></div>
+
+  <div class="card">
+    <div class="field"><span class="label">Bill Amount (₹)</span>
+      <div class="input-wrap"><span class="prefix">₹</span><input type="number" id="bill" value="1500" min="0" step="10" oninput="calc()"/></div>
+    </div>
+    <div class="field"><span class="label">Tip %</span>
+      <div style="display:flex;gap:6px;flex-wrap:wrap;margin-bottom:8px">
+        <button class="btn-calc" onclick="setTip(0)" style="padding:10px 14px;background:var(--bg);border:1px solid var(--border);border-radius:8px;cursor:pointer;color:var(--muted);font-size:13px;font-family:inherit">0%</button>
+        <button class="btn-calc" onclick="setTip(5)" style="padding:10px 14px;background:var(--bg);border:1px solid var(--border);border-radius:8px;cursor:pointer;color:var(--muted);font-size:13px;font-family:inherit">5%</button>
+        <button class="btn-calc on" onclick="setTip(10)" id="tip10" style="padding:10px 14px;background:var(--accent);color:var(--bg);border:1px solid var(--accent);border-radius:8px;cursor:pointer;font-size:13px;font-family:inherit;font-weight:700">10%</button>
+        <button class="btn-calc" onclick="setTip(15)" style="padding:10px 14px;background:var(--bg);border:1px solid var(--border);border-radius:8px;cursor:pointer;color:var(--muted);font-size:13px;font-family:inherit">15%</button>
+        <button class="btn-calc" onclick="setTip(20)" style="padding:10px 14px;background:var(--bg);border:1px solid var(--border);border-radius:8px;cursor:pointer;color:var(--muted);font-size:13px;font-family:inherit">20%</button>
+      </div>
+      <div class="input-wrap"><input type="number" id="tipPct" value="10" min="0" max="100" oninput="calc()"/><span class="suffix">%</span></div>
+    </div>
+    <div class="field"><span class="label">Number of People</span>
+      <div style="display:flex;align-items:center;gap:10px">
+        <button onclick="changePeople(-1)" style="width:44px;height:44px;background:var(--border);border:none;border-radius:8px;cursor:pointer;color:var(--fg);font-size:20px">−</button>
+        <div class="input-wrap" style="flex:1"><input type="number" id="people" value="2" min="1" max="50" oninput="calc()" style="text-align:center;font-size:20px;font-weight:700"/></div>
+        <button onclick="changePeople(1)" style="width:44px;height:44px;background:var(--accent);border:none;border-radius:8px;cursor:pointer;color:var(--bg);font-size:20px;font-weight:700">+</button>
+      </div>
+    </div>
+  </div>
+
+  <div class="results-grid cols2" style="margin-bottom:10px">
+    <div class="result-card"><div class="result-label">Tip Amount</div><div class="result-value rv-accent" id="tipAmt">₹0</div></div>
+    <div class="result-card"><div class="result-label">Total Bill</div><div class="result-value rv-green" id="totalBill">₹0</div></div>
+  </div>
+  <div class="result-hero">
+    <div class="result-hero-label">Each Person Pays</div>
+    <div class="result-hero-value" id="perPerson">₹0</div>
+    <div class="result-hero-sub" id="perPersonNote">Incl. ₹0 tip each</div>
+  </div>
+
+  <!-- Unequal split -->
+  <div class="card">
+    <h3 style="font-size:14px;font-weight:700;margin-bottom:12px">Custom Split (Unequal)</h3>
+    <p style="font-size:13px;color:var(--muted);margin-bottom:12px">Enter each person's share percentage:</p>
+    <div id="customSplit"></div>
+    <div class="result-card" style="margin-top:10px">
+      <div class="result-label">Remaining to allocate</div>
+      <div class="result-value" id="remaining">100%</div>
+    </div>
+  </div>
+  <div class="ad-slot">Advertisement</div>
+</div>
+<script>
+const fmt=n=>'₹'+parseFloat(n).toFixed(2).replace(/\B(?=(\d{3})+(?!\d))/g,',');
+let tipVal=10;
+
+function setTip(v){
+  tipVal=v;
+  document.getElementById('tipPct').value=v;
+  calc();
+}
+function changePeople(d){const el=document.getElementById('people');el.value=Math.max(1,+el.value+d);buildCustomSplit();calc();}
+function calc(){
+  const bill=+document.getElementById('bill').value||0;
+  const tip=+document.getElementById('tipPct').value||0;
+  const ppl=+document.getElementById('people').value||1;
+  const tipAmt=bill*tip/100;
+  const total=bill+tipAmt;
+  const pp=total/ppl;
+  document.getElementById('tipAmt').textContent=fmt(tipAmt);
+  document.getElementById('totalBill').textContent=fmt(total);
+  document.getElementById('perPerson').textContent=fmt(pp);
+  document.getElementById('perPersonNote').textContent=`Incl. ${fmt(tipAmt/ppl)} tip each`;
+  updateCustom();
+}
+function buildCustomSplit(){
+  const ppl=+document.getElementById('people').value||1;
+  const div=document.getElementById('customSplit');
+  div.innerHTML='';
+  for(let i=1;i<=ppl;i++){
+    const equal=Math.round(100/ppl*10)/10;
+    div.innerHTML+=`<div style="display:flex;align-items:center;gap:8px;margin-bottom:8px"><span style="font-size:13px;color:var(--muted);width:60px">Person ${i}</span><div class="input-wrap" style="flex:1"><input type="number" id="cp${i}" value="${equal}" step="0.1" oninput="updateCustom()"/><span class="suffix">%</span></div><span id="ca${i}" style="font-size:14px;font-weight:600;color:var(--accent);min-width:80px;text-align:right">₹0</span></div>`;
+  }
+}
+function updateCustom(){
+  const bill=+document.getElementById('bill').value||0;
+  const tip=+document.getElementById('tipPct').value||0;
+  const ppl=+document.getElementById('people').value||1;
+  const total=bill*(1+tip/100);
+  let sum=0;
+  for(let i=1;i<=ppl;i++){
+    const pct=+document.getElementById('cp'+i)?.value||0;
+    sum+=pct;
+    const amt=total*pct/100;
+    if(document.getElementById('ca'+i)) document.getElementById('ca'+i).textContent=fmt(amt);
+  }
+  const rem=100-Math.round(sum*10)/10;
+  document.getElementById('remaining').textContent=rem.toFixed(1)+'%';
+  document.getElementById('remaining').style.color=Math.abs(rem)<0.1?'var(--green)':rem>0?'var(--accent)':'#f87171';
+}
+buildCustomSplit();calc();
+</script>
+<script src="tool-common.js"></script>
+</body>
+</html>

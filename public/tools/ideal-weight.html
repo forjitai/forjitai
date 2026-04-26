@@ -1,0 +1,137 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="UTF-8"/><meta name="viewport" content="width=device-width,initial-scale=1.0"/>
+<title>Ideal Weight Calculator — Forjit AI | Find Your Healthy Weight Range</title>
+<meta name="description" content="Free ideal weight calculator. Find your ideal body weight using 5 different formulas — Robinson, Miller, Hamwi, Devine, and WHO BMI. Includes healthy weight range."/>
+<meta name="keywords" content="ideal weight calculator, healthy weight calculator, ideal body weight, what should I weigh, IBW calculator"/>
+<link rel="canonical" href="https://www.forjitai.in/tools/ideal-weight.html"/>
+<link rel="stylesheet" href="tools.css"/>
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-DYR402JFVG"></script>
+<script>window.dataLayer=window.dataLayer||[];function gtag(){dataLayer.push(arguments);}gtag('js',new Date());gtag('config','G-DYR402JFVG');</script>
+  <meta name="robots" content="index,follow,max-snippet:-1,max-image-preview:large"/>
+  <meta property="og:type"         content="website"/>
+  <meta property="og:site_name"    content="Forjit AI"/>
+  <meta property="og:url"          content="https://www.forjitai.in/tools/ideal-weight.html"/>
+  <meta property="og:title"        content="Ideal Weight Calculator — Forjit AI | Find Your Healthy Weight Range"/>
+  <meta property="og:description"  content="Ideal body weight using 5 formulas: Robinson, Miller, Hamwi, Devine."/>
+  <meta property="og:image"        content="https://www.forjitai.in/og-image.png"/>
+  <meta property="og:image:width"  content="1200"/>
+  <meta property="og:image:height" content="630"/>
+  <meta property="og:locale"       content="en_IN"/>
+  <meta name="twitter:card"        content="summary_large_image"/>
+  <meta name="twitter:site"        content="@forjitai"/>
+  <meta name="twitter:title"       content="Ideal Weight Calculator — Forjit AI | Find Your Healthy Weight Range"/>
+  <meta name="twitter:description" content="Ideal body weight using 5 formulas: Robinson, Miller, Hamwi, Devine."/>
+  <meta name="twitter:image"       content="https://www.forjitai.in/og-image.png"/>
+  <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-5102938260449475" crossorigin="anonymous"></script>
+  <meta name="google-site-verification" content="u11mSk2rQwaphaXMCcUwJU-6dRhN_ndessqEMeZdubk" />
+</head>
+<body>
+<header>
+  <a class="logo" href="/"><div class="logo-mark">F</div><div><div class="logo-name">Forjit AI</div><div class="logo-sub">Tools</div></div></a>
+  <a class="back-link" href="/tools/">← All Tools</a>
+</header>
+<div class="container-sm">
+  <h1>Ideal Weight Calculator</h1>
+  <p class="page-desc">Calculate your ideal body weight using 5 scientifically validated formulas.</p>
+  <div class="ad-slot">Advertisement · <a href="https://adsense.google.com" target="_blank">Connect AdSense</a></div>
+  <div class="card">
+    <div class="field"><span class="label">Gender</span>
+      <div class="toggle-row"><button class="toggle-btn on" id="gM" onclick="setGender('M',this)">Male</button><button class="toggle-btn" id="gF" onclick="setGender('F',this)">Female</button></div>
+    </div>
+    <div class="field"><span class="label">Height</span>
+      <div style="display:flex;gap:8px">
+        <div class="input-wrap" style="flex:1"><input type="number" id="heightCm" value="170" min="100" max="230" oninput="calc()" placeholder="cm"/><span class="suffix">cm</span></div>
+        <div class="input-wrap" style="flex:1"><input type="number" id="heightFt" value="5" min="3" max="7" oninput="fromFtIn()" placeholder="ft"/><span class="suffix">ft</span></div>
+        <div class="input-wrap" style="flex:1"><input type="number" id="heightIn" value="7" min="0" max="11" oninput="fromFtIn()" placeholder="in"/><span class="suffix">in</span></div>
+      </div>
+    </div>
+    <div class="field"><span class="label">Current Weight (kg) — for comparison</span>
+      <div class="input-wrap"><span class="prefix">kg</span><input type="number" id="currentWeight" value="75" step="0.5" oninput="calc()"/></div>
+    </div>
+  </div>
+
+  <div class="result-hero">
+    <div class="result-hero-label">Healthy Weight Range (WHO / BMI 18.5–24.9)</div>
+    <div class="result-hero-value" id="whoRange">—</div>
+    <div class="result-hero-sub" id="whoSub">—</div>
+  </div>
+
+  <div class="card">
+    <h3 style="font-size:14px;font-weight:700;margin-bottom:14px">Ideal Weight by Formula</h3>
+    <div class="table-wrap"><table>
+      <thead><tr><th>Formula</th><th>Ideal Weight (kg)</th><th>Notes</th></tr></thead>
+      <tbody id="formulaTable"></tbody>
+    </table></div>
+    <div class="info-box" style="margin-top:12px">Average across all formulas: <b id="avgWeight">—</b> kg</div>
+  </div>
+
+  <div class="card">
+    <h3 style="font-size:14px;font-weight:700;margin-bottom:12px">Your Status vs Ideal</h3>
+    <div id="status"></div>
+    <div class="bar-track" style="margin:12px 0 4px"><div class="bar-fill" id="statusBar" style="background:var(--green)"></div></div>
+    <div style="display:flex;justify-content:space-between;font-size:11px;color:var(--muted)"><span id="barMin">—</span><span id="barMax">—</span></div>
+  </div>
+  <div class="ad-slot">Advertisement</div>
+  <div class="tips"><h3>💡 About Ideal Weight</h3><ul>
+    <li>No single formula works for everyone — muscle mass, age, and body type matter</li>
+    <li>BMI 18.5–22.9 is recommended for Asians (slightly lower than Western standards)</li>
+    <li>Athletes often weigh more than "ideal" due to muscle mass</li>
+    <li>Focus on body fat percentage rather than just weight</li>
+    <li>Consult a doctor for personalized healthy weight goals</li>
+  </ul></div>
+</div>
+<script>
+let gender='M';
+function setGender(g,btn){gender=g;document.getElementById('gM').classList.toggle('on',g==='M');document.getElementById('gF').classList.toggle('on',g==='F');calc();}
+function fromFtIn(){const ft=+document.getElementById('heightFt').value||0,inches=+document.getElementById('heightIn').value||0;const cm=Math.round((ft*12+inches)*2.54);document.getElementById('heightCm').value=cm;calc();}
+const fmt=n=>n.toFixed(1);
+function calc(){
+  const h=+document.getElementById('heightCm').value||170;
+  const cw=+document.getElementById('currentWeight').value||0;
+  const hIn=h/2.54;const hFt=Math.floor(hIn/12);const hInRem=hIn%12;
+  document.getElementById('heightFt').value=hFt;document.getElementById('heightIn').value=Math.round(hInRem);
+
+  const isMale=gender==='M';
+  const inchesOver60=Math.max(0,hIn-60);
+  // Formulas (all in kg, height in inches)
+  const formulas=[
+    {name:'Robinson (1983)',val:isMale?52+1.9*inchesOver60:49+1.7*inchesOver60,note:'Most widely cited'},
+    {name:'Miller (1983)',val:isMale?56.2+1.41*inchesOver60:53.1+1.36*inchesOver60,note:'Popular in clinical use'},
+    {name:'Hamwi (1964)',val:isMale?48.0+2.7*inchesOver60:45.5+2.2*inchesOver60,note:'Used by dietitians'},
+    {name:'Devine (1974)',val:isMale?50.0+2.3*inchesOver60:45.5+2.3*inchesOver60,note:'Used in medicine'},
+    {name:'Peterson (2016)',val:isMale?2.2*22+3.5*22*(h/100-1.5):2.2*22+3.5*22*(h/100-1.5)*.9,note:'Updated formula'},
+  ];
+  const h2=h/100;
+  const whoMin=18.5*h2*h2;
+  const whoMax=24.9*h2*h2;
+
+  document.getElementById('whoRange').textContent=fmt(whoMin)+' – '+fmt(whoMax)+' kg';
+  document.getElementById('whoSub').textContent=`Based on BMI 18.5–24.9 for height ${h} cm`;
+
+  const tbody=document.getElementById('formulaTable');
+  tbody.innerHTML='';
+  const vals=formulas.map(f=>f.val);
+  const avg=vals.reduce((a,b)=>a+b,0)/vals.length;
+  formulas.forEach(f=>{tbody.innerHTML+=`<tr><td style="font-weight:500">${f.name}</td><td style="color:var(--accent);font-weight:700">${fmt(f.val)} kg</td><td style="color:var(--muted);font-size:12px">${f.note}</td></tr>`;});
+  document.getElementById('avgWeight').textContent=fmt(avg);
+
+  // Status
+  const diff=cw-whoMin;const rangeSize=whoMax-whoMin;
+  let statusText,statusColor;
+  if(cw<whoMin-5){statusText=`You are ${fmt(whoMin-cw)} kg below the healthy range`;statusColor='#60a5fa';}
+  else if(cw>whoMax+5){statusText=`You are ${fmt(cw-whoMax)} kg above the healthy range`;statusColor='#f87171';}
+  else{statusText='✓ You are within a healthy weight range!';statusColor='var(--green)';}
+  document.getElementById('status').innerHTML=`<div style="font-size:16px;font-weight:600;color:${statusColor}">${statusText}</div>`;
+  const barPct=Math.min(100,Math.max(0,(cw-whoMin+10)/(whoMax-whoMin+20)*100));
+  document.getElementById('statusBar').style.width=barPct+'%';
+  document.getElementById('statusBar').style.background=statusColor;
+  document.getElementById('barMin').textContent=fmt(whoMin-10)+' kg';
+  document.getElementById('barMax').textContent=fmt(whoMax+10)+' kg';
+}
+calc();
+</script>
+<script src="tool-common.js"></script>
+</body>
+</html>

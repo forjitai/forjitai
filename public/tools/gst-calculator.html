@@ -1,0 +1,401 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="UTF-8"/><meta name="viewport" content="width=device-width,initial-scale=1.0"/>
+<title>GST Calculator — Forjit AI | Add/Remove GST + Invoice Builder India</title>
+<meta name="description" content="Free GST calculator India. Add or remove GST instantly. All slabs — 5%, 12%, 18%, 28%. CGST SGST IGST breakdown. Built-in GST invoice builder."/>
+<meta name="keywords" content="GST calculator, GST invoice builder, add GST, remove GST, CGST SGST IGST, 18% GST calculator India"/>
+<link rel="canonical" href="https://www.forjitai.in/tools/gst-calculator.html"/>
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-DYR402JFVG"></script>
+<script>window.dataLayer=window.dataLayer||[];function gtag(){dataLayer.push(arguments);}gtag('js',new Date());gtag('config','G-DYR402JFVG');</script>
+<style>
+*{box-sizing:border-box;margin:0;padding:0}
+:root{--bg:#0c0a09;--sur:#1c1917;--bor:#292524;--fg:#e7e5e4;--mu:#a8a29e;--su:#78716c;--ac:#fbbf24;--gr:#22c55e}
+body{font-family:'Segoe UI',system-ui,sans-serif;background:var(--bg);color:var(--fg);min-height:100vh}
+header{background:var(--sur);border-bottom:1px solid var(--bor);padding:12px 20px;display:flex;align-items:center;justify-content:space-between;position:sticky;top:0;z-index:10}
+.logo{display:flex;align-items:center;gap:10px;text-decoration:none;color:var(--fg)}
+.lm{width:32px;height:32px;background:var(--ac);border-radius:6px;display:flex;align-items:center;justify-content:center;font-weight:800;font-size:16px;color:var(--bg)}
+.back{color:var(--mu);text-decoration:none;font-size:13px}.back:hover{color:var(--ac)}
+.wrap{max-width:920px;margin:0 auto;padding:22px 16px}
+h1{font-size:26px;font-weight:700;margin-bottom:4px}
+.sub{color:var(--mu);font-size:14px;margin-bottom:20px}
+.card{background:var(--sur);border:1px solid var(--bor);border-radius:12px;padding:20px;margin-bottom:14px}
+.mode-tabs{display:flex;background:var(--bg);border:1px solid var(--bor);border-radius:8px;padding:3px;margin-bottom:18px;gap:3px}
+.mt{flex:1;padding:8px 6px;border:none;border-radius:6px;cursor:pointer;font-size:13px;font-weight:500;background:transparent;color:var(--mu);transition:all .15s;font-family:inherit}
+.mt.on{background:var(--ac);color:var(--bg)}
+.lbl{display:block;font-size:11px;color:var(--mu);margin-bottom:5px;font-weight:600;text-transform:uppercase;letter-spacing:.06em}
+.ig{display:flex;align-items:stretch;background:var(--bg);border:1px solid var(--bor);border-radius:8px;overflow:hidden;margin-bottom:8px;transition:border-color .15s}
+.ig:focus-within{border-color:var(--ac)}
+.pfx{padding:10px 12px;background:var(--bor);color:var(--mu);font-size:13px;display:flex;align-items:center;white-space:nowrap}
+input[type=number],input[type=text],select{flex:1;background:transparent;border:none;outline:none;color:var(--fg);font-size:15px;padding:10px 12px;width:100%;font-family:inherit}
+select{appearance:none;background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='12' height='12' viewBox='0 0 24 24' fill='none' stroke='%23a8a29e' stroke-width='2'%3E%3Cpolyline points='6 9 12 15 18 9'%3E%3C/polyline%3E%3C/svg%3E");background-repeat:no-repeat;background-position:right 10px center;padding-right:28px}
+select option{background:var(--sur)}
+.slabs{display:flex;gap:6px;flex-wrap:wrap;margin-bottom:12px}
+.slab{padding:8px 16px;border:1px solid var(--bor);border-radius:8px;cursor:pointer;font-size:14px;font-weight:600;background:var(--bg);color:var(--mu);transition:all .15s}
+.slab:hover{border-color:var(--ac);color:var(--ac)}
+.slab.on{background:var(--ac);color:var(--bg);border-color:var(--ac)}
+.result-row{display:flex;justify-content:space-between;align-items:center;padding:10px 0;border-bottom:1px solid var(--bor)}
+.result-row:last-child{border:none;padding-top:14px}
+.rval{font-size:18px;font-weight:700}
+.copy-btn{padding:4px 10px;font-size:11px;background:var(--bor);color:var(--mu);border:none;border-radius:5px;cursor:pointer;font-family:inherit;transition:all .15s}
+.copy-btn:hover{background:var(--ac);color:var(--bg)}
+.badge{display:inline-block;padding:2px 7px;border-radius:999px;font-size:9px;font-weight:700;text-transform:uppercase;background:rgba(34,197,94,.15);color:#4ade80;border:1px solid rgba(34,197,94,.25);margin-left:6px;vertical-align:middle}
+/* Invoice */
+.inv-item{display:grid;grid-template-columns:1fr 80px 90px 80px 36px;gap:8px;align-items:center;margin-bottom:8px}
+.inv-item input{background:var(--bg);border:1px solid var(--bor);border-radius:6px;padding:8px 10px;color:var(--fg);outline:none;font-family:inherit;font-size:13px;width:100%}
+.inv-item input:focus{border-color:var(--ac)}
+.rm-btn{width:32px;height:32px;background:rgba(239,68,68,.1);border:1px solid rgba(239,68,68,.2);border-radius:6px;cursor:pointer;color:#f87171;font-size:16px;display:flex;align-items:center;justify-content:center;flex-shrink:0}
+.rm-btn:hover{background:rgba(239,68,68,.2)}
+.add-btn{padding:8px 16px;background:var(--bg);border:1px solid var(--bor);border-radius:8px;cursor:pointer;color:var(--mu);font-size:13px;font-family:inherit;margin-bottom:14px;transition:all .15s}
+.add-btn:hover{border-color:var(--ac);color:var(--ac)}
+.inv-total{background:var(--bg);border:1px solid var(--bor);border-radius:10px;padding:16px}
+.inv-total-row{display:flex;justify-content:space-between;padding:6px 0;font-size:13px;color:var(--mu)}
+.inv-total-row.grand{border-top:1px solid var(--bor);padding-top:12px;margin-top:6px;font-size:16px;font-weight:700;color:var(--fg)}
+/* Invoice Print */
+#invoicePrint{display:none}
+@media print{
+  body > *{display:none!important}
+  #invoicePrint{display:block!important;padding:30px;font-family:Arial,sans-serif;color:#000;background:#fff}
+  #invoicePrint h2{font-size:24px;margin-bottom:4px}
+  #invoicePrint table{width:100%;border-collapse:collapse;margin:16px 0}
+  #invoicePrint th,#invoicePrint td{border:1px solid #ccc;padding:8px 12px;text-align:left;font-size:13px}
+  #invoicePrint th{background:#f5f5f5}
+  #invoicePrint .totals{text-align:right;margin-top:12px}
+  #invoicePrint .grand-total{font-size:18px;font-weight:bold;border-top:2px solid #000;margin-top:8px;padding-top:8px}
+}
+.ad{background:var(--sur);border:1px dashed var(--bor);border-radius:8px;padding:13px;text-align:center;color:var(--su);font-size:11px;margin:12px 0}
+.ad a{color:var(--ac);text-decoration:none}
+@media(max-width:520px){.inv-item{grid-template-columns:1fr 70px 80px 36px;}.inv-item input:nth-child(3){display:none}}
+</style>
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "FAQPage",
+  "mainEntity": [
+    {
+      "@type": "Question",
+      "name": "What is GST in India?",
+      "acceptedAnswer": { "@type": "Answer", "text": "GST (Goods and Services Tax) is a unified indirect tax in India, introduced in 2017. It replaced multiple taxes like VAT, service tax, and excise duty. GST has four main slabs: 5%, 12%, 18%, and 28%." }
+    },
+    {
+      "@type": "Question",
+      "name": "What is the difference between CGST, SGST, and IGST?",
+      "acceptedAnswer": { "@type": "Answer", "text": "CGST (Central GST) and SGST (State GST) are charged on intra-state transactions, each at half the GST rate. IGST (Integrated GST) is charged on inter-state transactions at the full GST rate." }
+    },
+    {
+      "@type": "Question",
+      "name": "How to add GST to a price?",
+      "acceptedAnswer": { "@type": "Answer", "text": "To add 18% GST: Multiply the base price by 1.18. For example, ₹1,000 + 18% GST = ₹1,180." }
+    },
+    {
+      "@type": "Question",
+      "name": "How to remove GST from a price?",
+      "acceptedAnswer": { "@type": "Answer", "text": "To remove 18% GST from an inclusive price: Divide by 1.18. For example, ₹1,180 ÷ 1.18 = ₹1,000 base price." }
+    },
+    {
+      "@type": "Question",
+      "name": "What items have 0% GST in India?",
+      "acceptedAnswer": { "@type": "Answer", "text": "Essential goods like fresh vegetables, milk, eggs, bread, unbranded cereals, books, and healthcare services are exempt from GST (0% slab)." }
+    }
+  ]
+}
+</script>
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "BreadcrumbList",
+  "itemListElement": [
+    { "@type": "ListItem", "position": 1, "name": "Forjit AI", "item": "https://www.forjitai.in/" },
+    { "@type": "ListItem", "position": 2, "name": "Free Tools", "item": "https://www.forjitai.in/tools/" },
+    { "@type": "ListItem", "position": 3, "name": "GST Calculator — Forjit AI", "item": "https://www.forjitai.in/tools/gst-calculator.html" }
+  ]
+}
+</script>
+  <meta name="robots" content="index,follow,max-snippet:-1,max-image-preview:large"/>
+  <meta property="og:type"         content="website"/>
+  <meta property="og:site_name"    content="Forjit AI"/>
+  <meta property="og:url"          content="https://www.forjitai.in/tools/gst-calculator.html"/>
+  <meta property="og:title"        content="GST Calculator — Forjit AI | Add/Remove GST + Invoice Builder India"/>
+  <meta property="og:description"  content="Add or remove GST. All slabs (5%, 12%, 18%, 28%). CGST, SGST, IGST."/>
+  <meta property="og:image"        content="https://www.forjitai.in/og-image.png"/>
+  <meta property="og:image:width"  content="1200"/>
+  <meta property="og:image:height" content="630"/>
+  <meta property="og:locale"       content="en_IN"/>
+  <meta name="twitter:card"        content="summary_large_image"/>
+  <meta name="twitter:site"        content="@forjitai"/>
+  <meta name="twitter:title"       content="GST Calculator — Forjit AI | Add/Remove GST + Invoice Builder India"/>
+  <meta name="twitter:description" content="Add or remove GST. All slabs (5%, 12%, 18%, 28%). CGST, SGST, IGST."/>
+  <meta name="twitter:image"       content="https://www.forjitai.in/og-image.png"/>
+  <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-5102938260449475" crossorigin="anonymous"></script>
+  <meta name="google-site-verification" content="u11mSk2rQwaphaXMCcUwJU-6dRhN_ndessqEMeZdubk" />
+</head>
+<body>
+<header>
+  <a class="logo" href="/"><div class="lm">F</div><span style="font-size:15px;font-weight:600;margin-left:2px">Forjit AI</span></a>
+  <a class="back" href="/tools/">← All Tools</a>
+</header>
+<div class="wrap">
+  <h1>GST Calculator</h1>
+  <p class="sub">Calculate GST instantly. Add, remove, or build a full GST invoice.</p>
+
+  <div class="ad">Advertisement · <a href="https://adsense.google.com" target="_blank">Connect AdSense</a></div>
+
+  <div class="card">
+    <div class="mode-tabs">
+      <button class="mt on" onclick="setMode('add',this)">➕ Add GST</button>
+      <button class="mt" onclick="setMode('remove',this)">➖ Remove GST</button>
+      <button class="mt" onclick="setMode('invoice',this)">🧾 Invoice Builder <span class="badge">New</span></button>
+    </div>
+
+    <!-- Add / Remove modes -->
+    <div id="m-calc">
+      <div class="lbl">Amount (₹)</div>
+      <div class="ig"><span class="pfx">₹</span><input type="number" id="amt" value="10000" min="0" step="0.01" oninput="calcGST()"/></div>
+
+      <div class="lbl" style="margin-top:10px">GST Rate</div>
+      <div class="slabs">
+        <div class="slab" onclick="setSlab(0,this)">0%</div>
+        <div class="slab" onclick="setSlab(5,this)">5%</div>
+        <div class="slab" onclick="setSlab(12,this)">12%</div>
+        <div class="slab on" onclick="setSlab(18,this)">18%</div>
+        <div class="slab" onclick="setSlab(28,this)">28%</div>
+        <div class="ig" style="margin:0;flex:1;min-width:100px">
+          <span class="pfx">Custom</span>
+          <input type="number" id="custom" placeholder="%" min="0" max="100" step="0.01" oninput="gstRate=+this.value;calcGST()" style="font-size:13px"/>
+          <span class="pfx" style="border-left:1px solid var(--bor)">%</span>
+        </div>
+      </div>
+
+      <!-- Results -->
+      <div style="background:var(--bg);border:1px solid var(--bor);border-radius:10px;padding:16px;margin-top:4px">
+        <div class="result-row">
+          <span style="font-size:14px;color:var(--mu)" id="r1lbl">Base Amount</span>
+          <div style="display:flex;align-items:center;gap:8px"><span class="rval" id="r1val">₹10,000</span><button class="copy-btn" onclick="copyVal('r1val')">Copy</button></div>
+        </div>
+        <div class="result-row">
+          <span style="font-size:14px;color:var(--mu)">GST Amount (<span id="rRate">18%</span>)</span>
+          <span class="rval" style="color:#f87171" id="rGST">₹1,800</span>
+        </div>
+        <div class="result-row">
+          <span style="font-size:14px;color:var(--mu)" id="r2lbl">Total Amount</span>
+          <div style="display:flex;align-items:center;gap:8px"><span class="rval" style="color:var(--ac)" id="r2val">₹11,800</span><button class="copy-btn" onclick="copyVal('r2val')">Copy</button></div>
+        </div>
+        <div style="border-top:1px solid var(--bor);margin-top:10px;padding-top:12px;display:grid;grid-template-columns:1fr 1fr 1fr;gap:8px">
+          <div style="text-align:center"><div style="font-size:10px;color:var(--su);text-transform:uppercase;letter-spacing:.05em;margin-bottom:3px">CGST (<span id="cRate">9%</span>)</div><div style="font-size:16px;font-weight:700;color:var(--fg)" id="cgst">₹900</div></div>
+          <div style="text-align:center"><div style="font-size:10px;color:var(--su);text-transform:uppercase;letter-spacing:.05em;margin-bottom:3px">SGST (<span id="sRate">9%</span>)</div><div style="font-size:16px;font-weight:700;color:var(--fg)" id="sgst">₹900</div></div>
+          <div style="text-align:center"><div style="font-size:10px;color:var(--su);text-transform:uppercase;letter-spacing:.05em;margin-bottom:3px">IGST (inter-state)</div><div style="font-size:16px;font-weight:700;color:var(--fg)" id="igst">₹1,800</div></div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Invoice builder -->
+    <div id="m-invoice" style="display:none">
+      <div style="display:grid;grid-template-columns:1fr 1fr;gap:12px;margin-bottom:14px">
+        <div>
+          <span class="lbl">Seller / Business Name</span>
+          <div class="ig"><input type="text" id="invSeller" placeholder="Your Business Name" oninput="updateInvoice()"/></div>
+        </div>
+        <div>
+          <span class="lbl">Buyer / Client Name</span>
+          <div class="ig"><input type="text" id="invBuyer" placeholder="Client Name" oninput="updateInvoice()"/></div>
+        </div>
+        <div>
+          <span class="lbl">Invoice Number</span>
+          <div class="ig"><input type="text" id="invNum" value="INV-001" oninput="updateInvoice()"/></div>
+        </div>
+        <div>
+          <span class="lbl">Invoice Date</span>
+          <div class="ig"><input type="date" id="invDate" oninput="updateInvoice()" style="color-scheme:dark"/></div>
+        </div>
+      </div>
+
+      <div style="font-size:11px;font-weight:700;color:var(--mu);text-transform:uppercase;letter-spacing:.06em;margin-bottom:8px;display:grid;grid-template-columns:1fr 80px 90px 80px 36px;gap:8px;padding:0 2px">
+        <span>Description</span><span>Qty</span><span>Unit Price</span><span>GST %</span><span></span>
+      </div>
+
+      <div id="invItems"></div>
+      <button class="add-btn" onclick="addItem()">+ Add Item</button>
+
+      <div class="inv-total" id="invTotals"></div>
+
+      <div style="display:flex;gap:8px;margin-top:14px;flex-wrap:wrap">
+        <button onclick="window.print()" style="padding:10px 20px;background:var(--ac);color:var(--bg);border:none;border-radius:8px;cursor:pointer;font-size:14px;font-weight:700;font-family:inherit">🖨️ Print Invoice</button>
+        <button onclick="copyInvoice()" style="padding:10px 20px;background:var(--bg);border:1px solid var(--bor);border-radius:8px;cursor:pointer;font-size:14px;color:var(--mu);font-family:inherit">📋 Copy as Text</button>
+      </div>
+    </div>
+  </div>
+
+  <!-- GST reference -->
+  <div class="card" style="background:var(--bg)">
+    <h3 style="font-size:14px;font-weight:700;color:var(--ac);margin-bottom:12px">GST Rate Reference</h3>
+    <div style="display:grid;grid-template-columns:repeat(auto-fill,minmax(140px,1fr));gap:8px">
+      <div style="padding:10px;background:var(--sur);border-radius:8px;border:1px solid var(--bor)"><div style="font-size:18px;font-weight:800;color:var(--fg)">0%</div><div style="font-size:11px;color:var(--mu);margin-top:2px">Vegetables, milk, eggs, books</div></div>
+      <div style="padding:10px;background:var(--sur);border-radius:8px;border:1px solid var(--bor)"><div style="font-size:18px;font-weight:800;color:var(--fg)">5%</div><div style="font-size:11px;color:var(--mu);margin-top:2px">Packaged food, medicines, transport</div></div>
+      <div style="padding:10px;background:var(--sur);border-radius:8px;border:1px solid var(--bor)"><div style="font-size:18px;font-weight:800;color:var(--fg)">12%</div><div style="font-size:11px;color:var(--mu);margin-top:2px">Frozen meat, biz class air travel</div></div>
+      <div style="padding:10px;background:var(--sur);border-radius:8px;border:1px solid var(--bor)"><div style="font-size:18px;font-weight:800;color:var(--fg)">18%</div><div style="font-size:11px;color:var(--mu);margin-top:2px">Restaurants, electronics, services</div></div>
+      <div style="padding:10px;background:var(--sur);border-radius:8px;border:1px solid var(--bor)"><div style="font-size:18px;font-weight:800;color:var(--fg)">28%</div><div style="font-size:11px;color:var(--mu);margin-top:2px">Luxury cars, tobacco, aerated drinks</div></div>
+    </div>
+  </div>
+
+  <div class="ad">Advertisement</div>
+</div>
+
+<!-- Print-only invoice -->
+<div id="invoicePrint">
+  <div style="display:flex;justify-content:space-between;align-items:flex-start;margin-bottom:20px">
+    <div><h2 id="pSeller">Business Name</h2><div style="font-size:14px;color:#666">Tax Invoice</div></div>
+    <div style="text-align:right"><div><strong>Invoice #:</strong> <span id="pNum">INV-001</span></div><div><strong>Date:</strong> <span id="pDate"></span></div><div style="margin-top:4px"><strong>To:</strong> <span id="pBuyer">Client</span></div></div>
+  </div>
+  <table>
+    <thead><tr><th>#</th><th>Description</th><th>Qty</th><th>Unit Price</th><th>GST %</th><th>GST Amt</th><th>Total</th></tr></thead>
+    <tbody id="pItems"></tbody>
+  </table>
+  <div class="totals">
+    <div>Subtotal: ₹<span id="pSub">0</span></div>
+    <div>GST Total: ₹<span id="pGST">0</span></div>
+    <div class="grand-total">Grand Total: ₹<span id="pTotal">0</span></div>
+  </div>
+  <div style="margin-top:30px;font-size:12px;color:#888">Generated by Forjit AI · forjitai.in</div>
+</div>
+
+<script>
+const fmt2 = n => parseFloat(n).toFixed(2).replace(/\B(?=(\d{3})+(?!\d))/g,',');
+let gstRate=18, calcMode='add';
+
+function setMode(m,btn){
+  calcMode=m;
+  document.querySelectorAll('.mt').forEach(b=>b.classList.remove('on'));
+  btn.classList.add('on');
+  document.getElementById('m-calc').style.display=m==='invoice'?'none':'block';
+  document.getElementById('m-invoice').style.display=m==='invoice'?'block':'none';
+  if(m!=='invoice') calcGST();
+  else updateInvoice();
+}
+
+function setSlab(r,el){
+  gstRate=r;
+  document.getElementById('custom').value='';
+  document.querySelectorAll('.slab').forEach(s=>s.classList.remove('on'));
+  el.classList.add('on');
+  calcGST();
+}
+
+function calcGST(){
+  const amt=parseFloat(document.getElementById('amt').value)||0;
+  let base,gstAmt,total;
+  if(calcMode==='add'){base=amt;gstAmt=amt*gstRate/100;total=amt+gstAmt;}
+  else{total=amt;base=amt/(1+gstRate/100);gstAmt=amt-base;}
+  const half=gstRate/2;
+  document.getElementById('r1lbl').textContent=calcMode==='add'?'Base Amount (excl. GST)':'Total Amount (incl. GST)';
+  document.getElementById('r2lbl').textContent=calcMode==='add'?'Total Amount (with GST)':'Base Amount (excl. GST)';
+  document.getElementById('r1val').textContent='₹'+fmt2(calcMode==='add'?base:total);
+  document.getElementById('rGST').textContent='₹'+fmt2(gstAmt);
+  document.getElementById('r2val').textContent='₹'+fmt2(calcMode==='add'?total:base);
+  document.getElementById('rRate').textContent=gstRate+'%';
+  document.getElementById('cRate').textContent=half+'%';
+  document.getElementById('sRate').textContent=half+'%';
+  document.getElementById('cgst').textContent='₹'+fmt2(gstAmt/2);
+  document.getElementById('sgst').textContent='₹'+fmt2(gstAmt/2);
+  document.getElementById('igst').textContent='₹'+fmt2(gstAmt);
+}
+
+function copyVal(id){
+  const v=document.getElementById(id).textContent;
+  navigator.clipboard.writeText(v.replace(/[₹,]/g,''));
+  const btn=event.target; btn.textContent='✓'; setTimeout(()=>btn.textContent='Copy',1500);
+}
+
+/* ── Invoice Builder ─────────────────────────────────────────────────────── */
+let items=[{desc:'Consulting Service',qty:1,price:10000,gst:18}];
+
+function addItem(){
+  items.push({desc:'',qty:1,price:0,gst:18});
+  renderItems();
+}
+
+function removeItem(i){
+  items.splice(i,1);
+  if(!items.length) items=[{desc:'',qty:1,price:0,gst:18}];
+  renderItems();
+}
+
+function renderItems(){
+  const container=document.getElementById('invItems');
+  container.innerHTML=items.map((item,i)=>`
+    <div class="inv-item">
+      <input type="text" value="${item.desc}" placeholder="Description" oninput="items[${i}].desc=this.value;updateTotals()"/>
+      <input type="number" value="${item.qty}" min="1" oninput="items[${i}].qty=+this.value||1;updateTotals()"/>
+      <input type="number" value="${item.price}" min="0" placeholder="Price" oninput="items[${i}].price=+this.value||0;updateTotals()"/>
+      <select onchange="items[${i}].gst=+this.value;updateTotals()">
+        ${[0,5,12,18,28].map(r=>`<option value="${r}"${item.gst===r?' selected':''}>${r}%</option>`).join('')}
+      </select>
+      <button class="rm-btn" onclick="removeItem(${i})">×</button>
+    </div>`).join('');
+  updateTotals();
+}
+
+function updateTotals(){
+  let subtotal=0,gstTotal=0;
+  const pItems=document.getElementById('pItems');
+  pItems.innerHTML='';
+  items.forEach((item,i)=>{
+    const lineBase=item.qty*item.price;
+    const lineGST=lineBase*item.gst/100;
+    const lineTotal=lineBase+lineGST;
+    subtotal+=lineBase; gstTotal+=lineGST;
+    pItems.innerHTML+=`<tr><td>${i+1}</td><td>${item.desc||'—'}</td><td>${item.qty}</td><td>₹${fmt2(item.price)}</td><td>${item.gst}%</td><td>₹${fmt2(lineGST)}</td><td>₹${fmt2(lineTotal)}</td></tr>`;
+  });
+  const grand=subtotal+gstTotal;
+  const totDiv=document.getElementById('invTotals');
+  totDiv.innerHTML=`
+    <div class="inv-total-row"><span>Subtotal (excl. GST)</span><span>₹${fmt2(subtotal)}</span></div>
+    <div class="inv-total-row"><span>Total GST</span><span style="color:#f87171">₹${fmt2(gstTotal)}</span></div>
+    <div class="inv-total-row grand"><span>Grand Total</span><span style="color:var(--ac)">₹${fmt2(grand)}</span></div>`;
+  document.getElementById('pSub').textContent=fmt2(subtotal);
+  document.getElementById('pGST').textContent=fmt2(gstTotal);
+  document.getElementById('pTotal').textContent=fmt2(grand);
+}
+
+function updateInvoice(){
+  const s=document.getElementById('invSeller').value||'Your Business';
+  const b=document.getElementById('invBuyer').value||'Client';
+  const n=document.getElementById('invNum').value||'INV-001';
+  const d=document.getElementById('invDate').value;
+  document.getElementById('pSeller').textContent=s;
+  document.getElementById('pBuyer').textContent=b;
+  document.getElementById('pNum').textContent=n;
+  document.getElementById('pDate').textContent=d?new Date(d).toLocaleDateString('en-IN'):'—';
+}
+
+function copyInvoice(){
+  const s=document.getElementById('invSeller').value||'Business';
+  const b=document.getElementById('invBuyer').value||'Client';
+  let text=`Invoice\nFrom: ${s}\nTo: ${b}\n\n`;
+  items.forEach((item,i)=>{
+    const base=item.qty*item.price;
+    const gst=base*item.gst/100;
+    text+=`${i+1}. ${item.desc||'Item'} — Qty: ${item.qty}, Price: ₹${fmt2(item.price)}, GST ${item.gst}%: ₹${fmt2(gst)}, Total: ₹${fmt2(base+gst)}\n`;
+  });
+  const sub=items.reduce((a,i)=>a+i.qty*i.price,0);
+  const gst=items.reduce((a,i)=>a+i.qty*i.price*i.gst/100,0);
+  text+=`\nSubtotal: ₹${fmt2(sub)}\nGST: ₹${fmt2(gst)}\nTotal: ₹${fmt2(sub+gst)}`;
+  navigator.clipboard.writeText(text).then(()=>{event.target.textContent='✓ Copied!';setTimeout(()=>event.target.textContent='📋 Copy as Text',1500);});
+}
+
+// Init
+document.getElementById('invDate').value=new Date().toISOString().split('T')[0];
+renderItems();
+updateInvoice();
+calcGST();
+</script>
+<script src="tool-common.js"></script>
+
+<!-- Internal SEO links -->
+<div id="related-tools-seo" style="margin:20px 0;padding:14px;background:#0c0a09;border:1px solid #292524;border-radius:10px">
+  <p style="font-size:11px;color:#57534e;text-transform:uppercase;letter-spacing:.07em;margin-bottom:8px;font-weight:700">Related Free Tools</p>
+  <a href="/tools/salary-calculator.html" style="display:inline-block;margin:4px;padding:6px 12px;background:#1c1917;border:1px solid #292524;border-radius:999px;color:#a8a29e;font-size:12px;text-decoration:none">Salary Calculator</a>
+<a href="/tools/gratuity-calculator.html" style="display:inline-block;margin:4px;padding:6px 12px;background:#1c1917;border:1px solid #292524;border-radius:999px;color:#a8a29e;font-size:12px;text-decoration:none">Gratuity Calculator</a>
+<a href="/tools/discount-calculator.html" style="display:inline-block;margin:4px;padding:6px 12px;background:#1c1917;border:1px solid #292524;border-radius:999px;color:#a8a29e;font-size:12px;text-decoration:none">Discount Calculator</a>
+</div>
+</body>
+</html>

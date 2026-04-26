@@ -1,0 +1,89 @@
+# ─── Forjit AI · Daily Blog Post Generator ──────────────────────────────────
+#
+#  Runs every day at 6:00 AM IST (00:30 UTC)
+#  Generates a blog post using Groq API and commits it to the repo
+#  Vercel auto-deploys on every commit
+#
+#  KEY SECURITY MODEL:
+#  ✅ GROQ_API_KEY lives ONLY in GitHub Secrets (Settings → Secrets → Actions)
+#  ✅ Key is encrypted at rest in GitHub's vault
+#  ✅ GitHub automatically redacts the secret from all logs
+#  ✅ Key is NEVER written to any file or logged
+#  ✅ Key is NEVER accessible to visitors or in any URL
+#  ✅ Only this Action runner can use it — not the frontend, not users
+#
+#  Setup required:
+#  1. Go to your GitHub repo → Settings → Secrets and variables → Actions
+#  2. Click "New repository secret"
+#  3. Name: GROQ_API_KEY
+#  4. Value: your Groq API key (from console.groq.com)
+#  5. Save — done. The workflow runs automatically every day.
+# ──────────────────────────────────────────────────────────────────────────
+
+name: Daily Blog Post
+
+on:
+  schedule:
+    # 00:30 UTC = 6:00 AM IST every day
+    - cron: '30 0 * * *'
+  workflow_dispatch:
+    # Also allows manual trigger from GitHub Actions UI
+    # Useful for testing or generating a post on demand
+
+jobs:
+  generate-post:
+    name: Generate Today's Blog Post
+    runs-on: ubuntu-latest
+
+    permissions:
+      contents: write   # needed to commit the new post file
+
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v4
+        with:
+          token: ${{ secrets.GITHUB_TOKEN }}
+
+      - name: Setup Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: '20'
+
+      - name: Generate blog post
+        # The secret is passed as an environment variable
+        # It is NEVER echoed, logged, or written to any file
+        # GitHub automatically redacts it from all log output
+        env:
+          GROQ_API_KEY: ${{ secrets.GROQ_API_KEY }}
+        run: node scripts/generate-blog-post.js
+
+      - name: Check if post was created
+        run: |
+          TODAY=$(date +%Y-%m-%d)
+          POST_FILE="public/blog/posts/${TODAY}.json"
+          if [ -f "$POST_FILE" ]; then
+            echo "✅ Post file created: $POST_FILE"
+            echo "POST_CREATED=true" >> $GITHUB_ENV
+          else
+            echo "❌ Post file not found"
+            echo "POST_CREATED=false" >> $GITHUB_ENV
+          fi
+
+      - name: Commit and push post
+        if: env.POST_CREATED == 'true'
+        run: |
+          git config user.name "Forjit AI Bot"
+          git config user.email "forjitai@gmail.com"
+          git add public/blog/posts/
+          git diff --staged --quiet || git commit -m "📝 Daily blog post $(date +%Y-%m-%d) [automated]"
+          git push
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+
+      - name: Summary
+        run: |
+          TODAY=$(date +%Y-%m-%d)
+          echo "## Daily Blog Post" >> $GITHUB_STEP_SUMMARY
+          echo "Date: $TODAY" >> $GITHUB_STEP_SUMMARY
+          echo "Status: ${{ env.POST_CREATED == 'true' && '✅ Generated and committed' || '❌ Failed' }}" >> $GITHUB_STEP_SUMMARY
+          echo "Vercel will auto-deploy within 30-60 seconds of the commit." >> $GITHUB_STEP_SUMMARY

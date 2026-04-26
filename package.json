@@ -1,0 +1,30 @@
+{
+  "name": "forjitai",
+  "version": "1.0.0",
+  "private": true,
+  "description": "Prompt-to-app generator powered by open-source LLMs. Generate, iterate, and deploy single-file HTML apps.",
+  "type": "module",
+  "scripts": {
+    "dev": "node scripts/gen-tools.js && vite",
+    "build": "node scripts/gen-tools.js && vite build",
+    "preview": "vite preview",
+    "gen-tools": "node scripts/gen-tools.js"
+  },
+  "dependencies": {
+    "lucide-react": "^1.8.0",
+    "react": "^19.2.5",
+    "react-dom": "^19.2.5"
+  },
+  "devDependencies": {
+    "@tailwindcss/vite": "^4.2.2",
+    "@vitejs/plugin-react": "^6.0.1",
+    "tailwindcss": "^4.2.2",
+    "vite": "^8.0.8"
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/forjitai/forjitai"
+  },
+  "homepage": "https://www.forjitai.in",
+  "author": "Forjit AI <forjitai@gmail.com>"
+}

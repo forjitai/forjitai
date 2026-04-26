@@ -1,0 +1,48 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 630" width="1200" height="630">
+  <defs>
+    <linearGradient id="bg" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0" stop-color="#0c0a09"/>
+      <stop offset="1" stop-color="#1c1917"/>
+    </linearGradient>
+    <radialGradient id="glow" cx="0.2" cy="0.3" r="0.6">
+      <stop offset="0" stop-color="#fbbf24" stop-opacity="0.15"/>
+      <stop offset="1" stop-color="#fbbf24" stop-opacity="0"/>
+    </radialGradient>
+  </defs>
+  <rect width="1200" height="630" fill="url(#bg)"/>
+  <rect width="1200" height="630" fill="url(#glow)"/>
+
+  <!-- Logo mark -->
+  <g transform="translate(80, 80)">
+    <rect width="80" height="80" rx="16" fill="#fbbf24"/>
+    <text x="40" y="58" font-family="system-ui, sans-serif" font-size="48" font-weight="800" text-anchor="middle" fill="#0c0a09">F</text>
+  </g>
+
+  <!-- Brand name -->
+  <text x="185" y="120" font-family="Georgia, serif" font-size="40" font-weight="600" fill="#e7e5e4">Forjit AI</text>
+  <text x="185" y="155" font-family="ui-monospace, monospace" font-size="14" fill="#fbbf24" opacity="0.7" letter-spacing="3">INITIAL PHASE · EXPERIMENTAL</text>
+
+  <!-- Main headline -->
+  <text x="80" y="290" font-family="Georgia, serif" font-size="72" font-weight="600" fill="#fafaf9">Build apps.</text>
+  <text x="80" y="380" font-family="Georgia, serif" font-size="72" font-weight="600" fill="#fafaf9">Plan life.</text>
+  <text x="80" y="470" font-family="Georgia, serif" font-size="72" font-weight="600" font-style="italic" fill="#fbbf24">Generate anything.</text>
+
+  <!-- Feature pills -->
+  <g transform="translate(80, 520)">
+    <rect x="0" y="0" width="140" height="40" rx="20" fill="#292524"/>
+    <text x="70" y="26" font-family="system-ui, sans-serif" font-size="14" font-weight="500" fill="#e7e5e4" text-anchor="middle">🔨 Web Apps</text>
+
+    <rect x="156" y="0" width="170" height="40" rx="20" fill="#292524"/>
+    <text x="241" y="26" font-family="system-ui, sans-serif" font-size="14" font-weight="500" fill="#e7e5e4" text-anchor="middle">📅 Meal Planners</text>
+
+    <rect x="342" y="0" width="160" height="40" rx="20" fill="#292524"/>
+    <text x="422" y="26" font-family="system-ui, sans-serif" font-size="14" font-weight="500" fill="#e7e5e4" text-anchor="middle">📄 PDF / DOCX</text>
+
+    <rect x="518" y="0" width="130" height="40" rx="20" fill="#292524"/>
+    <text x="583" y="26" font-family="system-ui, sans-serif" font-size="14" font-weight="500" fill="#e7e5e4" text-anchor="middle">💪 Workouts</text>
+  </g>
+
+  <!-- URL -->
+  <text x="1120" y="590" font-family="ui-monospace, monospace" font-size="16" fill="#78716c" text-anchor="end">forjitai.in · Free · Made in India 🇮🇳</text>
+</svg>

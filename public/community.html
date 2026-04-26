@@ -1,0 +1,788 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="UTF-8"/>
+<meta name="viewport" content="width=device-width,initial-scale=1.0,user-scalable=no"/>
+<title>Community — Request Tools & Build Your Own | Forjit AI</title>
+<meta name="description" content="Request new tools for Forjit AI, vote for upcoming calculators, or build your own tool using AI. Community feature wall for forjitai.in"/>
+<link rel="canonical" href="https://www.forjitai.in/community"/>
+<meta name="google-site-verification" content="u11mSk2rQwaphaXMCcUwJU-6dRhN_ndessqEMeZdubk"/>
+<meta property="og:title" content="Community — Request Tools | Forjit AI"/>
+<meta property="og:description" content="Vote for upcoming tools, request new calculators, or build your own tool with AI."/>
+<meta property="og:url" content="https://www.forjitai.in/community"/>
+<meta property="og:image" content="https://www.forjitai.in/og-image.png"/>
+<meta property="og:type" content="website"/>
+<meta name="twitter:card" content="summary_large_image"/>
+<meta name="robots" content="index,follow"/>
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-DYR402JFVG"></script>
+<script>window.dataLayer=window.dataLayer||[];function gtag(){dataLayer.push(arguments);}gtag('js',new Date());gtag('config','G-DYR402JFVG');</script>
+<script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-5102938260449475" crossorigin="anonymous"></script>
+<style>
+*{box-sizing:border-box;margin:0;padding:0;-webkit-tap-highlight-color:transparent}
+:root{
+  --bg:#0c0a09;--sur:#1c1917;--sur2:#242120;--bor:#292524;--bor2:#3c3836;
+  --fg:#e7e5e4;--mu:#a8a29e;--su:#78716c;
+  --ac:#f59e0b;--ac2:#d97706;--gr:#22c55e;--re:#ef4444;--bl:#3b82f6;
+}
+body{font-family:'Segoe UI',system-ui,sans-serif;background:var(--bg);color:var(--fg);
+  font-size:14px;line-height:1.5;min-height:100vh}
+
+/* Header */
+.hdr{background:var(--sur);border-bottom:1px solid var(--bor);padding:12px 16px;
+  display:flex;align-items:center;justify-content:space-between;
+  position:sticky;top:0;z-index:100}
+.logo{display:flex;align-items:center;gap:8px;text-decoration:none;color:var(--fg)}
+.logo-m{width:30px;height:30px;background:var(--ac);border-radius:6px;
+  display:flex;align-items:center;justify-content:center;font-weight:900;color:#000}
+.hdr-links{display:flex;gap:12px}
+.hdr-links a{font-size:12px;color:var(--mu);text-decoration:none}
+.hdr-links a:hover{color:var(--ac)}
+
+/* Tabs */
+.tabs{display:flex;background:var(--sur);border-bottom:1px solid var(--bor);
+  overflow-x:auto;scrollbar-width:none;position:sticky;top:54px;z-index:99}
+.tabs::-webkit-scrollbar{display:none}
+.tab{flex:1;min-width:100px;padding:11px 8px;border:none;background:transparent;
+  color:var(--mu);font-size:12px;font-weight:600;cursor:pointer;font-family:inherit;
+  border-bottom:2px solid transparent;white-space:nowrap;transition:all .15s}
+.tab.on{color:var(--ac);border-bottom-color:var(--ac)}
+
+/* Page */
+.page{display:none}.page.on{display:block}
+.wrap{max-width:900px;margin:0 auto;padding:16px}
+
+/* Cards */
+.req-card{background:var(--sur);border:1px solid var(--bor);border-radius:12px;
+  padding:14px;display:flex;gap:12px;align-items:flex-start;transition:all .15s;margin-bottom:10px}
+.req-card:hover{border-color:var(--bor2)}
+.vote-col{display:flex;flex-direction:column;align-items:center;gap:4px;min-width:48px}
+.vote-btn{width:40px;height:40px;border-radius:10px;border:1px solid var(--bor);
+  background:var(--bg);cursor:pointer;font-size:18px;color:var(--mu);
+  display:flex;align-items:center;justify-content:center;transition:all .15s;font-family:inherit}
+.vote-btn:hover{border-color:var(--ac);color:var(--ac)}
+.vote-btn.voted{background:rgba(245,158,11,.1);border-color:var(--ac);color:var(--ac)}
+.vote-count{font-size:16px;font-weight:800;color:var(--fg)}
+.req-body{flex:1;min-width:0}
+.req-title{font-size:15px;font-weight:700;margin-bottom:4px}
+.req-desc{font-size:13px;color:var(--mu);margin-bottom:8px;line-height:1.5}
+.req-meta{display:flex;gap:8px;flex-wrap:wrap;align-items:center}
+.tag{font-size:10px;padding:2px 8px;border-radius:999px;background:var(--bg);
+  border:1px solid var(--bor);color:var(--su)}
+.status{font-size:10px;font-weight:700;padding:2px 8px;border-radius:999px;text-transform:uppercase}
+.status.open{background:rgba(59,130,246,.1);color:#60a5fa;border:1px solid rgba(59,130,246,.2)}
+.status.planned{background:rgba(245,158,11,.1);color:var(--ac);border:1px solid rgba(245,158,11,.2)}
+.status.building{background:rgba(34,197,94,.1);color:#4ade80;border:1px solid rgba(34,197,94,.2)}
+.status.done{background:rgba(22,163,74,.15);color:#4ade80;border:1px solid rgba(22,163,74,.3)}
+
+/* Form */
+.form-box{background:var(--sur);border:1px solid var(--bor);border-radius:12px;padding:18px;margin-bottom:18px}
+.form-box h3{font-size:16px;font-weight:700;margin-bottom:14px}
+.field{margin-bottom:12px}
+.field label{display:block;font-size:12px;color:var(--mu);margin-bottom:5px;font-weight:600;
+  text-transform:uppercase;letter-spacing:.05em}
+.field input,.field textarea,.field select{width:100%;background:var(--bg);
+  border:1px solid var(--bor);border-radius:8px;padding:10px 12px;
+  color:var(--fg);font-size:14px;outline:none;font-family:inherit;transition:border .15s}
+.field input:focus,.field textarea:focus,.field select:focus{border-color:var(--ac)}
+.field textarea{resize:vertical;min-height:80px}
+.field select option{background:var(--sur)}
+.btn{padding:10px 18px;border-radius:8px;border:none;cursor:pointer;
+  font-size:14px;font-weight:700;font-family:inherit;transition:all .15s}
+.btn-primary{background:var(--ac);color:#000}
+.btn-primary:hover{background:var(--ac2)}
+.btn-sec{background:var(--sur);border:1px solid var(--bor);color:var(--mu)}
+.btn-sec:hover{border-color:var(--ac);color:var(--ac)}
+.btn-danger{background:rgba(239,68,68,.1);border:1px solid rgba(239,68,68,.3);color:#f87171}
+
+/* Custom tools */
+.ct-card{background:var(--sur);border:1px solid var(--bor);border-radius:10px;
+  padding:14px;margin-bottom:10px}
+.ct-card h4{font-size:14px;font-weight:700;margin-bottom:4px}
+.ct-card p{font-size:12px;color:var(--mu);margin-bottom:10px}
+.ct-actions{display:flex;gap:8px}
+.ct-btn{padding:6px 12px;border-radius:6px;border:1px solid var(--bor);
+  background:var(--bg);color:var(--mu);font-size:12px;cursor:pointer;font-family:inherit}
+.ct-btn:hover{border-color:var(--ac);color:var(--ac)}
+.ct-btn.danger:hover{border-color:var(--re);color:var(--re)}
+
+/* Error log */
+.log-item{background:var(--bg);border:1px solid var(--bor);border-radius:8px;
+  padding:10px 12px;margin-bottom:6px;font-size:12px;font-family:monospace}
+.log-type{display:inline-block;padding:1px 6px;border-radius:4px;font-size:10px;
+  font-weight:700;margin-right:8px}
+.log-type.JS_ERROR{background:rgba(239,68,68,.15);color:#f87171}
+.log-type.PROMISE_REJECTION{background:rgba(245,158,11,.15);color:var(--ac)}
+.log-type.INFO{background:rgba(34,197,94,.15);color:#4ade80}
+.log-type.MANUAL{background:rgba(59,130,246,.15);color:#60a5fa}
+.log-msg{color:var(--mu);word-break:break-all}
+.log-ts{color:var(--su);font-size:10px}
+
+/* Search */
+.search-wrap{position:relative;margin-bottom:14px}
+.search-inp{width:100%;background:var(--sur);border:1px solid var(--bor);
+  border-radius:10px;padding:11px 14px 11px 38px;color:var(--fg);font-size:14px;
+  outline:none;font-family:inherit;transition:border .15s}
+.search-inp:focus{border-color:var(--ac)}
+.search-icon{position:absolute;left:12px;top:50%;transform:translateY(-50%);
+  color:var(--su);font-size:16px;pointer-events:none}
+
+/* Stats bar */
+.stats{display:flex;gap:12px;margin-bottom:16px;flex-wrap:wrap}
+.stat{background:var(--sur);border:1px solid var(--bor);border-radius:8px;
+  padding:10px 14px;flex:1;min-width:100px}
+.stat-num{font-size:22px;font-weight:800;color:var(--ac)}
+.stat-lbl{font-size:11px;color:var(--su)}
+
+/* Toast */
+.toast{position:fixed;bottom:20px;left:50%;transform:translateX(-50%);
+  background:var(--gr);color:#000;padding:10px 20px;border-radius:8px;
+  font-size:13px;font-weight:700;z-index:999;display:none;
+  box-shadow:0 4px 20px rgba(0,0,0,.4)}
+
+/* AI Builder */
+.ai-output{background:var(--bg);border:1px solid var(--bor);border-radius:8px;
+  padding:14px;margin-top:12px;font-size:13px;color:var(--mu);min-height:60px;
+  line-height:1.6;white-space:pre-wrap;word-break:break-word}
+
+/* Filter chips */
+.filter-row{display:flex;gap:6px;flex-wrap:wrap;margin-bottom:14px}
+.chip{padding:5px 12px;background:var(--sur);border:1px solid var(--bor);
+  border-radius:999px;font-size:12px;color:var(--mu);cursor:pointer;font-family:inherit}
+.chip.on{background:var(--ac);color:#000;border-color:var(--ac);font-weight:700}
+
+/* Empty */
+.empty{text-align:center;padding:40px 20px;color:var(--mu)}
+.empty .ei{font-size:40px;margin-bottom:10px}
+
+@media(max-width:480px){
+  .req-card{flex-direction:column}
+  .vote-col{flex-direction:row;min-width:auto}
+}
+</style>
+</head>
+<body>
+
+<header class="hdr">
+  <a class="logo" href="/"><div class="logo-m">F</div>&nbsp;Forjit AI</a>
+  <div class="hdr-links">
+    <a href="/tools/">Tools</a>
+    <a href="/">Home</a>
+  </div>
+</header>
+
+<nav class="tabs">
+  <button class="tab on" onclick="showTab('requests',this)">🗳️ Request Tools</button>
+  <button class="tab" onclick="showTab('build',this)">🛠️ Build Your Own</button>
+  <button class="tab" onclick="showTab('mine',this)">👤 My Tools</button>
+  <button class="tab" onclick="showTab('errors',this)">🐛 Error Logs</button>
+</nav>
+
+<div class="toast" id="toast"></div>
+
+<!-- ═══ TAB 1: REQUEST TOOLS ═══════════════════════════════════════════════ -->
+<div class="page on" id="page-requests">
+<div class="wrap">
+
+  <!-- Stats -->
+  <div class="stats">
+    <div class="stat"><div class="stat-num" id="stat-total">0</div><div class="stat-lbl">Total Requests</div></div>
+    <div class="stat"><div class="stat-num" id="stat-planned">0</div><div class="stat-lbl">Planned</div></div>
+    <div class="stat"><div class="stat-num" id="stat-building">0</div><div class="stat-lbl">Building Now</div></div>
+    <div class="stat"><div class="stat-num" id="stat-open">0</div><div class="stat-lbl">Open Requests</div></div>
+  </div>
+
+  <!-- Request form -->
+  <div class="form-box">
+    <h3>🙋 Request a New Tool</h3>
+    <div class="field">
+      <label>Tool Name *</label>
+      <input type="text" id="req-title" placeholder="e.g. Home Loan Balance Transfer Calculator" maxlength="80"/>
+    </div>
+    <div class="field">
+      <label>What should it do?</label>
+      <textarea id="req-desc" placeholder="Describe what the tool should calculate or help with..." maxlength="200"></textarea>
+    </div>
+    <div class="field">
+      <label>Category</label>
+      <select id="req-cat">
+        <option value="finance">Finance & Investment</option>
+        <option value="india">India Specific</option>
+        <option value="health">Health & Fitness</option>
+        <option value="utility">Utility & Conversion</option>
+        <option value="cooking">Cooking & Food</option>
+        <option value="education">Education</option>
+        <option value="other">Other</option>
+      </select>
+    </div>
+    <div style="display:flex;gap:8px;flex-wrap:wrap">
+      <button class="btn btn-primary" onclick="submitRequest()">Submit Request</button>
+      <span style="font-size:12px;color:var(--su);align-self:center">
+        Saved locally · Most voted tools get built first
+      </span>
+    </div>
+  </div>
+
+  <!-- Filter -->
+  <div class="filter-row">
+    <button class="chip on" data-filter="all" onclick="setFilter(this)">All</button>
+    <button class="chip" data-filter="building" onclick="setFilter(this)">🔨 Building</button>
+    <button class="chip" data-filter="planned" onclick="setFilter(this)">📋 Planned</button>
+    <button class="chip" data-filter="open" onclick="setFilter(this)">💡 Open</button>
+    <button class="chip" data-filter="finance" onclick="setFilter(this)">Finance</button>
+    <button class="chip" data-filter="india" onclick="setFilter(this)">India</button>
+    <button class="chip" data-filter="health" onclick="setFilter(this)">Health</button>
+  </div>
+
+  <!-- Search -->
+  <div class="search-wrap">
+    <span class="search-icon">🔍</span>
+    <input class="search-inp" type="text" id="req-search" placeholder="Search requests..." oninput="renderRequests()"/>
+  </div>
+
+  <!-- List -->
+  <div id="req-list"></div>
+
+  <!-- Export -->
+  <div style="margin-top:16px;text-align:center">
+    <button class="btn btn-sec" onclick="exportAll()">📤 Export All Requests (JSON)</button>
+  </div>
+</div>
+</div>
+
+<!-- ═══ TAB 2: BUILD YOUR OWN ═══════════════════════════════════════════ -->
+<div class="page" id="page-build">
+<div class="wrap">
+
+  <div class="form-box">
+    <h3>🛠️ Build Your Own Tool with AI</h3>
+    <p style="font-size:13px;color:var(--mu);margin-bottom:16px;line-height:1.6">
+      Describe what you want and AI will generate a working calculator/tool for you.
+      Your tool is saved locally and runs in your browser.
+    </p>
+
+    <div class="field">
+      <label>Tool Name *</label>
+      <input type="text" id="ct-name" placeholder="e.g. My Custom Loan Calculator" maxlength="60"/>
+    </div>
+    <div class="field">
+      <label>Describe your tool in detail *</label>
+      <textarea id="ct-prompt" rows="5"
+        placeholder="Example: A calculator that takes monthly salary, rent amount, and expenses. Shows how much I can save each month and in how many months I can save ₹1 lakh. Show a progress bar."
+        maxlength="800"></textarea>
+    </div>
+    <div class="field">
+      <label>Your Groq API Key (required for AI generation)</label>
+      <input type="password" id="ct-key" placeholder="gsk_..." 
+        value="" oninput="saveKey(this.value)"/>
+      <p style="font-size:11px;color:var(--su);margin-top:4px">
+        Get free key: console.groq.com · Key stored only in your browser, never sent to our servers
+      </p>
+    </div>
+
+    <div style="display:flex;gap:8px;flex-wrap:wrap;align-items:center">
+      <button class="btn btn-primary" onclick="buildTool()" id="build-btn">✨ Generate Tool</button>
+      <span id="build-status" style="font-size:13px;color:var(--mu)"></span>
+    </div>
+
+    <div id="build-output" style="display:none">
+      <div style="margin-top:14px;display:flex;gap:8px;flex-wrap:wrap">
+        <button class="btn btn-primary" onclick="saveTool()">💾 Save Tool</button>
+        <button class="btn btn-sec" onclick="previewTool()">👁 Preview</button>
+        <button class="btn btn-sec" onclick="downloadTool()">⬇️ Download HTML</button>
+      </div>
+      <div style="margin-top:10px;font-size:11px;color:var(--su)">Generated tool preview:</div>
+      <iframe id="tool-preview" style="width:100%;height:400px;border:1px solid var(--bor);
+        border-radius:8px;margin-top:6px;background:#fff;display:none"></iframe>
+    </div>
+  </div>
+
+  <div style="background:rgba(245,158,11,.06);border:1px solid rgba(245,158,11,.15);
+    border-radius:10px;padding:14px;font-size:13px;color:var(--mu);line-height:1.6">
+    <strong style="color:var(--ac)">💡 Tips for better results:</strong><br/>
+    • Be specific about inputs and outputs<br/>
+    • Mention if you want charts, tables or progress bars<br/>
+    • Specify Indian context (₹, Indian dates, GST etc.)<br/>
+    • Example: "Takes salary in ₹, shows tax breakdown with FY 2025-26 slabs"
+  </div>
+</div>
+</div>
+
+<!-- ═══ TAB 3: MY TOOLS ════════════════════════════════════════════════ -->
+<div class="page" id="page-mine">
+<div class="wrap">
+  <h2 style="font-size:18px;font-weight:700;margin-bottom:14px">My Saved Tools</h2>
+  <div id="my-tools-list"></div>
+
+  <h2 style="font-size:18px;font-weight:700;margin:20px 0 14px">My Requests</h2>
+  <div id="my-requests-list"></div>
+</div>
+</div>
+
+<!-- ═══ TAB 4: ERROR LOGS ══════════════════════════════════════════════ -->
+<div class="page" id="page-errors">
+<div class="wrap">
+
+  <div style="display:flex;align-items:center;justify-content:space-between;
+    margin-bottom:14px;flex-wrap:wrap;gap:8px">
+    <div>
+      <h2 style="font-size:18px;font-weight:700">Error Logs</h2>
+      <p style="font-size:13px;color:var(--mu)">All errors caught in your browser session</p>
+    </div>
+    <div style="display:flex;gap:8px">
+      <button class="btn btn-primary" onclick="exportLogs()">📥 Export JSON</button>
+      <button class="btn btn-danger" onclick="clearLogs()">🗑 Clear Logs</button>
+    </div>
+  </div>
+
+  <div style="background:rgba(59,130,246,.06);border:1px solid rgba(59,130,246,.15);
+    border-radius:10px;padding:12px 14px;font-size:12px;color:var(--mu);margin-bottom:14px;line-height:1.6">
+    💡 <strong style="color:#60a5fa">How to use:</strong> If the app crashes or behaves unexpectedly,
+    click <strong>Export JSON</strong> → share the file with us at
+    <a href="mailto:forjitai@gmail.com" style="color:var(--ac)">forjitai@gmail.com</a>
+    or paste into Claude to debug.
+  </div>
+
+  <div class="stats" style="margin-bottom:14px">
+    <div class="stat"><div class="stat-num" id="err-total">0</div><div class="stat-lbl">Total Logs</div></div>
+    <div class="stat"><div class="stat-num" id="err-errors" style="color:#f87171">0</div><div class="stat-lbl">Errors</div></div>
+    <div class="stat"><div class="stat-num" id="err-info" style="color:#4ade80">0</div><div class="stat-lbl">Info</div></div>
+  </div>
+
+  <div id="error-list"></div>
+</div>
+</div>
+
+<!-- PREVIEW MODAL -->
+<div id="preview-modal" style="display:none;position:fixed;inset:0;background:rgba(0,0,0,.8);
+  z-index:200;padding:20px;display:none;align-items:center;justify-content:center">
+  <div style="background:var(--sur);border-radius:12px;width:100%;max-width:800px;
+    max-height:90vh;overflow:hidden;display:flex;flex-direction:column">
+    <div style="padding:12px 16px;border-bottom:1px solid var(--bor);
+      display:flex;justify-content:space-between;align-items:center">
+      <span style="font-weight:700" id="preview-title">Tool Preview</span>
+      <button onclick="closePreview()" style="background:none;border:none;color:var(--mu);
+        cursor:pointer;font-size:20px;padding:4px">×</button>
+    </div>
+    <iframe id="modal-preview" style="flex:1;border:none;min-height:500px;background:#fff"></iframe>
+  </div>
+</div>
+
+<script>
+/* ── Storage keys ─────────────────────────────────────────── */
+const REQ_KEY    = 'forjit_tool_requests';
+const VOTE_KEY   = 'forjit_my_votes';
+const LOG_KEY    = 'forjit_error_log';
+const CUSTOM_KEY = 'forjit_custom_tools';
+const KEY_STORE  = 'forjit_groq_key';
+
+/* ── Seed requests ────────────────────────────────────────── */
+const SEEDS = [
+  {id:'r1',title:'SWP Calculator',desc:'Systematic Withdrawal Plan calculator for mutual funds',cat:'finance',votes:24,status:'planned',ts:'2025-03-01'},
+  {id:'r2',title:'NPS Calculator',desc:'National Pension System returns and tax benefit calculator',cat:'india',votes:31,status:'planned',ts:'2025-03-05'},
+  {id:'r3',title:'CIBIL Score Guide',desc:'Understand and improve your CIBIL credit score',cat:'finance',votes:18,status:'open',ts:'2025-03-10'},
+  {id:'r4',title:'GST Invoice Generator',desc:'GST-compliant invoice PDF generator for freelancers',cat:'india',votes:42,status:'building',ts:'2025-03-15'},
+  {id:'r5',title:'Pregnancy Calculator',desc:'Due date, week-by-week pregnancy tracker',cat:'health',votes:27,status:'open',ts:'2025-03-20'},
+  {id:'r6',title:'Recipe Cost Calculator',desc:'Calculate cost per serving for Indian recipes',cat:'cooking',votes:15,status:'open',ts:'2025-04-01'},
+  {id:'r7',title:'Cricket Score Tracker',desc:'Track IPL and local cricket scores',cat:'utility',votes:33,status:'open',ts:'2025-04-05'},
+  {id:'r8',title:'Marriage Budget Planner',desc:'Plan Indian wedding budget with vendor tracking',cat:'utility',votes:29,status:'open',ts:'2025-04-10'},
+  {id:'r9',title:'Home Loan Balance Transfer',desc:'Should I transfer my home loan? Savings calculator',cat:'finance',votes:21,status:'open',ts:'2025-04-12'},
+  {id:'r10',title:'Rent vs Buy Calculator',desc:'Is it better to rent or buy a home in India?',cat:'finance',votes:37,status:'planned',ts:'2025-04-15'},
+];
+
+function initSeeds() {
+  if (!localStorage.getItem(REQ_KEY))
+    localStorage.setItem(REQ_KEY, JSON.stringify(SEEDS));
+}
+
+/* ── Requests ─────────────────────────────────────────────── */
+function getReqs() {
+  initSeeds();
+  try { return JSON.parse(localStorage.getItem(REQ_KEY)||'[]'); } 
+  catch { return SEEDS; }
+}
+function saveReqs(r) { localStorage.setItem(REQ_KEY, JSON.stringify(r)); }
+function getVotes() { try{return JSON.parse(localStorage.getItem(VOTE_KEY)||'[]');}catch{return[];} }
+function saveVotes(v) { localStorage.setItem(VOTE_KEY, JSON.stringify(v)); }
+
+let activeFilter = 'all';
+
+function setFilter(el) {
+  document.querySelectorAll('.chip').forEach(c => c.classList.remove('on'));
+  el.classList.add('on');
+  activeFilter = el.dataset.filter;
+  renderRequests();
+}
+
+function renderRequests() {
+  initSeeds();
+  const q    = (document.getElementById('req-search')?.value || '').toLowerCase();
+  let reqs   = getReqs().sort((a,b) => b.votes - a.votes);
+  const votes= getVotes();
+
+  // Filter
+  if (activeFilter !== 'all') {
+    reqs = reqs.filter(r => r.status === activeFilter || r.cat === activeFilter);
+  }
+  if (q) reqs = reqs.filter(r =>
+    r.title.toLowerCase().includes(q) || r.desc.toLowerCase().includes(q));
+
+  // Stats
+  const all = getReqs();
+  document.getElementById('stat-total').textContent    = all.length;
+  document.getElementById('stat-planned').textContent  = all.filter(r=>r.status==='planned').length;
+  document.getElementById('stat-building').textContent = all.filter(r=>r.status==='building').length;
+  document.getElementById('stat-open').textContent     = all.filter(r=>r.status==='open').length;
+
+  const el = document.getElementById('req-list');
+  if (!reqs.length) {
+    el.innerHTML = '<div class="empty"><div class="ei">🔍</div><p>No requests found</p></div>';
+    return;
+  }
+
+  el.innerHTML = reqs.map(r => {
+    const voted = votes.includes(r.id);
+    return `
+    <div class="req-card">
+      <div class="vote-col">
+        <button class="vote-btn ${voted?'voted':''}" onclick="vote('${r.id}')" title="${voted?'Voted':'Vote'}">
+          ${voted ? '✅' : '▲'}
+        </button>
+        <div class="vote-count">${r.votes}</div>
+      </div>
+      <div class="req-body">
+        <div class="req-title">${r.title}</div>
+        <div class="req-desc">${r.desc || ''}</div>
+        <div class="req-meta">
+          <span class="tag">${r.cat}</span>
+          <span class="status ${r.status}">${r.status === 'building' ? '🔨 Building' : r.status === 'planned' ? '📋 Planned' : r.status === 'done' ? '✅ Done' : '💡 Open'}</span>
+          ${r.mine ? '<span class="tag" style="border-color:rgba(245,158,11,.3);color:var(--ac)">👤 Mine</span>' : ''}
+          <span style="font-size:10px;color:var(--su)">${r.ts}</span>
+        </div>
+      </div>
+    </div>`;
+  }).join('');
+}
+
+function vote(id) {
+  const votes = getVotes();
+  if (votes.includes(id)) { toast('Already voted!'); return; }
+  const reqs  = getReqs();
+  const req   = reqs.find(r => r.id === id);
+  if (!req) return;
+  req.votes++;
+  saveReqs(reqs);
+  votes.push(id);
+  saveVotes(votes);
+  renderRequests();
+  toast('Vote counted! 🎉');
+}
+
+function submitRequest() {
+  const title = document.getElementById('req-title').value.trim();
+  const desc  = document.getElementById('req-desc').value.trim();
+  const cat   = document.getElementById('req-cat').value;
+  if (!title) { toast('Please enter a tool name'); return; }
+
+  const reqs = getReqs();
+  const dup  = reqs.find(r => r.title.toLowerCase() === title.toLowerCase());
+  if (dup) {
+    toast('Similar request exists — vote for it instead!');
+    document.getElementById('req-search').value = title;
+    renderRequests();
+    return;
+  }
+
+  const newReq = {
+    id: 'r' + Date.now(), title, desc, cat,
+    votes: 1, status: 'open',
+    ts: new Date().toISOString().slice(0,10), mine: true,
+  };
+  reqs.push(newReq);
+  saveReqs(reqs);
+  const votes = getVotes();
+  votes.push(newReq.id);
+  saveVotes(votes);
+
+  document.getElementById('req-title').value = '';
+  document.getElementById('req-desc').value  = '';
+  renderRequests();
+  renderMine();
+  toast('Request submitted! 🎉 Thanks for your idea.');
+}
+
+function exportAll() {
+  const data = { exported: new Date().toISOString(), site: 'forjitai.in', requests: getReqs() };
+  download('forjitai-requests.json', JSON.stringify(data, null, 2));
+  toast('Exported successfully!');
+}
+
+/* ── Build Your Own ───────────────────────────────────────── */
+let generatedHTML = '';
+let generatedName = '';
+
+function saveKey(v) { if(v) localStorage.setItem(KEY_STORE, v); }
+
+document.addEventListener('DOMContentLoaded', () => {
+  const k = localStorage.getItem(KEY_STORE);
+  if (k) document.getElementById('ct-key').value = k;
+});
+
+async function buildTool() {
+  const name   = document.getElementById('ct-name').value.trim();
+  const prompt = document.getElementById('ct-prompt').value.trim();
+  const key    = document.getElementById('ct-key').value.trim();
+
+  if (!name)   { toast('Enter a tool name'); return; }
+  if (!prompt) { toast('Describe what your tool should do'); return; }
+  if (!key)    { toast('Enter your Groq API key'); return; }
+
+  const btn = document.getElementById('build-btn');
+  btn.textContent = '⏳ Generating...';
+  btn.disabled    = true;
+  document.getElementById('build-status').textContent = 'AI is building your tool...';
+
+  try {
+    const resp = await fetch('https://api.groq.com/openai/v1/chat/completions', {
+      method: 'POST',
+      headers: { 'Content-Type': 'application/json', 'Authorization': `Bearer ${key}` },
+      body: JSON.stringify({
+        model: 'llama-3.3-70b-versatile',
+        max_tokens: 4000,
+        messages: [{
+          role: 'system',
+          content: `You are an expert web developer. Generate a complete, self-contained single HTML file tool/calculator based on the user's description. 
+Requirements:
+- Dark theme: background #0c0a09, surface #1c1917, text #e7e5e4, accent #f59e0b
+- Mobile responsive
+- All CSS and JS inline in one HTML file
+- Indian context: use ₹ for currency, Indian number format
+- No external dependencies except basic JS
+- Clean, professional UI
+- Add input validation
+- Show results clearly
+- Return ONLY the complete HTML file, nothing else, no explanation`
+        }, {
+          role: 'user',
+          content: `Tool name: ${name}\n\nDescription: ${prompt}\n\nGenerate a complete working HTML tool.`
+        }]
+      })
+    });
+
+    const data    = await resp.json();
+    generatedHTML = data.choices?.[0]?.message?.content || '';
+    generatedName = name;
+
+    if (!generatedHTML) throw new Error('No response from AI');
+
+    // Clean up markdown fences if present
+    generatedHTML = generatedHTML.replace(/^```html\n?/,'').replace(/\n?```$/,'').trim();
+
+    document.getElementById('build-output').style.display = 'block';
+    document.getElementById('build-status').textContent   = '✅ Tool generated! Preview or save it.';
+
+    // Show preview
+    const iframe = document.getElementById('tool-preview');
+    iframe.style.display = 'block';
+    iframe.srcdoc = generatedHTML;
+
+    saveKey(key);
+    logEvent('Tool generated: ' + name);
+
+  } catch(e) {
+    document.getElementById('build-status').textContent = '❌ Error: ' + e.message;
+    toast('Generation failed: ' + e.message);
+  } finally {
+    btn.textContent = '✨ Generate Tool';
+    btn.disabled    = false;
+  }
+}
+
+function saveTool() {
+  if (!generatedHTML) { toast('Generate a tool first'); return; }
+  const tools = JSON.parse(localStorage.getItem(CUSTOM_KEY)||'[]');
+  const desc  = document.getElementById('ct-prompt').value.trim().substring(0,150);
+  tools.unshift({
+    id: 'ct'+Date.now(), name: generatedName,
+    desc, html: generatedHTML,
+    created: new Date().toISOString(),
+  });
+  localStorage.setItem(CUSTOM_KEY, JSON.stringify(tools.slice(0,20)));
+  renderMine();
+  toast('Tool saved! Find it in My Tools tab.');
+}
+
+function previewTool() {
+  if (!generatedHTML) return;
+  document.getElementById('modal-preview').srcdoc = generatedHTML;
+  document.getElementById('preview-title').textContent = generatedName;
+  document.getElementById('preview-modal').style.display = 'flex';
+}
+
+function closePreview() {
+  document.getElementById('preview-modal').style.display = 'none';
+}
+
+function downloadTool() {
+  if (!generatedHTML) return;
+  const fname = generatedName.toLowerCase().replace(/\s+/g,'-') + '.html';
+  download(fname, generatedHTML);
+  toast('Downloaded!');
+}
+
+/* ── My tools ─────────────────────────────────────────────── */
+function renderMine() {
+  const tools = JSON.parse(localStorage.getItem(CUSTOM_KEY)||'[]');
+  const myReqs= getReqs().filter(r => r.mine);
+
+  const tEl = document.getElementById('my-tools-list');
+  if (!tools.length) {
+    tEl.innerHTML = '<div class="empty"><div class="ei">🛠️</div><p>No custom tools yet. Build one in the Build tab!</p></div>';
+  } else {
+    tEl.innerHTML = tools.map(t => `
+      <div class="ct-card">
+        <h4>${t.name}</h4>
+        <p>${t.desc || 'Custom tool'}</p>
+        <div class="ct-actions">
+          <button class="ct-btn" onclick="openCustomTool('${t.id}')">▶ Open</button>
+          <button class="ct-btn" onclick="downloadCustom('${t.id}')">⬇ Download</button>
+          <button class="ct-btn danger" onclick="deleteCustom('${t.id}')">🗑 Delete</button>
+        </div>
+      </div>`).join('');
+  }
+
+  const rEl = document.getElementById('my-requests-list');
+  if (!myReqs.length) {
+    rEl.innerHTML = '<div class="empty"><div class="ei">💡</div><p>You haven\'t submitted any requests yet.</p></div>';
+  } else {
+    rEl.innerHTML = myReqs.map(r => `
+      <div class="req-card">
+        <div class="vote-col">
+          <div class="vote-count">${r.votes}</div>
+          <div style="font-size:10px;color:var(--su)">votes</div>
+        </div>
+        <div class="req-body">
+          <div class="req-title">${r.title}</div>
+          <div class="req-desc">${r.desc||''}</div>
+          <div class="req-meta">
+            <span class="status ${r.status}">${r.status}</span>
+            <span class="tag">${r.cat}</span>
+          </div>
+        </div>
+      </div>`).join('');
+  }
+}
+
+function openCustomTool(id) {
+  const tools = JSON.parse(localStorage.getItem(CUSTOM_KEY)||'[]');
+  const tool  = tools.find(t => t.id === id);
+  if (!tool) return;
+  const w = window.open('', '_blank');
+  w.document.write(tool.html);
+  w.document.close();
+}
+
+function downloadCustom(id) {
+  const tools = JSON.parse(localStorage.getItem(CUSTOM_KEY)||'[]');
+  const tool  = tools.find(t => t.id === id);
+  if (!tool) return;
+  download(tool.name.toLowerCase().replace(/\s+/g,'-')+'.html', tool.html);
+}
+
+function deleteCustom(id) {
+  if (!confirm('Delete this tool?')) return;
+  const tools = JSON.parse(localStorage.getItem(CUSTOM_KEY)||'[]').filter(t => t.id !== id);
+  localStorage.setItem(CUSTOM_KEY, JSON.stringify(tools));
+  renderMine();
+  toast('Tool deleted');
+}
+
+/* ── Error logs ───────────────────────────────────────────── */
+function renderErrors() {
+  const logs = JSON.parse(localStorage.getItem(LOG_KEY)||'[]').reverse();
+  document.getElementById('err-total').textContent  = logs.length;
+  document.getElementById('err-errors').textContent = logs.filter(l=>l.type==='JS_ERROR'||l.type==='PROMISE_REJECTION').length;
+  document.getElementById('err-info').textContent   = logs.filter(l=>l.type==='INFO').length;
+
+  const el = document.getElementById('error-list');
+  if (!logs.length) {
+    el.innerHTML = '<div class="empty"><div class="ei">✅</div><p>No errors logged — all good!</p></div>';
+    return;
+  }
+
+  el.innerHTML = logs.slice(0,50).map(l => `
+    <div class="log-item">
+      <span class="log-type ${l.type}">${l.type}</span>
+      <span class="log-msg">${(l.message||'').substring(0,150)}</span>
+      <div class="log-ts">${l.ts} · ${l.page||''}</div>
+    </div>`).join('');
+}
+
+function exportLogs() {
+  const logs = JSON.parse(localStorage.getItem(LOG_KEY)||'[]');
+  if (!logs.length) { toast('No logs to export'); return; }
+  const data = { exported: new Date().toISOString(), site:'forjitai.in', totalLogs: logs.length, logs };
+  download(`forjitai-error-log-${new Date().toISOString().slice(0,10)}.json`, JSON.stringify(data, null, 2));
+  toast(`Exported ${logs.length} log entries`);
+}
+
+function clearLogs() {
+  if (!confirm('Clear all error logs?')) return;
+  localStorage.removeItem(LOG_KEY);
+  renderErrors();
+  toast('Logs cleared');
+}
+
+/* ── Global error capture ─────────────────────────────────── */
+window.addEventListener('error', e => {
+  addLog({type:'JS_ERROR', message:e.message, source:e.filename, line:e.lineno, stack:e.error?.stack?.substring(0,300)||''});
+  renderErrors();
+});
+window.addEventListener('unhandledrejection', e => {
+  addLog({type:'PROMISE_REJECTION', message:String(e.reason?.message||e.reason)});
+  renderErrors();
+});
+
+function addLog(entry) {
+  const logs = JSON.parse(localStorage.getItem(LOG_KEY)||'[]');
+  logs.push({ id:Date.now(), ts:new Date().toISOString(), page:location.pathname, ...entry });
+  localStorage.setItem(LOG_KEY, JSON.stringify(logs.slice(-200)));
+}
+
+function logEvent(msg) {
+  addLog({ type:'INFO', message:msg });
+}
+
+/* ── Utils ────────────────────────────────────────────────── */
+function download(filename, content) {
+  const blob = new Blob([content], {type:'application/octet-stream'});
+  const url  = URL.createObjectURL(blob);
+  const a    = document.createElement('a');
+  a.href = url; a.download = filename; a.click();
+  URL.revokeObjectURL(url);
+}
+
+let toastTimer;
+function toast(msg) {
+  const el = document.getElementById('toast');
+  el.textContent = msg;
+  el.style.display = 'block';
+  clearTimeout(toastTimer);
+  toastTimer = setTimeout(() => el.style.display='none', 2500);
+}
+
+function showTab(id, btn) {
+  document.querySelectorAll('.page').forEach(p => p.classList.remove('on'));
+  document.querySelectorAll('.tab').forEach(t => t.classList.remove('on'));
+  document.getElementById('page-'+id).classList.add('on');
+  btn.classList.add('on');
+  if (id === 'mine') renderMine();
+  if (id === 'errors') renderErrors();
+}
+
+/* ── Init ─────────────────────────────────────────────────── */
+renderRequests();
+</script>
+
+<script src="/cookie-consent.js"></script>
+</body>
+</html>

@@ -1,0 +1,193 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="UTF-8"/><meta name="viewport" content="width=device-width,initial-scale=1.0"/>
+<title>QR Code Generator Free — Create QR Code Online | Forjit AI</title>
+<meta name="description" content="Free QR code generator. Create QR codes for URLs, text, WhatsApp, UPI payment and more. Download as PNG instantly."/>
+<meta name="keywords" content="QR code generator free, create QR code online, QR code maker India, UPI QR code generator, WhatsApp QR code"/>
+<link rel="canonical" href="https://www.forjitai.in/tools/qr-generator.html"/>
+<link rel="stylesheet" href="tools.css"/>
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-DYR402JFVG"></script>
+<script>window.dataLayer=window.dataLayer||[];function gtag(){dataLayer.push(arguments);}gtag('js',new Date());gtag('config','G-DYR402JFVG');</script>
+<script src="https://cdn.jsdelivr.net/npm/qrcode@1.5.3/build/qrcode.min.js"></script>
+  <meta name="robots" content="index,follow,max-snippet:-1,max-image-preview:large"/>
+  <meta property="og:type"         content="website"/>
+  <meta property="og:site_name"    content="Forjit AI"/>
+  <meta property="og:url"          content="https://www.forjitai.in/tools/qr-generator.html"/>
+  <meta property="og:title"        content="QR Code Generator — Forjit AI | Free QR Code Maker"/>
+  <meta property="og:description"  content="QR codes for URLs, WhatsApp, UPI payment, vCard, WiFi. PNG/SVG download."/>
+  <meta property="og:image"        content="https://www.forjitai.in/og-image.png"/>
+  <meta property="og:image:width"  content="1200"/>
+  <meta property="og:image:height" content="630"/>
+  <meta property="og:locale"       content="en_IN"/>
+  <meta name="twitter:card"        content="summary_large_image"/>
+  <meta name="twitter:site"        content="@forjitai"/>
+  <meta name="twitter:title"       content="QR Code Generator — Forjit AI | Free QR Code Maker"/>
+  <meta name="twitter:description" content="Free QR code generator. Create QR codes for URLs, text, WhatsApp, UPI payment and more. Download as PNG instantly."/>
+  <meta name="twitter:image"       content="https://www.forjitai.in/og-image.png"/>
+  <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-5102938260449475" crossorigin="anonymous"></script>
+  <meta name="google-site-verification" content="u11mSk2rQwaphaXMCcUwJU-6dRhN_ndessqEMeZdubk" />
+
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "FAQPage",
+  "mainEntity": [
+    {
+      "@type": "Question",
+      "name": "How do I create a QR code for free?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "Enter your URL or text in the QR code generator and click Generate. Download the QR code as PNG for free."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "Can I create a QR code for UPI payment?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "Yes. Enter your UPI ID and the generator creates a scannable QR code for UPI payments."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "Is this QR code generator free?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "Yes. The Forjit AI QR code generator is completely free. No signup and no watermark."
+      }
+    }
+  ]
+}
+</script>
+</head>
+<body>
+<header>
+  <a class="logo" href="/"><div class="logo-mark">F</div><div><div class="logo-name">Forjit AI</div><div class="logo-sub">Tools</div></div></a>
+  <a class="back-link" href="/tools/">← All Tools</a>
+</header>
+<div class="container-sm">
+  <h1>QR Code Generator</h1>
+  <p class="page-desc">Create QR codes for URLs, text, contacts, WhatsApp, and more. Download instantly.</p>
+  <div class="ad-slot">Advertisement · <a href="https://adsense.google.com" target="_blank">Connect AdSense</a></div>
+
+  <div class="card">
+    <div class="field"><span class="label">Content Type</span>
+      <div class="input-wrap"><select id="type" onchange="switchType()">
+        <option value="url">URL / Website</option>
+        <option value="text">Plain Text</option>
+        <option value="whatsapp">WhatsApp Message</option>
+        <option value="email">Email</option>
+        <option value="contact">Contact Card (vCard)</option>
+        <option value="wifi">WiFi Network</option>
+        <option value="upi">UPI Payment</option>
+      </select></div>
+    </div>
+
+    <div id="form-url"><div class="field"><span class="label">URL</span><div class="input-wrap"><span class="prefix">🌐</span><input type="url" id="url" value="https://www.forjitai.in" oninput="generate()" placeholder="https://example.com"/></div></div></div>
+
+    <div id="form-text" style="display:none"><div class="field"><span class="label">Text</span><div class="input-wrap"><textarea id="text" rows="3" oninput="generate()" placeholder="Enter any text…"></textarea></div></div></div>
+
+    <div id="form-whatsapp" style="display:none">
+      <div class="field"><span class="label">Phone (with country code)</span><div class="input-wrap"><span class="prefix">+</span><input type="tel" id="wpPhone" value="91" oninput="generate()" placeholder="919876543210"/></div></div>
+      <div class="field"><span class="label">Message (optional)</span><div class="input-wrap"><textarea id="wpMsg" rows="2" oninput="generate()" placeholder="Hello!"></textarea></div></div>
+    </div>
+
+    <div id="form-email" style="display:none">
+      <div class="field"><span class="label">Email Address</span><div class="input-wrap"><span class="prefix">✉</span><input type="email" id="emailAddr" oninput="generate()" placeholder="you@example.com"/></div></div>
+      <div class="field"><span class="label">Subject (optional)</span><div class="input-wrap"><input type="text" id="emailSubj" oninput="generate()" placeholder="Subject"/></div></div>
+      <div class="field"><span class="label">Body (optional)</span><div class="input-wrap"><textarea id="emailBody" rows="2" oninput="generate()"></textarea></div></div>
+    </div>
+
+    <div id="form-contact" style="display:none">
+      <div style="display:grid;grid-template-columns:1fr 1fr;gap:10px">
+        <div class="field"><span class="label">First Name</span><div class="input-wrap"><input type="text" id="vcFN" oninput="generate()" placeholder="Rahul"/></div></div>
+        <div class="field"><span class="label">Last Name</span><div class="input-wrap"><input type="text" id="vcLN" oninput="generate()" placeholder="Sharma"/></div></div>
+        <div class="field"><span class="label">Phone</span><div class="input-wrap"><input type="tel" id="vcPhone" oninput="generate()" placeholder="+91..."/></div></div>
+        <div class="field"><span class="label">Email</span><div class="input-wrap"><input type="email" id="vcEmail" oninput="generate()" placeholder="email"/></div></div>
+        <div class="field" style="grid-column:1/-1"><span class="label">Company / Organization</span><div class="input-wrap"><input type="text" id="vcOrg" oninput="generate()" placeholder="Company name"/></div></div>
+        <div class="field" style="grid-column:1/-1"><span class="label">Website</span><div class="input-wrap"><input type="url" id="vcWeb" oninput="generate()" placeholder="https://..."/></div></div>
+      </div>
+    </div>
+
+    <div id="form-wifi" style="display:none">
+      <div class="field"><span class="label">Network Name (SSID)</span><div class="input-wrap"><input type="text" id="wfSSID" oninput="generate()" placeholder="MyWiFi"/></div></div>
+      <div class="field"><span class="label">Password</span><div class="input-wrap"><input type="text" id="wfPass" oninput="generate()" placeholder="password"/></div></div>
+      <div class="field"><span class="label">Security</span><div class="input-wrap"><select id="wfSec" onchange="generate()"><option value="WPA">WPA/WPA2</option><option value="WEP">WEP</option><option value="">None</option></select></div></div>
+    </div>
+
+    <div id="form-upi" style="display:none">
+      <div class="field"><span class="label">UPI ID</span><div class="input-wrap"><span class="prefix">₹</span><input type="text" id="upiId" oninput="generate()" placeholder="name@upi"/></div></div>
+      <div class="field"><span class="label">Payee Name</span><div class="input-wrap"><input type="text" id="upiName" oninput="generate()" placeholder="Rahul Sharma"/></div></div>
+      <div class="field"><span class="label">Amount (optional)</span><div class="input-wrap"><span class="prefix">₹</span><input type="number" id="upiAmt" oninput="generate()" placeholder="0"/></div></div>
+    </div>
+
+    <!-- Style options -->
+    <div style="display:grid;grid-template-columns:1fr 1fr 1fr;gap:10px;margin-top:12px">
+      <div class="field"><span class="label">Size</span><div class="input-wrap"><select id="qrSize" onchange="generate()"><option value="200">Small</option><option value="300" selected>Medium</option><option value="400">Large</option><option value="500">Extra Large</option></select></div></div>
+      <div class="field"><span class="label">Foreground</span><div class="input-wrap" style="padding:4px 8px"><input type="color" id="qrFg" value="#000000" oninput="generate()" style="width:100%;height:30px;border:none;background:none;cursor:pointer"/></div></div>
+      <div class="field"><span class="label">Background</span><div class="input-wrap" style="padding:4px 8px"><input type="color" id="qrBg" value="#ffffff" oninput="generate()" style="width:100%;height:30px;border:none;background:none;cursor:pointer"/></div></div>
+    </div>
+  </div>
+
+  <div class="card" style="text-align:center">
+    <canvas id="qrCanvas" style="max-width:100%;border-radius:8px;border:4px solid var(--border)"></canvas>
+    <div style="display:flex;gap:10px;justify-content:center;margin-top:16px;flex-wrap:wrap">
+      <button onclick="download('png')" class="btn" style="max-width:180px">⬇ Download PNG</button>
+      <button onclick="download('svg')" class="btn btn-outline" style="max-width:180px">⬇ Download SVG</button>
+    </div>
+    <div id="qrContent" style="margin-top:12px;font-size:11px;color:var(--muted);word-break:break-all;max-width:400px;margin-inline:auto"></div>
+  </div>
+  <div class="ad-slot">Advertisement</div>
+</div>
+<script>
+const g=id=>document.getElementById(id).value;
+
+function switchType(){
+  const t=g('type');
+  ['url','text','whatsapp','email','contact','wifi','upi'].forEach(id=>{
+    document.getElementById('form-'+id).style.display=id===t?'block':'none';
+  });
+  generate();
+}
+
+function buildContent(){
+  const t=g('type');
+  if(t==='url') return g('url')||'https://forjitai.in';
+  if(t==='text') return g('text')||' ';
+  if(t==='whatsapp'){const p=g('wpPhone').replace(/\D/g,'');const m=encodeURIComponent(g('wpMsg'));return `https://wa.me/${p}${m?'?text='+m:''}`;}
+  if(t==='email'){const s=g('emailSubj');const b=g('emailBody');let u=`mailto:${g('emailAddr')}`;if(s||b)u+='?'+[s&&`subject=${encodeURIComponent(s)}`,b&&`body=${encodeURIComponent(b)}`].filter(Boolean).join('&');return u;}
+  if(t==='contact'){return `BEGIN:VCARD\nVERSION:3.0\nN:${g('vcLN')};${g('vcFN')};;;\nFN:${g('vcFN')} ${g('vcLN')}\nTEL:${g('vcPhone')}\nEMAIL:${g('vcEmail')}\nORG:${g('vcOrg')}\nURL:${g('vcWeb')}\nEND:VCARD`;}
+  if(t==='wifi') return `WIFI:T:${g('wfSec')};S:${g('wfSSID')};P:${g('wfPass')};;`;
+  if(t==='upi'){const a=g('upiAmt');return `upi://pay?pa=${g('upiId')}&pn=${encodeURIComponent(g('upiName'))}${a?'&am='+a:''}`;};
+  return ' ';
+}
+
+async function generate(){
+  const content=buildContent();
+  const size=parseInt(g('qrSize'));
+  const fg=g('qrFg');
+  const bg=g('qrBg');
+  document.getElementById('qrContent').textContent=content.slice(0,120)+(content.length>120?'…':'');
+  try{
+    await QRCode.toCanvas(document.getElementById('qrCanvas'),content,{width:size,color:{dark:fg,light:bg},errorCorrectionLevel:'M'});
+  } catch(e){document.getElementById('qrContent').textContent='Error: '+e.message;}
+}
+
+function download(fmt){
+  const canvas=document.getElementById('qrCanvas');
+  const a=document.createElement('a');
+  if(fmt==='png'){a.href=canvas.toDataURL('image/png');a.download='qrcode-forjitai.png';}
+  else{
+    const svg=`<svg xmlns="http://www.w3.org/2000/svg" width="${canvas.width}" height="${canvas.height}"><image href="${canvas.toDataURL()}" width="${canvas.width}" height="${canvas.height}"/></svg>`;
+    a.href='data:image/svg+xml;charset=utf-8,'+encodeURIComponent(svg);
+    a.download='qrcode-forjitai.svg';
+  }
+  a.click();
+}
+
+generate();
+</script>
+<script src="tool-common.js"></script>
+</body>
+</html>

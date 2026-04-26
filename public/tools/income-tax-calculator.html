@@ -1,0 +1,448 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="UTF-8"/><meta name="viewport" content="width=device-width,initial-scale=1.0"/>
+<title>Income Tax Calculator FY 2025-26 — Forjit AI | New vs Old Regime + Tax Saving Tips</title>
+<meta name="description" content="Free income tax calculator FY 2025-26 (AY 2026-27). Compare new vs old regime. Get personalized tax saving suggestions. Calculate exact tax with cess and surcharge."/>
+<meta name="keywords" content="income tax calculator 2025-26, new tax regime, old tax regime, tax saving tips, Section 80C, HRA exemption, India income tax"/>
+<link rel="canonical" href="https://www.forjitai.in/tools/income-tax-calculator.html"/>
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-DYR402JFVG"></script>
+<script>window.dataLayer=window.dataLayer||[];function gtag(){dataLayer.push(arguments);}gtag('js',new Date());gtag('config','G-DYR402JFVG');</script>
+<style>
+*{box-sizing:border-box;margin:0;padding:0}
+:root{--bg:#0c0a09;--sur:#1c1917;--bor:#292524;--fg:#e7e5e4;--mu:#a8a29e;--su:#78716c;--ac:#fbbf24;--gr:#22c55e;--bl:#3b82f6;--re:#ef4444}
+body{font-family:'Segoe UI',system-ui,sans-serif;background:var(--bg);color:var(--fg);min-height:100vh}
+header{background:var(--sur);border-bottom:1px solid var(--bor);padding:12px 20px;display:flex;align-items:center;justify-content:space-between;position:sticky;top:0;z-index:10}
+.logo{display:flex;align-items:center;gap:10px;text-decoration:none;color:var(--fg)}
+.lm{width:32px;height:32px;background:var(--ac);border-radius:6px;display:flex;align-items:center;justify-content:center;font-weight:800;font-size:16px;color:var(--bg)}
+.back{color:var(--mu);text-decoration:none;font-size:13px}.back:hover{color:var(--ac)}
+.wrap{max-width:920px;margin:0 auto;padding:22px 16px}
+h1{font-size:26px;font-weight:700;margin-bottom:4px}
+.sub{color:var(--mu);font-size:14px;margin-bottom:20px}
+.card{background:var(--sur);border:1px solid var(--bor);border-radius:12px;padding:20px;margin-bottom:14px}
+.lbl{display:block;font-size:11px;color:var(--mu);margin-bottom:5px;font-weight:600;text-transform:uppercase;letter-spacing:.06em}
+.ig{display:flex;align-items:stretch;background:var(--bg);border:1px solid var(--bor);border-radius:8px;overflow:hidden;margin-bottom:10px;transition:border-color .15s}
+.ig:focus-within{border-color:var(--ac)}
+.pfx{padding:10px 12px;background:var(--bor);color:var(--mu);font-size:13px;display:flex;align-items:center;white-space:nowrap}
+input[type=number],select{flex:1;background:transparent;border:none;outline:none;color:var(--fg);font-size:15px;padding:10px 12px;width:100%;font-family:inherit}
+select{appearance:none;background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='12' height='12' viewBox='0 0 24 24' fill='none' stroke='%23a8a29e' stroke-width='2'%3E%3Cpolyline points='6 9 12 15 18 9'%3E%3C/polyline%3E%3C/svg%3E");background-repeat:no-repeat;background-position:right 10px center;padding-right:28px}
+select option{background:var(--sur)}
+.row2{display:grid;grid-template-columns:1fr 1fr;gap:12px}
+.row3{display:grid;grid-template-columns:1fr 1fr 1fr;gap:12px}
+/* Results */
+.compare-grid{display:grid;grid-template-columns:1fr 1fr;gap:12px;margin-bottom:14px}
+.regime-card{padding:18px;border-radius:12px;text-align:center}
+.regime-new{background:rgba(251,191,36,.08);border:2px solid rgba(251,191,36,.3)}
+.regime-old{background:rgba(59,130,246,.08);border:2px solid rgba(59,130,246,.3)}
+.regime-card.winner{transform:scale(1.02)}
+.regime-val{font-size:32px;font-weight:800;margin:6px 0 4px}
+.regime-lbl{font-size:11px;color:var(--mu);text-transform:uppercase;letter-spacing:.06em}
+.regime-eff{font-size:12px;color:var(--mu);margin-top:4px}
+.win-badge{display:inline-block;padding:2px 8px;border-radius:999px;font-size:9px;font-weight:700;text-transform:uppercase;background:rgba(34,197,94,.2);color:#4ade80;border:1px solid rgba(34,197,94,.3);margin-left:6px}
+.verdict{padding:14px 16px;border-radius:10px;margin-bottom:14px;font-size:14px;line-height:1.6}
+.verdict-save{background:rgba(34,197,94,.08);border:1px solid rgba(34,197,94,.25)}
+/* Tax saving */
+.saving-item{display:flex;align-items:flex-start;gap:12px;padding:14px;background:var(--bg);border:1px solid var(--bor);border-radius:10px;margin-bottom:8px}
+.saving-icon{font-size:22px;flex-shrink:0;margin-top:2px}
+.saving-title{font-size:14px;font-weight:600;color:var(--fg)}
+.saving-save{font-size:13px;font-weight:700;color:#4ade80;margin-top:2px}
+.saving-desc{font-size:12px;color:var(--mu);margin-top:4px;line-height:1.5}
+.tbl-w{overflow-x:auto;border-radius:8px;border:1px solid var(--bor)}
+table{width:100%;border-collapse:collapse;font-size:13px}
+th{background:var(--bor);padding:8px 12px;text-align:left;font-size:10px;font-weight:700;text-transform:uppercase;letter-spacing:.06em;color:var(--mu)}
+td{padding:8px 12px;border-top:1px solid var(--sur);color:var(--fg)}
+tr:hover td{background:rgba(255,255,255,.015)}
+.ad{background:var(--sur);border:1px dashed var(--bor);border-radius:8px;padding:13px;text-align:center;color:var(--su);font-size:11px;margin:12px 0}
+.ad a{color:var(--ac);text-decoration:none}
+.badge{display:inline-block;padding:2px 7px;border-radius:999px;font-size:9px;font-weight:700;text-transform:uppercase;background:rgba(34,197,94,.15);color:#4ade80;border:1px solid rgba(34,197,94,.25);margin-left:6px;vertical-align:middle}
+@media(max-width:580px){.compare-grid,.row2,.row3{grid-template-columns:1fr}}
+</style>
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "FAQPage",
+  "mainEntity": [
+    {
+      "@type": "Question",
+      "name": "What is the new tax regime for FY 2025-26?",
+      "acceptedAnswer": { "@type": "Answer", "text": "The new tax regime for FY 2025-26 has slabs: nil up to ₹3L, 5% for ₹3-7L, 10% for ₹7-10L, 15% for ₹10-12L, 20% for ₹12-15L, and 30% above ₹15L. Standard deduction of ₹75,000 is included. No tax if income ≤ ₹7L (after standard deduction)." }
+    },
+    {
+      "@type": "Question",
+      "name": "Which regime is better — new or old?",
+      "acceptedAnswer": { "@type": "Answer", "text": "New regime is generally better if your deductions are less than ₹3-3.5L. Old regime is better if you have high deductions under 80C, HRA, NPS, and home loan interest." }
+    },
+    {
+      "@type": "Question",
+      "name": "What is the standard deduction in FY 2025-26?",
+      "acceptedAnswer": { "@type": "Answer", "text": "Standard deduction is ₹75,000 under the new regime and ₹50,000 under the old regime for salaried employees." }
+    },
+    {
+      "@type": "Question",
+      "name": "What is Section 87A rebate?",
+      "acceptedAnswer": { "@type": "Answer", "text": "Section 87A rebate means zero tax is payable if taxable income does not exceed ₹7,00,000 under the new regime (₹5,00,000 under old regime). The rebate covers any tax that would be due." }
+    },
+    {
+      "@type": "Question",
+      "name": "What deductions can I claim in the old regime?",
+      "acceptedAnswer": { "@type": "Answer", "text": "Key deductions in old regime: Section 80C (₹1.5L for PF, PPF, ELSS, LIC), Section 80D (health insurance), HRA exemption, Section 24b (home loan interest up to ₹2L), NPS under 80CCD(1B) (₹50,000 extra), and standard deduction of ₹50,000." }
+    }
+  ]
+}
+</script>
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "BreadcrumbList",
+  "itemListElement": [
+    { "@type": "ListItem", "position": 1, "name": "Forjit AI", "item": "https://www.forjitai.in/" },
+    { "@type": "ListItem", "position": 2, "name": "Free Tools", "item": "https://www.forjitai.in/tools/" },
+    { "@type": "ListItem", "position": 3, "name": "Income Tax Calculator FY 2025-26 — Forjit AI", "item": "https://www.forjitai.in/tools/income-tax-calculator.html" }
+  ]
+}
+</script>
+  <meta name="robots" content="index,follow,max-snippet:-1,max-image-preview:large"/>
+  <meta property="og:type"         content="website"/>
+  <meta property="og:site_name"    content="Forjit AI"/>
+  <meta property="og:url"          content="https://www.forjitai.in/tools/income-tax-calculator.html"/>
+  <meta property="og:title"        content="Income Tax Calculator FY 2025-26 — Forjit AI | New vs Old Regime + Tax Saving Tips"/>
+  <meta property="og:description"  content="FY 2024-25: New vs old regime comparison, slab-wise breakdown."/>
+  <meta property="og:image"        content="https://www.forjitai.in/og-image.png"/>
+  <meta property="og:image:width"  content="1200"/>
+  <meta property="og:image:height" content="630"/>
+  <meta property="og:locale"       content="en_IN"/>
+  <meta name="twitter:card"        content="summary_large_image"/>
+  <meta name="twitter:site"        content="@forjitai"/>
+  <meta name="twitter:title"       content="Income Tax Calculator FY 2025-26 — Forjit AI | New vs Old Regime + Tax Saving Tips"/>
+  <meta name="twitter:description" content="FY 2024-25: New vs old regime comparison, slab-wise breakdown."/>
+  <meta name="twitter:image"       content="https://www.forjitai.in/og-image.png"/>
+  <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-5102938260449475" crossorigin="anonymous"></script>
+  <meta name="google-site-verification" content="u11mSk2rQwaphaXMCcUwJU-6dRhN_ndessqEMeZdubk" />
+</head>
+<body>
+<header>
+  <a class="logo" href="/"><div class="lm">F</div><span style="font-size:15px;font-weight:600;margin-left:2px">Forjit AI</span></a>
+  <a class="back" href="/tools/">← All Tools</a>
+</header>
+<div class="wrap">
+  <h1>Income Tax Calculator</h1>
+  <p class="sub">FY 2025-26 (AY 2026-27) — New vs Old regime + personalized tax saving suggestions.</p>
+
+  <div class="ad">Advertisement · <a href="https://adsense.google.com" target="_blank">Connect AdSense</a></div>
+
+  <div class="card">
+    <div class="row2" style="margin-bottom:10px">
+      <div>
+        <span class="lbl">Annual Gross Income (₹)</span>
+        <div class="ig"><span class="pfx">₹</span><input type="number" id="income" value="1200000" min="0" step="10000" oninput="calc()"/></div>
+      </div>
+      <div>
+        <span class="lbl">Age Group</span>
+        <div class="ig"><select id="age" onchange="calc()">
+          <option value="below60">Below 60 years</option>
+          <option value="60to80">Senior Citizen (60–80)</option>
+          <option value="above80">Super Senior Citizen (80+)</option>
+        </select></div>
+      </div>
+    </div>
+
+    <h3 style="font-size:12px;font-weight:700;color:var(--mu);text-transform:uppercase;letter-spacing:.06em;margin-bottom:10px">Old Regime Deductions (enter what applies to you)</h3>
+    <div class="row3">
+      <div><span class="lbl">80C — PF, PPF, ELSS, LIC (max ₹1.5L)</span><div class="ig"><span class="pfx">₹</span><input type="number" id="d80c" value="150000" max="150000" oninput="calc()"/></div></div>
+      <div><span class="lbl">80D — Medical Insurance</span><div class="ig"><span class="pfx">₹</span><input type="number" id="d80d" value="25000" oninput="calc()"/></div></div>
+      <div><span class="lbl">HRA Exemption</span><div class="ig"><span class="pfx">₹</span><input type="number" id="hra" value="0" oninput="calc()"/></div></div>
+      <div><span class="lbl">80CCD(1B) — NPS (max ₹50K)</span><div class="ig"><span class="pfx">₹</span><input type="number" id="nps" value="0" max="50000" oninput="calc()"/></div></div>
+      <div><span class="lbl">Home Loan Interest (Sec 24b, max ₹2L)</span><div class="ig"><span class="pfx">₹</span><input type="number" id="homeLoan" value="0" max="200000" oninput="calc()"/></div></div>
+      <div><span class="lbl">Other Deductions</span><div class="ig"><span class="pfx">₹</span><input type="number" id="dother" value="0" oninput="calc()"/></div></div>
+    </div>
+  </div>
+
+  <!-- Comparison -->
+  <div class="compare-grid">
+    <div class="regime-card regime-new" id="newCard">
+      <div class="regime-lbl">🆕 New Regime <span id="newWinBadge" class="win-badge" style="display:none">Better ✓</span></div>
+      <div class="regime-val" style="color:var(--ac)" id="newTax">₹0</div>
+      <div class="regime-eff" id="newEff">Effective rate: 0%</div>
+    </div>
+    <div class="regime-card regime-old" id="oldCard">
+      <div class="regime-lbl">📋 Old Regime <span id="oldWinBadge" class="win-badge" style="display:none">Better ✓</span></div>
+      <div class="regime-val" style="color:#60a5fa" id="oldTax">₹0</div>
+      <div class="regime-eff" id="oldEff">Effective rate: 0%</div>
+    </div>
+  </div>
+
+  <div class="verdict verdict-save" id="verdict" style="display:none"></div>
+
+  <div class="ad">Advertisement</div>
+
+  <!-- ★ Tax Saving Suggestions — unique feature ★ -->
+  <div class="card">
+    <h3 style="font-size:15px;font-weight:700;margin-bottom:4px">
+      💰 Personalised Tax Saving Suggestions <span class="badge">Unique</span>
+    </h3>
+    <p style="font-size:13px;color:var(--mu);margin-bottom:14px">Based on your income and deductions, here's exactly how to reduce your tax further:</p>
+    <div id="suggestions"></div>
+  </div>
+
+  <!-- Slab breakdown -->
+  <div class="card">
+    <h3 style="font-size:14px;font-weight:700;margin-bottom:12px">Slab-wise Tax Breakdown</h3>
+    <div class="tbl-w"><table>
+      <thead><tr><th>Income Range</th><th>Rate</th><th>New Regime Tax</th><th>Old Regime Tax</th></tr></thead>
+      <tbody id="slabTable"></tbody>
+    </table></div>
+  </div>
+
+  <!-- Reference tables -->
+  <div class="card" style="background:var(--bg)">
+    <h3 style="font-size:14px;font-weight:700;color:var(--ac);margin-bottom:12px">FY 2025-26 Tax Slabs</h3>
+    <div style="display:grid;grid-template-columns:1fr 1fr;gap:16px;flex-wrap:wrap">
+      <div>
+        <div style="font-size:12px;font-weight:700;color:var(--ac);margin-bottom:8px">New Regime</div>
+        <div class="tbl-w"><table>
+          <thead><tr><th>Income</th><th>Rate</th></tr></thead>
+          <tbody>
+            <tr><td>Up to ₹3L</td><td>Nil</td></tr>
+            <tr><td>₹3L–₹7L</td><td>5%</td></tr>
+            <tr><td>₹7L–₹10L</td><td>10%</td></tr>
+            <tr><td>₹10L–₹12L</td><td>15%</td></tr>
+            <tr><td>₹12L–₹15L</td><td>20%</td></tr>
+            <tr><td>Above ₹15L</td><td>30%</td></tr>
+          </tbody>
+        </table></div>
+        <div style="font-size:11px;color:var(--su);margin-top:6px">+ 4% cess · Rebate if income ≤₹7L</div>
+      </div>
+      <div>
+        <div style="font-size:12px;font-weight:700;color:#60a5fa;margin-bottom:8px">Old Regime (below 60)</div>
+        <div class="tbl-w"><table>
+          <thead><tr><th>Income</th><th>Rate</th></tr></thead>
+          <tbody>
+            <tr><td>Up to ₹2.5L</td><td>Nil</td></tr>
+            <tr><td>₹2.5L–₹5L</td><td>5%</td></tr>
+            <tr><td>₹5L–₹10L</td><td>20%</td></tr>
+            <tr><td>Above ₹10L</td><td>30%</td></tr>
+          </tbody>
+        </table></div>
+        <div style="font-size:11px;color:var(--su);margin-top:6px">+ 4% cess · Rebate if income ≤₹5L</div>
+      </div>
+    </div>
+  </div>
+
+  <div class="ad">Advertisement</div>
+</div>
+
+<script>
+const fmt  = n => '₹' + Math.round(n).toLocaleString('en-IN');
+const fmtK = n => n>=10000000?'₹'+(n/10000000).toFixed(2)+'Cr':n>=100000?'₹'+(n/100000).toFixed(2)+'L':fmt(n);
+
+function computeTax(income, slabs, rebateLimit){
+  if(income<=0) return{tax:0,rows:[]};
+  let tax=0,rows=[],prev=0;
+  for(const[lim,rate] of slabs){
+    if(income<=prev) break;
+    const chunk=Math.min(income,lim)-prev;
+    const t=chunk*rate;
+    tax+=t;
+    if(chunk>0) rows.push({range:`Up to ₹${lim===Infinity?'∞':lim.toLocaleString('en-IN')}`,rate:(rate*100)+'%',tax:Math.round(t),taxable:Math.round(chunk)});
+    prev=lim;
+  }
+  if(income<=rebateLimit) tax=0;
+  const cess=tax*0.04;
+  return{tax:Math.round(tax+cess),rows};
+}
+
+function calc(){
+  const gross=+document.getElementById('income').value||0;
+  const age=document.getElementById('age').value;
+  const d80c=Math.min(+document.getElementById('d80c').value||0,150000);
+  const d80d=+document.getElementById('d80d').value||0;
+  const hra=+document.getElementById('hra').value||0;
+  const nps=Math.min(+document.getElementById('nps').value||0,50000);
+  const homeLoan=Math.min(+document.getElementById('homeLoan').value||0,200000);
+  const dother=+document.getElementById('dother').value||0;
+
+  // New Regime
+  const newIncome=Math.max(0,gross-75000);
+  const newSlabs=[[300000,0],[700000,.05],[1000000,.10],[1200000,.15],[1500000,.20],[Infinity,.30]];
+  const newR=computeTax(newIncome,newSlabs,700000);
+
+  // Old Regime
+  const stdDed=50000;
+  const totalOldDed=stdDed+d80c+d80d+hra+nps+homeLoan+dother;
+  const oldIncome=Math.max(0,gross-totalOldDed);
+  let basic=age==='60to80'?300000:age==='above80'?500000:250000;
+  const oldSlabs=[[basic,0],[500000,.05],[1000000,.20],[Infinity,.30]];
+  const oldR=computeTax(oldIncome,oldSlabs,500000);
+
+  // Display
+  document.getElementById('newTax').textContent=fmtK(newR.tax);
+  document.getElementById('oldTax').textContent=fmtK(oldR.tax);
+  document.getElementById('newEff').textContent=`Effective rate: ${gross?(newR.tax/gross*100).toFixed(2):'0'}%`;
+  document.getElementById('oldEff').textContent=`Effective rate: ${gross?(oldR.tax/gross*100).toFixed(2):'0'}%`;
+
+  // Verdict
+  const verdict=document.getElementById('verdict');
+  verdict.style.display='block';
+  document.getElementById('newWinBadge').style.display='none';
+  document.getElementById('oldWinBadge').style.display='none';
+  if(newR.tax<oldR.tax){
+    document.getElementById('newWinBadge').style.display='inline';
+    const saved=oldR.tax-newR.tax;
+    verdict.innerHTML=`✅ <strong>New Regime saves you ${fmtK(saved)}/year</strong> (${fmt(Math.round(saved/12))}/month). Switch to New Regime for maximum savings.`;
+  } else if(oldR.tax<newR.tax){
+    document.getElementById('oldWinBadge').style.display='inline';
+    const saved=newR.tax-oldR.tax;
+    verdict.innerHTML=`✅ <strong>Old Regime saves you ${fmtK(saved)}/year</strong> (${fmt(Math.round(saved/12))}/month). Claim your deductions to keep saving.`;
+  } else {
+    verdict.innerHTML=`Both regimes result in the same tax of ${fmtK(newR.tax)}.`;
+  }
+
+  // Slab table
+  const tbody=document.getElementById('slabTable');
+  tbody.innerHTML='';
+  const maxLen=Math.max(newR.rows.length,oldR.rows.length);
+  for(let i=0;i<maxLen;i++){
+    const n=newR.rows[i]||{};
+    const o=oldR.rows[i]||{};
+    tbody.innerHTML+=`<tr><td style="color:var(--mu)">${n.range||o.range||'—'}</td><td style="color:var(--mu)">${n.rate||o.rate||'—'}</td><td>${n.tax!=null?'₹'+n.tax.toLocaleString('en-IN'):'—'}</td><td>${o.tax!=null?'₹'+o.tax.toLocaleString('en-IN'):'—'}</td></tr>`;
+  }
+
+  // Tax saving suggestions
+  buildSuggestions(gross,d80c,d80d,hra,nps,homeLoan,newR.tax,oldR.tax);
+}
+
+function buildSuggestions(gross,d80c,d80d,hra,nps,homeLoan,newTax,oldTax){
+  const suggestions=[];
+  const bestTax=Math.min(newTax,oldTax);
+  const useOld=oldTax<=newTax;
+
+  // 80C headroom
+  const room80c=150000-d80c;
+  if(room80c>0&&useOld){
+    const saving=Math.min(room80c*0.30,room80c*0.20); // rough estimate
+    suggestions.push({
+      icon:'🛡️',
+      title:`Max out Section 80C — ${fmt(room80c)} more room`,
+      save:`Save up to ${fmtK(Math.round(room80c*0.3))}`,
+      desc:`Invest ${fmt(room80c)} more in ELSS, PPF, EPF, NSC, or LIC to claim full ₹1.5L deduction under 80C.`,
+    });
+  }
+
+  // NPS
+  if(nps<50000&&useOld){
+    const extraNPS=50000-nps;
+    suggestions.push({
+      icon:'🏦',
+      title:`Invest in NPS (Section 80CCD 1B) — save up to ₹50,000 extra`,
+      save:`Save ${fmtK(Math.round(extraNPS*0.3))} more`,
+      desc:`₹${extraNPS.toLocaleString('en-IN')} NPS contribution gives exclusive 80CCD(1B) deduction — above and beyond the 80C limit.`,
+    });
+  }
+
+  // HRA if not claimed
+  if(hra===0&&gross>500000){
+    suggestions.push({
+      icon:'🏡',
+      title:`Claim HRA Exemption if you pay rent`,
+      save:`Potentially save ₹20,000–₹80,000`,
+      desc:`If you're paying house rent, claim HRA exemption under Section 10(13A). Available in Old Regime only. Collect rent receipts.`,
+    });
+  }
+
+  // Home loan
+  if(homeLoan<200000&&gross>1000000){
+    suggestions.push({
+      icon:'🏠',
+      title:`Home Loan Interest (Section 24b) — up to ₹2L deduction`,
+      save:`Save up to ${fmtK(200000*0.3)}`,
+      desc:`Interest paid on home loan (up to ₹2L/year) is deductible under Old Regime. Great for high earners with a home loan.`,
+    });
+  }
+
+  // 80D health insurance
+  if(d80d<25000){
+    suggestions.push({
+      icon:'💊',
+      title:`Get Health Insurance (Section 80D)`,
+      save:`Save ₹7,500–₹25,000`,
+      desc:`Medical insurance premium up to ₹25,000 (₹50,000 for senior citizen parents) is deductible. Protects health + saves tax.`,
+    });
+  }
+
+  // New vs Old suggestion
+  if(newTax<oldTax){
+    suggestions.push({
+      icon:'🔄',
+      title:`Switch to New Tax Regime`,
+      save:`Save ${fmtK(oldTax-newTax)} this year`,
+      desc:`New Regime has lower slab rates and includes ₹75,000 standard deduction. Best for those with fewer deductions.`,
+    });
+  } else if(oldTax<newTax){
+    suggestions.push({
+      icon:'📋',
+      title:`Stay on Old Regime and claim all deductions`,
+      save:`Save ${fmtK(newTax-oldTax)} this year`,
+      desc:`Your deductions make Old Regime better. Ensure you claim ALL eligible deductions — 80C, 80D, HRA, NPS, home loan interest.`,
+    });
+  }
+
+  // If income ≤7L in new regime → zero tax
+  if(gross<=700000+75000){
+    suggestions.unshift({
+      icon:'🎉',
+      title:`Your income is in zero-tax zone (New Regime)!`,
+      save:`Tax = ₹0 under New Regime`,
+      desc:`With ₹75,000 standard deduction, taxable income = ₹${Math.max(0,gross-75000).toLocaleString('en-IN')}. Since this is ≤₹7L, you pay ZERO tax under New Regime. File ITR and claim your refund if TDS was deducted.`,
+    });
+  }
+
+  const el=document.getElementById('suggestions');
+  if(!suggestions.length){
+    el.innerHTML=`<div style="font-size:13px;color:var(--mu);padding:12px;text-align:center">🎉 You're maximizing all major deductions! Your tax is already optimized.</div>`;
+    return;
+  }
+  el.innerHTML=suggestions.map(s=>`
+    <div class="saving-item">
+      <div class="saving-icon">${s.icon}</div>
+      <div>
+        <div class="saving-title">${s.title}</div>
+        <div class="saving-save">${s.save}</div>
+        <div class="saving-desc">${s.desc}</div>
+      </div>
+    </div>`).join('');
+}
+
+// Init — URL params let users share pre-filled scenarios
+(function initTax() {
+  const p = (typeof ForjitTool !== 'undefined') ? ForjitTool.getParams() : {};
+  if (p.income) document.getElementById('income').value = p.income;
+  if (p.d80c)   document.getElementById('d80c').value   = p.d80c;
+  if (p.d80d)   document.getElementById('d80d').value   = p.d80d;
+  if (p.age)    document.getElementById('age').value    = p.age;
+  calc();
+  // Sync key fields to URL
+  ['income','d80c','d80d'].forEach(id => {
+    const el = document.getElementById(id);
+    if (el) el.addEventListener('input', () => {
+      if (typeof ForjitTool !== 'undefined') {
+        ForjitTool.setParams({
+          income: document.getElementById('income').value,
+          d80c:   document.getElementById('d80c').value,
+          d80d:   document.getElementById('d80d').value,
+        });
+      }
+    });
+  });
+}());
+</script>
+<script src="tool-common.js"></script>
+
+<!-- Internal SEO links -->
+<div id="related-tools-seo" style="margin:20px 0;padding:14px;background:#0c0a09;border:1px solid #292524;border-radius:10px">
+  <p style="font-size:11px;color:#57534e;text-transform:uppercase;letter-spacing:.07em;margin-bottom:8px;font-weight:700">Related Free Tools</p>
+  <a href="/tools/salary-calculator.html" style="display:inline-block;margin:4px;padding:6px 12px;background:#1c1917;border:1px solid #292524;border-radius:999px;color:#a8a29e;font-size:12px;text-decoration:none">Salary Calculator</a>
+<a href="/tools/hra-calculator.html" style="display:inline-block;margin:4px;padding:6px 12px;background:#1c1917;border:1px solid #292524;border-radius:999px;color:#a8a29e;font-size:12px;text-decoration:none">HRA Calculator</a>
+<a href="/tools/ppf-calculator.html" style="display:inline-block;margin:4px;padding:6px 12px;background:#1c1917;border:1px solid #292524;border-radius:999px;color:#a8a29e;font-size:12px;text-decoration:none">PPF Calculator</a>
+</div>
+</body>
+</html>

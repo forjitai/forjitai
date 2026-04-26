@@ -1,0 +1,34 @@
+User-agent: *
+Allow: /
+
+# Priority pages for crawling
+Allow: /tools/
+Allow: /tools/emi-calculator.html
+Allow: /tools/age-calculator.html
+Allow: /tools/bmi-calculator.html
+Allow: /tools/sip-calculator.html
+Allow: /tools/income-tax-calculator.html
+Allow: /tools/gst-calculator.html
+Allow: /tools/percentage-calculator.html
+Allow: /tools/indian-cooking-planner.html
+Allow: /about
+Allow: /blog
+
+# Sitemap
+Sitemap: https://www.forjitai.in/sitemap.xml
+
+# Allow AI bots
+User-agent: GPTBot
+Allow: /
+
+User-agent: ClaudeBot
+Allow: /
+
+User-agent: Google-Extended
+Allow: /
+
+User-agent: Googlebot
+Allow: /
+
+User-agent: Bingbot
+Allow: /

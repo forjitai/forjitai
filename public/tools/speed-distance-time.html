@@ -1,0 +1,148 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="UTF-8"/><meta name="viewport" content="width=device-width,initial-scale=1.0"/>
+<title>Speed Distance Time Calculator — Forjit AI | Physics Solver</title>
+<meta name="description" content="Free speed distance time calculator. Calculate speed, distance, or time — solve for any one variable given the other two. Useful for students and travelers."/>
+<meta name="keywords" content="speed distance time calculator, SDT calculator, physics calculator, velocity calculator, travel time calculator"/>
+<link rel="canonical" href="https://www.forjitai.in/tools/speed-distance-time.html"/>
+<link rel="stylesheet" href="tools.css"/>
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-DYR402JFVG"></script>
+<script>window.dataLayer=window.dataLayer||[];function gtag(){dataLayer.push(arguments);}gtag('js',new Date());gtag('config','G-DYR402JFVG');</script>
+  <meta name="robots" content="index,follow,max-snippet:-1,max-image-preview:large"/>
+  <meta property="og:type"         content="website"/>
+  <meta property="og:site_name"    content="Forjit AI"/>
+  <meta property="og:url"          content="https://www.forjitai.in/tools/speed-distance-time.html"/>
+  <meta property="og:title"        content="Speed Distance Time Calculator — Forjit AI | Physics Solver"/>
+  <meta property="og:description"  content="Solve for speed, distance, or time. All unit conversions included."/>
+  <meta property="og:image"        content="https://www.forjitai.in/og-image.png"/>
+  <meta property="og:image:width"  content="1200"/>
+  <meta property="og:image:height" content="630"/>
+  <meta property="og:locale"       content="en_IN"/>
+  <meta name="twitter:card"        content="summary_large_image"/>
+  <meta name="twitter:site"        content="@forjitai"/>
+  <meta name="twitter:title"       content="Speed Distance Time Calculator — Forjit AI | Physics Solver"/>
+  <meta name="twitter:description" content="Solve for speed, distance, or time. All unit conversions included."/>
+  <meta name="twitter:image"       content="https://www.forjitai.in/og-image.png"/>
+  <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-5102938260449475" crossorigin="anonymous"></script>
+  <meta name="google-site-verification" content="u11mSk2rQwaphaXMCcUwJU-6dRhN_ndessqEMeZdubk" />
+</head>
+<body>
+<header>
+  <a class="logo" href="/"><div class="logo-mark">F</div><div><div class="logo-name">Forjit AI</div><div class="logo-sub">Tools</div></div></a>
+  <a class="back-link" href="/tools/">← All Tools</a>
+</header>
+<div class="container-sm">
+  <h1>Speed, Distance & Time</h1>
+  <p class="page-desc">Calculate speed, distance, or time — enter any two values to find the third.</p>
+  <div class="ad-slot">Advertisement · <a href="https://adsense.google.com" target="_blank">Connect AdSense</a></div>
+
+  <div class="card">
+    <p style="font-size:13px;color:var(--muted);margin-bottom:16px">Leave one field blank — it will be calculated automatically.</p>
+    <div class="field"><span class="label">Speed</span>
+      <div style="display:flex;gap:8px">
+        <div class="input-wrap" style="flex:2"><input type="number" id="speed" value="60" min="0" oninput="solve('speed')"/></div>
+        <div class="input-wrap" style="flex:1"><select id="speedUnit" onchange="solve('speed')"><option value="kmh">km/h</option><option value="mph">mph</option><option value="ms">m/s</option><option value="knot">knots</option></select></div>
+      </div>
+    </div>
+    <div class="field"><span class="label">Distance</span>
+      <div style="display:flex;gap:8px">
+        <div class="input-wrap" style="flex:2"><input type="number" id="distance" value="120" min="0" oninput="solve('distance')"/></div>
+        <div class="input-wrap" style="flex:1"><select id="distUnit" onchange="solve('distance')"><option value="km">km</option><option value="mi">miles</option><option value="m">meters</option><option value="nm">nautical mi</option></select></div>
+      </div>
+    </div>
+    <div class="field"><span class="label">Time</span>
+      <div style="display:flex;gap:8px">
+        <div class="input-wrap" style="flex:2"><input type="number" id="time" min="0" oninput="solve('time')"/></div>
+        <div class="input-wrap" style="flex:1"><select id="timeUnit" onchange="solve('time')"><option value="hours">hours</option><option value="minutes">minutes</option><option value="seconds">seconds</option><option value="days">days</option></select></div>
+      </div>
+    </div>
+  </div>
+
+  <div class="result-hero" id="resultBox" style="display:none">
+    <div class="result-hero-label" id="resLabel">Result</div>
+    <div class="result-hero-value" id="resValue">—</div>
+    <div class="result-hero-sub" id="resSub">—</div>
+  </div>
+
+  <div class="card">
+    <h3 style="font-size:14px;font-weight:700;margin-bottom:14px">All Units Converted</h3>
+    <div class="results-grid cols2" id="conversions"></div>
+  </div>
+
+  <div class="card-dark">
+    <h3 style="font-size:14px;font-weight:700;margin-bottom:12px;color:var(--accent)">📐 Formulas</h3>
+    <div style="font-family:monospace;font-size:14px;line-height:2.2;color:var(--muted)">
+      <div><span style="color:var(--fg)">Speed</span> = Distance ÷ Time</div>
+      <div><span style="color:var(--fg)">Distance</span> = Speed × Time</div>
+      <div><span style="color:var(--fg)">Time</span> = Distance ÷ Speed</div>
+    </div>
+  </div>
+
+  <div class="card">
+    <h3 style="font-size:14px;font-weight:700;margin-bottom:12px">Common Speed References</h3>
+    <div class="table-wrap"><table>
+      <thead><tr><th>Mode</th><th>Typical Speed</th><th>100 km in…</th></tr></thead>
+      <tbody>
+        <tr><td>Walking</td><td>5 km/h</td><td>20 hours</td></tr>
+        <tr><td>Cycling</td><td>20 km/h</td><td>5 hours</td></tr>
+        <tr><td>City car</td><td>40 km/h</td><td>2.5 hours</td></tr>
+        <tr><td>Highway car</td><td>100 km/h</td><td>1 hour</td></tr>
+        <tr><td>Bullet train</td><td>300 km/h</td><td>20 minutes</td></tr>
+        <tr><td>Commercial flight</td><td>900 km/h</td><td>6.7 minutes</td></tr>
+        <tr><td>Speed of sound</td><td>1,235 km/h</td><td>4.9 minutes</td></tr>
+        <tr><td>Speed of light</td><td>1,08,00,00,000 km/h</td><td>0.0003 seconds</td></tr>
+      </tbody>
+    </table></div>
+  </div>
+  <div class="ad-slot">Advertisement</div>
+</div>
+<script>
+// Convert to base units: speed → m/s, dist → m, time → seconds
+const toMS={kmh:1/3.6,mph:0.44704,ms:1,knot:0.514444};
+const toM={km:1000,mi:1609.344,m:1,nm:1852};
+const toS={hours:3600,minutes:60,seconds:1,days:86400};
+const fromMS={kmh:3.6,mph:2.23694,ms:1,knot:1.94384};
+const fromM={km:0.001,mi:0.000621371,m:1,nm:0.000539957};
+const fromS={hours:1/3600,minutes:1/60,seconds:1,days:1/86400};
+
+function solve(changed){
+  const spEl=document.getElementById('speed');const dEl=document.getElementById('distance');const tEl=document.getElementById('time');
+  const su=document.getElementById('speedUnit').value;const du=document.getElementById('distUnit').value;const tu=document.getElementById('timeUnit').value;
+  const sv=parseFloat(spEl.value);const dv=parseFloat(dEl.value);const tv=parseFloat(tEl.value);
+  const spMs=isNaN(sv)?null:sv*toMS[su];const dM=isNaN(dv)?null:dv*toM[du];const tS=isNaN(tv)?null:tv*toS[tu];
+
+  let result,label,sub;
+  if(isNaN(sv)&&!isNaN(dv)&&!isNaN(tv)){// calculate speed
+    const ms=dM/tS;spEl.value=(ms*fromMS[su]).toFixed(4);result=ms;label='Speed = '+ms.toFixed(4)+' m/s';sub=`Distance ${dv} ${du} ÷ Time ${tv} ${tu}`;
+    showConversions('speed',ms,null,null);
+  } else if(!isNaN(sv)&&isNaN(dv)&&!isNaN(tv)){// calculate distance
+    const dm=spMs*tS;dEl.value=(dm*fromM[du]).toFixed(4);result=dm;label='Distance = '+dm.toFixed(2)+' m';sub=`Speed ${sv} ${su} × Time ${tv} ${tu}`;
+    showConversions('distance',null,dm,null);
+  } else if(!isNaN(sv)&&!isNaN(dv)&&isNaN(tv)){// calculate time
+    const ts=dM/spMs;tEl.value=(ts*fromS[tu]).toFixed(4);result=ts;label='Time = '+ts.toFixed(2)+' seconds';sub=`Distance ${dv} ${du} ÷ Speed ${sv} ${su}`;
+    showConversions('time',null,null,ts);
+  } else {return;}
+  document.getElementById('resultBox').style.display='block';
+  document.getElementById('resLabel').textContent=label;
+  document.getElementById('resValue').textContent=label.split(' = ')[1];
+  document.getElementById('resSub').textContent=sub;
+}
+
+function showConversions(type,ms,dm,ts){
+  const div=document.getElementById('conversions');
+  if(type==='speed'&&ms!==null){
+    div.innerHTML=Object.entries(fromMS).map(([unit,factor])=>`<div class="result-card"><div class="result-label">${unit}</div><div class="result-value" style="font-size:16px">${(ms*factor).toFixed(4)}</div></div>`).join('');
+  } else if(type==='distance'&&dm!==null){
+    div.innerHTML=Object.entries(fromM).map(([unit,factor])=>`<div class="result-card"><div class="result-label">${unit}</div><div class="result-value" style="font-size:16px">${(dm*factor).toFixed(4)}</div></div>`).join('');
+  } else if(type==='time'&&ts!==null){
+    div.innerHTML=Object.entries(fromS).map(([unit,factor])=>`<div class="result-card"><div class="result-label">${unit}</div><div class="result-value" style="font-size:16px">${(ts*factor).toFixed(4)}</div></div>`).join('');
+  }
+}
+// Initial: calculate time from speed + distance
+document.getElementById('time').value='';
+solve('time');
+</script>
+<script src="tool-common.js"></script>
+</body>
+</html>

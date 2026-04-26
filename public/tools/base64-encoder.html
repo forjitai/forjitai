@@ -1,0 +1,123 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="UTF-8"/><meta name="viewport" content="width=device-width,initial-scale=1.0"/>
+<title>Base64 Encoder Decoder — Forjit AI | Free Online Base64 Tool</title>
+<meta name="description" content="Free Base64 encoder and decoder online. Encode text to Base64 or decode Base64 to text instantly. Also encode URLs, JSON, and files. No data sent to server."/>
+<meta name="keywords" content="base64 encoder, base64 decoder, base64 encode online, base64 decode online, URL encoder decoder"/>
+<link rel="canonical" href="https://www.forjitai.in/tools/base64-encoder.html"/>
+<link rel="stylesheet" href="tools.css"/>
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-DYR402JFVG"></script>
+<script>window.dataLayer=window.dataLayer||[];function gtag(){dataLayer.push(arguments);}gtag('js',new Date());gtag('config','G-DYR402JFVG');</script>
+  <meta name="robots" content="index,follow,max-snippet:-1,max-image-preview:large"/>
+  <meta property="og:type"         content="website"/>
+  <meta property="og:site_name"    content="Forjit AI"/>
+  <meta property="og:url"          content="https://www.forjitai.in/tools/base64-encoder.html"/>
+  <meta property="og:title"        content="Base64 Encoder Decoder — Forjit AI | Free Online Base64 Tool"/>
+  <meta property="og:description"  content="Encode/decode Base64, URLs, HTML entities. Encode images to Base64."/>
+  <meta property="og:image"        content="https://www.forjitai.in/og-image.png"/>
+  <meta property="og:image:width"  content="1200"/>
+  <meta property="og:image:height" content="630"/>
+  <meta property="og:locale"       content="en_IN"/>
+  <meta name="twitter:card"        content="summary_large_image"/>
+  <meta name="twitter:site"        content="@forjitai"/>
+  <meta name="twitter:title"       content="Base64 Encoder Decoder — Forjit AI | Free Online Base64 Tool"/>
+  <meta name="twitter:description" content="Encode/decode Base64, URLs, HTML entities. Encode images to Base64."/>
+  <meta name="twitter:image"       content="https://www.forjitai.in/og-image.png"/>
+  <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-5102938260449475" crossorigin="anonymous"></script>
+  <meta name="google-site-verification" content="u11mSk2rQwaphaXMCcUwJU-6dRhN_ndessqEMeZdubk" />
+</head>
+<body>
+<header>
+  <a class="logo" href="/"><div class="logo-mark">F</div><div><div class="logo-name">Forjit AI</div><div class="logo-sub">Tools</div></div></a>
+  <a class="back-link" href="/tools/">← All Tools</a>
+</header>
+<div class="container">
+  <h1>Base64 Encoder / Decoder</h1>
+  <p class="page-desc">Encode or decode Base64, URLs, and JSON. All processing happens in your browser — no data sent anywhere.</p>
+  <div class="ad-slot">Advertisement · <a href="https://adsense.google.com" target="_blank">Connect AdSense</a></div>
+
+  <div class="toggle-row"><button class="toggle-btn on" onclick="setMode('base64',this)">Base64</button><button class="toggle-btn" onclick="setMode('url',this)">URL Encode</button><button class="toggle-btn" onclick="setMode('html',this)">HTML Entities</button><button class="toggle-btn" onclick="setMode('json',this)">JSON Format</button></div>
+
+  <div style="display:grid;grid-template-columns:1fr 1fr;gap:16px">
+    <div class="card" style="display:flex;flex-direction:column;gap:10px">
+      <div style="display:flex;justify-content:space-between;align-items:center">
+        <span class="label" style="margin:0" id="leftLabel">Plain Text / Input</span>
+        <div style="display:flex;gap:6px"><button onclick="pasteText()" style="padding:4px 8px;background:var(--border);border:none;border-radius:5px;cursor:pointer;color:var(--muted);font-size:11px">Paste</button><button onclick="clearAll()" style="padding:4px 8px;background:var(--border);border:none;border-radius:5px;cursor:pointer;color:var(--muted);font-size:11px">Clear</button></div>
+      </div>
+      <textarea id="inputText" rows="10" placeholder="Type or paste your text here…" oninput="encode()" style="background:var(--bg);border:1px solid var(--border);border-radius:8px;padding:12px;color:var(--fg);font-family:monospace;font-size:13px;resize:vertical;outline:none;flex:1;line-height:1.5;transition:border-color .15s"></textarea>
+      <button class="btn" onclick="encode()">Encode →</button>
+    </div>
+    <div class="card" style="display:flex;flex-direction:column;gap:10px">
+      <div style="display:flex;justify-content:space-between;align-items:center">
+        <span class="label" style="margin:0" id="rightLabel">Encoded Output</span>
+        <div style="display:flex;gap:6px"><button onclick="copyOutput()" style="padding:4px 8px;background:var(--border);border:none;border-radius:5px;cursor:pointer;color:var(--muted);font-size:11px" id="copyOutBtn">Copy</button><button onclick="swapAndDecode()" style="padding:4px 8px;background:var(--accent);border:none;border-radius:5px;cursor:pointer;color:var(--bg);font-size:11px;font-weight:700">⇄ Decode</button></div>
+      </div>
+      <textarea id="outputText" rows="10" placeholder="Encoded result appears here…" style="background:var(--bg);border:1px solid var(--border);border-radius:8px;padding:12px;color:var(--accent);font-family:monospace;font-size:13px;resize:vertical;outline:none;flex:1;line-height:1.5" readonly></textarea>
+      <div style="font-size:11px;color:var(--muted)" id="stats">—</div>
+    </div>
+  </div>
+
+  <div class="card" style="margin-top:0">
+    <h3 style="font-size:14px;font-weight:700;margin-bottom:12px">Encode an Image to Base64 (for embedding in HTML/CSS)</h3>
+    <input type="file" id="imgFile" accept="image/*" onchange="encodeImage()" style="background:var(--bg);border:1px solid var(--border);border-radius:8px;padding:10px;color:var(--muted);width:100%;font-family:inherit"/>
+    <div id="imgResult" style="display:none;margin-top:10px">
+      <div class="input-wrap" style="margin-bottom:8px"><textarea id="imgB64" rows="3" style="font-family:monospace;font-size:11px;background:transparent;border:none;outline:none;color:var(--muted);width:100%;resize:none" readonly></textarea></div>
+      <button onclick="copyImg()" class="copy-btn">Copy Base64 String</button>
+      <span style="font-size:11px;color:var(--muted);margin-left:8px" id="imgSize"></span>
+    </div>
+  </div>
+
+  <div class="ad-slot">Advertisement</div>
+</div>
+<script>
+let currentMode='base64';
+function setMode(m,btn){currentMode=m;document.querySelectorAll('.toggle-btn').forEach(b=>b.classList.remove('on'));btn.classList.add('on');encode();}
+
+function encode(){
+  const input=document.getElementById('inputText').value;
+  let output='',err=false;
+  try{
+    if(currentMode==='base64') output=btoa(unescape(encodeURIComponent(input)));
+    else if(currentMode==='url') output=encodeURIComponent(input);
+    else if(currentMode==='html') output=input.replace(/&/g,'&amp;').replace(/</g,'&lt;').replace(/>/g,'&gt;').replace(/"/g,'&quot;').replace(/'/g,'&#39;');
+    else if(currentMode==='json'){try{output=JSON.stringify(JSON.parse(input),null,2);}catch{output=JSON.stringify(input);}}
+  } catch(e){output='Error: '+e.message;err=true;}
+  document.getElementById('outputText').value=output;
+  document.getElementById('stats').textContent=err?'':`Input: ${input.length} chars → Output: ${output.length} chars (${output.length?((output.length/Math.max(1,input.length)-1)*100).toFixed(1)+'% size change':'—'})`;
+}
+
+function swapAndDecode(){
+  const encoded=document.getElementById('outputText').value||document.getElementById('inputText').value;
+  let output='',err=false;
+  try{
+    if(currentMode==='base64') output=decodeURIComponent(escape(atob(encoded)));
+    else if(currentMode==='url') output=decodeURIComponent(encoded);
+    else if(currentMode==='html') output=encoded.replace(/&amp;/g,'&').replace(/&lt;/g,'<').replace(/&gt;/g,'>').replace(/&quot;/g,'"').replace(/&#39;/g,"'");
+    else if(currentMode==='json') output=JSON.stringify(JSON.parse(encoded));
+  } catch(e){output='Decode Error: '+e.message;err=true;}
+  document.getElementById('inputText').value=encoded;
+  document.getElementById('outputText').value=output;
+}
+
+function copyOutput(){navigator.clipboard.writeText(document.getElementById('outputText').value);const btn=document.getElementById('copyOutBtn');btn.textContent='✓ Copied!';setTimeout(()=>btn.textContent='Copy',1500);}
+function pasteText(){navigator.clipboard.readText().then(t=>{document.getElementById('inputText').value=t;encode();}).catch(()=>{});}
+function clearAll(){document.getElementById('inputText').value='';document.getElementById('outputText').value='';document.getElementById('stats').textContent='—';}
+
+function encodeImage(){
+  const file=document.getElementById('imgFile').files[0];
+  if(!file)return;
+  const reader=new FileReader();
+  reader.onload=e=>{
+    const b64=e.target.result;
+    document.getElementById('imgResult').style.display='block';
+    document.getElementById('imgB64').value=b64;
+    document.getElementById('imgSize').textContent=`${(b64.length/1024).toFixed(1)} KB · Use as: <img src="${b64.slice(0,30)}…">`;
+  };
+  reader.readAsDataURL(file);
+}
+function copyImg(){navigator.clipboard.writeText(document.getElementById('imgB64').value);event.target.textContent='✓ Copied!';setTimeout(()=>event.target.textContent='Copy Base64 String',1500);}
+</script>
+<script src="tool-common.js"></script>
+</body>
+</html>

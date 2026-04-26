@@ -1,0 +1,512 @@
+<!doctype html>
+<html>
+<head>
+<meta charset="UTF-8"/>
+<title>Forjit AI — Marketing Image Generator</title>
+<style>
+  body{background:#111;color:#fff;font-family:system-ui;padding:20px;text-align:center}
+  canvas{display:none}
+  .cards{display:flex;flex-wrap:wrap;gap:20px;justify-content:center;margin:20px 0}
+  .card-wrap{display:flex;flex-direction:column;align-items:center;gap:10px}
+  img{border-radius:12px;max-width:100%;box-shadow:0 8px 40px rgba(0,0,0,.5)}
+  button{padding:10px 20px;background:#f59e0b;color:#000;border:none;
+    border-radius:8px;cursor:pointer;font-size:14px;font-weight:700;margin:4px}
+  button:hover{background:#d97706}
+  h1{color:#f59e0b;margin-bottom:8px}
+  p{color:#a8a29e;font-size:14px}
+</style>
+</head>
+<body>
+<h1>🎨 Forjit AI — Marketing Images</h1>
+<p>All 3 marketing cards generated below. Click Download to save each one.</p>
+<div class="cards" id="cards"></div>
+<canvas id="c"></canvas>
+
+<script>
+const W = 1080, H = 1080;
+const c = document.getElementById('c');
+const ctx = c.getContext('2d');
+c.width = W; c.height = H;
+
+function hex(h){
+  const r=parseInt(h.slice(1,3),16),g=parseInt(h.slice(3,5),16),b=parseInt(h.slice(5,7),16);
+  return {r,g,b};
+}
+
+function wrapText(ctx, text, x, y, maxW, lineH) {
+  const words = text.split(' ');
+  let line = '';
+  let lines = [];
+  for(let w of words){
+    const test = line + w + ' ';
+    if(ctx.measureText(test).width > maxW && line !== ''){
+      lines.push(line.trim()); line = w + ' ';
+    } else { line = test; }
+  }
+  lines.push(line.trim());
+  lines.forEach((l,i) => ctx.fillText(l, x, y + i*lineH));
+  return lines.length;
+}
+
+// ─── CARD 1: "Build Your Own App Free" ────────────────────────────────────
+function drawCard1(){
+  ctx.clearRect(0,0,W,H);
+
+  // Background - deep dark with warm tint
+  const bg = ctx.createRadialGradient(W/2, H/2, 0, W/2, H/2, W*0.8);
+  bg.addColorStop(0, '#1c1410');
+  bg.addColorStop(1, '#0a0806');
+  ctx.fillStyle = bg;
+  ctx.fillRect(0,0,W,H);
+
+  // Grid pattern
+  ctx.strokeStyle = 'rgba(245,158,11,0.06)';
+  ctx.lineWidth = 1;
+  for(let x=0;x<W;x+=60){ctx.beginPath();ctx.moveTo(x,0);ctx.lineTo(x,H);ctx.stroke();}
+  for(let y=0;y<H;y+=60){ctx.beginPath();ctx.moveTo(0,y);ctx.lineTo(W,y);ctx.stroke();}
+
+  // Glow circle
+  const glow = ctx.createRadialGradient(W/2, H*0.42, 0, W/2, H*0.42, 320);
+  glow.addColorStop(0, 'rgba(245,158,11,0.18)');
+  glow.addColorStop(1, 'rgba(245,158,11,0)');
+  ctx.fillStyle = glow;
+  ctx.fillRect(0,0,W,H);
+
+  // Top badge
+  ctx.fillStyle = 'rgba(245,158,11,0.15)';
+  roundRect(ctx, W/2-120, 80, 240, 44, 22);
+  ctx.fill();
+  ctx.strokeStyle = 'rgba(245,158,11,0.4)';
+  ctx.lineWidth = 1.5;
+  roundRect(ctx, W/2-120, 80, 240, 44, 22);
+  ctx.stroke();
+  ctx.fillStyle = '#f59e0b';
+  ctx.font = 'bold 18px system-ui';
+  ctx.textAlign = 'center';
+  ctx.fillText('🤖  FORJIT AI', W/2, 108);
+
+  // Main headline
+  ctx.fillStyle = '#ffffff';
+  ctx.font = 'bold 88px system-ui';
+  ctx.textAlign = 'center';
+  ctx.fillText('BUILD YOUR', W/2, 240);
+
+  const grad = ctx.createLinearGradient(200, 280, 880, 340);
+  grad.addColorStop(0, '#f59e0b');
+  grad.addColorStop(0.5, '#fbbf24');
+  grad.addColorStop(1, '#f97316');
+  ctx.fillStyle = grad;
+  ctx.font = 'bold 90px system-ui';
+  ctx.fillText('OWN APP', W/2, 340);
+
+  ctx.fillStyle = '#ffffff';
+  ctx.font = 'bold 88px system-ui';
+  ctx.fillText('IN 30 SECS', W/2, 432);
+
+  // Divider
+  ctx.strokeStyle = 'rgba(245,158,11,0.3)';
+  ctx.lineWidth = 2;
+  ctx.beginPath(); ctx.moveTo(200,470); ctx.lineTo(880,470); ctx.stroke();
+
+  // Steps
+  const steps = [
+    ['1', 'TYPE', 'Describe your tool in plain Hindi or English'],
+    ['2', 'AI BUILDS', 'Working app generated in 30 seconds'],
+    ['3', 'DOWNLOAD', 'Use it forever on any device — free'],
+  ];
+
+  steps.forEach(([num, title, desc], i) => {
+    const y = 510 + i * 120;
+    const x = 120;
+
+    // Number circle
+    const cg = ctx.createRadialGradient(x, y+20, 0, x, y+20, 30);
+    cg.addColorStop(0, '#f59e0b');
+    cg.addColorStop(1, '#d97706');
+    ctx.fillStyle = cg;
+    ctx.beginPath(); ctx.arc(x, y+20, 28, 0, Math.PI*2); ctx.fill();
+    ctx.fillStyle = '#000';
+    ctx.font = 'bold 22px system-ui';
+    ctx.textAlign = 'center';
+    ctx.fillText(num, x, y+28);
+
+    ctx.fillStyle = '#f59e0b';
+    ctx.font = 'bold 22px system-ui';
+    ctx.textAlign = 'left';
+    ctx.fillText(title, x+50, y+14);
+
+    ctx.fillStyle = '#a8a29e';
+    ctx.font = '18px system-ui';
+    ctx.fillText(desc, x+50, y+40);
+  });
+
+  // Bottom CTA
+  ctx.fillStyle = '#f59e0b';
+  roundRect(ctx, 200, 900, 680, 70, 35);
+  ctx.fill();
+  ctx.fillStyle = '#000';
+  ctx.font = 'bold 28px system-ui';
+  ctx.textAlign = 'center';
+  ctx.fillText('forjitai.in  →  Free Forever', W/2, 942);
+
+  // Corner decoration
+  ctx.strokeStyle = 'rgba(245,158,11,0.2)';
+  ctx.lineWidth = 2;
+  ctx.strokeRect(20,20,W-40,H-40);
+}
+
+// ─── CARD 2: "Type This → Get This" ────────────────────────────────────────
+function drawCard2(){
+  ctx.clearRect(0,0,W,H);
+
+  // Background
+  ctx.fillStyle = '#0c0a09';
+  ctx.fillRect(0,0,W,H);
+
+  // Top half - input
+  const topGrad = ctx.createLinearGradient(0,0,0,H*0.48);
+  topGrad.addColorStop(0,'#1a1208');
+  topGrad.addColorStop(1,'#110d06');
+  ctx.fillStyle = topGrad;
+  ctx.fillRect(0,0,W,H*0.48);
+
+  // Bottom half - output
+  const botGrad = ctx.createLinearGradient(0,H*0.52,0,H);
+  botGrad.addColorStop(0,'#06120a');
+  botGrad.addColorStop(1,'#041009');
+  ctx.fillStyle = botGrad;
+  ctx.fillRect(0,H*0.52,W,H*0.48);
+
+  // Forjit AI label top
+  ctx.fillStyle = 'rgba(245,158,11,0.1)';
+  roundRect(ctx, 40, 40, 220, 50, 25);
+  ctx.fill();
+  ctx.fillStyle = '#f59e0b';
+  ctx.font = 'bold 20px system-ui';
+  ctx.textAlign = 'left';
+  ctx.fillText('🤖 FORJIT AI', 62, 72);
+
+  // TYPE THIS label
+  ctx.fillStyle = 'rgba(245,158,11,0.15)';
+  roundRect(ctx, 40, 110, 180, 38, 8);
+  ctx.fill();
+  ctx.fillStyle = '#f59e0b';
+  ctx.font = 'bold 16px system-ui';
+  ctx.textAlign = 'left';
+  ctx.fillText('⌨️  YOU TYPE THIS:', 55, 134);
+
+  // Input box
+  ctx.fillStyle = '#1c1917';
+  ctx.strokeStyle = 'rgba(245,158,11,0.3)';
+  ctx.lineWidth = 2;
+  roundRect(ctx, 40, 162, W-80, 200, 12);
+  ctx.fill(); ctx.stroke();
+
+  // Cursor blink effect
+  ctx.fillStyle = '#f59e0b';
+  ctx.fillRect(65, 185, 3, 24);
+
+  ctx.fillStyle = '#e7e5e4';
+  ctx.font = '22px system-ui';
+  ctx.textAlign = 'left';
+  wrapText(ctx,
+    '"A calculator where I enter my monthly salary and monthly expenses. Show how many months to save ₹1 lakh with a progress bar."',
+    65, 205, W-160, 36);
+
+  // Arrow divider
+  ctx.fillStyle = '#0c0a09';
+  roundRect(ctx, W/2-50, H*0.46, 100, 80, 40);
+  ctx.fill();
+
+  const arrowGrad = ctx.createLinearGradient(W/2-30, 0, W/2+30, 0);
+  arrowGrad.addColorStop(0,'#f59e0b');
+  arrowGrad.addColorStop(1,'#22c55e');
+  ctx.fillStyle = arrowGrad;
+  ctx.font = 'bold 52px system-ui';
+  ctx.textAlign = 'center';
+  ctx.fillText('↓', W/2, H*0.5+12);
+
+  ctx.font = 'bold 13px system-ui';
+  ctx.fillStyle = '#a8a29e';
+  ctx.fillText('30 SECONDS LATER', W/2, H*0.5+36);
+
+  // GET THIS label
+  ctx.fillStyle = 'rgba(34,197,94,0.15)';
+  roundRect(ctx, 40, H*0.545, 220, 38, 8);
+  ctx.fill();
+  ctx.fillStyle = '#22c55e';
+  ctx.font = 'bold 16px system-ui';
+  ctx.textAlign = 'left';
+  ctx.fillText('✅  AI BUILDS THIS:', 55, H*0.545+25);
+
+  // Output box
+  ctx.fillStyle = '#0d1f12';
+  ctx.strokeStyle = 'rgba(34,197,94,0.3)';
+  ctx.lineWidth = 2;
+  roundRect(ctx, 40, H*0.59, W-80, 210, 12);
+  ctx.fill(); ctx.stroke();
+
+  // Mock app UI inside output box
+  const bx = 60, by = H*0.59+20, bw = W-120;
+
+  // Title bar
+  ctx.fillStyle = '#1a3020';
+  roundRect(ctx, bx, by, bw, 40, 6);
+  ctx.fill();
+  ctx.fillStyle = '#4ade80';
+  ctx.font = 'bold 18px system-ui';
+  ctx.textAlign = 'left';
+  ctx.fillText('💰 Savings Calculator', bx+14, by+26);
+
+  // Progress bar
+  ctx.fillStyle = '#0f2018';
+  roundRect(ctx, bx, by+55, bw, 30, 15);
+  ctx.fill();
+  const pg = ctx.createLinearGradient(bx,0,bx+bw*0.63,0);
+  pg.addColorStop(0,'#22c55e'); pg.addColorStop(1,'#16a34a');
+  ctx.fillStyle = pg;
+  roundRect(ctx, bx, by+55, bw*0.63, 30, 15);
+  ctx.fill();
+  ctx.fillStyle = '#fff';
+  ctx.font = 'bold 14px system-ui';
+  ctx.textAlign = 'center';
+  ctx.fillText('₹63,200 saved of ₹1,00,000 — 7 months to go!', bx+bw*0.5, by+76);
+
+  // Stats row
+  const stats = [['Monthly Save','₹8,500'],['Time to Goal','7 months'],['% Done','63%']];
+  stats.forEach(([l,v],i)=>{
+    const sx = bx + i*(bw/3) + 10;
+    ctx.fillStyle = '#0f2018';
+    roundRect(ctx, sx, by+100, bw/3-20, 70, 8);
+    ctx.fill();
+    ctx.fillStyle = '#4ade80';
+    ctx.font = 'bold 22px system-ui';
+    ctx.textAlign = 'center';
+    ctx.fillText(v, sx + (bw/3-20)/2, by+132);
+    ctx.fillStyle = '#78716c';
+    ctx.font = '13px system-ui';
+    ctx.fillText(l, sx + (bw/3-20)/2, by+153);
+  });
+
+  // Bottom URL
+  ctx.fillStyle = '#1c1917';
+  ctx.strokeStyle = 'rgba(245,158,11,0.2)';
+  ctx.lineWidth = 1;
+  roundRect(ctx, 40, H-80, W-80, 52, 8);
+  ctx.fill(); ctx.stroke();
+  ctx.fillStyle = '#f59e0b';
+  ctx.font = 'bold 22px system-ui';
+  ctx.textAlign = 'center';
+  ctx.fillText('Build yours free at  forjitai.in', W/2, H-48);
+}
+
+// ─── CARD 3: Stats Card ────────────────────────────────────────────────────
+function drawCard3(){
+  ctx.clearRect(0,0,W,H);
+
+  // Rich dark background
+  ctx.fillStyle = '#0c0a09';
+  ctx.fillRect(0,0,W,H);
+
+  // Diagonal accent stripe
+  ctx.save();
+  ctx.globalAlpha = 0.04;
+  ctx.fillStyle = '#f59e0b';
+  ctx.beginPath();
+  ctx.moveTo(0,H*0.3); ctx.lineTo(W,H*0.1);
+  ctx.lineTo(W,H*0.7); ctx.lineTo(0,H*0.9);
+  ctx.fill();
+  ctx.restore();
+
+  // Top logo area
+  ctx.fillStyle = '#f59e0b';
+  ctx.beginPath(); ctx.arc(W/2, 100, 44, 0, Math.PI*2); ctx.fill();
+  ctx.fillStyle = '#000';
+  ctx.font = 'bold 40px system-ui';
+  ctx.textAlign = 'center';
+  ctx.fillText('F', W/2, 115);
+
+  ctx.fillStyle = '#ffffff';
+  ctx.font = 'bold 36px system-ui';
+  ctx.fillText('FORJIT AI', W/2, 188);
+
+  ctx.fillStyle = '#78716c';
+  ctx.font = '18px system-ui';
+  ctx.fillText('Free Indian AI Tools Platform', W/2, 218);
+
+  // Divider line with dots
+  ctx.strokeStyle = 'rgba(245,158,11,0.2)';
+  ctx.lineWidth = 1;
+  ctx.beginPath(); ctx.moveTo(80,248); ctx.lineTo(W-80,248); ctx.stroke();
+
+  // Big 3 stats
+  const stats3 = [
+    { num:'42+', label:'FREE\nCALCULATORS', icon:'🧮', color:'#f59e0b', glow:'rgba(245,158,11,0.15)' },
+    { num:'72',  label:'INDIAN\nRECIPES',    icon:'🍛', color:'#22c55e', glow:'rgba(34,197,94,0.15)' },
+    { num:'∞',   label:'AI APPS\nBUILDABLE', icon:'🤖', color:'#3b82f6', glow:'rgba(59,130,246,0.15)' },
+  ];
+
+  stats3.forEach((s, i) => {
+    const cx = 180 + i * 360;
+    const cy = 380;
+
+    // Glow bg
+    const sg = ctx.createRadialGradient(cx,cy,0,cx,cy,120);
+    sg.addColorStop(0,s.glow); sg.addColorStop(1,'rgba(0,0,0,0)');
+    ctx.fillStyle = sg; ctx.fillRect(cx-120,cy-120,240,240);
+
+    // Card bg
+    ctx.fillStyle = '#1c1917';
+    ctx.strokeStyle = s.color + '44';
+    ctx.lineWidth = 1.5;
+    roundRect(ctx, cx-120, cy-110, 240, 220, 16);
+    ctx.fill(); ctx.stroke();
+
+    // Icon
+    ctx.font = '44px system-ui';
+    ctx.textAlign = 'center';
+    ctx.fillText(s.icon, cx, cy-45);
+
+    // Number
+    ctx.fillStyle = s.color;
+    ctx.font = 'bold 64px system-ui';
+    ctx.fillText(s.num, cx, cy+30);
+
+    // Label
+    s.label.split('\n').forEach((line,li) => {
+      ctx.fillStyle = '#a8a29e';
+      ctx.font = 'bold 14px system-ui';
+      ctx.fillText(line, cx, cy+60+li*20);
+    });
+  });
+
+  // Feature list
+  const features = [
+    ['🇮🇳', 'Made for India — Tax, GST, EMI, SIP, PPF calculators'],
+    ['📱', 'Works on mobile, no app download, no signup needed'],
+    ['⚡', 'AI builds your custom tool in 30 seconds — free forever'],
+    ['🔒', 'Your data never leaves your device — 100% private'],
+  ];
+
+  const fy = 590;
+  features.forEach(([icon, text], i) => {
+    const y = fy + i * 68;
+    ctx.fillStyle = '#1c1917';
+    ctx.strokeStyle = 'rgba(255,255,255,0.05)';
+    ctx.lineWidth = 1;
+    roundRect(ctx, 60, y, W-120, 54, 10);
+    ctx.fill(); ctx.stroke();
+
+    ctx.font = '24px system-ui';
+    ctx.textAlign = 'left';
+    ctx.fillText(icon, 85, y+34);
+
+    ctx.fillStyle = '#e7e5e4';
+    ctx.font = '18px system-ui';
+    ctx.fillText(text, 125, y+34);
+  });
+
+  // Bottom CTA
+  const ctaGrad = ctx.createLinearGradient(60,H-80,W-60,H-80);
+  ctaGrad.addColorStop(0,'#f59e0b');
+  ctaGrad.addColorStop(0.5,'#fbbf24');
+  ctaGrad.addColorStop(1,'#f97316');
+  ctx.fillStyle = ctaGrad;
+  roundRect(ctx, 60, H-76, W-120, 60, 30);
+  ctx.fill();
+
+  ctx.fillStyle = '#000000';
+  ctx.font = 'bold 26px system-ui';
+  ctx.textAlign = 'center';
+  ctx.fillText('🌐  forjitai.in  —  Free Forever', W/2, H-38);
+}
+
+function roundRect(ctx, x, y, w, h, r){
+  ctx.beginPath();
+  ctx.moveTo(x+r, y);
+  ctx.lineTo(x+w-r, y);
+  ctx.quadraticCurveTo(x+w, y, x+w, y+r);
+  ctx.lineTo(x+w, y+h-r);
+  ctx.quadraticCurveTo(x+w, y+h, x+w-r, y+h);
+  ctx.lineTo(x+r, y+h);
+  ctx.quadraticCurveTo(x, y+h, x, y+h-r);
+  ctx.lineTo(x, y+r);
+  ctx.quadraticCurveTo(x, y, x+r, y);
+  ctx.closePath();
+}
+
+function makeCard(drawFn, label, filename){
+  drawFn();
+  const img = new Image();
+  img.src = c.toDataURL('image/png');
+  img.style.cssText = 'width:360px;height:360px;border-radius:12px';
+
+  const wrap = document.createElement('div');
+  wrap.className = 'card-wrap';
+
+  const title = document.createElement('p');
+  title.textContent = label;
+  title.style.cssText = 'font-weight:700;color:#f59e0b;font-size:16px';
+
+  const dlBtn = document.createElement('button');
+  dlBtn.textContent = '⬇️ Download PNG';
+  dlBtn.onclick = () => {
+    const a = document.createElement('a');
+    a.href = c.toDataURL('image/png');
+    a.download = filename;
+    a.click();
+  };
+
+  const waBtn = document.createElement('button');
+  waBtn.textContent = '📋 Copy for WhatsApp';
+  waBtn.style.background = '#25d366';
+  waBtn.onclick = () => {
+    c.toBlob(blob => {
+      navigator.clipboard.write([new ClipboardItem({'image/png': blob})])
+        .then(() => { waBtn.textContent = '✅ Copied!'; setTimeout(()=>waBtn.textContent='📋 Copy for WhatsApp',2000); })
+        .catch(() => { waBtn.textContent = '⚠️ Download instead'; });
+    });
+  };
+
+  wrap.appendChild(img);
+  wrap.appendChild(title);
+  wrap.appendChild(dlBtn);
+  wrap.appendChild(waBtn);
+  document.getElementById('cards').appendChild(wrap);
+}
+
+// Generate all 3
+makeCard(drawCard1, 'Card A — Build Your Own App', 'forjitai-build-your-app.png');
+makeCard(drawCard2, 'Card B — Type This → Get This', 'forjitai-type-get.png');
+makeCard(drawCard3, 'Card C — Stats & Features', 'forjitai-stats.png');
+
+// Download all button
+const allBtn = document.createElement('div');
+allBtn.style.cssText = 'width:100%;text-align:center;margin:20px 0';
+allBtn.innerHTML = `
+  <button onclick="downloadAll()" style="padding:14px 32px;background:#f59e0b;
+    color:#000;border:none;border-radius:10px;font-size:18px;font-weight:800;cursor:pointer">
+    ⬇️ Download All 3 Images
+  </button>
+  <p style="color:#78716c;font-size:13px;margin-top:8px">
+    1080×1080px PNG • Perfect for WhatsApp, Instagram, LinkedIn
+  </p>`;
+document.getElementById('cards').before(allBtn);
+
+function downloadAll(){
+  [
+    [drawCard1,'forjitai-build-your-app.png'],
+    [drawCard2,'forjitai-type-get.png'],
+    [drawCard3,'forjitai-stats.png'],
+  ].forEach(([fn,name],i) => {
+    setTimeout(()=>{
+      fn();
+      const a=document.createElement('a');
+      a.href=c.toDataURL('image/png');
+      a.download=name; a.click();
+    }, i*500);
+  });
+}
+</script>
+</body>
+</html>

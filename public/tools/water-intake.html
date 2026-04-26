@@ -1,0 +1,146 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="UTF-8"/><meta name="viewport" content="width=device-width,initial-scale=1.0"/>
+<title>Water Intake Calculator — Forjit AI | Daily Water Needs Calculator</title>
+<meta name="description" content="Free water intake calculator. Calculate your daily water requirement based on weight, activity level, and climate. Personalized hydration schedule."/>
+<meta name="keywords" content="water intake calculator, daily water needs, hydration calculator, how much water should I drink, water calculator India"/>
+<link rel="canonical" href="https://www.forjitai.in/tools/water-intake.html"/>
+<link rel="stylesheet" href="tools.css"/>
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-DYR402JFVG"></script>
+<script>window.dataLayer=window.dataLayer||[];function gtag(){dataLayer.push(arguments);}gtag('js',new Date());gtag('config','G-DYR402JFVG');</script>
+  <meta name="robots" content="index,follow,max-snippet:-1,max-image-preview:large"/>
+  <meta property="og:type"         content="website"/>
+  <meta property="og:site_name"    content="Forjit AI"/>
+  <meta property="og:url"          content="https://www.forjitai.in/tools/water-intake.html"/>
+  <meta property="og:title"        content="Water Intake Calculator — Forjit AI | Daily Water Needs Calculator"/>
+  <meta property="og:description"  content="Daily water requirement based on weight, activity level and climate."/>
+  <meta property="og:image"        content="https://www.forjitai.in/og-image.png"/>
+  <meta property="og:image:width"  content="1200"/>
+  <meta property="og:image:height" content="630"/>
+  <meta property="og:locale"       content="en_IN"/>
+  <meta name="twitter:card"        content="summary_large_image"/>
+  <meta name="twitter:site"        content="@forjitai"/>
+  <meta name="twitter:title"       content="Water Intake Calculator — Forjit AI | Daily Water Needs Calculator"/>
+  <meta name="twitter:description" content="Daily water requirement based on weight, activity level and climate."/>
+  <meta name="twitter:image"       content="https://www.forjitai.in/og-image.png"/>
+  <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-5102938260449475" crossorigin="anonymous"></script>
+  <meta name="google-site-verification" content="u11mSk2rQwaphaXMCcUwJU-6dRhN_ndessqEMeZdubk" />
+</head>
+<body>
+<header>
+  <a class="logo" href="/"><div class="logo-mark">F</div><div><div class="logo-name">Forjit AI</div><div class="logo-sub">Tools</div></div></a>
+  <a class="back-link" href="/tools/">← All Tools</a>
+</header>
+<div class="container-sm">
+  <h1>Water Intake Calculator</h1>
+  <p class="page-desc">Calculate your daily water needs based on your body weight, activity level, and climate.</p>
+  <div class="ad-slot">Advertisement · <a href="https://adsense.google.com" target="_blank">Connect AdSense</a></div>
+  <div class="card">
+    <div class="field"><span class="label">Body Weight (kg)</span>
+      <div class="input-wrap"><span class="prefix">kg</span><input type="number" id="weight" value="70" min="20" max="300" step="0.5" oninput="calc()"/></div>
+    </div>
+    <div class="field"><span class="label">Activity Level</span>
+      <div class="input-wrap"><select id="activity" onchange="calc()">
+        <option value="0">Sedentary (desk job, little movement)</option>
+        <option value="350" selected>Light Activity (walk 30 min/day)</option>
+        <option value="600">Moderate (gym 3–5 days/week)</option>
+        <option value="950">Active (daily intense workout)</option>
+        <option value="1400">Athlete (2x/day training)</option>
+      </select></div>
+    </div>
+    <div class="field"><span class="label">Climate / Weather</span>
+      <div class="input-wrap"><select id="climate" onchange="calc()">
+        <option value="0">Temperate / AC Environment</option>
+        <option value="250" selected>Warm / Humid (India typical)</option>
+        <option value="500">Hot Summer (>35°C)</option>
+        <option value="750">Very Hot / Sweating heavily</option>
+      </select></div>
+    </div>
+    <div class="field"><span class="label">Health Condition</span>
+      <div class="input-wrap"><select id="health" onchange="calc()">
+        <option value="1">Healthy</option>
+        <option value="1.1">Pregnant</option>
+        <option value="1.2">Breastfeeding</option>
+        <option value="0.9">Kidney issue (consult doctor)</option>
+      </select></div>
+    </div>
+  </div>
+
+  <div class="result-hero">
+    <div class="result-hero-label">Daily Water Requirement</div>
+    <div class="result-hero-value" id="waterResult">0 L</div>
+    <div class="result-hero-sub" id="waterSub">—</div>
+  </div>
+  <div class="results-grid cols3">
+    <div class="result-card"><div class="result-label">In Glasses (250ml)</div><div class="result-value rv-accent" id="glasses">0</div></div>
+    <div class="result-card"><div class="result-label">In Bottles (1L)</div><div class="result-value rv-blue" id="bottles">0</div></div>
+    <div class="result-card"><div class="result-label">Per Hour (awake)</div><div class="result-value rv-green" id="perHour">0 ml</div></div>
+  </div>
+
+  <div class="card">
+    <h3 style="font-size:14px;font-weight:700;margin-bottom:14px">💧 Hydration Schedule (16 waking hours)</h3>
+    <div id="schedule"></div>
+  </div>
+
+  <div class="card-dark">
+    <h3 style="font-size:14px;font-weight:700;margin-bottom:12px;color:var(--accent)">Signs of Dehydration</h3>
+    <div style="display:grid;grid-template-columns:1fr 1fr;gap:8px">
+      <div style="font-size:13px;color:var(--muted)">🟡 Mild (1-2% loss)<ul style="padding-left:14px;margin-top:4px"><li>Thirst</li><li>Slightly dark urine</li><li>Fatigue</li></ul></div>
+      <div style="font-size:13px;color:var(--muted)">🔴 Severe (5%+ loss)<ul style="padding-left:14px;margin-top:4px"><li>Dizziness</li><li>Dark yellow urine</li><li>Rapid heartbeat</li></ul></div>
+    </div>
+  </div>
+  <div class="ad-slot">Advertisement</div>
+  <div class="tips"><h3>💡 Hydration Tips</h3><ul>
+    <li>Drink 1–2 glasses of water first thing in the morning</li>
+    <li>Urine should be pale yellow — dark means drink more</li>
+    <li>Tea, coffee, and juices also count toward daily intake</li>
+    <li>Fruits like watermelon, cucumber, and oranges are 90%+ water</li>
+    <li>Alcohol and caffeinated drinks have a diuretic effect — drink extra</li>
+    <li>Kidney stone risk is reduced by staying well-hydrated (2.5L+ daily)</li>
+  </ul></div>
+</div>
+<script>
+function calc(){
+  const w=+document.getElementById('weight').value||70;
+  const act=+document.getElementById('activity').value;
+  const clim=+document.getElementById('climate').value;
+  const health=+document.getElementById('health').value;
+  // Base: 35ml per kg
+  const base=w*35;
+  const totalMl=(base+act+clim)*health;
+  const totalL=totalMl/1000;
+  document.getElementById('waterResult').textContent=totalL.toFixed(1)+' L';
+  document.getElementById('waterSub').textContent=Math.round(totalMl)+' ml per day';
+  document.getElementById('glasses').textContent=Math.round(totalMl/250);
+  document.getElementById('bottles').textContent=(totalMl/1000).toFixed(1);
+  document.getElementById('perHour').textContent=Math.round(totalMl/16)+' ml';
+
+  // Schedule
+  const wakeHour=6;
+  const mlPerHour=totalMl/16;
+  const slots=[
+    {time:'6:00 AM',label:'Morning wake-up',ml:Math.round(mlPerHour*1.5)},
+    {time:'8:00 AM',label:'Before breakfast',ml:Math.round(mlPerHour)},
+    {time:'10:00 AM',label:'Mid-morning',ml:Math.round(mlPerHour)},
+    {time:'12:00 PM',label:'Before lunch',ml:Math.round(mlPerHour)},
+    {time:'2:00 PM',label:'After lunch',ml:Math.round(mlPerHour)},
+    {time:'4:00 PM',label:'Evening snack time',ml:Math.round(mlPerHour)},
+    {time:'6:00 PM',label:'Pre-workout / evening',ml:Math.round(mlPerHour*1.5)},
+    {time:'8:00 PM',label:'Before dinner',ml:Math.round(mlPerHour)},
+    {time:'9:00 PM',label:'Post-dinner',ml:Math.round(mlPerHour*.5)},
+    {time:'10:00 PM',label:'Before sleep',ml:Math.round(mlPerHour*.5)},
+  ];
+  document.getElementById('schedule').innerHTML=slots.map(s=>`
+    <div style="display:flex;align-items:center;gap:12px;padding:10px 0;border-bottom:1px solid var(--border)">
+      <span style="font-size:12px;font-weight:600;color:var(--muted);min-width:70px">${s.time}</span>
+      <div class="bar-track" style="flex:1;height:8px"><div class="bar-fill bar-blue" style="width:${Math.min(100,s.ml/5)}%"></div></div>
+      <span style="font-size:13px;font-weight:600;color:#60a5fa;min-width:60px;text-align:right">${s.ml} ml</span>
+      <span style="font-size:12px;color:var(--muted);min-width:140px">${s.label}</span>
+    </div>`).join('');
+}
+calc();
+</script>
+<script src="tool-common.js"></script>
+</body>
+</html>

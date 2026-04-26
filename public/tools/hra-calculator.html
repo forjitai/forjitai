@@ -1,0 +1,166 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="UTF-8"/><meta name="viewport" content="width=device-width,initial-scale=1.0"/>
+<title>HRA Calculator India — House Rent Allowance Exemption 2025 | Forjit AI</title>
+<meta name="description" content="Free HRA calculator India. Calculate HRA tax exemption under Section 10(13A). Find exact HRA deduction for metro and non-metro cities."/>
+<meta name="keywords" content="HRA calculator India, house rent allowance calculator, HRA exemption calculator, Section 10 13A HRA tax India"/>
+<link rel="canonical" href="https://www.forjitai.in/tools/hra-calculator.html"/>
+<link rel="stylesheet" href="tools.css"/>
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-DYR402JFVG"></script>
+<script>window.dataLayer=window.dataLayer||[];function gtag(){dataLayer.push(arguments);}gtag('js',new Date());gtag('config','G-DYR402JFVG');</script>
+  <meta name="robots" content="index,follow,max-snippet:-1,max-image-preview:large"/>
+  <meta property="og:type"         content="website"/>
+  <meta property="og:site_name"    content="Forjit AI"/>
+  <meta property="og:url"          content="https://www.forjitai.in/tools/hra-calculator.html"/>
+  <meta property="og:title"        content="HRA Calculator — Forjit AI | House Rent Allowance Exemption Calculator"/>
+  <meta property="og:description"  content="HRA tax exemption under Section 10(13A). Metro vs non-metro."/>
+  <meta property="og:image"        content="https://www.forjitai.in/og-image.png"/>
+  <meta property="og:image:width"  content="1200"/>
+  <meta property="og:image:height" content="630"/>
+  <meta property="og:locale"       content="en_IN"/>
+  <meta name="twitter:card"        content="summary_large_image"/>
+  <meta name="twitter:site"        content="@forjitai"/>
+  <meta name="twitter:title"       content="HRA Calculator — Forjit AI | House Rent Allowance Exemption Calculator"/>
+  <meta name="twitter:description" content="Free HRA calculator India. Calculate HRA tax exemption under Section 10(13A). Find exact HRA deduction for metro and non-metro cities."/>
+  <meta name="twitter:image"       content="https://www.forjitai.in/og-image.png"/>
+  <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-5102938260449475" crossorigin="anonymous"></script>
+  <meta name="google-site-verification" content="u11mSk2rQwaphaXMCcUwJU-6dRhN_ndessqEMeZdubk" />
+
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "FAQPage",
+  "mainEntity": [
+    {
+      "@type": "Question",
+      "name": "How is HRA exemption calculated?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "HRA exemption = minimum of: (a) actual HRA received, (b) rent paid minus 10% of basic salary, (c) 50% of basic for metros or 40% for non-metros."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "Which cities are considered metro for HRA?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "Delhi, Mumbai, Kolkata and Chennai are metro cities for HRA (50% of basic). All other cities are non-metro (40% of basic)."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "Can I claim HRA if I live in my own house?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "No. HRA exemption is only available if you are paying rent for accommodation you live in."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "Is this HRA calculator free?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "Yes. The Forjit AI HRA calculator is completely free, updated for FY 2025-26."
+      }
+    }
+  ]
+}
+</script>
+</head>
+<body>
+<header>
+  <a class="logo" href="/"><div class="logo-mark">F</div><div><div class="logo-name">Forjit AI</div><div class="logo-sub">Tools</div></div></a>
+  <a class="back-link" href="/tools/">← All Tools</a>
+</header>
+<div class="container-sm">
+  <h1>HRA Exemption Calculator</h1>
+  <p class="page-desc">Calculate your HRA tax exemption under Section 10(13A) — Old Tax Regime only.</p>
+  <div class="ad-slot">Advertisement · <a href="https://adsense.google.com" target="_blank">Connect AdSense</a></div>
+  <div class="warning-box">HRA exemption is available <b>only under the Old Tax Regime</b>. In the New Regime, HRA is not exempt.</div>
+
+  <div class="card">
+    <div class="field"><span class="label">Annual Basic Salary (₹)</span>
+      <div class="input-wrap"><span class="prefix">₹</span><input type="number" id="basic" value="480000" oninput="calc()"/></div>
+    </div>
+    <div class="field"><span class="label">Annual HRA Received (₹)</span>
+      <div class="input-wrap"><span class="prefix">₹</span><input type="number" id="hra" value="240000" oninput="calc()"/></div>
+    </div>
+    <div class="field"><span class="label">Annual Rent Actually Paid (₹)</span>
+      <div class="input-wrap"><span class="prefix">₹</span><input type="number" id="rent" value="216000" oninput="calc()"/></div>
+    </div>
+    <div class="field"><span class="label">City of Residence</span>
+      <div class="input-wrap"><select id="city" onchange="calc()">
+        <option value="0.5">Metro City (Mumbai, Delhi, Kolkata, Chennai) — 50% of Basic</option>
+        <option value="0.4">Non-Metro City — 40% of Basic</option>
+      </select></div>
+    </div>
+    <div class="field"><span class="label">Dearness Allowance (DA) — if applicable (₹)</span>
+      <div class="input-wrap"><span class="prefix">₹</span><input type="number" id="da" value="0" oninput="calc()"/></div>
+    </div>
+  </div>
+
+  <div class="result-hero">
+    <div class="result-hero-label">HRA Exemption (Tax-Free)</div>
+    <div class="result-hero-value" id="exempt">₹0</div>
+    <div class="result-hero-sub" id="exemptNote">Minimum of the 3 conditions below</div>
+  </div>
+
+  <div class="card">
+    <h3 style="font-size:14px;font-weight:700;margin-bottom:14px">HRA Exemption Calculation — 3 Conditions</h3>
+    <p style="font-size:13px;color:var(--muted);margin-bottom:14px">As per Section 10(13A), HRA exemption = <strong>minimum of:</strong></p>
+    <div id="conditions"></div>
+    <div class="info-box" style="margin-top:12px">
+      <b>HRA Taxable:</b> <span id="taxable">₹0</span> · <b>HRA Exempt:</b> <span id="exemptAmt">₹0</span>
+    </div>
+  </div>
+
+  <div class="card-dark">
+    <h3 style="font-size:14px;font-weight:700;margin-bottom:12px;color:var(--accent)">📋 HRA Rules</h3>
+    <ul style="font-size:13px;color:var(--muted);line-height:1.8;padding-left:16px">
+      <li>You must be a salaried employee actually paying rent</li>
+      <li>You cannot claim HRA if you own the house you live in</li>
+      <li>If rent > ₹1L/year, landlord's PAN is mandatory</li>
+      <li>Rent paid to parents is valid if they own the house</li>
+      <li>Not available if you opt for New Tax Regime</li>
+    </ul>
+  </div>
+  <div class="ad-slot">Advertisement</div>
+</div>
+<script>
+const fmt=n=>'₹'+Math.round(n).toLocaleString('en-IN');
+function calc(){
+  const basic=+document.getElementById('basic').value||0;
+  const da=+document.getElementById('da').value||0;
+  const hraReceived=+document.getElementById('hra').value||0;
+  const rent=+document.getElementById('rent').value||0;
+  const cityPct=+document.getElementById('city').value;
+
+  const basicDA=basic+da;
+  const c1=hraReceived;
+  const c2=rent-0.1*basicDA;
+  const c3=cityPct*basicDA;
+  const exempt=Math.max(0,Math.min(c1,Math.max(0,c2),c3));
+  const taxable=hraReceived-exempt;
+
+  document.getElementById('exempt').textContent=fmt(exempt);
+  document.getElementById('taxable').textContent=fmt(taxable);
+  document.getElementById('exemptAmt').textContent=fmt(exempt);
+
+  const minVal=Math.max(0,Math.min(c1,Math.max(0,c2),c3));
+  const conditions=[
+    {label:'Condition 1',desc:'Actual HRA received',val:c1,isMin:c1===minVal},
+    {label:'Condition 2',desc:`Rent paid − 10% of Basic+DA (${fmt(rent)} − ${fmt(0.1*basicDA)})`,val:Math.max(0,c2),isMin:Math.max(0,c2)===minVal&&c2>=0},
+    {label:'Condition 3',desc:`${cityPct*100}% of Basic+DA (${cityPct*100}% of ${fmt(basicDA)})`,val:c3,isMin:c3===minVal},
+  ];
+  document.getElementById('conditions').innerHTML=conditions.map(c=>`
+    <div style="display:flex;align-items:center;justify-content:space-between;padding:14px;background:var(--bg);border:${c.isMin?'2px solid var(--accent)':'1px solid var(--border)'};border-radius:10px;margin-bottom:8px">
+      <div><div style="font-size:12px;font-weight:700;color:${c.isMin?'var(--accent)':'var(--muted)'};text-transform:uppercase;letter-spacing:.05em">${c.label}${c.isMin?' ← MINIMUM':''}</div><div style="font-size:13px;color:var(--muted);margin-top:2px">${c.desc}</div></div>
+      <div style="font-size:20px;font-weight:700;color:${c.isMin?'var(--accent)':'var(--fg)'}">${fmt(c.val)}</div>
+    </div>`).join('');
+}
+calc();
+</script>
+<script src="tool-common.js"></script>
+</body>
+</html>

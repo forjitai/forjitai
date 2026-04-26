@@ -1,0 +1,211 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="UTF-8"/><meta name="viewport" content="width=device-width,initial-scale=1.0"/>
+<title>Retirement Calculator India — How Much to Save for Retirement | Forjit AI</title>
+<meta name="description" content="Free retirement calculator India. Find how much to save monthly for retirement. Accounts for inflation, NPS, EPF and expected returns."/>
+<meta name="keywords" content="retirement calculator India, retirement planning calculator, how much to save for retirement India, NPS calculator retirement"/>
+<link rel="canonical" href="https://www.forjitai.in/tools/retirement-calculator.html"/>
+<link rel="stylesheet" href="tools.css"/>
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-DYR402JFVG"></script>
+<script>window.dataLayer=window.dataLayer||[];function gtag(){dataLayer.push(arguments);}gtag('js',new Date());gtag('config','G-DYR402JFVG');</script>
+  <meta name="robots" content="index,follow,max-snippet:-1,max-image-preview:large"/>
+  <meta property="og:type"         content="website"/>
+  <meta property="og:site_name"    content="Forjit AI"/>
+  <meta property="og:url"          content="https://www.forjitai.in/tools/retirement-calculator.html"/>
+  <meta property="og:title"        content="Retirement Calculator — Forjit AI | Retirement Corpus Planning India"/>
+  <meta property="og:description"  content="Calculate retirement corpus needed, monthly SIP required, milestones."/>
+  <meta property="og:image"        content="https://www.forjitai.in/og-image.png"/>
+  <meta property="og:image:width"  content="1200"/>
+  <meta property="og:image:height" content="630"/>
+  <meta property="og:locale"       content="en_IN"/>
+  <meta name="twitter:card"        content="summary_large_image"/>
+  <meta name="twitter:site"        content="@forjitai"/>
+  <meta name="twitter:title"       content="Retirement Calculator — Forjit AI | Retirement Corpus Planning India"/>
+  <meta name="twitter:description" content="Free retirement calculator India. Find how much to save monthly for retirement. Accounts for inflation, NPS, EPF and expected returns."/>
+  <meta name="twitter:image"       content="https://www.forjitai.in/og-image.png"/>
+  <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-5102938260449475" crossorigin="anonymous"></script>
+  <meta name="google-site-verification" content="u11mSk2rQwaphaXMCcUwJU-6dRhN_ndessqEMeZdubk" />
+
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "FAQPage",
+  "mainEntity": [
+    {
+      "@type": "Question",
+      "name": "How much should I save for retirement in India?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "A common rule: save 15-20% of income monthly. The calculator shows exact amount based on your age, current savings and retirement target."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "At what age should I start saving for retirement?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "Start as early as possible. Starting at 25 instead of 35 can double your retirement corpus due to compounding."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "How much corpus is enough to retire in India?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "Commonly 25\u00d7 your annual expenses. Example: if you need \u20b960,000/month (\u20b97.2L/year), target \u20b91.8 crore corpus."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "Is this retirement calculator free?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "Yes. The Forjit AI retirement calculator is completely free at forjitai.in."
+      }
+    }
+  ]
+}
+</script>
+</head>
+<body>
+<header>
+  <a class="logo" href="/"><div class="logo-mark">F</div><div><div class="logo-name">Forjit AI</div><div class="logo-sub">Tools</div></div></a>
+  <a class="back-link" href="/tools/">← All Tools</a>
+</header>
+<div class="container-sm">
+  <h1>Retirement Planner</h1>
+  <p class="page-desc">Calculate the corpus you need to retire comfortably and how to build it.</p>
+  <div class="ad-slot">Advertisement · <a href="https://adsense.google.com" target="_blank">Connect AdSense</a></div>
+
+  <div class="card">
+    <div style="display:grid;grid-template-columns:1fr 1fr;gap:10px">
+      <div class="field"><span class="label">Current Age</span><div class="input-wrap"><input type="number" id="curAge" value="30" min="18" max="60" oninput="calc()"/><span class="suffix">yrs</span></div></div>
+      <div class="field"><span class="label">Retirement Age</span><div class="input-wrap"><input type="number" id="retAge" value="60" min="40" max="75" oninput="calc()"/><span class="suffix">yrs</span></div></div>
+      <div class="field"><span class="label">Life Expectancy</span><div class="input-wrap"><input type="number" id="lifeAge" value="80" min="60" max="100" oninput="calc()"/><span class="suffix">yrs</span></div></div>
+      <div class="field"><span class="label">Current Savings (₹)</span><div class="input-wrap"><span class="prefix">₹</span><input type="number" id="savings" value="500000" oninput="calc()"/></div></div>
+    </div>
+    <div class="field"><span class="label">Monthly Expenses Today (₹)</span><div class="input-wrap"><span class="prefix">₹</span><input type="number" id="expenses" value="50000" oninput="calc()"/></div></div>
+    <div style="display:grid;grid-template-columns:1fr 1fr 1fr;gap:10px">
+      <div class="field"><span class="label">Inflation (%)</span><div class="input-wrap"><input type="number" id="inflation" value="6" step="0.5" oninput="calc()"/><span class="suffix">%</span></div></div>
+      <div class="field"><span class="label">Pre-Retirement Return</span><div class="input-wrap"><input type="number" id="preReturn" value="12" step="0.5" oninput="calc()"/><span class="suffix">%</span></div></div>
+      <div class="field"><span class="label">Post-Retirement Return</span><div class="input-wrap"><input type="number" id="postReturn" value="7" step="0.5" oninput="calc()"/><span class="suffix">%</span></div></div>
+    </div>
+  </div>
+
+  <div class="result-hero">
+    <div class="result-hero-label">Retirement Corpus Required</div>
+    <div class="result-hero-value" id="corpusNeeded">₹0</div>
+    <div class="result-hero-sub" id="corpusSub">—</div>
+  </div>
+  <div class="results-grid cols2">
+    <div class="result-card"><div class="result-label">Corpus from Current Savings</div><div class="result-value rv-blue" id="rFromSavings">₹0</div></div>
+    <div class="result-card"><div class="result-label">Shortfall to Cover</div><div class="result-value rv-accent" id="rShortfall">₹0</div></div>
+  </div>
+  <div class="result-hero" style="margin-top:12px;border-color:rgba(34,197,94,.4);background:rgba(34,197,94,.06)">
+    <div class="result-hero-label">Monthly SIP Needed to Retire</div>
+    <div class="result-hero-value" id="sipNeeded" style="color:#4ade80">₹0</div>
+    <div class="result-hero-sub" id="sipSub">—</div>
+  </div>
+
+  <div class="card">
+    <h3 style="font-size:14px;font-weight:700;margin-bottom:14px">Retirement Journey</h3>
+    <div class="table-wrap"><table>
+      <thead><tr><th>Milestone</th><th>Age</th><th>Value</th></tr></thead>
+      <tbody id="milestones"></tbody>
+    </table></div>
+  </div>
+  <div class="ad-slot">Advertisement</div>
+  <div class="tips"><h3>💡 Retirement Planning Tips</h3><ul>
+    <li>Start early — investing ₹5K/month from age 25 vs 35 creates a massive difference</li>
+    <li>Rule of 25: You need 25× your annual expenses as corpus (4% withdrawal rule)</li>
+    <li>EPF + PPF + NPS form a strong debt foundation for retirement</li>
+    <li>Diversify: equity for growth, debt for stability, gold as hedge</li>
+    <li>Don't ignore healthcare costs — plan for ₹50-100L for medical expenses</li>
+    <li>Inflation is the biggest retirement risk — equity must be part of your portfolio</li>
+  </ul></div>
+</div>
+<script>
+const fmtL=n=>{if(n>=10000000)return'₹'+(n/10000000).toFixed(2)+'Cr';if(n>=100000)return'₹'+(n/100000).toFixed(2)+'L';return'₹'+Math.round(n).toLocaleString('en-IN');};
+const fmt=n=>'₹'+Math.round(n).toLocaleString('en-IN');
+
+function calc(){
+  const cur=+document.getElementById('curAge').value||30;
+  const ret=+document.getElementById('retAge').value||60;
+  const life=+document.getElementById('lifeAge').value||80;
+  const savings=+document.getElementById('savings').value||0;
+  const expenses=+document.getElementById('expenses').value||50000;
+  const inf=+document.getElementById('inflation').value/100||0.06;
+  const preR=+document.getElementById('preReturn').value/100||0.12;
+  const postR=+document.getElementById('postReturn').value/100||0.07;
+
+  const yearsToRetire=ret-cur;
+  const yearsInRetirement=life-ret;
+  if(yearsToRetire<=0||yearsInRetirement<=0)return;
+
+  // Monthly expenses at retirement (adjusted for inflation)
+  const monthlyAtRetirement=expenses*Math.pow(1+inf,yearsToRetire);
+
+  // Corpus needed using present value of annuity
+  const mr=postR/12;const nm=yearsInRetirement*12;
+  const corpus=monthlyAtRetirement*(1-Math.pow(1+mr,-nm))/mr;
+
+  // Current savings future value
+  const savingsFV=savings*Math.pow(1+preR,yearsToRetire);
+  const shortfall=Math.max(0,corpus-savingsFV);
+
+  // SIP needed
+  const mr2=preR/12;const nm2=yearsToRetire*12;
+  const sipNeeded=shortfall>0?shortfall*mr2/(Math.pow(1+mr2,nm2)-1):0;
+
+  document.getElementById('corpusNeeded').textContent=fmtL(corpus);
+  document.getElementById('corpusSub').textContent=`For ${yearsInRetirement} years of retirement at ${fmt(monthlyAtRetirement)}/month`;
+  document.getElementById('rFromSavings').textContent=fmtL(savingsFV);
+  document.getElementById('rShortfall').textContent=fmtL(shortfall);
+  document.getElementById('sipNeeded').textContent=fmt(sipNeeded);
+  document.getElementById('sipSub').textContent=`Invest ${fmt(sipNeeded)}/month for ${yearsToRetire} years at ${document.getElementById('preReturn').value}% p.a.`;
+
+  // Milestones
+  const tbody=document.getElementById('milestones');
+  tbody.innerHTML='';
+  const checkpoints=[Math.floor(yearsToRetire*0.25),Math.floor(yearsToRetire*0.5),Math.floor(yearsToRetire*0.75),yearsToRetire];
+  checkpoints.forEach(yrs=>{
+    const age=cur+yrs;
+    const sv=savings*Math.pow(1+preR,yrs);
+    const sipContrib=sipNeeded*((Math.pow(1+preR/12,yrs*12)-1)/(preR/12));
+    const total=sv+sipContrib;
+    tbody.innerHTML+=`<tr><td>${yrs} years invested</td><td>Age ${age}</td><td style="color:var(--accent);font-weight:600">${fmtL(total)}</td></tr>`;
+  });
+  tbody.innerHTML+=`<tr style="font-weight:700"><td>At Retirement</td><td>Age ${ret}</td><td style="color:var(--green)">${fmtL(corpus)} needed</td></tr>`;
+}
+calc();
+</script>
+<script>
+// Auto-save inputs to localStorage
+(function(){
+  const KEY = 'forjit_retirement_calculator';
+  // Restore saved values
+  try {
+    const saved = JSON.parse(localStorage.getItem(KEY) || '{}');
+    Object.entries(saved).forEach(([id, val]) => {
+      const el = document.getElementById(id);
+      if (el) el.value = val;
+    });
+  } catch(e) {}
+  // Save on every input change
+  document.querySelectorAll('input[type=number], input[type=text], select').forEach(el => {
+    if (el.id) el.addEventListener('input', () => {
+      try {
+        const data = {};
+        document.querySelectorAll('input[type=number], input[type=text], select').forEach(e => {
+          if (e.id) data[e.id] = e.value;
+        });
+        localStorage.setItem(KEY, JSON.stringify(data));
+      } catch(e) {}
+    });
+  });
+})();
+</script>
+<script src="tool-common.js"></script>
+</body>
+</html>

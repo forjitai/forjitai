@@ -1,0 +1,302 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="UTF-8"/>
+<meta name="viewport" content="width=device-width,initial-scale=1.0"/>
+<title id="pageTitle">Blog — Forjit AI</title>
+<meta name="description" id="pageMeta" content="Blog post by Forjit AI"/>
+<link rel="canonical" id="pageCanonical" href="https://www.forjitai.in/blog/"/>
+<meta name="robots" content="index,follow,max-snippet:-1,max-image-preview:large"/>
+<meta property="og:type"         id="ogType"    content="article"/>
+<meta property="og:site_name"                   content="Forjit AI"/>
+<meta property="og:url"          id="ogUrl"     content="https://www.forjitai.in/blog/"/>
+<meta property="og:title"        id="ogTitle"   content="Forjit AI Blog"/>
+<meta property="og:description"  id="ogDesc"    content="Blog post by Forjit AI"/>
+<meta property="og:image"        id="ogImg"     content="https://www.forjitai.in/og-image.png"/>
+<meta property="og:image:width"                 content="1200"/>
+<meta property="og:image:height"                content="630"/>
+<meta property="og:locale"                      content="en_IN"/>
+<meta name="twitter:card"                       content="summary_large_image"/>
+<meta name="twitter:site"                       content="@forjitai"/>
+<meta name="twitter:title"       id="twTitle"   content="Forjit AI Blog"/>
+<meta name="twitter:description" id="twDesc"    content="Blog post by Forjit AI"/>
+<meta name="twitter:image"       id="twImg"     content="https://www.forjitai.in/og-image.png"/>
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-DYR402JFVG"></script>
+<script>window.dataLayer=window.dataLayer||[];function gtag(){dataLayer.push(arguments);}gtag('js',new Date());gtag('config','G-DYR402JFVG');</script>
+<script src="/cookie-consent.js"></script>
+<style>
+*{box-sizing:border-box;margin:0;padding:0}
+:root{--bg:#0c0a09;--sur:#1c1917;--bor:#292524;--fg:#e7e5e4;--mu:#a8a29e;--su:#78716c;--ac:#fbbf24}
+body{font-family:'Segoe UI',system-ui,sans-serif;background:var(--bg);color:var(--fg);line-height:1.8}
+header{background:var(--sur);border-bottom:1px solid var(--bor);padding:12px 20px;display:flex;align-items:center;justify-content:space-between;position:sticky;top:0;z-index:10}
+.logo{display:flex;align-items:center;gap:10px;text-decoration:none;color:var(--fg)}
+.lm{width:32px;height:32px;background:var(--ac);border-radius:6px;display:flex;align-items:center;justify-content:center;font-weight:800;font-size:16px;color:var(--bg)}
+.ln{font-size:15px;font-weight:600}
+nav a{color:var(--mu);text-decoration:none;font-size:14px;margin-left:16px}
+nav a:hover{color:var(--ac)}
+.container{max-width:780px;margin:0 auto;padding:36px 16px 60px}
+.breadcrumb{font-size:13px;color:var(--su);margin-bottom:20px}
+.breadcrumb a{color:var(--mu);text-decoration:none}
+.breadcrumb a:hover{color:var(--ac)}
+.post-cat{font-size:11px;font-weight:700;text-transform:uppercase;letter-spacing:.07em;padding:4px 10px;border-radius:999px;background:rgba(251,191,36,.1);color:var(--ac);border:1px solid rgba(251,191,36,.2);display:inline-block;margin-bottom:12px}
+h1{font-size:30px;font-weight:700;margin-bottom:10px;line-height:1.3;letter-spacing:-.02em}
+.meta{font-size:13px;color:var(--su);margin-bottom:28px;display:flex;align-items:center;gap:12px;flex-wrap:wrap}
+.meta .tag{background:var(--sur);border:1px solid var(--bor);border-radius:4px;padding:2px 8px;font-size:11px;color:var(--su)}
+/* Markdown rendering */
+.content h1{font-size:26px;font-weight:700;margin:32px 0 12px;color:var(--fg)}
+.content h2{font-size:20px;font-weight:700;margin:28px 0 10px;color:var(--ac);border-bottom:1px solid var(--bor);padding-bottom:6px}
+.content h3{font-size:16px;font-weight:600;margin:20px 0 8px;color:var(--fg)}
+.content p{color:var(--mu);margin-bottom:14px;font-size:15px}
+.content strong{color:var(--fg)}
+.content a{color:var(--ac);text-decoration:none}
+.content a:hover{text-decoration:underline}
+.content ul,.content ol{padding-left:20px;margin-bottom:14px;color:var(--mu);font-size:15px}
+.content li{margin-bottom:6px}
+.content blockquote{border-left:3px solid var(--ac);padding:10px 16px;margin:16px 0;background:rgba(251,191,36,.05);border-radius:0 6px 6px 0}
+.content blockquote p{margin:0;color:var(--mu);font-style:italic}
+.content code{background:var(--bor);border-radius:4px;padding:2px 6px;font-family:monospace;font-size:13px;color:#fcd34d}
+.content pre{background:var(--sur);border:1px solid var(--bor);border-radius:8px;padding:16px;overflow-x:auto;margin:14px 0}
+.content pre code{background:none;padding:0;color:var(--mu)}
+.content table{width:100%;border-collapse:collapse;margin:16px 0;font-size:14px}
+.content th{background:var(--bor);padding:8px 12px;text-align:left;color:var(--mu);font-size:11px;text-transform:uppercase;letter-spacing:.05em}
+.content td{padding:8px 12px;border-top:1px solid var(--sur);color:var(--mu)}
+.content tr:hover td{background:rgba(255,255,255,.015)}
+.content hr{border:none;border-top:1px solid var(--bor);margin:28px 0}
+.ai-notice{background:rgba(245,158,11,.06);border:1px solid rgba(245,158,11,.2);border-radius:8px;padding:12px 14px;font-size:12px;color:var(--mu);margin:20px 0;line-height:1.5}
+.ai-notice strong{color:#fbbf24}
+.share-bar{display:flex;gap:8px;margin:24px 0;flex-wrap:wrap}
+.share-btn{padding:8px 16px;background:var(--sur);border:1px solid var(--bor);border-radius:8px;cursor:pointer;font-size:13px;color:var(--mu);font-family:inherit;transition:all .15s}
+.share-btn:hover{border-color:var(--ac);color:var(--ac)}
+.related{margin-top:40px;padding-top:24px;border-top:1px solid var(--bor)}
+.related h3{font-size:14px;font-weight:700;color:var(--mu);text-transform:uppercase;letter-spacing:.06em;margin-bottom:12px}
+.related-grid{display:grid;grid-template-columns:1fr 1fr;gap:10px}
+.related-card{background:var(--sur);border:1px solid var(--bor);border-radius:10px;padding:14px;text-decoration:none;color:var(--fg);transition:all .15s}
+.related-card:hover{border-color:var(--ac)}
+.related-card-cat{font-size:10px;color:var(--ac);text-transform:uppercase;letter-spacing:.06em;margin-bottom:4px}
+.related-card-title{font-size:14px;font-weight:600;line-height:1.4}
+.loading{text-align:center;padding:48px;color:var(--mu);font-size:16px}
+.error{text-align:center;padding:48px;color:#f87171}
+.ad{background:var(--sur);border:1px dashed var(--bor);border-radius:8px;padding:14px;text-align:center;color:var(--su);font-size:11px;margin:16px 0}
+footer{text-align:center;padding:24px;border-top:1px solid var(--bor);margin-top:40px;font-size:12px;color:var(--su)}
+footer a{color:var(--mu);text-decoration:none;margin:0 8px}
+@media(max-width:580px){h1{font-size:22px}.related-grid{grid-template-columns:1fr}}
+</style>
+  <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-5102938260449475" crossorigin="anonymous"></script>
+</head>
+<body>
+<header>
+  <a class="logo" href="/"><div class="lm">F</div><div class="ln">Forjit AI</div></a>
+  <nav>
+    <a href="/">Home</a>
+    <a href="/tools/">Tools</a>
+    <a href="/blog/">Blog</a>
+  </nav>
+</header>
+
+<div class="container">
+  <div class="breadcrumb">
+    <a href="/">Forjit AI</a> › <a href="/blog/">Blog</a> › <span id="breadTitle">Loading…</span>
+  </div>
+
+  <div id="postContent"><div class="loading">Loading post…</div></div>
+</div>
+
+<footer>
+  <a href="/">Forjit AI</a>
+  <a href="/tools/">Tools</a>
+  <a href="/blog/">Blog</a>
+  <a href="/privacy">Privacy</a>
+  <a href="/terms">Terms</a>
+  <br/><br/>© 2025 Forjit AI · forjitai.in · forjitai@gmail.com · Made in India
+</footer>
+
+<script>
+/* ── Lightweight markdown renderer ───────────────────────────────────────── */
+function mdToHtml(md) {
+  if (!md) return '';
+  let h = md
+    .replace(/&/g,'&amp;').replace(/</g,'&lt;').replace(/>/g,'&gt;');
+  // Code blocks
+  h = h.replace(/```[\s\S]*?```/g, m => {
+    const code = m.replace(/^```[^\n]*\n?/,'').replace(/\n?```$/,'');
+    return `<pre><code>${code}</code></pre>`;
+  });
+  // Tables
+  h = h.replace(/^\|(.+)\|\s*\n\|[-:| ]+\|\s*\n((?:\|.+\|\s*\n?)+)/gm, (_, header, rows) => {
+    const ths = header.split('|').map(c=>c.trim()).filter(Boolean).map(c=>`<th>${c}</th>`).join('');
+    const trs = rows.trim().split('\n').map(row => {
+      const tds = row.split('|').slice(1,-1).map(c=>`<td>${c.trim()}</td>`).join('');
+      return `<tr>${tds}</tr>`;
+    }).join('');
+    return `<table><thead><tr>${ths}</tr></thead><tbody>${trs}</tbody></table>`;
+  });
+  // HR
+  h = h.replace(/^---+$/gm, '<hr>');
+  // Headings
+  h = h.replace(/^###### (.+)$/gm,'<h6>$1</h6>')
+       .replace(/^##### (.+)$/gm,'<h5>$1</h5>')
+       .replace(/^#### (.+)$/gm,'<h4>$1</h4>')
+       .replace(/^### (.+)$/gm,'<h3>$1</h3>')
+       .replace(/^## (.+)$/gm,'<h2>$1</h2>')
+       .replace(/^# (.+)$/gm,'<h1>$1</h1>');
+  // Blockquotes
+  h = h.replace(/^&gt; (.+)$/gm,'<blockquote><p>$1</p></blockquote>');
+  // Inline
+  h = h.replace(/\*\*(.+?)\*\*/g,'<strong>$1</strong>')
+       .replace(/\*(.+?)\*/g,'<em>$1</em>')
+       .replace(/`([^`]+)`/g,'<code>$1</code>')
+       .replace(/\[([^\]]+)\]\(([^)]+)\)/g,'<a href="$2">$1</a>');
+  // Lists
+  h = h.replace(/^(\s*)[*+-] (.+)$/gm,'$1<li>$2</li>');
+  h = h.replace(/^(\s*)\d+\. (.+)$/gm,'$1<li>$2</li>');
+  h = h.replace(/(<li>[\s\S]*?<\/li>(\n|$))+/g, m => `<ul>${m}</ul>`);
+  // Paragraphs
+  h = h.split(/\n\n+/).map(block => {
+    block = block.trim();
+    if (!block) return '';
+    if (/^<(h[1-6]|ul|ol|pre|table|blockquote|hr)/i.test(block)) return block;
+    return `<p>${block.replace(/\n/g,'<br>')}</p>`;
+  }).join('\n');
+  return h;
+}
+
+/* ── Load and render post ────────────────────────────────────────────────── */
+async function loadPost() {
+  const params = new URLSearchParams(window.location.search);
+  const date = params.get('date');
+  const slug = params.get('slug');
+
+  if (!date) {
+    document.getElementById('postContent').innerHTML =
+      '<div class="error">No post specified. <a href="/blog/">← Back to blog</a></div>';
+    return;
+  }
+
+  try {
+    const res = await fetch(`posts/${date}.json`);
+    if (!res.ok) throw new Error('Post not found');
+    const post = await res.json();
+
+    // Update page meta
+    const postUrl = `https://www.forjitai.in/blog/post.html?date=${date}&slug=${post.slug}`;
+    document.getElementById('pageTitle').textContent = `${post.title} — Forjit AI`;
+    document.getElementById('pageMeta').content      = post.summary || post.title;
+    document.getElementById('breadTitle').textContent = post.title;
+    document.getElementById('pageCanonical').href    = postUrl;
+    // og tags
+    document.getElementById('ogUrl').content    = postUrl;
+    document.getElementById('ogTitle').content  = `${post.title} — Forjit AI`;
+    document.getElementById('ogDesc').content   = post.summary || post.title;
+    // twitter tags
+    document.getElementById('twTitle').content  = `${post.title} — Forjit AI`;
+    document.getElementById('twDesc').content   = post.summary || post.title;
+
+    // Determine if AI-generated
+    const aiGenerated = post.generated === true;
+
+    const dateFormatted = new Date(post.date).toLocaleDateString('en-IN', {
+      day: 'numeric', month: 'long', year: 'numeric',
+    });
+
+    document.getElementById('postContent').innerHTML = `
+      <span class="post-cat">${post.category}</span>
+      <h1>${post.title}</h1>
+      <div class="meta">
+        <span>${dateFormatted}</span>
+        ${(post.tags || []).map(t => `<span class="tag">${t}</span>`).join('')}
+        ${aiGenerated ? '<span class="tag" style="border-color:rgba(251,191,36,.3);color:#fbbf24">AI-generated</span>' : ''}
+      </div>
+
+      ${aiGenerated ? `
+        <div class="ai-notice">
+          <strong>⚠ AI-Generated Content — Important Notice</strong><br/>
+          This article was automatically created by an AI language model (${post.model || 'Llama 3.3 70B'}) and has not been manually reviewed.<br/>
+          <strong>Do not make financial, tax, medical, or legal decisions based on this content alone.</strong>
+          Always verify with a qualified Chartered Accountant (CA), SEBI-registered financial advisor,
+          or registered medical professional as appropriate.
+          Facts, figures, and regulations mentioned should be independently confirmed —
+          they may be outdated or inaccurate.
+          <br/>
+          <a href="/terms" style="color:var(--ac)">Terms of Service</a> ·
+          <a href="/privacy" style="color:var(--ac)">Privacy Policy</a>
+        </div>` : ''}
+
+      <div class="ad">Advertisement</div>
+
+      <div class="content">${mdToHtml(post.content)}</div>
+
+      <div class="ad" style="margin-top:24px">Advertisement</div>
+
+      <div class="share-bar">
+        <button class="share-btn" onclick="copyLink()">🔗 Copy Link</button>
+        <a class="share-btn" style="text-decoration:none"
+          href="https://wa.me/?text=${encodeURIComponent(post.title + ' — ' + window.location.href)}"
+          target="_blank" rel="noreferrer">
+          💬 Share on WhatsApp
+        </a>
+        <a class="share-btn" style="text-decoration:none"
+          href="https://www.linkedin.com/sharing/share-offsite/?url=${encodeURIComponent(window.location.href)}"
+          target="_blank" rel="noreferrer">
+          💼 LinkedIn
+        </a>
+      </div>
+
+      <div class="related">
+        <h3>Explore Free Tools</h3>
+        <div class="related-grid">
+          <a class="related-card" href="/tools/emi-calculator.html">
+            <div class="related-card-cat">Finance</div>
+            <div class="related-card-title">🏦 EMI Calculator with Prepayment Impact</div>
+          </a>
+          <a class="related-card" href="/tools/income-tax-calculator.html">
+            <div class="related-card-cat">India</div>
+            <div class="related-card-title">📋 Income Tax Calculator FY 2025-26</div>
+          </a>
+          <a class="related-card" href="/tools/sip-calculator.html">
+            <div class="related-card-cat">Finance</div>
+            <div class="related-card-title">📈 SIP & Goal Calculator</div>
+          </a>
+          <a class="related-card" href="/tools/">
+            <div class="related-card-cat">All Tools</div>
+            <div class="related-card-title">🔧 View All 41+ Free Tools →</div>
+          </a>
+        </div>
+      </div>
+    `;
+
+    // Add Article schema
+    const schema = {
+      '@context': 'https://schema.org',
+      '@type': 'Article',
+      headline: post.title,
+      description: post.summary,
+      datePublished: post.date,
+      dateModified: post.date,
+      author: { '@type': 'Organization', name: 'Forjit AI' },
+      publisher: {
+        '@type': 'Organization',
+        name: 'Forjit AI',
+        logo: { '@type': 'ImageObject', url: 'https://www.forjitai.in/icons/icon-192.png' },
+      },
+      mainEntityOfPage: window.location.href,
+    };
+    const s = document.createElement('script');
+    s.type = 'application/ld+json';
+    s.textContent = JSON.stringify(schema);
+    document.head.appendChild(s);
+
+  } catch (e) {
+    document.getElementById('postContent').innerHTML =
+      `<div class="error">Could not load this post.<br>${e.message}<br><br><a href="/blog/">← Back to blog</a></div>`;
+  }
+}
+
+function copyLink() {
+  navigator.clipboard.writeText(window.location.href)
+    .then(() => { event.target.textContent = '✓ Copied!'; setTimeout(() => event.target.textContent = '🔗 Copy Link', 1800); });
+}
+
+loadPost();
+</script>
+</body>
+</html>

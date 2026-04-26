@@ -1,0 +1,242 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="UTF-8"/><meta name="viewport" content="width=device-width,initial-scale=1.0"/>
+<title>Salary Calculator India — CTC to In-Hand Salary Calculator Free | Forjit AI</title>
+<meta name="description" content="Free Indian salary calculator. Convert CTC to in-hand salary with PF, professional tax and HRA deductions. FY 2025-26."/>
+<meta name="keywords" content="salary calculator India, CTC to in-hand salary calculator, take home salary calculator India, salary breakup calculator 2025"/>
+<link rel="canonical" href="https://www.forjitai.in/tools/salary-calculator.html"/>
+<link rel="stylesheet" href="tools.css"/>
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-DYR402JFVG"></script>
+<script>window.dataLayer=window.dataLayer||[];function gtag(){dataLayer.push(arguments);}gtag('js',new Date());gtag('config','G-DYR402JFVG');</script>
+  <meta name="robots" content="index,follow,max-snippet:-1,max-image-preview:large"/>
+  <meta property="og:type"         content="website"/>
+  <meta property="og:site_name"    content="Forjit AI"/>
+  <meta property="og:url"          content="https://www.forjitai.in/tools/salary-calculator.html"/>
+  <meta property="og:title"        content="Salary Calculator — Forjit AI | CTC to In-Hand Salary Calculator India"/>
+  <meta property="og:description"  content="Convert CTC to in-hand salary. PF, income tax, HRA breakdown."/>
+  <meta property="og:image"        content="https://www.forjitai.in/og-image.png"/>
+  <meta property="og:image:width"  content="1200"/>
+  <meta property="og:image:height" content="630"/>
+  <meta property="og:locale"       content="en_IN"/>
+  <meta name="twitter:card"        content="summary_large_image"/>
+  <meta name="twitter:site"        content="@forjitai"/>
+  <meta name="twitter:title"       content="Salary Calculator — Forjit AI | CTC to In-Hand Salary Calculator India"/>
+  <meta name="twitter:description" content="Free Indian salary calculator. Convert CTC to in-hand salary with PF, professional tax and HRA deductions. FY 2025-26."/>
+  <meta name="twitter:image"       content="https://www.forjitai.in/og-image.png"/>
+  <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-5102938260449475" crossorigin="anonymous"></script>
+  <meta name="google-site-verification" content="u11mSk2rQwaphaXMCcUwJU-6dRhN_ndessqEMeZdubk" />
+
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "FAQPage",
+  "mainEntity": [
+    {
+      "@type": "Question",
+      "name": "How do I calculate in-hand salary from CTC?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "In-hand salary = CTC minus employer PF (12% of basic), employee PF (12% of basic), professional tax and other deductions."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "What is CTC in salary?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "CTC (Cost to Company) is the total amount a company spends on an employee including basic salary, allowances, PF contributions and other benefits."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "How much PF is deducted from salary?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "Employee PF = 12% of basic salary (up to \u20b915,000 basic = max \u20b91,800/month). Employer also contributes 12%."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "Is this salary calculator free?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "Yes. The Forjit AI salary calculator is completely free, updated for FY 2025-26."
+      }
+    }
+  ]
+}
+</script>
+</head>
+<body>
+<header>
+  <a class="logo" href="/"><div class="logo-mark">F</div><div><div class="logo-name">Forjit AI</div><div class="logo-sub">Tools</div></div></a>
+  <a class="back-link" href="/tools/">← All Tools</a>
+</header>
+<div class="container-sm">
+  <h1>Salary Calculator</h1>
+  <p class="page-desc">Convert CTC to monthly in-hand salary with full breakdown of all deductions.</p>
+  <div class="ad-slot">Advertisement · <a href="https://adsense.google.com" target="_blank">Connect AdSense</a></div>
+
+  <div class="card">
+    <div class="field"><span class="label">Annual CTC (₹)</span>
+      <div class="input-wrap"><span class="prefix">₹</span><input type="number" id="ctc" value="1200000" min="0" step="10000" oninput="calc()"/></div>
+    </div>
+    <div style="display:grid;grid-template-columns:1fr 1fr;gap:10px">
+      <div class="field"><span class="label">Basic Salary (%)</span>
+        <div class="input-wrap"><input type="number" id="basicPct" value="40" min="20" max="70" oninput="calc()"/><span class="suffix">%</span></div>
+      </div>
+      <div class="field"><span class="label">HRA (%)</span>
+        <div class="input-wrap"><input type="number" id="hraPct" value="20" min="0" max="50" oninput="calc()"/><span class="suffix">%</span></div>
+      </div>
+    </div>
+    <div class="field"><span class="label">City Type (for HRA exemption)</span>
+      <div class="input-wrap"><select id="city" onchange="calc()">
+        <option value="0.5">Metro (Mumbai, Delhi, Kolkata, Chennai) — 50%</option>
+        <option value="0.4">Non-Metro — 40%</option>
+      </select></div>
+    </div>
+    <div class="field"><span class="label">Annual Rent Paid (₹)</span>
+      <div class="input-wrap"><span class="prefix">₹</span><input type="number" id="rent" value="180000" min="0" oninput="calc()"/></div>
+    </div>
+    <div class="field"><span class="label">Tax Regime</span>
+      <div class="toggle-row">
+        <button class="toggle-btn on" id="btnNew" onclick="setRegime('new',this)">New Regime</button>
+        <button class="toggle-btn" id="btnOld" onclick="setRegime('old',this)">Old Regime</button>
+      </div>
+    </div>
+  </div>
+
+  <div class="result-hero">
+    <div class="result-hero-label">Monthly In-Hand Salary</div>
+    <div class="result-hero-value" id="inhand">₹0</div>
+    <div class="result-hero-sub" id="inhandAnnual">Annual: ₹0</div>
+  </div>
+
+  <div class="card">
+    <h3 style="font-size:14px;font-weight:700;margin-bottom:14px">Monthly Salary Breakdown</h3>
+    <div class="table-wrap"><table>
+      <thead><tr><th>Component</th><th>Monthly</th><th>Annual</th></tr></thead>
+      <tbody id="breakdown"></tbody>
+    </table></div>
+  </div>
+  <div class="ad-slot">Advertisement</div>
+  <div class="tips"><h3>💡 Salary Tips</h3><ul>
+    <li>PF contribution is 12% of Basic by employee + 12% by employer (in CTC)</li>
+    <li>Professional Tax max ₹2,400/year, varies by state</li>
+    <li>Food coupons/meal allowance up to ₹26,400/year is tax-free</li>
+    <li>Leave Travel Allowance (LTA) — 2 journeys in 4 years are tax-exempt</li>
+    <li>Restructure salary to maximize allowances and reduce tax</li>
+  </ul></div>
+</div>
+<script>
+let regime='new';
+function setRegime(r,btn){
+  regime=r;
+  document.getElementById('btnNew').classList.toggle('on',r==='new');
+  document.getElementById('btnOld').classList.toggle('on',r==='old');
+  calc();
+}
+const fmt=n=>'₹'+Math.round(n).toLocaleString('en-IN');
+
+function calcTax(income){
+  // Simple estimate
+  if(regime==='new'){
+    const taxable=Math.max(0,income-75000);
+    if(taxable<=700000) return 0;
+    const slabs=[[300000,0],[700000,.05],[1000000,.1],[1200000,.15],[1500000,.2],[Infinity,.3]];
+    let tax=0,prev=0;
+    for(const [l,r] of slabs){if(taxable<=prev)break;tax+=(Math.min(taxable,l)-prev)*r;prev=l;}
+    return tax*1.04;
+  } else {
+    const taxable=Math.max(0,income-50000);
+    if(taxable<=500000) return 0;
+    const slabs=[[250000,0],[500000,.05],[1000000,.2],[Infinity,.3]];
+    let tax=0,prev=0;
+    for(const [l,r] of slabs){if(taxable<=prev)break;tax+=(Math.min(taxable,l)-prev)*r;prev=l;}
+    return tax*1.04;
+  }
+}
+
+function calc(){
+  const ctc=parseFloat(document.getElementById('ctc').value)||0;
+  const basicPct=parseFloat(document.getElementById('basicPct').value)/100||0.4;
+  const hraPct=parseFloat(document.getElementById('hraPct').value)/100||0.2;
+  const cityPct=parseFloat(document.getElementById('city').value);
+  const rent=parseFloat(document.getElementById('rent').value)||0;
+
+  const basic=ctc*basicPct;
+  const hra=ctc*hraPct;
+  const specialAllowance=ctc-basic-hra-(basic*0.12)-(basic*0.12); // employer PF in CTC
+  const empPF=basic*0.12;
+  const erPF=basic*0.12; // part of CTC
+  const grossSalary=ctc-erPF;
+  const pt=2400; // professional tax
+  const hraExempt=Math.min(hra,rent-basic*0.1,basic*cityPct);
+  const taxableIncome=grossSalary-empPF-(regime==='old'?Math.max(0,hraExempt):0);
+  const tax=calcTax(taxableIncome);
+  const monthlyTax=tax/12;
+  const monthlyPT=pt/12;
+  const monthlyPF=empPF/12;
+  const inhand=(grossSalary-tax-pt-empPF)/12;
+
+  document.getElementById('inhand').textContent=fmt(inhand);
+  document.getElementById('inhandAnnual').textContent='Annual: '+fmt(inhand*12);
+
+  const rows=[
+    ['Basic Salary','pos',basic/12,basic],
+    ['HRA','pos',hra/12,hra],
+    ['Special Allowance','pos',specialAllowance/12,specialAllowance],
+    ['Gross Salary','pos',grossSalary/12,grossSalary,'bold'],
+    ['Employee PF (12%)','neg',-monthlyPF,-empPF],
+    ['Income Tax','neg',-monthlyTax,-tax],
+    ['Professional Tax','neg',-monthlyPT,-pt],
+    ['Net In-Hand','net',inhand,inhand*12,'bold'],
+  ];
+  const tbody=document.getElementById('breakdown');
+  tbody.innerHTML='';
+  rows.forEach(([name,type,monthly,annual,style])=>{
+    const color=type==='pos'?'var(--fg)':type==='neg'?'#f87171':'var(--accent)';
+    const bold=style==='bold'?'font-weight:700;':'';
+    tbody.innerHTML+=`<tr><td style="${bold}">${name}</td><td style="${bold}color:${color}">${fmt(Math.abs(monthly))}</td><td style="${bold}color:${color}">${fmt(Math.abs(annual))}</td></tr>`;
+  });
+}
+calc();
+</script>
+<script>
+// Auto-save inputs to localStorage
+(function(){
+  const KEY = 'forjit_salary_calculator';
+  // Restore saved values
+  try {
+    const saved = JSON.parse(localStorage.getItem(KEY) || '{}');
+    Object.entries(saved).forEach(([id, val]) => {
+      const el = document.getElementById(id);
+      if (el) el.value = val;
+    });
+  } catch(e) {}
+  // Save on every input change
+  document.querySelectorAll('input[type=number], input[type=text], select').forEach(el => {
+    if (el.id) el.addEventListener('input', () => {
+      try {
+        const data = {};
+        document.querySelectorAll('input[type=number], input[type=text], select').forEach(e => {
+          if (e.id) data[e.id] = e.value;
+        });
+        localStorage.setItem(KEY, JSON.stringify(data));
+      } catch(e) {}
+    });
+  });
+})();
+</script>
+<script src="tool-common.js"></script>
+
+<!-- Internal SEO links -->
+<div id="related-tools-seo" style="margin:20px 0;padding:14px;background:#0c0a09;border:1px solid #292524;border-radius:10px">
+  <p style="font-size:11px;color:#57534e;text-transform:uppercase;letter-spacing:.07em;margin-bottom:8px;font-weight:700">Related Free Tools</p>
+  <a href="/tools/income-tax-calculator.html" style="display:inline-block;margin:4px;padding:6px 12px;background:#1c1917;border:1px solid #292524;border-radius:999px;color:#a8a29e;font-size:12px;text-decoration:none">Income Tax Calculator</a>
+<a href="/tools/hra-calculator.html" style="display:inline-block;margin:4px;padding:6px 12px;background:#1c1917;border:1px solid #292524;border-radius:999px;color:#a8a29e;font-size:12px;text-decoration:none">HRA Calculator</a>
+<a href="/tools/gratuity-calculator.html" style="display:inline-block;margin:4px;padding:6px 12px;background:#1c1917;border:1px solid #292524;border-radius:999px;color:#a8a29e;font-size:12px;text-decoration:none">Gratuity Calculator</a>
+</div>
+</body>
+</html>

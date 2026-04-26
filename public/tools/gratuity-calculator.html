@@ -1,0 +1,159 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="UTF-8"/><meta name="viewport" content="width=device-width,initial-scale=1.0"/>
+<title>Gratuity Calculator India 2025 — Gratuity Formula & Eligibility | Forjit AI</title>
+<meta name="description" content="Free gratuity calculator India. Calculate gratuity amount using official formula. Check eligibility and tax exemption for FY 2025-26."/>
+<meta name="keywords" content="gratuity calculator India, gratuity formula calculator, how to calculate gratuity India, gratuity eligibility calculator"/>
+<link rel="canonical" href="https://www.forjitai.in/tools/gratuity-calculator.html"/>
+<link rel="stylesheet" href="tools.css"/>
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-DYR402JFVG"></script>
+<script>window.dataLayer=window.dataLayer||[];function gtag(){dataLayer.push(arguments);}gtag('js',new Date());gtag('config','G-DYR402JFVG');</script>
+  <meta name="robots" content="index,follow,max-snippet:-1,max-image-preview:large"/>
+  <meta property="og:type"         content="website"/>
+  <meta property="og:site_name"    content="Forjit AI"/>
+  <meta property="og:url"          content="https://www.forjitai.in/tools/gratuity-calculator.html"/>
+  <meta property="og:title"        content="Gratuity Calculator — Forjit AI | Gratuity Amount Calculator India"/>
+  <meta property="og:description"  content="Gratuity under Payment of Gratuity Act. Tax-free limit, step-by-step."/>
+  <meta property="og:image"        content="https://www.forjitai.in/og-image.png"/>
+  <meta property="og:image:width"  content="1200"/>
+  <meta property="og:image:height" content="630"/>
+  <meta property="og:locale"       content="en_IN"/>
+  <meta name="twitter:card"        content="summary_large_image"/>
+  <meta name="twitter:site"        content="@forjitai"/>
+  <meta name="twitter:title"       content="Gratuity Calculator — Forjit AI | Gratuity Amount Calculator India"/>
+  <meta name="twitter:description" content="Free gratuity calculator India. Calculate gratuity amount using official formula. Check eligibility and tax exemption for FY 2025-26."/>
+  <meta name="twitter:image"       content="https://www.forjitai.in/og-image.png"/>
+  <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-5102938260449475" crossorigin="anonymous"></script>
+  <meta name="google-site-verification" content="u11mSk2rQwaphaXMCcUwJU-6dRhN_ndessqEMeZdubk" />
+
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "FAQPage",
+  "mainEntity": [
+    {
+      "@type": "Question",
+      "name": "What is the gratuity formula in India?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "Gratuity = (Last drawn salary \u00d7 15 \u00d7 Years of service) / 26. Last drawn salary includes basic pay and dearness allowance."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "Who is eligible for gratuity?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "Employees who have completed 5 or more years of continuous service with an organisation are eligible for gratuity."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "Is gratuity taxable in India?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "For government employees, gratuity is fully tax-exempt. For private employees, up to \u20b920 lakh is tax-exempt."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "Is this gratuity calculator free?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "Yes, completely free at forjitai.in with official formula built in."
+      }
+    }
+  ]
+}
+</script>
+</head>
+<body>
+<header>
+  <a class="logo" href="/"><div class="logo-mark">F</div><div><div class="logo-name">Forjit AI</div><div class="logo-sub">Tools</div></div></a>
+  <a class="back-link" href="/tools/">← All Tools</a>
+</header>
+<div class="container-sm">
+  <h1>Gratuity Calculator</h1>
+  <p class="page-desc">Calculate your gratuity as per the Payment of Gratuity Act 1972.</p>
+  <div class="ad-slot">Advertisement · <a href="https://adsense.google.com" target="_blank">Connect AdSense</a></div>
+
+  <div class="card">
+    <div class="field"><span class="label">Employee Type</span>
+      <div class="toggle-row">
+        <button class="toggle-btn on" id="btnCov" onclick="setCov(true,this)">Covered by Act (10+ employees)</button>
+        <button class="toggle-btn" onclick="setCov(false,this)">Not Covered by Act</button>
+      </div>
+    </div>
+    <div class="field"><span class="label">Last Drawn Monthly Basic + DA (₹)</span>
+      <div class="input-wrap"><span class="prefix">₹</span><input type="number" id="basic" value="50000" oninput="calc()"/></div>
+    </div>
+    <div class="field"><span class="label">Years of Service</span>
+      <div class="input-wrap"><span class="prefix">Yr</span><input type="number" id="years" value="7" min="5" step="0.5" oninput="calc()"/></div>
+    </div>
+    <div id="monthsField" class="field"><span class="label">Additional Months (for rounding — 6+ months counts as 1 year)</span>
+      <div class="input-wrap"><span class="prefix">Mo</span><input type="number" id="months" value="8" min="0" max="11" oninput="calc()"/></div>
+    </div>
+  </div>
+
+  <div class="result-hero">
+    <div class="result-hero-label">Gratuity Amount</div>
+    <div class="result-hero-value" id="gratuity">₹0</div>
+    <div class="result-hero-sub" id="formula">—</div>
+  </div>
+
+  <div class="results-grid cols2">
+    <div class="result-card"><div class="result-label">Tax-Free Limit</div><div class="result-value rv-green">₹20,00,000</div></div>
+    <div class="result-card"><div class="result-label">Tax Status</div><div class="result-value" id="taxStatus" style="font-size:15px">—</div></div>
+  </div>
+
+  <div class="card">
+    <h3 style="font-size:14px;font-weight:700;margin-bottom:12px">Formulas Used</h3>
+    <div class="info-box" style="margin-bottom:10px"><b>Covered by Act:</b> (Basic + DA) × Years of Service × 15/26<br><small style="color:var(--subtle)">6+ months in a year = 1 full year</small></div>
+    <div class="info-box"><b>Not Covered by Act:</b> (Basic + DA) × Years of Service × 15/30<br><small style="color:var(--subtle)">Or as per company policy (whichever is higher)</small></div>
+    <div class="warning-box" style="margin-top:10px">Maximum gratuity under the Act is limited to ₹20,00,000 (₹20 lakh). Employer may pay more voluntarily.</div>
+  </div>
+
+  <div class="card-dark">
+    <h3 style="font-size:14px;font-weight:700;margin-bottom:12px;color:var(--accent)">Tax on Gratuity</h3>
+    <div class="table-wrap"><table>
+      <thead><tr><th>Employee Type</th><th>Tax Exemption</th></tr></thead>
+      <tbody>
+        <tr><td>Government employees</td><td style="color:var(--green)">Fully exempt</td></tr>
+        <tr><td>Private — Covered by Act</td><td>Exempt up to ₹20L</td></tr>
+        <tr><td>Private — Not Covered</td><td>Exempt up to ₹10L or half month salary/year</td></tr>
+      </tbody>
+    </table></div>
+  </div>
+  <div class="ad-slot">Advertisement</div>
+</div>
+<script>
+const fmt=n=>'₹'+Math.round(n).toLocaleString('en-IN');
+let covered=true;
+function setCov(c,btn){covered=c;document.querySelectorAll('.toggle-btn').forEach(b=>b.classList.remove('on'));btn.classList.add('on');calc();}
+function calc(){
+  const basic=+document.getElementById('basic').value||0;
+  const years=+document.getElementById('years').value||0;
+  const months=+document.getElementById('months').value||0;
+  const totalYears=months>=6?Math.ceil(years+months/12):Math.floor(years+months/12);
+  let gratuity,formulaText;
+  if(covered){
+    gratuity=basic*totalYears*15/26;
+    formulaText=`${fmt(basic)} × ${totalYears} years × 15/26`;
+  } else {
+    gratuity=basic*totalYears*15/30;
+    formulaText=`${fmt(basic)} × ${totalYears} years × 15/30`;
+  }
+  const maxGratuity=2000000;
+  gratuity=Math.min(gratuity,maxGratuity);
+  document.getElementById('gratuity').textContent=fmt(gratuity);
+  document.getElementById('formula').textContent=formulaText+(gratuity===maxGratuity?' (capped at ₹20L)':'');
+  const taxFree=gratuity<=maxGratuity;
+  document.getElementById('taxStatus').textContent=taxFree?'✓ Fully Tax-Free':'⚠ Partially Taxable';
+  document.getElementById('taxStatus').style.color=taxFree?'var(--green)':'#f87171';
+}
+calc();
+</script>
+<script src="tool-common.js"></script>
+</body>
+</html>

@@ -1,0 +1,200 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="UTF-8"/><meta name="viewport" content="width=device-width,initial-scale=1.0"/>
+<title>Word Counter Online Free — Character, Sentence Count | Forjit AI</title>
+<meta name="description" content="Free word counter online. Count words, characters, sentences and paragraphs instantly. Check reading time and keyword density."/>
+<meta name="keywords" content="word counter online free, character counter, word count tool, online word counter India, text character counter"/>
+<link rel="canonical" href="https://www.forjitai.in/tools/word-counter.html"/>
+<link rel="stylesheet" href="tools.css"/>
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-DYR402JFVG"></script>
+<script>window.dataLayer=window.dataLayer||[];function gtag(){dataLayer.push(arguments);}gtag('js',new Date());gtag('config','G-DYR402JFVG');</script>
+<style>
+.stats-row{display:grid;grid-template-columns:repeat(4,1fr);gap:10px;margin-bottom:16px}
+#txt{width:100%;min-height:220px;background:var(--bg);border:1px solid var(--border);border-radius:8px;padding:14px;color:var(--fg);font-size:15px;font-family:inherit;resize:vertical;outline:none;line-height:1.6;transition:border-color .15s}
+#txt:focus{border-color:var(--accent)}
+.limit-bar{height:4px;background:var(--border);border-radius:2px;overflow:hidden;margin-top:6px}
+.limit-fill{height:100%;border-radius:2px;transition:width .3s,background .3s}
+.freq-table{max-height:200px;overflow-y:auto}
+@media(max-width:500px){.stats-row{grid-template-columns:repeat(2,1fr)}}
+</style>
+  <meta name="robots" content="index,follow,max-snippet:-1,max-image-preview:large"/>
+  <meta property="og:type"         content="website"/>
+  <meta property="og:site_name"    content="Forjit AI"/>
+  <meta property="og:url"          content="https://www.forjitai.in/tools/word-counter.html"/>
+  <meta property="og:title"        content="Word Counter — Forjit AI | Online Character, Word, Sentence Counter"/>
+  <meta property="og:description"  content="Words, characters, sentences, reading time, word frequency analysis."/>
+  <meta property="og:image"        content="https://www.forjitai.in/og-image.png"/>
+  <meta property="og:image:width"  content="1200"/>
+  <meta property="og:image:height" content="630"/>
+  <meta property="og:locale"       content="en_IN"/>
+  <meta name="twitter:card"        content="summary_large_image"/>
+  <meta name="twitter:site"        content="@forjitai"/>
+  <meta name="twitter:title"       content="Word Counter — Forjit AI | Online Character, Word, Sentence Counter"/>
+  <meta name="twitter:description" content="Free word counter online. Count words, characters, sentences and paragraphs instantly. Check reading time and keyword density."/>
+  <meta name="twitter:image"       content="https://www.forjitai.in/og-image.png"/>
+  <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-5102938260449475" crossorigin="anonymous"></script>
+  <meta name="google-site-verification" content="u11mSk2rQwaphaXMCcUwJU-6dRhN_ndessqEMeZdubk" />
+
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "FAQPage",
+  "mainEntity": [
+    {
+      "@type": "Question",
+      "name": "How do I count words online?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "Paste or type your text in the word counter. It instantly shows word count, character count, sentence count and reading time."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "What is the word limit for different documents?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "Blog posts: 800-2000 words. Essays: 500-2000 words. Tweets: 280 characters. WhatsApp messages: 65,536 characters."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "Is this word counter free?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "Yes. The Forjit AI word counter is completely free with no signup or download required."
+      }
+    }
+  ]
+}
+</script>
+</head>
+<body>
+<header>
+  <a class="logo" href="/"><div class="logo-mark">F</div><div><div class="logo-name">Forjit AI</div><div class="logo-sub">Tools</div></div></a>
+  <a class="back-link" href="/tools/">← All Tools</a>
+</header>
+<div class="container">
+  <h1>Word Counter</h1>
+  <p class="page-desc">Count words, characters, sentences, paragraphs, and estimate reading time.</p>
+  <div class="ad-slot">Advertisement · <a href="https://adsense.google.com" target="_blank">Connect AdSense</a></div>
+
+  <div class="stats-row">
+    <div class="result-card"><div class="result-label">Words</div><div class="result-value rv-accent" id="words">0</div></div>
+    <div class="result-card"><div class="result-label">Characters</div><div class="result-value" id="chars">0</div></div>
+    <div class="result-card"><div class="result-label">Chars (no spaces)</div><div class="result-value rv-blue" id="charsNoSpace">0</div></div>
+    <div class="result-card"><div class="result-label">Sentences</div><div class="result-value rv-green" id="sentences">0</div></div>
+    <div class="result-card"><div class="result-label">Paragraphs</div><div class="result-value" id="paras">0</div></div>
+    <div class="result-card"><div class="result-label">Reading Time</div><div class="result-value rv-accent" id="readTime">0 sec</div></div>
+    <div class="result-card"><div class="result-label">Speaking Time</div><div class="result-value rv-blue" id="speakTime">0 sec</div></div>
+    <div class="result-card"><div class="result-label">Unique Words</div><div class="result-value rv-green" id="unique">0</div></div>
+  </div>
+
+  <div class="card" style="padding:16px">
+    <div style="display:flex;justify-content:space-between;align-items:center;margin-bottom:8px">
+      <span class="label" style="margin:0">Your Text</span>
+      <div style="display:flex;gap:8px;align-items:center">
+        <span style="font-size:12px;color:var(--muted)">Limit:</span>
+        <select id="limitSel" onchange="updateLimit()" style="background:var(--bg);border:1px solid var(--border);border-radius:6px;color:var(--fg);padding:4px 8px;font-size:12px">
+          <option value="0">None</option>
+          <option value="280">Twitter (280)</option>
+          <option value="500">LinkedIn post (500)</option>
+          <option value="250">Instagram bio (150)</option>
+          <option value="2000">Short article (2000)</option>
+          <option value="5000">Standard essay (5000)</option>
+        </select>
+        <button onclick="document.getElementById('txt').value='';count()" style="padding:4px 10px;background:var(--border);border:none;border-radius:6px;color:var(--muted);cursor:pointer;font-size:12px">Clear</button>
+      </div>
+    </div>
+    <textarea id="txt" placeholder="Start typing or paste your text here…" oninput="count()"></textarea>
+    <div class="limit-bar"><div class="limit-fill" id="limitFill" style="width:0%"></div></div>
+    <div style="display:flex;justify-content:space-between;margin-top:4px">
+      <span id="limitNote" style="font-size:11px;color:var(--muted)"></span>
+      <button onclick="copyText()" style="padding:3px 10px;background:var(--border);border:none;border-radius:5px;color:var(--muted);cursor:pointer;font-size:11px">Copy All</button>
+    </div>
+  </div>
+
+  <div class="card">
+    <h3 style="font-size:14px;font-weight:700;margin-bottom:12px">Top Word Frequency</h3>
+    <div class="freq-table table-wrap" id="freqWrap" style="display:none">
+      <table id="freqTable">
+        <thead><tr><th>#</th><th>Word</th><th>Count</th><th>Frequency</th></tr></thead>
+        <tbody id="freqBody"></tbody>
+      </table>
+    </div>
+    <div id="freqEmpty" style="font-size:13px;color:var(--muted)">Start typing to see word frequency analysis.</div>
+  </div>
+
+  <div class="ad-slot">Advertisement</div>
+  <div class="tips"><h3>📏 Common Limits Reference</h3><ul>
+    <li><b>Twitter/X tweet:</b> 280 characters</li>
+    <li><b>LinkedIn post:</b> 3,000 characters (shows 'See more' after ~600)</li>
+    <li><b>Facebook post:</b> 63,206 characters</li>
+    <li><b>Instagram caption:</b> 2,200 characters</li>
+    <li><b>WhatsApp message:</b> 65,536 characters</li>
+    <li><b>Google meta description:</b> 150–160 characters</li>
+    <li><b>Average reading speed:</b> 200–250 words/minute</li>
+  </ul></div>
+</div>
+<script>
+let limit=0;
+function updateLimit(){limit=parseInt(document.getElementById('limitSel').value)||0;count();}
+function count(){
+  const t=document.getElementById('txt').value;
+  const words=t.trim()?t.trim().split(/\s+/).filter(w=>w):[];
+  const sentences=t.split(/[.!?]+/).filter(s=>s.trim()).length;
+  const paras=t.split(/\n\n+/).filter(p=>p.trim()).length;
+  const wc=words.length;
+  const cc=t.length;
+  const ccNs=t.replace(/\s/g,'').length;
+  const readMin=(wc/230);
+  const speakMin=(wc/130);
+  const unique=new Set(words.map(w=>w.toLowerCase().replace(/[^a-z]/g,''))).size;
+
+  document.getElementById('words').textContent=wc.toLocaleString('en-IN');
+  document.getElementById('chars').textContent=cc.toLocaleString('en-IN');
+  document.getElementById('charsNoSpace').textContent=ccNs.toLocaleString('en-IN');
+  document.getElementById('sentences').textContent=sentences;
+  document.getElementById('paras').textContent=paras||1;
+  document.getElementById('unique').textContent=unique;
+
+  const fmt=s=>{if(s<1)return Math.round(s*60)+' sec';if(s<60)return s.toFixed(1)+' min';return Math.floor(s/60)+'h '+Math.round(s%60)+'m';};
+  document.getElementById('readTime').textContent=fmt(readMin);
+  document.getElementById('speakTime').textContent=fmt(speakMin);
+
+  // Limit bar
+  if(limit>0){
+    const pct=Math.min(cc/limit*100,100);
+    const fill=document.getElementById('limitFill');
+    fill.style.width=pct+'%';
+    fill.style.background=pct>100?'#ef4444':pct>80?'#f59e0b':'#22c55e';
+    const rem=limit-cc;
+    document.getElementById('limitNote').textContent=rem>=0?rem+' characters remaining':Math.abs(rem)+' characters over limit';
+    document.getElementById('limitNote').style.color=rem>=0?'var(--muted)':'#f87171';
+  } else {
+    document.getElementById('limitFill').style.width='0%';
+    document.getElementById('limitNote').textContent='';
+  }
+
+  // Word frequency
+  if(wc>0){
+    const freq={};
+    words.forEach(w=>{const k=w.toLowerCase().replace(/[^a-z0-9]/g,'');if(k.length>2)freq[k]=(freq[k]||0)+1;});
+    const sorted=Object.entries(freq).sort((a,b)=>b[1]-a[1]).slice(0,15);
+    const tbody=document.getElementById('freqBody');
+    tbody.innerHTML='';
+    sorted.forEach(([word,cnt],i)=>{
+      tbody.innerHTML+=`<tr><td style="color:var(--muted)">${i+1}</td><td style="font-weight:500">${word}</td><td>${cnt}</td><td style="color:var(--accent)">${(cnt/wc*100).toFixed(1)}%</td></tr>`;
+    });
+    document.getElementById('freqWrap').style.display='block';
+    document.getElementById('freqEmpty').style.display='none';
+  } else {
+    document.getElementById('freqWrap').style.display='none';
+    document.getElementById('freqEmpty').style.display='block';
+  }
+}
+function copyText(){navigator.clipboard.writeText(document.getElementById('txt').value);}
+</script>
+<script src="tool-common.js"></script>
+</body>
+</html>

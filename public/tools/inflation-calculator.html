@@ -1,0 +1,154 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="UTF-8"/><meta name="viewport" content="width=device-width,initial-scale=1.0"/>
+<title>Inflation Calculator — Forjit AI | Future Value of Money Calculator India</title>
+<meta name="description" content="Free inflation calculator. See the future value of money with inflation. Calculate how much ₹1 lakh will be worth in 10, 20, 30 years. India CPI inflation data."/>
+<meta name="keywords" content="inflation calculator, future value money, purchasing power calculator, India inflation calculator, how inflation affects money"/>
+<link rel="canonical" href="https://www.forjitai.in/tools/inflation-calculator.html"/>
+<link rel="stylesheet" href="tools.css"/>
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-DYR402JFVG"></script>
+<script>window.dataLayer=window.dataLayer||[];function gtag(){dataLayer.push(arguments);}gtag('js',new Date());gtag('config','G-DYR402JFVG');</script>
+  <meta name="robots" content="index,follow,max-snippet:-1,max-image-preview:large"/>
+  <meta property="og:type"         content="website"/>
+  <meta property="og:site_name"    content="Forjit AI"/>
+  <meta property="og:url"          content="https://www.forjitai.in/tools/inflation-calculator.html"/>
+  <meta property="og:title"        content="Inflation Calculator — Forjit AI | Future Value of Money Calculator India"/>
+  <meta property="og:description"  content="See how inflation erodes money. Compare real vs nominal returns."/>
+  <meta property="og:image"        content="https://www.forjitai.in/og-image.png"/>
+  <meta property="og:image:width"  content="1200"/>
+  <meta property="og:image:height" content="630"/>
+  <meta property="og:locale"       content="en_IN"/>
+  <meta name="twitter:card"        content="summary_large_image"/>
+  <meta name="twitter:site"        content="@forjitai"/>
+  <meta name="twitter:title"       content="Inflation Calculator — Forjit AI | Future Value of Money Calculator India"/>
+  <meta name="twitter:description" content="See how inflation erodes money. Compare real vs nominal returns."/>
+  <meta name="twitter:image"       content="https://www.forjitai.in/og-image.png"/>
+  <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-5102938260449475" crossorigin="anonymous"></script>
+  <meta name="google-site-verification" content="u11mSk2rQwaphaXMCcUwJU-6dRhN_ndessqEMeZdubk" />
+</head>
+<body>
+<header>
+  <a class="logo" href="/"><div class="logo-mark">F</div><div><div class="logo-name">Forjit AI</div><div class="logo-sub">Tools</div></div></a>
+  <a class="back-link" href="/tools/">← All Tools</a>
+</header>
+<div class="container-sm">
+  <h1>Inflation Calculator</h1>
+  <p class="page-desc">Discover how inflation erodes your money's value over time — and how much you need to invest to beat it.</p>
+  <div class="ad-slot">Advertisement · <a href="https://adsense.google.com" target="_blank">Connect AdSense</a></div>
+
+  <div class="toggle-row"><button class="toggle-btn on" onclick="setMode(0,this)">Future Value</button><button class="toggle-btn" onclick="setMode(1,this)">Past Value</button><button class="toggle-btn" onclick="setMode(2,this)">Beat Inflation</button></div>
+
+  <div class="card" id="mode0">
+    <div class="field"><span class="label">Amount Today (₹)</span><div class="input-wrap"><span class="prefix">₹</span><input type="number" id="amt0" value="100000" oninput="calc0()"/></div></div>
+    <div class="field"><span class="label">Annual Inflation Rate (%)</span>
+      <div class="input-wrap"><span class="prefix">%</span><input type="number" id="inf0" value="6" step="0.1" oninput="calc0()"/></div>
+      <div class="info-box" style="margin-top:6px">India's average CPI inflation: <b>~5–7% p.a.</b> historically. Current target: 4%.</div>
+    </div>
+    <div class="field"><span class="label">Years</span><div class="input-wrap"><span class="prefix">Yr</span><input type="number" id="yrs0" value="10" min="1" max="50" oninput="syncR('yrs0','r0');calc0()"/></div>
+      <input type="range" id="r0" min="1" max="50" value="10" oninput="syncI('r0','yrs0');calc0()"/>
+      <div class="range-row"><span>1 yr</span><span>50 yrs</span></div>
+    </div>
+    <div class="result-hero"><div class="result-hero-label">You'll Need This Much in Future for Same Value</div><div class="result-hero-value" id="res0">₹0</div><div class="result-hero-sub" id="sub0">—</div></div>
+    <div class="table-wrap" style="margin-top:12px"><table><thead><tr><th>Year</th><th>Value Needed (₹)</th><th>Purchasing Power Lost</th></tr></thead><tbody id="t0"></tbody></table></div>
+  </div>
+
+  <div class="card" id="mode1" style="display:none">
+    <div class="field"><span class="label">Amount in Past (₹)</span><div class="input-wrap"><span class="prefix">₹</span><input type="number" id="amt1" value="100000" oninput="calc1()"/></div></div>
+    <div class="field"><span class="label">Annual Inflation Rate (%)</span><div class="input-wrap"><span class="prefix">%</span><input type="number" id="inf1" value="6" step="0.1" oninput="calc1()"/></div></div>
+    <div class="field"><span class="label">Years Ago</span><div class="input-wrap"><span class="prefix">Yr</span><input type="number" id="yrs1" value="10" min="1" max="50" oninput="calc1()"/></div></div>
+    <div class="result-hero"><div class="result-hero-label">Today's Equivalent Value</div><div class="result-hero-value" id="res1">₹0</div><div class="result-hero-sub" id="sub1">—</div></div>
+  </div>
+
+  <div class="card" id="mode2" style="display:none">
+    <p style="font-size:13px;color:var(--muted);margin-bottom:16px">Find what return you need to actually grow your wealth after inflation.</p>
+    <div class="field"><span class="label">Investment Return Rate (%)</span><div class="input-wrap"><span class="prefix">%</span><input type="number" id="ret2" value="12" step="0.1" oninput="calc2()"/></div></div>
+    <div class="field"><span class="label">Inflation Rate (%)</span><div class="input-wrap"><span class="prefix">%</span><input type="number" id="inf2" value="6" step="0.1" oninput="calc2()"/></div></div>
+    <div class="results-grid cols3" style="margin-top:12px">
+      <div class="result-card"><div class="result-label">Nominal Return</div><div class="result-value rv-accent" id="r2nom">12%</div></div>
+      <div class="result-card"><div class="result-label">Real Return</div><div class="result-value rv-green" id="r2real">5.66%</div></div>
+      <div class="result-card"><div class="result-label">Wealth Doubling</div><div class="result-value rv-blue" id="r2double">12.7 yrs</div></div>
+    </div>
+    <div class="info-box" style="margin-top:12px" id="inf2note"></div>
+  </div>
+
+  <div class="ad-slot">Advertisement</div>
+  <div class="tips"><h3>💡 Beating Inflation in India</h3><ul>
+    <li>FD (~7%) barely beats 6% inflation — real return is ~1%</li>
+    <li>Equity mutual funds historically returned 12–15% CAGR — real return 6–9%</li>
+    <li>Gold averages ~10% in India over long periods</li>
+    <li>Real estate: highly location-dependent, 8–12% typically</li>
+    <li>Avoid keeping excess cash in savings account (3.5–4% return)</li>
+  </ul></div>
+</div>
+<script>
+const fmt=n=>'₹'+Math.round(n).toLocaleString('en-IN');
+function syncR(i,r){document.getElementById(r).value=document.getElementById(i).value}
+function syncI(r,i){document.getElementById(i).value=document.getElementById(r).value}
+let mode=0;
+function setMode(m,btn){mode=m;[0,1,2].forEach(i=>document.getElementById('mode'+i).style.display=i===m?'block':'none');document.querySelectorAll('.toggle-btn').forEach(b=>b.classList.remove('on'));btn.classList.add('on');}
+function calc0(){
+  const amt=+document.getElementById('amt0').value||0;
+  const inf=+document.getElementById('inf0').value/100||0;
+  const yrs=+document.getElementById('yrs0').value||0;
+  const future=amt*Math.pow(1+inf,yrs);
+  document.getElementById('res0').textContent=fmt(future);
+  document.getElementById('sub0').textContent=`₹${amt.toLocaleString('en-IN')} today = ${fmt(future)} in ${yrs} years at ${inf*100}% inflation`;
+  const tbody=document.getElementById('t0');tbody.innerHTML='';
+  [1,2,3,5,7,10,15,20,25,30].filter(y=>y<=yrs+1).forEach(y=>{
+    const v=amt*Math.pow(1+inf,y);
+    const loss=100-(amt/v*100);
+    const tr=document.createElement('tr');
+    tr.innerHTML=`<td>Year ${y}</td><td style="color:var(--accent)">${fmt(v)}</td><td style="color:#f87171">${loss.toFixed(1)}%</td>`;
+    tbody.appendChild(tr);
+  });
+}
+function calc1(){
+  const amt=+document.getElementById('amt1').value||0;
+  const inf=+document.getElementById('inf1').value/100||0;
+  const yrs=+document.getElementById('yrs1').value||0;
+  const today=amt*Math.pow(1+inf,yrs);
+  document.getElementById('res1').textContent=fmt(today);
+  document.getElementById('sub1').textContent=`${fmt(amt)} ${yrs} years ago = ${fmt(today)} today at ${inf*100}% inflation`;
+}
+function calc2(){
+  const ret=+document.getElementById('ret2').value/100||0;
+  const inf=+document.getElementById('inf2').value/100||0;
+  const real=(1+ret)/(1+inf)-1;
+  const dbl=real>0?72/(real*100):Infinity;
+  document.getElementById('r2nom').textContent=(ret*100).toFixed(1)+'%';
+  document.getElementById('r2real').textContent=(real*100).toFixed(2)+'%';
+  document.getElementById('r2double').textContent=real>0?dbl.toFixed(1)+' yrs':'∞';
+  document.getElementById('r2note').innerHTML=real>0?`✅ Your investment <b>beats inflation</b> by ${(real*100).toFixed(2)}% annually.`:`❌ Your investment <b>does not beat inflation</b> — you're losing purchasing power.`;
+}
+calc0();calc2();
+</script>
+<script>
+// Auto-save inputs to localStorage
+(function(){
+  const KEY = 'forjit_inflation_calculator';
+  // Restore saved values
+  try {
+    const saved = JSON.parse(localStorage.getItem(KEY) || '{}');
+    Object.entries(saved).forEach(([id, val]) => {
+      const el = document.getElementById(id);
+      if (el) el.value = val;
+    });
+  } catch(e) {}
+  // Save on every input change
+  document.querySelectorAll('input[type=number], input[type=text], select').forEach(el => {
+    if (el.id) el.addEventListener('input', () => {
+      try {
+        const data = {};
+        document.querySelectorAll('input[type=number], input[type=text], select').forEach(e => {
+          if (e.id) data[e.id] = e.value;
+        });
+        localStorage.setItem(KEY, JSON.stringify(data));
+      } catch(e) {}
+    });
+  });
+})();
+</script>
+<script src="tool-common.js"></script>
+</body>
+</html>

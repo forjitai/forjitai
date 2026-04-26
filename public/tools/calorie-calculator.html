@@ -1,0 +1,175 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="UTF-8"/><meta name="viewport" content="width=device-width,initial-scale=1.0"/>
+<title>Calorie Calculator — Forjit AI | TDEE & Daily Calorie Needs Calculator</title>
+<meta name="description" content="Free calorie calculator. Calculate your Total Daily Energy Expenditure (TDEE), BMR, and daily calories needed to lose weight, gain muscle, or maintain weight."/>
+<meta name="keywords" content="calorie calculator, TDEE calculator, daily calorie needs, BMR calculator, how many calories per day, weight loss calorie calculator"/>
+<link rel="canonical" href="https://www.forjitai.in/tools/calorie-calculator.html"/>
+<link rel="stylesheet" href="tools.css"/>
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-DYR402JFVG"></script>
+<script>window.dataLayer=window.dataLayer||[];function gtag(){dataLayer.push(arguments);}gtag('js',new Date());gtag('config','G-DYR402JFVG');</script>
+  <meta name="robots" content="index,follow,max-snippet:-1,max-image-preview:large"/>
+  <meta property="og:type"         content="website"/>
+  <meta property="og:site_name"    content="Forjit AI"/>
+  <meta property="og:url"          content="https://www.forjitai.in/tools/calorie-calculator.html"/>
+  <meta property="og:title"        content="Calorie Calculator — Forjit AI | TDEE & Daily Calorie Needs Calculator"/>
+  <meta property="og:description"  content="Daily calorie needs (TDEE), macros for weight loss, gain or maintenance."/>
+  <meta property="og:image"        content="https://www.forjitai.in/og-image.png"/>
+  <meta property="og:image:width"  content="1200"/>
+  <meta property="og:image:height" content="630"/>
+  <meta property="og:locale"       content="en_IN"/>
+  <meta name="twitter:card"        content="summary_large_image"/>
+  <meta name="twitter:site"        content="@forjitai"/>
+  <meta name="twitter:title"       content="Calorie Calculator — Forjit AI | TDEE & Daily Calorie Needs Calculator"/>
+  <meta name="twitter:description" content="Daily calorie needs (TDEE), macros for weight loss, gain or maintenance."/>
+  <meta name="twitter:image"       content="https://www.forjitai.in/og-image.png"/>
+  <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-5102938260449475" crossorigin="anonymous"></script>
+  <meta name="google-site-verification" content="u11mSk2rQwaphaXMCcUwJU-6dRhN_ndessqEMeZdubk" />
+</head>
+<body>
+<header>
+  <a class="logo" href="/"><div class="logo-mark">F</div><div><div class="logo-name">Forjit AI</div><div class="logo-sub">Tools</div></div></a>
+  <a class="back-link" href="/tools/">← All Tools</a>
+</header>
+<div class="container-sm">
+  <h1>Calorie Calculator</h1>
+  <p class="page-desc">Calculate your daily calorie needs for weight loss, maintenance, or muscle gain.</p>
+  <div class="ad-slot">Advertisement · <a href="https://adsense.google.com" target="_blank">Connect AdSense</a></div>
+
+  <div class="card">
+    <div class="field"><span class="label">Gender</span>
+      <div class="toggle-row"><button class="toggle-btn on" id="gM" onclick="setGender('M',this)">Male</button><button class="toggle-btn" id="gF" onclick="setGender('F',this)">Female</button></div>
+    </div>
+    <div style="display:grid;grid-template-columns:1fr 1fr;gap:10px">
+      <div class="field"><span class="label">Age (years)</span><div class="input-wrap"><input type="number" id="age" value="25" min="10" max="100" oninput="calc()"/></div></div>
+      <div class="field"><span class="label">Weight (kg)</span><div class="input-wrap"><input type="number" id="weight" value="70" min="20" max="300" step=".5" oninput="calc()"/><span class="suffix">kg</span></div></div>
+      <div class="field"><span class="label">Height (cm)</span><div class="input-wrap"><input type="number" id="height" value="170" min="50" max="250" oninput="calc()"/><span class="suffix">cm</span></div></div>
+      <div class="field"><span class="label">Goal</span><div class="input-wrap"><select id="goal" onchange="calc()">
+        <option value="lose">Lose Weight</option>
+        <option value="maintain" selected>Maintain Weight</option>
+        <option value="gain">Gain Muscle</option>
+      </select></div></div>
+    </div>
+    <div class="field"><span class="label">Activity Level</span>
+      <div class="input-wrap"><select id="activity" onchange="calc()">
+        <option value="1.2">Sedentary (desk job, no exercise)</option>
+        <option value="1.375">Light (exercise 1-3 days/week)</option>
+        <option value="1.55" selected>Moderate (exercise 3-5 days/week)</option>
+        <option value="1.725">Active (hard exercise 6-7 days/week)</option>
+        <option value="1.9">Very Active (athlete / physical job)</option>
+      </select></div>
+    </div>
+  </div>
+
+  <div class="result-hero">
+    <div class="result-hero-label" id="goalLabel">Daily Calories to Maintain</div>
+    <div class="result-hero-value" id="goalCals">0</div>
+    <div class="result-hero-sub" id="goalSub">—</div>
+  </div>
+
+  <div class="results-grid cols2" style="margin-bottom:16px">
+    <div class="result-card"><div class="result-label">BMR (base metabolic rate)</div><div class="result-value" id="rBMR">0</div></div>
+    <div class="result-card"><div class="result-label">TDEE (maintenance)</div><div class="result-value rv-accent" id="rTDEE">0</div></div>
+  </div>
+
+  <div class="card">
+    <h3 style="font-size:14px;font-weight:700;margin-bottom:14px">Calorie Targets by Goal</h3>
+    <div class="table-wrap"><table>
+      <thead><tr><th>Goal</th><th>Calories/Day</th><th>Expected Rate</th></tr></thead>
+      <tbody id="goalTable"></tbody>
+    </table></div>
+  </div>
+
+  <div class="card">
+    <h3 style="font-size:14px;font-weight:700;margin-bottom:12px">Macronutrient Split (grams/day)</h3>
+    <div class="results-grid cols3" id="macros"></div>
+    <div class="info-box" style="margin-top:10px">Based on standard guidelines: 30% protein, 40% carbs, 30% fat</div>
+  </div>
+
+  <div class="ad-slot">Advertisement</div>
+  <div class="tips"><h3>💡 Nutrition Tips</h3><ul>
+    <li>1 kg of fat ≈ 7,700 calories — a 500 cal/day deficit = ~0.5 kg/week loss</li>
+    <li>Protein helps preserve muscle while cutting — aim for 1.6–2.2g per kg of bodyweight</li>
+    <li>Track meals with apps like MyFitnessPal or HealthifyMe</li>
+    <li>TDEE varies ±15% based on genetics, NEAT, hormones</li>
+    <li>Don't go below 1,200 cal/day (women) or 1,500 cal/day (men) without medical advice</li>
+  </ul></div>
+</div>
+<script>
+let gender='M';
+function setGender(g,btn){gender=g;document.getElementById('gM').classList.toggle('on',g==='M');document.getElementById('gF').classList.toggle('on',g==='F');calc();}
+
+function calc(){
+  const age=+document.getElementById('age').value||25;
+  const w=+document.getElementById('weight').value||70;
+  const h=+document.getElementById('height').value||170;
+  const act=+document.getElementById('activity').value||1.55;
+  const goal=document.getElementById('goal').value;
+
+  // Mifflin-St Jeor
+  const bmr=gender==='M'?10*w+6.25*h-5*age+5:10*w+6.25*h-5*age-161;
+  const tdee=bmr*act;
+
+  const goals=[
+    ['Extreme loss (-1kg/wk)',-1100,'#f87171'],
+    ['Weight loss (-0.5kg/wk)',-550,'#fb923c'],
+    ['Mild loss (-0.25kg/wk)',-275,'#fbbf24'],
+    ['Maintenance',0,'#22c55e'],
+    ['Mild gain (+0.25kg/wk)',+275,'#60a5fa'],
+    ['Muscle gain (+0.5kg/wk)',+550,'#818cf8'],
+  ];
+
+  const goalCals={lose:tdee-550,maintain:tdee,gain:tdee+300};
+  const target=goalCals[goal];
+  const goalLabels={lose:'Daily Calories to Lose Weight',maintain:'Daily Calories to Maintain',gain:'Daily Calories to Gain Muscle'};
+
+  document.getElementById('rBMR').textContent=Math.round(bmr)+' kcal';
+  document.getElementById('rTDEE').textContent=Math.round(tdee)+' kcal';
+  document.getElementById('goalLabel').textContent=goalLabels[goal];
+  document.getElementById('goalCals').textContent=Math.round(target)+' kcal/day';
+  document.getElementById('goalSub').textContent=goal==='lose'?'≈ -0.5 kg/week':goal==='gain'?'≈ +0.25 kg/week':'Stable weight';
+
+  const tbody=document.getElementById('goalTable');
+  tbody.innerHTML=goals.map(([label,delta,color])=>`<tr><td>${label}</td><td style="color:${color};font-weight:600">${Math.round(tdee+delta)} kcal</td><td style="color:var(--muted);font-size:12px">${delta<0?delta/550+' kg/wk':delta>0?'+'+delta/550+' kg/wk':'stable'}</td></tr>`).join('');
+
+  // Macros
+  const protein=Math.round(target*.30/4);
+  const carbs=Math.round(target*.40/4);
+  const fat=Math.round(target*.30/9);
+  document.getElementById('macros').innerHTML=
+    `<div class="result-card"><div class="result-label">Protein</div><div class="result-value rv-accent">${protein}g</div><div style="font-size:11px;color:var(--muted);margin-top:2px">30% · 4 kcal/g</div></div>`+
+    `<div class="result-card"><div class="result-label">Carbohydrates</div><div class="result-value rv-blue">${carbs}g</div><div style="font-size:11px;color:var(--muted);margin-top:2px">40% · 4 kcal/g</div></div>`+
+    `<div class="result-card"><div class="result-label">Fats</div><div class="result-value rv-green">${fat}g</div><div style="font-size:11px;color:var(--muted);margin-top:2px">30% · 9 kcal/g</div></div>`;
+}
+calc();
+</script>
+<script>
+// Auto-save inputs to localStorage
+(function(){
+  const KEY = 'forjit_calorie_calculator';
+  // Restore saved values
+  try {
+    const saved = JSON.parse(localStorage.getItem(KEY) || '{}');
+    Object.entries(saved).forEach(([id, val]) => {
+      const el = document.getElementById(id);
+      if (el) el.value = val;
+    });
+  } catch(e) {}
+  // Save on every input change
+  document.querySelectorAll('input[type=number], input[type=text], select').forEach(el => {
+    if (el.id) el.addEventListener('input', () => {
+      try {
+        const data = {};
+        document.querySelectorAll('input[type=number], input[type=text], select').forEach(e => {
+          if (e.id) data[e.id] = e.value;
+        });
+        localStorage.setItem(KEY, JSON.stringify(data));
+      } catch(e) {}
+    });
+  });
+})();
+</script>
+<script src="tool-common.js"></script>
+</body>
+</html>

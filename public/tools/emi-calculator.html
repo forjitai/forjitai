@@ -1,0 +1,456 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="UTF-8"/><meta name="viewport" content="width=device-width,initial-scale=1.0"/>
+<title>EMI Calculator — Forjit AI | Home Loan EMI + Prepayment Impact Calculator</title>
+<meta name="description" content="Free EMI calculator India. Calculate monthly EMI, check loan affordability, see prepayment savings. Home loan, car loan, personal loan with amortization schedule."/>
+<meta name="keywords" content="EMI calculator, home loan EMI, prepayment savings calculator, loan affordability, car loan EMI India 2024"/>
+<link rel="canonical" href="https://www.forjitai.in/tools/emi-calculator.html"/>
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-DYR402JFVG"></script>
+<script>window.dataLayer=window.dataLayer||[];function gtag(){dataLayer.push(arguments);}gtag('js',new Date());gtag('config','G-DYR402JFVG');</script>
+<style>
+*{box-sizing:border-box;margin:0;padding:0}
+:root{--bg:#0c0a09;--sur:#1c1917;--bor:#292524;--fg:#e7e5e4;--mu:#a8a29e;--su:#78716c;--ac:#fbbf24;--gr:#22c55e;--re:#ef4444}
+body{font-family:'Segoe UI',system-ui,sans-serif;background:var(--bg);color:var(--fg);min-height:100vh}
+header{background:var(--sur);border-bottom:1px solid var(--bor);padding:12px 20px;display:flex;align-items:center;justify-content:space-between;position:sticky;top:0;z-index:10}
+.logo{display:flex;align-items:center;gap:10px;text-decoration:none;color:var(--fg)}
+.lm{width:32px;height:32px;background:var(--ac);border-radius:6px;display:flex;align-items:center;justify-content:center;font-weight:800;font-size:16px;color:var(--bg)}
+.back{color:var(--mu);text-decoration:none;font-size:13px}.back:hover{color:var(--ac)}
+.wrap{max-width:920px;margin:0 auto;padding:22px 16px}
+h1{font-size:26px;font-weight:700;margin-bottom:4px}
+.sub{color:var(--mu);font-size:14px;margin-bottom:20px}
+.card{background:var(--sur);border:1px solid var(--bor);border-radius:12px;padding:20px;margin-bottom:14px}
+.tabs{display:flex;background:var(--bg);border:1px solid var(--bor);border-radius:8px;padding:3px;margin-bottom:16px;gap:3px}
+.tab{flex:1;padding:8px 4px;border:none;border-radius:6px;cursor:pointer;font-size:13px;font-weight:500;background:transparent;color:var(--mu);transition:all .15s;font-family:inherit}
+.tab.on{background:var(--ac);color:var(--bg)}
+.row2{display:grid;grid-template-columns:1fr 1fr;gap:12px}
+.lbl{display:block;font-size:11px;color:var(--mu);margin-bottom:5px;font-weight:600;text-transform:uppercase;letter-spacing:.06em}
+.ig{display:flex;align-items:stretch;background:var(--bg);border:1px solid var(--bor);border-radius:8px;overflow:hidden;margin-bottom:5px;transition:border-color .15s}
+.ig:focus-within{border-color:var(--ac)}
+.pfx{padding:10px 12px;background:var(--bor);color:var(--mu);font-size:13px;display:flex;align-items:center;white-space:nowrap}
+input[type=number]{flex:1;background:transparent;border:none;outline:none;color:var(--fg);font-size:15px;padding:10px 12px;width:100%;font-family:inherit}
+input[type=range]{width:100%;margin:4px 0 2px;accent-color:var(--ac);cursor:pointer}
+.rl{display:flex;justify-content:space-between;font-size:10px;color:var(--su);margin-bottom:10px}
+.hero{background:linear-gradient(135deg,rgba(251,191,36,.12),rgba(251,191,36,.04));border:2px solid rgba(251,191,36,.3);border-radius:12px;padding:20px;text-align:center;margin-bottom:12px}
+.hero-val{font-size:42px;font-weight:800;color:var(--ac);line-height:1}
+.hero-lbl{font-size:11px;color:var(--mu);text-transform:uppercase;letter-spacing:.06em;margin-bottom:6px}
+.hero-sub{font-size:13px;color:var(--mu);margin-top:6px}
+.g3{display:grid;grid-template-columns:repeat(3,1fr);gap:10px;margin-bottom:12px}
+.rc{background:var(--bg);border:1px solid var(--bor);border-radius:10px;padding:12px;text-align:center}
+.rl2{font-size:10px;color:var(--su);text-transform:uppercase;letter-spacing:.05em;margin-bottom:4px}
+.rv{font-size:18px;font-weight:700}
+.rv-ac{color:var(--ac)}.rv-re{color:#f87171}.rv-gr{color:#4ade80}
+.afford{padding:12px 16px;border-radius:10px;margin-bottom:12px;display:flex;align-items:flex-start;gap:10px;font-size:13px;line-height:1.5}
+.afford.ok{background:rgba(34,197,94,.08);border:1px solid rgba(34,197,94,.25)}
+.afford.warn{background:rgba(245,158,11,.08);border:1px solid rgba(245,158,11,.25)}
+.afford.bad{background:rgba(239,68,68,.08);border:1px solid rgba(239,68,68,.25)}
+.bar-t{background:var(--bor);border-radius:999px;height:10px;overflow:hidden;margin:4px 0 10px}
+.bar-f{height:100%;border-radius:999px;transition:width .5s ease}
+.badge{display:inline-block;padding:2px 7px;border-radius:999px;font-size:9px;font-weight:700;text-transform:uppercase;letter-spacing:.05em;background:rgba(34,197,94,.15);color:#4ade80;border:1px solid rgba(34,197,94,.25);margin-left:6px;vertical-align:middle}
+.prepay-box{background:var(--bg);border:1px solid rgba(34,197,94,.3);border-radius:10px;padding:16px;margin-top:12px}
+.pg3{display:grid;grid-template-columns:repeat(3,1fr);gap:8px;margin:10px 0}
+.pc{text-align:center;padding:12px 8px;background:var(--sur);border-radius:8px;border:1px solid var(--bor)}
+.pv{font-size:19px;font-weight:700;color:var(--gr)}
+.pl{font-size:10px;color:var(--su);text-transform:uppercase;letter-spacing:.04em;margin-top:3px}
+.tbl-w{overflow-x:auto;border-radius:8px;border:1px solid var(--bor)}
+table{width:100%;border-collapse:collapse;font-size:13px}
+th{background:var(--bor);padding:8px 12px;text-align:left;font-size:10px;font-weight:700;text-transform:uppercase;letter-spacing:.06em;color:var(--mu)}
+td{padding:8px 12px;border-top:1px solid var(--sur);color:var(--fg)}
+tr:hover td{background:rgba(255,255,255,.015)}
+.ad{background:var(--sur);border:1px dashed var(--bor);border-radius:8px;padding:13px;text-align:center;color:var(--su);font-size:11px;margin:12px 0}
+.ad a{color:var(--ac);text-decoration:none}
+.tips li{color:var(--mu);font-size:13px;line-height:1.8;margin-left:16px}
+@media(max-width:580px){.g3,.pg3{grid-template-columns:1fr 1fr}.row2{grid-template-columns:1fr}}
+</style>
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "FAQPage",
+  "mainEntity": [
+    {
+      "@type": "Question",
+      "name": "What is EMI?",
+      "acceptedAnswer": { "@type": "Answer", "text": "EMI (Equated Monthly Instalment) is the fixed monthly amount you pay to repay a loan. It includes both principal and interest components." }
+    },
+    {
+      "@type": "Question",
+      "name": "How is EMI calculated?",
+      "acceptedAnswer": { "@type": "Answer", "text": "EMI = P × r × (1+r)^n / ((1+r)^n - 1), where P is principal, r is monthly interest rate, and n is number of months." }
+    },
+    {
+      "@type": "Question",
+      "name": "What is a good EMI to income ratio?",
+      "acceptedAnswer": { "@type": "Answer", "text": "Financial experts recommend keeping total EMIs below 40-50% of your monthly take-home salary to maintain financial health." }
+    },
+    {
+      "@type": "Question",
+      "name": "How does prepayment reduce EMI or tenure?",
+      "acceptedAnswer": { "@type": "Answer", "text": "Prepayment reduces the outstanding principal, which reduces either the EMI amount or the loan tenure (or both). Most banks allow partial prepayment on home loans." }
+    },
+    {
+      "@type": "Question",
+      "name": "Which loan type has lowest interest rate in India?",
+      "acceptedAnswer": { "@type": "Answer", "text": "Home loans typically have the lowest rates (8.5-10% p.a.) because they are secured loans. Personal loans have the highest rates (10.5-24%) as they are unsecured." }
+    }
+  ]
+}
+</script>
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "BreadcrumbList",
+  "itemListElement": [
+    { "@type": "ListItem", "position": 1, "name": "Forjit AI", "item": "https://www.forjitai.in/" },
+    { "@type": "ListItem", "position": 2, "name": "Free Tools", "item": "https://www.forjitai.in/tools/" },
+    { "@type": "ListItem", "position": 3, "name": "EMI Calculator — Forjit AI", "item": "https://www.forjitai.in/tools/emi-calculator.html" }
+  ]
+}
+</script>
+  <meta name="robots" content="index,follow,max-snippet:-1,max-image-preview:large"/>
+  <meta property="og:type"         content="website"/>
+  <meta property="og:site_name"    content="Forjit AI"/>
+  <meta property="og:url"          content="https://www.forjitai.in/tools/emi-calculator.html"/>
+  <meta property="og:title"        content="EMI Calculator — Forjit AI | Home Loan EMI + Prepayment Impact Calculator"/>
+  <meta property="og:description"  content="Monthly EMI for home, car, or personal loan with full amortization schedule."/>
+  <meta property="og:image"        content="https://www.forjitai.in/og-image.png"/>
+  <meta property="og:image:width"  content="1200"/>
+  <meta property="og:image:height" content="630"/>
+  <meta property="og:locale"       content="en_IN"/>
+  <meta name="twitter:card"        content="summary_large_image"/>
+  <meta name="twitter:site"        content="@forjitai"/>
+  <meta name="twitter:title"       content="EMI Calculator — Forjit AI | Home Loan EMI + Prepayment Impact Calculator"/>
+  <meta name="twitter:description" content="Monthly EMI for home, car, or personal loan with full amortization schedule."/>
+  <meta name="twitter:image"       content="https://www.forjitai.in/og-image.png"/>
+  <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-5102938260449475" crossorigin="anonymous"></script>
+  <meta name="google-site-verification" content="u11mSk2rQwaphaXMCcUwJU-6dRhN_ndessqEMeZdubk" />
+</head>
+<body>
+<header>
+  <a class="logo" href="/"><div class="lm">F</div><span style="font-size:15px;font-weight:600;margin-left:2px">Forjit AI</span></a>
+  <a class="back" href="/tools/">← All Tools</a>
+</header>
+<div class="wrap">
+  <h1>EMI Calculator</h1>
+  <p class="sub">Calculate EMI, check affordability, and discover how much prepayment saves you.</p>
+
+  <div class="ad">Advertisement · <a href="https://adsense.google.com" target="_blank">Connect AdSense</a></div>
+
+  <div class="card">
+    <div class="tabs">
+      <button class="tab on" onclick="setType('home',this)">🏠 Home Loan</button>
+      <button class="tab" onclick="setType('car',this)">🚗 Car Loan</button>
+      <button class="tab" onclick="setType('personal',this)">💳 Personal</button>
+    </div>
+
+    <div style="margin-bottom:14px">
+      <span class="lbl">Loan Amount (₹)</span>
+      <div class="ig"><span class="pfx">₹</span><input type="number" id="P" oninput="syncR('P','rP');save();calc()"/></div>
+      <input type="range" id="rP" oninput="syncI('rP','P');save();calc()"/>
+      <div class="rl"><span id="rPmin">₹10K</span><span id="rPmax">₹5Cr</span></div>
+    </div>
+
+    <div class="row2">
+      <div>
+        <span class="lbl">Interest Rate (% p.a.)</span>
+        <div class="ig"><span class="pfx">%</span><input type="number" id="R" step="0.05" min="1" max="36" oninput="save();calc()"/></div>
+      </div>
+      <div>
+        <span class="lbl">Tenure (Years)</span>
+        <div class="ig"><span class="pfx">Yr</span><input type="number" id="T" min="1" max="30" oninput="syncR('T','rT');save();calc()"/></div>
+      </div>
+    </div>
+    <input type="range" id="rT" min="1" max="30" oninput="syncI('rT','T');save();calc()"/>
+    <div class="rl"><span>1 yr</span><span>30 yrs</span></div>
+
+    <span class="lbl">Monthly Income — for affordability check <span style="text-transform:none;letter-spacing:0;color:var(--su)">(optional)</span></span>
+    <div class="ig"><span class="pfx">₹</span><input type="number" id="income" oninput="save();calc()" placeholder="e.g. 80,000"/></div>
+  </div>
+
+  <!-- Results -->
+  <div class="hero">
+    <div class="hero-lbl">Monthly EMI</div>
+    <div class="hero-val" id="emi">₹0</div>
+    <div class="hero-sub" id="emiSub">—</div>
+  </div>
+
+  <div id="affordBox" class="afford ok" style="display:none">
+    <span id="affordIcon" style="font-size:22px;flex-shrink:0">✅</span>
+    <span id="affordText"></span>
+  </div>
+
+  <div class="g3">
+    <div class="rc"><div class="rl2">Principal</div><div class="rv rv-ac" id="rP2">₹0</div></div>
+    <div class="rc"><div class="rl2">Total Interest</div><div class="rv rv-re" id="rInt">₹0</div></div>
+    <div class="rc"><div class="rl2">Total Payment</div><div class="rv rv-gr" id="rTot">₹0</div></div>
+  </div>
+
+  <div class="card" style="padding:16px">
+    <div style="font-size:12px;color:var(--mu);margin-bottom:3px">Principal <span id="pPct" style="color:var(--ac);font-weight:600"></span></div>
+    <div class="bar-t"><div class="bar-f" id="barP" style="background:var(--ac)"></div></div>
+    <div style="font-size:12px;color:var(--mu);margin-bottom:3px">Interest <span id="iPct" style="color:#f87171;font-weight:600"></span></div>
+    <div class="bar-t"><div class="bar-f" id="barI" style="background:#f87171"></div></div>
+  </div>
+
+  <div class="ad">Advertisement</div>
+
+  <!-- ★ Prepayment Impact — unique feature ★ -->
+  <div class="card">
+    <h3 style="font-size:15px;font-weight:700;margin-bottom:4px">
+      💡 Prepayment Impact <span class="badge">Unique</span>
+    </h3>
+    <p style="font-size:13px;color:var(--mu);margin-bottom:14px">See exactly how much interest you save by paying extra every month or a one-time lumpsum.</p>
+    <div class="row2">
+      <div>
+        <span class="lbl">Extra Monthly Payment (₹)</span>
+        <div class="ig"><span class="pfx">₹</span><input type="number" id="extra" value="5000" min="0" oninput="calcPrepay()"/></div>
+      </div>
+      <div>
+        <span class="lbl">One-Time Lumpsum (₹)</span>
+        <div class="ig"><span class="pfx">₹</span><input type="number" id="lumpsum" value="0" min="0" oninput="calcPrepay()"/></div>
+      </div>
+    </div>
+    <div class="prepay-box">
+      <div style="font-size:12px;color:var(--mu)">With this prepayment strategy:</div>
+      <div class="pg3">
+        <div class="pc"><div class="pv" id="savedInt">—</div><div class="pl">Interest Saved</div></div>
+        <div class="pc"><div class="pv" id="savedMo">—</div><div class="pl">Months Saved</div></div>
+        <div class="pc"><div class="pv" id="newEnd">—</div><div class="pl">Loan Ends By</div></div>
+      </div>
+      <div id="prepayNote" style="font-size:12px;color:var(--mu);line-height:1.6;margin-top:6px"></div>
+    </div>
+  </div>
+
+  <!-- Bank rates -->
+  <div class="card">
+    <h3 style="font-size:14px;font-weight:700;margin-bottom:12px">🏦 Current Loan Rates (Indicative, 2024–25)</h3>
+    <div class="tbl-w"><table>
+      <thead><tr><th>Bank</th><th>Home Loan</th><th>Car Loan</th><th>Personal Loan</th></tr></thead>
+      <tbody>
+        <tr><td>SBI</td><td style="color:#4ade80">8.50–9.65%</td><td>8.75–9.80%</td><td>11–15%</td></tr>
+        <tr><td>HDFC Bank</td><td style="color:#4ade80">8.70–9.95%</td><td>9.00–10.5%</td><td>10.5–24%</td></tr>
+        <tr><td>ICICI Bank</td><td>8.75–10.05%</td><td>9.00–10.5%</td><td>10.75–22%</td></tr>
+        <tr><td>Axis Bank</td><td>8.75–10.30%</td><td>9.25–11%</td><td>10.49–22%</td></tr>
+        <tr><td>Kotak Bank</td><td>8.70–9.90%</td><td>9.25–11%</td><td>10.99–24%</td></tr>
+      </tbody>
+    </table></div>
+    <p style="font-size:11px;color:var(--su);margin-top:8px">Rates vary by CIBIL score, income and loan amount. Verify with your bank.</p>
+  </div>
+
+  <!-- Amortization -->
+  <div class="card">
+    <h3 style="font-size:14px;font-weight:700;margin-bottom:12px">📅 Yearly Amortization</h3>
+    <div class="tbl-w"><table>
+      <thead><tr><th>Year</th><th>Principal (₹)</th><th>Interest (₹)</th><th>Balance (₹)</th><th>% Paid</th></tr></thead>
+      <tbody id="amort"></tbody>
+    </table></div>
+  </div>
+
+  <div class="ad">Advertisement</div>
+
+  <div class="card" style="background:var(--bg)">
+    <h3 style="font-size:14px;font-weight:700;color:var(--ac);margin-bottom:10px">💡 Smart Loan Tips</h3>
+    <ul class="tips">
+      <li>₹5,000 extra/month on a ₹50L home loan can save ₹12–15L in interest</li>
+      <li>EMI should not exceed 40–45% of monthly take-home salary</li>
+      <li>Home loan interest up to ₹2L/year is tax deductible (Section 24b)</li>
+      <li>Principal repayment qualifies for 80C deduction (up to ₹1.5L)</li>
+      <li>Balance transfer to a lower-rate bank can save lakhs on long-tenure loans</li>
+      <li>CIBIL score above 750 gets you the best interest rates</li>
+    </ul>
+  </div>
+</div>
+
+<script>
+const fmt  = n => '₹' + Math.round(n).toLocaleString('en-IN');
+const fmtK = n => n >= 10000000 ? '₹'+(n/10000000).toFixed(2)+'Cr'
+                : n >= 100000   ? '₹'+(n/100000).toFixed(2)+'L'
+                : fmt(n);
+
+const TYPES = {
+  home:     { P:5000000, R:8.5,  T:20, Pmin:100000,  Pmax:50000000, step:50000  },
+  car:      { P:800000,  R:9.0,  T:7,  Pmin:100000,  Pmax:5000000,  step:10000  },
+  personal: { P:300000,  R:12.0, T:5,  Pmin:10000,   Pmax:2000000,  step:5000   },
+};
+
+function setType(t, btn) {
+  document.querySelectorAll('.tab').forEach(b => b.classList.remove('on'));
+  btn.classList.add('on');
+  const p = TYPES[t];
+  const rP = document.getElementById('rP');
+  rP.min = p.Pmin; rP.max = p.Pmax; rP.value = p.P; rP.step = p.step;
+  document.getElementById('rPmin').textContent = fmtK(p.Pmin);
+  document.getElementById('rPmax').textContent = fmtK(p.Pmax);
+  document.getElementById('P').value = p.P;
+  document.getElementById('R').value = p.R;
+  document.getElementById('T').value = p.T;
+  document.getElementById('rT').value = p.T;
+  save(); calc();
+}
+
+function syncR(iId,rId){document.getElementById(rId).value=document.getElementById(iId).value;}
+function syncI(rId,iId){document.getElementById(iId).value=document.getElementById(rId).value;}
+
+function save(){
+  try{localStorage.setItem('forjit_emi',JSON.stringify({
+    P:document.getElementById('P').value,
+    R:document.getElementById('R').value,
+    T:document.getElementById('T').value,
+    income:document.getElementById('income').value
+  }));}catch(e){}
+}
+function loadSaved(){
+  try{
+    const d=JSON.parse(localStorage.getItem('forjit_emi')||'{}');
+    if(d.P){document.getElementById('P').value=d.P;syncR('P','rP');}
+    if(d.R) document.getElementById('R').value=d.R;
+    if(d.T){document.getElementById('T').value=d.T;syncR('T','rT');}
+    if(d.income) document.getElementById('income').value=d.income;
+  }catch(e){}
+}
+
+function calcEMI(P,R,T){
+  const r=R/12/100, n=T*12;
+  if(r===0) return P/n;
+  return P*r*Math.pow(1+r,n)/(Math.pow(1+r,n)-1);
+}
+
+function calc(){
+  const P=parseFloat(document.getElementById('P').value)||0;
+  const R=parseFloat(document.getElementById('R').value)||0;
+  const T=parseInt(document.getElementById('T').value)||0;
+  const income=parseFloat(document.getElementById('income').value)||0;
+  const r=R/12/100, n=T*12;
+  const emi=calcEMI(P,R,T);
+  const totalPay=emi*n, totalInt=totalPay-P;
+  const pPct=Math.round(P/totalPay*100), iPct=100-pPct;
+
+  document.getElementById('emi').textContent=fmt(emi);
+  document.getElementById('emiSub').textContent=`${T} years at ${R}% p.a. · Total: ${fmtK(totalPay)}`;
+  document.getElementById('rP2').textContent=fmtK(P);
+  document.getElementById('rInt').textContent=fmtK(totalInt);
+  document.getElementById('rTot').textContent=fmtK(totalPay);
+  document.getElementById('pPct').textContent=`(${pPct}%)`;
+  document.getElementById('iPct').textContent=`(${iPct}%)`;
+  document.getElementById('barP').style.width=pPct+'%';
+  document.getElementById('barI').style.width=iPct+'%';
+
+  // Affordability
+  if(income>0){
+    const pct=emi/income*100;
+    const box=document.getElementById('affordBox');
+    box.style.display='flex';
+    let cls,icon,msg;
+    if(pct<=40){cls='ok';icon='✅';msg=`<strong>Affordable</strong> — Your EMI is <strong>${pct.toFixed(1)}%</strong> of income. Banks recommend ≤40–50%. You are well within safe limits.`;}
+    else if(pct<=55){cls='warn';icon='⚠️';msg=`<strong>Manageable but tight</strong> — EMI is <strong>${pct.toFixed(1)}%</strong> of income. Consider a lower loan amount, longer tenure, or adding a co-applicant.`;}
+    else{cls='bad';icon='🚫';msg=`<strong>Very risky</strong> — EMI is <strong>${pct.toFixed(1)}%</strong> of income. Most banks will not approve this. Reduce loan amount or increase tenure significantly.`;}
+    box.className='afford '+cls;
+    document.getElementById('affordIcon').textContent=icon;
+    document.getElementById('affordText').innerHTML=msg;
+  } else {
+    document.getElementById('affordBox').style.display='none';
+  }
+
+  // Amortization
+  const tbody=document.getElementById('amort');
+  tbody.innerHTML='';
+  let balance=P;
+  for(let y=1;y<=T;y++){
+    let yP=0,yI=0;
+    for(let m=0;m<12;m++){
+      if(balance<=0) break;
+      const ip=balance*r;
+      const pp=Math.min(emi-ip,balance);
+      yI+=ip; yP+=pp; balance-=pp;
+    }
+    const paid=((P-Math.max(0,balance))/P*100).toFixed(1);
+    const tr=document.createElement('tr');
+    tr.innerHTML=`<td>Year ${y}</td><td>${Math.round(yP).toLocaleString('en-IN')}</td><td style="color:#f87171">${Math.round(yI).toLocaleString('en-IN')}</td><td style="color:var(--ac);font-weight:500">${Math.max(0,Math.round(balance)).toLocaleString('en-IN')}</td><td>${paid}%</td>`;
+    tbody.appendChild(tr);
+  }
+  calcPrepay();
+}
+
+function calcPrepay(){
+  const P=parseFloat(document.getElementById('P').value)||0;
+  const R=parseFloat(document.getElementById('R').value)||0;
+  const T=parseInt(document.getElementById('T').value)||0;
+  const extra=parseFloat(document.getElementById('extra').value)||0;
+  const lump=parseFloat(document.getElementById('lumpsum').value)||0;
+  if(!P||!R||!T) return;
+
+  const r=R/12/100;
+  const emi=calcEMI(P,R,T);
+  const totalNormal=emi*T*12;
+
+  let bal=Math.max(0,P-lump);
+  let months=0, totalPaid=lump;
+  const maxM=T*12+1;
+  while(bal>0.01&&months<maxM){
+    const ip=bal*r;
+    const payment=emi+extra;
+    const pp=Math.min(payment-ip,bal);
+    totalPaid+=Math.min(payment,bal+ip);
+    bal-=pp; months++;
+  }
+
+  const savedInt=totalNormal-totalPaid;
+  const savedMo=T*12-months;
+  const endDate=new Date();
+  endDate.setMonth(endDate.getMonth()+months);
+  const endStr=endDate.toLocaleDateString('en-IN',{month:'short',year:'numeric'});
+
+  document.getElementById('savedInt').textContent=savedInt>100?fmtK(savedInt):'₹0';
+  document.getElementById('savedMo').textContent=savedMo>0?savedMo+' mo':'0';
+  document.getElementById('newEnd').textContent=endStr;
+
+  let note='';
+  if(extra>0&&savedMo>0){
+    note+=`Paying <strong>${fmt(extra)}</strong> extra/month closes your loan <strong>${savedMo} months early</strong> and saves <strong>${fmtK(Math.max(0,savedInt))}</strong> in interest. `;
+  }
+  if(lump>0){
+    note+=`One-time prepayment of <strong>${fmtK(lump)}</strong> directly reduces principal, saving interest from day one. `;
+  }
+  if(!note) note='Enter an extra monthly or lumpsum payment above to see your savings.';
+  document.getElementById('prepayNote').innerHTML=note;
+}
+
+// Init — load from URL params first, then localStorage
+(function initEMI() {
+  const p = (typeof ForjitTool !== 'undefined') ? ForjitTool.getParams() : {};
+  setType('home', document.querySelector('.tab'));
+  if (p.P || p.R || p.T) {
+    // URL params take priority (shared link)
+    if (p.P) { document.getElementById('P').value = p.P; syncR('P','rP'); }
+    if (p.R) document.getElementById('R').value = p.R;
+    if (p.T) { document.getElementById('T').value = p.T; syncR('T','rT'); }
+    if (p.income) document.getElementById('income').value = p.income;
+  } else {
+    loadSaved();
+  }
+  calc();
+
+  // Update URL params on every input so share link stays current
+  document.querySelectorAll('#P,#R,#T,#income').forEach(el => {
+    el.addEventListener('input', () => {
+      if (typeof ForjitTool !== 'undefined') {
+        ForjitTool.setParams({
+          P: document.getElementById('P').value,
+          R: document.getElementById('R').value,
+          T: document.getElementById('T').value,
+        });
+      }
+    });
+  });
+}());
+</script>
+<script src="tool-common.js"></script>
+
+<!-- Internal SEO links -->
+<div id="related-tools-seo" style="margin:20px 0;padding:14px;background:#0c0a09;border:1px solid #292524;border-radius:10px">
+  <p style="font-size:11px;color:#57534e;text-transform:uppercase;letter-spacing:.07em;margin-bottom:8px;font-weight:700">Related Free Tools</p>
+  <a href="/tools/loan-eligibility-calculator.html" style="display:inline-block;margin:4px;padding:6px 12px;background:#1c1917;border:1px solid #292524;border-radius:999px;color:#a8a29e;font-size:12px;text-decoration:none">Loan Eligibility Calculator</a>
+<a href="/tools/compound-interest-calculator.html" style="display:inline-block;margin:4px;padding:6px 12px;background:#1c1917;border:1px solid #292524;border-radius:999px;color:#a8a29e;font-size:12px;text-decoration:none">Compound Interest Calculator</a>
+<a href="/tools/fd-calculator.html" style="display:inline-block;margin:4px;padding:6px 12px;background:#1c1917;border:1px solid #292524;border-radius:999px;color:#a8a29e;font-size:12px;text-decoration:none">FD Calculator</a>
+</div>
+</body>
+</html>

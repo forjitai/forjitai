@@ -1,0 +1,271 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="UTF-8"/>
+<meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+<title>BMI Calculator India — Body Mass Index Calculator Free | Forjit AI</title>
+<meta name="description" content="Free BMI calculator for Indians. Calculate Body Mass Index, check healthy weight range with Asian BMI standards. Instant results."/>
+<meta name="keywords" content="BMI calculator India, body mass index calculator, BMI calculator online free, healthy weight calculator India"/>
+<link rel="canonical" href="https://www.forjitai.in/tools/bmi-calculator"/>
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-DYR402JFVG"></script>
+<script>window.dataLayer=window.dataLayer||[];function gtag(){dataLayer.push(arguments);}gtag('js',new Date());gtag('config','G-DYR402JFVG');</script>
+<style>
+*{box-sizing:border-box;margin:0;padding:0}
+body{font-family:'Segoe UI',system-ui,sans-serif;background:#0c0a09;color:#e7e5e4;min-height:100vh}
+header{background:#1c1917;border-bottom:1px solid #292524;padding:14px 20px;display:flex;align-items:center;justify-content:space-between}
+.logo{display:flex;align-items:center;gap:10px;text-decoration:none;color:#e7e5e4}
+.logo-mark{width:34px;height:34px;background:#fbbf24;border-radius:6px;display:flex;align-items:center;justify-content:center;font-weight:800;font-size:18px;color:#0c0a09}
+.logo-text{font-size:16px;font-weight:600}
+.back{color:#a8a29e;text-decoration:none;font-size:13px}
+.back:hover{color:#fbbf24}
+.container{max-width:700px;margin:0 auto;padding:24px 16px}
+h1{font-size:28px;font-weight:700;margin-bottom:6px}
+.subtitle{color:#a8a29e;font-size:15px;margin-bottom:24px}
+.card{background:#1c1917;border:1px solid #292524;border-radius:12px;padding:24px;margin-bottom:16px}
+.toggle{display:flex;background:#0c0a09;border:1px solid #292524;border-radius:8px;padding:4px;margin-bottom:20px;width:fit-content}
+.toggle button{padding:8px 20px;border:none;border-radius:6px;cursor:pointer;font-size:14px;font-weight:500;background:transparent;color:#a8a29e;transition:all 0.15s}
+.toggle button.active{background:#fbbf24;color:#0c0a09}
+label{display:block;font-size:13px;color:#a8a29e;margin-bottom:6px;font-weight:500;text-transform:uppercase;letter-spacing:0.05em}
+.input-group{display:flex;align-items:center;background:#0c0a09;border:1px solid #292524;border-radius:8px;overflow:hidden;margin-bottom:16px}
+.prefix{padding:10px 14px;background:#292524;color:#a8a29e;font-size:14px}
+input[type=number]{flex:1;background:transparent;border:none;outline:none;color:#e7e5e4;font-size:16px;padding:12px 14px;width:100%}
+.row{display:grid;grid-template-columns:1fr 1fr;gap:12px}
+.btn{width:100%;padding:14px;background:#fbbf24;color:#0c0a09;border:none;border-radius:8px;font-size:16px;font-weight:700;cursor:pointer;margin-top:4px}
+.btn:hover{background:#f59e0b}
+.result-box{display:none;text-align:center;padding:28px 20px;border-radius:12px;margin-bottom:16px;border:2px solid}
+.result-box.show{display:block}
+.bmi-value{font-size:64px;font-weight:800;margin-bottom:8px}
+.bmi-label{font-size:22px;font-weight:600;margin-bottom:8px}
+.bmi-sub{font-size:14px;opacity:0.7}
+.scale{display:grid;grid-template-columns:repeat(4,1fr);gap:6px;margin-bottom:16px}
+.scale-item{padding:10px 6px;border-radius:8px;text-align:center;font-size:11px;font-weight:600}
+.underweight{background:#3b82f620;color:#60a5fa;border:1px solid #3b82f640}
+.normal{background:#22c55e20;color:#4ade80;border:1px solid #22c55e40}
+.overweight{background:#f59e0b20;color:#fbbf24;border:1px solid #f59e0b40}
+.obese{background:#ef444420;color:#f87171;border:1px solid #ef444440}
+.info-grid{display:grid;grid-template-columns:1fr 1fr;gap:12px;margin-top:12px}
+.info-card{background:#0c0a09;border:1px solid #292524;border-radius:8px;padding:14px;text-align:center}
+.info-label{font-size:11px;color:#78716c;text-transform:uppercase;letter-spacing:0.05em;margin-bottom:4px}
+.info-value{font-size:18px;font-weight:600;color:#fbbf24}
+.ad-slot{background:#1c1917;border:1px dashed #292524;border-radius:8px;padding:20px;text-align:center;color:#78716c;font-size:12px;margin:16px 0}
+</style>
+  <meta name="robots" content="index,follow,max-snippet:-1,max-image-preview:large"/>
+  <meta property="og:type"         content="website"/>
+  <meta property="og:site_name"    content="Forjit AI"/>
+  <meta property="og:url"          content="https://www.forjitai.in/tools/bmi-calculator.html"/>
+  <meta property="og:title"        content="BMI Calculator — Forjit AI | Body Mass Index Calculator India"/>
+  <meta property="og:description"  content="Free Bmi Calculator — runs entirely in your browser, no signup needed."/>
+  <meta property="og:image"        content="https://www.forjitai.in/og-image.png"/>
+  <meta property="og:image:width"  content="1200"/>
+  <meta property="og:image:height" content="630"/>
+  <meta property="og:locale"       content="en_IN"/>
+  <meta name="twitter:card"        content="summary_large_image"/>
+  <meta name="twitter:site"        content="@forjitai"/>
+  <meta name="twitter:title"       content="BMI Calculator — Forjit AI | Body Mass Index Calculator India"/>
+  <meta name="twitter:description" content="Free BMI calculator for Indians. Calculate Body Mass Index, check healthy weight range with Asian BMI standards. Instant results."/>
+  <meta name="twitter:image"       content="https://www.forjitai.in/og-image.png"/>
+  <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-5102938260449475" crossorigin="anonymous"></script>
+  <meta name="google-site-verification" content="u11mSk2rQwaphaXMCcUwJU-6dRhN_ndessqEMeZdubk" />
+
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "FAQPage",
+  "mainEntity": [
+    {
+      "@type": "Question",
+      "name": "What is a healthy BMI for Indians?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "For Indians and Asians, a healthy BMI is 18.5\u201322.9. Overweight is 23\u201324.9 and obese is 25 or above \u2014 slightly lower than Western standards."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "How do I calculate BMI?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "BMI = weight (kg) divided by height (m) squared. Enter your weight and height in the calculator for instant result."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "Is BMI calculator accurate for Indians?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "BMI is a general screening tool. Indians have higher body fat at lower BMI, so the calculator notes Asian thresholds separately."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "Is this BMI calculator free?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "Yes. Forjit AI BMI calculator is completely free with no signup required."
+      }
+    }
+  ]
+}
+</script>
+</head>
+<body>
+<header>
+  <a class="logo" href="/"><div class="logo-mark">F</div><div class="logo-text">Forjit AI</div></a>
+  <a class="back" href="/tools/">← All Tools</a>
+</header>
+<div class="container">
+  <h1>BMI Calculator</h1>
+  <p class="subtitle">Calculate your Body Mass Index and find your ideal weight range.</p>
+
+  <div class="ad-slot">Advertisement · <a href="https://adsense.google.com" target="_blank" style="color:#fbbf24;">Connect AdSense</a></div>
+
+  <div class="card">
+    <div class="toggle">
+      <button class="active" onclick="setUnit('metric',this)">Metric (kg/cm)</button>
+      <button onclick="setUnit('imperial',this)">Imperial (lb/in)</button>
+    </div>
+
+    <div id="metricInputs">
+      <label>Weight (kg)</label>
+      <div class="input-group"><span class="prefix">kg</span><input type="number" id="weightKg" value="70" min="20" max="300" step="0.1"/></div>
+      <label>Height (cm)</label>
+      <div class="input-group"><span class="prefix">cm</span><input type="number" id="heightCm" value="170" min="50" max="250"/></div>
+    </div>
+    <div id="imperialInputs" style="display:none">
+      <label>Weight (lbs)</label>
+      <div class="input-group"><span class="prefix">lb</span><input type="number" id="weightLb" value="154" min="44" max="660"/></div>
+      <div class="row">
+        <div><label>Height (feet)</label><div class="input-group"><span class="prefix">ft</span><input type="number" id="heightFt" value="5" min="1" max="8"/></div></div>
+        <div><label>Height (inches)</label><div class="input-group"><span class="prefix">in</span><input type="number" id="heightIn" value="7" min="0" max="11"/></div></div>
+      </div>
+    </div>
+
+    <label>Age (years)</label>
+    <div class="input-group"><span class="prefix">yrs</span><input type="number" id="age" value="25" min="2" max="120"/></div>
+    <label>Gender</label>
+    <div class="toggle" style="margin-bottom:16px">
+      <button class="active" id="btnMale" onclick="setGender('male',this)">Male</button>
+      <button id="btnFemale" onclick="setGender('female',this)">Female</button>
+    </div>
+    <button class="btn" onclick="calcBMI()">Calculate BMI</button>
+  </div>
+
+  <div id="resultBox" class="result-box">
+    <div class="bmi-value" id="bmiValue">—</div>
+    <div class="bmi-label" id="bmiLabel">—</div>
+    <div class="bmi-sub" id="bmiSub">—</div>
+    <div class="info-grid" style="margin-top:16px">
+      <div class="info-card"><div class="info-label">Ideal Weight</div><div class="info-value" id="idealWeight">—</div></div>
+      <div class="info-card"><div class="info-label">BMR (calories/day)</div><div class="info-value" id="bmr">—</div></div>
+      <div class="info-card"><div class="info-label">Body Fat % (est.)</div><div class="info-value" id="bodyFat">—</div></div>
+      <div class="info-card"><div class="info-label">Healthy Range</div><div class="info-value" id="healthyRange">—</div></div>
+    </div>
+  </div>
+
+  <div class="card">
+    <h3 style="margin-bottom:16px;font-size:15px">BMI Scale</h3>
+    <div class="scale">
+      <div class="scale-item underweight">Underweight<br/>&lt; 18.5</div>
+      <div class="scale-item normal">Normal<br/>18.5–24.9</div>
+      <div class="scale-item overweight">Overweight<br/>25–29.9</div>
+      <div class="scale-item obese">Obese<br/>&gt; 30</div>
+    </div>
+    <p style="font-size:12px;color:#78716c">Note: For Asians, overweight threshold is often 23 and obese is 27.5. Consult a doctor for personalized advice.</p>
+  </div>
+
+  <div class="ad-slot">Advertisement</div>
+</div>
+<script>
+let unit = 'metric', gender = 'male';
+function setUnit(u, btn) {
+  unit = u;
+  document.querySelectorAll('.toggle button').forEach(b => b.classList.remove('active'));
+  btn.classList.add('active');
+  document.getElementById('metricInputs').style.display = u === 'metric' ? 'block' : 'none';
+  document.getElementById('imperialInputs').style.display = u === 'imperial' ? 'block' : 'none';
+}
+function setGender(g, btn) {
+  gender = g;
+  document.getElementById('btnMale').classList.toggle('active', g === 'male');
+  document.getElementById('btnFemale').classList.toggle('active', g === 'female');
+}
+function calcBMI() {
+  let weightKg, heightM;
+  if (unit === 'metric') {
+    weightKg = parseFloat(document.getElementById('weightKg').value);
+    heightM = parseFloat(document.getElementById('heightCm').value) / 100;
+  } else {
+    weightKg = parseFloat(document.getElementById('weightLb').value) * 0.453592;
+    const totalIn = parseFloat(document.getElementById('heightFt').value) * 12 + parseFloat(document.getElementById('heightIn').value);
+    heightM = totalIn * 0.0254;
+  }
+  const age = parseInt(document.getElementById('age').value);
+  const bmi = weightKg / (heightM * heightM);
+  const heightCm = heightM * 100;
+
+  let label, color, border;
+  if (bmi < 18.5) { label = 'Underweight'; color = '#3b82f6'; border = '#3b82f6'; }
+  else if (bmi < 25) { label = 'Normal Weight'; color = '#22c55e'; border = '#22c55e'; }
+  else if (bmi < 30) { label = 'Overweight'; color = '#f59e0b'; border = '#f59e0b'; }
+  else { label = 'Obese'; color = '#ef4444'; border = '#ef4444'; }
+
+  const idealMin = 18.5 * heightM * heightM;
+  const idealMax = 24.9 * heightM * heightM;
+  const bmr = gender === 'male'
+    ? 10 * weightKg + 6.25 * heightCm - 5 * age + 5
+    : 10 * weightKg + 6.25 * heightCm - 5 * age - 161;
+  const bodyFat = gender === 'male'
+    ? (1.20 * bmi + 0.23 * age - 16.2).toFixed(1)
+    : (1.20 * bmi + 0.23 * age - 5.4).toFixed(1);
+
+  const box = document.getElementById('resultBox');
+  box.className = 'result-box show';
+  box.style.borderColor = border;
+  box.style.background = color + '15';
+  document.getElementById('bmiValue').textContent = bmi.toFixed(1);
+  document.getElementById('bmiValue').style.color = color;
+  document.getElementById('bmiLabel').textContent = label;
+  document.getElementById('bmiSub').textContent = `Your BMI is ${bmi.toFixed(1)}`;
+  document.getElementById('idealWeight').textContent = `${Math.round(idealMin)}–${Math.round(idealMax)} kg`;
+  document.getElementById('bmr').textContent = Math.round(bmr);
+  document.getElementById('bodyFat').textContent = bodyFat + '%';
+  document.getElementById('healthyRange').textContent = `${Math.round(idealMin)}–${Math.round(idealMax)} kg`;
+}
+</script>
+<script>
+// Auto-save inputs to localStorage
+(function(){
+  const KEY = 'forjit_bmi_calculator';
+  // Restore saved values
+  try {
+    const saved = JSON.parse(localStorage.getItem(KEY) || '{}');
+    Object.entries(saved).forEach(([id, val]) => {
+      const el = document.getElementById(id);
+      if (el) el.value = val;
+    });
+  } catch(e) {}
+  // Save on every input change
+  document.querySelectorAll('input[type=number], input[type=text], select').forEach(el => {
+    if (el.id) el.addEventListener('input', () => {
+      try {
+        const data = {};
+        document.querySelectorAll('input[type=number], input[type=text], select').forEach(e => {
+          if (e.id) data[e.id] = e.value;
+        });
+        localStorage.setItem(KEY, JSON.stringify(data));
+      } catch(e) {}
+    });
+  });
+})();
+</script>
+<script src="tool-common.js"></script>
+
+<!-- Internal SEO links -->
+<div id="related-tools-seo" style="margin:20px 0;padding:14px;background:#0c0a09;border:1px solid #292524;border-radius:10px">
+  <p style="font-size:11px;color:#57534e;text-transform:uppercase;letter-spacing:.07em;margin-bottom:8px;font-weight:700">Related Free Tools</p>
+  <a href="/tools/calorie-calculator.html" style="display:inline-block;margin:4px;padding:6px 12px;background:#1c1917;border:1px solid #292524;border-radius:999px;color:#a8a29e;font-size:12px;text-decoration:none">Calorie Calculator</a>
+<a href="/tools/ideal-weight.html" style="display:inline-block;margin:4px;padding:6px 12px;background:#1c1917;border:1px solid #292524;border-radius:999px;color:#a8a29e;font-size:12px;text-decoration:none">Ideal Weight Calculator</a>
+<a href="/tools/water-intake.html" style="display:inline-block;margin:4px;padding:6px 12px;background:#1c1917;border:1px solid #292524;border-radius:999px;color:#a8a29e;font-size:12px;text-decoration:none">Water Intake Calculator</a>
+</div>
+</body>
+</html>

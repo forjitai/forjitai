@@ -1,0 +1,212 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="UTF-8"/><meta name="viewport" content="width=device-width,initial-scale=1.0"/>
+<title>Date Calculator — Days Between Dates Online Free | Forjit AI</title>
+<meta name="description" content="Free date calculator. Find days between two dates, add or subtract days from a date. Calculate date difference instantly."/>
+<meta name="keywords" content="date calculator, days between two dates calculator, date difference calculator online free India, add days to date"/>
+<link rel="canonical" href="https://www.forjitai.in/tools/date-calculator.html"/>
+<link rel="stylesheet" href="tools.css"/>
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-DYR402JFVG"></script>
+<script>window.dataLayer=window.dataLayer||[];function gtag(){dataLayer.push(arguments);}gtag('js',new Date());gtag('config','G-DYR402JFVG');</script>
+  <meta name="robots" content="index,follow,max-snippet:-1,max-image-preview:large"/>
+  <meta property="og:type"         content="website"/>
+  <meta property="og:site_name"    content="Forjit AI"/>
+  <meta property="og:url"          content="https://www.forjitai.in/tools/date-calculator.html"/>
+  <meta property="og:title"        content="Date Calculator — Forjit AI | Date Difference & Add Days Calculator"/>
+  <meta property="og:description"  content="Difference between dates, add/subtract days, business days counter."/>
+  <meta property="og:image"        content="https://www.forjitai.in/og-image.png"/>
+  <meta property="og:image:width"  content="1200"/>
+  <meta property="og:image:height" content="630"/>
+  <meta property="og:locale"       content="en_IN"/>
+  <meta name="twitter:card"        content="summary_large_image"/>
+  <meta name="twitter:site"        content="@forjitai"/>
+  <meta name="twitter:title"       content="Date Calculator — Forjit AI | Date Difference & Add Days Calculator"/>
+  <meta name="twitter:description" content="Free date calculator. Find days between two dates, add or subtract days from a date. Calculate date difference instantly."/>
+  <meta name="twitter:image"       content="https://www.forjitai.in/og-image.png"/>
+  <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-5102938260449475" crossorigin="anonymous"></script>
+  <meta name="google-site-verification" content="u11mSk2rQwaphaXMCcUwJU-6dRhN_ndessqEMeZdubk" />
+
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "FAQPage",
+  "mainEntity": [
+    {
+      "@type": "Question",
+      "name": "How do I calculate days between two dates?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "Enter the start date and end date in the date calculator. It instantly shows the difference in days, weeks and months."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "Can I add days to a date?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "Yes. Enter a start date and number of days to add or subtract to find the resulting date."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "Is this date calculator free?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "Yes, completely free at forjitai.in with no signup required."
+      }
+    }
+  ]
+}
+</script>
+</head>
+<body>
+<header>
+  <a class="logo" href="/"><div class="logo-mark">F</div><div><div class="logo-name">Forjit AI</div><div class="logo-sub">Tools</div></div></a>
+  <a class="back-link" href="/tools/">← All Tools</a>
+</header>
+<div class="container-sm">
+  <h1>Date Calculator</h1>
+  <p class="page-desc">Calculate difference between dates, add/subtract days, find weekdays.</p>
+  <div class="ad-slot">Advertisement · <a href="https://adsense.google.com" target="_blank">Connect AdSense</a></div>
+
+  <div class="toggle-row"><button class="toggle-btn on" onclick="setTab(0,this)">Date Difference</button><button class="toggle-btn" onclick="setTab(1,this)">Add / Subtract Days</button><button class="toggle-btn" onclick="setTab(2,this)">Business Days</button></div>
+
+  <!-- Tab 0: Date Difference -->
+  <div id="tab0" class="card">
+    <div style="display:grid;grid-template-columns:1fr 1fr;gap:10px;margin-bottom:16px">
+      <div class="field"><span class="label">Start Date</span><div class="input-wrap"><input type="date" id="d1" oninput="calcDiff()"/></div></div>
+      <div class="field"><span class="label">End Date</span><div class="input-wrap"><input type="date" id="d2" oninput="calcDiff()"/></div></div>
+    </div>
+    <div class="results-grid cols4" id="diffResults" style="display:none">
+      <div class="result-card"><div class="result-label">Years</div><div class="result-value rv-accent" id="dYears">0</div></div>
+      <div class="result-card"><div class="result-label">Months</div><div class="result-value rv-blue" id="dMonths">0</div></div>
+      <div class="result-card"><div class="result-label">Weeks</div><div class="result-value rv-green" id="dWeeks">0</div></div>
+      <div class="result-card"><div class="result-label">Days</div><div class="result-value" id="dDays">0</div></div>
+    </div>
+    <div class="results-grid cols3" id="diffResults2" style="display:none;margin-top:10px">
+      <div class="result-card"><div class="result-label">Total Days</div><div class="result-value" id="dTotal">0</div></div>
+      <div class="result-card"><div class="result-label">Weekdays</div><div class="result-value rv-green" id="dWeekdays">0</div></div>
+      <div class="result-card"><div class="result-label">Weekends</div><div class="result-value rv-blue" id="dWeekends">0</div></div>
+    </div>
+    <div class="info-box" id="diffNote" style="display:none"></div>
+  </div>
+
+  <!-- Tab 1: Add/Subtract -->
+  <div id="tab1" class="card" style="display:none">
+    <div class="field"><span class="label">Start Date</span><div class="input-wrap"><input type="date" id="addDate" oninput="calcAdd()"/></div></div>
+    <div style="display:flex;align-items:center;gap:10px;margin-bottom:16px">
+      <div class="toggle-row" style="margin:0;width:auto">
+        <button class="toggle-btn on" id="btnAdd" onclick="this.classList.add('on');document.getElementById('btnSub').classList.remove('on');calcAdd()">Add</button>
+        <button class="toggle-btn" id="btnSub" onclick="this.classList.add('on');document.getElementById('btnAdd').classList.remove('on');calcAdd()">Subtract</button>
+      </div>
+      <div class="input-wrap" style="flex:1"><input type="number" id="addDays" value="30" min="0" oninput="calcAdd()"/><span class="suffix">days</span></div>
+    </div>
+    <div class="result-hero" id="addResult" style="display:none">
+      <div class="result-hero-label" id="addLabel">Result Date</div>
+      <div class="result-hero-value" id="addDateResult" style="font-size:26px">—</div>
+      <div class="result-hero-sub" id="addSub">—</div>
+    </div>
+  </div>
+
+  <!-- Tab 2: Business Days -->
+  <div id="tab2" class="card" style="display:none">
+    <div style="display:grid;grid-template-columns:1fr 1fr;gap:10px;margin-bottom:12px">
+      <div class="field"><span class="label">From Date</span><div class="input-wrap"><input type="date" id="bd1" oninput="calcBiz()"/></div></div>
+      <div class="field"><span class="label">To Date</span><div class="input-wrap"><input type="date" id="bd2" oninput="calcBiz()"/></div></div>
+    </div>
+    <div class="results-grid cols2" id="bizResult" style="display:none">
+      <div class="result-card"><div class="result-label">Business Days</div><div class="result-value rv-accent" id="bizDays">0</div></div>
+      <div class="result-card"><div class="result-label">Calendar Days</div><div class="result-value rv-blue" id="calDays">0</div></div>
+    </div>
+    <div class="info-box" id="bizNote" style="display:none;margin-top:12px"></div>
+  </div>
+
+  <div class="ad-slot">Advertisement</div>
+  <div class="tips"><h3>📅 Date Tips</h3><ul>
+    <li>Business days = weekdays only (Monday to Friday)</li>
+    <li>Public holidays vary by state — subtract them manually</li>
+    <li>Financial year in India: April 1 to March 31</li>
+    <li>Income Tax filing deadline: July 31 each year</li>
+    <li>GST quarterly return: 22nd of month after quarter end</li>
+  </ul></div>
+</div>
+<script>
+const today=new Date().toISOString().split('T')[0];
+const DAYS=['Sunday','Monday','Tuesday','Wednesday','Thursday','Friday','Saturday'];
+
+function setTab(n,btn){
+  [0,1,2].forEach(i=>document.getElementById('tab'+i).style.display=i===n?'block':'none');
+  document.querySelectorAll('.toggle-btn').forEach(b=>b.classList.remove('on'));
+  btn.classList.add('on');
+}
+
+// Initialize date inputs
+document.getElementById('d1').value=today;
+const d2=new Date();d2.setDate(d2.getDate()+30);
+document.getElementById('d2').value=d2.toISOString().split('T')[0];
+document.getElementById('addDate').value=today;
+document.getElementById('bd1').value=today;
+document.getElementById('bd2').value=d2.toISOString().split('T')[0];
+
+function calcDiff(){
+  const s=new Date(document.getElementById('d1').value);
+  const e=new Date(document.getElementById('d2').value);
+  if(isNaN(s)||isNaN(e))return;
+  const [start,end]=s<=e?[s,e]:[e,s];
+  const totalMs=end-start;
+  const totalDays=Math.round(totalMs/86400000);
+  let years=end.getFullYear()-start.getFullYear();
+  let months=end.getMonth()-start.getMonth();
+  let days=end.getDate()-start.getDate();
+  if(days<0){months--;const pm=new Date(end.getFullYear(),end.getMonth(),0);days+=pm.getDate();}
+  if(months<0){years--;months+=12;}
+  const weeks=Math.floor(totalDays/7);
+  let weekdays=0,weekends=0;
+  const d=new Date(start);
+  while(d<=end){const dw=d.getDay();if(dw===0||dw===6)weekends++;else weekdays++;d.setDate(d.getDate()+1);}
+  document.getElementById('diffResults').style.display='grid';
+  document.getElementById('diffResults2').style.display='grid';
+  document.getElementById('diffNote').style.display='block';
+  document.getElementById('dYears').textContent=years;
+  document.getElementById('dMonths').textContent=months;
+  document.getElementById('dWeeks').textContent=weeks;
+  document.getElementById('dDays').textContent=days;
+  document.getElementById('dTotal').textContent=totalDays;
+  document.getElementById('dWeekdays').textContent=weekdays;
+  document.getElementById('dWeekends').textContent=weekends;
+  document.getElementById('diffNote').textContent=`${DAYS[start.getDay()]}, ${start.toDateString()} → ${DAYS[end.getDay()]}, ${end.toDateString()}`;
+}
+
+function calcAdd(){
+  const base=new Date(document.getElementById('addDate').value);
+  if(isNaN(base))return;
+  const n=parseInt(document.getElementById('addDays').value)||0;
+  const isSub=document.getElementById('btnSub').classList.contains('on');
+  const result=new Date(base);
+  result.setDate(result.getDate()+(isSub?-n:n));
+  document.getElementById('addResult').style.display='block';
+  document.getElementById('addLabel').textContent=isSub?`${n} days before`:`${n} days after`;
+  document.getElementById('addDateResult').textContent=result.toDateString();
+  document.getElementById('addSub').textContent=`${DAYS[result.getDay()]} · ${result.toLocaleDateString('en-IN')}`;
+}
+
+function calcBiz(){
+  const s=new Date(document.getElementById('bd1').value);
+  const e=new Date(document.getElementById('bd2').value);
+  if(isNaN(s)||isNaN(e))return;
+  const [start,end]=s<=e?[s,e]:[e,s];
+  let biz=0,total=0;
+  const d=new Date(start);
+  while(d<=end){total++;const dw=d.getDay();if(dw!==0&&dw!==6)biz++;d.setDate(d.getDate()+1);}
+  document.getElementById('bizResult').style.display='grid';
+  document.getElementById('bizNote').style.display='block';
+  document.getElementById('bizDays').textContent=biz;
+  document.getElementById('calDays').textContent=total;
+  document.getElementById('bizNote').textContent=`${biz} working days from ${start.toDateString()} to ${end.toDateString()} (excludes weekends, not holidays)`;
+}
+calcDiff();calcAdd();calcBiz();
+</script>
+<script src="tool-common.js"></script>
+</body>
+</html>

@@ -1,0 +1,203 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="UTF-8"/><meta name="viewport" content="width=device-width,initial-scale=1.0"/>
+<title>FD Calculator — Fixed Deposit Returns India 2025 | Forjit AI</title>
+<meta name="description" content="Free FD calculator India 2025. Calculate fixed deposit maturity amount and interest for all major banks. Current FD rates included."/>
+<meta name="keywords" content="FD calculator India 2025, fixed deposit calculator, FD interest calculator online free, bank FD returns calculator"/>
+<link rel="canonical" href="https://www.forjitai.in/tools/fd-calculator.html"/>
+<link rel="stylesheet" href="tools.css"/>
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-DYR402JFVG"></script>
+<script>window.dataLayer=window.dataLayer||[];function gtag(){dataLayer.push(arguments);}gtag('js',new Date());gtag('config','G-DYR402JFVG');</script>
+  <meta name="robots" content="index,follow,max-snippet:-1,max-image-preview:large"/>
+  <meta property="og:type"         content="website"/>
+  <meta property="og:site_name"    content="Forjit AI"/>
+  <meta property="og:url"          content="https://www.forjitai.in/tools/fd-calculator.html"/>
+  <meta property="og:title"        content="FD Calculator — Forjit AI | Fixed Deposit Interest Calculator India"/>
+  <meta property="og:description"  content="Fixed deposit maturity, interest earned, and bank rates comparison."/>
+  <meta property="og:image"        content="https://www.forjitai.in/og-image.png"/>
+  <meta property="og:image:width"  content="1200"/>
+  <meta property="og:image:height" content="630"/>
+  <meta property="og:locale"       content="en_IN"/>
+  <meta name="twitter:card"        content="summary_large_image"/>
+  <meta name="twitter:site"        content="@forjitai"/>
+  <meta name="twitter:title"       content="FD Calculator — Forjit AI | Fixed Deposit Interest Calculator India"/>
+  <meta name="twitter:description" content="Free FD calculator India 2025. Calculate fixed deposit maturity amount and interest for all major banks. Current FD rates included."/>
+  <meta name="twitter:image"       content="https://www.forjitai.in/og-image.png"/>
+  <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-5102938260449475" crossorigin="anonymous"></script>
+  <meta name="google-site-verification" content="u11mSk2rQwaphaXMCcUwJU-6dRhN_ndessqEMeZdubk" />
+
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "FAQPage",
+  "mainEntity": [
+    {
+      "@type": "Question",
+      "name": "What is the best FD interest rate in India 2025?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "Small finance banks like AU Small Finance Bank offer up to 8.5%. Major banks like SBI offer 6.8\u20137.0% for 1-3 year FDs."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "How is FD interest calculated?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "FD Interest = P \u00d7 (1 + r/n)^(nt) for compound interest. Where P is principal, r is rate, n is compounding frequency and t is tenure."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "Is FD interest taxable?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "Yes. FD interest is added to your income and taxed at your income tax slab rate. TDS of 10% is deducted if interest exceeds \u20b940,000/year."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "Is this FD calculator free?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "Yes, completely free at forjitai.in with no signup required."
+      }
+    }
+  ]
+}
+</script>
+</head>
+<body>
+<header>
+  <a class="logo" href="/"><div class="logo-mark">F</div><div><div class="logo-name">Forjit AI</div><div class="logo-sub">Tools</div></div></a>
+  <a class="back-link" href="/tools/">← All Tools</a>
+</header>
+<div class="container-sm">
+  <h1>FD Calculator</h1>
+  <p class="page-desc">Calculate your Fixed Deposit maturity amount and total interest earned.</p>
+  <div class="ad-slot">Advertisement · <a href="https://adsense.google.com" target="_blank">Connect AdSense</a></div>
+  <div class="card">
+    <div class="field"><span class="label">Principal Amount (₹)</span>
+      <div class="input-wrap"><span class="prefix">₹</span><input type="number" id="principal" value="100000" min="1000" oninput="syncR('principal','rP');calc()"/></div>
+      <input type="range" id="rP" min="1000" max="10000000" value="100000" step="1000" oninput="syncI('rP','principal');calc()"/>
+      <div class="range-row"><span>₹1K</span><span>₹1Cr</span></div>
+    </div>
+    <div class="field"><span class="label">Annual Interest Rate (%)</span>
+      <div class="input-wrap"><span class="prefix">%</span><input type="number" id="rate" value="7" min="1" max="20" step="0.1" oninput="syncR('rate','rR');calc()"/></div>
+      <input type="range" id="rR" min="1" max="20" value="7" step="0.1" oninput="syncI('rR','rate');calc()"/>
+      <div class="range-row"><span>1%</span><span>20%</span></div>
+    </div>
+    <div class="field"><span class="label">Tenure</span>
+      <div style="display:grid;grid-template-columns:1fr 1fr;gap:10px">
+        <div><div class="input-wrap"><span class="prefix">Yr</span><input type="number" id="years" value="2" min="0" max="10" oninput="calc()"/></div></div>
+        <div><div class="input-wrap"><span class="prefix">Mo</span><input type="number" id="months" value="0" min="0" max="11" oninput="calc()"/></div></div>
+      </div>
+    </div>
+    <div class="field"><span class="label">Compounding Frequency</span>
+      <div class="input-wrap"><select id="freq" onchange="calc()">
+        <option value="4">Quarterly (Most FDs)</option>
+        <option value="12">Monthly</option>
+        <option value="2">Half-Yearly</option>
+        <option value="1">Annually</option>
+        <option value="365">Daily</option>
+      </select></div>
+    </div>
+  </div>
+
+  <div class="result-hero">
+    <div class="result-hero-label">Maturity Amount</div>
+    <div class="result-hero-value" id="maturity">₹0</div>
+    <div class="result-hero-sub" id="sub">—</div>
+  </div>
+  <div class="results-grid cols3">
+    <div class="result-card"><div class="result-label">Principal</div><div class="result-value rv-accent" id="rPrincipal">₹0</div></div>
+    <div class="result-card"><div class="result-label">Interest Earned</div><div class="result-value rv-green" id="rInterest">₹0</div></div>
+    <div class="result-card"><div class="result-label">Effective Yield</div><div class="result-value rv-blue" id="rYield">0%</div></div>
+  </div>
+
+  <div class="card">
+    <h3 style="font-size:14px;font-weight:700;margin-bottom:12px">🏦 Popular FD Rates 2024 (indicative)</h3>
+    <div class="table-wrap"><table>
+      <thead><tr><th>Bank</th><th>General</th><th>Senior Citizen</th></tr></thead>
+      <tbody>
+        <tr><td>SBI</td><td>6.50–7.10%</td><td>7.00–7.60%</td></tr>
+        <tr><td>HDFC Bank</td><td>7.00–7.40%</td><td>7.50–7.90%</td></tr>
+        <tr><td>ICICI Bank</td><td>6.70–7.25%</td><td>7.20–7.75%</td></tr>
+        <tr><td>Axis Bank</td><td>6.70–7.20%</td><td>7.20–7.75%</td></tr>
+        <tr><td>Kotak Mahindra</td><td>6.20–7.25%</td><td>6.70–7.75%</td></tr>
+        <tr><td>Post Office</td><td>6.90–7.50%</td><td>Same</td></tr>
+        <tr><td>Small Finance Banks</td><td>Up to 9%+</td><td>Up to 9.5%+</td></tr>
+      </tbody>
+    </table></div>
+    <div class="warning-box" style="margin-top:12px">Rates change frequently. Verify with your bank before investing.</div>
+  </div>
+
+  <div class="ad-slot">Advertisement</div>
+  <div class="tips"><h3>💡 FD Tips</h3><ul>
+    <li>Interest from FD is fully taxable at your income tax slab rate</li>
+    <li>TDS @ 10% is deducted if annual interest exceeds ₹40,000 (₹50,000 for senior citizens)</li>
+    <li>Submit Form 15G/15H to avoid TDS if income is below taxable limit</li>
+    <li>Laddering FDs (1yr, 2yr, 3yr) gives liquidity + better average rates</li>
+    <li>Senior citizens get 0.25–0.50% extra rate at most banks</li>
+  </ul></div>
+</div>
+<script>
+const fmt=n=>'₹'+Math.round(n).toLocaleString('en-IN');
+function syncR(i,r){document.getElementById(r).value=document.getElementById(i).value}
+function syncI(r,i){document.getElementById(i).value=document.getElementById(r).value}
+function calc(){
+  const P=parseFloat(document.getElementById('principal').value)||0;
+  const r=parseFloat(document.getElementById('rate').value)/100||0;
+  const yr=parseInt(document.getElementById('years').value)||0;
+  const mo=parseInt(document.getElementById('months').value)||0;
+  const n=parseFloat(document.getElementById('freq').value);
+  const t=yr+mo/12;
+  const A=P*Math.pow(1+r/n,n*t);
+  const interest=A-P;
+  const yld=((A/P-1)/t*100).toFixed(2);
+  document.getElementById('maturity').textContent=fmt(A);
+  document.getElementById('sub').textContent=`In ${yr}yr ${mo}mo at ${document.getElementById('rate').value}% p.a.`;
+  document.getElementById('rPrincipal').textContent=fmt(P);
+  document.getElementById('rInterest').textContent=fmt(interest);
+  document.getElementById('rYield').textContent=yld+'%';
+}
+calc();
+</script>
+<script>
+// Auto-save inputs to localStorage
+(function(){
+  const KEY = 'forjit_fd_calculator';
+  // Restore saved values
+  try {
+    const saved = JSON.parse(localStorage.getItem(KEY) || '{}');
+    Object.entries(saved).forEach(([id, val]) => {
+      const el = document.getElementById(id);
+      if (el) el.value = val;
+    });
+  } catch(e) {}
+  // Save on every input change
+  document.querySelectorAll('input[type=number], input[type=text], select').forEach(el => {
+    if (el.id) el.addEventListener('input', () => {
+      try {
+        const data = {};
+        document.querySelectorAll('input[type=number], input[type=text], select').forEach(e => {
+          if (e.id) data[e.id] = e.value;
+        });
+        localStorage.setItem(KEY, JSON.stringify(data));
+      } catch(e) {}
+    });
+  });
+})();
+</script>
+<script src="tool-common.js"></script>
+
+<!-- Internal SEO links -->
+<div id="related-tools-seo" style="margin:20px 0;padding:14px;background:#0c0a09;border:1px solid #292524;border-radius:10px">
+  <p style="font-size:11px;color:#57534e;text-transform:uppercase;letter-spacing:.07em;margin-bottom:8px;font-weight:700">Related Free Tools</p>
+  <a href="/tools/rd-calculator.html" style="display:inline-block;margin:4px;padding:6px 12px;background:#1c1917;border:1px solid #292524;border-radius:999px;color:#a8a29e;font-size:12px;text-decoration:none">RD Calculator</a>
+<a href="/tools/ppf-calculator.html" style="display:inline-block;margin:4px;padding:6px 12px;background:#1c1917;border:1px solid #292524;border-radius:999px;color:#a8a29e;font-size:12px;text-decoration:none">PPF Calculator</a>
+<a href="/tools/compound-interest-calculator.html" style="display:inline-block;margin:4px;padding:6px 12px;background:#1c1917;border:1px solid #292524;border-radius:999px;color:#a8a29e;font-size:12px;text-decoration:none">Compound Interest Calculator</a>
+</div>
+</body>
+</html>

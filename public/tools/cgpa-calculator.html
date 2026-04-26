@@ -1,0 +1,198 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="UTF-8"/><meta name="viewport" content="width=device-width,initial-scale=1.0"/>
+<title>CGPA Calculator — CGPA to Percentage Converter Free | Forjit AI</title>
+<meta name="description" content="Free CGPA to percentage calculator. Convert CGPA to percentage for VTU, Anna University, Mumbai University and all Indian universities."/>
+<meta name="keywords" content="CGPA calculator, CGPA to percentage calculator, CGPA to percentage converter India, VTU CGPA calculator, Anna University CGPA"/>
+<link rel="canonical" href="https://www.forjitai.in/tools/cgpa-calculator.html"/>
+<link rel="stylesheet" href="tools.css"/>
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-DYR402JFVG"></script>
+<script>window.dataLayer=window.dataLayer||[];function gtag(){dataLayer.push(arguments);}gtag('js',new Date());gtag('config','G-DYR402JFVG');</script>
+  <meta name="robots" content="index,follow,max-snippet:-1,max-image-preview:large"/>
+  <meta property="og:type"         content="website"/>
+  <meta property="og:site_name"    content="Forjit AI"/>
+  <meta property="og:url"          content="https://www.forjitai.in/tools/cgpa-calculator.html"/>
+  <meta property="og:title"        content="CGPA to Percentage Calculator — Forjit AI | GPA Converter India"/>
+  <meta property="og:description"  content="CGPA to percentage for VTU, Anna, JNTU, Mumbai Univ, SRM and more."/>
+  <meta property="og:image"        content="https://www.forjitai.in/og-image.png"/>
+  <meta property="og:image:width"  content="1200"/>
+  <meta property="og:image:height" content="630"/>
+  <meta property="og:locale"       content="en_IN"/>
+  <meta name="twitter:card"        content="summary_large_image"/>
+  <meta name="twitter:site"        content="@forjitai"/>
+  <meta name="twitter:title"       content="CGPA to Percentage Calculator — Forjit AI | GPA Converter India"/>
+  <meta name="twitter:description" content="Free CGPA to percentage calculator. Convert CGPA to percentage for VTU, Anna University, Mumbai University and all Indian universities."/>
+  <meta name="twitter:image"       content="https://www.forjitai.in/og-image.png"/>
+  <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-5102938260449475" crossorigin="anonymous"></script>
+  <meta name="google-site-verification" content="u11mSk2rQwaphaXMCcUwJU-6dRhN_ndessqEMeZdubk" />
+
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "FAQPage",
+  "mainEntity": [
+    {
+      "@type": "Question",
+      "name": "How to convert CGPA to percentage?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "For most Indian universities: Percentage = CGPA \u00d7 9.5. For VTU: Percentage = (CGPA - 0.75) \u00d7 10."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "What is a good CGPA?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "CGPA of 8.0+ is considered excellent. 7.0\u20137.9 is good. 6.0\u20136.9 is average. Below 6.0 may affect placements."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "How is CGPA calculated?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "CGPA = Sum of (Grade Point \u00d7 Credits) divided by total credits across all subjects."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "Is this CGPA calculator free?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "Yes. The Forjit AI CGPA calculator is completely free with formulas for all major Indian universities."
+      }
+    }
+  ]
+}
+</script>
+</head>
+<body>
+<header>
+  <a class="logo" href="/"><div class="logo-mark">F</div><div><div class="logo-name">Forjit AI</div><div class="logo-sub">Tools</div></div></a>
+  <a class="back-link" href="/tools/">← All Tools</a>
+</header>
+<div class="container-sm">
+  <h1>CGPA to Percentage Calculator</h1>
+  <p class="page-desc">Convert CGPA to percentage for all major Indian universities.</p>
+  <div class="ad-slot">Advertisement · <a href="https://adsense.google.com" target="_blank">Connect AdSense</a></div>
+
+  <div class="card">
+    <div class="field"><span class="label">Your CGPA</span>
+      <div class="input-wrap"><input type="number" id="cgpa" value="8.5" min="0" max="10" step="0.01" oninput="calc()"/><span class="suffix">/ <span id="maxLabel">10</span></span></div>
+    </div>
+    <div class="field"><span class="label">CGPA Scale</span>
+      <div class="input-wrap"><select id="scale" onchange="updateScale();calc()">
+        <option value="10">10-point scale (Most Indian Universities)</option>
+        <option value="4">4-point scale (US / IIMs)</option>
+        <option value="7">7-point scale (Some Universities)</option>
+        <option value="5">5-point scale</option>
+      </select></div>
+    </div>
+    <div class="field"><span class="label">Conversion Formula / University</span>
+      <div class="input-wrap"><select id="formula" onchange="calc()">
+        <option value="x9.5">× 9.5 (Default — VTU, JNTU, most CBCs)</option>
+        <option value="x10">× 10 (SRM, Manipal, some universities)</option>
+        <option value="anna">Anna University formula (custom)</option>
+        <option value="custom">Custom multiplier</option>
+      </select></div>
+    </div>
+    <div class="field" id="customMultField" style="display:none">
+      <span class="label">Custom Multiplier</span>
+      <div class="input-wrap"><input type="number" id="customMult" value="9.5" step="0.01" oninput="calc()"/></div>
+    </div>
+  </div>
+
+  <div class="result-hero">
+    <div class="result-hero-label">Your Percentage</div>
+    <div class="result-hero-value" id="resultPct">—</div>
+    <div class="result-hero-sub" id="resultGrade">—</div>
+  </div>
+  <div class="results-grid cols3">
+    <div class="result-card"><div class="result-label">Class</div><div class="result-value" id="rClass" style="font-size:15px">—</div></div>
+    <div class="result-card"><div class="result-label">US GPA Equiv.</div><div class="result-value rv-blue" id="rGPA">—</div></div>
+    <div class="result-card"><div class="result-label">Percentile Est.</div><div class="result-value rv-green" id="rPerc">—</div></div>
+  </div>
+
+  <div class="card">
+    <h3 style="font-size:14px;font-weight:700;margin-bottom:12px">University-wise Formulas</h3>
+    <div class="table-wrap"><table>
+      <thead><tr><th>University</th><th>Formula</th><th>Your % here</th></tr></thead>
+      <tbody id="uniTable"></tbody>
+    </table></div>
+  </div>
+
+  <div class="card">
+    <h3 style="font-size:14px;font-weight:700;margin-bottom:12px">Grade Classification (10-point scale)</h3>
+    <div class="table-wrap"><table>
+      <thead><tr><th>CGPA Range</th><th>Percentage</th><th>Class</th><th>Grade</th></tr></thead>
+      <tbody>
+        <tr><td>9.00–10.00</td><td>85.5–95%</td><td>Outstanding</td><td style="color:var(--accent)">O</td></tr>
+        <tr><td>8.00–8.99</td><td>76–85%</td><td>First Class with Distinction</td><td style="color:var(--green)">A+/A</td></tr>
+        <tr><td>7.00–7.99</td><td>66.5–75.5%</td><td>First Class</td><td style="color:#60a5fa">B+/B</td></tr>
+        <tr><td>6.00–6.99</td><td>57–66%</td><td>Second Class</td><td style="color:#c084fc">C+/C</td></tr>
+        <tr><td>5.00–5.99</td><td>47.5–56.5%</td><td>Pass</td><td style="color:var(--muted)">D</td></tr>
+        <tr><td>Below 5.00</td><td>Below 47.5%</td><td>Fail</td><td style="color:#f87171">F</td></tr>
+      </tbody>
+    </table></div>
+  </div>
+  <div class="ad-slot">Advertisement</div>
+</div>
+<script>
+function updateScale(){
+  const s=document.getElementById('scale').value;
+  document.getElementById('maxLabel').textContent=s;
+  document.getElementById('cgpa').max=s;
+}
+function calc(){
+  const cgpa=parseFloat(document.getElementById('cgpa').value)||0;
+  const scale=parseFloat(document.getElementById('scale').value)||10;
+  const formula=document.getElementById('formula').value;
+  document.getElementById('customMultField').style.display=formula==='custom'?'block':'none';
+
+  let pct;
+  if(formula==='x9.5') pct=cgpa*9.5;
+  else if(formula==='x10') pct=cgpa*10;
+  else if(formula==='anna') pct=(cgpa-0.5)*10;
+  else if(formula==='custom') pct=cgpa*(parseFloat(document.getElementById('customMult').value)||9.5);
+  else pct=cgpa*9.5;
+
+  pct=Math.min(100,Math.max(0,pct));
+  document.getElementById('resultPct').textContent=pct.toFixed(2)+'%';
+
+  // Grade
+  let cls='',grade='',color='',gpa4='';
+  if(pct>=85){cls='Outstanding';grade='O';color='var(--accent)';gpa4='4.0';}
+  else if(pct>=75){cls='First Class with Distinction';grade='A';color='var(--green)';gpa4='3.7';}
+  else if(pct>=65){cls='First Class';grade='B+';color='#60a5fa';gpa4='3.3';}
+  else if(pct>=55){cls='Second Class';grade='B';color='#c084fc';gpa4='3.0';}
+  else if(pct>=45){cls='Pass';grade='C';color='var(--muted)';gpa4='2.0';}
+  else{cls='Fail';grade='F';color='#f87171';gpa4='0.0';}
+
+  document.getElementById('resultGrade').innerHTML=`Grade: <span style="color:${color};font-weight:700">${grade}</span>`;
+  document.getElementById('rClass').textContent=cls;
+  document.getElementById('rClass').style.color=color;
+  document.getElementById('rGPA').textContent=gpa4+' / 4.0';
+  document.getElementById('rPerc').textContent=pct>85?'Top 10%':pct>75?'Top 25%':pct>65?'Top 50%':'Average';
+
+  // University table
+  const unis=[
+    ['Most CBCs / VTU / JNTU',cgpa+'×9.5',cgpa*9.5],
+    ['SRM / Manipal / LPU',cgpa+'×10',cgpa*10],
+    ['Anna University',(cgpa-0.5)+'×10',(cgpa-0.5)*10],
+    ['Mumbai University',cgpa+'×10',cgpa*10],
+    ['Amity / Symbiosis',cgpa+'×9.5',cgpa*9.5],
+  ];
+  const tbody=document.getElementById('uniTable');
+  tbody.innerHTML='';
+  unis.forEach(([name,formula,val])=>{
+    const v=Math.min(100,Math.max(0,val));
+    tbody.innerHTML+=`<tr><td>${name}</td><td style="font-family:monospace;font-size:12px;color:var(--muted)">${formula}</td><td style="color:var(--accent);font-weight:600">${v.toFixed(2)}%</td></tr>`;
+  });
+}
+calc();
+</script>
+<script src="tool-common.js"></script>
+</body>
+</html>

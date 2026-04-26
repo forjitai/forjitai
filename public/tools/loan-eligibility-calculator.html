@@ -1,0 +1,209 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="UTF-8"/><meta name="viewport" content="width=device-width,initial-scale=1.0"/>
+<title>Loan Eligibility Calculator India — Check Home Loan Eligibility Free | Forjit AI</title>
+<meta name="description" content="Free loan eligibility calculator India. Check home loan, car loan and personal loan eligibility based on your salary and existing EMIs."/>
+<meta name="keywords" content="loan eligibility calculator India, home loan eligibility calculator, how much loan can I get on salary India, loan calculator India"/>
+<link rel="canonical" href="https://www.forjitai.in/tools/loan-eligibility-calculator.html"/>
+<link rel="stylesheet" href="tools.css"/>
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-DYR402JFVG"></script>
+<script>window.dataLayer=window.dataLayer||[];function gtag(){dataLayer.push(arguments);}gtag('js',new Date());gtag('config','G-DYR402JFVG');</script>
+  <meta name="robots" content="index,follow,max-snippet:-1,max-image-preview:large"/>
+  <meta property="og:type"         content="website"/>
+  <meta property="og:site_name"    content="Forjit AI"/>
+  <meta property="og:url"          content="https://www.forjitai.in/tools/loan-eligibility-calculator.html"/>
+  <meta property="og:title"        content="Loan Eligibility Calculator — Forjit AI | Home Loan Eligibility India"/>
+  <meta property="og:description"  content="Max loan amount based on your salary, FOIR, and bank criteria."/>
+  <meta property="og:image"        content="https://www.forjitai.in/og-image.png"/>
+  <meta property="og:image:width"  content="1200"/>
+  <meta property="og:image:height" content="630"/>
+  <meta property="og:locale"       content="en_IN"/>
+  <meta name="twitter:card"        content="summary_large_image"/>
+  <meta name="twitter:site"        content="@forjitai"/>
+  <meta name="twitter:title"       content="Loan Eligibility Calculator — Forjit AI | Home Loan Eligibility India"/>
+  <meta name="twitter:description" content="Free loan eligibility calculator India. Check home loan, car loan and personal loan eligibility based on your salary and existing EMIs."/>
+  <meta name="twitter:image"       content="https://www.forjitai.in/og-image.png"/>
+  <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-5102938260449475" crossorigin="anonymous"></script>
+  <meta name="google-site-verification" content="u11mSk2rQwaphaXMCcUwJU-6dRhN_ndessqEMeZdubk" />
+
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "FAQPage",
+  "mainEntity": [
+    {
+      "@type": "Question",
+      "name": "How much home loan can I get on my salary?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "Banks typically offer loan where EMI is 40-50% of net monthly salary. Example: \u20b950,000 salary = eligible for EMI up to \u20b920,000-25,000."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "What is the formula for loan eligibility?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "Max loan = (Net monthly salary \u00d7 0.4 - existing EMIs) \u00d7 loan tenure months / (rate factor)."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "Does CIBIL score affect loan eligibility?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "Yes. A CIBIL score above 750 gets the best rates. Below 650 may result in loan rejection."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "Is this loan eligibility calculator free?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "Yes. The Forjit AI loan eligibility calculator is completely free at forjitai.in."
+      }
+    }
+  ]
+}
+</script>
+</head>
+<body>
+<header>
+  <a class="logo" href="/"><div class="logo-mark">F</div><div><div class="logo-name">Forjit AI</div><div class="logo-sub">Tools</div></div></a>
+  <a class="back-link" href="/tools/">← All Tools</a>
+</header>
+<div class="container-sm">
+  <h1>Loan Eligibility Calculator</h1>
+  <p class="page-desc">Find out the maximum loan amount you can get based on your monthly income.</p>
+  <div class="ad-slot">Advertisement · <a href="https://adsense.google.com" target="_blank">Connect AdSense</a></div>
+
+  <div class="card">
+    <div class="field"><span class="label">Net Monthly Income (In-Hand) ₹</span>
+      <div class="input-wrap"><span class="prefix">₹</span><input type="number" id="salary" value="75000" oninput="calc()"/></div>
+    </div>
+    <div class="field"><span class="label">Existing Monthly EMIs (if any) ₹</span>
+      <div class="input-wrap"><span class="prefix">₹</span><input type="number" id="existingEmi" value="0" oninput="calc()"/></div>
+    </div>
+    <div class="field"><span class="label">Loan Type</span>
+      <div class="input-wrap"><select id="loanType" onchange="calc()">
+        <option value="home">Home Loan</option>
+        <option value="car">Car Loan</option>
+        <option value="personal">Personal Loan</option>
+        <option value="education">Education Loan</option>
+      </select></div>
+    </div>
+    <div class="field"><span class="label">Tenure (Years)</span>
+      <div class="input-wrap"><input type="number" id="tenure" value="20" min="1" max="30" oninput="calc()"/><span class="suffix">years</span></div>
+    </div>
+    <div class="field"><span class="label">Interest Rate (%)</span>
+      <div class="input-wrap"><input type="number" id="rate" value="8.5" step="0.1" oninput="calc()"/><span class="suffix">%</span></div>
+    </div>
+  </div>
+
+  <div class="result-hero">
+    <div class="result-hero-label">Maximum Loan Amount</div>
+    <div class="result-hero-value" id="maxLoan">₹0</div>
+    <div class="result-hero-sub" id="maxEMI">Max EMI: ₹0/month</div>
+  </div>
+
+  <div class="results-grid cols3">
+    <div class="result-card"><div class="result-label">FOIR Used</div><div class="result-value rv-accent" id="rFOIR">0%</div></div>
+    <div class="result-card"><div class="result-label">Eligible EMI</div><div class="result-value rv-green" id="rEligEMI">₹0</div></div>
+    <div class="result-card"><div class="result-label">Income Multiple</div><div class="result-value rv-blue" id="rMult">0×</div></div>
+  </div>
+
+  <div class="card">
+    <h3 style="font-size:14px;font-weight:700;margin-bottom:14px">Eligibility by Loan Amount</h3>
+    <div class="table-wrap"><table>
+      <thead><tr><th>Loan Amount</th><th>Monthly EMI</th><th>Total Cost</th><th>Eligibility</th></tr></thead>
+      <tbody id="compTable"></tbody>
+    </table></div>
+  </div>
+
+  <div class="card">
+    <h3 style="font-size:14px;font-weight:700;margin-bottom:12px">🏦 Typical Bank Criteria</h3>
+    <div class="table-wrap"><table>
+      <thead><tr><th>Loan Type</th><th>Max FOIR</th><th>Typical Rate</th><th>Max Tenure</th></tr></thead>
+      <tbody>
+        <tr><td>Home Loan</td><td>50-55%</td><td>8.3–9.5%</td><td>30 years</td></tr>
+        <tr><td>Car Loan</td><td>50%</td><td>8.7–11%</td><td>7 years</td></tr>
+        <tr><td>Personal Loan</td><td>40-50%</td><td>10.5–24%</td><td>5 years</td></tr>
+        <tr><td>Education Loan</td><td>60%</td><td>8.5–13%</td><td>15 years</td></tr>
+      </tbody>
+    </table></div>
+  </div>
+  <div class="ad-slot">Advertisement</div>
+  <div class="tips"><h3>💡 Tips to Increase Eligibility</h3><ul>
+    <li>Add co-applicant (spouse/parent) — combined income increases eligibility</li>
+    <li>Close existing loans before applying — reduces FOIR</li>
+    <li>Improve CIBIL score above 750 for lower interest rates</li>
+    <li>Opt for longer tenure — reduces EMI, increases eligible loan amount</li>
+    <li>Show all income sources — rental income, FD interest, part-time income</li>
+  </ul></div>
+</div>
+<script>
+const fmt=n=>'₹'+Math.round(n).toLocaleString('en-IN');
+const FOIR={home:.55,car:.5,personal:.45,education:.6};
+function calcEMI(P,r,n){const mr=r/12/100;return P*mr*Math.pow(1+mr,n)/(Math.pow(1+mr,n)-1);}
+function calcLoanAmt(emi,r,n){const mr=r/12/100;return emi*(Math.pow(1+mr,n)-1)/(mr*Math.pow(1+mr,n));}
+
+function calc(){
+  const salary=+document.getElementById('salary').value||0;
+  const existing=+document.getElementById('existingEmi').value||0;
+  const type=document.getElementById('loanType').value;
+  const tenure=+document.getElementById('tenure').value||20;
+  const rate=+document.getElementById('rate').value||8.5;
+  const foir=FOIR[type];
+  const maxEMI=salary*foir-existing;
+  const maxLoan=Math.max(0,calcLoanAmt(maxEMI,rate,tenure*12));
+  const mult=salary?maxLoan/(salary):0;
+
+  document.getElementById('maxLoan').textContent=fmt(maxLoan);
+  document.getElementById('maxEMI').textContent=`Max eligible EMI: ${fmt(maxEMI)}/month`;
+  document.getElementById('rFOIR').textContent=Math.round(foir*100)+'%';
+  document.getElementById('rEligEMI').textContent=fmt(maxEMI);
+  document.getElementById('rMult').textContent=mult.toFixed(1)+'×';
+
+  // Comparison table
+  const amts=[500000,1000000,2000000,3000000,5000000,7500000,10000000];
+  const tbody=document.getElementById('compTable');
+  tbody.innerHTML='';
+  amts.forEach(amt=>{
+    const emi=calcEMI(amt,rate,tenure*12);
+    const total=emi*tenure*12;
+    const eligible=emi<=maxEMI&&maxLoan>=amt;
+    tbody.innerHTML+=`<tr><td>${fmt(amt)}</td><td>${fmt(emi)}/mo</td><td>${fmt(total)}</td><td><span style="color:${eligible?'#4ade80':'#f87171'};font-weight:700">${eligible?'✓ Eligible':'✗ Not Eligible'}</span></td></tr>`;
+  });
+}
+calc();
+</script>
+<script>
+// Auto-save inputs to localStorage
+(function(){
+  const KEY = 'forjit_loan_eligibility_calculator';
+  // Restore saved values
+  try {
+    const saved = JSON.parse(localStorage.getItem(KEY) || '{}');
+    Object.entries(saved).forEach(([id, val]) => {
+      const el = document.getElementById(id);
+      if (el) el.value = val;
+    });
+  } catch(e) {}
+  // Save on every input change
+  document.querySelectorAll('input[type=number], input[type=text], select').forEach(el => {
+    if (el.id) el.addEventListener('input', () => {
+      try {
+        const data = {};
+        document.querySelectorAll('input[type=number], input[type=text], select').forEach(e => {
+          if (e.id) data[e.id] = e.value;
+        });
+        localStorage.setItem(KEY, JSON.stringify(data));
+      } catch(e) {}
+    });
+  });
+})();
+</script>
+<script src="tool-common.js"></script>
+</body>
+</html>

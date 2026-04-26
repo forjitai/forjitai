@@ -1,0 +1,148 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="UTF-8"/><meta name="viewport" content="width=device-width,initial-scale=1.0"/>
+<title>Lorem Ipsum Generator — Forjit AI | Placeholder Text Generator</title>
+<meta name="description" content="Free Lorem Ipsum generator. Generate any amount of placeholder text — by words, sentences, or paragraphs. Also generates random Indian names, addresses, and company names."/>
+<meta name="keywords" content="lorem ipsum generator, placeholder text generator, dummy text generator, random text generator, lorem ipsum free"/>
+<link rel="canonical" href="https://www.forjitai.in/tools/lorem-ipsum.html"/>
+<link rel="stylesheet" href="tools.css"/>
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-DYR402JFVG"></script>
+<script>window.dataLayer=window.dataLayer||[];function gtag(){dataLayer.push(arguments);}gtag('js',new Date());gtag('config','G-DYR402JFVG');</script>
+  <meta name="robots" content="index,follow,max-snippet:-1,max-image-preview:large"/>
+  <meta property="og:type"         content="website"/>
+  <meta property="og:site_name"    content="Forjit AI"/>
+  <meta property="og:url"          content="https://www.forjitai.in/tools/lorem-ipsum.html"/>
+  <meta property="og:title"        content="Lorem Ipsum Generator — Forjit AI | Placeholder Text Generator"/>
+  <meta property="og:description"  content="Placeholder text by words, sentences, or paragraphs. Indian names too."/>
+  <meta property="og:image"        content="https://www.forjitai.in/og-image.png"/>
+  <meta property="og:image:width"  content="1200"/>
+  <meta property="og:image:height" content="630"/>
+  <meta property="og:locale"       content="en_IN"/>
+  <meta name="twitter:card"        content="summary_large_image"/>
+  <meta name="twitter:site"        content="@forjitai"/>
+  <meta name="twitter:title"       content="Lorem Ipsum Generator — Forjit AI | Placeholder Text Generator"/>
+  <meta name="twitter:description" content="Placeholder text by words, sentences, or paragraphs. Indian names too."/>
+  <meta name="twitter:image"       content="https://www.forjitai.in/og-image.png"/>
+  <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-5102938260449475" crossorigin="anonymous"></script>
+  <meta name="google-site-verification" content="u11mSk2rQwaphaXMCcUwJU-6dRhN_ndessqEMeZdubk" />
+</head>
+<body>
+<header>
+  <a class="logo" href="/"><div class="logo-mark">F</div><div><div class="logo-name">Forjit AI</div><div class="logo-sub">Tools</div></div></a>
+  <a class="back-link" href="/tools/">← All Tools</a>
+</header>
+<div class="container">
+  <h1>Lorem Ipsum Generator</h1>
+  <p class="page-desc">Generate placeholder text for your designs and mockups in seconds.</p>
+  <div class="ad-slot">Advertisement · <a href="https://adsense.google.com" target="_blank">Connect AdSense</a></div>
+
+  <div class="card">
+    <div style="display:grid;grid-template-columns:1fr 1fr 1fr;gap:10px;margin-bottom:16px">
+      <div class="field"><span class="label">Generate</span>
+        <div class="input-wrap"><input type="number" id="count" value="3" min="1" max="100" oninput="gen()"/></div>
+      </div>
+      <div class="field"><span class="label">Unit</span>
+        <div class="input-wrap"><select id="unit" onchange="gen()">
+          <option value="paras">Paragraphs</option>
+          <option value="sentences">Sentences</option>
+          <option value="words">Words</option>
+          <option value="chars">Characters</option>
+        </select></div>
+      </div>
+      <div class="field"><span class="label">Type</span>
+        <div class="input-wrap"><select id="type" onchange="gen()">
+          <option value="lorem">Classic Lorem Ipsum</option>
+          <option value="cicero">Cicero Original</option>
+          <option value="tech">Tech / Developer</option>
+          <option value="names">Indian Names (test data)</option>
+          <option value="address">Indian Addresses</option>
+        </select></div>
+      </div>
+    </div>
+    <div style="display:flex;gap:10px;flex-wrap:wrap;margin-bottom:12px">
+      <label style="display:flex;align-items:center;gap:6px;font-size:13px;color:var(--muted);cursor:pointer"><input type="checkbox" id="startLorem" checked onchange="gen()"/> Start with "Lorem ipsum…"</label>
+      <label style="display:flex;align-items:center;gap:6px;font-size:13px;color:var(--muted);cursor:pointer"><input type="checkbox" id="htmlWrap" onchange="gen()"/> Wrap in &lt;p&gt; tags</label>
+    </div>
+    <button class="btn" onclick="gen()">🎲 Generate</button>
+  </div>
+
+  <div class="card" id="outputCard">
+    <div style="display:flex;justify-content:space-between;align-items:center;margin-bottom:10px">
+      <span class="label" style="margin:0" id="outputStats">0 words · 0 chars</span>
+      <div style="display:flex;gap:6px">
+        <button onclick="copyOutput()" class="copy-btn" id="copyBtn">Copy</button>
+        <button onclick="gen()" style="padding:5px 10px;background:var(--border);border:none;border-radius:5px;cursor:pointer;color:var(--muted);font-size:11px">Regenerate</button>
+      </div>
+    </div>
+    <div id="output" style="font-size:14px;line-height:1.8;color:var(--muted);white-space:pre-wrap;word-break:break-word"></div>
+  </div>
+  <div class="ad-slot">Advertisement</div>
+</div>
+<script>
+const LOREM_WORDS='lorem ipsum dolor sit amet consectetur adipiscing elit sed do eiusmod tempor incididunt ut labore et dolore magna aliqua ut enim ad minim veniam quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur excepteur sint occaecat cupidatat non proident sunt in culpa qui officia deserunt mollit anim id est laborum'.split(' ');
+const CICERO='Sed ut perspiciatis unde omnis iste natus error sit voluptatem accusantium doloremque laudantium totam rem aperiam eaque ipsa quae ab illo inventore veritatis et quasi architecto beatae vitae dicta sunt explicabo nemo enim ipsam voluptatem quia voluptas sit aspernatur aut odit aut fugit sed quia consequuntur magni dolores eos qui ratione voluptatem sequi nesciunt neque porro quisquam est qui dolorem ipsum quia dolor sit amet consectetur adipisci velit sed quia non numquam eius modi tempora incidunt ut labore et dolore magnam aliquam quaerat voluptatem'.split(' ');
+const TECH='application function component interface variable database server authentication middleware integration deployment pipeline framework architecture algorithm configuration environment parameter implementation optimization performance scalability infrastructure microservice repository continuous container virtual network protocol request response endpoint documentation testing validation refactoring abstraction encapsulation polymorphism asynchronous callback promise observable iterator generator'.split(' ');
+const NAMES=['Rajesh Kumar','Priya Sharma','Amit Patel','Sunita Gupta','Vijay Singh','Anita Reddy','Ravi Krishnan','Meera Nair','Suresh Iyer','Deepa Pillai','Arun Kumar','Kavitha Rao','Sanjay Mehta','Pooja Joshi','Kiran Verma','Neha Singh','Ramesh Babu','Lakshmi Devi','Arjun Nair','Smitha Menon','Ganesh Rao','Rekha Sharma','Mohan Das','Ananya Iyer','Prakash Reddy','Divya Patel','Sunil Kumar','Nandita Roy','Varun Malhotra','Pallavi Gupta'];
+const ADDRESSES=['12, MG Road, Bengaluru, Karnataka 560001','Flat 4B, Sunrise Apartments, Andheri West, Mumbai 400058','22, Rajpura Colony, Jaipur, Rajasthan 302001','A-14, Sector 62, Noida, Uttar Pradesh 201309','45, Anna Salai, Chennai, Tamil Nadu 600002','Plot 7, Jubilee Hills, Hyderabad, Telangana 500033','House No 3, Civil Lines, Nagpur, Maharashtra 440001','15/2, New Palasia, Indore, Madhya Pradesh 452001','Block C, Salt Lake, Kolkata, West Bengal 700091','Survey No 23, Koramangala, Bengaluru 560034'];
+
+function rnd(arr){return arr[Math.floor(Math.random()*arr.length)];}
+function rndInt(min,max){return Math.floor(Math.random()*(max-min+1))+min;}
+
+function makeSentence(words,len=null){
+  const n=len||rndInt(8,18);
+  let s=[];
+  for(let i=0;i<n;i++)s.push(rnd(words));
+  return s[0].charAt(0).toUpperCase()+s.slice(1).join(' ')+'.';
+}
+function makePara(words){
+  const n=rndInt(3,6);
+  return Array.from({length:n},()=>makeSentence(words)).join(' ');
+}
+
+function gen(){
+  const count=Math.min(parseInt(document.getElementById('count').value)||3,100);
+  const unit=document.getElementById('unit').value;
+  const type=document.getElementById('type').value;
+  const startLorem=document.getElementById('startLorem').checked;
+  const htmlWrap=document.getElementById('htmlWrap').checked;
+  const words=type==='lorem'||type==='cicero'?LOREM_WORDS:type==='tech'?TECH:null;
+  let result=[];
+
+  if(type==='names'){
+    result=Array.from({length:count},()=>rnd(NAMES));
+  } else if(type==='address'){
+    result=Array.from({length:count},()=>rnd(ADDRESSES));
+  } else if(unit==='paras'){
+    result=Array.from({length:count},()=>makePara(words));
+    if(startLorem&&result.length>0) result[0]='Lorem ipsum dolor sit amet, consectetur adipiscing elit. '+result[0];
+  } else if(unit==='sentences'){
+    result=Array.from({length:count},()=>makeSentence(words));
+    if(startLorem&&result.length>0) result[0]='Lorem ipsum dolor sit amet.';
+  } else if(unit==='words'){
+    const w=[];for(let i=0;i<count;i++)w.push(rnd(words));
+    result=[w.join(' ')];
+  } else if(unit==='chars'){
+    const allWords=makePara(words).repeat(10);
+    result=[allWords.slice(0,count)];
+  }
+
+  let text=result.join('\n\n');
+  if(htmlWrap&&unit==='paras') text=result.map(p=>`<p>${p}</p>`).join('\n');
+  else if(htmlWrap&&(type==='names'||type==='address')) text=result.map(r=>`<p>${r}</p>`).join('\n');
+
+  document.getElementById('output').textContent=text;
+  const wc=text.trim().split(/\s+/).filter(Boolean).length;
+  document.getElementById('outputStats').textContent=`${wc} words · ${text.length} chars`;
+}
+
+function copyOutput(){
+  navigator.clipboard.writeText(document.getElementById('output').textContent);
+  const btn=document.getElementById('copyBtn');btn.textContent='✓ Copied!';btn.classList.add('copied');
+  setTimeout(()=>{btn.textContent='Copy';btn.classList.remove('copied');},1500);
+}
+gen();
+</script>
+<script src="tool-common.js"></script>
+</body>
+</html>

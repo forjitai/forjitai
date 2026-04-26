@@ -1,0 +1,197 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="UTF-8"/><meta name="viewport" content="width=device-width,initial-scale=1.0"/>
+<title>Scientific Calculator — Forjit AI | Online Free Scientific Calc</title>
+<meta name="description" content="Free online scientific calculator. Supports trigonometry, logarithms, powers, factorials, constants. Calculation history. Works on mobile."/>
+<meta name="keywords" content="scientific calculator, online scientific calculator, sin cos tan calculator, logarithm calculator, free calculator online"/>
+<link rel="canonical" href="https://www.forjitai.in/tools/scientific-calculator.html"/>
+<link rel="stylesheet" href="tools.css"/>
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-DYR402JFVG"></script>
+<script>window.dataLayer=window.dataLayer||[];function gtag(){dataLayer.push(arguments);}gtag('js',new Date());gtag('config','G-DYR402JFVG');</script>
+<style>
+.calc{max-width:440px;margin:0 auto}
+.display{background:var(--bg);border:1px solid var(--border);border-radius:12px;padding:16px 20px;margin-bottom:12px}
+.display-expr{font-size:13px;color:var(--muted);min-height:20px;text-align:right;word-break:break-all}
+.display-val{font-size:36px;font-weight:600;text-align:right;color:var(--fg);word-break:break-all;min-height:44px;line-height:1.2}
+.display-mode{font-size:11px;color:var(--muted);text-align:left;margin-bottom:4px;font-family:monospace;text-transform:uppercase;letter-spacing:.05em}
+.btns{display:grid;grid-template-columns:repeat(5,1fr);gap:6px}
+.btn-calc{padding:14px 4px;background:var(--surface);border:1px solid var(--border);border-radius:8px;cursor:pointer;font-size:15px;color:var(--fg);font-family:inherit;transition:all .1s;font-weight:500}
+.btn-calc:hover{border-color:var(--accent);color:var(--accent)}
+.btn-calc:active{transform:scale(.95)}
+.btn-op{background:rgba(251,191,36,.1);border-color:rgba(251,191,36,.3);color:var(--accent)}
+.btn-fn{background:rgba(59,130,246,.08);border-color:rgba(59,130,246,.2);color:#60a5fa;font-size:13px}
+.btn-eq{background:var(--accent);color:var(--bg);font-weight:800;border-color:var(--accent)}
+.btn-eq:hover{background:var(--accent2);color:var(--bg)}
+.btn-clear{background:rgba(239,68,68,.1);border-color:rgba(239,68,68,.2);color:#f87171}
+.btn-span2{grid-column:span 2}
+.history{max-height:160px;overflow-y:auto;border-top:1px solid var(--border);padding-top:12px;margin-top:12px}
+.hist-item{display:flex;justify-content:space-between;font-size:13px;padding:4px 0;color:var(--muted);border-bottom:1px solid var(--border);cursor:pointer}
+.hist-item:hover{color:var(--accent)}
+.hist-result{color:var(--fg);font-weight:600}
+</style>
+  <meta name="robots" content="index,follow,max-snippet:-1,max-image-preview:large"/>
+  <meta property="og:type"         content="website"/>
+  <meta property="og:site_name"    content="Forjit AI"/>
+  <meta property="og:url"          content="https://www.forjitai.in/tools/scientific-calculator.html"/>
+  <meta property="og:title"        content="Scientific Calculator — Forjit AI | Online Free Scientific Calc"/>
+  <meta property="og:description"  content="Full scientific calculator with trig, log, history. Keyboard support."/>
+  <meta property="og:image"        content="https://www.forjitai.in/og-image.png"/>
+  <meta property="og:image:width"  content="1200"/>
+  <meta property="og:image:height" content="630"/>
+  <meta property="og:locale"       content="en_IN"/>
+  <meta name="twitter:card"        content="summary_large_image"/>
+  <meta name="twitter:site"        content="@forjitai"/>
+  <meta name="twitter:title"       content="Scientific Calculator — Forjit AI | Online Free Scientific Calc"/>
+  <meta name="twitter:description" content="Full scientific calculator with trig, log, history. Keyboard support."/>
+  <meta name="twitter:image"       content="https://www.forjitai.in/og-image.png"/>
+  <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-5102938260449475" crossorigin="anonymous"></script>
+  <meta name="google-site-verification" content="u11mSk2rQwaphaXMCcUwJU-6dRhN_ndessqEMeZdubk" />
+</head>
+<body>
+<header>
+  <a class="logo" href="/"><div class="logo-mark">F</div><div><div class="logo-name">Forjit AI</div><div class="logo-sub">Tools</div></div></a>
+  <a class="back-link" href="/tools/">← All Tools</a>
+</header>
+<div class="container-sm">
+  <h1>Scientific Calculator</h1>
+  <p class="page-desc">Full scientific calculator with history, constants, and keyboard support.</p>
+  <div class="ad-slot">Advertisement · <a href="https://adsense.google.com" target="_blank">Connect AdSense</a></div>
+
+  <div class="calc">
+    <div class="display">
+      <div class="display-mode" id="modeDisp">DEG | Basic mode</div>
+      <div class="display-expr" id="expr"></div>
+      <div class="display-val" id="display">0</div>
+    </div>
+
+    <div class="btns">
+      <!-- Row 1: mode + clear -->
+      <button class="btn-calc btn-fn" onclick="toggleMode()">DEG/RAD</button>
+      <button class="btn-calc btn-fn" onclick="inp('Math.PI')">π</button>
+      <button class="btn-calc btn-fn" onclick="inp('Math.E')">e</button>
+      <button class="btn-calc btn-clear" onclick="delLast()">⌫</button>
+      <button class="btn-calc btn-clear" onclick="clear_all()">AC</button>
+      <!-- Row 2: trig -->
+      <button class="btn-calc btn-fn" onclick="fn('sin')">sin</button>
+      <button class="btn-calc btn-fn" onclick="fn('cos')">cos</button>
+      <button class="btn-calc btn-fn" onclick="fn('tan')">tan</button>
+      <button class="btn-calc btn-fn" onclick="fn('log10')">log</button>
+      <button class="btn-calc btn-fn" onclick="fn('ln')">ln</button>
+      <!-- Row 3: powers -->
+      <button class="btn-calc btn-fn" onclick="inp('^2')">x²</button>
+      <button class="btn-calc btn-fn" onclick="inp('^')">xⁿ</button>
+      <button class="btn-calc btn-fn" onclick="fn('sqrt')">√</button>
+      <button class="btn-calc btn-fn" onclick="fn('fact')">n!</button>
+      <button class="btn-calc btn-fn" onclick="inp('1/')">1/x</button>
+      <!-- Row 4: nums -->
+      <button class="btn-calc" onclick="inp('7')">7</button>
+      <button class="btn-calc" onclick="inp('8')">8</button>
+      <button class="btn-calc" onclick="inp('9')">9</button>
+      <button class="btn-calc btn-op" onclick="inp('/')">÷</button>
+      <button class="btn-calc btn-fn" onclick="inp('%')">%</button>
+      <!-- Row 5 -->
+      <button class="btn-calc" onclick="inp('4')">4</button>
+      <button class="btn-calc" onclick="inp('5')">5</button>
+      <button class="btn-calc" onclick="inp('6')">6</button>
+      <button class="btn-calc btn-op" onclick="inp('*')">×</button>
+      <button class="btn-calc btn-fn" onclick="inp('(')">(</button>
+      <!-- Row 6 -->
+      <button class="btn-calc" onclick="inp('1')">1</button>
+      <button class="btn-calc" onclick="inp('2')">2</button>
+      <button class="btn-calc" onclick="inp('3')">3</button>
+      <button class="btn-calc btn-op" onclick="inp('-')">−</button>
+      <button class="btn-calc btn-fn" onclick="inp(')')">)</button>
+      <!-- Row 7 -->
+      <button class="btn-calc" onclick="inp('0')">0</button>
+      <button class="btn-calc" onclick="inp('.')">.</button>
+      <button class="btn-calc btn-fn" onclick="inp('(-')">±</button>
+      <button class="btn-calc btn-op" onclick="inp('+')">+</button>
+      <button class="btn-calc btn-eq" onclick="evaluate()">=</button>
+    </div>
+
+    <!-- History -->
+    <div class="history" id="histWrap" style="display:none">
+      <div style="display:flex;justify-content:space-between;margin-bottom:8px">
+        <span style="font-size:11px;font-weight:700;color:var(--muted);text-transform:uppercase;letter-spacing:.06em">History</span>
+        <button onclick="clearHist()" style="font-size:11px;background:none;border:none;color:var(--muted);cursor:pointer">Clear</button>
+      </div>
+      <div id="histItems"></div>
+    </div>
+  </div>
+  <div class="ad-slot">Advertisement</div>
+</div>
+<script>
+let expr='',display='0',isRad=false,history=[];
+
+function update(){
+  document.getElementById('display').textContent=display||'0';
+  document.getElementById('expr').textContent=expr;
+  document.getElementById('modeDisp').textContent=(isRad?'RAD':'DEG')+' | Use keyboard too';
+}
+
+function inp(v){if(display==='Error')clear_all();if(display==='0'&&/^\d$/.test(v))display=v;else display+=v;update();}
+function fn(f){if(display==='Error')clear_all();display=f+'('+display;update();}
+function toggleMode(){isRad=!isRad;update();}
+function clear_all(){display='0';expr='';update();}
+function delLast(){if(display.length>1)display=display.slice(0,-1);else display='0';update();}
+
+function evaluate(){
+  try{
+    let exp=display;
+    // Handle ^ (power)
+    exp=exp.replace(/\^/g,'**');
+    // Handle implicit multiplication (2π etc)
+    exp=exp.replace(/(\d)(Math\.)/g,'$1*$2');
+    // Trig: wrap in deg conversion if DEG mode
+    if(!isRad){
+      exp=exp.replace(/sin\(/g,'Math.sin(Math.PI/180*');
+      exp=exp.replace(/cos\(/g,'Math.cos(Math.PI/180*');
+      exp=exp.replace(/tan\(/g,'Math.tan(Math.PI/180*');
+      exp=exp.replace(/asin\(/g,'(180/Math.PI*Math.asin(');
+      exp=exp.replace(/acos\(/g,'(180/Math.PI*Math.acos(');
+      exp=exp.replace(/atan\(/g,'(180/Math.PI*Math.atan(');
+    } else {
+      exp=exp.replace(/sin\(/g,'Math.sin(');
+      exp=exp.replace(/cos\(/g,'Math.cos(');
+      exp=exp.replace(/tan\(/g,'Math.tan(');
+    }
+    exp=exp.replace(/sqrt\(/g,'Math.sqrt(');
+    exp=exp.replace(/log10\(/g,'Math.log10(');
+    exp=exp.replace(/ln\(/g,'Math.log(');
+    exp=exp.replace(/abs\(/g,'Math.abs(');
+    exp=exp.replace(/fact\((\d+)\)/g,(m,n)=>{let f=1;for(let i=2;i<=n;i++)f*=i;return f;});
+    const result=Function('"use strict";return ('+exp+')')();
+    expr=display+'=';
+    const r=+parseFloat(result.toFixed(10));
+    history.unshift({expr:display,result:r});
+    if(history.length>20)history.pop();
+    display=String(r);
+    update();
+    renderHist();
+  } catch(e){display='Error';update();}
+}
+
+function renderHist(){
+  const items=document.getElementById('histItems');
+  if(history.length>0){
+    document.getElementById('histWrap').style.display='block';
+    items.innerHTML=history.map((h,i)=>`<div class="hist-item" onclick="useHist(${i})"><span>${h.expr}</span><span class="hist-result">= ${h.result}</span></div>`).join('');
+  }
+}
+function useHist(i){display=String(history[i].result);expr='';update();}
+function clearHist(){history=[];document.getElementById('histWrap').style.display='none';}
+
+// Keyboard support
+document.addEventListener('keydown',e=>{
+  if(e.key>='0'&&e.key<='9') inp(e.key);
+  else if(['+','-','*','/','.','^','(',')','.'].includes(e.key)) inp(e.key);
+  else if(e.key==='Enter') evaluate();
+  else if(e.key==='Backspace') delLast();
+  else if(e.key==='Escape') clear_all();
+});
+update();
+</script>
+<script src="tool-common.js"></script>
+</body>
+</html>

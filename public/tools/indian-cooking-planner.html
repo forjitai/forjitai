@@ -1,0 +1,2662 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="UTF-8"/>
+<meta name="viewport" content="width=device-width,initial-scale=1.0,user-scalable=no"/>
+<title>Indian Cooking Planner — 72 Recipes, Weekly Meal Plan & Shopping List | Forjit AI</title>
+<meta name="description" content="Free Indian cooking planner with 72 authentic recipes — North, South, East, West India. Adjust servings, rate recipes, track what you have. Weekly planner and shopping list coming soon."/>
+<meta name="keywords" content="Indian cooking planner, Indian recipes, weekly meal plan India, Indian recipe book, North Indian recipes, South Indian recipes, dal makhani recipe, biryani recipe, cooking planner app India, free recipe app"/>
+<link rel="canonical" href="https://www.forjitai.in/tools/indian-cooking-planner.html"/>
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "WebApplication",
+  "name": "Indian Cooking Planner",
+  "description": "Free Indian cooking planner with 72 authentic recipes covering North, South, East and West Indian cuisine. Features servings adjuster, recipe ratings, weekly meal planner and shopping list.",
+  "url": "https://www.forjitai.in/tools/indian-cooking-planner.html",
+  "applicationCategory": "LifestyleApplication",
+  "operatingSystem": "Any",
+  "offers": { "@type": "Offer", "price": "0", "priceCurrency": "INR" },
+  "publisher": {
+    "@type": "Organization",
+    "name": "Forjit AI",
+    "url": "https://www.forjitai.in"
+  },
+  "breadcrumb": {
+    "@type": "BreadcrumbList",
+    "itemListElement": [
+      { "@type": "ListItem", "position": 1, "name": "Forjit AI", "item": "https://www.forjitai.in/" },
+      { "@type": "ListItem", "position": 2, "name": "Free Tools", "item": "https://www.forjitai.in/tools/" },
+      { "@type": "ListItem", "position": 3, "name": "Indian Cooking Planner", "item": "https://www.forjitai.in/tools/indian-cooking-planner.html" }
+    ]
+  }
+}
+</script>
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "FAQPage",
+  "mainEntity": [
+    {
+      "@type": "Question",
+      "name": "How many Indian recipes are in this planner?",
+      "acceptedAnswer": { "@type": "Answer", "text": "The Forjit AI Indian Cooking Planner has 72 authentic Indian recipes covering breakfast, lunch, dinner, snacks and desserts from North, South, East and West India." }
+    },
+    {
+      "@type": "Question",
+      "name": "Can I adjust recipe servings?",
+      "acceptedAnswer": { "@type": "Answer", "text": "Yes. Each recipe has a servings slider from 1 to 10 persons. All ingredient quantities scale automatically in both weight (grams/ml) and count (pieces)." }
+    },
+    {
+      "@type": "Question",
+      "name": "Is this cooking planner free?",
+      "acceptedAnswer": { "@type": "Answer", "text": "Yes, completely free. No signup, no download, no ads. Works in your browser and saves your ratings and favourites locally." }
+    },
+    {
+      "@type": "Question",
+      "name": "Does it work offline?",
+      "acceptedAnswer": { "@type": "Answer", "text": "Phase 4 will add full offline support. Currently the recipes are embedded in the page and load without internet once cached." }
+    }
+  ]
+}
+</script>
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-DYR402JFVG"></script>
+<script>window.dataLayer=window.dataLayer||[];function gtag(){dataLayer.push(arguments);}gtag('js',new Date());gtag('config','G-DYR402JFVG');</script>
+<style>
+/* ─── Base ─────────────────────────────────────────────── */
+*{box-sizing:border-box;margin:0;padding:0;-webkit-tap-highlight-color:transparent}
+:root{
+  --bg:#0c0a09;--sur:#1c1917;--sur2:#242120;--bor:#292524;--bor2:#3c3836;
+  --fg:#e7e5e4;--mu:#a8a29e;--su:#78716c;
+  --ac:#f59e0b;--ac2:#d97706;--gr:#22c55e;--re:#ef4444;--bl:#3b82f6;
+  --veg:#16a34a;--egg:#ca8a04;--nv:#dc2626;
+}
+html,body{min-height:100%;background:var(--bg);color:var(--fg)}
+body{font-family:'Segoe UI',system-ui,sans-serif;font-size:14px;line-height:1.5}
+
+/* ─── Header ──────────────────────────────────────────── */
+.hdr{background:var(--sur);border-bottom:1px solid var(--bor);
+  padding:10px 16px;display:flex;align-items:center;gap:10px;
+  position:sticky;top:0;z-index:100}
+.logo{display:flex;align-items:center;gap:8px;text-decoration:none;color:var(--fg)}
+.logo-m{width:30px;height:30px;background:var(--ac);border-radius:6px;
+  display:flex;align-items:center;justify-content:center;font-weight:900;font-size:16px;color:#000}
+.hdr-title{flex:1;text-align:center;font-size:13px;font-weight:600;color:var(--mu)}
+.hdr a.back{font-size:12px;color:var(--mu);text-decoration:none}
+.hdr a.back:hover{color:var(--ac)}
+
+/* ─── Phase tabs ──────────────────────────────────────── */
+.phase-bar{display:flex;background:var(--sur);border-bottom:1px solid var(--bor);
+  overflow-x:auto;scrollbar-width:none;position:sticky;top:51px;z-index:99}
+.phase-bar::-webkit-scrollbar{display:none}
+.ptab{flex:1;min-width:90px;padding:10px 6px;border:none;background:transparent;
+  color:var(--mu);font-size:12px;font-weight:600;cursor:pointer;font-family:inherit;
+  border-bottom:2px solid transparent;white-space:nowrap;transition:all .15s}
+.ptab.on{color:var(--ac);border-bottom-color:var(--ac)}
+.ptab.soon{opacity:.45;cursor:default}
+
+/* ─── Page container ──────────────────────────────────── */
+.page{display:none}
+.page.on{display:block}
+.wrap{max-width:980px;margin:0 auto;padding:16px}
+
+/* ─── Filters ─────────────────────────────────────────── */
+.search-row{display:flex;gap:8px;margin-bottom:10px}
+.search-inp{flex:1;background:var(--sur);border:1px solid var(--bor);
+  border-radius:8px;padding:9px 12px;color:var(--fg);font-size:14px;
+  outline:none;font-family:inherit}
+.search-inp:focus{border-color:var(--ac)}
+.filter-row{display:flex;gap:6px;flex-wrap:wrap;margin-bottom:8px}
+.chip{padding:5px 12px;background:var(--sur);border:1px solid var(--bor);
+  border-radius:999px;font-size:12px;color:var(--mu);cursor:pointer;
+  font-family:inherit;white-space:nowrap;transition:all .15s;line-height:1.4}
+.chip.on{background:var(--ac);color:#000;border-color:var(--ac);font-weight:700}
+.chip:hover:not(.on){border-color:var(--bor2);color:var(--fg)}
+.chip.veg.on{background:var(--veg);border-color:var(--veg)}
+.chip.egg.on{background:#ca8a04;border-color:#ca8a04}
+.chip.nv.on{background:var(--nv);border-color:var(--nv)}
+
+/* ─── Stats bar ───────────────────────────────────────── */
+.stats-bar{font-size:12px;color:var(--su);margin-bottom:12px}
+.stats-bar span{color:var(--ac);font-weight:600}
+
+/* ─── Recipe grid ─────────────────────────────────────── */
+.rgrid{display:grid;grid-template-columns:repeat(auto-fill,minmax(240px,1fr));gap:12px}
+.rcard{background:var(--sur);border:1px solid var(--bor);border-radius:12px;
+  padding:14px;cursor:pointer;transition:all .15s;position:relative;
+  display:flex;flex-direction:column;gap:6px}
+.rcard:hover{border-color:var(--ac);transform:translateY(-2px);
+  box-shadow:0 6px 20px rgba(0,0,0,.3)}
+.rcard:active{transform:scale(.98)}
+.rc-top{display:flex;align-items:flex-start;gap:10px}
+.rc-emoji{font-size:32px;line-height:1;flex-shrink:0}
+.rc-info{flex:1;min-width:0}
+.rc-name{font-size:15px;font-weight:700;line-height:1.3}
+.rc-region{font-size:10px;color:var(--su);text-transform:uppercase;
+  letter-spacing:.05em;margin-top:2px}
+.rc-meta{display:flex;gap:6px;align-items:center;flex-wrap:wrap}
+.rc-pill{font-size:10px;padding:2px 7px;border-radius:999px;
+  background:var(--bg);border:1px solid var(--bor);color:var(--su)}
+.type-dot{width:9px;height:9px;border-radius:50%;flex-shrink:0;margin-top:5px}
+.type-dot.veg{background:var(--veg)}
+.type-dot.egg{background:#ca8a04}
+.type-dot.nonveg{background:var(--nv)}
+.rc-desc{font-size:12px;color:var(--mu);line-height:1.4}
+.rc-bottom{display:flex;align-items:center;justify-content:space-between}
+.rc-stars{color:var(--ac);font-size:12px}
+.rc-fav{position:absolute;top:10px;right:10px;background:none;border:none;
+  font-size:18px;cursor:pointer;opacity:.5;transition:all .15s}
+.rc-fav:hover,.rc-fav.on{opacity:1}
+.type-badge{position:absolute;bottom:10px;right:10px;font-size:9px;font-weight:700;
+  padding:2px 6px;border-radius:999px;text-transform:uppercase;letter-spacing:.04em}
+.badge-veg{background:rgba(22,163,74,.15);color:#4ade80;border:1px solid rgba(22,163,74,.25)}
+.badge-egg{background:rgba(202,138,4,.15);color:#fbbf24;border:1px solid rgba(202,138,4,.25)}
+.badge-nv{background:rgba(220,38,38,.15);color:#f87171;border:1px solid rgba(220,38,38,.25)}
+.empty-state{text-align:center;padding:60px 20px;color:var(--mu)}
+.empty-state .es-icon{font-size:48px;margin-bottom:12px}
+
+/* ─── Modal overlay ───────────────────────────────────── */
+.overlay{position:fixed;inset:0;background:rgba(0,0,0,.75);z-index:200;
+  display:flex;align-items:flex-end;justify-content:center;
+  backdrop-filter:blur(3px);animation:fadeIn .2s ease}
+@keyframes fadeIn{from{opacity:0}to{opacity:1}}
+.modal{background:var(--sur);border-radius:20px 20px 0 0;
+  width:100%;max-width:700px;max-height:94vh;overflow-y:auto;
+  -webkit-overflow-scrolling:touch;animation:slideUp .25s ease}
+@keyframes slideUp{from{transform:translateY(40px);opacity:.5}to{transform:none;opacity:1}}
+.mhdr{padding:16px;display:flex;align-items:center;justify-content:space-between;
+  position:sticky;top:0;background:var(--sur);z-index:10;
+  border-bottom:1px solid var(--bor)}
+.mhdr-title{font-size:17px;font-weight:700}
+.close-btn{width:32px;height:32px;background:var(--bor2);border:none;
+  border-radius:50%;cursor:pointer;color:var(--fg);font-size:18px;
+  display:flex;align-items:center;justify-content:center;line-height:1}
+.mbody{padding:16px}
+
+/* ─── Recipe detail ───────────────────────────────────── */
+.r-hero{display:flex;align-items:center;gap:16px;margin-bottom:16px;flex-wrap:wrap}
+.r-hero-emoji{font-size:72px;line-height:1}
+.r-hero-info h2{font-size:22px;font-weight:700;margin-bottom:4px}
+.r-hero-info .r-region{font-size:12px;color:var(--mu);text-transform:uppercase;
+  letter-spacing:.06em;margin-bottom:8px}
+.meta-row{display:flex;gap:6px;flex-wrap:wrap}
+.mpill{padding:4px 10px;border-radius:999px;font-size:11px;font-weight:600;
+  background:var(--bg);border:1px solid var(--bor);color:var(--mu)}
+.mpill.time{border-color:rgba(59,130,246,.35);color:#60a5fa}
+.mpill.cal{border-color:rgba(245,158,11,.35);color:var(--ac)}
+.mpill.diff{border-color:rgba(168,85,247,.35);color:#c084fc}
+.mpill.type-veg{border-color:rgba(22,163,74,.35);color:#4ade80}
+.mpill.type-egg{border-color:rgba(202,138,4,.35);color:#fbbf24}
+.mpill.type-nv{border-color:rgba(220,38,38,.35);color:#f87171}
+
+/* Servings control */
+.serv-ctrl{display:flex;align-items:center;gap:14px;background:var(--bg);
+  border:1px solid var(--bor);border-radius:10px;padding:12px 16px;
+  margin:14px 0}
+.serv-lbl{flex:1;font-size:13px;color:var(--mu)}
+.serv-lbl strong{color:var(--fg);font-size:15px}
+.serv-val{font-size:22px;font-weight:800;min-width:28px;text-align:center}
+.serv-btn{width:36px;height:36px;border:1px solid var(--bor);border-radius:9px;
+  background:var(--sur2);color:var(--fg);cursor:pointer;font-size:20px;
+  display:flex;align-items:center;justify-content:center;transition:all .15s}
+.serv-btn:hover{background:var(--ac);color:#000;border-color:var(--ac)}
+
+/* Section label */
+.sec-lbl{font-size:11px;font-weight:700;color:var(--mu);text-transform:uppercase;
+  letter-spacing:.07em;margin:16px 0 8px;display:flex;align-items:center;gap:8px}
+.sec-lbl::after{content:'';flex:1;height:1px;background:var(--bor)}
+
+/* Ingredients */
+.ing-row{display:flex;align-items:center;gap:8px;padding:9px 0;
+  border-bottom:1px solid rgba(41,37,36,.7)}
+.ing-row:last-child{border:none}
+.ing-chk{width:18px;height:18px;accent-color:var(--gr);cursor:pointer;flex-shrink:0}
+.ing-name{flex:1;font-size:14px;color:var(--fg)}
+.ing-name.checked{text-decoration:line-through;color:var(--su)}
+.ing-right{text-align:right;flex-shrink:0}
+.ing-qty{font-size:13px;font-weight:700;color:var(--ac)}
+.ing-desc{font-size:11px;color:var(--su);margin-top:1px}
+.ing-cat-badge{font-size:9px;padding:1px 6px;border-radius:999px;
+  background:var(--bg);border:1px solid var(--bor);color:var(--su);
+  margin-left:6px;vertical-align:middle}
+
+/* Steps */
+.step-row{display:flex;gap:12px;padding:10px 0;
+  border-bottom:1px solid rgba(41,37,36,.5)}
+.step-row:last-child{border:none}
+.step-n{width:28px;height:28px;border-radius:50%;background:var(--ac);
+  color:#000;font-weight:800;font-size:12px;
+  display:flex;align-items:center;justify-content:center;flex-shrink:0;margin-top:1px}
+.step-body{flex:1}
+.step-txt{font-size:14px;color:var(--mu);line-height:1.6}
+.step-time{font-size:11px;color:var(--bl);margin-top:3px;display:flex;
+  align-items:center;gap:4px}
+
+/* Tips & tags */
+.tips-box{background:rgba(245,158,11,.06);border:1px solid rgba(245,158,11,.2);
+  border-radius:10px;padding:12px 14px;font-size:13px;color:var(--mu);
+  line-height:1.6;margin-top:4px}
+.tips-box strong{color:var(--ac)}
+.tags-row{display:flex;gap:6px;flex-wrap:wrap;margin-top:8px}
+.tag{padding:3px 9px;background:var(--bg);border:1px solid var(--bor);
+  border-radius:999px;font-size:10px;color:var(--su)}
+
+/* Action buttons in modal */
+.modal-actions{display:grid;grid-template-columns:1fr 1fr;gap:8px;
+  margin-top:16px;padding-top:14px;border-top:1px solid var(--bor)}
+.mact-btn{padding:11px;border-radius:9px;border:1px solid var(--bor);
+  background:var(--bg);color:var(--mu);font-size:13px;font-weight:600;
+  cursor:pointer;font-family:inherit;transition:all .15s;text-align:center}
+.mact-btn:hover{border-color:var(--ac);color:var(--ac)}
+.mact-btn.primary{background:var(--ac);color:#000;border-color:var(--ac)}
+.mact-btn.primary:hover{background:var(--ac2)}
+.mact-btn.fav-btn.on{background:rgba(239,68,68,.1);
+  border-color:rgba(239,68,68,.4);color:#f87171}
+
+/* Disclaimer */
+.disc{background:rgba(245,158,11,.05);border:1px solid rgba(245,158,11,.15);
+  border-radius:8px;padding:10px 14px;font-size:11px;color:var(--su);
+  margin-bottom:12px;line-height:1.5}
+
+/* Responsive */
+@media(max-width:480px){
+  .rgrid{grid-template-columns:1fr 1fr}
+  .r-hero{flex-direction:column;align-items:flex-start}
+  .modal-actions{grid-template-columns:1fr}
+}
+@media(max-width:340px){.rgrid{grid-template-columns:1fr}}
+</style>
+  <meta name="robots" content="index,follow,max-snippet:-1,max-image-preview:large"/>
+  <meta property="og:type"         content="website"/>
+  <meta property="og:site_name"    content="Forjit AI"/>
+  <meta property="og:url"          content="https://www.forjitai.in/tools/indian-cooking-planner.html"/>
+  <meta property="og:title"        content="Indian Cooking Planner — 72 Recipes | Forjit AI"/>
+  <meta property="og:description"  content="72 authentic Indian recipes with weekly meal planner, servings adjuster, ratings and shopping list."/>
+  <meta property="og:image"        content="https://www.forjitai.in/og-image.png"/>
+  <meta property="og:image:width"  content="1200"/>
+  <meta property="og:image:height" content="630"/>
+  <meta property="og:locale"       content="en_IN"/>
+  <meta name="twitter:card"        content="summary_large_image"/>
+  <meta name="twitter:site"        content="@forjitai"/>
+  <meta name="twitter:title"       content="Indian Cooking Planner — 72 Recipes | Forjit AI"/>
+  <meta name="twitter:description" content="72 authentic Indian recipes with weekly meal planner, servings adjuster, ratings and shopping list."/>
+  <meta name="twitter:image"       content="https://www.forjitai.in/og-image.png"/>
+  <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-5102938260449475" crossorigin="anonymous"></script>
+  <meta name="google-site-verification" content="u11mSk2rQwaphaXMCcUwJU-6dRhN_ndessqEMeZdubk" />
+</head>
+<body>
+
+<!-- SEO H1 — visually hidden but crawled by Google -->
+<h1 style="position:absolute;width:1px;height:1px;overflow:hidden;clip:rect(0,0,0,0);white-space:nowrap">
+  Indian Cooking Planner — 72 Authentic Indian Recipes with Weekly Meal Planner and Shopping List
+</h1>
+
+<!-- Header -->
+<header class="hdr">
+  <a class="logo" href="/"><div class="logo-m">F</div></a>
+  <div class="hdr-title">🍛 Indian Cooking Planner</div>
+  <a class="back" href="/tools/">← Tools</a>
+</header>
+
+<!-- Phase tabs -->
+<nav class="phase-bar">
+  <button class="ptab on" onclick="showPage('recipes',this)">🍽️ Recipes</button>
+  <button class="ptab soon" title="Coming in Phase 2">📅 Planner</button>
+  <button class="ptab soon" title="Coming in Phase 3">🏠 Pantry</button>
+  <button class="ptab soon" title="Coming in Phase 3">🛒 Shopping</button>
+</nav>
+
+<!-- ── RECIPES PAGE ───────────────────────────────────── -->
+<div class="page on" id="page-recipes">
+<div class="wrap">
+
+  <div class="disc">
+    🌿 All recipes serve <strong>2 persons</strong> by default. Use the servings adjuster inside each recipe to scale ingredients automatically. Calorie values are approximate estimates.
+  </div>
+
+  <!-- Search -->
+  <div class="search-row">
+    <input class="search-inp" type="text" id="searchInp"
+      placeholder="🔍 Search by recipe name or ingredient…"
+      oninput="applyFilters()"/>
+  </div>
+
+  <!-- Category filter -->
+  <div class="filter-row">
+    <button class="chip on" data-filter="cat" data-val="all" onclick="setChip(this)">All (72)</button>
+    <button class="chip" data-filter="cat" data-val="breakfast" onclick="setChip(this)">☀️ Breakfast (20)</button>
+    <button class="chip" data-filter="cat" data-val="lunch" onclick="setChip(this)">🌤️ Lunch (22)</button>
+    <button class="chip" data-filter="cat" data-val="dinner" onclick="setChip(this)">🌙 Dinner (15)</button>
+    <button class="chip" data-filter="cat" data-val="snack" onclick="setChip(this)">🍵 Snack (10)</button>
+    <button class="chip" data-filter="cat" data-val="dessert" onclick="setChip(this)">🍮 Dessert (5)</button>
+  </div>
+
+  <!-- Type filter -->
+  <div class="filter-row">
+    <button class="chip on" data-filter="type" data-val="all" onclick="setChip(this)">All Types</button>
+    <button class="chip veg" data-filter="type" data-val="veg" onclick="setChip(this)">🌿 Veg (52)</button>
+    <button class="chip egg" data-filter="type" data-val="egg" onclick="setChip(this)">🥚 Egg (8)</button>
+    <button class="chip nv" data-filter="type" data-val="nonveg" onclick="setChip(this)">🍗 Non-veg (12)</button>
+  </div>
+
+  <!-- Region filter -->
+  <div class="filter-row">
+    <button class="chip on" data-filter="region" data-val="all" onclick="setChip(this)">All Regions</button>
+    <button class="chip" data-filter="region" data-val="north" onclick="setChip(this)">🏔️ North</button>
+    <button class="chip" data-filter="region" data-val="south" onclick="setChip(this)">🌴 South</button>
+    <button class="chip" data-filter="region" data-val="east" onclick="setChip(this)">🌊 East</button>
+    <button class="chip" data-filter="region" data-val="west" onclick="setChip(this)">🏜️ West</button>
+    <button class="chip" data-filter="region" data-val="national" onclick="setChip(this)">🇮🇳 National</button>
+  </div>
+
+  <!-- Time + Difficulty filter -->
+  <div class="filter-row">
+    <button class="chip on" data-filter="time" data-val="all" onclick="setChip(this)">Any Time</button>
+    <button class="chip" data-filter="time" data-val="15" onclick="setChip(this)">⚡ Under 15 min</button>
+    <button class="chip" data-filter="time" data-val="30" onclick="setChip(this)">🕐 Under 30 min</button>
+    <button class="chip" data-filter="time" data-val="60" onclick="setChip(this)">⏱ Under 60 min</button>
+  </div>
+  <div class="filter-row">
+    <button class="chip on" data-filter="diff" data-val="all" onclick="setChip(this)">Any Difficulty</button>
+    <button class="chip" data-filter="diff" data-val="easy" onclick="setChip(this)">😊 Easy</button>
+    <button class="chip" data-filter="diff" data-val="medium" onclick="setChip(this)">🙂 Medium</button>
+    <button class="chip" data-filter="diff" data-val="hard" onclick="setChip(this)">😤 Hard</button>
+    <button class="chip" data-filter="diff" data-val="fav" onclick="setChip(this)">❤️ My Favourites</button>
+  </div>
+
+  <div class="stats-bar" id="statsBar">Showing <span id="statsCount">72</span> recipes</div>
+  <div class="rgrid" id="recipeGrid"></div>
+</div>
+</div>
+
+<!-- ── RECIPE DETAIL MODAL ────────────────────────────── -->
+<div class="overlay" id="recipeModal" style="display:none" onclick="closeModalCheck(event)">
+  <div class="modal" id="modalInner" onclick="event.stopPropagation()">
+    <div class="mhdr">
+      <div class="mhdr-title" id="mTitle">Recipe</div>
+      <button class="close-btn" onclick="closeModal()">×</button>
+    </div>
+    <div class="mbody" id="mBody"></div>
+  </div>
+</div>
+
+<script>
+/* ══════════════════════════════════════════════════════════
+   STATE
+══════════════════════════════════════════════════════════ */
+const F = { cat:'all', type:'all', region:'all', time:'all', diff:'all' };
+let FAVS   = new Set(JSON.parse(localStorage.getItem('icp_favs')  ||'[]'));
+let RATINGS= JSON.parse(localStorage.getItem('icp_ratings')||'{}');
+let MADE   = JSON.parse(localStorage.getItem('icp_made')   ||'{}');
+let currentServings = 2;
+let currentRecipeId = null;
+let checkedIngs = new Set();
+
+/* ══════════════════════════════════════════════════════════
+   RECIPE DATABASE — 72 Authentic Indian Recipes
+   Ingredients: qty (per 2 servings), unit, desc, cat
+   Desc format: "2 medium onions (approx 200g)"
+══════════════════════════════════════════════════════════ */
+const RECIPES = [
+/* ─── BREAKFAST (20) ─────────────────────────────────── */
+{id:'b1',name:'Masala Dosa',emoji:'🫓',cat:'breakfast',type:'veg',region:'south',
+ prep:20,cook:15,diff:'medium',cal:250,sunday:false,
+ desc:'Crispy South Indian crepe with spiced potato filling. Served with sambar and chutneys.',
+ ing:[
+  {n:'Dosa batter',q:200,u:'g',d:'1 cup',c:'grocery'},
+  {n:'Potato (boiled)',q:300,u:'g',d:'2 large',c:'vegetable'},
+  {n:'Onion',q:80,u:'g',d:'1 small onion',c:'vegetable'},
+  {n:'Mustard seeds',q:5,u:'g',d:'1 tsp',c:'spice'},
+  {n:'Green chilli',q:10,u:'g',d:'2 nos',c:'vegetable'},
+  {n:'Curry leaves',q:5,u:'g',d:'10 leaves',c:'vegetable'},
+  {n:'Turmeric powder',q:2,u:'g',d:'¼ tsp',c:'spice'},
+  {n:'Oil',q:15,u:'ml',d:'1 tbsp',c:'grocery'},
+  {n:'Salt',q:3,u:'g',d:'to taste',c:'staple'},
+ ],
+ steps:[
+  {n:1,t:'Splutter mustard seeds in oil. Add curry leaves, green chilli, chopped onion. Sauté until soft.',tm:4},
+  {n:2,t:'Add mashed boiled potato, turmeric and salt. Mix well. Cook 2 min. Set aside as filling.',tm:3},
+  {n:3,t:'Heat tawa on medium. Grease lightly. Pour dosa batter and spread thin in circular motion.',tm:2},
+  {n:4,t:'Drizzle oil around edges. Cook until golden and crisp (2–3 min).',tm:3},
+  {n:5,t:'Place potato filling in centre. Fold dosa over filling. Serve hot with sambar and chutney.',tm:1},
+ ],
+ tips:'Use fermented batter for best results. Tawa must be hot before spreading. Spread batter quickly.',
+ tags:['South Indian','crispy','classic']},
+
+{id:'b2',name:'Idli Sambar',emoji:'🫔',cat:'breakfast',type:'veg',region:'south',
+ prep:10,cook:20,diff:'easy',cal:180,sunday:false,
+ desc:'Soft steamed rice cakes served with lentil sambar and coconut chutney.',
+ ing:[
+  {n:'Idli batter',q:300,u:'g',d:'6 idlis',c:'grocery'},
+  {n:'Toor dal',q:80,u:'g',d:'⅓ cup',c:'dal'},
+  {n:'Tomato',q:100,u:'g',d:'1 medium tomato',c:'vegetable'},
+  {n:'Onion',q:60,u:'g',d:'1 small onion',c:'vegetable'},
+  {n:'Tamarind',q:15,u:'g',d:'small lemon-sized ball',c:'grocery'},
+  {n:'Sambar powder',q:10,u:'g',d:'1 tbsp',c:'spice'},
+  {n:'Mustard seeds',q:3,u:'g',d:'½ tsp',c:'spice'},
+  {n:'Curry leaves',q:5,u:'g',d:'8 leaves',c:'vegetable'},
+  {n:'Oil',q:15,u:'ml',d:'1 tbsp',c:'grocery'},
+  {n:'Salt',q:3,u:'g',d:'to taste',c:'staple'},
+ ],
+ steps:[
+  {n:1,t:'Pressure cook toor dal until very soft (3 whistles). Mash well.',tm:15},
+  {n:2,t:'Extract 1 cup tamarind water. Add to dal with tomato, onion, sambar powder. Boil 10 min.',tm:10},
+  {n:3,t:'Temper: heat oil, add mustard seeds and curry leaves. Pour over sambar.',tm:2},
+  {n:4,t:'Pour idli batter into greased idli moulds. Steam 10–12 minutes.',tm:12},
+  {n:5,t:'Cool 2 min, remove. Serve hot with sambar and coconut chutney.',tm:2},
+ ],
+ tips:'Idlis are done when a toothpick comes out clean. Add a pinch of jaggery to sambar to balance sourness.',
+ tags:['South Indian','healthy','light']},
+
+{id:'b3',name:'Poha',emoji:'🍚',cat:'breakfast',type:'veg',region:'west',
+ prep:5,cook:10,diff:'easy',cal:220,sunday:false,
+ desc:'Flattened rice with peanuts, onion and spices. Light, quick and popular across India.',
+ ing:[
+  {n:'Poha (flattened rice)',q:150,u:'g',d:'1½ cups',c:'grocery'},
+  {n:'Onion',q:80,u:'g',d:'1 medium onion',c:'vegetable'},
+  {n:'Peanuts',q:30,u:'g',d:'2 tbsp',c:'grocery'},
+  {n:'Green chilli',q:8,u:'g',d:'1–2 nos',c:'vegetable'},
+  {n:'Mustard seeds',q:3,u:'g',d:'½ tsp',c:'spice'},
+  {n:'Curry leaves',q:5,u:'g',d:'8 leaves',c:'vegetable'},
+  {n:'Turmeric',q:2,u:'g',d:'¼ tsp',c:'spice'},
+  {n:'Lemon juice',q:10,u:'ml',d:'1 tbsp',c:'vegetable'},
+  {n:'Coriander leaves',q:10,u:'g',d:'small handful',c:'vegetable'},
+  {n:'Oil',q:15,u:'ml',d:'1 tbsp',c:'grocery'},
+  {n:'Sugar',q:5,u:'g',d:'1 tsp',c:'staple'},
+  {n:'Salt',q:3,u:'g',d:'to taste',c:'staple'},
+ ],
+ steps:[
+  {n:1,t:'Rinse poha 2–3 times until soft but not mushy. Drain and rest 5 min.',tm:5},
+  {n:2,t:'Heat oil. Fry peanuts golden. Add mustard seeds, curry leaves, green chilli, onion.',tm:4},
+  {n:3,t:'Sauté onion until soft. Add turmeric and salt.',tm:3},
+  {n:4,t:'Add soaked poha and sugar. Mix gently. Cook on low heat 2 min.',tm:2},
+  {n:5,t:'Add lemon juice and coriander. Serve hot.',tm:1},
+ ],
+ tips:'Don\'t over-soak poha — it should hold its shape. Add lemon juice after turning off heat for best flavour.',
+ tags:['quick','Maharashtra','light']},
+
+{id:'b4',name:'Upma',emoji:'🥣',cat:'breakfast',type:'veg',region:'south',
+ prep:5,cook:15,diff:'easy',cal:200,sunday:false,
+ desc:'Semolina cooked with vegetables and tempering. A South Indian breakfast staple.',
+ ing:[
+  {n:'Semolina (Rava)',q:150,u:'g',d:'1 cup',c:'grocery'},
+  {n:'Onion',q:80,u:'g',d:'1 medium onion',c:'vegetable'},
+  {n:'Green chilli',q:8,u:'g',d:'1–2 nos',c:'vegetable'},
+  {n:'Peanuts',q:20,u:'g',d:'1 tbsp',c:'grocery'},
+  {n:'Mustard seeds',q:3,u:'g',d:'½ tsp',c:'spice'},
+  {n:'Chana dal',q:10,u:'g',d:'1 tsp',c:'dal'},
+  {n:'Urad dal',q:10,u:'g',d:'1 tsp',c:'dal'},
+  {n:'Curry leaves',q:5,u:'g',d:'8 leaves',c:'vegetable'},
+  {n:'Ginger',q:8,u:'g',d:'½ inch piece',c:'vegetable'},
+  {n:'Water',q:350,u:'ml',d:'1½ cups',c:'staple'},
+  {n:'Oil',q:15,u:'ml',d:'1 tbsp',c:'grocery'},
+  {n:'Salt',q:3,u:'g',d:'to taste',c:'staple'},
+ ],
+ steps:[
+  {n:1,t:'Dry roast semolina on medium until lightly golden and fragrant (5 min). Set aside.',tm:5},
+  {n:2,t:'Heat oil. Add mustard seeds, chana dal, urad dal. Cook until dals turn golden.',tm:2},
+  {n:3,t:'Add peanuts, curry leaves, green chilli, ginger and onion. Sauté until soft.',tm:4},
+  {n:4,t:'Add 1½ cups water and salt. Bring to boil.',tm:3},
+  {n:5,t:'Slowly add roasted rava while stirring continuously to avoid lumps.',tm:2},
+  {n:6,t:'Cover and cook on low heat 3 min. Fluff with fork. Serve with coconut chutney.',tm:3},
+ ],
+ tips:'Always roast rava before cooking — it prevents lumps. Keep stirring when adding rava to hot water.',
+ tags:['South Indian','quick','healthy']},
+
+{id:'b5',name:'Aloo Paratha',emoji:'🫓',cat:'breakfast',type:'veg',region:'north',
+ prep:20,cook:20,diff:'medium',cal:310,sunday:false,
+ desc:'Whole wheat flatbread stuffed with spiced mashed potato. North Indian breakfast favourite.',
+ ing:[
+  {n:'Whole wheat flour',q:200,u:'g',d:'2 cups',c:'grocery'},
+  {n:'Potato (boiled)',q:300,u:'g',d:'2 large potatoes',c:'vegetable'},
+  {n:'Green chilli',q:8,u:'g',d:'1–2 nos',c:'vegetable'},
+  {n:'Coriander leaves',q:15,u:'g',d:'small handful',c:'vegetable'},
+  {n:'Ginger',q:10,u:'g',d:'1 tsp grated',c:'vegetable'},
+  {n:'Cumin seeds',q:3,u:'g',d:'½ tsp',c:'spice'},
+  {n:'Garam masala',q:3,u:'g',d:'½ tsp',c:'spice'},
+  {n:'Amchur powder',q:3,u:'g',d:'½ tsp',c:'spice'},
+  {n:'Ghee or Butter',q:20,u:'g',d:'1 tbsp per paratha',c:'dairy'},
+  {n:'Salt',q:3,u:'g',d:'to taste',c:'staple'},
+ ],
+ steps:[
+  {n:1,t:'Make soft dough with wheat flour, salt and water. Rest for 15 min.',tm:15},
+  {n:2,t:'Mash boiled potatoes. Mix in chilli, ginger, coriander, cumin, garam masala, amchur and salt.',tm:5},
+  {n:3,t:'Roll dough into small circle. Place filling in centre. Bring edges together, seal and flatten.',tm:4},
+  {n:4,t:'Gently roll stuffed ball into flat circle (about 15cm). Press lightly.',tm:3},
+  {n:5,t:'Cook on hot tawa 2 min per side. Apply generous ghee on each side until golden.',tm:8},
+  {n:6,t:'Serve hot with dahi (curd), butter and mango pickle.',tm:1},
+ ],
+ tips:'Don\'t overfill — filling:dough ratio should be 1:1. Press gently while rolling to prevent tearing.',
+ tags:['North Indian','filling','Punjabi']},
+
+{id:'b6',name:'Besan Chilla',emoji:'🥞',cat:'breakfast',type:'veg',region:'north',
+ prep:5,cook:10,diff:'easy',cal:175,sunday:false,
+ desc:'Gram flour pancakes with vegetables. High protein, quick and healthy breakfast.',
+ ing:[
+  {n:'Besan (gram flour)',q:150,u:'g',d:'1 cup',c:'dal'},
+  {n:'Onion',q:60,u:'g',d:'1 small onion',c:'vegetable'},
+  {n:'Tomato',q:60,u:'g',d:'1 small tomato',c:'vegetable'},
+  {n:'Green chilli',q:5,u:'g',d:'1 no',c:'vegetable'},
+  {n:'Coriander leaves',q:10,u:'g',d:'small handful',c:'vegetable'},
+  {n:'Cumin seeds',q:3,u:'g',d:'½ tsp',c:'spice'},
+  {n:'Turmeric',q:2,u:'g',d:'¼ tsp',c:'spice'},
+  {n:'Red chilli powder',q:2,u:'g',d:'¼ tsp',c:'spice'},
+  {n:'Oil',q:15,u:'ml',d:'1 tsp per chilla',c:'grocery'},
+  {n:'Salt',q:3,u:'g',d:'to taste',c:'staple'},
+  {n:'Water',q:200,u:'ml',d:'as needed for batter',c:'staple'},
+ ],
+ steps:[
+  {n:1,t:'Mix besan, turmeric, red chilli, cumin and salt with water to make smooth pourable batter.',tm:3},
+  {n:2,t:'Add finely chopped onion, tomato, chilli and coriander. Mix well.',tm:2},
+  {n:3,t:'Heat non-stick tawa on medium. Grease with oil. Pour ladle of batter.',tm:1},
+  {n:4,t:'Spread in circular motion to thin pancake. Drizzle oil around edges.',tm:1},
+  {n:5,t:'Cook until edges lift and underside is golden (2 min). Flip. Cook 1 min more.',tm:3},
+  {n:6,t:'Serve with green chutney or curd.',tm:0},
+ ],
+ tips:'Batter should be thin like dosa batter. Add a tsp of carom seeds (ajwain) for better digestion.',
+ tags:['high-protein','quick','healthy']},
+
+{id:'b7',name:'Gobi Paratha',emoji:'🫓',cat:'breakfast',type:'veg',region:'north',
+ prep:15,cook:20,diff:'medium',cal:290,sunday:false,
+ desc:'Whole wheat flatbread stuffed with spiced grated cauliflower. Punjabi classic.',
+ ing:[
+  {n:'Whole wheat flour',q:200,u:'g',d:'2 cups',c:'grocery'},
+  {n:'Cauliflower',q:250,u:'g',d:'½ small head',c:'vegetable'},
+  {n:'Green chilli',q:8,u:'g',d:'1–2 nos',c:'vegetable'},
+  {n:'Ginger',q:10,u:'g',d:'1 tsp grated',c:'vegetable'},
+  {n:'Coriander leaves',q:15,u:'g',d:'small handful',c:'vegetable'},
+  {n:'Garam masala',q:3,u:'g',d:'½ tsp',c:'spice'},
+  {n:'Cumin seeds',q:3,u:'g',d:'½ tsp',c:'spice'},
+  {n:'Ghee',q:20,u:'g',d:'1 tbsp per paratha',c:'dairy'},
+  {n:'Salt',q:3,u:'g',d:'to taste',c:'staple'},
+ ],
+ steps:[
+  {n:1,t:'Grate cauliflower finely. Squeeze out ALL moisture using a kitchen towel.',tm:5},
+  {n:2,t:'Mix with chilli, ginger, coriander, garam masala, cumin and salt.',tm:2},
+  {n:3,t:'Make soft dough with wheat flour and water. Rest 15 min.',tm:15},
+  {n:4,t:'Roll dough into circle. Place filling in centre. Seal edges and roll gently to flat disc.',tm:5},
+  {n:5,t:'Cook on hot tawa with ghee, 2–3 min each side until golden spots appear.',tm:6},
+  {n:6,t:'Serve with curd and butter.',tm:0},
+ ],
+ tips:'Squeezing moisture from gobi is essential — wet filling makes paratha soggy and hard to roll.',
+ tags:['Punjabi','winter','filling']},
+
+{id:'b8',name:'Medu Vada',emoji:'🍩',cat:'breakfast',type:'veg',region:'south',
+ prep:20,cook:20,diff:'medium',cal:230,sunday:false,
+ desc:'Crispy fried urad dal fritters with a soft centre. Classic South Indian breakfast.',
+ ing:[
+  {n:'Urad dal (split, skinless)',q:150,u:'g',d:'¾ cup',c:'dal'},
+  {n:'Green chilli',q:5,u:'g',d:'1 no',c:'vegetable'},
+  {n:'Ginger',q:8,u:'g',d:'½ tsp grated',c:'vegetable'},
+  {n:'Curry leaves',q:5,u:'g',d:'8 leaves',c:'vegetable'},
+  {n:'Peppercorns (crushed)',q:3,u:'g',d:'½ tsp',c:'spice'},
+  {n:'Oil',q:200,u:'ml',d:'for deep frying',c:'grocery'},
+  {n:'Salt',q:3,u:'g',d:'to taste',c:'staple'},
+ ],
+ steps:[
+  {n:1,t:'Soak urad dal 3 hours. Drain and grind to thick, fluffy batter with very little water.',tm:180},
+  {n:2,t:'Add chilli, ginger, curry leaves, pepper and salt. Mix well.',tm:2},
+  {n:3,t:'Heat oil to 180°C. Wet hands, take a ball of batter, make a hole in centre (donut shape).',tm:5},
+  {n:4,t:'Gently slide into oil. Fry until golden brown all around (4–5 min). Drain on paper.',tm:5},
+  {n:5,t:'Serve immediately with sambar and coconut chutney.',tm:0},
+ ],
+ tips:'Batter must be thick and airy — grind with very little water. A ball of batter should float in water when ready.',
+ tags:['South Indian','crispy','festival']},
+
+{id:'b9',name:'Uttapam',emoji:'🥞',cat:'breakfast',type:'veg',region:'south',
+ prep:5,cook:15,diff:'easy',cal:210,sunday:false,
+ desc:'Thick South Indian pancake topped with vegetables. Great way to use leftover dosa batter.',
+ ing:[
+  {n:'Dosa batter',q:300,u:'g',d:'1½ cups (thick batter)',c:'grocery'},
+  {n:'Onion',q:60,u:'g',d:'1 small onion',c:'vegetable'},
+  {n:'Tomato',q:60,u:'g',d:'1 small tomato',c:'vegetable'},
+  {n:'Green chilli',q:5,u:'g',d:'1 no',c:'vegetable'},
+  {n:'Coriander leaves',q:10,u:'g',d:'small handful',c:'vegetable'},
+  {n:'Oil',q:15,u:'ml',d:'1 tsp per uttapam',c:'grocery'},
+ ],
+ steps:[
+  {n:1,t:'Finely chop all vegetables. Set aside.',tm:3},
+  {n:2,t:'Heat tawa on medium. Pour thick ladle of batter — do NOT spread thin.',tm:1},
+  {n:3,t:'Immediately scatter onion, tomato, chilli and coriander on top. Press gently.',tm:1},
+  {n:4,t:'Drizzle oil around edges. Cook until bubbles appear and base is golden (4–5 min).',tm:5},
+  {n:5,t:'Flip carefully. Cook 2 min more. Serve with sambar and chutney.',tm:2},
+ ],
+ tips:'Uttapam is thicker than dosa — don\'t spread the batter. Press toppings in so they stick to pancake.',
+ tags:['South Indian','easy','vegetables']},
+
+{id:'b10',name:'Sabudana Khichdi',emoji:'🫙',cat:'breakfast',type:'veg',region:'west',
+ prep:240,cook:15,diff:'medium',cal:290,sunday:false,
+ desc:'Tapioca pearls with peanuts and potato. Popular during fasting days in Maharashtra.',
+ ing:[
+  {n:'Sabudana (tapioca pearls)',q:150,u:'g',d:'¾ cup',c:'grocery'},
+  {n:'Potato',q:150,u:'g',d:'1 medium potato',c:'vegetable'},
+  {n:'Peanuts (roasted)',q:50,u:'g',d:'¼ cup',c:'grocery'},
+  {n:'Green chilli',q:8,u:'g',d:'1–2 nos',c:'vegetable'},
+  {n:'Curry leaves',q:5,u:'g',d:'8 leaves',c:'vegetable'},
+  {n:'Cumin seeds',q:3,u:'g',d:'½ tsp',c:'spice'},
+  {n:'Lemon juice',q:10,u:'ml',d:'1 tbsp',c:'vegetable'},
+  {n:'Coriander leaves',q:10,u:'g',d:'small handful',c:'vegetable'},
+  {n:'Oil',q:15,u:'ml',d:'1 tbsp',c:'grocery'},
+  {n:'Sugar',q:5,u:'g',d:'1 tsp',c:'staple'},
+  {n:'Salt',q:3,u:'g',d:'to taste',c:'staple'},
+ ],
+ steps:[
+  {n:1,t:'Rinse sabudana. Soak in just enough water to cover for 4 hours. Drain well.',tm:240},
+  {n:2,t:'Boil and cube potato. Crush peanuts coarsely.',tm:10},
+  {n:3,t:'Heat oil. Add cumin seeds, curry leaves, green chilli. Sauté 30 seconds.',tm:1},
+  {n:4,t:'Add potato cubes. Cook 2 min.',tm:2},
+  {n:5,t:'Add sabudana, salt, sugar and peanuts. Mix gently. Cook on medium-low 5 min.',tm:5},
+  {n:6,t:'Add lemon juice and coriander. Serve hot.',tm:1},
+ ],
+ tips:'Key is proper soaking — not too much water or sabudana becomes sticky clumps. Pearls should separate easily.',
+ tags:['Maharashtrian','fasting','unique']},
+
+{id:'b11',name:'Puri Bhaji',emoji:'🍞',cat:'breakfast',type:'veg',region:'north',
+ prep:15,cook:25,diff:'medium',cal:350,sunday:true,
+ desc:'Deep-fried puffy wheat bread with spiced potato curry. Weekend special across North India.',
+ ing:[
+  {n:'Whole wheat flour',q:200,u:'g',d:'2 cups',c:'grocery'},
+  {n:'Potato',q:300,u:'g',d:'2 medium potatoes',c:'vegetable'},
+  {n:'Onion',q:80,u:'g',d:'1 medium onion',c:'vegetable'},
+  {n:'Tomato',q:80,u:'g',d:'1 medium tomato',c:'vegetable'},
+  {n:'Ginger-garlic paste',q:15,u:'g',d:'1 tbsp',c:'vegetable'},
+  {n:'Cumin seeds',q:3,u:'g',d:'½ tsp',c:'spice'},
+  {n:'Turmeric',q:2,u:'g',d:'¼ tsp',c:'spice'},
+  {n:'Coriander powder',q:5,u:'g',d:'1 tsp',c:'spice'},
+  {n:'Garam masala',q:3,u:'g',d:'½ tsp',c:'spice'},
+  {n:'Oil',q:200,u:'ml',d:'for deep frying',c:'grocery'},
+  {n:'Salt',q:3,u:'g',d:'to taste',c:'staple'},
+ ],
+ steps:[
+  {n:1,t:'Make firm dough with wheat flour, oil and water. Rest 15 min.',tm:15},
+  {n:2,t:'Boil potatoes. Heat 2 tbsp oil, add cumin seeds, onion, sauté until golden.',tm:15},
+  {n:3,t:'Add ginger-garlic paste, tomato, all spices. Cook until oil separates.',tm:8},
+  {n:4,t:'Add boiled potatoes. Mash slightly. Mix well. This is the bhaji.',tm:3},
+  {n:5,t:'Roll dough into small circles (8–10cm). Deep fry in hot oil until puffed and golden.',tm:12},
+  {n:6,t:'Serve puris hot immediately — they deflate quickly.',tm:0},
+ ],
+ tips:'Dough should be stiffer than chapati. Fry in medium-hot oil — too hot burns, too cool makes oily puris.',
+ tags:['North Indian','Sunday special','street food']},
+
+{id:'b12',name:'Thepla',emoji:'🫓',cat:'breakfast',type:'veg',region:'west',
+ prep:15,cook:15,diff:'easy',cal:190,sunday:false,
+ desc:'Gujarati flatbread with fenugreek leaves and spices. Stays fresh 2–3 days — perfect for travel.',
+ ing:[
+  {n:'Whole wheat flour',q:150,u:'g',d:'1½ cups',c:'grocery'},
+  {n:'Methi (fenugreek) leaves',q:60,u:'g',d:'½ cup chopped',c:'vegetable'},
+  {n:'Besan',q:20,u:'g',d:'2 tbsp',c:'dal'},
+  {n:'Curd',q:30,u:'ml',d:'2 tbsp',c:'dairy'},
+  {n:'Turmeric',q:2,u:'g',d:'¼ tsp',c:'spice'},
+  {n:'Red chilli powder',q:3,u:'g',d:'½ tsp',c:'spice'},
+  {n:'Sesame seeds',q:5,u:'g',d:'1 tsp',c:'grocery'},
+  {n:'Oil',q:20,u:'ml',d:'1 tbsp in dough + for cooking',c:'grocery'},
+  {n:'Salt',q:3,u:'g',d:'to taste',c:'staple'},
+ ],
+ steps:[
+  {n:1,t:'Mix all flours, methi leaves, spices and oil. Add curd. Make soft dough, rest 10 min.',tm:10},
+  {n:2,t:'Divide into equal balls. Roll each into thin circle (15–18cm).',tm:5},
+  {n:3,t:'Cook on medium tawa. Press with spatula. Apply oil on both sides.',tm:10},
+  {n:4,t:'Cook until golden spots appear on both sides.',tm:5},
+  {n:5,t:'Serve with curd, pickle or green chutney.',tm:0},
+ ],
+ tips:'Theplas stay fresh 2–3 days at room temperature — ideal for travel. Adjust methi to taste (it is slightly bitter).',
+ tags:['Gujarati','travel-friendly','tiffin']},
+
+{id:'b13',name:'Moong Dal Chilla',emoji:'🥞',cat:'breakfast',type:'veg',region:'north',
+ prep:240,cook:10,diff:'easy',cal:160,sunday:false,
+ desc:'Protein-rich yellow moong dal pancakes. Healthy, filling and quick to make.',
+ ing:[
+  {n:'Yellow moong dal',q:150,u:'g',d:'¾ cup',c:'dal'},
+  {n:'Spinach',q:50,u:'g',d:'small handful',c:'vegetable'},
+  {n:'Green chilli',q:5,u:'g',d:'1 no',c:'vegetable'},
+  {n:'Ginger',q:8,u:'g',d:'½ inch piece',c:'vegetable'},
+  {n:'Cumin seeds',q:3,u:'g',d:'½ tsp',c:'spice'},
+  {n:'Oil',q:15,u:'ml',d:'1 tsp per chilla',c:'grocery'},
+  {n:'Salt',q:3,u:'g',d:'to taste',c:'staple'},
+ ],
+ steps:[
+  {n:1,t:'Soak moong dal 4 hours. Drain. Grind with chilli, ginger to smooth batter with minimal water.',tm:240},
+  {n:2,t:'Add chopped spinach, cumin and salt to batter.',tm:2},
+  {n:3,t:'Heat non-stick tawa. Pour ladle of batter. Spread thin.',tm:1},
+  {n:4,t:'Drizzle oil. Cook until edges lift and golden underneath (2–3 min). Flip. Cook 1 min.',tm:3},
+  {n:5,t:'Serve with mint chutney or curd.',tm:0},
+ ],
+ tips:'No fermentation needed. Batter should be thick like idli batter, not watery. Adjust water carefully.',
+ tags:['high-protein','healthy','diet-friendly']},
+
+{id:'b14',name:'Rava Idli',emoji:'🫔',cat:'breakfast',type:'veg',region:'south',
+ prep:10,cook:15,diff:'easy',cal:190,sunday:false,
+ desc:'Instant semolina idlis with no fermentation. Quick South Indian breakfast with cashews.',
+ ing:[
+  {n:'Semolina (Rava)',q:150,u:'g',d:'1 cup',c:'grocery'},
+  {n:'Curd',q:150,u:'ml',d:'¾ cup',c:'dairy'},
+  {n:'Cashews',q:15,u:'g',d:'8–10 nos',c:'grocery'},
+  {n:'Mustard seeds',q:3,u:'g',d:'½ tsp',c:'spice'},
+  {n:'Curry leaves',q:5,u:'g',d:'8 leaves',c:'vegetable'},
+  {n:'Green chilli',q:5,u:'g',d:'1 no',c:'vegetable'},
+  {n:'Coriander leaves',q:10,u:'g',d:'small handful',c:'vegetable'},
+  {n:'ENO fruit salt',q:5,u:'g',d:'1 tsp',c:'grocery'},
+  {n:'Oil',q:15,u:'ml',d:'1 tbsp',c:'grocery'},
+  {n:'Salt',q:3,u:'g',d:'to taste',c:'staple'},
+ ],
+ steps:[
+  {n:1,t:'Roast rava in dry pan 3–4 min until light golden and fragrant.',tm:4},
+  {n:2,t:'Heat oil. Add mustard seeds, curry leaves, green chilli, cashews. Fry until cashews golden.',tm:3},
+  {n:3,t:'Add tempering to rava. Mix in curd, coriander and salt. Rest 10 min.',tm:10},
+  {n:4,t:'Just before steaming, add ENO and mix quickly — batter will foam.',tm:1},
+  {n:5,t:'Pour into greased idli moulds. Steam 10–12 minutes.',tm:12},
+  {n:6,t:'Cool 2 min. Remove carefully. Serve with sambar and chutney.',tm:2},
+ ],
+ tips:'Add ENO right before steaming — never before. Batter should foam slightly after adding ENO.',
+ tags:['instant','South Indian','no-ferment']},
+
+{id:'b15',name:'Chole Kulche',emoji:'🫛',cat:'breakfast',type:'veg',region:'north',
+ prep:480,cook:30,diff:'hard',cal:380,sunday:true,
+ desc:'Spiced chickpeas served with soft leavened bread. Delhi street food at its finest.',
+ ing:[
+  {n:'Chickpeas (kabuli chana)',q:150,u:'g',d:'¾ cup dried',c:'dal'},
+  {n:'Maida',q:200,u:'g',d:'2 cups',c:'grocery'},
+  {n:'Curd',q:50,u:'ml',d:'3 tbsp',c:'dairy'},
+  {n:'Onion',q:100,u:'g',d:'1 large onion',c:'vegetable'},
+  {n:'Tomato',q:100,u:'g',d:'1 large tomato',c:'vegetable'},
+  {n:'Ginger-garlic paste',q:20,u:'g',d:'1½ tbsp',c:'vegetable'},
+  {n:'Chole masala',q:15,u:'g',d:'1 tbsp',c:'spice'},
+  {n:'Tea bags',q:1,u:'',d:'1 no (for colour)',c:'grocery'},
+  {n:'Baking powder',q:3,u:'g',d:'½ tsp',c:'grocery'},
+  {n:'Butter',q:20,u:'g',d:'for kulche',c:'dairy'},
+  {n:'Oil',q:20,u:'ml',d:'1½ tbsp',c:'grocery'},
+  {n:'Salt',q:4,u:'g',d:'to taste',c:'staple'},
+ ],
+ steps:[
+  {n:1,t:'Soak chickpeas overnight. Pressure cook with tea bag until very soft (5–6 whistles).',tm:480},
+  {n:2,t:'Make soft dough: maida, curd, baking powder, salt. Rest 30 min.',tm:30},
+  {n:3,t:'Heat oil. Brown onions deep golden. Add ginger-garlic paste, tomatoes, chole masala.',tm:12},
+  {n:4,t:'Add cooked chickpeas with cooking water. Simmer 15 min until thick gravy.',tm:15},
+  {n:5,t:'Roll dough into ovals (kulche). Cook on tawa with butter until golden spots.',tm:15},
+  {n:6,t:'Serve hot chole with butter-topped kulche, pickled onions and green chutney.',tm:0},
+ ],
+ tips:'Tea bag gives dark colour to chole without affecting taste. Sour taste comes from amchur or pomegranate powder.',
+ tags:['Delhi','Sunday special','street food']},
+
+{id:'b16',name:'Akki Roti',emoji:'🫓',cat:'breakfast',type:'veg',region:'south',
+ prep:10,cook:15,diff:'medium',cal:200,sunday:false,
+ desc:'Karnataka rice flour flatbread with coconut and vegetables. Naturally gluten-free.',
+ ing:[
+  {n:'Rice flour',q:150,u:'g',d:'1 cup',c:'grocery'},
+  {n:'Onion',q:60,u:'g',d:'1 small onion',c:'vegetable'},
+  {n:'Green chilli',q:5,u:'g',d:'1 no',c:'vegetable'},
+  {n:'Coriander leaves',q:15,u:'g',d:'small handful',c:'vegetable'},
+  {n:'Desiccated coconut',q:20,u:'g',d:'2 tbsp',c:'grocery'},
+  {n:'Cumin seeds',q:3,u:'g',d:'½ tsp',c:'spice'},
+  {n:'Oil',q:15,u:'ml',d:'1 tsp per roti',c:'grocery'},
+  {n:'Hot water',q:150,u:'ml',d:'as needed',c:'staple'},
+  {n:'Salt',q:3,u:'g',d:'to taste',c:'staple'},
+ ],
+ steps:[
+  {n:1,t:'Mix rice flour, onion, chilli, coriander, coconut, cumin and salt.',tm:3},
+  {n:2,t:'Add hot water gradually, kneading to form soft pliable dough.',tm:4},
+  {n:3,t:'Grease tawa. Place a ball of dough. Pat out with wet hands into thin circle.',tm:3},
+  {n:4,t:'Make small hole in centre (for even cooking). Drizzle oil around edges.',tm:1},
+  {n:5,t:'Cook on medium heat 3–4 min per side until cooked through and lightly crisp.',tm:8},
+  {n:6,t:'Serve with coconut chutney and butter.',tm:0},
+ ],
+ tips:'Wet hands frequently while patting dough — rice flour cracks when dry. Tawa must be hot.',
+ tags:['Karnataka','gluten-free','healthy']},
+
+{id:'b17',name:'Bread Upma',emoji:'🍞',cat:'breakfast',type:'veg',region:'national',
+ prep:5,cook:10,diff:'easy',cal:220,sunday:false,
+ desc:'Leftover bread transformed into a spiced upma. 15-minute breakfast with pantry staples.',
+ ing:[
+  {n:'Bread slices (cubed)',q:6,u:'',d:'6 slices, cut in cubes',c:'grocery'},
+  {n:'Onion',q:80,u:'g',d:'1 medium onion',c:'vegetable'},
+  {n:'Tomato',q:60,u:'g',d:'1 small tomato',c:'vegetable'},
+  {n:'Green chilli',q:5,u:'g',d:'1 no',c:'vegetable'},
+  {n:'Mustard seeds',q:3,u:'g',d:'½ tsp',c:'spice'},
+  {n:'Curry leaves',q:5,u:'g',d:'8 leaves',c:'vegetable'},
+  {n:'Turmeric',q:2,u:'g',d:'¼ tsp',c:'spice'},
+  {n:'Lemon juice',q:10,u:'ml',d:'1 tbsp',c:'vegetable'},
+  {n:'Coriander leaves',q:10,u:'g',d:'small handful',c:'vegetable'},
+  {n:'Oil',q:15,u:'ml',d:'1 tbsp',c:'grocery'},
+  {n:'Salt',q:2,u:'g',d:'to taste',c:'staple'},
+ ],
+ steps:[
+  {n:1,t:'Cut bread into cubes. Toast lightly in a pan without oil. Set aside.',tm:3},
+  {n:2,t:'Heat oil. Add mustard seeds, curry leaves, green chilli, onion. Sauté until soft.',tm:4},
+  {n:3,t:'Add tomato and turmeric. Cook until tomato softens.',tm:3},
+  {n:4,t:'Add bread cubes and salt. Mix gently — don\'t mash.',tm:2},
+  {n:5,t:'Remove from heat. Add lemon juice and coriander. Serve immediately.',tm:1},
+ ],
+ tips:'Use day-old bread — fresh bread becomes too soft. Brown bread adds a nuttier flavour.',
+ tags:['quick','leftover','budget-friendly']},
+
+{id:'b18',name:'Pesarattu',emoji:'🥞',cat:'breakfast',type:'veg',region:'south',
+ prep:240,cook:15,diff:'medium',cal:185,sunday:false,
+ desc:'Andhra green moong dal crepe. Protein-rich and uniquely green — no rice needed.',
+ ing:[
+  {n:'Green moong dal (whole)',q:150,u:'g',d:'¾ cup with skin',c:'dal'},
+  {n:'Green chilli',q:8,u:'g',d:'1–2 nos',c:'vegetable'},
+  {n:'Ginger',q:10,u:'g',d:'½ inch piece',c:'vegetable'},
+  {n:'Onion',q:40,u:'g',d:'¼ small onion',c:'vegetable'},
+  {n:'Cumin seeds',q:3,u:'g',d:'½ tsp',c:'spice'},
+  {n:'Coriander leaves',q:10,u:'g',d:'small handful',c:'vegetable'},
+  {n:'Oil',q:15,u:'ml',d:'1 tsp per crepe',c:'grocery'},
+  {n:'Salt',q:3,u:'g',d:'to taste',c:'staple'},
+ ],
+ steps:[
+  {n:1,t:'Soak green moong dal 4 hours with skin on. Drain. Grind with chilli and ginger to smooth batter.',tm:240},
+  {n:2,t:'Add cumin, salt, coriander. Mix well. Consistency should be like dosa batter.',tm:1},
+  {n:3,t:'Heat tawa. Pour batter in circular motion. Spread to thin crepe.',tm:1},
+  {n:4,t:'Sprinkle chopped onion on top. Press gently. Drizzle oil around edges.',tm:1},
+  {n:5,t:'Cook until crisp and golden underneath (3–4 min). Serve with ginger chutney.',tm:4},
+ ],
+ tips:'Unlike dosa, pesarattu needs no fermentation. The natural green colour comes from moong dal skin.',
+ tags:['Andhra','protein-rich','unique']},
+
+{id:'b19',name:'Egg Bhurji Pav',emoji:'🍳',cat:'breakfast',type:'egg',region:'west',
+ prep:5,cook:10,diff:'easy',cal:280,sunday:false,
+ desc:'Mumbai-style spiced scrambled eggs with soft pav buns. Quick and satisfying.',
+ ing:[
+  {n:'Eggs',q:4,u:'',d:'4 large eggs',c:'egg'},
+  {n:'Onion',q:80,u:'g',d:'1 medium onion',c:'vegetable'},
+  {n:'Tomato',q:80,u:'g',d:'1 medium tomato',c:'vegetable'},
+  {n:'Green chilli',q:8,u:'g',d:'1–2 nos',c:'vegetable'},
+  {n:'Ginger',q:8,u:'g',d:'½ tsp grated',c:'vegetable'},
+  {n:'Red chilli powder',q:3,u:'g',d:'½ tsp',c:'spice'},
+  {n:'Garam masala',q:2,u:'g',d:'¼ tsp',c:'spice'},
+  {n:'Coriander leaves',q:10,u:'g',d:'small handful',c:'vegetable'},
+  {n:'Pav buns',q:4,u:'',d:'4 nos',c:'grocery'},
+  {n:'Butter',q:20,u:'g',d:'1 tbsp for pav',c:'dairy'},
+  {n:'Oil',q:15,u:'ml',d:'1 tbsp',c:'grocery'},
+  {n:'Salt',q:3,u:'g',d:'to taste',c:'staple'},
+ ],
+ steps:[
+  {n:1,t:'Heat oil. Sauté onion until golden. Add chilli, ginger, tomato and spices.',tm:5},
+  {n:2,t:'Cook tomato until soft. Beat eggs lightly and pour into pan.',tm:2},
+  {n:3,t:'Gently scramble on medium heat. Remove while still slightly moist.',tm:3},
+  {n:4,t:'Garnish with coriander. Toast pav with butter until golden.',tm:2},
+  {n:5,t:'Serve bhurji with pav immediately.',tm:0},
+ ],
+ tips:'Remove from heat while eggs look slightly underdone — residual heat finishes them. Overcooked bhurji becomes dry.',
+ tags:['Mumbai','quick','egg','filling']},
+
+{id:'b20',name:'Appam',emoji:'🫔',cat:'breakfast',type:'veg',region:'south',
+ prep:480,cook:15,diff:'hard',cal:170,sunday:false,
+ desc:'Lacy Kerala rice pancakes — crispy edges with a soft, fluffy white centre.',
+ ing:[
+  {n:'Raw rice',q:150,u:'g',d:'¾ cup',c:'grocery'},
+  {n:'Cooked rice',q:80,u:'g',d:'¼ cup leftover',c:'grocery'},
+  {n:'Coconut milk (thick)',q:100,u:'ml',d:'½ cup',c:'grocery'},
+  {n:'Active dry yeast',q:3,u:'g',d:'½ tsp',c:'grocery'},
+  {n:'Sugar',q:10,u:'g',d:'2 tsp',c:'staple'},
+  {n:'Salt',q:3,u:'g',d:'to taste',c:'staple'},
+ ],
+ steps:[
+  {n:1,t:'Soak raw rice 4 hours. Grind with cooked rice and coconut milk to smooth batter.',tm:240},
+  {n:2,t:'Activate yeast in warm water with sugar (10 min until foamy). Add to batter.',tm:10},
+  {n:3,t:'Ferment batter 4–6 hours until bubbly and slightly sour.',tm:360},
+  {n:4,t:'Heat appam pan (rounded wok). Pour ladle of batter. Swirl pan quickly to spread thin.',tm:1},
+  {n:5,t:'Cover and cook 2 min — edges become crisp, centre stays soft and white.',tm:2},
+  {n:6,t:'Serve with coconut milk sweetened with sugar, or vegetable stew.',tm:0},
+ ],
+ tips:'A rounded appam chatti (pan) is essential. Swirl batter quickly while pan is hot. Fermentation time varies with temperature.',
+ tags:['Kerala','fermented','authentic','lacy']},
+
+/* ─── LUNCH (22) ─────────────────────────────────────── */
+{id:'l1',name:'Dal Tadka',emoji:'🫕',cat:'lunch',type:'veg',region:'north',
+ prep:10,cook:30,diff:'easy',cal:280,sunday:false,
+ desc:'Yellow toor dal with fragrant ghee tempering of cumin, garlic and red chillies. Everyday comfort food.',
+ ing:[
+  {n:'Toor dal',q:150,u:'g',d:'¾ cup',c:'dal'},
+  {n:'Tomato',q:100,u:'g',d:'1 medium tomato',c:'vegetable'},
+  {n:'Onion',q:80,u:'g',d:'1 small onion',c:'vegetable'},
+  {n:'Garlic',q:10,u:'g',d:'4–5 cloves',c:'vegetable'},
+  {n:'Ginger',q:8,u:'g',d:'½ inch piece',c:'vegetable'},
+  {n:'Green chilli',q:5,u:'g',d:'1 no',c:'vegetable'},
+  {n:'Cumin seeds',q:3,u:'g',d:'½ tsp',c:'spice'},
+  {n:'Dry red chilli',q:2,u:'',d:'2 nos',c:'spice'},
+  {n:'Asafoetida (hing)',q:1,u:'g',d:'1 pinch',c:'spice'},
+  {n:'Turmeric',q:2,u:'g',d:'¼ tsp',c:'spice'},
+  {n:'Red chilli powder',q:3,u:'g',d:'½ tsp',c:'spice'},
+  {n:'Ghee',q:20,u:'g',d:'1 tbsp',c:'dairy'},
+  {n:'Coriander leaves',q:10,u:'g',d:'small handful',c:'vegetable'},
+  {n:'Salt',q:3,u:'g',d:'to taste',c:'staple'},
+ ],
+ steps:[
+  {n:1,t:'Wash toor dal. Pressure cook with water, tomato and turmeric (3 whistles). Mash well.',tm:20},
+  {n:2,t:'Season with salt. Simmer dal on low heat.',tm:5},
+  {n:3,t:'For tadka: heat ghee in small pan. Add cumin seeds, hing and dry red chilli.',tm:1},
+  {n:4,t:'Add minced garlic and ginger. Sauté until golden (30 sec). Add red chilli powder.',tm:2},
+  {n:5,t:'Pour hot tadka over dal. Garnish with coriander. Serve with rice or roti.',tm:0},
+ ],
+ tips:'Good tadka is the whole dish. Ghee gives more flavour than oil. Don\'t burn garlic — 30 seconds is enough.',
+ tags:['everyday','North Indian','comfort food']},
+
+{id:'l2',name:'Dal Makhani',emoji:'🫕',cat:'lunch',type:'veg',region:'north',
+ prep:480,cook:60,diff:'hard',cal:380,sunday:true,
+ desc:'Slow-cooked black lentils in rich buttery tomato gravy. Restaurant classic from Punjab.',
+ ing:[
+  {n:'Whole black urad dal',q:150,u:'g',d:'¾ cup',c:'dal'},
+  {n:'Rajma',q:30,u:'g',d:'2 tbsp',c:'dal'},
+  {n:'Tomato puree',q:200,u:'ml',d:'1 cup',c:'grocery'},
+  {n:'Onion',q:100,u:'g',d:'1 large onion',c:'vegetable'},
+  {n:'Ginger-garlic paste',q:20,u:'g',d:'1½ tbsp',c:'vegetable'},
+  {n:'Red chilli powder',q:5,u:'g',d:'1 tsp',c:'spice'},
+  {n:'Coriander powder',q:5,u:'g',d:'1 tsp',c:'spice'},
+  {n:'Garam masala',q:3,u:'g',d:'½ tsp',c:'spice'},
+  {n:'Butter',q:40,u:'g',d:'2 tbsp',c:'dairy'},
+  {n:'Fresh cream',q:50,u:'ml',d:'¼ cup',c:'dairy'},
+  {n:'Oil',q:15,u:'ml',d:'1 tbsp',c:'grocery'},
+  {n:'Salt',q:4,u:'g',d:'to taste',c:'staple'},
+ ],
+ steps:[
+  {n:1,t:'Soak urad dal and rajma overnight. Pressure cook with salt until very soft (10–12 whistles).',tm:480},
+  {n:2,t:'Heat butter and oil. Sauté onions until deep golden (10 min).',tm:10},
+  {n:3,t:'Add ginger-garlic paste. Cook 2 min. Add tomato puree and all dry spices.',tm:3},
+  {n:4,t:'Cook masala until butter separates (8–10 min).',tm:10},
+  {n:5,t:'Add cooked dal. Mix. Add water to adjust consistency.',tm:2},
+  {n:6,t:'Simmer on very low heat 30 min stirring occasionally.',tm:30},
+  {n:7,t:'Add cream and garam masala. Simmer 5 min. Serve with naan.',tm:5},
+ ],
+ tips:'Longer simmering = better taste. Authentic dal makhani cooks 4–6 hours on a very low flame (dum cooking).',
+ tags:['Punjabi','Sunday special','restaurant style','rich']},
+
+{id:'l3',name:'Rajma Rice',emoji:'🫘',cat:'lunch',type:'veg',region:'north',
+ prep:480,cook:40,diff:'medium',cal:360,sunday:false,
+ desc:'Kidney beans curry with steamed basmati rice. The ultimate North Indian comfort meal.',
+ ing:[
+  {n:'Rajma (kidney beans)',q:150,u:'g',d:'¾ cup dried',c:'dal'},
+  {n:'Basmati rice',q:150,u:'g',d:'¾ cup',c:'grocery'},
+  {n:'Onion',q:100,u:'g',d:'1 large onion',c:'vegetable'},
+  {n:'Tomato',q:150,u:'g',d:'2 medium tomatoes',c:'vegetable'},
+  {n:'Ginger-garlic paste',q:20,u:'g',d:'1½ tbsp',c:'vegetable'},
+  {n:'Red chilli powder',q:5,u:'g',d:'1 tsp',c:'spice'},
+  {n:'Coriander powder',q:5,u:'g',d:'1 tsp',c:'spice'},
+  {n:'Cumin seeds',q:3,u:'g',d:'½ tsp',c:'spice'},
+  {n:'Garam masala',q:3,u:'g',d:'½ tsp',c:'spice'},
+  {n:'Oil',q:20,u:'ml',d:'1½ tbsp',c:'grocery'},
+  {n:'Coriander leaves',q:10,u:'g',d:'for garnish',c:'vegetable'},
+  {n:'Salt',q:4,u:'g',d:'to taste',c:'staple'},
+ ],
+ steps:[
+  {n:1,t:'Soak rajma overnight. Pressure cook until soft (6–8 whistles). Save cooking water.',tm:480},
+  {n:2,t:'Heat oil. Add cumin. Sauté onions until deep golden (8–10 min).',tm:10},
+  {n:3,t:'Add ginger-garlic paste. Cook 2 min. Add tomatoes and all spices.',tm:8},
+  {n:4,t:'Cook masala until oil separates. Add cooked rajma with its water.',tm:3},
+  {n:5,t:'Simmer 20 min until gravy thickens. Add garam masala.',tm:20},
+  {n:6,t:'Wash and cook basmati rice. Serve rajma over rice with curd.',tm:20},
+ ],
+ tips:'Never cook rajma without soaking — it stays hard. Cooking water adds depth of flavour to the gravy.',
+ tags:['North Indian','Monday comfort','protein-rich']},
+
+{id:'l4',name:'Chole Bhature',emoji:'🫛',cat:'lunch',type:'veg',region:'north',
+ prep:480,cook:40,diff:'hard',cal:520,sunday:true,
+ desc:'Spiced chickpeas with deep-fried fluffy bread. Classic Punjabi indulgence.',
+ ing:[
+  {n:'Chickpeas (kabuli chana)',q:150,u:'g',d:'¾ cup dried',c:'dal'},
+  {n:'Maida',q:200,u:'g',d:'2 cups',c:'grocery'},
+  {n:'Curd',q:50,u:'ml',d:'3 tbsp',c:'dairy'},
+  {n:'Onion',q:120,u:'g',d:'1 large onion',c:'vegetable'},
+  {n:'Tomato',q:150,u:'g',d:'2 medium tomatoes',c:'vegetable'},
+  {n:'Ginger-garlic paste',q:20,u:'g',d:'1½ tbsp',c:'vegetable'},
+  {n:'Chole masala',q:15,u:'g',d:'1 tbsp',c:'spice'},
+  {n:'Anardana powder',q:5,u:'g',d:'1 tsp',c:'spice'},
+  {n:'Oil',q:200,u:'ml',d:'for frying',c:'grocery'},
+  {n:'Baking soda',q:2,u:'g',d:'¼ tsp',c:'grocery'},
+  {n:'Salt',q:4,u:'g',d:'to taste',c:'staple'},
+ ],
+ steps:[
+  {n:1,t:'Soak chickpeas overnight with baking soda. Pressure cook until very soft.',tm:480},
+  {n:2,t:'Make soft bhature dough: maida, curd, salt, oil. Rest 2 hours.',tm:120},
+  {n:3,t:'Deep brown onions in oil. Add ginger-garlic paste, tomatoes, chole masala.',tm:12},
+  {n:4,t:'Add chickpeas and anardana. Simmer 15 min. Mash a few chickpeas for thick gravy.',tm:15},
+  {n:5,t:'Roll bhature into ovals. Deep fry in hot oil until puffed and golden.',tm:15},
+  {n:6,t:'Serve hot with pickled onions, green chutney and mango pickle.',tm:0},
+ ],
+ tips:'Bhature must be served immediately — they deflate within minutes. The sourness in chole comes from anardana.',
+ tags:['Punjabi','Sunday special','street food','indulgent']},
+
+{id:'l5',name:'Palak Paneer',emoji:'🥬',cat:'lunch',type:'veg',region:'north',
+ prep:15,cook:25,diff:'medium',cal:320,sunday:false,
+ desc:'Cottage cheese in smooth spinach gravy. Iron-rich, creamy and restaurant-style at home.',
+ ing:[
+  {n:'Spinach (palak)',q:300,u:'g',d:'1 large bunch',c:'vegetable'},
+  {n:'Paneer',q:200,u:'g',d:'1 cup cubed',c:'dairy'},
+  {n:'Onion',q:80,u:'g',d:'1 medium onion',c:'vegetable'},
+  {n:'Tomato',q:80,u:'g',d:'1 medium tomato',c:'vegetable'},
+  {n:'Garlic',q:10,u:'g',d:'4–5 cloves',c:'vegetable'},
+  {n:'Ginger',q:10,u:'g',d:'½ inch piece',c:'vegetable'},
+  {n:'Green chilli',q:5,u:'g',d:'1 no',c:'vegetable'},
+  {n:'Fresh cream',q:30,u:'ml',d:'2 tbsp',c:'dairy'},
+  {n:'Cumin seeds',q:3,u:'g',d:'½ tsp',c:'spice'},
+  {n:'Garam masala',q:3,u:'g',d:'½ tsp',c:'spice'},
+  {n:'Kasuri methi',q:3,u:'g',d:'1 tsp dried',c:'spice'},
+  {n:'Oil',q:20,u:'ml',d:'1½ tbsp',c:'grocery'},
+  {n:'Salt',q:3,u:'g',d:'to taste',c:'staple'},
+ ],
+ steps:[
+  {n:1,t:'Blanch spinach in boiling water 2 min. Transfer to ice water immediately. Blend smooth.',tm:5},
+  {n:2,t:'Heat oil. Add cumin. Sauté onions until golden. Add garlic, ginger and chilli.',tm:6},
+  {n:3,t:'Add tomato. Cook until soft. Add spinach puree and salt. Simmer 5 min.',tm:8},
+  {n:4,t:'Optionally pan-fry paneer cubes in oil until golden.',tm:3},
+  {n:5,t:'Add paneer to gravy. Add cream, garam masala and kasuri methi. Simmer 3 min.',tm:3},
+  {n:6,t:'Serve with roti or naan.',tm:0},
+ ],
+ tips:'Ice bath after blanching keeps spinach vivid green. Add cream after turning heat low to prevent curdling.',
+ tags:['North Indian','iron-rich','restaurant style']},
+
+{id:'l6',name:'Kadai Paneer',emoji:'🧀',cat:'lunch',type:'veg',region:'north',
+ prep:10,cook:25,diff:'medium',cal:340,sunday:false,
+ desc:'Paneer and capsicum in robust tomato gravy with freshly ground kadai masala.',
+ ing:[
+  {n:'Paneer',q:200,u:'g',d:'cubed',c:'dairy'},
+  {n:'Capsicum (mixed colours)',q:100,u:'g',d:'1 medium pepper',c:'vegetable'},
+  {n:'Onion',q:100,u:'g',d:'1 large onion',c:'vegetable'},
+  {n:'Tomato',q:200,u:'g',d:'2 large tomatoes',c:'vegetable'},
+  {n:'Garlic',q:10,u:'g',d:'4 cloves',c:'vegetable'},
+  {n:'Ginger',q:10,u:'g',d:'½ inch piece',c:'vegetable'},
+  {n:'Coriander seeds',q:5,u:'g',d:'1 tsp (to roast)',c:'spice'},
+  {n:'Dry red chillies',q:3,u:'',d:'3 nos (to roast)',c:'spice'},
+  {n:'Kasuri methi',q:3,u:'g',d:'1 tsp',c:'spice'},
+  {n:'Garam masala',q:3,u:'g',d:'½ tsp',c:'spice'},
+  {n:'Oil',q:25,u:'ml',d:'2 tbsp',c:'grocery'},
+  {n:'Salt',q:3,u:'g',d:'to taste',c:'staple'},
+ ],
+ steps:[
+  {n:1,t:'Dry roast coriander seeds and red chillies until fragrant. Grind coarsely. Set aside.',tm:3},
+  {n:2,t:'Heat oil. Sauté onions until golden. Add ginger, garlic. Cook 2 min.',tm:7},
+  {n:3,t:'Add chopped tomatoes. Cook until mushy and oil separates.',tm:8},
+  {n:4,t:'Add ground kadai masala and salt. Cook 2 min.',tm:2},
+  {n:5,t:'Add capsicum pieces. Cook 3–4 min (keep slightly crunchy).',tm:4},
+  {n:6,t:'Add paneer cubes, garam masala and kasuri methi. Toss gently.',tm:3},
+  {n:7,t:'Serve garnished with julienned ginger and coriander.',tm:0},
+ ],
+ tips:'Fresh-ground kadai masala is what makes this special. Don\'t skip roasting the spices.',
+ tags:['North Indian','restaurant style','aromatic']},
+
+{id:'l7',name:'Paneer Butter Masala',emoji:'🧀',cat:'lunch',type:'veg',region:'north',
+ prep:10,cook:30,diff:'medium',cal:420,sunday:true,
+ desc:'Paneer in rich creamy tomato-butter gravy. The most ordered dish in Indian restaurants worldwide.',
+ ing:[
+  {n:'Paneer',q:200,u:'g',d:'cubed',c:'dairy'},
+  {n:'Tomato',q:300,u:'g',d:'3 large tomatoes',c:'vegetable'},
+  {n:'Onion',q:100,u:'g',d:'1 large onion',c:'vegetable'},
+  {n:'Cashews',q:20,u:'g',d:'10 nos',c:'grocery'},
+  {n:'Garlic',q:10,u:'g',d:'4 cloves',c:'vegetable'},
+  {n:'Ginger',q:10,u:'g',d:'½ inch piece',c:'vegetable'},
+  {n:'Butter',q:40,u:'g',d:'2 tbsp',c:'dairy'},
+  {n:'Fresh cream',q:60,u:'ml',d:'¼ cup',c:'dairy'},
+  {n:'Red chilli powder',q:5,u:'g',d:'1 tsp',c:'spice'},
+  {n:'Kasuri methi',q:3,u:'g',d:'1 tsp',c:'spice'},
+  {n:'Sugar',q:5,u:'g',d:'1 tsp',c:'staple'},
+  {n:'Salt',q:3,u:'g',d:'to taste',c:'staple'},
+ ],
+ steps:[
+  {n:1,t:'Boil onion, tomato, cashew, garlic and ginger together until soft. Blend to smooth puree.',tm:15},
+  {n:2,t:'Heat butter. Add the puree and red chilli powder. Cook until thick and deep orange (10 min).',tm:10},
+  {n:3,t:'Strain gravy through a sieve for silky restaurant texture.',tm:3},
+  {n:4,t:'Return to heat. Add sugar, salt and crushed kasuri methi.',tm:2},
+  {n:5,t:'Add paneer cubes and cream. Simmer 5 min.',tm:5},
+  {n:6,t:'Serve with naan or jeera rice.',tm:0},
+ ],
+ tips:'Straining is the restaurant secret for silky smooth gravy. Kasuri methi added at end provides the iconic aroma.',
+ tags:['restaurant classic','rich','butter','Sunday special']},
+
+{id:'l8',name:'Sambar Rice',emoji:'🍲',cat:'lunch',type:'veg',region:'south',
+ prep:10,cook:30,diff:'easy',cal:310,sunday:false,
+ desc:'Mixed vegetables in tangy toor dal sambar. A complete one-pot South Indian meal.',
+ ing:[
+  {n:'Toor dal',q:100,u:'g',d:'½ cup',c:'dal'},
+  {n:'Rice',q:150,u:'g',d:'¾ cup',c:'grocery'},
+  {n:'Mixed vegetables',q:200,u:'g',d:'carrot, beans, drumstick, onion',c:'vegetable'},
+  {n:'Tamarind',q:20,u:'g',d:'small lemon-sized ball',c:'grocery'},
+  {n:'Sambar powder',q:15,u:'g',d:'1½ tbsp',c:'spice'},
+  {n:'Tomato',q:80,u:'g',d:'1 medium tomato',c:'vegetable'},
+  {n:'Mustard seeds',q:3,u:'g',d:'½ tsp',c:'spice'},
+  {n:'Curry leaves',q:5,u:'g',d:'10 leaves',c:'vegetable'},
+  {n:'Ghee',q:15,u:'g',d:'1 tbsp',c:'dairy'},
+  {n:'Salt',q:3,u:'g',d:'to taste',c:'staple'},
+ ],
+ steps:[
+  {n:1,t:'Pressure cook dal until soft. Cook rice separately.',tm:20},
+  {n:2,t:'Extract 1 cup tamarind water. Mix with sambar powder.',tm:5},
+  {n:3,t:'Cook vegetables in tamarind water with tomato until tender.',tm:10},
+  {n:4,t:'Add mashed dal. Simmer 10 min. Adjust consistency with water.',tm:10},
+  {n:5,t:'Temper with ghee, mustard seeds and curry leaves. Pour over sambar.',tm:2},
+  {n:6,t:'Serve sambar over hot rice with ghee drizzled on top.',tm:0},
+ ],
+ tips:'Add a pinch of jaggery to balance the sourness. Fresh sambar powder makes a huge flavour difference.',
+ tags:['South Indian','wholesome','everyday']},
+
+{id:'l9',name:'Chicken Curry',emoji:'🍗',cat:'lunch',type:'nonveg',region:'national',
+ prep:20,cook:40,diff:'medium',cal:380,sunday:false,
+ desc:'Classic Indian chicken curry with onion-tomato-spice gravy. A timeless weekday recipe.',
+ ing:[
+  {n:'Chicken (curry cut)',q:400,u:'g',d:'bone-in pieces',c:'nonveg'},
+  {n:'Onion',q:150,u:'g',d:'2 medium onions',c:'vegetable'},
+  {n:'Tomato',q:150,u:'g',d:'2 medium tomatoes',c:'vegetable'},
+  {n:'Ginger-garlic paste',q:25,u:'g',d:'2 tbsp',c:'vegetable'},
+  {n:'Coriander powder',q:8,u:'g',d:'1½ tsp',c:'spice'},
+  {n:'Red chilli powder',q:6,u:'g',d:'1 tsp',c:'spice'},
+  {n:'Turmeric',q:3,u:'g',d:'½ tsp',c:'spice'},
+  {n:'Garam masala',q:5,u:'g',d:'1 tsp',c:'spice'},
+  {n:'Cumin seeds',q:3,u:'g',d:'½ tsp',c:'spice'},
+  {n:'Bay leaves',q:2,u:'',d:'2 nos',c:'spice'},
+  {n:'Coriander leaves',q:15,u:'g',d:'for garnish',c:'vegetable'},
+  {n:'Oil',q:30,u:'ml',d:'2 tbsp',c:'grocery'},
+  {n:'Salt',q:4,u:'g',d:'to taste',c:'staple'},
+ ],
+ steps:[
+  {n:1,t:'Marinate chicken with turmeric, half red chilli powder and salt for 20 min.',tm:20},
+  {n:2,t:'Heat oil. Add cumin seeds and bay leaves.',tm:1},
+  {n:3,t:'Add onions and cook until deep golden (10 min). Add ginger-garlic paste.',tm:12},
+  {n:4,t:'Add tomatoes, coriander powder, red chilli powder. Cook until oil separates.',tm:8},
+  {n:5,t:'Add chicken pieces. Coat in masala. Sear 5 min on high heat.',tm:5},
+  {n:6,t:'Add hot water. Simmer covered 20 min until chicken is cooked through.',tm:20},
+  {n:7,t:'Add garam masala and coriander. Rest 5 min before serving.',tm:5},
+ ],
+ tips:'Browning onions deeply is the foundation of good chicken curry. Bone-in pieces give much more flavour.',
+ tags:['non-veg','everyday','classic','all regions']},
+
+{id:'l10',name:'Butter Chicken',emoji:'🍗',cat:'lunch',type:'nonveg',region:'north',
+ prep:240,cook:40,diff:'medium',cal:450,sunday:true,
+ desc:'Tandoor-style chicken in mild creamy tomato-butter gravy. India\'s most famous export.',
+ ing:[
+  {n:'Chicken (boneless)',q:400,u:'g',d:'cubed',c:'nonveg'},
+  {n:'Curd',q:80,u:'ml',d:'⅓ cup',c:'dairy'},
+  {n:'Tomato',q:300,u:'g',d:'3 large tomatoes',c:'vegetable'},
+  {n:'Onion',q:100,u:'g',d:'1 large onion',c:'vegetable'},
+  {n:'Cashews',q:20,u:'g',d:'10 nos',c:'grocery'},
+  {n:'Butter',q:50,u:'g',d:'3 tbsp',c:'dairy'},
+  {n:'Fresh cream',q:60,u:'ml',d:'¼ cup',c:'dairy'},
+  {n:'Ginger-garlic paste',q:25,u:'g',d:'2 tbsp',c:'vegetable'},
+  {n:'Red chilli powder',q:5,u:'g',d:'1 tsp',c:'spice'},
+  {n:'Garam masala',q:5,u:'g',d:'1 tsp',c:'spice'},
+  {n:'Kasuri methi',q:5,u:'g',d:'1 tsp',c:'spice'},
+  {n:'Honey',q:10,u:'g',d:'2 tsp',c:'staple'},
+  {n:'Salt',q:4,u:'g',d:'to taste',c:'staple'},
+ ],
+ steps:[
+  {n:1,t:'Marinate chicken: curd, half ginger-garlic, red chilli, garam masala, salt — 4 hours.',tm:240},
+  {n:2,t:'Grill or pan-fry marinated chicken until charred. Set aside.',tm:10},
+  {n:3,t:'Boil tomato, onion, cashew, remaining ginger-garlic until soft. Blend smooth. Strain.',tm:15},
+  {n:4,t:'Heat butter. Cook strained tomato puree until thick and deep orange (10 min).',tm:10},
+  {n:5,t:'Add salt, red chilli powder, honey and crushed kasuri methi.',tm:2},
+  {n:6,t:'Add grilled chicken. Simmer 10 min. Stir in cream. Serve with naan.',tm:10},
+ ],
+ tips:'Charring the chicken before adding to gravy is essential for authentic taste. Never skip straining the gravy.',
+ tags:['North Indian','Sunday special','restaurant classic','mildly spiced']},
+
+{id:'l11',name:'Egg Curry',emoji:'🥚',cat:'lunch',type:'egg',region:'national',
+ prep:5,cook:25,diff:'easy',cal:310,sunday:false,
+ desc:'Boiled eggs in a spiced onion-tomato gravy. Quick protein-rich curry for any weekday.',
+ ing:[
+  {n:'Eggs',q:4,u:'',d:'4 large eggs',c:'egg'},
+  {n:'Onion',q:120,u:'g',d:'1 large onion',c:'vegetable'},
+  {n:'Tomato',q:150,u:'g',d:'2 medium tomatoes',c:'vegetable'},
+  {n:'Ginger-garlic paste',q:20,u:'g',d:'1½ tbsp',c:'vegetable'},
+  {n:'Red chilli powder',q:5,u:'g',d:'1 tsp',c:'spice'},
+  {n:'Coriander powder',q:5,u:'g',d:'1 tsp',c:'spice'},
+  {n:'Garam masala',q:3,u:'g',d:'½ tsp',c:'spice'},
+  {n:'Turmeric',q:2,u:'g',d:'¼ tsp',c:'spice'},
+  {n:'Cumin seeds',q:3,u:'g',d:'½ tsp',c:'spice'},
+  {n:'Coriander leaves',q:10,u:'g',d:'for garnish',c:'vegetable'},
+  {n:'Oil',q:25,u:'ml',d:'2 tbsp',c:'grocery'},
+  {n:'Salt',q:3,u:'g',d:'to taste',c:'staple'},
+ ],
+ steps:[
+  {n:1,t:'Hard boil eggs (10 min). Peel and make 2–3 slits for gravy to penetrate.',tm:10},
+  {n:2,t:'Heat oil. Add cumin seeds. Sauté onions until deep golden.',tm:8},
+  {n:3,t:'Add ginger-garlic paste. Cook 2 min. Add tomatoes and all spices.',tm:8},
+  {n:4,t:'Cook until oil separates. Add water for gravy. Simmer 5 min.',tm:5},
+  {n:5,t:'Gently add eggs. Simmer 3 min. Garnish with coriander.',tm:3},
+  {n:6,t:'Serve with rice or roti.',tm:0},
+ ],
+ tips:'Optionally fry peeled eggs in oil for 2 min until lightly golden — adds a layer of flavour.',
+ tags:['egg','quick','budget-friendly','everyday']},
+
+{id:'l12',name:'Aloo Gobi',emoji:'🌸',cat:'lunch',type:'veg',region:'north',
+ prep:10,cook:20,diff:'easy',cal:220,sunday:false,
+ desc:'Dry spiced cauliflower and potato. The most versatile weekday subzi in North India.',
+ ing:[
+  {n:'Cauliflower',q:300,u:'g',d:'½ head, cut in florets',c:'vegetable'},
+  {n:'Potato',q:200,u:'g',d:'2 medium potatoes',c:'vegetable'},
+  {n:'Onion',q:80,u:'g',d:'1 medium onion',c:'vegetable'},
+  {n:'Tomato',q:80,u:'g',d:'1 medium tomato',c:'vegetable'},
+  {n:'Ginger-garlic paste',q:15,u:'g',d:'1 tbsp',c:'vegetable'},
+  {n:'Cumin seeds',q:3,u:'g',d:'½ tsp',c:'spice'},
+  {n:'Turmeric',q:2,u:'g',d:'¼ tsp',c:'spice'},
+  {n:'Red chilli powder',q:3,u:'g',d:'½ tsp',c:'spice'},
+  {n:'Coriander powder',q:5,u:'g',d:'1 tsp',c:'spice'},
+  {n:'Garam masala',q:3,u:'g',d:'½ tsp',c:'spice'},
+  {n:'Oil',q:25,u:'ml',d:'2 tbsp',c:'grocery'},
+  {n:'Coriander leaves',q:10,u:'g',d:'for garnish',c:'vegetable'},
+  {n:'Salt',q:3,u:'g',d:'to taste',c:'staple'},
+ ],
+ steps:[
+  {n:1,t:'Cut cauliflower into florets. Peel and cube potato.',tm:5},
+  {n:2,t:'Heat oil. Add cumin seeds. Sauté onion until translucent.',tm:4},
+  {n:3,t:'Add ginger-garlic paste, tomato and all spices. Cook until oil separates.',tm:6},
+  {n:4,t:'Add potato cubes. Mix. Cook 5 min.',tm:5},
+  {n:5,t:'Add cauliflower florets. Mix well. Cover and cook on medium-low 10 min.',tm:10},
+  {n:6,t:'Remove lid. Add garam masala. Cook 2 min until dry. Garnish.',tm:2},
+ ],
+ tips:'Avoid stirring too frequently — cauliflower breaks easily. Dish should be dry, not saucy.',
+ tags:['everyday','North Indian','dry subzi']},
+
+{id:'l13',name:'Pav Bhaji',emoji:'🍔',cat:'lunch',type:'veg',region:'west',
+ prep:15,cook:30,diff:'easy',cal:380,sunday:false,
+ desc:'Mumbai\'s iconic mashed vegetable curry with buttered bread rolls. Street food classic.',
+ ing:[
+  {n:'Potato',q:200,u:'g',d:'2 medium potatoes',c:'vegetable'},
+  {n:'Cauliflower',q:100,u:'g',d:'small florets',c:'vegetable'},
+  {n:'Green peas',q:80,u:'g',d:'¼ cup',c:'vegetable'},
+  {n:'Capsicum',q:60,u:'g',d:'½ medium pepper',c:'vegetable'},
+  {n:'Onion',q:120,u:'g',d:'1 large onion',c:'vegetable'},
+  {n:'Tomato',q:200,u:'g',d:'2 large tomatoes',c:'vegetable'},
+  {n:'Pav bhaji masala',q:15,u:'g',d:'1 tbsp',c:'spice'},
+  {n:'Red chilli powder',q:5,u:'g',d:'1 tsp',c:'spice'},
+  {n:'Butter',q:60,u:'g',d:'3 tbsp + more for pav',c:'dairy'},
+  {n:'Lemon juice',q:15,u:'ml',d:'1 tbsp',c:'vegetable'},
+  {n:'Pav buns',q:4,u:'',d:'4 nos',c:'grocery'},
+  {n:'Coriander leaves',q:15,u:'g',d:'for garnish',c:'vegetable'},
+  {n:'Salt',q:3,u:'g',d:'to taste',c:'staple'},
+ ],
+ steps:[
+  {n:1,t:'Boil potato, cauliflower and peas together until soft. Mash well.',tm:20},
+  {n:2,t:'Heat butter. Sauté onion until golden. Add capsicum.',tm:5},
+  {n:3,t:'Add tomato, red chilli powder and pav bhaji masala. Cook until soft.',tm:8},
+  {n:4,t:'Add mashed vegetables. Mix and mash further. Cook 10 min.',tm:10},
+  {n:5,t:'Add lemon juice. Adjust seasoning.',tm:1},
+  {n:6,t:'Toast pav with generous butter. Serve bhaji with raw onion and lemon.',tm:3},
+ ],
+ tips:'More butter = more authentic. Bhaji should be smooth enough that there are no recognisable chunks.',
+ tags:['Mumbai','street food','popular','weekend']},
+
+{id:'l14',name:'Fish Curry (Goan)',emoji:'🐟',cat:'lunch',type:'nonveg',region:'west',
+ prep:15,cook:25,diff:'medium',cal:290,sunday:false,
+ desc:'Tangy coconut-based Goan fish curry. Eaten daily along the Konkan coast.',
+ ing:[
+  {n:'Fish (pomfret or mackerel)',q:350,u:'g',d:'2 pieces, cleaned',c:'nonveg'},
+  {n:'Coconut (fresh grated)',q:80,u:'g',d:'½ cup',c:'grocery'},
+  {n:'Dry red chillies (Kashmiri)',q:6,u:'',d:'6 nos',c:'spice'},
+  {n:'Tamarind',q:15,u:'g',d:'small ball',c:'grocery'},
+  {n:'Onion',q:80,u:'g',d:'1 medium onion',c:'vegetable'},
+  {n:'Garlic',q:8,u:'g',d:'3–4 cloves',c:'vegetable'},
+  {n:'Ginger',q:8,u:'g',d:'½ inch piece',c:'vegetable'},
+  {n:'Turmeric',q:2,u:'g',d:'¼ tsp',c:'spice'},
+  {n:'Coriander seeds',q:5,u:'g',d:'1 tsp',c:'spice'},
+  {n:'Kokum',q:15,u:'g',d:'4–5 pieces (for sourness)',c:'grocery'},
+  {n:'Oil',q:20,u:'ml',d:'1½ tbsp',c:'grocery'},
+  {n:'Salt',q:3,u:'g',d:'to taste',c:'staple'},
+ ],
+ steps:[
+  {n:1,t:'Grind coconut, red chillies, coriander seeds, garlic, ginger and tamarind to smooth paste.',tm:8},
+  {n:2,t:'Heat oil. Sauté onion until pink. Add ground coconut masala paste.',tm:5},
+  {n:3,t:'Cook on medium heat 5 min. Add water to make curry consistency.',tm:5},
+  {n:4,t:'Add kokum and salt. Bring to simmer.',tm:3},
+  {n:5,t:'Add fish pieces. Cook on low heat 8–10 min. Do NOT boil vigorously.',tm:10},
+  {n:6,t:'Serve hot with steamed rice.',tm:0},
+ ],
+ tips:'Fresh coconut is essential — desiccated won\'t give the same result. Kokum provides the unique Goan sourness.',
+ tags:['Goan','coastal','non-veg','unique']},
+
+{id:'l15',name:'Kadhi Pakora',emoji:'🍜',cat:'lunch',type:'veg',region:'north',
+ prep:15,cook:45,diff:'medium',cal:320,sunday:false,
+ desc:'Sour yogurt and gram flour curry with fried pakoras. North Indian Sunday comfort dish.',
+ ing:[
+  {n:'Sour curd',q:200,u:'ml',d:'1 cup',c:'dairy'},
+  {n:'Besan',q:60,u:'g',d:'¼ cup for kadhi + ¼ cup for pakoras',c:'dal'},
+  {n:'Onion',q:80,u:'g',d:'1 medium onion',c:'vegetable'},
+  {n:'Green chilli',q:5,u:'g',d:'1 no',c:'vegetable'},
+  {n:'Mustard seeds',q:3,u:'g',d:'½ tsp',c:'spice'},
+  {n:'Fenugreek seeds',q:2,u:'g',d:'¼ tsp',c:'spice'},
+  {n:'Dry red chilli',q:2,u:'',d:'2 nos',c:'spice'},
+  {n:'Turmeric',q:3,u:'g',d:'½ tsp',c:'spice'},
+  {n:'Red chilli powder',q:3,u:'g',d:'½ tsp',c:'spice'},
+  {n:'Oil',q:200,u:'ml',d:'for frying',c:'grocery'},
+  {n:'Salt',q:4,u:'g',d:'to taste',c:'staple'},
+ ],
+ steps:[
+  {n:1,t:'Whisk curd with 2 tbsp besan, turmeric, red chilli, salt. Add water for thin consistency.',tm:3},
+  {n:2,t:'Temper: heat oil, add mustard seeds, fenugreek seeds, dry red chilli.',tm:2},
+  {n:3,t:'Add curd mixture. Bring to boil stirring. Simmer on low 30 min.',tm:30},
+  {n:4,t:'Make thick pakora batter: remaining besan, onion, chilli, salt and water.',tm:3},
+  {n:5,t:'Deep fry pakoras until golden. Drain on paper.',tm:10},
+  {n:6,t:'Add pakoras to kadhi. Simmer 5 min. Serve with rice.',tm:5},
+ ],
+ tips:'Use sour curd — fresh curd gives flat taste. Simmer kadhi a long time for depth. Fenugreek seeds are key.',
+ tags:['North Indian','Sunday','comforting']},
+
+{id:'l16',name:'Mutton Rogan Josh',emoji:'🍖',cat:'lunch',type:'nonveg',region:'north',
+ prep:20,cook:90,diff:'hard',cal:480,sunday:true,
+ desc:'Kashmiri slow-cooked lamb in deeply spiced aromatic gravy. A royal Mughal dish.',
+ ing:[
+  {n:'Mutton (bone-in)',q:400,u:'g',d:'curry cut pieces',c:'nonveg'},
+  {n:'Curd',q:100,u:'ml',d:'½ cup',c:'dairy'},
+  {n:'Onion',q:150,u:'g',d:'2 medium onions',c:'vegetable'},
+  {n:'Garlic',q:15,u:'g',d:'6 cloves',c:'vegetable'},
+  {n:'Ginger',q:15,u:'g',d:'1 inch piece',c:'vegetable'},
+  {n:'Kashmiri red chilli powder',q:10,u:'g',d:'2 tsp (gives colour)',c:'spice'},
+  {n:'Fennel powder (saunf)',q:5,u:'g',d:'1 tsp',c:'spice'},
+  {n:'Dry ginger powder',q:3,u:'g',d:'½ tsp',c:'spice'},
+  {n:'Whole spices',q:10,u:'g',d:'bay leaf, clove, cardamom, cinnamon',c:'spice'},
+  {n:'Ghee',q:30,u:'ml',d:'2 tbsp',c:'dairy'},
+  {n:'Salt',q:4,u:'g',d:'to taste',c:'staple'},
+ ],
+ steps:[
+  {n:1,t:'Heat ghee. Add whole spices until fragrant.',tm:2},
+  {n:2,t:'Add onions. Cook until deep brown (15 min). Add garlic-ginger.',tm:15},
+  {n:3,t:'Add mutton pieces. Sear on high heat until browned all over.',tm:8},
+  {n:4,t:'Add Kashmiri chilli powder. Cook 2 min.',tm:2},
+  {n:5,t:'Add beaten curd gradually while stirring continuously.',tm:3},
+  {n:6,t:'Add fennel powder, dry ginger powder and salt. Add water.',tm:2},
+  {n:7,t:'Cover and cook on low heat 60 min until mutton is completely tender.',tm:60},
+  {n:8,t:'The gravy should be thick with oil floating on top.',tm:0},
+ ],
+ tips:'Kashmiri red chillies give beautiful colour without too much heat. Authentic Rogan Josh has no tomatoes — only curd.',
+ tags:['Kashmiri','Sunday special','royal','slow-cooked']},
+
+{id:'l17',name:'Sarson da Saag',emoji:'🥬',cat:'lunch',type:'veg',region:'north',
+ prep:15,cook:60,diff:'hard',cal:290,sunday:true,
+ desc:'Slow-cooked mustard greens from Punjab. The iconic winter dish with makki di roti.',
+ ing:[
+  {n:'Mustard leaves (sarson)',q:400,u:'g',d:'2 large bunches',c:'vegetable'},
+  {n:'Spinach',q:100,u:'g',d:'1 bunch',c:'vegetable'},
+  {n:'Corn flour (makki atta)',q:30,u:'g',d:'2 tbsp',c:'grocery'},
+  {n:'Onion',q:100,u:'g',d:'1 large onion',c:'vegetable'},
+  {n:'Tomato',q:100,u:'g',d:'1 large tomato',c:'vegetable'},
+  {n:'Garlic',q:15,u:'g',d:'6 cloves',c:'vegetable'},
+  {n:'Ginger',q:15,u:'g',d:'1 inch piece',c:'vegetable'},
+  {n:'Green chilli',q:8,u:'g',d:'2 nos',c:'vegetable'},
+  {n:'Ghee',q:30,u:'g',d:'2 tbsp',c:'dairy'},
+  {n:'Fresh butter',q:20,u:'g',d:'for serving',c:'dairy'},
+  {n:'Salt',q:4,u:'g',d:'to taste',c:'staple'},
+ ],
+ steps:[
+  {n:1,t:'Boil all greens with garlic, ginger, chilli and salt until very soft.',tm:20},
+  {n:2,t:'Drain and blend to a coarse paste — not too smooth.',tm:5},
+  {n:3,t:'Return to pot. Add makki atta and cook on low flame 30 min, stirring regularly.',tm:30},
+  {n:4,t:'Heat ghee. Deep brown onions. Add tomato. Cook until soft.',tm:10},
+  {n:5,t:'Add onion-tomato masala to saag. Cook 10 more min.',tm:10},
+  {n:6,t:'Serve topped with fresh butter. Eat with makki di roti.',tm:0},
+ ],
+ tips:'The longer it cooks the better it tastes — real sarson saag simmers 2+ hours. Makki atta adds body.',
+ tags:['Punjabi','winter special','traditional','Sunday special']},
+
+{id:'l18',name:'Aviyal',emoji:'🥘',cat:'lunch',type:'veg',region:'south',
+ prep:15,cook:25,diff:'medium',cal:240,sunday:false,
+ desc:'Mixed vegetables in coconut-yogurt gravy from Kerala. A staple of the sadya feast.',
+ ing:[
+  {n:'Mixed vegetables',q:400,u:'g',d:'raw banana, yam, drumstick, beans, carrot',c:'vegetable'},
+  {n:'Coconut (grated)',q:80,u:'g',d:'½ cup',c:'grocery'},
+  {n:'Green chilli',q:8,u:'g',d:'2 nos',c:'vegetable'},
+  {n:'Cumin seeds',q:3,u:'g',d:'½ tsp',c:'spice'},
+  {n:'Curd',q:100,u:'ml',d:'½ cup',c:'dairy'},
+  {n:'Curry leaves',q:8,u:'g',d:'12 leaves',c:'vegetable'},
+  {n:'Coconut oil',q:15,u:'ml',d:'1 tbsp',c:'grocery'},
+  {n:'Turmeric',q:2,u:'g',d:'¼ tsp',c:'spice'},
+  {n:'Salt',q:3,u:'g',d:'to taste',c:'staple'},
+ ],
+ steps:[
+  {n:1,t:'Cut vegetables into finger-length batons. Cook in water with turmeric and salt until tender.',tm:15},
+  {n:2,t:'Grind coconut, green chilli and cumin to a coarse paste.',tm:3},
+  {n:3,t:'Add coconut paste to cooked vegetables. Mix gently and cook 3 min.',tm:3},
+  {n:4,t:'Remove from heat. Add beaten curd. Mix gently.',tm:1},
+  {n:5,t:'Add fresh curry leaves and drizzle coconut oil. Toss and serve.',tm:1},
+ ],
+ tips:'Add curd off the heat — it should never boil. Coconut oil drizzled at end gives authentic Kerala flavour.',
+ tags:['Kerala','mixed veg','sadya','festival']},
+
+{id:'l19',name:'Rasam',emoji:'🫙',cat:'lunch',type:'veg',region:'south',
+ prep:5,cook:20,diff:'easy',cal:80,sunday:false,
+ desc:'Thin peppery South Indian soup. Great for immunity, colds and as a digestive.',
+ ing:[
+  {n:'Tomato',q:150,u:'g',d:'2 medium tomatoes',c:'vegetable'},
+  {n:'Tamarind',q:15,u:'g',d:'small piece',c:'grocery'},
+  {n:'Toor dal (cooked)',q:50,u:'g',d:'¼ cup mashed',c:'dal'},
+  {n:'Black pepper (cracked)',q:5,u:'g',d:'1 tsp',c:'spice'},
+  {n:'Cumin seeds',q:3,u:'g',d:'½ tsp',c:'spice'},
+  {n:'Garlic (mashed)',q:5,u:'g',d:'2 cloves',c:'vegetable'},
+  {n:'Curry leaves',q:5,u:'g',d:'8 leaves',c:'vegetable'},
+  {n:'Mustard seeds',q:3,u:'g',d:'½ tsp',c:'spice'},
+  {n:'Dry red chilli',q:2,u:'',d:'2 nos',c:'spice'},
+  {n:'Coriander leaves',q:10,u:'g',d:'for garnish',c:'vegetable'},
+  {n:'Ghee',q:10,u:'g',d:'½ tsp',c:'dairy'},
+  {n:'Salt',q:3,u:'g',d:'to taste',c:'staple'},
+ ],
+ steps:[
+  {n:1,t:'Boil tomato with tamarind water. Mash tomatoes well.',tm:8},
+  {n:2,t:'Add cooked dal, salt and cracked pepper. Simmer 5 min.',tm:5},
+  {n:3,t:'Add water to make thin soup consistency. Bring to boil and remove from heat.',tm:3},
+  {n:4,t:'Temper: heat ghee, add mustard seeds, cumin, mashed garlic, red chilli and curry leaves.',tm:2},
+  {n:5,t:'Pour tempering over rasam. Garnish with coriander. Serve hot.',tm:0},
+ ],
+ tips:'Rasam should be thin and watery — not thick. Pepper is the key spice. Garlic is mashed, not chopped.',
+ tags:['South Indian','immunity','light','medicinal']},
+
+{id:'l20',name:'Matar Paneer',emoji:'🫛',cat:'lunch',type:'veg',region:'north',
+ prep:10,cook:25,diff:'easy',cal:300,sunday:false,
+ desc:'Green peas and paneer in a simple tomato gravy. A wholesome North Indian classic.',
+ ing:[
+  {n:'Paneer',q:150,u:'g',d:'cubed',c:'dairy'},
+  {n:'Green peas',q:100,u:'g',d:'½ cup fresh or frozen',c:'vegetable'},
+  {n:'Onion',q:80,u:'g',d:'1 medium onion',c:'vegetable'},
+  {n:'Tomato',q:150,u:'g',d:'2 medium tomatoes',c:'vegetable'},
+  {n:'Ginger-garlic paste',q:15,u:'g',d:'1 tbsp',c:'vegetable'},
+  {n:'Red chilli powder',q:3,u:'g',d:'½ tsp',c:'spice'},
+  {n:'Coriander powder',q:5,u:'g',d:'1 tsp',c:'spice'},
+  {n:'Garam masala',q:3,u:'g',d:'½ tsp',c:'spice'},
+  {n:'Cumin seeds',q:3,u:'g',d:'½ tsp',c:'spice'},
+  {n:'Oil',q:20,u:'ml',d:'1½ tbsp',c:'grocery'},
+  {n:'Salt',q:3,u:'g',d:'to taste',c:'staple'},
+ ],
+ steps:[
+  {n:1,t:'Heat oil. Add cumin seeds. Sauté onion until golden.',tm:5},
+  {n:2,t:'Add ginger-garlic paste. Cook 2 min. Add tomatoes and all spices.',tm:7},
+  {n:3,t:'Cook until oil separates. Add peas and ½ cup water.',tm:5},
+  {n:4,t:'Cook peas until tender (5–7 min).',tm:7},
+  {n:5,t:'Add paneer cubes and garam masala. Simmer 5 min. Serve with roti.',tm:5},
+ ],
+ tips:'Fresh peas add sweetness and texture. Don\'t overcook paneer — it becomes rubbery and chewy.',
+ tags:['North Indian','everyday','vegetarian']},
+
+{id:'l21',name:'Veg Biryani',emoji:'🍚',cat:'lunch',type:'veg',region:'national',
+ prep:20,cook:40,diff:'hard',cal:420,sunday:true,
+ desc:'Fragrant basmati rice layered with spiced vegetables. Festive, wholesome and aromatic.',
+ ing:[
+  {n:'Basmati rice',q:200,u:'g',d:'1 cup',c:'grocery'},
+  {n:'Mixed vegetables',q:300,u:'g',d:'carrot, peas, potato, beans',c:'vegetable'},
+  {n:'Curd',q:80,u:'ml',d:'⅓ cup',c:'dairy'},
+  {n:'Onion',q:150,u:'g',d:'2 medium onions (for crispy frying)',c:'vegetable'},
+  {n:'Ginger-garlic paste',q:20,u:'g',d:'1½ tbsp',c:'vegetable'},
+  {n:'Whole spices',q:15,u:'g',d:'bay leaf, star anise, cinnamon, clove, cardamom',c:'spice'},
+  {n:'Biryani masala',q:15,u:'g',d:'1 tbsp',c:'spice'},
+  {n:'Saffron milk',q:30,u:'ml',d:'few saffron strands in warm milk',c:'dairy'},
+  {n:'Fresh mint leaves',q:15,u:'g',d:'small handful',c:'vegetable'},
+  {n:'Ghee',q:30,u:'ml',d:'2 tbsp',c:'dairy'},
+  {n:'Oil',q:50,u:'ml',d:'for frying onions',c:'grocery'},
+  {n:'Salt',q:4,u:'g',d:'to taste',c:'staple'},
+ ],
+ steps:[
+  {n:1,t:'Wash rice, soak 30 min. Par-cook in salted water with whole spices (70%). Drain.',tm:30},
+  {n:2,t:'Marinate vegetables in curd, biryani masala, ginger-garlic paste and salt.',tm:10},
+  {n:3,t:'Deep fry sliced onions until golden crispy. Remove half for garnish.',tm:10},
+  {n:4,t:'In remaining oil, cook marinated vegetables until 80% done.',tm:15},
+  {n:5,t:'Layer: vegetables → rice → mint → fried onions → saffron milk → ghee. Repeat.',tm:5},
+  {n:6,t:'Seal pot with foil or dough. Dum cook on lowest heat 25 min.',tm:25},
+  {n:7,t:'Serve layered without over-mixing. Serve with raita.',tm:0},
+ ],
+ tips:'Dum cooking (sealed steam) is the soul of biryani — don\'t lift the lid before time.',
+ tags:['festive','Sunday special','layered','aromatic']},
+
+{id:'l22',name:'Chicken Biryani',emoji:'🍚',cat:'lunch',type:'nonveg',region:'national',
+ prep:240,cook:50,diff:'hard',cal:520,sunday:true,
+ desc:'Marinated chicken with fragrant basmati rice cooked on dum. King of Indian rice dishes.',
+ ing:[
+  {n:'Chicken (curry cut)',q:400,u:'g',d:'bone-in pieces',c:'nonveg'},
+  {n:'Basmati rice',q:200,u:'g',d:'1 cup',c:'grocery'},
+  {n:'Curd',q:120,u:'ml',d:'½ cup',c:'dairy'},
+  {n:'Onion',q:200,u:'g',d:'2 large onions',c:'vegetable'},
+  {n:'Ginger-garlic paste',q:30,u:'g',d:'2 tbsp',c:'vegetable'},
+  {n:'Whole spices',q:15,u:'g',d:'bay leaf, star anise, cinnamon, clove, cardamom',c:'spice'},
+  {n:'Biryani masala',q:20,u:'g',d:'1½ tbsp',c:'spice'},
+  {n:'Red chilli powder',q:5,u:'g',d:'1 tsp',c:'spice'},
+  {n:'Saffron milk',q:30,u:'ml',d:'few saffron strands in warm milk',c:'dairy'},
+  {n:'Fresh mint and coriander',q:30,u:'g',d:'mixed handful',c:'vegetable'},
+  {n:'Ghee',q:30,u:'ml',d:'2 tbsp',c:'dairy'},
+  {n:'Oil',q:50,u:'ml',d:'for frying onions',c:'grocery'},
+  {n:'Salt',q:5,u:'g',d:'to taste',c:'staple'},
+ ],
+ steps:[
+  {n:1,t:'Marinate chicken: curd, ginger-garlic, biryani masala, red chilli, salt — 4 hours.',tm:240},
+  {n:2,t:'Deep fry sliced onions until deep golden and crispy. Reserve.',tm:15},
+  {n:3,t:'Par-cook rice with whole spices and salt (70% done). Drain.',tm:20},
+  {n:4,t:'Cook marinated chicken until 80% done.',tm:20},
+  {n:5,t:'Layer: chicken → rice → mint/coriander → fried onions → saffron milk → ghee.',tm:5},
+  {n:6,t:'Seal pot tightly. Dum cook on very low heat 25 min.',tm:25},
+  {n:7,t:'Rest 10 min before opening. Serve with raita and salan.',tm:10},
+ ],
+ tips:'Golden fried onions (birista) make or break biryani. Cook them slowly for best results.',
+ tags:['Sunday special','festive','non-veg','national favourite']},
+
+/* ─── DINNER (15) ────────────────────────────────────── */
+{id:'d1',name:'Dal Fry + Jeera Rice',emoji:'🍚',cat:'dinner',type:'veg',region:'national',
+ prep:10,cook:25,diff:'easy',cal:340,sunday:false,
+ desc:'Simple tadka dal with aromatic cumin rice. The most satisfying everyday Indian dinner.',
+ ing:[
+  {n:'Toor dal',q:120,u:'g',d:'½ cup',c:'dal'},
+  {n:'Basmati rice',q:150,u:'g',d:'¾ cup',c:'grocery'},
+  {n:'Cumin seeds',q:8,u:'g',d:'1 tsp for rice + ½ tsp for dal',c:'spice'},
+  {n:'Garlic',q:10,u:'g',d:'4 cloves',c:'vegetable'},
+  {n:'Ginger',q:8,u:'g',d:'½ inch piece',c:'vegetable'},
+  {n:'Dry red chilli',q:2,u:'',d:'2 nos',c:'spice'},
+  {n:'Asafoetida',q:1,u:'g',d:'1 pinch',c:'spice'},
+  {n:'Turmeric',q:2,u:'g',d:'¼ tsp',c:'spice'},
+  {n:'Red chilli powder',q:2,u:'g',d:'¼ tsp',c:'spice'},
+  {n:'Ghee',q:20,u:'g',d:'1 tbsp',c:'dairy'},
+  {n:'Coriander leaves',q:10,u:'g',d:'for garnish',c:'vegetable'},
+  {n:'Salt',q:3,u:'g',d:'to taste',c:'staple'},
+ ],
+ steps:[
+  {n:1,t:'Pressure cook dal until soft (3 whistles). Whisk smooth.',tm:20},
+  {n:2,t:'Wash rice. Heat ghee. Add 1 tsp cumin seeds. Add rice and toast 1 min.',tm:2},
+  {n:3,t:'Add 1.5x water and salt. Cook covered until done.',tm:15},
+  {n:4,t:'For dal tadka: heat ghee, add cumin seeds, hing, red chilli, garlic and ginger.',tm:3},
+  {n:5,t:'Add turmeric and red chilli powder. Pour hot tadka over dal.',tm:1},
+  {n:6,t:'Simmer dal 5 min. Serve over jeera rice with papad and pickle.',tm:5},
+ ],
+ tips:'Jeera rice is always better with basmati. Fluff with fork after cooking. Classic combo with any dal.',
+ tags:['everyday','complete meal','simple']},
+
+{id:'d2',name:'Khichdi',emoji:'🫕',cat:'dinner',type:'veg',region:'national',
+ prep:5,cook:20,diff:'easy',cal:280,sunday:false,
+ desc:'One-pot rice and lentil comfort food. India\'s original wholesome meal — easy on the stomach.',
+ ing:[
+  {n:'Rice',q:100,u:'g',d:'½ cup',c:'grocery'},
+  {n:'Moong dal (yellow split)',q:80,u:'g',d:'¼ cup',c:'dal'},
+  {n:'Cumin seeds',q:3,u:'g',d:'½ tsp',c:'spice'},
+  {n:'Turmeric',q:2,u:'g',d:'¼ tsp',c:'spice'},
+  {n:'Ginger',q:8,u:'g',d:'½ inch grated',c:'vegetable'},
+  {n:'Green chilli',q:5,u:'g',d:'1 no',c:'vegetable'},
+  {n:'Ghee',q:20,u:'g',d:'1 tbsp',c:'dairy'},
+  {n:'Asafoetida',q:1,u:'g',d:'1 pinch',c:'spice'},
+  {n:'Water',q:600,u:'ml',d:'3 cups',c:'staple'},
+  {n:'Salt',q:3,u:'g',d:'to taste',c:'staple'},
+ ],
+ steps:[
+  {n:1,t:'Wash rice and dal together. Soak 10 min.',tm:10},
+  {n:2,t:'Heat ghee in pressure cooker. Add cumin seeds and asafoetida.',tm:1},
+  {n:3,t:'Add ginger and chilli. Sauté 30 seconds.',tm:1},
+  {n:4,t:'Add drained rice and dal. Sauté 1 min. Add water, turmeric and salt.',tm:2},
+  {n:5,t:'Pressure cook 3–4 whistles until very soft.',tm:15},
+  {n:6,t:'Serve with extra ghee drizzled on top, papad and mango pickle.',tm:0},
+ ],
+ tips:'More water = softer porridge-like khichdi. 1:4 ratio for very soft (good for sick days).',
+ tags:['easy','comforting','all ages','digestive']},
+
+{id:'d3',name:'Lemon Rice',emoji:'🍋',cat:'dinner',type:'veg',region:'south',
+ prep:5,cook:10,diff:'easy',cal:290,sunday:false,
+ desc:'Tangy South Indian rice with lemon and peanut tempering. Perfect with leftover rice.',
+ ing:[
+  {n:'Cooked rice',q:300,u:'g',d:'1½ cups (day-old preferred)',c:'grocery'},
+  {n:'Lemon juice',q:30,u:'ml',d:'2 tbsp fresh',c:'vegetable'},
+  {n:'Peanuts (raw)',q:30,u:'g',d:'2 tbsp',c:'grocery'},
+  {n:'Mustard seeds',q:3,u:'g',d:'½ tsp',c:'spice'},
+  {n:'Chana dal',q:5,u:'g',d:'½ tsp',c:'dal'},
+  {n:'Urad dal',q:5,u:'g',d:'½ tsp',c:'dal'},
+  {n:'Curry leaves',q:5,u:'g',d:'10 leaves',c:'vegetable'},
+  {n:'Green chilli',q:5,u:'g',d:'1 no',c:'vegetable'},
+  {n:'Turmeric',q:2,u:'g',d:'¼ tsp',c:'spice'},
+  {n:'Oil',q:20,u:'ml',d:'1½ tbsp',c:'grocery'},
+  {n:'Salt',q:3,u:'g',d:'to taste',c:'staple'},
+ ],
+ steps:[
+  {n:1,t:'Cool rice to room temperature or use day-old rice.',tm:10},
+  {n:2,t:'Heat oil. Fry peanuts until golden. Add mustard seeds, chana dal and urad dal.',tm:3},
+  {n:3,t:'When dal is golden, add curry leaves, green chilli and turmeric.',tm:1},
+  {n:4,t:'Add cooked rice and salt. Mix gently.',tm:2},
+  {n:5,t:'Remove from heat. Add lemon juice. Mix well.',tm:1},
+  {n:6,t:'Serve with papad or curd.',tm:0},
+ ],
+ tips:'Add lemon AFTER removing from heat — heat makes lemon bitter. Works best with day-old rice.',
+ tags:['South Indian','leftover rice','quick','tangy']},
+
+{id:'d4',name:'Curd Rice',emoji:'🍚',cat:'dinner',type:'veg',region:'south',
+ prep:5,cook:5,diff:'easy',cal:250,sunday:false,
+ desc:'Cooling South Indian curd rice. A meal ender and a complete meal in itself.',
+ ing:[
+  {n:'Cooked rice',q:300,u:'g',d:'1½ cups',c:'grocery'},
+  {n:'Curd',q:200,u:'ml',d:'1 cup',c:'dairy'},
+  {n:'Milk',q:30,u:'ml',d:'2 tbsp',c:'dairy'},
+  {n:'Mustard seeds',q:3,u:'g',d:'½ tsp',c:'spice'},
+  {n:'Green chilli',q:5,u:'g',d:'1 no',c:'vegetable'},
+  {n:'Ginger',q:5,u:'g',d:'¼ inch grated',c:'vegetable'},
+  {n:'Curry leaves',q:5,u:'g',d:'8 leaves',c:'vegetable'},
+  {n:'Pomegranate seeds',q:20,u:'g',d:'2 tbsp for garnish',c:'vegetable'},
+  {n:'Grated carrot',q:20,u:'g',d:'small amount for garnish',c:'vegetable'},
+  {n:'Oil',q:10,u:'ml',d:'1 tsp',c:'grocery'},
+  {n:'Salt',q:3,u:'g',d:'to taste',c:'staple'},
+ ],
+ steps:[
+  {n:1,t:'Mash warm cooked rice. Cool slightly.',tm:5},
+  {n:2,t:'Mix in curd, milk and salt. Add water if too thick.',tm:2},
+  {n:3,t:'Temper: heat oil, add mustard seeds, green chilli, ginger and curry leaves.',tm:2},
+  {n:4,t:'Pour tempering over curd rice. Mix.',tm:1},
+  {n:5,t:'Garnish with pomegranate seeds, grated carrot and coriander.',tm:1},
+ ],
+ tips:'Milk makes curd rice creamier and less sour. Serve chilled in summer — it\'s incredibly refreshing.',
+ tags:['South Indian','cooling','summer','probiotic']},
+
+{id:'d5',name:'Mushroom Masala',emoji:'🍄',cat:'dinner',type:'veg',region:'national',
+ prep:10,cook:20,diff:'easy',cal:210,sunday:false,
+ desc:'Button mushrooms in spiced onion-tomato gravy. A quick, flavourful weeknight dinner.',
+ ing:[
+  {n:'Button mushrooms',q:250,u:'g',d:'12–15 nos',c:'vegetable'},
+  {n:'Onion',q:100,u:'g',d:'1 large onion',c:'vegetable'},
+  {n:'Tomato',q:150,u:'g',d:'2 medium tomatoes',c:'vegetable'},
+  {n:'Ginger-garlic paste',q:15,u:'g',d:'1 tbsp',c:'vegetable'},
+  {n:'Red chilli powder',q:3,u:'g',d:'½ tsp',c:'spice'},
+  {n:'Coriander powder',q:5,u:'g',d:'1 tsp',c:'spice'},
+  {n:'Garam masala',q:3,u:'g',d:'½ tsp',c:'spice'},
+  {n:'Kasuri methi',q:3,u:'g',d:'½ tsp',c:'spice'},
+  {n:'Fresh cream',q:30,u:'ml',d:'2 tbsp optional',c:'dairy'},
+  {n:'Oil',q:20,u:'ml',d:'1½ tbsp',c:'grocery'},
+  {n:'Coriander leaves',q:10,u:'g',d:'for garnish',c:'vegetable'},
+  {n:'Salt',q:3,u:'g',d:'to taste',c:'staple'},
+ ],
+ steps:[
+  {n:1,t:'Clean and halve or quarter mushrooms.',tm:3},
+  {n:2,t:'Heat oil. Sauté onion until golden. Add ginger-garlic paste.',tm:6},
+  {n:3,t:'Add tomatoes and all spices. Cook until oil separates.',tm:6},
+  {n:4,t:'Add mushrooms. Cook on high heat 5 min (they release water — keep cooking).',tm:5},
+  {n:5,t:'Add kasuri methi and cream. Simmer 3 min. Garnish.',tm:3},
+ ],
+ tips:'Cook mushrooms on high heat — they must sear, not steam. Don\'t crowd the pan or they turn watery.',
+ tags:['quick','weeknight','versatile']},
+
+{id:'d6',name:'Lauki Kofta Curry',emoji:'🥒',cat:'dinner',type:'veg',region:'north',
+ prep:20,cook:30,diff:'medium',cal:260,sunday:false,
+ desc:'Bottle gourd dumplings in spiced tomato gravy. A clever, delicious way to enjoy lauki.',
+ ing:[
+  {n:'Bottle gourd (lauki)',q:400,u:'g',d:'1 small lauki',c:'vegetable'},
+  {n:'Besan',q:40,u:'g',d:'3 tbsp',c:'dal'},
+  {n:'Onion',q:100,u:'g',d:'1 large onion',c:'vegetable'},
+  {n:'Tomato',q:150,u:'g',d:'2 medium tomatoes',c:'vegetable'},
+  {n:'Ginger-garlic paste',q:15,u:'g',d:'1 tbsp',c:'vegetable'},
+  {n:'Red chilli powder',q:5,u:'g',d:'1 tsp',c:'spice'},
+  {n:'Coriander powder',q:5,u:'g',d:'1 tsp',c:'spice'},
+  {n:'Garam masala',q:3,u:'g',d:'½ tsp',c:'spice'},
+  {n:'Oil',q:200,u:'ml',d:'for frying + 2 tbsp for gravy',c:'grocery'},
+  {n:'Coriander leaves',q:10,u:'g',d:'for garnish',c:'vegetable'},
+  {n:'Salt',q:4,u:'g',d:'to taste',c:'staple'},
+ ],
+ steps:[
+  {n:1,t:'Grate lauki. Squeeze out all water. Mix with besan, salt and a pinch of spices.',tm:8},
+  {n:2,t:'Make small balls (koftas). Deep fry until golden. Drain on paper.',tm:15},
+  {n:3,t:'Heat 2 tbsp oil. Sauté onions golden. Add ginger-garlic paste.',tm:6},
+  {n:4,t:'Add tomatoes, red chilli, coriander powder. Cook until thick and oil separates.',tm:8},
+  {n:5,t:'Add water for gravy. Simmer 5 min.',tm:5},
+  {n:6,t:'Add koftas just before serving. Simmer 2 min only. Garnish.',tm:2},
+ ],
+ tips:'Add koftas only right before serving — they go soft in gravy. Squeezing lauki dry is essential for koftas.',
+ tags:['creative','North Indian','kofta']},
+
+{id:'d7',name:'Egg Fried Rice',emoji:'🍳',cat:'dinner',type:'egg',region:'national',
+ prep:5,cook:15,diff:'easy',cal:340,sunday:false,
+ desc:'Indian-Chinese egg fried rice with scrambled egg, vegetables and soy sauce.',
+ ing:[
+  {n:'Cooked rice (cold)',q:300,u:'g',d:'1½ cups day-old rice',c:'grocery'},
+  {n:'Eggs',q:2,u:'',d:'2 large eggs',c:'egg'},
+  {n:'Spring onion',q:60,u:'g',d:'2 stalks',c:'vegetable'},
+  {n:'Carrot',q:60,u:'g',d:'½ medium (finely diced)',c:'vegetable'},
+  {n:'Capsicum',q:60,u:'g',d:'½ medium (diced)',c:'vegetable'},
+  {n:'Garlic',q:10,u:'g',d:'3–4 cloves (minced)',c:'vegetable'},
+  {n:'Soy sauce',q:15,u:'ml',d:'1 tbsp',c:'grocery'},
+  {n:'Black pepper',q:3,u:'g',d:'½ tsp',c:'spice'},
+  {n:'Vinegar',q:5,u:'ml',d:'1 tsp',c:'grocery'},
+  {n:'Oil',q:25,u:'ml',d:'2 tbsp',c:'grocery'},
+  {n:'Salt',q:2,u:'g',d:'to taste',c:'staple'},
+ ],
+ steps:[
+  {n:1,t:'Heat wok/pan on high. Add oil. Fry garlic 30 seconds.',tm:1},
+  {n:2,t:'Add carrot and capsicum. Stir-fry on high heat 2 min.',tm:2},
+  {n:3,t:'Push vegetables to side. Scramble eggs in the centre until just set.',tm:2},
+  {n:4,t:'Add cold rice. Break any clumps. Stir-fry everything on high heat 3 min.',tm:3},
+  {n:5,t:'Add soy sauce, vinegar, black pepper and salt. Toss well.',tm:1},
+  {n:6,t:'Garnish with spring onion greens. Serve hot.',tm:0},
+ ],
+ tips:'High heat is essential — medium heat makes it mushy. Day-old cold rice gives the best texture.',
+ tags:['Indo-Chinese','quick','egg','leftover rice']},
+
+{id:'d8',name:'Baingan Bharta',emoji:'🍆',cat:'dinner',type:'veg',region:'north',
+ prep:5,cook:30,diff:'easy',cal:190,sunday:false,
+ desc:'Smoky roasted aubergine mash with onion and tomato. Fire-roasted flavour is the key.',
+ ing:[
+  {n:'Brinjal (baingan)',q:400,u:'g',d:'1 large brinjal',c:'vegetable'},
+  {n:'Onion',q:100,u:'g',d:'1 large onion',c:'vegetable'},
+  {n:'Tomato',q:100,u:'g',d:'1 large tomato',c:'vegetable'},
+  {n:'Garlic',q:10,u:'g',d:'4 cloves',c:'vegetable'},
+  {n:'Green chilli',q:8,u:'g',d:'1–2 nos',c:'vegetable'},
+  {n:'Ginger',q:8,u:'g',d:'½ inch piece',c:'vegetable'},
+  {n:'Red chilli powder',q:3,u:'g',d:'½ tsp',c:'spice'},
+  {n:'Coriander powder',q:3,u:'g',d:'½ tsp',c:'spice'},
+  {n:'Garam masala',q:2,u:'g',d:'¼ tsp',c:'spice'},
+  {n:'Coriander leaves',q:15,u:'g',d:'handful',c:'vegetable'},
+  {n:'Oil',q:20,u:'ml',d:'1½ tbsp',c:'grocery'},
+  {n:'Salt',q:3,u:'g',d:'to taste',c:'staple'},
+ ],
+ steps:[
+  {n:1,t:'Prick brinjal with a fork. Roast directly on flame or in oven until skin blackens and it collapses.',tm:15},
+  {n:2,t:'Cool. Peel and discard charred skin. Mash the pulp well.',tm:5},
+  {n:3,t:'Heat oil. Sauté onion, garlic, ginger until golden.',tm:6},
+  {n:4,t:'Add tomato, chilli and all spices. Cook until oil separates.',tm:6},
+  {n:5,t:'Add mashed brinjal. Mix and cook 5 min. Garnish with coriander.',tm:5},
+ ],
+ tips:'The smoky flavour from flame-roasting is irreplaceable. Don\'t use oven-roasted brinjal for authentic bharta.',
+ tags:['smoky','North Indian','weeknight']},
+
+{id:'d9',name:'Keema Matar',emoji:'🍖',cat:'dinner',type:'nonveg',region:'north',
+ prep:10,cook:30,diff:'medium',cal:420,sunday:false,
+ desc:'Minced mutton or chicken with green peas in aromatic spice gravy.',
+ ing:[
+  {n:'Minced mutton or chicken',q:300,u:'g',d:'1½ cups',c:'nonveg'},
+  {n:'Green peas',q:100,u:'g',d:'½ cup',c:'vegetable'},
+  {n:'Onion',q:120,u:'g',d:'1 large onion',c:'vegetable'},
+  {n:'Tomato',q:100,u:'g',d:'1 large tomato',c:'vegetable'},
+  {n:'Ginger-garlic paste',q:20,u:'g',d:'1½ tbsp',c:'vegetable'},
+  {n:'Red chilli powder',q:5,u:'g',d:'1 tsp',c:'spice'},
+  {n:'Coriander powder',q:5,u:'g',d:'1 tsp',c:'spice'},
+  {n:'Garam masala',q:5,u:'g',d:'1 tsp',c:'spice'},
+  {n:'Turmeric',q:2,u:'g',d:'¼ tsp',c:'spice'},
+  {n:'Coriander leaves',q:15,u:'g',d:'for garnish',c:'vegetable'},
+  {n:'Oil',q:25,u:'ml',d:'2 tbsp',c:'grocery'},
+  {n:'Salt',q:4,u:'g',d:'to taste',c:'staple'},
+ ],
+ steps:[
+  {n:1,t:'Heat oil. Sauté onions until golden. Add ginger-garlic paste.',tm:8},
+  {n:2,t:'Add tomato and all spices. Cook until oil separates.',tm:8},
+  {n:3,t:'Add minced meat. Break up lumps. Cook on high heat until colour changes.',tm:5},
+  {n:4,t:'Add peas and ½ cup water. Cover and cook 15 min.',tm:15},
+  {n:5,t:'Cook uncovered 5 min until dry. Garnish. Serve with roti.',tm:5},
+ ],
+ tips:'Keep cooking until there is no moisture left — the best keema is dry, not watery.',
+ tags:['non-veg','North Indian','everyday']},
+
+{id:'d10',name:'Paneer Bhurji',emoji:'🧀',cat:'dinner',type:'veg',region:'north',
+ prep:5,cook:15,diff:'easy',cal:280,sunday:false,
+ desc:'Scrambled paneer with onion, tomato and spices. A 20-minute weeknight dinner.',
+ ing:[
+  {n:'Paneer (crumbled)',q:200,u:'g',d:'1 cup crumbled',c:'dairy'},
+  {n:'Onion',q:80,u:'g',d:'1 medium onion',c:'vegetable'},
+  {n:'Tomato',q:80,u:'g',d:'1 medium tomato',c:'vegetable'},
+  {n:'Green chilli',q:5,u:'g',d:'1 no',c:'vegetable'},
+  {n:'Ginger',q:5,u:'g',d:'¼ tsp grated',c:'vegetable'},
+  {n:'Red chilli powder',q:3,u:'g',d:'½ tsp',c:'spice'},
+  {n:'Coriander powder',q:3,u:'g',d:'½ tsp',c:'spice'},
+  {n:'Garam masala',q:2,u:'g',d:'¼ tsp',c:'spice'},
+  {n:'Turmeric',q:2,u:'g',d:'¼ tsp',c:'spice'},
+  {n:'Coriander leaves',q:10,u:'g',d:'for garnish',c:'vegetable'},
+  {n:'Oil',q:15,u:'ml',d:'1 tbsp',c:'grocery'},
+  {n:'Salt',q:3,u:'g',d:'to taste',c:'staple'},
+ ],
+ steps:[
+  {n:1,t:'Heat oil. Sauté onion, chilli and ginger until onion is translucent.',tm:4},
+  {n:2,t:'Add tomato and all spices. Cook until soft and oil separates.',tm:5},
+  {n:3,t:'Add crumbled paneer. Mix gently. Cook 5 min on medium heat.',tm:5},
+  {n:4,t:'Garnish with coriander. Serve with roti or paratha.',tm:0},
+ ],
+ tips:'Don\'t overcook paneer — it dries out. Crumble it with your hands for a natural texture.',
+ tags:['quick','weeknight','North Indian','high-protein']},
+
+{id:'d11',name:'Aloo Matar',emoji:'🫛',cat:'dinner',type:'veg',region:'north',
+ prep:10,cook:20,diff:'easy',cal:250,sunday:false,
+ desc:'Potatoes and green peas in a simple tomato gravy. Everyday North Indian comfort.',
+ ing:[
+  {n:'Potato',q:250,u:'g',d:'2 medium potatoes',c:'vegetable'},
+  {n:'Green peas',q:100,u:'g',d:'½ cup',c:'vegetable'},
+  {n:'Onion',q:80,u:'g',d:'1 medium onion',c:'vegetable'},
+  {n:'Tomato',q:100,u:'g',d:'1 medium tomato',c:'vegetable'},
+  {n:'Ginger-garlic paste',q:12,u:'g',d:'1 tsp',c:'vegetable'},
+  {n:'Cumin seeds',q:3,u:'g',d:'½ tsp',c:'spice'},
+  {n:'Turmeric',q:2,u:'g',d:'¼ tsp',c:'spice'},
+  {n:'Red chilli powder',q:3,u:'g',d:'½ tsp',c:'spice'},
+  {n:'Coriander powder',q:3,u:'g',d:'½ tsp',c:'spice'},
+  {n:'Garam masala',q:2,u:'g',d:'¼ tsp',c:'spice'},
+  {n:'Oil',q:15,u:'ml',d:'1 tbsp',c:'grocery'},
+  {n:'Salt',q:3,u:'g',d:'to taste',c:'staple'},
+ ],
+ steps:[
+  {n:1,t:'Peel and cube potato. Heat oil. Add cumin seeds.',tm:2},
+  {n:2,t:'Sauté onion until translucent. Add ginger-garlic paste.',tm:4},
+  {n:3,t:'Add tomato and all spices. Cook until soft.',tm:5},
+  {n:4,t:'Add potato cubes. Mix. Add ½ cup water. Cover and cook 10 min.',tm:10},
+  {n:5,t:'Add peas. Cook 5 min more. Add garam masala. Serve with roti.',tm:5},
+ ],
+ tips:'A simple but reliable dish. Adding a little amchur at end brightens all the flavours.',
+ tags:['everyday','North Indian','simple']},
+
+{id:'d12',name:'Mixed Dal',emoji:'🫕',cat:'dinner',type:'veg',region:'national',
+ prep:480,cook:35,diff:'medium',cal:290,sunday:false,
+ desc:'Five lentils cooked together with aromatic tempering. More complex flavour than single dal.',
+ ing:[
+  {n:'Toor dal',q:50,u:'g',d:'¼ cup',c:'dal'},
+  {n:'Chana dal',q:30,u:'g',d:'2 tbsp',c:'dal'},
+  {n:'Masoor dal (red)',q:30,u:'g',d:'2 tbsp',c:'dal'},
+  {n:'Moong dal',q:30,u:'g',d:'2 tbsp',c:'dal'},
+  {n:'Urad dal',q:20,u:'g',d:'1 tbsp',c:'dal'},
+  {n:'Tomato',q:80,u:'g',d:'1 medium tomato',c:'vegetable'},
+  {n:'Onion',q:60,u:'g',d:'1 small onion',c:'vegetable'},
+  {n:'Ginger-garlic paste',q:15,u:'g',d:'1 tbsp',c:'vegetable'},
+  {n:'Cumin seeds',q:3,u:'g',d:'½ tsp',c:'spice'},
+  {n:'Turmeric',q:2,u:'g',d:'¼ tsp',c:'spice'},
+  {n:'Garam masala',q:3,u:'g',d:'½ tsp',c:'spice'},
+  {n:'Ghee',q:20,u:'g',d:'1 tbsp',c:'dairy'},
+  {n:'Coriander leaves',q:10,u:'g',d:'for garnish',c:'vegetable'},
+  {n:'Salt',q:3,u:'g',d:'to taste',c:'staple'},
+ ],
+ steps:[
+  {n:1,t:'Soak all dals together 2 hours (optional but recommended). Drain.',tm:120},
+  {n:2,t:'Pressure cook all dals together with tomato, turmeric and water (4 whistles). Mash partially.',tm:20},
+  {n:3,t:'Heat ghee. Add cumin seeds. Sauté onion golden. Add ginger-garlic paste.',tm:7},
+  {n:4,t:'Add garam masala. Pour tadka over dal. Simmer 10 min.',tm:10},
+  {n:5,t:'Add salt. Garnish with coriander. Serve with roti or rice.',tm:0},
+ ],
+ tips:'Panchmel dal (5 lentils) is a Rajasthani specialty. Ratio can vary based on availability.',
+ tags:['protein-rich','Rajasthani','nutritious']},
+
+{id:'d13',name:'Vegetable Pulao',emoji:'🍚',cat:'dinner',type:'veg',region:'national',
+ prep:10,cook:25,diff:'easy',cal:310,sunday:false,
+ desc:'Fragrant rice cooked with vegetables and whole spices. A lighter alternative to biryani.',
+ ing:[
+  {n:'Basmati rice',q:200,u:'g',d:'1 cup',c:'grocery'},
+  {n:'Mixed vegetables',q:200,u:'g',d:'peas, carrot, beans, corn',c:'vegetable'},
+  {n:'Onion',q:80,u:'g',d:'1 medium onion (sliced)',c:'vegetable'},
+  {n:'Ginger-garlic paste',q:15,u:'g',d:'1 tbsp',c:'vegetable'},
+  {n:'Whole spices',q:10,u:'g',d:'bay leaf, clove, cardamom, cinnamon',c:'spice'},
+  {n:'Cumin seeds',q:3,u:'g',d:'½ tsp',c:'spice'},
+  {n:'Mint leaves',q:10,u:'g',d:'small handful',c:'vegetable'},
+  {n:'Ghee',q:20,u:'g',d:'1 tbsp',c:'dairy'},
+  {n:'Salt',q:3,u:'g',d:'to taste',c:'staple'},
+  {n:'Water',q:360,u:'ml',d:'1.8 cups',c:'staple'},
+ ],
+ steps:[
+  {n:1,t:'Wash rice. Soak 20 min. Drain.',tm:20},
+  {n:2,t:'Heat ghee. Add whole spices and cumin. Fry onion until golden.',tm:6},
+  {n:3,t:'Add ginger-garlic paste. Cook 1 min. Add vegetables.',tm:3},
+  {n:4,t:'Add rice. Sauté 2 min. Add water, salt and mint leaves.',tm:3},
+  {n:5,t:'Bring to boil. Cover. Cook on low heat 15 min until done.',tm:15},
+  {n:6,t:'Rest 5 min. Fluff with fork. Serve with raita.',tm:5},
+ ],
+ tips:'The water ratio for basmati is 1:1.75 to 1:1.8. Soaking reduces cooking time and improves texture.',
+ tags:['light','everyday','aromatic']},
+
+{id:'d14',name:'Roti + Sabzi',emoji:'🫓',cat:'dinner',type:'veg',region:'national',
+ prep:15,cook:20,diff:'easy',cal:300,sunday:false,
+ desc:'Fresh whole wheat chapati with any dry vegetable — the most common Indian dinner.',
+ ing:[
+  {n:'Whole wheat flour',q:200,u:'g',d:'2 cups',c:'grocery'},
+  {n:'Any seasonal vegetable',q:300,u:'g',d:'bhindi / capsicum / beans / carrot',c:'vegetable'},
+  {n:'Onion',q:80,u:'g',d:'1 medium onion',c:'vegetable'},
+  {n:'Tomato',q:60,u:'g',d:'1 small tomato',c:'vegetable'},
+  {n:'Cumin seeds',q:3,u:'g',d:'½ tsp',c:'spice'},
+  {n:'Turmeric',q:2,u:'g',d:'¼ tsp',c:'spice'},
+  {n:'Red chilli powder',q:3,u:'g',d:'½ tsp',c:'spice'},
+  {n:'Garam masala',q:2,u:'g',d:'¼ tsp',c:'spice'},
+  {n:'Oil',q:20,u:'ml',d:'for sabzi + for tawa',c:'grocery'},
+  {n:'Ghee',q:10,u:'g',d:'for chapati',c:'dairy'},
+  {n:'Salt',q:3,u:'g',d:'to taste',c:'staple'},
+ ],
+ steps:[
+  {n:1,t:'Make soft dough with wheat flour, salt and water. Rest 15 min.',tm:15},
+  {n:2,t:'Chop vegetables. Heat oil. Add cumin seeds and onion.',tm:3},
+  {n:3,t:'Sauté onion until soft. Add tomato and spices. Cook 3 min.',tm:4},
+  {n:4,t:'Add vegetables. Cover and cook until tender.',tm:12},
+  {n:5,t:'Roll chapati circles. Cook on hot tawa both sides.',tm:10},
+  {n:6,t:'Apply ghee on hot chapati. Serve with sabzi.',tm:0},
+ ],
+ tips:'The thinner the roti the better. Press with cloth while cooking to get puffed rotis.',
+ tags:['everyday','national','staple']},
+
+{id:'d15',name:'Bhindi Masala',emoji:'🌿',cat:'dinner',type:'veg',region:'north',
+ prep:10,cook:20,diff:'easy',cal:180,sunday:false,
+ desc:'Spiced dry okra stir-fry. One of the most popular dry vegetables in North India.',
+ ing:[
+  {n:'Bhindi (okra)',q:300,u:'g',d:'20–25 pieces',c:'vegetable'},
+  {n:'Onion',q:100,u:'g',d:'1 large onion',c:'vegetable'},
+  {n:'Tomato',q:80,u:'g',d:'1 medium tomato',c:'vegetable'},
+  {n:'Green chilli',q:5,u:'g',d:'1 no',c:'vegetable'},
+  {n:'Cumin seeds',q:3,u:'g',d:'½ tsp',c:'spice'},
+  {n:'Turmeric',q:2,u:'g',d:'¼ tsp',c:'spice'},
+  {n:'Red chilli powder',q:3,u:'g',d:'½ tsp',c:'spice'},
+  {n:'Coriander powder',q:5,u:'g',d:'1 tsp',c:'spice'},
+  {n:'Amchur powder',q:3,u:'g',d:'½ tsp',c:'spice'},
+  {n:'Oil',q:25,u:'ml',d:'2 tbsp',c:'grocery'},
+  {n:'Salt',q:3,u:'g',d:'to taste',c:'staple'},
+ ],
+ steps:[
+  {n:1,t:'Wash bhindi. Dry COMPLETELY with a cloth — no moisture at all.',tm:5},
+  {n:2,t:'Cut into 1-inch pieces. Heat oil. Fry bhindi 8 min until slightly crisp. Remove.',tm:8},
+  {n:3,t:'In same oil, add cumin seeds, onion, chilli. Sauté until golden.',tm:5},
+  {n:4,t:'Add tomato and all spices. Cook until soft.',tm:4},
+  {n:5,t:'Add fried bhindi. Mix gently. Cook 3 min. Add amchur.',tm:3},
+  {n:6,t:'Serve dry with roti.',tm:0},
+ ],
+ tips:'MUST dry bhindi completely before cooking — moisture causes stickiness. Frying first removes all sliminess.',
+ tags:['North Indian','dry subzi','everyday']},
+
+/* ─── SNACKS (10) ────────────────────────────────────── */
+{id:'s1',name:'Samosa',emoji:'🔺',cat:'snack',type:'veg',region:'north',
+ prep:30,cook:30,diff:'hard',cal:280,sunday:false,
+ desc:'Deep-fried pastry filled with spiced potato and peas. India\'s most iconic snack.',
+ ing:[
+  {n:'Maida',q:200,u:'g',d:'2 cups',c:'grocery'},
+  {n:'Potato (boiled)',q:300,u:'g',d:'2 large potatoes',c:'vegetable'},
+  {n:'Green peas',q:80,u:'g',d:'¼ cup',c:'vegetable'},
+  {n:'Ginger',q:10,u:'g',d:'½ inch piece',c:'vegetable'},
+  {n:'Green chilli',q:8,u:'g',d:'1–2 nos',c:'vegetable'},
+  {n:'Cumin seeds',q:3,u:'g',d:'½ tsp',c:'spice'},
+  {n:'Coriander seeds (crushed)',q:3,u:'g',d:'½ tsp',c:'spice'},
+  {n:'Garam masala',q:3,u:'g',d:'½ tsp',c:'spice'},
+  {n:'Amchur',q:3,u:'g',d:'½ tsp',c:'spice'},
+  {n:'Oil',q:200,u:'ml',d:'for deep frying',c:'grocery'},
+  {n:'Ajwain (carom seeds)',q:2,u:'g',d:'¼ tsp for dough',c:'spice'},
+  {n:'Salt',q:4,u:'g',d:'to taste',c:'staple'},
+ ],
+ steps:[
+  {n:1,t:'Make stiff dough: maida, ajwain, salt, 2 tbsp oil and water. Rest 20 min.',tm:20},
+  {n:2,t:'Cook peas with ginger, chilli, cumin and coriander seeds in oil.',tm:4},
+  {n:3,t:'Add mashed potato, garam masala, amchur and salt. Mix. Cool completely.',tm:3},
+  {n:4,t:'Divide dough into balls. Roll each into oval. Cut in half.',tm:5},
+  {n:5,t:'Fold half into a cone. Fill with potato mixture. Seal edges with water.',tm:10},
+  {n:6,t:'Deep fry on medium-low heat until golden and crisp (8–10 min).',tm:10},
+  {n:7,t:'Serve with mint chutney and tamarind chutney.',tm:0},
+ ],
+ tips:'Fry on medium-low heat — high heat makes them pale and soft inside. Dough must be stiff, not soft.',
+ tags:['North Indian','street food','tea-time','classic']},
+
+{id:'s2',name:'Masala Chai',emoji:'☕',cat:'snack',type:'veg',region:'national',
+ prep:2,cook:8,diff:'easy',cal:60,sunday:false,
+ desc:'Spiced milk tea with ginger, cardamom and masala. India\'s soul in a cup.',
+ ing:[
+  {n:'Water',q:120,u:'ml',d:'½ cup',c:'staple'},
+  {n:'Milk',q:120,u:'ml',d:'½ cup full fat',c:'dairy'},
+  {n:'Loose leaf tea (CTC)',q:6,u:'g',d:'1 tsp per cup',c:'grocery'},
+  {n:'Sugar',q:10,u:'g',d:'2 tsp or to taste',c:'staple'},
+  {n:'Ginger',q:5,u:'g',d:'¼ inch piece (crushed)',c:'vegetable'},
+  {n:'Green cardamom',q:2,u:'',d:'2 pods (crushed)',c:'spice'},
+  {n:'Clove',q:1,u:'',d:'1 no (optional)',c:'spice'},
+ ],
+ steps:[
+  {n:1,t:'Boil water with ginger, cardamom and clove for 2 min.',tm:2},
+  {n:2,t:'Add tea leaves and sugar. Boil 2 min until strong.',tm:2},
+  {n:3,t:'Add milk. Simmer until it rises once. Remove from heat.',tm:2},
+  {n:4,t:'Let it rise once more. Strain into cups.',tm:2},
+ ],
+ tips:'Never boil chai too long after adding milk — it turns bitter. The quality of tea leaves makes all the difference.',
+ tags:['national','morning','anytime']},
+
+{id:'s3',name:'Bread Pakora',emoji:'🍞',cat:'snack',type:'veg',region:'north',
+ prep:10,cook:15,diff:'easy',cal:240,sunday:false,
+ desc:'Spiced potato-stuffed bread fritters. Quick tea-time snack everyone loves.',
+ ing:[
+  {n:'Bread slices',q:4,u:'',d:'4 thick slices',c:'grocery'},
+  {n:'Potato (boiled, mashed)',q:150,u:'g',d:'1 medium potato',c:'vegetable'},
+  {n:'Besan',q:100,u:'g',d:'¾ cup',c:'dal'},
+  {n:'Green chilli',q:5,u:'g',d:'1 no (in filling)',c:'vegetable'},
+  {n:'Garam masala',q:2,u:'g',d:'¼ tsp',c:'spice'},
+  {n:'Red chilli powder',q:2,u:'g',d:'¼ tsp (in batter)',c:'spice'},
+  {n:'Turmeric',q:2,u:'g',d:'¼ tsp (in batter)',c:'spice'},
+  {n:'Carom seeds (ajwain)',q:2,u:'g',d:'¼ tsp (in batter)',c:'spice'},
+  {n:'Oil',q:200,u:'ml',d:'for deep frying',c:'grocery'},
+  {n:'Salt',q:3,u:'g',d:'to taste',c:'staple'},
+ ],
+ steps:[
+  {n:1,t:'Mix mashed potato with chilli, garam masala and salt.',tm:3},
+  {n:2,t:'Make thick besan batter with water, turmeric, red chilli, ajwain and salt.',tm:3},
+  {n:3,t:'Spread potato filling between two bread slices. Press firmly.',tm:2},
+  {n:4,t:'Dip sandwich in besan batter. Coat all sides well.',tm:1},
+  {n:5,t:'Deep fry until golden and crisp. Drain. Serve with chutneys.',tm:8},
+ ],
+ tips:'Besan batter should be thick enough to coat. Press the sandwich well so it doesn\'t open in oil.',
+ tags:['tea-time','street food','North Indian']},
+
+{id:'s4',name:'Poha Chivda',emoji:'🍿',cat:'snack',type:'veg',region:'west',
+ prep:5,cook:15,diff:'easy',cal:190,sunday:false,
+ desc:'Crispy spiced flattened rice mix with peanuts and dried fruits. Maharashtrian evening snack.',
+ ing:[
+  {n:'Thin poha (flattened rice)',q:150,u:'g',d:'2 cups',c:'grocery'},
+  {n:'Peanuts',q:40,u:'g',d:'3 tbsp',c:'grocery'},
+  {n:'Cashews',q:20,u:'g',d:'10 nos',c:'grocery'},
+  {n:'Curry leaves',q:5,u:'g',d:'10 leaves',c:'vegetable'},
+  {n:'Green chilli',q:5,u:'g',d:'1 no (sliced)',c:'vegetable'},
+  {n:'Mustard seeds',q:3,u:'g',d:'½ tsp',c:'spice'},
+  {n:'Turmeric',q:2,u:'g',d:'¼ tsp',c:'spice'},
+  {n:'Sugar',q:5,u:'g',d:'1 tsp',c:'staple'},
+  {n:'Oil',q:20,u:'ml',d:'1½ tbsp',c:'grocery'},
+  {n:'Salt',q:3,u:'g',d:'to taste',c:'staple'},
+ ],
+ steps:[
+  {n:1,t:'Dry roast thin poha in a pan until crisp and light (5–7 min on low heat). Set aside.',tm:7},
+  {n:2,t:'Heat oil. Fry peanuts and cashews until golden. Add mustard seeds.',tm:3},
+  {n:3,t:'Add curry leaves, green chilli, turmeric. Sauté 30 seconds.',tm:1},
+  {n:4,t:'Add roasted poha, sugar and salt. Mix well on low heat 2 min.',tm:2},
+  {n:5,t:'Cool completely before storing in airtight box.',tm:10},
+ ],
+ tips:'Thin poha is essential for crispiness. Stays fresh in airtight box for 2 weeks.',
+ tags:['Maharashtrian','storage snack','Diwali','crispy']},
+
+{id:'s5',name:'Dhokla',emoji:'🍰',cat:'snack',type:'veg',region:'west',
+ prep:10,cook:20,diff:'medium',cal:180,sunday:false,
+ desc:'Steamed fermented gram flour snack. Soft, spongy and tangy — Gujarati classic.',
+ ing:[
+  {n:'Besan',q:150,u:'g',d:'1 cup',c:'dal'},
+  {n:'Curd',q:80,u:'ml',d:'⅓ cup',c:'dairy'},
+  {n:'Ginger-green chilli paste',q:15,u:'g',d:'1 tbsp',c:'vegetable'},
+  {n:'Turmeric',q:2,u:'g',d:'¼ tsp',c:'spice'},
+  {n:'ENO fruit salt',q:5,u:'g',d:'1 tsp',c:'grocery'},
+  {n:'Mustard seeds',q:3,u:'g',d:'½ tsp',c:'spice'},
+  {n:'Curry leaves',q:5,u:'g',d:'8 leaves',c:'vegetable'},
+  {n:'Green chilli',q:5,u:'g',d:'1 no (slit)',c:'vegetable'},
+  {n:'Sesame seeds',q:5,u:'g',d:'1 tsp',c:'grocery'},
+  {n:'Sugar',q:10,u:'g',d:'2 tsp',c:'staple'},
+  {n:'Lemon juice',q:15,u:'ml',d:'1 tbsp',c:'vegetable'},
+  {n:'Oil',q:15,u:'ml',d:'1 tbsp',c:'grocery'},
+  {n:'Salt',q:3,u:'g',d:'to taste',c:'staple'},
+ ],
+ steps:[
+  {n:1,t:'Mix besan, curd, ginger-chilli paste, turmeric, salt and water to thick smooth batter.',tm:5},
+  {n:2,t:'Add ENO to batter. Mix quickly — it will foam. Pour immediately into greased plate.',tm:1},
+  {n:3,t:'Steam 12–15 minutes until set (toothpick clean).',tm:15},
+  {n:4,t:'Cool. Cut into squares. Temper: heat oil, add mustard, curry leaves, chilli, sesame.',tm:3},
+  {n:5,t:'Mix sugar and lemon juice with 2 tbsp water. Pour over dhokla.',tm:1},
+  {n:6,t:'Pour tempering over dhokla. Garnish with coriander.',tm:0},
+ ],
+ tips:'ENO creates the spongy texture — add it at the very last moment and steam immediately.',
+ tags:['Gujarati','healthy','steamed','party snack']},
+
+{id:'s6',name:'Aloo Tikki',emoji:'🥔',cat:'snack',type:'veg',region:'north',
+ prep:15,cook:20,diff:'easy',cal:230,sunday:false,
+ desc:'Crispy potato patties with spices. North India\'s most beloved street snack.',
+ ing:[
+  {n:'Potato (boiled)',q:400,u:'g',d:'3 medium potatoes',c:'vegetable'},
+  {n:'Green chilli',q:8,u:'g',d:'1–2 nos',c:'vegetable'},
+  {n:'Ginger',q:8,u:'g',d:'½ inch grated',c:'vegetable'},
+  {n:'Coriander leaves',q:15,u:'g',d:'handful',c:'vegetable'},
+  {n:'Bread crumbs or cornflour',q:20,u:'g',d:'2 tbsp (for binding)',c:'grocery'},
+  {n:'Cumin powder',q:3,u:'g',d:'½ tsp',c:'spice'},
+  {n:'Chaat masala',q:3,u:'g',d:'½ tsp',c:'spice'},
+  {n:'Amchur',q:3,u:'g',d:'½ tsp',c:'spice'},
+  {n:'Oil',q:30,u:'ml',d:'2 tbsp for shallow frying',c:'grocery'},
+  {n:'Salt',q:3,u:'g',d:'to taste',c:'staple'},
+ ],
+ steps:[
+  {n:1,t:'Mash boiled potatoes. Add all spices, chilli, ginger, coriander and bread crumbs.',tm:5},
+  {n:2,t:'Shape into flat round patties (about 1cm thick, 7cm wide).',tm:5},
+  {n:3,t:'Heat oil in flat pan on medium heat.',tm:2},
+  {n:4,t:'Cook tikki 3–4 min each side until deep golden and crisp.',tm:8},
+  {n:5,t:'Serve with green chutney, tamarind chutney and curd.',tm:0},
+ ],
+ tips:'Potatoes must be completely dry when mashed. Too much moisture = tikki that falls apart in the pan.',
+ tags:['North Indian','street food','chaat']},
+
+{id:'s7',name:'Bhel Puri',emoji:'🍡',cat:'snack',type:'veg',region:'west',
+ prep:15,cook:0,diff:'easy',cal:210,sunday:false,
+ desc:'Puffed rice chaat with chutneys, onion and sev. Mumbai beach food at home.',
+ ing:[
+  {n:'Puffed rice (murmura)',q:100,u:'g',d:'3 cups',c:'grocery'},
+  {n:'Sev (thin)',q:30,u:'g',d:'small handful',c:'grocery'},
+  {n:'Onion (finely chopped)',q:60,u:'g',d:'1 small onion',c:'vegetable'},
+  {n:'Tomato (finely chopped)',q:60,u:'g',d:'1 small tomato',c:'vegetable'},
+  {n:'Boiled potato (cubed)',q:80,u:'g',d:'½ medium potato',c:'vegetable'},
+  {n:'Green chutney',q:30,u:'ml',d:'2 tbsp',c:'grocery'},
+  {n:'Tamarind chutney',q:30,u:'ml',d:'2 tbsp',c:'grocery'},
+  {n:'Chaat masala',q:5,u:'g',d:'1 tsp',c:'spice'},
+  {n:'Lemon juice',q:10,u:'ml',d:'1 tbsp',c:'vegetable'},
+  {n:'Coriander leaves',q:10,u:'g',d:'handful',c:'vegetable'},
+  {n:'Raw mango (grated)',q:20,u:'g',d:'optional for summer',c:'vegetable'},
+ ],
+ steps:[
+  {n:1,t:'Have all ingredients chopped and chutneys ready.',tm:15},
+  {n:2,t:'Combine puffed rice, onion, tomato, potato and raw mango in a large bowl.',tm:2},
+  {n:3,t:'Add green chutney, tamarind chutney, chaat masala and lemon juice.',tm:1},
+  {n:4,t:'Toss quickly. Top with sev and coriander.',tm:1},
+  {n:5,t:'Serve IMMEDIATELY — bhel goes soggy within minutes.',tm:0},
+ ],
+ tips:'Make and serve in under 2 minutes — the crisp sev goes soggy fast. Adjust chutneys to taste.',
+ tags:['Mumbai','no-cook','chaat','summer']},
+
+{id:'s8',name:'Moong Sprouts Chaat',emoji:'🌱',cat:'snack',type:'veg',region:'national',
+ prep:1440,cook:0,diff:'easy',cal:150,sunday:false,
+ desc:'Sprouted moong beans tossed with lemon, spices and vegetables. Healthy, raw and nutrient-dense.',
+ ing:[
+  {n:'Moong beans (sprouted)',q:150,u:'g',d:'1 cup sprouted',c:'dal'},
+  {n:'Onion (finely chopped)',q:40,u:'g',d:'¼ small onion',c:'vegetable'},
+  {n:'Tomato (finely chopped)',q:40,u:'g',d:'¼ tomato',c:'vegetable'},
+  {n:'Green chilli',q:5,u:'g',d:'½ no (minced)',c:'vegetable'},
+  {n:'Coriander leaves',q:10,u:'g',d:'handful',c:'vegetable'},
+  {n:'Lemon juice',q:15,u:'ml',d:'1 tbsp',c:'vegetable'},
+  {n:'Chaat masala',q:3,u:'g',d:'½ tsp',c:'spice'},
+  {n:'Black salt (kala namak)',q:2,u:'g',d:'¼ tsp',c:'spice'},
+  {n:'Cucumber',q:40,u:'g',d:'¼ small cucumber',c:'vegetable'},
+ ],
+ steps:[
+  {n:1,t:'Soak moong beans overnight. Drain, wrap in wet cloth. Sprout 12–24 hours.',tm:1440},
+  {n:2,t:'Rinse sprouts. Mix with all chopped vegetables.',tm:3},
+  {n:3,t:'Add lemon juice, chaat masala, black salt. Toss well.',tm:2},
+  {n:4,t:'Garnish with coriander. Serve immediately.',tm:0},
+ ],
+ tips:'Sprout until the tail is only 0.5cm — longer sprouts become bitter. Kala namak gives authentic chaat flavour.',
+ tags:['healthy','raw','high-protein','diet-friendly']},
+
+{id:'s9',name:'Roasted Makhana',emoji:'🫘',cat:'snack',type:'veg',region:'national',
+ prep:2,cook:10,diff:'easy',cal:130,sunday:false,
+ desc:'Spiced roasted fox nuts. Light, crunchy and surprisingly addictive healthy snack.',
+ ing:[
+  {n:'Makhana (fox nuts)',q:100,u:'g',d:'3 cups',c:'grocery'},
+  {n:'Ghee',q:10,u:'g',d:'1 tsp',c:'dairy'},
+  {n:'Turmeric',q:1,u:'g',d:'pinch',c:'spice'},
+  {n:'Red chilli powder',q:2,u:'g',d:'¼ tsp',c:'spice'},
+  {n:'Chaat masala',q:3,u:'g',d:'½ tsp',c:'spice'},
+  {n:'Salt',q:2,u:'g',d:'to taste',c:'staple'},
+ ],
+ steps:[
+  {n:1,t:'Heat ghee in a pan. Add makhana. Roast on low heat 8–10 min, stirring constantly.',tm:10},
+  {n:2,t:'When crisp and slightly golden, add all spices and salt.',tm:1},
+  {n:3,t:'Toss well. Cool completely. Store in airtight container.',tm:5},
+ ],
+ tips:'Patience is key — roast on low heat for even crispiness. They go from perfect to burnt very quickly.',
+ tags:['healthy','guilt-free','fasting-friendly','diet snack']},
+
+{id:'s10',name:'Mini Onion Pakora',emoji:'🧅',cat:'snack',type:'veg',region:'national',
+ prep:5,cook:15,diff:'easy',cal:200,sunday:false,
+ desc:'Crispy onion fritters in spiced besan batter. The perfect rainy day tea-time snack.',
+ ing:[
+  {n:'Onion (thinly sliced)',q:200,u:'g',d:'2 medium onions',c:'vegetable'},
+  {n:'Besan',q:100,u:'g',d:'¾ cup',c:'dal'},
+  {n:'Green chilli',q:5,u:'g',d:'1 no (finely chopped)',c:'vegetable'},
+  {n:'Coriander leaves',q:10,u:'g',d:'small handful',c:'vegetable'},
+  {n:'Turmeric',q:2,u:'g',d:'¼ tsp',c:'spice'},
+  {n:'Red chilli powder',q:3,u:'g',d:'½ tsp',c:'spice'},
+  {n:'Carom seeds (ajwain)',q:2,u:'g',d:'¼ tsp',c:'spice'},
+  {n:'Oil',q:200,u:'ml',d:'for deep frying',c:'grocery'},
+  {n:'Salt',q:3,u:'g',d:'to taste',c:'staple'},
+ ],
+ steps:[
+  {n:1,t:'Mix sliced onion with all ingredients except oil. Sprinkle 1 tbsp water if needed. Mix well.',tm:3},
+  {n:2,t:'Heat oil to 180°C.',tm:4},
+  {n:3,t:'Drop small clusters of onion batter into oil. Don\'t add too many at once.',tm:1},
+  {n:4,t:'Fry until golden and crisp (3–4 min). Drain on paper.',tm:4},
+  {n:5,t:'Serve immediately with mint chutney and masala chai.',tm:0},
+ ],
+ tips:'The batter is the onion itself — very little water. Too much water makes pakoras soft, not crispy.',
+ tags:['rainy day','tea-time','national favourite','crispy']},
+
+/* ─── DESSERTS (5) ───────────────────────────────────── */
+{id:'ds1',name:'Sooji Halwa',emoji:'🍮',cat:'dessert',type:'veg',region:'national',
+ prep:5,cook:15,diff:'easy',cal:280,sunday:false,
+ desc:'Semolina pudding with ghee, sugar and cardamom. Quick Indian dessert for any occasion.',
+ ing:[
+  {n:'Semolina (Rava)',q:100,u:'g',d:'⅔ cup',c:'grocery'},
+  {n:'Ghee',q:40,u:'g',d:'2 tbsp',c:'dairy'},
+  {n:'Sugar',q:80,u:'g',d:'⅓ cup or to taste',c:'staple'},
+  {n:'Water',q:300,u:'ml',d:'1½ cups',c:'staple'},
+  {n:'Cardamom powder',q:2,u:'g',d:'¼ tsp',c:'spice'},
+  {n:'Cashews',q:15,u:'g',d:'8 nos',c:'grocery'},
+  {n:'Raisins',q:15,u:'g',d:'1 tbsp',c:'grocery'},
+  {n:'Saffron',q:0.2,u:'g',d:'few strands (optional)',c:'spice'},
+ ],
+ steps:[
+  {n:1,t:'Heat ghee. Fry cashews and raisins until golden. Remove and set aside.',tm:2},
+  {n:2,t:'In same ghee, roast rava on medium heat 7–8 min until golden and fragrant.',tm:8},
+  {n:3,t:'Carefully add water (it will splutter). Stir immediately.',tm:1},
+  {n:4,t:'Add sugar and cardamom. Keep stirring until halwa thickens and ghee separates.',tm:5},
+  {n:5,t:'Garnish with fried cashews and raisins. Serve hot.',tm:0},
+ ],
+ tips:'Roast rava well — under-roasted halwa has a raw, starchy taste. Adding water is the only tricky step — be careful of spluttering.',
+ tags:['quick dessert','puja prasad','national']},
+
+{id:'ds2',name:'Rice Kheer',emoji:'🥛',cat:'dessert',type:'veg',region:'national',
+ prep:5,cook:45,diff:'medium',cal:260,sunday:true,
+ desc:'Creamy rice pudding with cardamom and saffron. The most beloved Indian dessert.',
+ ing:[
+  {n:'Basmati rice',q:50,u:'g',d:'¼ cup',c:'grocery'},
+  {n:'Whole milk',q:800,u:'ml',d:'4 cups',c:'dairy'},
+  {n:'Sugar',q:80,u:'g',d:'⅓ cup or to taste',c:'staple'},
+  {n:'Cardamom powder',q:2,u:'g',d:'¼ tsp',c:'spice'},
+  {n:'Saffron',q:0.2,u:'g',d:'few strands',c:'spice'},
+  {n:'Cashews',q:15,u:'g',d:'8 nos',c:'grocery'},
+  {n:'Almonds (slivered)',q:10,u:'g',d:'1 tbsp',c:'grocery'},
+  {n:'Raisins',q:10,u:'g',d:'1 tsp',c:'grocery'},
+  {n:'Ghee',q:5,u:'g',d:'½ tsp (for frying nuts)',c:'dairy'},
+  {n:'Rose water',q:5,u:'ml',d:'½ tsp optional',c:'grocery'},
+ ],
+ steps:[
+  {n:1,t:'Wash rice. Soak 15 min. Drain.',tm:15},
+  {n:2,t:'Heat milk in heavy pan. Add rice. Bring to boil, then simmer on low.',tm:5},
+  {n:3,t:'Stir frequently. Cook 30–35 min until rice is very soft and milk thickens.',tm:35},
+  {n:4,t:'Add sugar, cardamom and saffron. Stir and cook 5 min more.',tm:5},
+  {n:5,t:'Fry nuts in ghee until golden. Add to kheer. Serve warm or chilled.',tm:3},
+ ],
+ tips:'Low and slow is the key — kheer should never be rushed. A heavy-bottomed pan prevents burning.',
+ tags:['festive','Sunday special','creamy','classic']},
+
+{id:'ds3',name:'Gajar Halwa',emoji:'🥕',cat:'dessert',type:'veg',region:'north',
+ prep:10,cook:40,diff:'medium',cal:320,sunday:true,
+ desc:'Slow-cooked carrot pudding with milk, ghee and khoya. A North Indian winter celebration.',
+ ing:[
+  {n:'Carrot (grated)',q:400,u:'g',d:'3 large red carrots',c:'vegetable'},
+  {n:'Whole milk',q:300,u:'ml',d:'1½ cups',c:'dairy'},
+  {n:'Khoya (mawa)',q:80,u:'g',d:'⅓ cup',c:'dairy'},
+  {n:'Sugar',q:80,u:'g',d:'⅓ cup or to taste',c:'staple'},
+  {n:'Ghee',q:30,u:'g',d:'2 tbsp',c:'dairy'},
+  {n:'Cardamom powder',q:2,u:'g',d:'¼ tsp',c:'spice'},
+  {n:'Cashews',q:15,u:'g',d:'8 nos',c:'grocery'},
+  {n:'Almonds',q:10,u:'g',d:'1 tbsp',c:'grocery'},
+  {n:'Raisins',q:10,u:'g',d:'1 tsp',c:'grocery'},
+ ],
+ steps:[
+  {n:1,t:'Heat ghee. Fry nuts and raisins golden. Remove and set aside.',tm:3},
+  {n:2,t:'Add grated carrot to ghee. Sauté on medium heat 5 min.',tm:5},
+  {n:3,t:'Add milk. Cook on medium-low heat until milk is absorbed (20–25 min), stirring regularly.',tm:25},
+  {n:4,t:'Add sugar and khoya. Cook 10 min until halwa dries and ghee appears on sides.',tm:10},
+  {n:5,t:'Add cardamom powder and fried nuts. Serve warm.',tm:1},
+ ],
+ tips:'Use red Delhi carrots for deep colour and sweetness. Khoya makes it rich — don\'t skip it.',
+ tags:['North Indian','winter dessert','Sunday special','Diwali']},
+
+{id:'ds4',name:'Payasam',emoji:'🥛',cat:'dessert',type:'veg',region:'south',
+ prep:5,cook:25,diff:'easy',cal:240,sunday:false,
+ desc:'South Indian vermicelli milk pudding. Quick, creamy and made for festivals.',
+ ing:[
+  {n:'Vermicelli (semiya)',q:80,u:'g',d:'½ cup',c:'grocery'},
+  {n:'Whole milk',q:500,u:'ml',d:'2½ cups',c:'dairy'},
+  {n:'Sugar',q:60,u:'g',d:'¼ cup or to taste',c:'staple'},
+  {n:'Cardamom powder',q:2,u:'g',d:'¼ tsp',c:'spice'},
+  {n:'Cashews',q:15,u:'g',d:'8 nos',c:'grocery'},
+  {n:'Raisins',q:10,u:'g',d:'1 tsp',c:'grocery'},
+  {n:'Ghee',q:10,u:'g',d:'1 tsp',c:'dairy'},
+  {n:'Saffron',q:0.2,u:'g',d:'few strands (optional)',c:'spice'},
+ ],
+ steps:[
+  {n:1,t:'Heat ghee. Fry cashews and raisins until golden. Remove.',tm:2},
+  {n:2,t:'In same pan, roast vermicelli until light golden (3 min).',tm:3},
+  {n:3,t:'Add milk. Bring to boil, then simmer until vermicelli is cooked (10 min).',tm:12},
+  {n:4,t:'Add sugar, cardamom and saffron. Simmer 5 min.',tm:5},
+  {n:5,t:'Add fried nuts. Serve warm or cold.',tm:0},
+ ],
+ tips:'Roasting vermicelli prevents it going mushy. Payasam thickens on cooling — add warm milk to adjust.',
+ tags:['South Indian','festival','quick dessert']},
+
+{id:'ds5',name:'Mango Shrikhand',emoji:'🥭',cat:'dessert',type:'veg',region:'west',
+ prep:240,cook:0,diff:'easy',cal:220,sunday:false,
+ desc:'Strained yogurt with mango pulp and saffron. Gujarati and Maharashtrian summer favourite.',
+ ing:[
+  {n:'Thick curd (hung curd)',q:400,u:'g',d:'2 cups strained overnight',c:'dairy'},
+  {n:'Mango pulp',q:150,u:'g',d:'½ cup (alphonso preferred)',c:'vegetable'},
+  {n:'Sugar (powdered)',q:50,u:'g',d:'¼ cup or to taste',c:'staple'},
+  {n:'Cardamom powder',q:2,u:'g',d:'¼ tsp',c:'spice'},
+  {n:'Saffron',q:0.2,u:'g',d:'few strands in 1 tsp milk',c:'spice'},
+  {n:'Pistachios (chopped)',q:10,u:'g',d:'1 tbsp for garnish',c:'grocery'},
+ ],
+ steps:[
+  {n:1,t:'Hang curd in muslin cloth for 4 hours until all whey drains. You need thick chakka.',tm:240},
+  {n:2,t:'Mix hung curd, mango pulp, powdered sugar, cardamom and saffron milk.',tm:3},
+  {n:3,t:'Whisk until smooth and creamy.',tm:2},
+  {n:4,t:'Refrigerate 1 hour. Garnish with pistachios. Serve chilled.',tm:60},
+ ],
+ tips:'The quality of mango matters most here. Alphonso mango gives the best flavour and colour.',
+ tags:['Gujarati','Maharashtrian','no-cook','summer']},
+];
+
+/* ══════════════════════════════════════════════════════════
+   FILTER + RENDER
+══════════════════════════════════════════════════════════ */
+function setChip(el) {
+  const filter = el.dataset.filter;
+  const val    = el.dataset.val;
+  document.querySelectorAll(`.chip[data-filter="${filter}"]`)
+    .forEach(c => c.classList.remove('on'));
+  el.classList.add('on');
+  F[filter] = val;
+  applyFilters();
+}
+
+function applyFilters() {
+  const q = document.getElementById('searchInp').value.toLowerCase().trim();
+  const now = RECIPES.filter(r => {
+    if (F.cat !== 'all' && r.cat !== F.cat) return false;
+    if (F.type !== 'all' && r.type !== F.type) return false;
+    if (F.region !== 'all' && r.region !== F.region) return false;
+    if (F.time !== 'all' && (r.prep + r.cook) > parseInt(F.time)) return false;
+    if (F.diff !== 'all') {
+      if (F.diff === 'fav') { if (!FAVS.has(r.id)) return false; }
+      else if (r.diff !== F.diff) return false;
+    }
+    if (q) {
+      const hay = r.name.toLowerCase() + ' ' + r.desc.toLowerCase() + ' ' +
+        r.tags.join(' ') + ' ' + r.ing.map(i => i.n).join(' ').toLowerCase();
+      if (!hay.includes(q)) return false;
+    }
+    return true;
+  });
+  document.getElementById('statsCount').textContent = now.length;
+  renderGrid(now);
+}
+
+/* ══════════════════════════════════════════════════════════
+   RENDER GRID
+══════════════════════════════════════════════════════════ */
+function renderGrid(list) {
+  const grid = document.getElementById('recipeGrid');
+  if (!list.length) {
+    grid.innerHTML = `<div class="empty-state" style="grid-column:1/-1">
+      <div class="es-icon">🍽️</div>
+      <h3>No recipes found</h3>
+      <p>Try adjusting your filters or search term</p>
+    </div>`;
+    return;
+  }
+  const avgRating = id => {
+    const rv = RATINGS[id];
+    return rv ? `${'★'.repeat(rv)}${'☆'.repeat(5-rv)}` : '☆☆☆☆☆';
+  };
+  const typeBadge = t => t === 'veg'
+    ? '<span class="type-badge badge-veg">Veg</span>'
+    : t === 'egg'
+    ? '<span class="type-badge badge-egg">Egg</span>'
+    : '<span class="type-badge badge-nv">Non-veg</span>';
+  const madeTimes = id => MADE[id] ? `<span style="font-size:10px;color:var(--gr)">✓ Made ${MADE[id]}x</span>` : '';
+
+  grid.innerHTML = list.map(r => `
+    <div class="rcard" onclick="openRecipe('${r.id}')">
+      <button class="rc-fav${FAVS.has(r.id)?' on':''}"
+        onclick="event.stopPropagation();toggleFav('${r.id}',this)"
+        title="Favourite">❤️</button>
+      <div class="rc-top">
+        <div class="rc-emoji">${r.emoji}</div>
+        <div class="rc-info">
+          <div class="rc-name">${r.name}</div>
+          <div class="rc-region">${regionLabel(r.region)} · ${catLabel(r.cat)}</div>
+        </div>
+        <div class="type-dot ${r.type === 'nonveg' ? 'nonveg' : r.type}"></div>
+      </div>
+      <div class="rc-desc">${r.desc}</div>
+      <div class="rc-meta">
+        <span class="rc-pill time">⏱ ${r.prep+r.cook}m</span>
+        <span class="rc-pill">${r.diff}</span>
+        <span class="rc-pill cal">~${r.cal} kcal</span>
+        ${r.sunday ? '<span class="rc-pill" style="border-color:rgba(251,191,36,.3);color:var(--ac)">☀️ Sunday</span>' : ''}
+      </div>
+      <div class="rc-bottom">
+        <div class="rc-stars">${avgRating(r.id)}</div>
+        ${madeTimes(r.id)}
+      </div>
+      ${typeBadge(r.type)}
+    </div>`).join('');
+}
+
+function regionLabel(r) {
+  return {north:'🏔️ North',south:'🌴 South',east:'🌊 East',west:'🏜️ West',national:'🇮🇳 National'}[r] || r;
+}
+function catLabel(c) {
+  return {breakfast:'Breakfast',lunch:'Lunch',dinner:'Dinner',snack:'Snack',dessert:'Dessert'}[c] || c;
+}
+
+function toggleFav(id, btn) {
+  if (FAVS.has(id)) { FAVS.delete(id); btn.classList.remove('on'); }
+  else { FAVS.add(id); btn.classList.add('on'); }
+  localStorage.setItem('icp_favs', JSON.stringify([...FAVS]));
+}
+
+/* ══════════════════════════════════════════════════════════
+   RECIPE MODAL
+══════════════════════════════════════════════════════════ */
+function openRecipe(id) {
+  const r = RECIPES.find(x => x.id === id);
+  if (!r) return;
+  currentRecipeId = id;
+  currentServings = 2;
+  checkedIngs = new Set();
+  document.getElementById('mTitle').textContent = `${r.emoji} ${r.name}`;
+  renderModalBody(r, 2);
+  document.getElementById('recipeModal').style.display = 'flex';
+  document.body.style.overflow = 'hidden';
+}
+
+function renderModalBody(r, servings) {
+  const scale = servings / 2;
+  const fmtQty = (q, u) => {
+    const scaled = q * scale;
+    const val = scaled % 1 === 0 ? scaled.toString() : scaled.toFixed(1);
+    return u ? `${val}${u}` : val;
+  };
+  const typePill = r.type === 'veg'
+    ? '<span class="mpill type-veg">🌿 Vegetarian</span>'
+    : r.type === 'egg'
+    ? '<span class="mpill type-egg">🥚 Egg</span>'
+    : '<span class="mpill type-nv">🍗 Non-vegetarian</span>';
+  const isFav = FAVS.has(r.id);
+  const madeCount = MADE[r.id] || 0;
+  const myRating  = RATINGS[r.id] || 0;
+
+  document.getElementById('mBody').innerHTML = `
+    <div class="r-hero">
+      <div class="r-hero-emoji">${r.emoji}</div>
+      <div class="r-hero-info">
+        <h2>${r.name}</h2>
+        <div class="r-region">${regionLabel(r.region)} · ${catLabel(r.cat)}</div>
+        <div class="meta-row">
+          <span class="mpill time">⏱ Prep: ${r.prep}m</span>
+          <span class="mpill time">🔥 Cook: ${r.cook}m</span>
+          <span class="mpill cal">~${r.cal} kcal/serving</span>
+          <span class="mpill diff">📊 ${r.diff[0].toUpperCase()+r.diff.slice(1)}</span>
+          ${typePill}
+          ${r.sunday ? '<span class="mpill" style="border-color:rgba(251,191,36,.3);color:var(--ac)">☀️ Sunday Special</span>' : ''}
+        </div>
+      </div>
+    </div>
+
+    <p style="font-size:14px;color:var(--mu);margin-bottom:4px;line-height:1.6">${r.desc}</p>
+
+    <!-- Servings -->
+    <div class="serv-ctrl">
+      <div class="serv-lbl">Servings — <strong>all quantities scale automatically</strong></div>
+      <button class="serv-btn" onclick="changeServings(-1)">−</button>
+      <div class="serv-val" id="servVal">${servings}</div>
+      <button class="serv-btn" onclick="changeServings(1)">+</button>
+    </div>
+
+    <!-- Ingredients -->
+    <div class="sec-lbl">🧾 Ingredients (for ${servings} serving${servings>1?'s':''})</div>
+    <div id="ing-list">
+      ${r.ing.map((ing,i) => `
+        <div class="ing-row" id="ing-row-${i}">
+          <input class="ing-chk" type="checkbox" id="chk-${i}"
+            onchange="toggleIng(${i})" ${checkedIngs.has(i)?'checked':''}>
+          <label class="ing-name${checkedIngs.has(i)?' checked':''}" for="chk-${i}">${ing.n}
+            <span class="ing-cat-badge">${ing.c}</span>
+          </label>
+          <div class="ing-right">
+            <div class="ing-qty">${fmtQty(ing.q, ing.u)}</div>
+            <div class="ing-desc">${ing.d.replace(/^\d+/, m => Math.round(parseFloat(m)*scale) || m)}</div>
+          </div>
+        </div>`).join('')}
+    </div>
+
+    <!-- Steps -->
+    <div class="sec-lbl">👨‍🍳 Method</div>
+    ${r.steps.map(s => `
+      <div class="step-row">
+        <div class="step-n">${s.n}</div>
+        <div class="step-body">
+          <div class="step-txt">${s.t}</div>
+          ${s.tm > 0 ? `<div class="step-time">⏱ ~${s.tm} min</div>` : ''}
+        </div>
+      </div>`).join('')}
+
+    <!-- Tips -->
+    <div class="sec-lbl">💡 Chef Tips</div>
+    <div class="tips-box"><strong>Tips:</strong> ${r.tips}</div>
+
+    <!-- Tags -->
+    <div class="tags-row">${r.tags.map(t => `<span class="tag">${t}</span>`).join('')}</div>
+
+    <!-- Rating -->
+    <div class="sec-lbl">⭐ Your Rating & Notes</div>
+    <div class="rating-section" style="background:var(--bg);border:1px solid var(--bor);border-radius:10px;padding:14px">
+
+      <!-- Made it button -->
+      <button class="made-it-btn${madeCount>0?' done':''}" onclick="markMade('${r.id}')">
+        ${madeCount > 0 ? `✅ Made it ${madeCount} time${madeCount>1?'s':''}` : '🍳 Mark as Made'}
+      </button>
+
+      <!-- Star rating -->
+      <div style="font-size:12px;color:var(--mu);margin-bottom:6px">Your rating:</div>
+      <div class="stars-input" id="starsInput">
+        ${[1,2,3,4,5].map(n =>
+          `<button class="star-btn${n<=myRating?' on':''}" onclick="setRating('${r.id}',${n})"
+            data-n="${n}">★</button>`).join('')}
+      </div>
+
+      <!-- Quick tags -->
+      <div style="font-size:12px;color:var(--mu);margin:8px 0 4px">Quick tags:</div>
+      <div class="tag-btns" id="quickTags">
+        ${['Too spicy','Kids loved it','Easy to make','Takes too long','Will make again','Too oily','Perfect!','Needs more salt'].map(t =>
+          `<button class="tag-btn" onclick="toggleQTag(this)">${t}</button>`).join('')}
+      </div>
+
+      <!-- Review text -->
+      <textarea class="review-input" id="reviewTxt" placeholder="Write your notes — what worked, what you'd change next time…" rows="2"></textarea>
+
+      <button class="save-review-btn" onclick="saveReview('${r.id}')">💾 Save Notes</button>
+
+      <!-- Past reviews -->
+      <div id="pastReviews"></div>
+    </div>
+
+    <!-- Action buttons -->
+    <div class="modal-actions">
+      <button class="mact-btn fav-btn${isFav?' on':''}" id="favBtn" onclick="toggleFavModal('${r.id}')">
+        ${isFav ? '❤️ Saved' : '🤍 Save Recipe'}
+      </button>
+      <button class="mact-btn" onclick="addToShoppingList('${r.id}')">
+        🛒 Add to Shopping List
+      </button>
+    </div>
+  `;
+
+  // Load saved review
+  loadReview(r.id);
+}
+
+function changeServings(delta) {
+  const r = RECIPES.find(x => x.id === currentRecipeId);
+  if (!r) return;
+  currentServings = Math.max(1, Math.min(10, currentServings + delta));
+  document.getElementById('servVal').textContent = currentServings;
+  renderModalBody(r, currentServings);
+}
+
+function toggleIng(i) {
+  if (checkedIngs.has(i)) checkedIngs.delete(i);
+  else checkedIngs.add(i);
+  const label = document.querySelector(`#ing-row-${i} .ing-name`);
+  if (label) label.classList.toggle('checked', checkedIngs.has(i));
+}
+
+function setRating(id, n) {
+  RATINGS[id] = n;
+  localStorage.setItem('icp_ratings', JSON.stringify(RATINGS));
+  document.querySelectorAll('.star-btn').forEach(b => {
+    b.classList.toggle('on', parseInt(b.dataset.n) <= n);
+  });
+  // Re-render card stars
+}
+
+function markMade(id) {
+  MADE[id] = (MADE[id] || 0) + 1;
+  localStorage.setItem('icp_made', JSON.stringify(MADE));
+  const btn = document.querySelector('.made-it-btn');
+  if (btn) {
+    btn.textContent = `✅ Made it ${MADE[id]} time${MADE[id]>1?'s':''}`;
+    btn.classList.add('done');
+  }
+}
+
+function toggleQTag(btn) { btn.classList.toggle('on'); }
+
+function saveReview(id) {
+  const txt   = document.getElementById('reviewTxt').value.trim();
+  const stars = RATINGS[id] || 0;
+  const tags  = [...document.querySelectorAll('.tag-btn.on')].map(b => b.textContent);
+  const existing = JSON.parse(localStorage.getItem('icp_reviews') || '{}');
+  if (!existing[id]) existing[id] = [];
+  existing[id].unshift({ date: new Date().toLocaleDateString('en-IN'), stars, tags, txt });
+  existing[id] = existing[id].slice(0, 5); // keep last 5
+  localStorage.setItem('icp_reviews', JSON.stringify(existing));
+  loadReview(id);
+  document.getElementById('reviewTxt').value = '';
+  document.querySelectorAll('.tag-btn').forEach(b => b.classList.remove('on'));
+}
+
+function loadReview(id) {
+  const all = JSON.parse(localStorage.getItem('icp_reviews') || '{}');
+  const reviews = all[id] || [];
+  const el = document.getElementById('pastReviews');
+  if (!el || !reviews.length) return;
+  el.innerHTML = `<div style="font-size:11px;font-weight:700;color:var(--su);text-transform:uppercase;letter-spacing:.06em;margin:10px 0 6px;border-top:1px solid var(--bor);padding-top:8px">Your past notes</div>`
+    + reviews.map(rv => `
+      <div style="padding:8px 0;border-bottom:1px solid var(--bor);font-size:12px;color:var(--mu)">
+        <div style="display:flex;justify-content:space-between;margin-bottom:2px">
+          <span style="color:var(--ac)">${'★'.repeat(rv.stars)}${'☆'.repeat(5-rv.stars)}</span>
+          <span style="font-size:10px;color:var(--su)">${rv.date}</span>
+        </div>
+        ${rv.tags.length ? `<div style="display:flex;gap:4px;flex-wrap:wrap;margin-bottom:4px">${rv.tags.map(t=>`<span style="font-size:10px;padding:1px 6px;background:var(--bg);border:1px solid var(--bor);border-radius:999px;color:var(--su)">${t}</span>`).join('')}</div>` : ''}
+        ${rv.txt ? `<div>${rv.txt}</div>` : ''}
+      </div>`).join('');
+}
+
+function toggleFavModal(id) {
+  const btn = document.getElementById('favBtn');
+  if (FAVS.has(id)) {
+    FAVS.delete(id);
+    btn.textContent = '🤍 Save Recipe';
+    btn.classList.remove('on');
+  } else {
+    FAVS.add(id);
+    btn.textContent = '❤️ Saved';
+    btn.classList.add('on');
+  }
+  localStorage.setItem('icp_favs', JSON.stringify([...FAVS]));
+}
+
+function addToShoppingList(id) {
+  const r = RECIPES.find(x => x.id === id);
+  if (!r) return;
+  const existing = JSON.parse(localStorage.getItem('icp_shoplist') || '[]');
+  const newItems = r.ing.map(i => ({
+    name: i.n, qty: Math.round(i.q * currentServings / 2 * 10) / 10,
+    unit: i.u, desc: i.d, cat: i.c, from: r.name, bought: false,
+  }));
+  // Merge duplicates
+  newItems.forEach(ni => {
+    const ex = existing.find(e => e.name === ni.name && e.cat === ni.cat);
+    if (ex && ni.unit === ex.unit) ex.qty += ni.qty;
+    else existing.push(ni);
+  });
+  localStorage.setItem('icp_shoplist', JSON.stringify(existing));
+  closeModal();
+  alert(`✅ ${r.name} ingredients added to Shopping List!\n\nGo to Shopping tab to view.`);
+}
+
+function closeModal() {
+  document.getElementById('recipeModal').style.display = 'none';
+  document.body.style.overflow = '';
+  currentRecipeId = null;
+  applyFilters(); // refresh cards to show updated ratings/favourites
+}
+
+function closeModalCheck(e) {
+  if (e.target === document.getElementById('recipeModal')) closeModal();
+}
+
+/* ══════════════════════════════════════════════════════════
+   PAGE NAVIGATION
+══════════════════════════════════════════════════════════ */
+function showPage(id, btn) {
+  document.querySelectorAll('.page').forEach(p => p.classList.remove('on'));
+  document.querySelectorAll('.ptab').forEach(t => t.classList.remove('on'));
+  document.getElementById('page-'+id).classList.add('on');
+  if (btn) btn.classList.add('on');
+}
+
+/* ══════════════════════════════════════════════════════════
+   INIT
+══════════════════════════════════════════════════════════ */
+applyFilters();
+</script>
+
+<script src="/cookie-consent.js"></script>
+<script src="tool-common.js"></script>
+</body>
+</html>

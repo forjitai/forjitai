@@ -1,0 +1,130 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="UTF-8"/><meta name="viewport" content="width=device-width,initial-scale=1.0"/>
+<title>Roman Numeral Converter — Forjit AI | Decimal to Roman Numeral</title>
+<meta name="description" content="Free Roman numeral converter. Convert numbers to Roman numerals and Roman numerals to numbers instantly. Supports numbers 1 to 3,999,999."/>
+<meta name="keywords" content="roman numeral converter, decimal to roman numeral, roman numeral to number, roman numerals calculator"/>
+<link rel="canonical" href="https://www.forjitai.in/tools/roman-numeral.html"/>
+<link rel="stylesheet" href="tools.css"/>
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-DYR402JFVG"></script>
+<script>window.dataLayer=window.dataLayer||[];function gtag(){dataLayer.push(arguments);}gtag('js',new Date());gtag('config','G-DYR402JFVG');</script>
+  <meta name="robots" content="index,follow,max-snippet:-1,max-image-preview:large"/>
+  <meta property="og:type"         content="website"/>
+  <meta property="og:site_name"    content="Forjit AI"/>
+  <meta property="og:url"          content="https://www.forjitai.in/tools/roman-numeral.html"/>
+  <meta property="og:title"        content="Roman Numeral Converter — Forjit AI | Decimal to Roman Numeral"/>
+  <meta property="og:description"  content="Convert numbers to/from Roman numerals with step-by-step explanation."/>
+  <meta property="og:image"        content="https://www.forjitai.in/og-image.png"/>
+  <meta property="og:image:width"  content="1200"/>
+  <meta property="og:image:height" content="630"/>
+  <meta property="og:locale"       content="en_IN"/>
+  <meta name="twitter:card"        content="summary_large_image"/>
+  <meta name="twitter:site"        content="@forjitai"/>
+  <meta name="twitter:title"       content="Roman Numeral Converter — Forjit AI | Decimal to Roman Numeral"/>
+  <meta name="twitter:description" content="Convert numbers to/from Roman numerals with step-by-step explanation."/>
+  <meta name="twitter:image"       content="https://www.forjitai.in/og-image.png"/>
+  <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-5102938260449475" crossorigin="anonymous"></script>
+  <meta name="google-site-verification" content="u11mSk2rQwaphaXMCcUwJU-6dRhN_ndessqEMeZdubk" />
+</head>
+<body>
+<header>
+  <a class="logo" href="/"><div class="logo-mark">F</div><div><div class="logo-name">Forjit AI</div><div class="logo-sub">Tools</div></div></a>
+  <a class="back-link" href="/tools/">← All Tools</a>
+</header>
+<div class="container-sm">
+  <h1>Roman Numeral Converter</h1>
+  <p class="page-desc">Convert between numbers and Roman numerals — instantly, with step-by-step explanation.</p>
+  <div class="ad-slot">Advertisement · <a href="https://adsense.google.com" target="_blank">Connect AdSense</a></div>
+
+  <div class="toggle-row"><button class="toggle-btn on" onclick="setMode('dec',this)">Number → Roman</button><button class="toggle-btn" onclick="setMode('rom',this)">Roman → Number</button></div>
+
+  <div class="card" id="dec-mode">
+    <div class="field"><span class="label">Enter a Number (1–3,999)</span>
+      <div class="input-wrap"><input type="number" id="decInput" value="2024" min="1" max="3999" oninput="decToRom()"/></div>
+    </div>
+    <div class="result-hero" style="margin:16px 0 0">
+      <div class="result-hero-label">Roman Numeral</div>
+      <div class="result-hero-value" id="romResult" style="letter-spacing:4px">—</div>
+    </div>
+    <button onclick="copyEl('romResult')" class="copy-btn" style="margin-top:8px">Copy</button>
+    <div class="card" style="margin-top:16px;background:var(--bg)">
+      <h3 style="font-size:13px;font-weight:700;margin-bottom:10px">Step-by-Step</h3>
+      <div id="decSteps" style="font-family:monospace;font-size:13px;line-height:1.8;color:var(--muted)"></div>
+    </div>
+  </div>
+
+  <div class="card" id="rom-mode" style="display:none">
+    <div class="field"><span class="label">Enter Roman Numeral</span>
+      <div class="input-wrap"><input type="text" id="romInput" value="MMXXIV" oninput="romToDec()" style="font-family:monospace;font-size:20px;font-weight:600;text-transform:uppercase" placeholder="e.g. XLII"/></div>
+    </div>
+    <div class="result-hero" style="margin:16px 0 0">
+      <div class="result-hero-label">Number</div>
+      <div class="result-hero-value" id="decResult">—</div>
+    </div>
+    <div id="romError" class="warning-box" style="margin-top:10px;display:none"></div>
+    <div class="card" style="margin-top:16px;background:var(--bg)">
+      <h3 style="font-size:13px;font-weight:700;margin-bottom:10px">Step-by-Step</h3>
+      <div id="romSteps" style="font-family:monospace;font-size:13px;line-height:1.8;color:var(--muted)"></div>
+    </div>
+  </div>
+
+  <div class="card">
+    <h3 style="font-size:14px;font-weight:700;margin-bottom:12px">Roman Numeral Chart</h3>
+    <div class="table-wrap"><table>
+      <thead><tr><th>Symbol</th><th>Value</th><th>Notes</th></tr></thead>
+      <tbody>
+        <tr><td style="font-size:20px;font-weight:700;color:var(--accent)">I</td><td>1</td><td>—</td></tr>
+        <tr><td style="font-size:20px;font-weight:700;color:var(--accent)">V</td><td>5</td><td>—</td></tr>
+        <tr><td style="font-size:20px;font-weight:700;color:var(--accent)">X</td><td>10</td><td>—</td></tr>
+        <tr><td style="font-size:20px;font-weight:700;color:var(--accent)">L</td><td>50</td><td>—</td></tr>
+        <tr><td style="font-size:20px;font-weight:700;color:var(--accent)">C</td><td>100</td><td>Centum (hundred)</td></tr>
+        <tr><td style="font-size:20px;font-weight:700;color:var(--accent)">D</td><td>500</td><td>Demimille</td></tr>
+        <tr><td style="font-size:20px;font-weight:700;color:var(--accent)">M</td><td>1,000</td><td>Mille (thousand)</td></tr>
+      </tbody>
+    </table></div>
+    <div class="info-box" style="margin-top:10px"><b>Subtraction rule:</b> IV=4, IX=9, XL=40, XC=90, CD=400, CM=900</div>
+  </div>
+
+  <div class="card">
+    <h3 style="font-size:14px;font-weight:700;margin-bottom:12px">Quick Reference</h3>
+    <div id="quickRef" style="display:grid;grid-template-columns:repeat(4,1fr);gap:6px"></div>
+  </div>
+  <div class="ad-slot">Advertisement</div>
+</div>
+<script>
+const VALS=[[1000,'M'],[900,'CM'],[500,'D'],[400,'CD'],[100,'C'],[90,'XC'],[50,'L'],[40,'XL'],[10,'X'],[9,'IX'],[5,'V'],[4,'IV'],[1,'I']];
+
+function toRoman(n){let r='',steps=[];for(const[v,s]of VALS){while(n>=v){r+=s;steps.push(`${n} ≥ ${v} → add ${s} → n=${n-=v}`);}}return{roman:r,steps};}
+function fromRoman(s){const MAP={I:1,V:5,X:10,L:50,C:100,D:500,M:1000};let n=0,steps=[];const arr=s.toUpperCase().split('');for(let i=0;i<arr.length;i++){const cur=MAP[arr[i]]||0,next=MAP[arr[i+1]]||0;if(cur<next){n+=next-cur;steps.push(`${arr[i]}(${cur}) < ${arr[i+1]}(${next}) → subtract: +${next-cur}`);i++;}else{n+=cur;steps.push(`${arr[i]}(${cur}) → add: +${cur}`);}}return{num:n,steps};}
+
+let mode='dec';
+function setMode(m,btn){mode=m;document.getElementById('dec-mode').style.display=m==='dec'?'block':'none';document.getElementById('rom-mode').style.display=m==='rom'?'block':'none';document.querySelectorAll('.toggle-btn').forEach(b=>b.classList.remove('on'));btn.classList.add('on');}
+
+function decToRom(){
+  const n=parseInt(document.getElementById('decInput').value)||0;
+  if(n<1||n>3999){document.getElementById('romResult').textContent='Out of range';return;}
+  const {roman,steps}=toRoman(n);
+  document.getElementById('romResult').textContent=roman;
+  document.getElementById('decSteps').innerHTML=steps.map(s=>`• ${s}`).join('<br>')||'Done!';
+}
+function romToDec(){
+  const s=document.getElementById('romInput').value.toUpperCase();
+  const errEl=document.getElementById('romError');
+  if(!/^[IVXLCDM]+$/.test(s)){errEl.style.display='block';errEl.textContent='Invalid characters. Use only I, V, X, L, C, D, M.';return;}
+  errEl.style.display='none';
+  const {num,steps}=fromRoman(s);
+  document.getElementById('decResult').textContent=num.toLocaleString('en-IN');
+  document.getElementById('romSteps').innerHTML=steps.map(st=>`• ${st}`).join('<br>');
+}
+function copyEl(id){navigator.clipboard.writeText(document.getElementById(id).textContent);}
+
+// Quick reference
+const QR=[1,4,5,9,10,14,15,16,20,40,50,90,100,400,500,900,1000,1999,2000,2024,2025,3000,3500,3999];
+document.getElementById('quickRef').innerHTML=QR.map(n=>{const {roman}=toRoman(n);return`<div style="background:var(--bg);border:1px solid var(--border);border-radius:6px;padding:8px;text-align:center;cursor:pointer" onclick="document.getElementById('decInput').value=${n};setMode('dec',document.querySelectorAll('.toggle-btn')[0]);decToRom()"><div style="font-size:11px;color:var(--muted)">${n}</div><div style="font-size:13px;font-weight:600;color:var(--accent)">${roman}</div></div>`;}).join('');
+
+decToRom();
+</script>
+<script src="tool-common.js"></script>
+</body>
+</html>

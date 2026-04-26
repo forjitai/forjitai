@@ -207,6 +207,15 @@ export const TOOLS = [
 
   /* ── Health ─────────────────────────────────────────────────────────── */
   {
+    slug: "nursing-hub",
+    name: "Nursing Toolkit",
+    desc: "Drug dose, IV drip rate, fluid balance, GCS score, vitals reference & drug chart — all-in-one for Indian nurses.",
+    icon: "🩺", cat: "health",
+    tags: "nursing nurse drug dose calculator iv drip rate fluid balance gcs glasgow coma scale vitals vital signs indian hospital",
+    priority: 0.9, changefreq: "monthly",
+    new: true,
+  },
+  {
     slug: "bmi-calculator",
     name: "BMI Calculator",
     desc: "Body Mass Index, ideal weight, BMR, and body fat % — metric & imperial.",

@@ -1,0 +1,1117 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="UTF-8"/>
+<meta name="viewport" content="width=device-width,initial-scale=1.0"/>
+<title>Nursing Tools India — Drug Dose, IV Drip Rate, Vitals Reference | Forjit AI</title>
+<meta name="description" content="Free nursing toolkit for Indian nurses. Drug dose calculator, IV drip rate calculator, fluid balance tracker, vital signs reference, GCS scale, and more. No login needed."/>
+<meta name="keywords" content="nursing calculator India, drug dose calculator nurse, IV drip rate calculator, fluid balance chart nursing, nursing tools free, nurse calculator online India, vital signs normal values, GCS score calculator"/>
+<link rel="canonical" href="https://www.forjitai.in/tools/nursing-hub.html"/>
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-DYR402JFVG"></script>
+<script>window.dataLayer=window.dataLayer||[];function gtag(){dataLayer.push(arguments);}gtag('js',new Date());gtag('config','G-DYR402JFVG');</script>
+
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "WebApplication",
+  "name": "Nursing Hub — Indian Nurse's Toolkit",
+  "description": "Free nursing toolkit for Indian nurses and nursing students. Includes drug dose calculator, IV drip rate calculator, fluid balance tracker, vital signs quick reference, GCS scale and more.",
+  "url": "https://www.forjitai.in/tools/nursing-hub.html",
+  "applicationCategory": "HealthApplication",
+  "operatingSystem": "Any",
+  "offers": { "@type": "Offer", "price": "0", "priceCurrency": "INR" },
+  "publisher": {
+    "@type": "Organization",
+    "name": "Forjit AI",
+    "url": "https://www.forjitai.in"
+  },
+  "breadcrumb": {
+    "@type": "BreadcrumbList",
+    "itemListElement": [
+      { "@type": "ListItem", "position": 1, "name": "Forjit AI", "item": "https://www.forjitai.in/" },
+      { "@type": "ListItem", "position": 2, "name": "Free Tools", "item": "https://www.forjitai.in/tools/" },
+      { "@type": "ListItem", "position": 3, "name": "Nursing Hub", "item": "https://www.forjitai.in/tools/nursing-hub.html" }
+    ]
+  }
+}
+</script>
+
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "FAQPage",
+  "mainEntity": [
+    {
+      "@type": "Question",
+      "name": "How do I calculate drug dose for a patient?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "Use the Drug Dose Calculator: enter the prescribed dose in mg/kg, the patient's weight in kg, and the available concentration (mg/mL). The calculator gives you the exact mL to administer, plus a 10% safety band to double-check your calculation."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "How do I calculate IV drip rate in drops per minute?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "IV Drip Rate (drops/min) = (Volume in mL × Drop Factor) ÷ (Time in minutes). For a standard macro drip set (15 gtt/mL), infusing 500mL over 4 hours: (500 × 15) ÷ 240 = 31 drops/min."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "What are normal vital signs for adults in India?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "Normal adult vitals: Temperature 36.1–37.2°C (97–99°F), Pulse 60–100 bpm, Respiratory Rate 12–20 breaths/min, Blood Pressure 90/60–120/80 mmHg, SpO2 95–100%, Pain Scale 0 (no pain). These are the same standards used in Indian hospitals per NMC guidelines."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "What is GCS and how is it scored?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "Glasgow Coma Scale (GCS) measures consciousness level. It scores Eye Opening (1–4), Verbal Response (1–5), and Motor Response (1–6). Total score ranges from 3 (deep coma/death) to 15 (fully alert). GCS ≤8 is severe brain injury; 9–12 is moderate; 13–15 is mild."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "How is fluid balance calculated in nursing?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "Fluid Balance = Total Intake − Total Output. Intake includes IV fluids, oral fluids, NG feeds, and blood products. Output includes urine, vomit, nasogastric drainage, wound drainage, and stool. A positive balance means more fluid in than out; negative means more out than in. Normal daily insensible loss is about 500–800 mL."
+      }
+    }
+  ]
+}
+</script>
+
+<meta name="robots" content="index,follow,max-snippet:-1,max-image-preview:large"/>
+<meta property="og:type" content="website"/>
+<meta property="og:site_name" content="Forjit AI"/>
+<meta property="og:url" content="https://www.forjitai.in/tools/nursing-hub.html"/>
+<meta property="og:title" content="Nursing Hub — Indian Nurse's Toolkit | Forjit AI"/>
+<meta property="og:description" content="Free nursing toolkit for Indian nurses. Drug dose, IV drip rate, fluid balance, GCS, vitals reference — all in one place. No login needed."/>
+<meta property="og:image" content="https://www.forjitai.in/og-image.png"/>
+<meta property="og:image:width" content="1200"/>
+<meta property="og:image:height" content="630"/>
+<meta name="twitter:card" content="summary_large_image"/>
+<meta name="twitter:title" content="Nursing Hub — Indian Nurse's Toolkit | Forjit AI"/>
+<meta name="twitter:description" content="Drug dose, IV drip rate, fluid balance, vitals reference — free nursing tools for Indian nurses."/>
+<meta name="twitter:image" content="https://www.forjitai.in/og-image.png"/>
+
+<style>
+/* ── Reset & Base ───────────────────────────────────── */
+*{box-sizing:border-box;margin:0;padding:0}
+:root{
+  --bg:#0c0a09;
+  --surface:#1c1917;
+  --surface2:#231f1d;
+  --border:#292524;
+  --accent:#fbbf24;
+  --accent2:#f59e0b;
+  --text:#e7e5e4;
+  --muted:#a8a29e;
+  --faint:#78716c;
+  --red:#f87171;
+  --green:#4ade80;
+  --blue:#60a5fa;
+  --teal:#2dd4bf;
+  --purple:#c084fc;
+  --nurse:#38bdf8;   /* sky blue — nursing theme */
+}
+body{font-family:'Segoe UI',system-ui,sans-serif;background:var(--bg);color:var(--text);min-height:100vh}
+
+/* ── Header ─────────────────────────────────────────── */
+header{background:var(--surface);border-bottom:1px solid var(--border);padding:14px 20px;display:flex;align-items:center;justify-content:space-between;position:sticky;top:0;z-index:100}
+.logo{display:flex;align-items:center;gap:10px;text-decoration:none;color:var(--text)}
+.logo-mark{width:34px;height:34px;background:var(--accent);border-radius:6px;display:flex;align-items:center;justify-content:center;font-weight:800;font-size:18px;color:#0c0a09}
+.logo-text{font-size:16px;font-weight:600}
+.back{color:var(--muted);text-decoration:none;font-size:13px}
+.back:hover{color:var(--accent)}
+
+/* ── Hero ────────────────────────────────────────────── */
+.hero{
+  background:linear-gradient(135deg,#0c1f2e 0%,#0c0a09 50%,#1a0f05 100%);
+  border-bottom:1px solid var(--border);
+  padding:40px 20px 32px;
+  text-align:center;
+  position:relative;
+  overflow:hidden;
+}
+.hero::before{
+  content:'';position:absolute;inset:0;
+  background:radial-gradient(ellipse 60% 60% at 50% 0%,rgba(56,189,248,0.08) 0%,transparent 70%);
+  pointer-events:none;
+}
+.hero-badge{
+  display:inline-flex;align-items:center;gap:6px;
+  background:rgba(56,189,248,0.1);border:1px solid rgba(56,189,248,0.25);
+  border-radius:20px;padding:4px 14px;font-size:12px;font-weight:600;
+  color:var(--nurse);letter-spacing:0.05em;text-transform:uppercase;
+  margin-bottom:16px;
+}
+.hero h1{font-size:clamp(24px,5vw,40px);font-weight:800;line-height:1.15;margin-bottom:10px}
+.hero h1 span{color:var(--nurse)}
+.hero p{color:var(--muted);font-size:15px;max-width:520px;margin:0 auto 20px;line-height:1.6}
+.hero-stats{display:flex;gap:24px;justify-content:center;flex-wrap:wrap}
+.hero-stat{text-align:center}
+.hero-stat-val{font-size:22px;font-weight:800;color:var(--nurse)}
+.hero-stat-lab{font-size:11px;color:var(--faint);text-transform:uppercase;letter-spacing:0.05em}
+
+/* ── Nav tabs ────────────────────────────────────────── */
+.tab-nav{
+  display:flex;gap:4px;padding:16px 20px 0;
+  overflow-x:auto;scrollbar-width:none;
+  border-bottom:1px solid var(--border);
+  background:var(--surface);
+  position:sticky;top:63px;z-index:90;
+}
+.tab-nav::-webkit-scrollbar{display:none}
+.tab-btn{
+  flex-shrink:0;padding:10px 16px;border:none;background:transparent;
+  color:var(--muted);font-size:13px;font-weight:600;cursor:pointer;
+  border-bottom:2px solid transparent;margin-bottom:-1px;
+  transition:color 0.15s,border-color 0.15s;white-space:nowrap;
+}
+.tab-btn:hover{color:var(--text)}
+.tab-btn.active{color:var(--nurse);border-bottom-color:var(--nurse)}
+
+/* ── Container ───────────────────────────────────────── */
+.container{max-width:840px;margin:0 auto;padding:24px 16px 60px}
+
+/* ── Section heading ─────────────────────────────────── */
+.section-head{
+  display:flex;align-items:center;gap:10px;
+  margin-bottom:16px;padding-bottom:12px;
+  border-bottom:1px solid var(--border);
+}
+.section-head h2{font-size:17px;font-weight:700}
+.section-head .tag{font-size:11px;padding:2px 8px;border-radius:10px;font-weight:600;text-transform:uppercase;letter-spacing:0.05em}
+.tag-live{background:rgba(74,222,128,0.12);color:#4ade80;border:1px solid rgba(74,222,128,0.25)}
+.tag-ref{background:rgba(56,189,248,0.1);color:var(--nurse);border:1px solid rgba(56,189,248,0.2)}
+.tag-soon{background:rgba(168,162,158,0.1);color:var(--muted);border:1px solid var(--border)}
+
+/* ── Cards ────────────────────────────────────────────── */
+.card{background:var(--surface);border:1px solid var(--border);border-radius:12px;padding:22px;margin-bottom:16px}
+.card-dark{background:var(--bg);border:1px solid var(--border);border-radius:10px;padding:16px;margin-bottom:12px}
+.card-title{font-size:15px;font-weight:700;margin-bottom:4px;display:flex;align-items:center;gap:8px}
+.card-sub{font-size:13px;color:var(--muted);margin-bottom:18px}
+
+/* ── Form elements ────────────────────────────────────── */
+label{display:block;font-size:12px;color:var(--muted);margin-bottom:5px;font-weight:600;text-transform:uppercase;letter-spacing:0.05em}
+.input-row{display:grid;grid-template-columns:1fr 1fr;gap:10px;margin-bottom:14px}
+.input-row-3{display:grid;grid-template-columns:1fr 1fr 1fr;gap:10px;margin-bottom:14px}
+.input-wrap{margin-bottom:14px}
+.input-group{display:flex;align-items:center;background:var(--bg);border:1px solid var(--border);border-radius:8px;overflow:hidden}
+.unit{padding:10px 12px;background:#292524;color:var(--muted);font-size:13px;white-space:nowrap;flex-shrink:0}
+input[type=number],select{flex:1;background:transparent;border:none;outline:none;color:var(--text);font-size:15px;padding:11px 12px;width:100%;min-width:0}
+select{cursor:pointer;-webkit-appearance:none;appearance:none;padding-right:28px;background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='12' height='8' fill='none'%3E%3Cpath d='M1 1l5 5 5-5' stroke='%23a8a29e' stroke-width='1.5' stroke-linecap='round'/%3E%3C/svg%3E");background-repeat:no-repeat;background-position:right 10px center}
+select option{background:#1c1917}
+
+.btn{padding:13px;background:var(--accent);color:#0c0a09;border:none;border-radius:8px;font-size:14px;font-weight:700;cursor:pointer;width:100%;letter-spacing:0.02em;transition:background 0.15s}
+.btn:hover{background:var(--accent2)}
+.btn-nurse{background:rgba(56,189,248,0.15);color:var(--nurse);border:1px solid rgba(56,189,248,0.3)}
+.btn-nurse:hover{background:rgba(56,189,248,0.25)}
+
+/* ── Result display ──────────────────────────────────── */
+.result-hero{text-align:center;padding:22px;background:var(--bg);border:1px solid var(--border);border-radius:10px;margin:16px 0;display:none}
+.result-hero.show{display:block}
+.result-big{font-size:52px;font-weight:800;color:var(--nurse);line-height:1}
+.result-unit{font-size:16px;font-weight:500;color:var(--muted);margin-top:4px}
+.result-sub{font-size:13px;color:var(--faint);margin-top:6px}
+.result-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(130px,1fr));gap:10px;margin-top:14px}
+.result-card{background:var(--bg);border:1px solid var(--border);border-radius:8px;padding:12px;text-align:center}
+.result-label{font-size:11px;color:var(--faint);text-transform:uppercase;letter-spacing:0.05em;margin-bottom:4px}
+.result-value{font-size:18px;font-weight:700}
+.rv-nurse{color:var(--nurse)}
+.rv-accent{color:var(--accent)}
+.rv-green{color:var(--green)}
+.rv-red{color:var(--red)}
+.rv-purple{color:var(--purple)}
+
+/* ── Alert boxes ─────────────────────────────────────── */
+.alert{padding:12px 14px;border-radius:8px;font-size:13px;margin-top:12px;display:none}
+.alert.show{display:block}
+.alert-warn{background:rgba(251,191,36,0.08);border:1px solid rgba(251,191,36,0.25);color:var(--accent)}
+.alert-safe{background:rgba(74,222,128,0.08);border:1px solid rgba(74,222,128,0.2);color:var(--green)}
+.alert-danger{background:rgba(248,113,113,0.08);border:1px solid rgba(248,113,113,0.2);color:var(--red)}
+
+/* ── Vitals reference table ───────────────────────────── */
+.vitals-grid{display:grid;gap:8px}
+.vital-row{
+  display:grid;grid-template-columns:40px 1fr 1fr 1fr;
+  gap:8px;align-items:center;padding:12px 14px;
+  background:var(--bg);border:1px solid var(--border);border-radius:8px;
+}
+.vital-row.header{
+  background:var(--surface2);font-size:11px;font-weight:700;
+  text-transform:uppercase;letter-spacing:0.05em;color:var(--muted);
+  padding:8px 14px;
+}
+.vital-icon{font-size:18px;text-align:center}
+.vital-name{font-size:13px;font-weight:600}
+.vital-range{font-size:13px;font-weight:600;color:var(--nurse)}
+.vital-note{font-size:11px;color:var(--faint)}
+
+/* ── GCS table ────────────────────────────────────────── */
+.gcs-section{margin-bottom:14px}
+.gcs-title{font-size:13px;font-weight:700;color:var(--muted);text-transform:uppercase;letter-spacing:0.05em;margin-bottom:8px;display:flex;align-items:center;gap:6px}
+.gcs-row{display:grid;grid-template-columns:28px 1fr auto;gap:8px;align-items:center;padding:9px 12px;border-radius:7px;cursor:pointer;transition:background 0.1s;border:1px solid transparent}
+.gcs-row:hover{background:var(--surface2)}
+.gcs-row.selected{background:rgba(56,189,248,0.1);border-color:rgba(56,189,248,0.25)}
+.gcs-score{font-size:14px;font-weight:800;color:var(--nurse);text-align:center}
+.gcs-desc{font-size:13px}
+.gcs-check{font-size:16px;opacity:0}
+.gcs-row.selected .gcs-check{opacity:1}
+.gcs-total-bar{display:flex;align-items:center;gap:14px;background:var(--bg);border:1px solid var(--border);border-radius:10px;padding:16px 18px;margin-top:14px}
+.gcs-total-num{font-size:48px;font-weight:800;color:var(--nurse);line-height:1}
+.gcs-total-info h3{font-size:16px;font-weight:700;margin-bottom:2px}
+.gcs-total-info p{font-size:13px;color:var(--muted)}
+.gcs-severity{display:inline-block;padding:3px 10px;border-radius:10px;font-size:12px;font-weight:700;margin-top:4px}
+.sev-mild{background:rgba(74,222,128,0.12);color:var(--green)}
+.sev-moderate{background:rgba(251,191,36,0.12);color:var(--accent)}
+.sev-severe{background:rgba(248,113,113,0.12);color:var(--red)}
+
+/* ── Fluid balance ────────────────────────────────────── */
+.fluid-table{width:100%;border-collapse:collapse}
+.fluid-table th{font-size:11px;font-weight:700;color:var(--muted);text-transform:uppercase;letter-spacing:0.05em;padding:8px 10px;text-align:left;border-bottom:1px solid var(--border)}
+.fluid-table td{padding:8px 10px;font-size:13px;border-bottom:1px solid rgba(41,37,36,0.6)}
+.fluid-table tr:last-child td{border-bottom:none}
+.fluid-table input[type=number]{padding:6px 8px;font-size:13px;width:90px}
+.fluid-table .input-group{border-radius:6px}
+.fluid-balance-display{text-align:center;padding:18px;border-radius:10px;margin-top:14px;border:2px solid}
+.fluid-pos{background:rgba(74,222,128,0.06);border-color:rgba(74,222,128,0.25)}
+.fluid-neg{background:rgba(248,113,113,0.06);border-color:rgba(248,113,113,0.25)}
+.fluid-zero{background:rgba(56,189,248,0.06);border-color:rgba(56,189,248,0.2)}
+.balance-val{font-size:40px;font-weight:800}
+
+/* ── Tool grid ─────────────────────────────────────────── */
+.tools-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(200px,1fr));gap:12px}
+.tool-card{
+  background:var(--surface);border:1px solid var(--border);border-radius:10px;
+  padding:14px;text-decoration:none;color:var(--text);
+  transition:border-color 0.15s,transform 0.1s;display:block;
+}
+.tool-card:hover{border-color:rgba(56,189,248,0.35);transform:translateY(-1px)}
+.tool-card.soon{opacity:0.5;pointer-events:none}
+.tool-icon{font-size:24px;margin-bottom:8px}
+.tool-name{font-size:13px;font-weight:700;margin-bottom:3px}
+.tool-desc{font-size:11px;color:var(--muted);line-height:1.4}
+.tool-badge{display:inline-block;font-size:10px;font-weight:700;padding:2px 7px;border-radius:8px;margin-top:6px}
+.badge-live{background:rgba(74,222,128,0.12);color:var(--green)}
+.badge-soon{background:rgba(168,162,158,0.08);color:var(--faint)}
+
+/* ── Common drug reference ────────────────────────────── */
+.drug-table-wrap{overflow-x:auto}
+.drug-table{width:100%;border-collapse:collapse;min-width:500px}
+.drug-table th{font-size:11px;font-weight:700;color:var(--muted);text-transform:uppercase;letter-spacing:0.04em;padding:9px 12px;text-align:left;border-bottom:1px solid var(--border);white-space:nowrap}
+.drug-table td{padding:9px 12px;font-size:13px;border-bottom:1px solid rgba(41,37,36,0.5);vertical-align:top}
+.drug-table tr:last-child td{border-bottom:none}
+.drug-table tr:hover td{background:var(--surface2)}
+.drug-name{font-weight:600;color:var(--text)}
+.drug-dose{color:var(--nurse);font-weight:600}
+.drug-route{font-size:11px;color:var(--faint)}
+
+/* ── Section tab visibility ───────────────────────────── */
+.tab-section{display:none}
+.tab-section.active{display:block}
+
+/* ── Ad slot ──────────────────────────────────────────── */
+.ad-slot{background:var(--surface);border:1px dashed var(--border);border-radius:8px;padding:20px;text-align:center;color:var(--faint);font-size:12px;margin:16px 0}
+
+/* ── Footer ───────────────────────────────────────────── */
+.page-footer{background:var(--surface);border-top:1px solid var(--border);padding:24px 20px;text-align:center;margin-top:40px;font-size:12px;color:var(--faint)}
+.page-footer a{color:var(--muted);text-decoration:none}
+.page-footer a:hover{color:var(--accent)}
+
+/* ── FAQ ──────────────────────────────────────────────── */
+.faq-item{border-bottom:1px solid var(--border);padding:16px 0}
+.faq-item:last-child{border-bottom:none}
+.faq-q{font-size:14px;font-weight:600;cursor:pointer;display:flex;justify-content:space-between;align-items:center;gap:12px}
+.faq-q:hover{color:var(--nurse)}
+.faq-arrow{font-size:16px;transition:transform 0.2s;flex-shrink:0;color:var(--muted)}
+.faq-item.open .faq-arrow{transform:rotate(180deg)}
+.faq-a{font-size:13px;color:var(--muted);line-height:1.6;margin-top:10px;display:none}
+.faq-item.open .faq-a{display:block}
+
+@media(max-width:480px){
+  .input-row{grid-template-columns:1fr}
+  .input-row-3{grid-template-columns:1fr 1fr}
+  .vital-row{grid-template-columns:32px 1fr 1fr}
+  .vital-note{display:none}
+  .tools-grid{grid-template-columns:1fr 1fr}
+}
+</style>
+</head>
+<body>
+
+<!-- ── Header ─────────────────────────────────────────── -->
+<header>
+  <a href="/" class="logo">
+    <div class="logo-mark">F</div>
+    <span class="logo-text">Forjit AI</span>
+  </a>
+  <a href="/tools/" class="back">← All Tools</a>
+</header>
+
+<!-- ── Hero ──────────────────────────────────────────────── -->
+<div class="hero">
+  <div class="hero-badge">🩺 Nursing Toolkit</div>
+  <h1>Indian <span>Nurse's</span> Toolkit</h1>
+  <p>Drug dose, IV drip rate, fluid balance, GCS, and vitals reference — all in one free tool. Built for Indian nurses and nursing students.</p>
+  <div class="hero-stats">
+    <div class="hero-stat"><div class="hero-stat-val">6</div><div class="hero-stat-lab">Tools inside</div></div>
+    <div class="hero-stat"><div class="hero-stat-val">100%</div><div class="hero-stat-lab">Free forever</div></div>
+    <div class="hero-stat"><div class="hero-stat-val">0</div><div class="hero-stat-lab">Login needed</div></div>
+  </div>
+</div>
+
+<!-- ── Tab Nav ────────────────────────────────────────────── -->
+<div class="tab-nav">
+  <button class="tab-btn active" onclick="switchTab('dose')">💊 Drug Dose</button>
+  <button class="tab-btn" onclick="switchTab('iv')">💉 IV Drip Rate</button>
+  <button class="tab-btn" onclick="switchTab('fluid')">🩸 Fluid Balance</button>
+  <button class="tab-btn" onclick="switchTab('gcs')">🧠 GCS Score</button>
+  <button class="tab-btn" onclick="switchTab('vitals')">❤️ Vitals Ref</button>
+  <button class="tab-btn" onclick="switchTab('drugs')">📋 Drug Chart</button>
+</div>
+
+<!-- ── Main Container ─────────────────────────────────────── -->
+<div class="container">
+
+<!-- ══════════════════════════════════════════════════════════
+     TAB 1 — Drug Dose Calculator
+═══════════════════════════════════════════════════════════ -->
+<div class="tab-section active" id="tab-dose">
+
+  <div class="card">
+    <div class="card-title">💊 Drug Dose Calculator</div>
+    <div class="card-sub">Calculate safe dose and volume to administer based on patient weight.</div>
+
+    <div class="input-row">
+      <div>
+        <label>Prescribed Dose</label>
+        <div class="input-group">
+          <input type="number" id="rxDose" placeholder="e.g. 5" min="0" step="any" oninput="calcDose()"/>
+          <span class="unit">mg/kg</span>
+        </div>
+      </div>
+      <div>
+        <label>Patient Weight</label>
+        <div class="input-group">
+          <input type="number" id="ptWeight" placeholder="e.g. 60" min="0" step="any" oninput="calcDose()"/>
+          <span class="unit">kg</span>
+        </div>
+      </div>
+    </div>
+
+    <div class="input-row">
+      <div>
+        <label>Available Concentration</label>
+        <div class="input-group">
+          <input type="number" id="drugConc" placeholder="e.g. 10" min="0" step="any" oninput="calcDose()"/>
+          <span class="unit">mg/mL</span>
+        </div>
+      </div>
+      <div>
+        <label>Frequency</label>
+        <div class="input-group">
+          <select id="freq" onchange="calcDose()">
+            <option value="1">Once daily (OD)</option>
+            <option value="2">Twice daily (BD)</option>
+            <option value="3">Three times (TDS)</option>
+            <option value="4">Four times (QID)</option>
+            <option value="6">Every 4 hours</option>
+            <option value="8">Every 3 hours</option>
+          </select>
+        </div>
+      </div>
+    </div>
+
+    <div class="result-hero show" id="doseResult">
+      <div class="result-big" id="doseML">—</div>
+      <div class="result-unit">mL per dose</div>
+      <div class="result-sub" id="doseSub">Enter values above to calculate</div>
+    </div>
+
+    <div class="result-grid" id="doseGrid" style="display:none">
+      <div class="result-card"><div class="result-label">Total Dose</div><div class="result-value rv-nurse" id="totalDoseMg">—</div></div>
+      <div class="result-card"><div class="result-label">Volume / Dose</div><div class="result-value rv-accent" id="volPerDose">—</div></div>
+      <div class="result-card"><div class="result-label">Daily Total (mL)</div><div class="result-value rv-green" id="dailyVolML">—</div></div>
+      <div class="result-card"><div class="result-label">Daily Total (mg)</div><div class="result-value rv-purple" id="dailyMg">—</div></div>
+    </div>
+
+    <div class="alert alert-warn" id="doseSafetyAlert"></div>
+
+    <div class="card-dark" style="margin-top:14px">
+      <div style="font-size:12px;font-weight:700;color:var(--muted);text-transform:uppercase;letter-spacing:0.05em;margin-bottom:8px">💡 Formula Used</div>
+      <div style="font-size:13px;color:var(--muted);line-height:1.7">
+        <strong style="color:var(--text)">Total Dose</strong> = Prescribed (mg/kg) × Weight (kg)<br>
+        <strong style="color:var(--text)">Volume</strong> = Total Dose ÷ Concentration (mg/mL)<br>
+        <strong style="color:var(--text)">Safety check</strong>: Double-check any dose &gt;10 mL per administration
+      </div>
+    </div>
+  </div>
+
+  <div class="ad-slot">Advertisement</div>
+
+  <div class="card">
+    <div class="section-head">
+      <h2>⚠️ Nursing Safety Rules</h2>
+    </div>
+    <div style="display:grid;gap:8px">
+      <div class="card-dark" style="margin:0">🔟 <strong>5 Rights</strong>: Right Drug · Right Dose · Right Route · Right Time · Right Patient</div>
+      <div class="card-dark" style="margin:0">⚖️ Always weigh the patient before weight-based dosing — do not estimate</div>
+      <div class="card-dark" style="margin:0">🔁 Double-check high-alert drugs (insulin, heparin, potassium) with a second nurse</div>
+      <div class="card-dark" style="margin:0">📋 Document administration time and patient response within 30 minutes</div>
+      <div class="card-dark" style="margin:0">🚨 For paediatric doses always recheck with a paediatric dose reference</div>
+    </div>
+  </div>
+</div>
+
+<!-- ══════════════════════════════════════════════════════════
+     TAB 2 — IV Drip Rate Calculator
+═══════════════════════════════════════════════════════════ -->
+<div class="tab-section" id="tab-iv">
+  <div class="card">
+    <div class="card-title">💉 IV Drip Rate Calculator</div>
+    <div class="card-sub">Calculate drops per minute and mL/hour for any IV infusion set.</div>
+
+    <div class="input-row">
+      <div>
+        <label>Total Volume</label>
+        <div class="input-group">
+          <input type="number" id="ivVolume" placeholder="e.g. 500" min="0" oninput="calcIV()"/>
+          <span class="unit">mL</span>
+        </div>
+      </div>
+      <div>
+        <label>Infusion Time</label>
+        <div class="input-group">
+          <input type="number" id="ivTime" placeholder="e.g. 4" min="0" step="0.5" oninput="calcIV()"/>
+          <span class="unit">hours</span>
+        </div>
+      </div>
+    </div>
+
+    <div class="input-wrap">
+      <label>Drop Factor (IV Set Type)</label>
+      <div class="input-group">
+        <select id="dropFactor" onchange="calcIV()">
+          <option value="15">Macro drip — 15 gtt/mL (standard adult)</option>
+          <option value="20">Macro drip — 20 gtt/mL (BD set)</option>
+          <option value="60">Micro drip — 60 gtt/mL (paediatric / ICU)</option>
+          <option value="10">Blood set — 10 gtt/mL</option>
+        </select>
+      </div>
+    </div>
+
+    <div class="result-hero show" id="ivResult">
+      <div class="result-big" id="ivDPM">—</div>
+      <div class="result-unit">drops per minute</div>
+      <div class="result-sub" id="ivSub">Enter volume and time above</div>
+    </div>
+
+    <div class="result-grid" id="ivGrid" style="display:none">
+      <div class="result-card"><div class="result-label">Drops/Min</div><div class="result-value rv-nurse" id="ivDpmVal">—</div></div>
+      <div class="result-card"><div class="result-label">mL / Hour</div><div class="result-value rv-accent" id="ivMLHr">—</div></div>
+      <div class="result-card"><div class="result-label">Drops/Sec</div><div class="result-value rv-green" id="ivDPS">—</div></div>
+      <div class="result-card"><div class="result-label">Finish Time</div><div class="result-value rv-purple" id="ivFinish">—</div></div>
+    </div>
+
+    <div class="alert alert-safe" id="ivNote"></div>
+
+    <div class="card-dark" style="margin-top:14px">
+      <div style="font-size:12px;font-weight:700;color:var(--muted);text-transform:uppercase;letter-spacing:0.05em;margin-bottom:8px">💡 Formula Used</div>
+      <div style="font-size:13px;color:var(--muted);line-height:1.7">
+        <strong style="color:var(--text)">Drops/min</strong> = (Volume × Drop Factor) ÷ (Time × 60)<br>
+        <strong style="color:var(--text)">mL/hour</strong> = Volume ÷ Time
+      </div>
+    </div>
+  </div>
+
+  <div class="card">
+    <div class="section-head"><h2>💡 IV Rate Quick Reference</h2></div>
+    <div style="overflow-x:auto">
+      <table class="drug-table">
+        <thead><tr><th>Solution</th><th>Volume</th><th>Time</th><th>Rate (15gtt)</th><th>mL/hr</th></tr></thead>
+        <tbody>
+          <tr><td class="drug-name">Normal Saline / RL</td><td>500 mL</td><td>4 hr</td><td class="drug-dose">31 dpm</td><td>125</td></tr>
+          <tr><td class="drug-name">Normal Saline / RL</td><td>1000 mL</td><td>8 hr</td><td class="drug-dose">31 dpm</td><td>125</td></tr>
+          <tr><td class="drug-name">DNS / D5W</td><td>500 mL</td><td>6 hr</td><td class="drug-dose">21 dpm</td><td>83</td></tr>
+          <tr><td class="drug-name">Blood / Packed RBCs</td><td>250 mL</td><td>4 hr</td><td class="drug-dose">10 dpm</td><td>63</td></tr>
+          <tr><td class="drug-name">Mannitol 20%</td><td>100 mL</td><td>30 min</td><td class="drug-dose">50 dpm</td><td>200</td></tr>
+        </tbody>
+      </table>
+    </div>
+  </div>
+</div>
+
+<!-- ══════════════════════════════════════════════════════════
+     TAB 3 — Fluid Balance Tracker
+═══════════════════════════════════════════════════════════ -->
+<div class="tab-section" id="tab-fluid">
+  <div class="card">
+    <div class="card-title">🩸 Fluid Balance Chart</div>
+    <div class="card-sub">Track 24-hour intake and output. Calculates net balance automatically.</div>
+
+    <div class="input-row" style="margin-bottom:6px">
+      <!-- INTAKE column -->
+      <div>
+        <div style="font-size:13px;font-weight:700;color:var(--green);margin-bottom:10px">📥 INTAKE (mL)</div>
+        <div class="fluid-rows-in"></div>
+        <table class="fluid-table" id="intakeTable">
+          <thead><tr><th>Source</th><th>mL</th></tr></thead>
+          <tbody>
+            <tr><td>IV Fluids</td><td><div class="input-group"><input type="number" class="intake" placeholder="0" min="0" oninput="calcFluid()"/><span class="unit">mL</span></div></td></tr>
+            <tr><td>Oral Fluids</td><td><div class="input-group"><input type="number" class="intake" placeholder="0" min="0" oninput="calcFluid()"/><span class="unit">mL</span></div></td></tr>
+            <tr><td>Medications</td><td><div class="input-group"><input type="number" class="intake" placeholder="0" min="0" oninput="calcFluid()"/><span class="unit">mL</span></div></td></tr>
+            <tr><td>NG / PEG Feed</td><td><div class="input-group"><input type="number" class="intake" placeholder="0" min="0" oninput="calcFluid()"/><span class="unit">mL</span></div></td></tr>
+            <tr><td>Blood Products</td><td><div class="input-group"><input type="number" class="intake" placeholder="0" min="0" oninput="calcFluid()"/><span class="unit">mL</span></div></td></tr>
+          </tbody>
+        </table>
+      </div>
+      <!-- OUTPUT column -->
+      <div>
+        <div style="font-size:13px;font-weight:700;color:var(--red);margin-bottom:10px">📤 OUTPUT (mL)</div>
+        <table class="fluid-table" id="outputTable">
+          <thead><tr><th>Source</th><th>mL</th></tr></thead>
+          <tbody>
+            <tr><td>Urine (measured)</td><td><div class="input-group"><input type="number" class="output" placeholder="0" min="0" oninput="calcFluid()"/><span class="unit">mL</span></div></td></tr>
+            <tr><td>Vomiting</td><td><div class="input-group"><input type="number" class="output" placeholder="0" min="0" oninput="calcFluid()"/><span class="unit">mL</span></div></td></tr>
+            <tr><td>NG Aspirate</td><td><div class="input-group"><input type="number" class="output" placeholder="0" min="0" oninput="calcFluid()"/><span class="unit">mL</span></div></td></tr>
+            <tr><td>Wound Drain</td><td><div class="input-group"><input type="number" class="output" placeholder="0" min="0" oninput="calcFluid()"/><span class="unit">mL</span></div></td></tr>
+            <tr><td>Insensible Loss</td><td><div class="input-group"><input type="number" class="output" value="600" min="0" oninput="calcFluid()"/><span class="unit">mL</span></div></td></tr>
+          </tbody>
+        </table>
+      </div>
+    </div>
+
+    <div class="fluid-balance-display fluid-zero" id="fluidBalance">
+      <div style="font-size:12px;font-weight:700;color:var(--muted);text-transform:uppercase;letter-spacing:0.05em;margin-bottom:6px">Net Fluid Balance</div>
+      <div class="balance-val" id="fluidBalVal" style="color:var(--nurse)">0 mL</div>
+      <div style="font-size:13px;margin-top:6px;color:var(--muted)" id="fluidBalDesc">Intake = Output (Balanced)</div>
+    </div>
+
+    <div class="result-grid" style="margin-top:10px">
+      <div class="result-card"><div class="result-label">Total Intake</div><div class="result-value rv-green" id="totalIn">0 mL</div></div>
+      <div class="result-card"><div class="result-label">Total Output</div><div class="result-value rv-red" id="totalOut">0 mL</div></div>
+      <div class="result-card"><div class="result-label">Urine Output</div><div class="result-value rv-nurse" id="urineOut">0 mL</div></div>
+      <div class="result-card"><div class="result-label">Urine/hr (avg)</div><div class="result-value rv-accent" id="urineHr">0 mL</div></div>
+    </div>
+
+    <div class="alert alert-warn" id="fluidAlert" style="margin-top:10px"></div>
+
+    <div class="card-dark" style="margin-top:14px">
+      <div style="font-size:12px;font-weight:700;color:var(--muted);text-transform:uppercase;letter-spacing:0.05em;margin-bottom:8px">📏 Normal Reference Values</div>
+      <div style="font-size:13px;color:var(--muted);line-height:1.8">
+        Urine output (adult): <strong style="color:var(--text)">0.5–1 mL/kg/hr</strong> (≥30 mL/hr minimum)<br>
+        Insensible loss: <strong style="color:var(--text)">500–800 mL/day</strong> (fever adds ~100–150 mL per °C)<br>
+        Daily fluid requirement (adult): <strong style="color:var(--text)">30–40 mL/kg/day</strong>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- ══════════════════════════════════════════════════════════
+     TAB 4 — Glasgow Coma Scale
+═══════════════════════════════════════════════════════════ -->
+<div class="tab-section" id="tab-gcs">
+  <div class="card">
+    <div class="card-title">🧠 Glasgow Coma Scale (GCS)</div>
+    <div class="card-sub">Click to select response for each domain. Total score updates live.</div>
+
+    <!-- Eye Opening -->
+    <div class="gcs-section">
+      <div class="gcs-title">👁️ Eye Opening (E)</div>
+      <div class="gcs-row" onclick="selectGCS('eye',4,this)"><span class="gcs-score">4</span><span class="gcs-desc">Spontaneously</span><span class="gcs-check">✓</span></div>
+      <div class="gcs-row" onclick="selectGCS('eye',3,this)"><span class="gcs-score">3</span><span class="gcs-desc">To verbal command / speech</span><span class="gcs-check">✓</span></div>
+      <div class="gcs-row" onclick="selectGCS('eye',2,this)"><span class="gcs-score">2</span><span class="gcs-desc">To pain / pressure</span><span class="gcs-check">✓</span></div>
+      <div class="gcs-row" onclick="selectGCS('eye',1,this)"><span class="gcs-score">1</span><span class="gcs-desc">None</span><span class="gcs-check">✓</span></div>
+    </div>
+
+    <!-- Verbal Response -->
+    <div class="gcs-section">
+      <div class="gcs-title">🗣️ Verbal Response (V)</div>
+      <div class="gcs-row" onclick="selectGCS('verbal',5,this)"><span class="gcs-score">5</span><span class="gcs-desc">Oriented / converses normally</span><span class="gcs-check">✓</span></div>
+      <div class="gcs-row" onclick="selectGCS('verbal',4,this)"><span class="gcs-score">4</span><span class="gcs-desc">Confused / disoriented</span><span class="gcs-check">✓</span></div>
+      <div class="gcs-row" onclick="selectGCS('verbal',3,this)"><span class="gcs-score">3</span><span class="gcs-desc">Words but no sentences</span><span class="gcs-check">✓</span></div>
+      <div class="gcs-row" onclick="selectGCS('verbal',2,this)"><span class="gcs-score">2</span><span class="gcs-desc">Sounds but no words</span><span class="gcs-check">✓</span></div>
+      <div class="gcs-row" onclick="selectGCS('verbal',1,this)"><span class="gcs-score">1</span><span class="gcs-desc">None</span><span class="gcs-check">✓</span></div>
+    </div>
+
+    <!-- Motor Response -->
+    <div class="gcs-section">
+      <div class="gcs-title">✋ Motor Response (M)</div>
+      <div class="gcs-row" onclick="selectGCS('motor',6,this)"><span class="gcs-score">6</span><span class="gcs-desc">Obeys commands</span><span class="gcs-check">✓</span></div>
+      <div class="gcs-row" onclick="selectGCS('motor',5,this)"><span class="gcs-score">5</span><span class="gcs-desc">Localises pain</span><span class="gcs-check">✓</span></div>
+      <div class="gcs-row" onclick="selectGCS('motor',4,this)"><span class="gcs-score">4</span><span class="gcs-desc">Withdrawal from pain</span><span class="gcs-check">✓</span></div>
+      <div class="gcs-row" onclick="selectGCS('motor',3,this)"><span class="gcs-score">3</span><span class="gcs-desc">Abnormal flexion (Decorticate)</span><span class="gcs-check">✓</span></div>
+      <div class="gcs-row" onclick="selectGCS('motor',2,this)"><span class="gcs-score">2</span><span class="gcs-desc">Abnormal extension (Decerebrate)</span><span class="gcs-check">✓</span></div>
+      <div class="gcs-row" onclick="selectGCS('motor',1,this)"><span class="gcs-score">1</span><span class="gcs-desc">None</span><span class="gcs-check">✓</span></div>
+    </div>
+
+    <!-- Total -->
+    <div class="gcs-total-bar" id="gcsTotal">
+      <div class="gcs-total-num" id="gcsTotalNum">—</div>
+      <div class="gcs-total-info">
+        <div id="gcsTotalLabel" style="font-size:16px;font-weight:700">Select all 3 domains</div>
+        <div id="gcsTotalDesc" style="font-size:13px;color:var(--muted)">E + V + M</div>
+        <div id="gcsSeverity" class="gcs-severity" style="display:none"></div>
+      </div>
+    </div>
+
+    <div class="card-dark" style="margin-top:14px">
+      <div style="font-size:12px;font-weight:700;color:var(--muted);text-transform:uppercase;letter-spacing:0.05em;margin-bottom:8px">🚨 GCS Interpretation</div>
+      <div style="display:grid;gap:6px;font-size:13px">
+        <div><span class="gcs-severity sev-mild">13–15</span> <span style="color:var(--muted);margin-left:6px">Mild — minor head injury, monitor closely</span></div>
+        <div><span class="gcs-severity sev-moderate">9–12</span> <span style="color:var(--muted);margin-left:6px">Moderate — hospitalise, CT scan, neuro obs q1h</span></div>
+        <div><span class="gcs-severity sev-severe">3–8</span> <span style="color:var(--muted);margin-left:6px">Severe — consider intubation, ICU, neurosurgery consult</span></div>
+        <div style="color:var(--faint);font-size:12px;margin-top:4px">GCS ≤8 = intubation threshold. GCS 3 = no response (brain death protocol).</div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- ══════════════════════════════════════════════════════════
+     TAB 5 — Vital Signs Reference
+═══════════════════════════════════════════════════════════ -->
+<div class="tab-section" id="tab-vitals">
+  <div class="card">
+    <div class="card-title">❤️ Normal Vital Signs — Adult</div>
+    <div class="card-sub">Standard reference values used in Indian hospitals (NMC guidelines).</div>
+
+    <div class="vitals-grid">
+      <div class="vital-row header">
+        <div></div>
+        <div>Parameter</div>
+        <div>Normal Range</div>
+        <div>Action Threshold</div>
+      </div>
+      <div class="vital-row">
+        <div class="vital-icon">🌡️</div>
+        <div class="vital-name">Temperature</div>
+        <div class="vital-range">36.1–37.2 °C</div>
+        <div class="vital-note">&lt;35 or &gt;38.5 → alert</div>
+      </div>
+      <div class="vital-row">
+        <div class="vital-icon">💓</div>
+        <div class="vital-name">Pulse Rate</div>
+        <div class="vital-range">60–100 bpm</div>
+        <div class="vital-note">&lt;50 or &gt;120 → alert</div>
+      </div>
+      <div class="vital-row">
+        <div class="vital-icon">🫁</div>
+        <div class="vital-name">Resp. Rate</div>
+        <div class="vital-range">12–20 /min</div>
+        <div class="vital-note">&lt;10 or &gt;24 → alert</div>
+      </div>
+      <div class="vital-row">
+        <div class="vital-icon">🩺</div>
+        <div class="vital-name">Blood Pressure</div>
+        <div class="vital-range">90/60–120/80 mmHg</div>
+        <div class="vital-note">SBP &lt;90 or &gt;160 → alert</div>
+      </div>
+      <div class="vital-row">
+        <div class="vital-icon">💨</div>
+        <div class="vital-name">SpO₂</div>
+        <div class="vital-range">95–100 %</div>
+        <div class="vital-note">&lt;94% → O₂ therapy</div>
+      </div>
+      <div class="vital-row">
+        <div class="vital-icon">🩸</div>
+        <div class="vital-name">Blood Glucose</div>
+        <div class="vital-range">70–140 mg/dL</div>
+        <div class="vital-note">&lt;70 hypoglycaemia</div>
+      </div>
+      <div class="vital-row">
+        <div class="vital-icon">💧</div>
+        <div class="vital-name">Urine Output</div>
+        <div class="vital-range">0.5–1 mL/kg/hr</div>
+        <div class="vital-note">&lt;30 mL/hr → alert</div>
+      </div>
+    </div>
+  </div>
+
+  <div class="card">
+    <div class="card-title">🧒 Paediatric Vital Signs Reference</div>
+    <div class="card-sub">Age-based normal ranges — paediatric values differ significantly from adults.</div>
+    <div style="overflow-x:auto">
+      <table class="drug-table">
+        <thead><tr><th>Age Group</th><th>HR (bpm)</th><th>RR (/min)</th><th>SBP (mmHg)</th><th>SpO₂</th></tr></thead>
+        <tbody>
+          <tr><td class="drug-name">Newborn (0–1m)</td><td class="drug-dose">100–160</td><td>40–60</td><td>60–90</td><td>&gt;95%</td></tr>
+          <tr><td class="drug-name">Infant (1–12m)</td><td class="drug-dose">100–160</td><td>30–60</td><td>70–100</td><td>&gt;95%</td></tr>
+          <tr><td class="drug-name">Toddler (1–3y)</td><td class="drug-dose">90–150</td><td>24–40</td><td>80–110</td><td>&gt;95%</td></tr>
+          <tr><td class="drug-name">Pre-school (3–6y)</td><td class="drug-dose">80–140</td><td>22–34</td><td>80–110</td><td>&gt;95%</td></tr>
+          <tr><td class="drug-name">School (6–12y)</td><td class="drug-dose">70–120</td><td>18–30</td><td>90–120</td><td>&gt;95%</td></tr>
+          <tr><td class="drug-name">Adolescent (12–18y)</td><td class="drug-dose">60–100</td><td>12–20</td><td>100–130</td><td>&gt;95%</td></tr>
+        </tbody>
+      </table>
+    </div>
+  </div>
+
+  <div class="card">
+    <div class="card-title">🩸 Pain Scale Reference (NRS 0–10)</div>
+    <div style="display:grid;gap:6px;margin-top:4px">
+      <div style="display:flex;gap:8px;align-items:center"><div style="width:40px;height:28px;background:rgba(74,222,128,0.3);border-radius:6px;display:flex;align-items:center;justify-content:center;font-weight:700;font-size:14px">0</div><span style="font-size:13px">No pain — fully comfortable</span></div>
+      <div style="display:flex;gap:8px;align-items:center"><div style="width:40px;height:28px;background:rgba(74,222,128,0.2);border-radius:6px;display:flex;align-items:center;justify-content:center;font-weight:700;font-size:14px">1–3</div><span style="font-size:13px">Mild — annoying but manageable, no interference with activities</span></div>
+      <div style="display:flex;gap:8px;align-items:center"><div style="width:40px;height:28px;background:rgba(251,191,36,0.2);border-radius:6px;display:flex;align-items:center;justify-content:center;font-weight:700;font-size:14px">4–6</div><span style="font-size:13px">Moderate — interferes with activities, analgesia usually required</span></div>
+      <div style="display:flex;gap:8px;align-items:center"><div style="width:40px;height:28px;background:rgba(248,113,113,0.2);border-radius:6px;display:flex;align-items:center;justify-content:center;font-weight:700;font-size:14px">7–9</div><span style="font-size:13px">Severe — dominates all thought, strong analgesia needed immediately</span></div>
+      <div style="display:flex;gap:8px;align-items:center"><div style="width:40px;height:28px;background:rgba(248,113,113,0.35);border-radius:6px;display:flex;align-items:center;justify-content:center;font-weight:700;font-size:14px">10</div><span style="font-size:13px">Worst pain imaginable — emergency analgesia, escalate immediately</span></div>
+    </div>
+  </div>
+</div>
+
+<!-- ══════════════════════════════════════════════════════════
+     TAB 6 — Drug Reference Chart
+═══════════════════════════════════════════════════════════ -->
+<div class="tab-section" id="tab-drugs">
+  <div class="card">
+    <div class="card-title">📋 Common Drug Doses — Quick Reference</div>
+    <div class="card-sub">Standard adult doses used in Indian hospitals. Always verify with current formulary.</div>
+
+    <div style="display:flex;gap:8px;margin-bottom:14px;flex-wrap:wrap">
+      <button class="btn btn-nurse" style="width:auto;padding:7px 14px;font-size:12px" onclick="filterDrug('all')">All</button>
+      <button class="btn btn-nurse" style="width:auto;padding:7px 14px;font-size:12px" onclick="filterDrug('analgesic')">Analgesics</button>
+      <button class="btn btn-nurse" style="width:auto;padding:7px 14px;font-size:12px" onclick="filterDrug('antibiotic')">Antibiotics</button>
+      <button class="btn btn-nurse" style="width:auto;padding:7px 14px;font-size:12px" onclick="filterDrug('cardiac')">Cardiac</button>
+      <button class="btn btn-nurse" style="width:auto;padding:7px 14px;font-size:12px" onclick="filterDrug('emergency')">Emergency</button>
+    </div>
+
+    <div class="drug-table-wrap">
+      <table class="drug-table" id="drugTable">
+        <thead><tr><th>Drug</th><th>Class</th><th>Adult Dose</th><th>Route</th><th>Frequency</th></tr></thead>
+        <tbody id="drugBody"></tbody>
+      </table>
+    </div>
+    <div class="alert alert-warn show" style="margin-top:12px">⚠️ This chart is for quick reference only. Always verify doses with your hospital formulary or a senior nurse/doctor before administering.</div>
+  </div>
+
+  <div class="ad-slot">Advertisement</div>
+</div>
+
+<!-- ═══════════════════════════════════════════════════════ -->
+<!-- FAQ Section (always visible below tabs) -->
+<!-- ═══════════════════════════════════════════════════════ -->
+<div class="card" style="margin-top:8px">
+  <div class="section-head"><h2>❓ Frequently Asked Questions</h2></div>
+  <div id="faqContainer">
+    <div class="faq-item">
+      <div class="faq-q" onclick="toggleFAQ(this)">How do I calculate drug dose for a patient? <span class="faq-arrow">▾</span></div>
+      <div class="faq-a">Use the Drug Dose tab: enter the prescribed dose (mg/kg), patient weight (kg), and available concentration (mg/mL). The calculator gives you exact mL per dose plus a safety alert if the volume seems high. Always double-check high-alert medications with a second nurse.</div>
+    </div>
+    <div class="faq-item">
+      <div class="faq-q" onclick="toggleFAQ(this)">How do I calculate IV drip rate in drops per minute? <span class="faq-arrow">▾</span></div>
+      <div class="faq-a">Formula: Drops/min = (Volume × Drop Factor) ÷ Time in minutes. Use the IV Drip Rate tab and select your set type (15 gtt/mL for standard macro drip, 60 gtt/mL for micro/paediatric). The calculator also shows mL/hour and estimated finish time.</div>
+    </div>
+    <div class="faq-item">
+      <div class="faq-q" onclick="toggleFAQ(this)">What is a normal GCS score? <span class="faq-arrow">▾</span></div>
+      <div class="faq-a">A fully alert patient scores 15 (E4 V5 M6). GCS 13–15 is mild injury, 9–12 moderate, 3–8 severe. A score of 8 or below is the threshold for considering airway protection. GCS 3 means no response in any domain.</div>
+    </div>
+    <div class="faq-item">
+      <div class="faq-q" onclick="toggleFAQ(this)">What is fluid balance and why does it matter? <span class="faq-arrow">▾</span></div>
+      <div class="faq-a">Fluid balance = Total Intake − Total Output over 24 hours. Positive balance (more in than out) may indicate fluid overload. Negative balance may indicate dehydration or excessive losses. Maintaining balance is critical in ICU, cardiac, and renal patients.</div>
+    </div>
+    <div class="faq-item">
+      <div class="faq-q" onclick="toggleFAQ(this)">Is this tool safe to use for actual patient care? <span class="faq-arrow">▾</span></div>
+      <div class="faq-a">This tool is for quick calculation and reference only. Always verify results with your hospital formulary, senior colleague, or pharmacist before administering any medication. Clinical judgment and local protocols always take precedence.</div>
+    </div>
+  </div>
+</div>
+
+<!-- Related Tools -->
+<div class="card">
+  <div class="section-head"><h2>🔗 Related Forjit Tools</h2><span class="tag tag-live">Live</span></div>
+  <div class="tools-grid">
+    <a class="tool-card" href="/tools/bmi-calculator.html">
+      <div class="tool-icon">⚖️</div>
+      <div class="tool-name">BMI Calculator</div>
+      <div class="tool-desc">Body mass index with Asian BMI standards for Indian patients</div>
+      <span class="tool-badge badge-live">Live</span>
+    </a>
+    <a class="tool-card" href="/tools/calorie-calculator.html">
+      <div class="tool-icon">🥗</div>
+      <div class="tool-name">Calorie Calculator</div>
+      <div class="tool-desc">TDEE, BMR and daily caloric needs for patient nutrition</div>
+      <span class="tool-badge badge-live">Live</span>
+    </a>
+    <a class="tool-card" href="/tools/water-intake.html">
+      <div class="tool-icon">💧</div>
+      <div class="tool-name">Water Intake</div>
+      <div class="tool-desc">Daily hydration requirements by weight and activity level</div>
+      <span class="tool-badge badge-live">Live</span>
+    </a>
+    <a class="tool-card" href="/tools/ideal-weight.html">
+      <div class="tool-icon">🎯</div>
+      <div class="tool-name">Ideal Weight</div>
+      <div class="tool-desc">Hamwi, Robinson and Miller formula ideal body weight</div>
+      <span class="tool-badge badge-live">Live</span>
+    </a>
+    <a class="tool-card" href="/tools/age-calculator.html">
+      <div class="tool-icon">🎂</div>
+      <div class="tool-name">Age Calculator</div>
+      <div class="tool-desc">Exact patient age in years, months and days from DOB</div>
+      <span class="tool-badge badge-live">Live</span>
+    </a>
+    <a class="tool-card soon" href="#">
+      <div class="tool-icon">👶</div>
+      <div class="tool-name">APGAR Score</div>
+      <div class="tool-desc">Neonatal APGAR assessment calculator</div>
+      <span class="tool-badge badge-soon">Coming Soon</span>
+    </a>
+  </div>
+</div>
+
+</div><!-- /container -->
+
+<!-- Footer -->
+<div class="page-footer">
+  <div>© 2025 Forjit AI · All rights reserved · <a href="/">Home</a> · <a href="/tools/">All Tools</a> · <a href="mailto:forjitai@gmail.com">Contact</a></div>
+  <div style="margin-top:6px;color:#57534e">For reference only — always verify with hospital formulary and senior staff before clinical use.</div>
+</div>
+
+<script src="tool-common.js"></script>
+
+<script>
+/* ── Tab switching ─────────────────────────────────────── */
+function switchTab(id) {
+  document.querySelectorAll('.tab-section').forEach(s => s.classList.remove('active'));
+  document.querySelectorAll('.tab-btn').forEach(b => b.classList.remove('active'));
+  document.getElementById('tab-' + id).classList.add('active');
+  event.target.classList.add('active');
+}
+
+/* ── Drug Dose Calculator ──────────────────────────────── */
+function calcDose() {
+  const dose = parseFloat(document.getElementById('rxDose').value);
+  const wt   = parseFloat(document.getElementById('ptWeight').value);
+  const conc = parseFloat(document.getElementById('drugConc').value);
+  const freq = parseInt(document.getElementById('freq').value);
+
+  const resultEl = document.getElementById('doseResult');
+  const gridEl   = document.getElementById('doseGrid');
+  const alertEl  = document.getElementById('doseSafetyAlert');
+
+  if (!dose || !wt || !conc) {
+    document.getElementById('doseML').textContent = '—';
+    document.getElementById('doseSub').textContent = 'Enter all values above';
+    gridEl.style.display = 'none';
+    alertEl.classList.remove('show');
+    return;
+  }
+
+  const totalMg  = dose * wt;
+  const volML    = totalMg / conc;
+  const dailyML  = volML * freq;
+  const dailyMg  = totalMg * freq;
+
+  document.getElementById('doseML').textContent = volML.toFixed(2);
+  document.getElementById('doseSub').textContent = `${dose} mg/kg × ${wt} kg ÷ ${conc} mg/mL`;
+  document.getElementById('totalDoseMg').textContent = totalMg.toFixed(1) + ' mg';
+  document.getElementById('volPerDose').textContent  = volML.toFixed(2) + ' mL';
+  document.getElementById('dailyVolML').textContent  = dailyML.toFixed(1) + ' mL';
+  document.getElementById('dailyMg').textContent     = dailyMg.toFixed(1) + ' mg';
+  gridEl.style.display = 'grid';
+
+  // Safety alerts
+  if (volML > 10) {
+    alertEl.textContent = `⚠️ Volume per dose is ${volML.toFixed(1)} mL — double-check dose and concentration with a senior nurse or pharmacist.`;
+    alertEl.className = 'alert alert-danger show';
+  } else if (volML > 5) {
+    alertEl.textContent = `⚡ Volume per dose is ${volML.toFixed(1)} mL — verify before administering.`;
+    alertEl.className = 'alert alert-warn show';
+  } else {
+    alertEl.className = 'alert';
+  }
+}
+
+/* ── IV Drip Rate Calculator ───────────────────────────── */
+function calcIV() {
+  const vol    = parseFloat(document.getElementById('ivVolume').value);
+  const hrs    = parseFloat(document.getElementById('ivTime').value);
+  const df     = parseInt(document.getElementById('dropFactor').value);
+
+  const dpmEl    = document.getElementById('ivDPM');
+  const subEl    = document.getElementById('ivSub');
+  const gridEl   = document.getElementById('ivGrid');
+  const noteEl   = document.getElementById('ivNote');
+
+  if (!vol || !hrs) {
+    dpmEl.textContent = '—';
+    subEl.textContent = 'Enter volume and time above';
+    gridEl.style.display = 'none';
+    noteEl.classList.remove('show');
+    return;
+  }
+
+  const mins  = hrs * 60;
+  const dpm   = (vol * df) / mins;
+  const mlhr  = vol / hrs;
+  const dps   = dpm / 60;
+
+  // Finish time
+  const now  = new Date();
+  const end  = new Date(now.getTime() + hrs * 3600000);
+  const hh   = end.getHours().toString().padStart(2,'0');
+  const mm   = end.getMinutes().toString().padStart(2,'0');
+
+  dpmEl.textContent = Math.round(dpm);
+  subEl.textContent  = `${vol} mL × ${df} gtt ÷ ${Math.round(mins)} min`;
+
+  document.getElementById('ivDpmVal').textContent  = Math.round(dpm) + ' gtt/min';
+  document.getElementById('ivMLHr').textContent    = mlhr.toFixed(0) + ' mL/hr';
+  document.getElementById('ivDPS').textContent     = dps.toFixed(2) + '/sec';
+  document.getElementById('ivFinish').textContent  = hh + ':' + mm;
+  gridEl.style.display = 'grid';
+
+  if (dpm > 60) {
+    noteEl.textContent = `⚡ High drip rate (${Math.round(dpm)} dpm) — consider using an IV pump or micro-drip set for accuracy.`;
+    noteEl.className = 'alert alert-warn show';
+  } else {
+    noteEl.textContent = `✓ Drip rate looks manageable by gravity. Count ${Math.round(dpm)} drops over 1 minute to verify.`;
+    noteEl.className = 'alert alert-safe show';
+  }
+}
+
+/* ── Fluid Balance ─────────────────────────────────────── */
+function calcFluid() {
+  const intakes  = Array.from(document.querySelectorAll('.intake')).map(i => parseFloat(i.value)||0);
+  const outputs  = Array.from(document.querySelectorAll('.output')).map(i => parseFloat(i.value)||0);
+  const totalIn  = intakes.reduce((a,b) => a+b, 0);
+  const totalOut = outputs.reduce((a,b) => a+b, 0);
+  const balance  = totalIn - totalOut;
+  const urineML  = parseFloat(document.querySelectorAll('.output')[0].value) || 0;
+
+  document.getElementById('totalIn').textContent  = totalIn.toFixed(0) + ' mL';
+  document.getElementById('totalOut').textContent = totalOut.toFixed(0) + ' mL';
+  document.getElementById('urineOut').textContent = urineML.toFixed(0) + ' mL';
+  document.getElementById('urineHr').textContent  = (urineML / 24).toFixed(0) + ' mL';
+
+  const balEl   = document.getElementById('fluidBalance');
+  const valEl   = document.getElementById('fluidBalVal');
+  const descEl  = document.getElementById('fluidBalDesc');
+  const alertEl = document.getElementById('fluidAlert');
+
+  valEl.textContent = (balance >= 0 ? '+' : '') + balance.toFixed(0) + ' mL';
+
+  if (balance > 500) {
+    balEl.className = 'fluid-balance-display fluid-pos';
+    valEl.style.color = 'var(--green)';
+    descEl.textContent = 'Positive Balance — more fluid in than out';
+    alertEl.textContent = '⚠️ Positive balance >500 mL — monitor for fluid overload (oedema, raised JVP, crackles)';
+    alertEl.className = 'alert alert-warn show';
+  } else if (balance < -500) {
+    balEl.className = 'fluid-balance-display fluid-neg';
+    valEl.style.color = 'var(--red)';
+    descEl.textContent = 'Negative Balance — more fluid out than in';
+    alertEl.textContent = '⚠️ Negative balance >500 mL — monitor for dehydration, consider fluid replacement';
+    alertEl.className = 'alert alert-danger show';
+  } else {
+    balEl.className = 'fluid-balance-display fluid-zero';
+    valEl.style.color = 'var(--nurse)';
+    descEl.textContent = Math.abs(balance) < 100 ? 'Intake ≈ Output (Balanced)' : 'Slight imbalance — monitor';
+    alertEl.className = 'alert';
+  }
+
+  // Urine output alert
+  if (urineML > 0 && urineML / 24 < 30) {
+    alertEl.textContent = '🚨 Urine output < 30 mL/hr — possible oliguria. Alert doctor immediately.';
+    alertEl.className = 'alert alert-danger show';
+  }
+}
+
+/* ── GCS Calculator ────────────────────────────────────── */
+const gcsScores = { eye: 0, verbal: 0, motor: 0 };
+
+function selectGCS(domain, score, el) {
+  // Deselect all in same domain
+  const allRows = el.parentElement.querySelectorAll('.gcs-row');
+  allRows.forEach(r => r.classList.remove('selected'));
+  el.classList.add('selected');
+  gcsScores[domain] = score;
+  updateGCS();
+}
+
+function updateGCS() {
+  const { eye, verbal, motor } = gcsScores;
+  if (!eye || !verbal || !motor) return;
+  const total = eye + verbal + motor;
+  const totalEl = document.getElementById('gcsTotalNum');
+  const labelEl = document.getElementById('gcsTotalLabel');
+  const descEl  = document.getElementById('gcsTotalDesc');
+  const sevEl   = document.getElementById('gcsSeverity');
+
+  totalEl.textContent = total;
+  descEl.textContent  = `E${eye} + V${verbal} + M${motor}`;
+  sevEl.style.display = 'inline-block';
+
+  if (total >= 13) {
+    labelEl.textContent = 'Mild Injury';
+    sevEl.textContent = 'Mild (13–15)';
+    sevEl.className = 'gcs-severity sev-mild';
+  } else if (total >= 9) {
+    labelEl.textContent = 'Moderate Injury';
+    sevEl.textContent = 'Moderate (9–12)';
+    sevEl.className = 'gcs-severity sev-moderate';
+  } else {
+    labelEl.textContent = 'Severe Injury';
+    sevEl.textContent = 'Severe (3–8)';
+    sevEl.className = 'gcs-severity sev-severe';
+  }
+}
+
+/* ── Drug Reference Table ──────────────────────────────── */
+const DRUGS = [
+  { name:'Paracetamol (PCM)', cls:'analgesic', dose:'500–1000 mg', route:'Oral / IV', freq:'q4–6h (max 4g/day)' },
+  { name:'Ibuprofen',         cls:'analgesic', dose:'400–800 mg', route:'Oral',      freq:'q6–8h with food' },
+  { name:'Diclofenac',        cls:'analgesic', dose:'75 mg',       route:'IM / Oral', freq:'BD (max 150 mg/day)' },
+  { name:'Morphine',          cls:'analgesic', dose:'2.5–5 mg',    route:'IV / SC',   freq:'q4h (titrate)' },
+  { name:'Tramadol',          cls:'analgesic', dose:'50–100 mg',   route:'Oral / IV', freq:'q4–6h (max 400 mg/day)' },
+  { name:'Amoxicillin',       cls:'antibiotic', dose:'500 mg',     route:'Oral',      freq:'TDS × 5–7 days' },
+  { name:'Amox-Clav (Aug)',   cls:'antibiotic', dose:'625 mg',     route:'Oral',      freq:'BD or TDS' },
+  { name:'Azithromycin',      cls:'antibiotic', dose:'500 mg',     route:'Oral',      freq:'OD × 3–5 days' },
+  { name:'Ceftriaxone',       cls:'antibiotic', dose:'1–2 g',      route:'IV / IM',   freq:'OD or BD' },
+  { name:'Metronidazole',     cls:'antibiotic', dose:'500 mg',     route:'Oral / IV', freq:'TDS × 7 days' },
+  { name:'Ciprofloxacin',     cls:'antibiotic', dose:'500 mg',     route:'Oral',      freq:'BD × 5–7 days' },
+  { name:'Amlodipine',        cls:'cardiac',    dose:'5–10 mg',    route:'Oral',      freq:'OD' },
+  { name:'Atenolol',          cls:'cardiac',    dose:'25–50 mg',   route:'Oral',      freq:'OD or BD' },
+  { name:'Digoxin',           cls:'cardiac',    dose:'0.125–0.25 mg', route:'Oral',   freq:'OD (monitor levels)' },
+  { name:'Furosemide',        cls:'cardiac',    dose:'20–40 mg',   route:'Oral / IV', freq:'OD–BD' },
+  { name:'Metoprolol',        cls:'cardiac',    dose:'25–100 mg',  route:'Oral',      freq:'BD' },
+  { name:'Adrenaline (Epi)',  cls:'emergency',  dose:'0.01 mg/kg (1:1000)', route:'IM', freq:'q5–15 min PRN' },
+  { name:'Atropine',          cls:'emergency',  dose:'0.5–1 mg',   route:'IV',        freq:'q3–5 min (max 3 mg)' },
+  { name:'Hydrocortisone',    cls:'emergency',  dose:'100–200 mg', route:'IV',        freq:'q6h or OD' },
+  { name:'Dextrose 50%',      cls:'emergency',  dose:'25–50 mL',   route:'IV slow',   freq:'PRN hypoglycaemia' },
+  { name:'Salbutamol',        cls:'emergency',  dose:'2.5–5 mg',   route:'Nebulised', freq:'q20 min × 3 then q4h' },
+];
+
+let currentFilter = 'all';
+
+function filterDrug(cls) {
+  currentFilter = cls;
+  renderDrugs();
+}
+
+function renderDrugs() {
+  const rows = DRUGS
+    .filter(d => currentFilter === 'all' || d.cls === currentFilter)
+    .map(d => `<tr data-cls="${d.cls}">
+      <td class="drug-name">${d.name}</td>
+      <td style="font-size:11px;color:var(--faint);text-transform:capitalize">${d.cls}</td>
+      <td class="drug-dose">${d.dose}</td>
+      <td class="drug-route">${d.route}</td>
+      <td style="font-size:12px;color:var(--muted)">${d.freq}</td>
+    </tr>`).join('');
+  document.getElementById('drugBody').innerHTML = rows;
+}
+
+renderDrugs();
+
+/* ── FAQ Toggle ────────────────────────────────────────── */
+function toggleFAQ(el) {
+  el.parentElement.classList.toggle('open');
+}
+</script>
+</body>
+</html>

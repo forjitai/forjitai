@@ -69,12 +69,19 @@ jobs:
             echo "POST_CREATED=false" >> $GITHUB_ENV
           fi
 
+      - name: Update blog manifest & sitemap
+        if: env.POST_CREATED == 'true'
+        run: |
+          npm install
+          npm run gen-tools
+        # Updates KNOWN_DATES in blog/index.html and sitemap.xml
+
       - name: Commit and push post
         if: env.POST_CREATED == 'true'
         run: |
           git config user.name "Forjit AI Bot"
           git config user.email "forjitai@gmail.com"
-          git add public/blog/posts/
+          git add public/blog/posts/ public/blog/index.html public/sitemap.xml public/index.html
           git diff --staged --quiet || git commit -m "📝 Daily blog post $(date +%Y-%m-%d) [automated]"
           git push
         env:

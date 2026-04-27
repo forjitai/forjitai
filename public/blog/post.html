@@ -184,7 +184,7 @@ async function loadPost() {
   }
 
   try {
-    const res = await fetch(`posts/${date}.json`);
+    const res = await fetch(`/blog/posts/${date}.json`);
     if (!res.ok) throw new Error('Post not found');
     const post = await res.json();
 

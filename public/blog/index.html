@@ -3,118 +3,169 @@
 <head>
 <meta charset="UTF-8"/>
 <meta name="viewport" content="width=device-width,initial-scale=1.0"/>
-<title>Blog — Forjit AI | AI Tools, Finance Tips, India Tech</title>
-<meta name="description" content="Daily blog by Forjit AI — AI news, free tool guides, India finance tips, tax updates, and developer how-tos. Updated every day."/>
-<meta name="keywords" content="forjit ai blog, AI tools guide, free calculator tips, India finance tips, EMI SIP GST tax blog"/>
+<title>Blog — Forjit AI | Free Tool Guides, Finance Tips, India Tech</title>
+<meta name="description" content="Daily blog by Forjit AI — free tool guides, India finance tips, nursing calculator how-tos, AI news, tax updates and developer tips. Updated every day by AI."/>
+<meta name="keywords" content="forjit ai blog, free tools guide India, nursing calculator guide, AI tools India, India finance tips, EMI SIP GST tax blog, nursing hub India"/>
 <link rel="canonical" href="https://www.forjitai.in/blog"/>
 <meta name="robots" content="index,follow,max-snippet:-1,max-image-preview:large"/>
-<meta property="og:type"         content="website"/>
-<meta property="og:site_name"    content="Forjit AI"/>
-<meta property="og:url"          content="https://www.forjitai.in/blog"/>
-<meta property="og:title"        content="Blog — Forjit AI | AI Tools, Finance Tips, India Tech"/>
-<meta property="og:description"  content="Daily blog by Forjit AI — AI news, free tool guides, India finance tips, tax updates, and developer how-tos. Updated every day."/>
-<meta property="og:image"        content="https://www.forjitai.in/og-image.png"/>
-<meta property="og:locale"       content="en_IN"/>
-<meta name="twitter:card"        content="summary_large_image"/>
-<meta name="twitter:site"        content="@forjitai"/>
-<meta name="twitter:title"       content="Blog — Forjit AI | AI Tools, Finance Tips, India Tech"/>
-<meta name="twitter:description" content="Daily blog by Forjit AI — AI news, free tool guides, India finance tips, tax updates."/>
-<meta name="twitter:image"       content="https://www.forjitai.in/og-image.png"/>
-<script type="application/ld+json">
-{
-  "@context": "https://schema.org",
-  "@type": "Blog",
-  "name": "Forjit AI Blog",
-  "description": "Daily blog covering AI news, India finance tips, free tool guides and developer how-tos.",
-  "url": "https://www.forjitai.in/blog",
-  "publisher": {
-    "@type": "Organization",
-    "name": "Forjit AI",
-    "url": "https://www.forjitai.in",
-    "logo": { "@type": "ImageObject", "url": "https://www.forjitai.in/icons/icon-192.png" }
-  },
-  "inLanguage": "en-IN"
-}
-</script>
+<meta property="og:type" content="website"/>
+<meta property="og:site_name" content="Forjit AI"/>
+<meta property="og:url" content="https://www.forjitai.in/blog"/>
+<meta property="og:title" content="Blog — Forjit AI | Free Tool Guides & India Tips"/>
+<meta property="og:description" content="Daily blog — free tool guides, India finance tips, nursing calculator how-tos, AI news and tech updates. Updated every day."/>
+<meta property="og:image" content="https://www.forjitai.in/og-image.png"/>
+<meta property="og:locale" content="en_IN"/>
+<meta name="twitter:card" content="summary_large_image"/>
+<meta name="twitter:title" content="Forjit AI Blog — Free Tool Guides & India Tips"/>
+<meta name="twitter:description" content="Daily blog — finance tips, nursing tools, AI news, tax updates. Free, updated daily."/>
+<meta name="twitter:image" content="https://www.forjitai.in/og-image.png"/>
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-DYR402JFVG"></script>
+<script>window.dataLayer=window.dataLayer||[];function gtag(){dataLayer.push(arguments);}gtag('js',new Date());gtag('config','G-DYR402JFVG');</script>
+<style>
 *{box-sizing:border-box;margin:0;padding:0}
-:root{--bg:#0c0a09;--sur:#1c1917;--bor:#292524;--fg:#e7e5e4;--mu:#a8a29e;--su:#78716c;--ac:#fbbf24}
+:root{
+  --bg:#0c0a09;--sur:#1c1917;--sur2:#231f1d;--bor:#292524;
+  --fg:#e7e5e4;--mu:#a8a29e;--su:#78716c;--ac:#fbbf24;--ac2:#f59e0b;
+}
 body{font-family:'Segoe UI',system-ui,sans-serif;background:var(--bg);color:var(--fg);min-height:100vh}
+
+/* header */
 header{background:var(--sur);border-bottom:1px solid var(--bor);padding:12px 20px;display:flex;align-items:center;justify-content:space-between;position:sticky;top:0;z-index:10}
 .logo{display:flex;align-items:center;gap:10px;text-decoration:none;color:var(--fg)}
 .lm{width:32px;height:32px;background:var(--ac);border-radius:6px;display:flex;align-items:center;justify-content:center;font-weight:800;font-size:16px;color:var(--bg)}
 .ln{font-size:15px;font-weight:600}
-nav a{color:var(--mu);text-decoration:none;font-size:14px;margin-left:16px;transition:color .15s}
-nav a:hover{color:var(--ac)}
-.container{max-width:860px;margin:0 auto;padding:32px 16px}
-h1{font-size:28px;font-weight:700;margin-bottom:4px}
-.sub{color:var(--mu);font-size:15px;margin-bottom:24px}
-.cats{display:flex;gap:6px;flex-wrap:wrap;margin-bottom:24px}
-.cat-btn{padding:6px 14px;background:var(--sur);border:1px solid var(--bor);border-radius:999px;cursor:pointer;font-size:13px;color:var(--mu);transition:all .15s;font-family:inherit}
-.cat-btn:hover,.cat-btn.on{background:var(--ac);color:var(--bg);border-color:var(--ac);font-weight:700}
-.grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(280px,1fr));gap:16px}
-.post-card{background:var(--sur);border:1px solid var(--bor);border-radius:12px;padding:20px;text-decoration:none;color:var(--fg);transition:all .15s;display:flex;flex-direction:column;gap:10px}
-.post-card:hover{border-color:var(--ac);transform:translateY(-2px);box-shadow:0 8px 24px rgba(0,0,0,.3)}
+nav{display:flex;gap:4px;align-items:center}
+nav a{color:var(--mu);text-decoration:none;font-size:13px;padding:6px 10px;border-radius:6px;transition:all .15s}
+nav a:hover{color:var(--ac);background:rgba(251,191,36,0.07)}
+
+/* hero */
+.hero{background:linear-gradient(135deg,#0c1a0f 0%,#0c0a09 60%,#1a0f05 100%);border-bottom:1px solid var(--bor);padding:36px 20px 28px;text-align:center;position:relative;overflow:hidden}
+.hero::before{content:'';position:absolute;inset:0;background:radial-gradient(ellipse 60% 60% at 50% 0%,rgba(251,191,36,0.07) 0%,transparent 70%);pointer-events:none}
+.hero-badge{display:inline-flex;align-items:center;gap:6px;background:rgba(251,191,36,0.1);border:1px solid rgba(251,191,36,0.2);border-radius:20px;padding:4px 14px;font-size:12px;font-weight:700;color:var(--ac);letter-spacing:.05em;text-transform:uppercase;margin-bottom:14px}
+.hero h1{font-size:clamp(22px,4vw,34px);font-weight:800;line-height:1.2;margin-bottom:8px}
+.hero p{color:var(--mu);font-size:14px;max-width:480px;margin:0 auto 18px;line-height:1.6}
+.hero-stats{display:flex;gap:20px;justify-content:center;flex-wrap:wrap}
+.hero-stat-val{font-size:20px;font-weight:800;color:var(--ac)}
+.hero-stat-lab{font-size:11px;color:var(--su);text-transform:uppercase;letter-spacing:.05em}
+
+/* main */
+.container{max-width:900px;margin:0 auto;padding:28px 16px 60px}
+
+/* search & filter bar */
+.toolbar{display:flex;gap:10px;margin-bottom:20px;flex-wrap:wrap;align-items:center}
+.search-wrap{flex:1;min-width:200px;position:relative}
+.search-wrap input{width:100%;background:var(--sur);border:1px solid var(--bor);border-radius:8px;padding:10px 14px 10px 36px;color:var(--fg);font-size:14px;outline:none;font-family:inherit;transition:border-color .15s}
+.search-wrap input:focus{border-color:rgba(251,191,36,0.4)}
+.search-wrap input::placeholder{color:var(--su)}
+.search-icon{position:absolute;left:11px;top:50%;transform:translateY(-50%);color:var(--su);font-size:15px;pointer-events:none}
+.cats{display:flex;gap:6px;flex-wrap:wrap}
+.cat-btn{padding:7px 14px;background:var(--sur);border:1px solid var(--bor);border-radius:999px;cursor:pointer;font-size:12px;font-weight:600;color:var(--mu);transition:all .15s;font-family:inherit;white-space:nowrap}
+.cat-btn:hover{border-color:rgba(251,191,36,0.3);color:var(--ac)}
+.cat-btn.on{background:var(--ac);color:var(--bg);border-color:var(--ac)}
+
+/* post grid */
+.grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(270px,1fr));gap:14px}
+.post-card{background:var(--sur);border:1px solid var(--bor);border-radius:12px;padding:18px;text-decoration:none;color:var(--fg);transition:all .15s;display:flex;flex-direction:column;gap:8px;position:relative;overflow:hidden}
+.post-card::before{content:'';position:absolute;top:0;left:0;right:0;height:2px;background:transparent;transition:background .2s}
+.post-card:hover{border-color:rgba(251,191,36,0.35);transform:translateY(-2px);box-shadow:0 8px 24px rgba(0,0,0,.3)}
+.post-card:hover::before{background:var(--ac)}
+.post-card.featured-card{grid-column:span 2}
+
 .post-cat{font-size:10px;font-weight:700;text-transform:uppercase;letter-spacing:.07em;padding:3px 8px;border-radius:999px;background:rgba(251,191,36,.1);color:var(--ac);border:1px solid rgba(251,191,36,.2);width:fit-content}
-.post-title{font-size:16px;font-weight:700;line-height:1.4}
-.post-summary{font-size:13px;color:var(--mu);line-height:1.5;flex:1}
+.post-title{font-size:15px;font-weight:700;line-height:1.4}
+.post-title.big{font-size:18px}
+.post-summary{font-size:13px;color:var(--mu);line-height:1.55;flex:1}
+.post-footer{display:flex;align-items:center;justify-content:space-between;margin-top:4px;gap:8px;flex-wrap:wrap}
 .post-date{font-size:11px;color:var(--su);font-family:monospace}
-.loading{text-align:center;padding:48px;color:var(--mu)}
+.post-tags{display:flex;gap:4px;flex-wrap:wrap}
+.post-tag{font-size:10px;color:var(--su);background:var(--bg);border:1px solid var(--bor);padding:2px 6px;border-radius:4px}
+.post-read{font-size:11px;color:var(--ac);font-weight:600;opacity:0;transition:opacity .15s}
+.post-card:hover .post-read{opacity:1}
+
+/* states */
+.loading{text-align:center;padding:48px 20px}
+.spinner{width:36px;height:36px;border:3px solid var(--bor);border-top-color:var(--ac);border-radius:50%;animation:spin .7s linear infinite;margin:0 auto 12px}
+@keyframes spin{to{transform:rotate(360deg)}}
 .empty{text-align:center;padding:48px;color:var(--mu);font-size:15px}
-.featured{grid-column:1/-1;display:grid;grid-template-columns:1fr 1fr;gap:16px}
-@media(max-width:600px){.featured{grid-template-columns:1fr}.grid{grid-template-columns:1fr}}
-.ad{background:var(--sur);border:1px dashed var(--bor);border-radius:8px;padding:14px;text-align:center;color:var(--su);font-size:11px;margin:16px 0}
+
+/* results bar */
+.results-bar{font-size:13px;color:var(--mu);margin-bottom:14px}
+.results-bar strong{color:var(--fg)}
+
+/* ad */
+.ad{background:var(--sur);border:1px dashed var(--bor);border-radius:8px;padding:14px;text-align:center;color:var(--su);font-size:11px;margin:20px 0}
+.ad a{color:var(--mu);text-decoration:none}
+
+/* footer */
 footer{text-align:center;padding:24px;border-top:1px solid var(--bor);margin-top:40px;font-size:12px;color:var(--su)}
-footer a{color:var(--mu);text-decoration:none;margin:0 8px}
+footer a{color:var(--mu);text-decoration:none;margin:0 6px}
+footer a:hover{color:var(--ac)}
+
+@media(max-width:600px){
+  .grid{grid-template-columns:1fr}
+  .post-card.featured-card{grid-column:span 1}
+  .toolbar{gap:8px}
+}
 </style>
-  <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-5102938260449475" crossorigin="anonymous"></script>
-  <meta name="google-site-verification" content="u11mSk2rQwaphaXMCcUwJU-6dRhN_ndessqEMeZdubk" />
-  <script src="https://browser.sentry-cdn.com/7.99.0/bundle.min.js" crossorigin="anonymous"></script>
-  <script>
-    if (location.hostname !== "localhost") {
-      Sentry.init({
-        dsn: "https://9a3b4520b380e57d96a2d67780b82a35@o4511285859516416.ingest.us.sentry.io/4511285871771648",
-        release: "forjitai@1.0.0",
-        environment: "production",
-        tracesSampleRate: 0.1
-      });
-    }
-  </script>
 </head>
 <body>
+
 <header>
-  <a class="logo" href="/"><div class="lm">F</div><div class="ln">Forjit AI</div></a>
+  <a href="/" class="logo">
+    <div class="lm">F</div>
+    <span class="ln">Forjit AI</span>
+  </a>
   <nav>
     <a href="/">Home</a>
     <a href="/tools/">Tools</a>
+    <a href="/blog" style="color:var(--ac)">Blog</a>
     <a href="/about">About</a>
   </nav>
 </header>
-<div class="container">
+
+<div class="hero">
+  <div class="hero-badge">✍️ Daily Blog</div>
   <h1>Forjit AI Blog</h1>
-  <p class="sub">AI news, finance tips, tool guides, and India tech — updated daily.</p>
+  <p>Free tool guides, India finance tips, nursing calculator how-tos, AI news and tech updates — generated daily.</p>
+  <div class="hero-stats">
+    <div class="hero-stat"><div class="hero-stat-val" id="heroCount">—</div><div class="hero-stat-lab">Articles</div></div>
+    <div class="hero-stat"><div class="hero-stat-val">Daily</div><div class="hero-stat-lab">Updated</div></div>
+    <div class="hero-stat"><div class="hero-stat-val">Free</div><div class="hero-stat-lab">Always</div></div>
+  </div>
+</div>
 
-  <div class="ad">Advertisement · <a href="https://adsense.google.com" target="_blank">Connect AdSense</a></div>
+<div class="container">
 
+  <!-- Search + Category toolbar -->
+  <div class="toolbar">
+    <div class="search-wrap">
+      <span class="search-icon">🔍</span>
+      <input type="text" id="searchInput" placeholder="Search posts…" oninput="handleSearch()"/>
+    </div>
+  </div>
   <div class="cats" id="cats">
     <button class="cat-btn on" onclick="filterCat('all',this)">All Posts</button>
   </div>
 
-  <div id="posts" class="grid">
-    <div class="loading">Loading posts…</div>
-  </div>
+  <div class="ad">Advertisement · <a href="https://adsense.google.com" target="_blank" rel="noopener">Connect AdSense</a></div>
+
+  <div class="results-bar" id="resultsBar" style="display:none"></div>
+  <div id="posts" class="grid"><div class="loading"><div class="spinner"></div><div style="color:var(--mu);font-size:14px">Loading posts…</div></div></div>
 </div>
 
 <footer>
-  <a href="/">Forjit AI</a>
-  <a href="/tools/">Tools</a>
-  <a href="/about">About</a>
-  <a href="/privacy">Privacy</a>
-  <a href="/terms">Terms</a>
-  <br/><br/>© 2025 Forjit AI · All rights reserved · forjitai.in · forjitai@gmail.com · Made in India
+  <div>
+    <a href="/">Forjit AI</a>
+    <a href="/tools/">Tools</a>
+    <a href="/blog">Blog</a>
+    <a href="/about">About</a>
+    <a href="/privacy">Privacy</a>
+    <a href="/terms">Terms</a>
+  </div>
+  <div style="margin-top:10px">© 2025 Forjit AI · All rights reserved · <a href="mailto:forjitai@gmail.com">forjitai@gmail.com</a> · Made in India 🇮🇳</div>
 </footer>
 
 <script>
-/* ── Known posts manifest — updated by gen-tools.js ─────────────────────── */
 /* POSTS_MANIFEST_START */
 const KNOWN_DATES = [
   '2026-04-27',
@@ -128,63 +179,98 @@ const KNOWN_DATES = [
 
 let allPosts = [];
 let activeCat = 'all';
+let searchQuery = '';
 
-/* ── Load all posts ────────────────────────────────────────────────────── */
+/* ── Load all posts ─────────────────────────────────── */
 async function loadPosts() {
   const fetches = KNOWN_DATES.map(date =>
-    fetch(`posts/${date}.json`)
+    fetch(`/blog/posts/${date}.json`)          /* ← absolute path fix */
       .then(r => r.ok ? r.json() : null)
       .catch(() => null)
   );
   const results = await Promise.all(fetches);
-  allPosts = results.filter(Boolean).sort((a, b) => b.date.localeCompare(a.date));
+  allPosts = results.filter(Boolean).sort((a,b) => b.date.localeCompare(a.date));
+  document.getElementById('heroCount').textContent = allPosts.length;
   buildCats();
   render();
 }
 
 function buildCats() {
-  const cats = [...new Set(allPosts.map(p => p.category))];
+  const cats = [...new Set(allPosts.map(p => p.category))].sort();
   const container = document.getElementById('cats');
-  container.innerHTML = '<button class="cat-btn on" onclick="filterCat(\'all\',this)">All Posts (' + allPosts.length + ')</button>';
-  cats.forEach(cat => {
-    const count = allPosts.filter(p => p.category === cat).length;
-    const btn = document.createElement('button');
-    btn.className = 'cat-btn';
-    btn.textContent = `${cat} (${count})`;
-    btn.onclick = function() { filterCat(cat, this); };
-    container.appendChild(btn);
-  });
+  container.innerHTML =
+    `<button class="cat-btn on" onclick="filterCat('all',this)">All (${allPosts.length})</button>` +
+    cats.map(cat => {
+      const count = allPosts.filter(p => p.category === cat).length;
+      return `<button class="cat-btn" onclick="filterCat('${cat.replace(/'/g,"\\'")}',this)">${cat} (${count})</button>`;
+    }).join('');
 }
 
 function filterCat(cat, btn) {
   activeCat = cat;
+  searchQuery = '';
+  document.getElementById('searchInput').value = '';
   document.querySelectorAll('.cat-btn').forEach(b => b.classList.remove('on'));
   btn.classList.add('on');
   render();
 }
 
+function handleSearch() {
+  searchQuery = document.getElementById('searchInput').value.toLowerCase().trim();
+  activeCat = 'all';
+  document.querySelectorAll('.cat-btn').forEach(b => b.classList.remove('on'));
+  document.querySelector('.cat-btn').classList.add('on');
+  render();
+}
+
+function readingTime(content) {
+  const words = (content || '').split(/\s+/).length;
+  return Math.max(1, Math.round(words / 200)) + ' min read';
+}
+
 function render() {
-  const filtered = activeCat === 'all' ? allPosts : allPosts.filter(p => p.category === activeCat);
-  const container = document.getElementById('posts');
+  let filtered = activeCat === 'all' ? [...allPosts] : allPosts.filter(p => p.category === activeCat);
+  if (searchQuery) {
+    filtered = filtered.filter(p =>
+      p.title.toLowerCase().includes(searchQuery) ||
+      (p.summary || '').toLowerCase().includes(searchQuery) ||
+      (p.tags || []).some(t => t.toLowerCase().includes(searchQuery))
+    );
+  }
+
+  const resultsBar = document.getElementById('resultsBar');
+  const container  = document.getElementById('posts');
+
+  if (searchQuery || activeCat !== 'all') {
+    resultsBar.style.display = 'block';
+    resultsBar.textContent = `Showing ${filtered.length} post${filtered.length!==1?'s':''}`
+      + (searchQuery ? ` for "${searchQuery}"` : '')
+      + (activeCat !== 'all' ? ` in ${activeCat}` : '');
+  } else {
+    resultsBar.style.display = 'none';
+  }
 
   if (!filtered.length) {
-    container.innerHTML = '<div class="empty">No posts in this category yet.</div>';
+    container.innerHTML = `<div class="empty">😔 No posts found${searchQuery?' for "'+searchQuery+'"':''}.<br><span style="font-size:13px;color:var(--su)">Try a different search or category.</span></div>`;
     return;
   }
 
-  container.innerHTML = filtered.map((post, i) => `
-    <a class="post-card" href="post.html?slug=${post.slug}&date=${post.date}">
-      <div class="post-cat">${post.category}</div>
-      <div class="post-title">${post.title}</div>
-      <div class="post-summary">${post.summary}</div>
-      <div style="display:flex;align-items:center;justify-content:space-between;margin-top:4px">
-        <div class="post-date">${new Date(post.date).toLocaleDateString('en-IN', {day:'numeric',month:'short',year:'numeric'})}</div>
-        <div style="display:flex;gap:4px;flex-wrap:wrap">
-          ${(post.tags || []).slice(0,2).map(t => `<span style="font-size:10px;color:var(--su);background:var(--bg);border:1px solid var(--bor);padding:2px 6px;border-radius:4px">${t}</span>`).join('')}
+  container.innerHTML = filtered.map((post, i) => {
+    const isFeatured = i === 0 && activeCat === 'all' && !searchQuery;
+    const dateStr = new Date(post.date + 'T00:00:00').toLocaleDateString('en-IN', {day:'numeric',month:'short',year:'numeric'});
+    const rt = readingTime(post.content);
+    return `
+      <a class="post-card${isFeatured?' featured-card':''}" href="/blog/post.html?date=${post.date}&slug=${encodeURIComponent(post.slug||'')}">
+        <div class="post-cat">${post.category}</div>
+        <div class="post-title${isFeatured?' big':''}">${post.title}</div>
+        <div class="post-summary">${post.summary}</div>
+        <div class="post-footer">
+          <div class="post-date">📅 ${dateStr} · ⏱ ${rt}</div>
+          <div class="post-tags">${(post.tags||[]).slice(0,2).map(t=>`<span class="post-tag">${t}</span>`).join('')}</div>
         </div>
-      </div>
-    </a>
-  `).join('');
+        <div class="post-read">Read article →</div>
+      </a>`;
+  }).join('');
 }
 
 loadPosts();

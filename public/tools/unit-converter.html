@@ -243,7 +243,67 @@ function buildRefTable(){
 }
 
 renderCatTabs();renderUnits();convert(1);
-</script>
+</script><style>
+.guide{max-width:740px;margin:32px auto 0;padding:0 16px 52px}
+.guide h2{font-size:18px;font-weight:700;margin-bottom:12px;color:#e7e5e4;margin-top:0}
+.guide p{font-size:14px;color:#a8a29e;line-height:1.8;margin-bottom:14px}
+.guide ul,.guide ol{font-size:14px;color:#a8a29e;padding-left:20px;margin-bottom:14px}
+.guide ul li,.guide ol li{margin-bottom:7px;line-height:1.65}
+.guide strong{color:#e7e5e4}
+.guide a{color:#fbbf24;text-decoration:none}
+.guide a:hover{text-decoration:underline}
+.guide-card{background:#1c1917;border:1px solid #292524;border-radius:10px;padding:22px;margin-bottom:16px}
+.faq-q{font-size:14px;font-weight:700;color:#e7e5e4;margin-bottom:7px}
+.faq-a{font-size:13px;color:#a8a29e;line-height:1.75}
+.related-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(180px,1fr));gap:10px;margin-top:12px}
+.related-card{background:#0c0a09;border:1px solid #292524;border-radius:8px;padding:12px;text-decoration:none;color:#a8a29e;font-size:13px;transition:border-color .2s;display:block}
+.related-card:hover{border-color:#fbbf24;color:#e7e5e4}
+.related-card strong{display:block;color:#e7e5e4;margin-bottom:3px;font-size:13px}
+</style>
+<div class="guide">
+  <div class="guide-card">
+    <h2>Why You Need a Unit Converter in India</h2>
+    <p>India officially uses the metric system (SI units), but in daily life you'll frequently encounter a mix of metric, imperial, and traditional Indian measurements. Property is measured in square feet or bigha, gold in grams or tola, fuel efficiency in kmpl, and recipes in cups or ml. This converter handles all these situations.</p>
+    <ul>
+      <li><strong>Property:</strong> 1 square yard = 9 square feet. 1 acre = 43,560 sq ft. 1 bigha varies by state (650–2,000 sq yards depending on region)</li>
+      <li><strong>Weight/Gold:</strong> 1 tola = 11.66 grams (traditional gold unit). 1 kg = 2.205 pounds</li>
+      <li><strong>Temperature:</strong> Indian weather is in Celsius (°C). Oven temperatures in recipes from US sites are in Fahrenheit (°F). °C = (°F - 32) × 5/9</li>
+      <li><strong>Fuel:</strong> Indian fuel efficiency is in km per litre (kmpl). US is in miles per gallon (mpg). 1 kmpl ≈ 2.35 mpg</li>
+    </ul>
+  </div>
+  <div class="guide-card">
+    <h2>Commonly Confused Unit Conversions</h2>
+    <ul>
+      <li><strong>1 inch = 2.54 cm</strong> (important for screen sizes, clothing)</li>
+      <li><strong>1 foot = 30.48 cm</strong> (height, room dimensions)</li>
+      <li><strong>1 kg = 2.205 pounds</strong> (weight, international shipping)</li>
+      <li><strong>1 litre = 1,000 ml = 33.8 fl oz</strong> (beverages, cooking)</li>
+      <li><strong>1 mile = 1.609 km</strong> (fitness trackers, international maps)</li>
+      <li><strong>0°C = 32°F = 273.15K</strong> (temperature reference point)</li>
+      <li><strong>100°C = 212°F</strong> (boiling point of water)</li>
+    </ul>
+  </div>
+  <div class="guide-card">
+    <h2>Frequently Asked Questions</h2>
+    <div style="margin-bottom:16px">
+      <div class="faq-q">How many feet in a metre?</div>
+      <div class="faq-a">1 metre = 3.281 feet. Conversely, 1 foot = 0.3048 metres. For rough mental math, remember that 3 feet ≈ 1 metre (actually 0.914m, so 3 feet is slightly less than a metre).</div>
+    </div>
+    <div style="margin-bottom:16px">
+      <div class="faq-q">How to convert Celsius to Fahrenheit?</div>
+      <div class="faq-a">Formula: °F = (°C × 9/5) + 32. Reverse: °C = (°F - 32) × 5/9. Quick reference: 0°C = 32°F, 20°C = 68°F, 37°C = 98.6°F (body temperature), 100°C = 212°F.</div>
+    </div>
+    <div>
+      <div class="faq-q">How many grams in a tola?</div>
+      <div class="faq-a">1 tola = 11.6638 grams. This is the traditional Indian unit for measuring gold. When buying gold jewellery in India, prices are often quoted per gram or per tola depending on the jeweller.</div>
+    </div>
+  </div>
+
+  <div class="guide-card">
+    <h2>🔗 Related Tools</h2>
+    <div class="related-grid"><a class="related-card" href="/tools/speed-distance-time.html"><strong>Speed Distance Time</strong>Speed, distance, time solver</a><a class="related-card" href="/tools/percentage-calculator.html"><strong>Percentage Calculator</strong>Any percentage calculation</a><a class="related-card" href="/tools/scientific-calculator.html"><strong>Scientific Calculator</strong>Advanced math calculator</a><a class="related-card" href="/tools/date-calculator.html"><strong>Date Calculator</strong>Days between dates</a></div>
+  </div>
+</div>
 <script src="tool-common.js"></script>
 </body>
 </html>

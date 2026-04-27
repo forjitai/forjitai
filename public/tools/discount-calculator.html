@@ -26,6 +26,17 @@
   <meta name="twitter:image"       content="https://www.forjitai.in/og-image.png"/>
   <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-5102938260449475" crossorigin="anonymous"></script>
   <meta name="google-site-verification" content="u11mSk2rQwaphaXMCcUwJU-6dRhN_ndessqEMeZdubk" />
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "FAQPage",
+  "mainEntity": [
+    {"@type":"Question","name":'How do I calculate 10% off in my head?',"acceptedAnswer":{"@type":"Answer","text":'To calculate 10% off any price, simply move the decimal point one place to the left. 10% of ₹850 = ₹85. So ₹850 at 10% off = ₹850 - ₹85 = ₹765. For 20% off, double the 10% amount. For 5% off, halve the 10% amount. For quick mental math, this is faster than using a formula.'}},
+    {"@type":"Question","name":'Is the discount always calculated on MRP in India?',"acceptedAnswer":{"@type":"Answer","text":"Yes, in India, discounts are legally required to be calculated on the Maximum Retail Price (MRP) printed on the product. E-commerce platforms sometimes show inflated 'original prices' — you can check if this is genuine by looking at price history on comparison websites or browser extensions like PricePe or Honey."}},
+    {"@type":"Question","name":'How to calculate GST after a discount?',"acceptedAnswer":{"@type":"Answer","text":'GST is calculated on the discounted price, not the original MRP — this is the correct method per Indian GST rules. So if a product is ₹1,000 with 18% GST and 10% discount: discounted price = ₹900, GST = ₹162, final price = ₹1,062. Use our GST Calculator to calculate the exact GST amount on any price.'}}
+  ]
+}
+</script>
 </head>
 <body>
 <header>
@@ -144,7 +155,64 @@ function calcStack(){
   document.getElementById('stackNote').innerHTML=`<b>Note:</b> Stacked discounts of ${discounts.join('% + ')}% give an effective discount of <b>${pct(totalDisc)}</b> — not ${vs.toFixed(0)}% (discounts apply sequentially, not additively).`;
 }
 calcMode0();calcStack();
-</script>
+</script><style>
+.guide{max-width:740px;margin:32px auto 0;padding:0 16px 52px}
+.guide h2{font-size:18px;font-weight:700;margin-bottom:12px;color:#e7e5e4;margin-top:0}
+.guide p{font-size:14px;color:#a8a29e;line-height:1.8;margin-bottom:14px}
+.guide ul,.guide ol{font-size:14px;color:#a8a29e;padding-left:20px;margin-bottom:14px}
+.guide ul li,.guide ol li{margin-bottom:7px;line-height:1.65}
+.guide strong{color:#e7e5e4}
+.guide a{color:#fbbf24;text-decoration:none}
+.guide a:hover{text-decoration:underline}
+.guide-card{background:#1c1917;border:1px solid #292524;border-radius:10px;padding:22px;margin-bottom:16px}
+.faq-q{font-size:14px;font-weight:700;color:#e7e5e4;margin-bottom:7px}
+.faq-a{font-size:13px;color:#a8a29e;line-height:1.75}
+.related-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(180px,1fr));gap:10px;margin-top:12px}
+.related-card{background:#0c0a09;border:1px solid #292524;border-radius:8px;padding:12px;text-decoration:none;color:#a8a29e;font-size:13px;transition:border-color .2s;display:block}
+.related-card:hover{border-color:#fbbf24;color:#e7e5e4}
+.related-card strong{display:block;color:#e7e5e4;margin-bottom:3px;font-size:13px}
+</style>
+<div class="guide">
+  <div class="guide-card">
+    <h2>How to Calculate Discount Percentage</h2>
+    <p>A discount calculator helps you quickly find the final price after a percentage reduction, or work backwards to find what percentage off a sale price represents. There are three common calculations:</p>
+    <ul>
+      <li><strong>Find discounted price:</strong> Final Price = Original Price × (1 - Discount%/100). Example: ₹2,000 at 30% off = ₹2,000 × 0.70 = ₹1,400</li>
+      <li><strong>Find discount amount:</strong> Saving = Original Price × Discount%/100. Example: 30% off ₹2,000 = ₹600 saved</li>
+      <li><strong>Find discount percentage:</strong> Discount% = ((Original - Final) ÷ Original) × 100. Example: ₹2,000 reduced to ₹1,400 = 30% off</li>
+    </ul>
+  </div>
+  <div class="guide-card">
+    <h2>Smart Shopping Tips for India</h2>
+    <p>Online shopping in India during sale events (Amazon Great Indian Festival, Flipkart Big Billion Days, Myntra End of Reason Sale) can offer genuine discounts — but also inflated "original prices." Here's how to shop smarter:</p>
+    <ul>
+      <li><strong>Check price history:</strong> Use browser extensions to see if the "original price" was inflated before the sale</li>
+      <li><strong>Combine discounts:</strong> Bank card offers (10–20% extra) + coupon codes + exchange offers stack with the base discount</li>
+      <li><strong>GST-inclusive pricing:</strong> E-commerce prices in India include GST. Use our <a href="/tools/gst-calculator.html">GST Calculator</a> to see the pre-tax price</li>
+      <li><strong>Compare across platforms:</strong> The same product can have different "MRP" on Amazon vs Flipkart vs brand website</li>
+    </ul>
+  </div>
+  <div class="guide-card">
+    <h2>Frequently Asked Questions</h2>
+    <div style="margin-bottom:16px">
+      <div class="faq-q">How do I calculate 20% off a price?</div>
+      <div class="faq-a">Multiply the original price by 0.80 (that's 1 minus 0.20). Example: 20% off ₹1,500 = ₹1,500 × 0.80 = ₹1,200. Saving = ₹300. Or use the discount calculator above — enter ₹1,500 and 20%.</div>
+    </div>
+    <div style="margin-bottom:16px">
+      <div class="faq-q">How do I calculate the original price before discount?</div>
+      <div class="faq-a">Original Price = Final Price ÷ (1 - Discount%/100). Example: If you paid ₹1,200 after a 20% discount, original price = ₹1,200 ÷ 0.80 = ₹1,500.</div>
+    </div>
+    <div>
+      <div class="faq-q">What other calculators does Forjit AI have for shopping?</div>
+      <div class="faq-a">Forjit AI has a <a href="/tools/gst-calculator.html">GST Calculator</a> (add/remove GST from prices), <a href="/tools/percentage-calculator.html">Percentage Calculator</a>, and <a href="/tools/tip-calculator.html">Tip Calculator</a> for restaurant bills.</div>
+    </div>
+  </div>
+
+  <div class="guide-card">
+    <h2>🔗 Related Tools</h2>
+    <div class="related-grid"><a class="related-card" href="/tools/gst-calculator.html"><strong>GST Calculator</strong>Add or remove GST</a><a class="related-card" href="/tools/percentage-calculator.html"><strong>Percentage Calculator</strong>Any percentage calculation</a><a class="related-card" href="/tools/tip-calculator.html"><strong>Tip Calculator</strong>Restaurant bill splitter</a><a class="related-card" href="/tools/emi-calculator.html"><strong>EMI Calculator</strong>Loan EMI calculator</a></div>
+  </div>
+</div>
 <script src="tool-common.js"></script>
 </body>
 </html>

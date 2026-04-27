@@ -187,7 +187,68 @@ function download(fmt){
 }
 
 generate();
-</script>
+</script><style>
+.guide{max-width:740px;margin:32px auto 0;padding:0 16px 52px}
+.guide h2{font-size:18px;font-weight:700;margin-bottom:12px;color:#e7e5e4;margin-top:0}
+.guide p{font-size:14px;color:#a8a29e;line-height:1.8;margin-bottom:14px}
+.guide ul,.guide ol{font-size:14px;color:#a8a29e;padding-left:20px;margin-bottom:14px}
+.guide ul li,.guide ol li{margin-bottom:7px;line-height:1.65}
+.guide strong{color:#e7e5e4}
+.guide a{color:#fbbf24;text-decoration:none}
+.guide a:hover{text-decoration:underline}
+.guide-card{background:#1c1917;border:1px solid #292524;border-radius:10px;padding:22px;margin-bottom:16px}
+.faq-q{font-size:14px;font-weight:700;color:#e7e5e4;margin-bottom:7px}
+.faq-a{font-size:13px;color:#a8a29e;line-height:1.75}
+.related-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(180px,1fr));gap:10px;margin-top:12px}
+.related-card{background:#0c0a09;border:1px solid #292524;border-radius:8px;padding:12px;text-decoration:none;color:#a8a29e;font-size:13px;transition:border-color .2s;display:block}
+.related-card:hover{border-color:#fbbf24;color:#e7e5e4}
+.related-card strong{display:block;color:#e7e5e4;margin-bottom:3px;font-size:13px}
+</style>
+<div class="guide">
+  <div class="guide-card">
+    <h2>What Can You Put in a QR Code?</h2>
+    <p>A QR (Quick Response) code can encode any text — which makes it incredibly versatile. When your phone camera scans a QR code, it reads the encoded text and takes action depending on its format.</p>
+    <ul>
+      <li><strong>Website URL:</strong> Opens a webpage directly. Most common use — menus, business cards, posters</li>
+      <li><strong>Plain text:</strong> Displays a message when scanned — useful for product information, instructions, notes</li>
+      <li><strong>UPI payment:</strong> Encodes a UPI link (upi://pay?pa=...) that opens payment apps like GPay, PhonePe, Paytm directly</li>
+      <li><strong>Wi-Fi credentials:</strong> Encodes SSID and password so guests can connect without typing the password (WIFI:T:WPA;S:networkname;P:password;;)</li>
+      <li><strong>Contact card (vCard):</strong> Saves a contact to the phone book when scanned</li>
+      <li><strong>Email or SMS:</strong> Opens a pre-filled email or text message</li>
+    </ul>
+  </div>
+  <div class="guide-card">
+    <h2>QR Codes in India — Common Use Cases</h2>
+    <ul>
+      <li><strong>UPI payments:</strong> Every shop, street vendor, and restaurant in India now accepts UPI QR code payments — a revolution in digital payments</li>
+      <li><strong>Restaurant menus:</strong> Post-COVID, most restaurants switched to QR-based digital menus</li>
+      <li><strong>Business cards:</strong> Add a QR code to your business card linking to your LinkedIn profile or portfolio</li>
+      <li><strong>WhatsApp link:</strong> Create a QR code for your WhatsApp chat link so customers can message you with one scan</li>
+      <li><strong>Event check-in:</strong> Event tickets often use QR codes for entry verification</li>
+      <li><strong>Government services:</strong> Aadhaar card, vaccination certificates, PAN verification — all use QR codes</li>
+    </ul>
+  </div>
+  <div class="guide-card">
+    <h2>Frequently Asked Questions</h2>
+    <div style="margin-bottom:16px">
+      <div class="faq-q">Is this QR code generator free?</div>
+      <div class="faq-a">Yes, completely free. Generate unlimited QR codes, download as PNG, and use them anywhere — for personal or commercial use. No watermarks, no account required.</div>
+    </div>
+    <div style="margin-bottom:16px">
+      <div class="faq-q">Do QR codes expire?</div>
+      <div class="faq-a">QR codes generated with this tool encode the data directly — they never expire. The QR code works as long as the destination (URL, text) is still valid. If you encoded a website URL, the QR code stops working only if that URL is deleted or changed.</div>
+    </div>
+    <div>
+      <div class="faq-q">How do I create a UPI QR code?</div>
+      <div class="faq-a">Enter your UPI payment link in the format: upi://pay?pa=yourname@upi&pn=YourName — and generate the QR code. When someone scans it, their UPI app will open with your payment details pre-filled. Alternatively, your bank's app or UPI app generates a merchant QR code directly.</div>
+    </div>
+  </div>
+
+  <div class="guide-card">
+    <h2>🔗 Related Tools</h2>
+    <div class="related-grid"><a class="related-card" href="/tools/whatsapp-link.html"><strong>WhatsApp Link Generator</strong>Create WhatsApp click links</a><a class="related-card" href="/tools/password-generator.html"><strong>Password Generator</strong>Generate secure passwords</a><a class="related-card" href="/tools/word-counter.html"><strong>Word Counter</strong>Count words and characters</a><a class="related-card" href="/tools/base64-encoder.html"><strong>Base64 Encoder</strong>Encode/decode Base64</a></div>
+  </div>
+</div>
 <script src="tool-common.js"></script>
 </body>
 </html>

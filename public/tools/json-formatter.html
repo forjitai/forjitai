@@ -37,6 +37,17 @@
   <meta name="twitter:image"       content="https://www.forjitai.in/og-image.png"/>
   <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-5102938260449475" crossorigin="anonymous"></script>
   <meta name="google-site-verification" content="u11mSk2rQwaphaXMCcUwJU-6dRhN_ndessqEMeZdubk" />
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "FAQPage",
+  "mainEntity": [
+    {"@type":"Question","name":'What is the difference between JSON and JSONP?',"acceptedAnswer":{"@type":"Answer","text":'JSON (JavaScript Object Notation) is a data format. JSONP (JSON with Padding) is an old technique to bypass CORS restrictions by wrapping JSON in a function call: callback({data}). JSONP is largely obsolete now — modern APIs use CORS headers instead. This formatter handles standard JSON, not JSONP.'}},
+    {"@type":"Question","name":'How do I validate JSON online?',"acceptedAnswer":{"@type":"Answer","text":"Paste your JSON into the formatter above and click Format. If the JSON is valid, it will be formatted with proper indentation. If there's a syntax error, the tool will highlight the problem — showing which line and character has the issue (missing comma, unclosed bracket, unquoted key, etc.). The formatted output is only generated from valid JSON."}},
+    {"@type":"Question","name":'What is the maximum JSON file size this tool can handle?',"acceptedAnswer":{"@type":"Answer","text":"This JSON formatter processes data in your browser without sending it to a server. It can handle JSON up to several megabytes in size, depending on your device's memory. For extremely large files (50MB+), a desktop tool like VS Code or jq command-line tool may be faster."}}
+  ]
+}
+</script>
 </head>
 <body>
 <header>
@@ -143,7 +154,60 @@ function loadSample(){
   document.getElementById('input').value=JSON.stringify({name:'Forjit AI',version:'2.0',features:['EMI Calculator','QR Generator','Word Counter'],stats:{tools:25,users:1000,rating:4.8},active:true,launched:null},null,2);
   onInput();format();
 }
-</script>
+</script><style>
+.guide{max-width:740px;margin:32px auto 0;padding:0 16px 52px}
+.guide h2{font-size:18px;font-weight:700;margin-bottom:12px;color:#e7e5e4;margin-top:0}
+.guide p{font-size:14px;color:#a8a29e;line-height:1.8;margin-bottom:14px}
+.guide ul,.guide ol{font-size:14px;color:#a8a29e;padding-left:20px;margin-bottom:14px}
+.guide ul li,.guide ol li{margin-bottom:7px;line-height:1.65}
+.guide strong{color:#e7e5e4}
+.guide a{color:#fbbf24;text-decoration:none}
+.guide a:hover{text-decoration:underline}
+.guide-card{background:#1c1917;border:1px solid #292524;border-radius:10px;padding:22px;margin-bottom:16px}
+.faq-q{font-size:14px;font-weight:700;color:#e7e5e4;margin-bottom:7px}
+.faq-a{font-size:13px;color:#a8a29e;line-height:1.75}
+.related-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(180px,1fr));gap:10px;margin-top:12px}
+.related-card{background:#0c0a09;border:1px solid #292524;border-radius:8px;padding:12px;text-decoration:none;color:#a8a29e;font-size:13px;transition:border-color .2s;display:block}
+.related-card:hover{border-color:#fbbf24;color:#e7e5e4}
+.related-card strong{display:block;color:#e7e5e4;margin-bottom:3px;font-size:13px}
+</style>
+<div class="guide">
+  <div class="guide-card">
+    <h2>What Is JSON and Why Format It?</h2>
+    <p>JSON (JavaScript Object Notation) is the universal language of APIs — almost every web service, mobile app, and database communicates using JSON. When you receive raw API responses, they're often a single unformatted line of text that's nearly impossible to read.</p>
+    <p>A JSON formatter (also called JSON prettifier or JSON beautifier) adds proper indentation and line breaks to make the structure readable. It also validates the JSON — flagging syntax errors like missing commas, unclosed brackets, or unquoted keys.</p>
+  </div>
+  <div class="guide-card">
+    <h2>Common JSON Errors and How to Fix Them</h2>
+    <ul>
+      <li><strong>Missing comma:</strong> Every key-value pair in an object must be separated by a comma, except the last one. <code style="background:#0c0a09;padding:1px 5px;border-radius:3px;font-size:12px">{"a":1 "b":2}</code> → fix: add comma after 1</li>
+      <li><strong>Trailing comma:</strong> JSON does not allow trailing commas. <code style="background:#0c0a09;padding:1px 5px;border-radius:3px;font-size:12px">{"a":1,}</code> is invalid — remove the last comma</li>
+      <li><strong>Unquoted keys:</strong> JSON keys must always be in double quotes. <code style="background:#0c0a09;padding:1px 5px;border-radius:3px;font-size:12px">{name: "value"}</code> → fix: <code style="background:#0c0a09;padding:1px 5px;border-radius:3px;font-size:12px">{"name": "value"}</code></li>
+      <li><strong>Single quotes:</strong> JSON requires double quotes, not single quotes</li>
+      <li><strong>Undefined or NaN values:</strong> These are JavaScript values, not valid JSON. Replace with null or a number</li>
+    </ul>
+  </div>
+  <div class="guide-card">
+    <h2>Frequently Asked Questions</h2>
+    <div style="margin-bottom:16px">
+      <div class="faq-q">Is my data safe when I use this JSON formatter?</div>
+      <div class="faq-a">Yes. The JSON formatter processes your data entirely in your browser — nothing is sent to any server. Your JSON data never leaves your device. This makes it safe for formatting sensitive API responses or internal data structures.</div>
+    </div>
+    <div style="margin-bottom:16px">
+      <div class="faq-q">What is the difference between JSON and XML?</div>
+      <div class="faq-a">Both JSON and XML are data interchange formats. JSON is lighter, easier to read, and natively supported by JavaScript — making it dominant for modern APIs. XML is more verbose but supports attributes, namespaces, and schemas — still used in SOAP APIs, RSS feeds, and enterprise systems.</div>
+    </div>
+    <div>
+      <div class="faq-q">How do I minify JSON (remove formatting)?</div>
+      <div class="faq-a">Use the "Minify" button in this tool to strip all whitespace and produce compact JSON. Minified JSON is smaller in file size — useful for production API responses where bandwidth efficiency matters.</div>
+    </div>
+  </div>
+
+  <div class="guide-card">
+    <h2>🔗 Related Tools</h2>
+    <div class="related-grid"><a class="related-card" href="/tools/base64-encoder.html"><strong>Base64 Encoder</strong>Encode/decode Base64</a><a class="related-card" href="/tools/number-converter.html"><strong>Number Converter</strong>Binary, hex, octal converter</a><a class="related-card" href="/tools/password-generator.html"><strong>Password Generator</strong>Secure password creator</a><a class="related-card" href="/tools/qr-generator.html"><strong>QR Generator</strong>Generate QR codes</a></div>
+  </div>
+</div>
 <script src="tool-common.js"></script>
 </body>
 </html>

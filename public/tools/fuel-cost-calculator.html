@@ -189,7 +189,18 @@ function calc(){
   });
 }
 setFuelDefaults();calc();
-</script>
+</script><style>
+.related-section{max-width:740px;margin:0 auto;padding:0 16px 52px}
+.related-section h2{font-size:17px;font-weight:700;margin-bottom:12px;color:#e7e5e4}
+.related-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(175px,1fr));gap:10px}
+.related-card{background:#1c1917;border:1px solid #292524;border-radius:8px;padding:12px;text-decoration:none;color:#a8a29e;font-size:13px;transition:border-color .2s;display:block}
+.related-card:hover{border-color:#fbbf24;color:#e7e5e4}
+.related-card strong{display:block;color:#e7e5e4;margin-bottom:3px;font-size:13px}
+</style>
+<div class="related-section">
+  <h2>🔗 Related Tools</h2>
+  <div class="related-grid"><a class="related-card" href="/tools/unit-converter.html"><strong>Unit Converter</strong>km/l to mpg</a><a class="related-card" href="/tools/speed-distance-time.html"><strong>Speed Distance Time</strong>Travel time</a><a class="related-card" href="/tools/emi-calculator.html"><strong>EMI Calculator</strong>Car loan EMI</a></div>
+</div>
 <script src="tool-common.js"></script>
 </body>
 </html>

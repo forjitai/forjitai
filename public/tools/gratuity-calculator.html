@@ -153,7 +153,18 @@ function calc(){
   document.getElementById('taxStatus').style.color=taxFree?'var(--green)':'#f87171';
 }
 calc();
-</script>
+</script><style>
+.related-section{max-width:740px;margin:0 auto;padding:0 16px 52px}
+.related-section h2{font-size:17px;font-weight:700;margin-bottom:12px;color:#e7e5e4}
+.related-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(175px,1fr));gap:10px}
+.related-card{background:#1c1917;border:1px solid #292524;border-radius:8px;padding:12px;text-decoration:none;color:#a8a29e;font-size:13px;transition:border-color .2s;display:block}
+.related-card:hover{border-color:#fbbf24;color:#e7e5e4}
+.related-card strong{display:block;color:#e7e5e4;margin-bottom:3px;font-size:13px}
+</style>
+<div class="related-section">
+  <h2>🔗 Related Tools</h2>
+  <div class="related-grid"><a class="related-card" href="/tools/salary-calculator.html"><strong>Salary Calculator</strong>CTC to in-hand</a><a class="related-card" href="/tools/income-tax-calculator.html"><strong>Income Tax Calculator</strong>Tax on gratuity</a><a class="related-card" href="/tools/retirement-calculator.html"><strong>Retirement Calculator</strong>Retirement planning</a></div>
+</div>
 <script src="tool-common.js"></script>
 </body>
 </html>

@@ -523,7 +523,73 @@ function calcVS(){
     });
   });
 }());
-</script>
+</script><style>
+.guide{max-width:740px;margin:32px auto 0;padding:0 16px 52px}
+.guide h2{font-size:18px;font-weight:700;margin-bottom:12px;color:#e7e5e4;margin-top:0}
+.guide p{font-size:14px;color:#a8a29e;line-height:1.8;margin-bottom:14px}
+.guide ul,.guide ol{font-size:14px;color:#a8a29e;padding-left:20px;margin-bottom:14px}
+.guide ul li,.guide ol li{margin-bottom:7px;line-height:1.65}
+.guide strong{color:#e7e5e4}
+.guide a{color:#fbbf24;text-decoration:none}
+.guide a:hover{text-decoration:underline}
+.guide-card{background:#1c1917;border:1px solid #292524;border-radius:10px;padding:22px;margin-bottom:16px}
+.faq-q{font-size:14px;font-weight:700;color:#e7e5e4;margin-bottom:7px}
+.faq-a{font-size:13px;color:#a8a29e;line-height:1.75}
+.related-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(180px,1fr));gap:10px;margin-top:12px}
+.related-card{background:#0c0a09;border:1px solid #292524;border-radius:8px;padding:12px;text-decoration:none;color:#a8a29e;font-size:13px;transition:border-color .2s;display:block}
+.related-card:hover{border-color:#fbbf24;color:#e7e5e4}
+.related-card strong{display:block;color:#e7e5e4;margin-bottom:3px;font-size:13px}
+</style>
+<div class="guide">
+  <div class="guide-card">
+    <h2>What Is a SIP Calculator?</h2>
+    <p>A SIP (Systematic Investment Plan) calculator helps you estimate the future value of your mutual fund investments when you invest a fixed amount every month. Instead of trying to time the market, SIPs let you invest small amounts regularly — averaging your purchase price over time.</p>
+    <p>How the SIP formula works: Future Value = P × {[(1 + r)^n - 1] / r} × (1 + r), where P = monthly investment amount, r = monthly rate of return (annual rate ÷ 12 ÷ 100), n = number of months.</p>
+    <p>For example, a ₹5,000/month SIP at 12% annual returns for 10 years gives a corpus of approximately ₹11.6 lakh on an investment of ₹6 lakh — a gain of ₹5.6 lakh purely from compounding.</p>
+  </div>
+  <div class="guide-card">
+    <h2>SIP vs Lump Sum — Which Is Better?</h2>
+    <p>For most salaried individuals in India, SIP is better than lump sum investing for these reasons:</p>
+    <ul>
+      <li><strong>Rupee Cost Averaging:</strong> You buy more units when markets fall and fewer when they rise — automatically lowering your average cost</li>
+      <li><strong>Discipline:</strong> Auto-debit from your bank account removes the temptation to skip investments</li>
+      <li><strong>No timing risk:</strong> You don't need to predict market highs and lows</li>
+      <li><strong>Accessible:</strong> Start with as little as ₹500/month on most platforms (Groww, Zerodha Coin, Paytm Money)</li>
+    </ul>
+    <p>Lump sum investing is better when you have a large windfall (bonus, inheritance) and markets are at a historic low — but this requires market timing skill most investors don't have.</p>
+  </div>
+  <div class="guide-card">
+    <h2>Expected SIP Returns in India (Realistic)</h2>
+    <ul>
+      <li><strong>Large Cap Mutual Funds:</strong> 10–13% annual returns (historical 10-year average)</li>
+      <li><strong>Mid Cap Funds:</strong> 12–16% (higher risk, higher reward)</li>
+      <li><strong>Small Cap Funds:</strong> 14–18% (highest risk, volatile short-term)</li>
+      <li><strong>Index Funds (Nifty 50):</strong> 11–13% (low cost, consistent)</li>
+      <li><strong>Debt Funds:</strong> 6–8% (low risk, suitable for goals under 3 years)</li>
+    </ul>
+    <p>Use 10–12% as a conservative estimate for equity SIPs in this calculator. Do not use 15%+ as a base assumption — it leads to overconfidence.</p>
+  </div>
+  <div class="guide-card">
+    <h2>Frequently Asked Questions</h2>
+    <div style="margin-bottom:16px">
+      <div class="faq-q">How much should I invest in SIP per month?</div>
+      <div class="faq-a">A common rule of thumb is to invest 20% of your monthly take-home salary in SIPs. For a ₹50,000 take-home salary, that's ₹10,000/month. Use this calculator to see what corpus that builds over your target timeframe at your expected return rate.</div>
+    </div>
+    <div style="margin-bottom:16px">
+      <div class="faq-q">Is SIP safe for investment in India?</div>
+      <div class="faq-a">SIPs in mutual funds are regulated by SEBI (Securities and Exchange Board of India). They are not risk-free — market-linked funds can lose value in the short term. However, SIPs in large-cap or index funds have historically delivered positive returns over any 7+ year period in India. ELSS SIPs also qualify for Section 80C deduction up to ₹1.5 lakh/year.</div>
+    </div>
+    <div>
+      <div class="faq-q">Can I stop a SIP anytime?</div>
+      <div class="faq-a">Yes. Most mutual fund SIPs in India have no lock-in (except ELSS which has 3 years). You can pause, reduce, or stop your SIP anytime through the fund house's app or website. Your existing units remain invested.</div>
+    </div>
+  </div>
+
+  <div class="guide-card">
+    <h2>🔗 Related Tools</h2>
+    <div class="related-grid"><a class="related-card" href="/tools/emi-calculator.html"><strong>EMI Calculator</strong>Loan EMI with amortization</a><a class="related-card" href="/tools/fd-calculator.html"><strong>FD Calculator</strong>Fixed deposit maturity value</a><a class="related-card" href="/tools/ppf-calculator.html"><strong>PPF Calculator</strong>Public Provident Fund returns</a><a class="related-card" href="/tools/compound-interest-calculator.html"><strong>Compound Interest</strong>Compound interest calculator</a><a class="related-card" href="/tools/retirement-calculator.html"><strong>Retirement Calculator</strong>Plan your retirement corpus</a></div>
+  </div>
+</div>
 <script src="tool-common.js"></script>
 
 <!-- Internal SEO links -->

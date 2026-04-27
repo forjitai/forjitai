@@ -194,7 +194,69 @@ function count(){
   }
 }
 function copyText(){navigator.clipboard.writeText(document.getElementById('txt').value);}
-</script>
+</script><style>
+.guide{max-width:740px;margin:32px auto 0;padding:0 16px 52px}
+.guide h2{font-size:18px;font-weight:700;margin-bottom:12px;color:#e7e5e4;margin-top:0}
+.guide p{font-size:14px;color:#a8a29e;line-height:1.8;margin-bottom:14px}
+.guide ul,.guide ol{font-size:14px;color:#a8a29e;padding-left:20px;margin-bottom:14px}
+.guide ul li,.guide ol li{margin-bottom:7px;line-height:1.65}
+.guide strong{color:#e7e5e4}
+.guide a{color:#fbbf24;text-decoration:none}
+.guide a:hover{text-decoration:underline}
+.guide-card{background:#1c1917;border:1px solid #292524;border-radius:10px;padding:22px;margin-bottom:16px}
+.faq-q{font-size:14px;font-weight:700;color:#e7e5e4;margin-bottom:7px}
+.faq-a{font-size:13px;color:#a8a29e;line-height:1.75}
+.related-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(180px,1fr));gap:10px;margin-top:12px}
+.related-card{background:#0c0a09;border:1px solid #292524;border-radius:8px;padding:12px;text-decoration:none;color:#a8a29e;font-size:13px;transition:border-color .2s;display:block}
+.related-card:hover{border-color:#fbbf24;color:#e7e5e4}
+.related-card strong{display:block;color:#e7e5e4;margin-bottom:3px;font-size:13px}
+</style>
+<div class="guide">
+  <div class="guide-card">
+    <h2>Why Count Words? Common Use Cases</h2>
+    <p>Word count matters more than you might think. Different platforms, jobs, and submission types have strict or recommended word count ranges:</p>
+    <ul>
+      <li><strong>Academic assignments:</strong> University essays typically require 500–2,000 words. Exceeding or falling short can affect grades</li>
+      <li><strong>Blog articles:</strong> SEO-optimised blog posts should be 800–1,500 words. Long-form posts (2,000–4,000 words) tend to rank better for competitive keywords</li>
+      <li><strong>Social media:</strong> Twitter/X: 280 characters. LinkedIn posts: 700 characters for preview. Instagram captions: 2,200 character limit</li>
+      <li><strong>UPSC answers:</strong> UPSC General Studies papers have strict word limits (150, 250 words) per answer — precise counting is critical</li>
+      <li><strong>Job applications:</strong> Cover letters should be 250–400 words. Longer is not better</li>
+      <li><strong>Novel writing:</strong> A typical novel is 80,000–100,000 words. Short story: 1,000–7,500 words</li>
+    </ul>
+  </div>
+  <div class="guide-card">
+    <h2>Reading Time Estimates</h2>
+    <p>The average adult reads approximately 200–250 words per minute. Here are common reading time estimates:</p>
+    <ul>
+      <li>500 words → ~2 minutes</li>
+      <li>1,000 words → ~4–5 minutes</li>
+      <li>1,500 words → ~6–7 minutes</li>
+      <li>3,000 words → ~12–15 minutes</li>
+      <li>10,000 words → ~40–50 minutes</li>
+    </ul>
+    <p>This calculator uses 225 words/minute as the average. Your actual reading speed may vary — complex technical content takes longer, casual reading goes faster.</p>
+  </div>
+  <div class="guide-card">
+    <h2>Frequently Asked Questions</h2>
+    <div style="margin-bottom:16px">
+      <div class="faq-q">How many words is one page?</div>
+      <div class="faq-a">A single-spaced A4 page with standard margins and 12pt font contains approximately 500–600 words. Double-spaced is about 250–300 words per page. For reference, a 1,000-word article fills roughly 2 single-spaced pages.</div>
+    </div>
+    <div style="margin-bottom:16px">
+      <div class="faq-q">What is the word limit for UPSC answers?</div>
+      <div class="faq-a">UPSC Mains GS papers typically have 150-word and 250-word answer limits for different questions. UPSC Essay paper answers are 1,000–1,200 words. Use this word counter to stay within limits during practice.</div>
+    </div>
+    <div>
+      <div class="faq-q">Does this word counter count in Hindi or other Indian languages?</div>
+      <div class="faq-a">This counter counts words separated by spaces, which works for Romanised Indian text. For Devanagari (Hindi, Marathi, Sanskrit) or other Indian scripts, the character count is accurate, but word counting depends on correct space separation in the text.</div>
+    </div>
+  </div>
+
+  <div class="guide-card">
+    <h2>🔗 Related Tools</h2>
+    <div class="related-grid"><a class="related-card" href="/tools/case-converter.html"><strong>Case Converter</strong>UPPER, lower, camelCase</a><a class="related-card" href="/tools/lorem-ipsum.html"><strong>Lorem Ipsum</strong>Placeholder text generator</a><a class="related-card" href="/tools/json-formatter.html"><strong>JSON Formatter</strong>Format and validate JSON</a><a class="related-card" href="/tools/base64-encoder.html"><strong>Base64 Encoder</strong>Encode/decode text</a></div>
+  </div>
+</div>
 <script src="tool-common.js"></script>
 </body>
 </html>

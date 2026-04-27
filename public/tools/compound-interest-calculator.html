@@ -187,7 +187,71 @@ calc();
     });
   });
 })();
-</script>
+</script><style>
+.guide{max-width:740px;margin:32px auto 0;padding:0 16px 52px}
+.guide h2{font-size:18px;font-weight:700;margin-bottom:12px;color:#e7e5e4;margin-top:0}
+.guide p{font-size:14px;color:#a8a29e;line-height:1.8;margin-bottom:14px}
+.guide ul,.guide ol{font-size:14px;color:#a8a29e;padding-left:20px;margin-bottom:14px}
+.guide ul li,.guide ol li{margin-bottom:7px;line-height:1.65}
+.guide strong{color:#e7e5e4}
+.guide a{color:#fbbf24;text-decoration:none}
+.guide a:hover{text-decoration:underline}
+.guide-card{background:#1c1917;border:1px solid #292524;border-radius:10px;padding:22px;margin-bottom:16px}
+.faq-q{font-size:14px;font-weight:700;color:#e7e5e4;margin-bottom:7px}
+.faq-a{font-size:13px;color:#a8a29e;line-height:1.75}
+.related-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(180px,1fr));gap:10px;margin-top:12px}
+.related-card{background:#0c0a09;border:1px solid #292524;border-radius:8px;padding:12px;text-decoration:none;color:#a8a29e;font-size:13px;transition:border-color .2s;display:block}
+.related-card:hover{border-color:#fbbf24;color:#e7e5e4}
+.related-card strong{display:block;color:#e7e5e4;margin-bottom:3px;font-size:13px}
+</style>
+<div class="guide">
+  <div class="guide-card">
+    <h2>The Power of Compound Interest in India</h2>
+    <p>Compound interest is often called "the eighth wonder of the world." Unlike simple interest (calculated only on the principal), compound interest earns returns on your previous returns — exponentially growing your wealth over time.</p>
+    <p><strong>Formula:</strong> A = P × (1 + r/n)^(nt), where P = principal, r = annual interest rate, n = compounding frequency per year, t = time in years.</p>
+    <p>A ₹1 lakh investment at 12% annual compounding for 20 years grows to ₹9.65 lakh — nearly 10x the original amount. The same amount at simple interest would only reach ₹3.4 lakh. That's the power of compounding.</p>
+  </div>
+  <div class="guide-card">
+    <h2>Compounding Frequency Matters</h2>
+    <ul>
+      <li><strong>Annual compounding:</strong> Interest added once per year (PPF, some FDs)</li>
+      <li><strong>Quarterly compounding:</strong> Interest added 4 times/year (most bank FDs in India)</li>
+      <li><strong>Monthly compounding:</strong> Interest added 12 times/year (RDs, savings accounts)</li>
+      <li><strong>Daily compounding:</strong> Interest added 365 times/year (some savings accounts)</li>
+    </ul>
+    <p>More frequent compounding = slightly higher effective yield. A 7% rate compounded quarterly gives an effective annual yield of 7.19%. Use the calculator above to compare compounding frequencies.</p>
+  </div>
+  <div class="guide-card">
+    <h2>Compound Interest in Indian Investments</h2>
+    <ul>
+      <li><strong>PPF (Public Provident Fund):</strong> 7.1% compounded annually. Government-backed, tax-free maturity. 15-year lock-in.</li>
+      <li><strong>Bank Fixed Deposits:</strong> 6.5–8% compounded quarterly. Senior citizen rates are 0.25–0.50% higher.</li>
+      <li><strong>Recurring Deposits:</strong> Similar to FD rates, compounded quarterly.</li>
+      <li><strong>NSC (National Savings Certificate):</strong> 7.7% compounded annually. 5-year lock-in, qualifies for 80C deduction.</li>
+      <li><strong>Mutual Funds (Equity):</strong> Market-linked, historically 10–14% CAGR over 10+ years.</li>
+    </ul>
+  </div>
+  <div class="guide-card">
+    <h2>Frequently Asked Questions</h2>
+    <div style="margin-bottom:16px">
+      <div class="faq-q">How is compound interest different from simple interest?</div>
+      <div class="faq-a">Simple interest is calculated only on the original principal. Compound interest is calculated on the principal plus all previously earned interest. Over long periods (10+ years), the difference becomes enormous — compound interest grows exponentially while simple interest grows linearly.</div>
+    </div>
+    <div style="margin-bottom:16px">
+      <div class="faq-q">Which Indian investment gives the best compound interest?</div>
+      <div class="faq-a">For guaranteed compound interest, PPF at 7.1% (tax-free) and NSC at 7.7% are strong options. For higher potential returns, equity mutual funds compounding at 10–14% CAGR over 10+ years outperform all fixed-income instruments — but carry market risk.</div>
+    </div>
+    <div>
+      <div class="faq-q">What is the Rule of 72?</div>
+      <div class="faq-a">The Rule of 72 is a quick formula to estimate how long it takes to double your money. Divide 72 by the annual interest rate. At 12% returns, your money doubles in 72÷12 = 6 years. At 7.1% (PPF), it doubles in ~10 years.</div>
+    </div>
+  </div>
+
+  <div class="guide-card">
+    <h2>🔗 Related Tools</h2>
+    <div class="related-grid"><a class="related-card" href="/tools/sip-calculator.html"><strong>SIP Calculator</strong>Monthly SIP returns</a><a class="related-card" href="/tools/fd-calculator.html"><strong>FD Calculator</strong>Fixed deposit calculator</a><a class="related-card" href="/tools/ppf-calculator.html"><strong>PPF Calculator</strong>PPF maturity calculator</a><a class="related-card" href="/tools/emi-calculator.html"><strong>EMI Calculator</strong>Loan EMI + interest</a><a class="related-card" href="/tools/inflation-calculator.html"><strong>Inflation Calculator</strong>Real value over time</a></div>
+  </div>
+</div>
 <script src="tool-common.js"></script>
 </body>
 </html>

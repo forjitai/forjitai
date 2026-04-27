@@ -18,6 +18,11 @@ Allow: /ai-tools-for-students
 Allow: /best-ai-tools-2026
 Allow: /productivity-tools-online
 Allow: /tool-comparisons
+Allow: /ai-tools-for-developers
+Allow: /ai-tools-for-content-creators
+Allow: /ai-tools-for-daily-use
+Allow: /ai-tools-for-coding-beginners
+Allow: /free-ai-tools-no-login
 
 # Sitemap
 Sitemap: https://www.forjitai.in/sitemap.xml

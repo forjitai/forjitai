@@ -896,6 +896,9 @@ npx cap open android
                 <span className="hidden sm:inline">Admin</span>
               </button>
             )}
+            <a href="/tools/" className="px-3 py-1.5 rounded-md border border-stone-800 hover:border-stone-700 text-xs text-stone-400 hover:text-stone-200 transition hidden md:flex items-center gap-1.5">Tools</a>
+            <a href="/blog/" className="px-3 py-1.5 rounded-md border border-stone-800 hover:border-stone-700 text-xs text-stone-400 hover:text-stone-200 transition hidden md:flex items-center gap-1.5">Blog</a>
+            <a href="/ott/" className="px-3 py-1.5 rounded-md border border-amber-500/40 bg-amber-500/10 text-xs text-amber-300 hover:bg-amber-500/20 transition hidden md:flex items-center gap-1.5">🎬 OTT</a>
             <button onClick={() => setShowRepo(true)} className="px-3 py-1.5 rounded-md border border-stone-800 hover:border-stone-700 text-xs text-stone-400 hover:text-stone-200 transition flex items-center gap-1.5">
               <Package className="w-4 h-4" />
               <span className="hidden sm:inline">Gallery</span>

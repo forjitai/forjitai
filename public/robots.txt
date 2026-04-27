@@ -13,6 +13,7 @@ Allow: /tools/percentage-calculator.html
 Allow: /tools/indian-cooking-planner.html
 Allow: /about
 Allow: /blog
+Allow: /ott/
 Allow: /free-ai-tools-india
 Allow: /ai-tools-for-students
 Allow: /best-ai-tools-2026

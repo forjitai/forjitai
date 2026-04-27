@@ -1,0 +1,112 @@
+# ─── Forjit AI · OTT Weekly Auto-Updater ─────────────────────────────────────
+#
+#  Runs every Thursday at 7:00 AM IST (01:30 UTC)
+#  Fetches India OTT releases from TMDB API, sorted by rating
+#  Commits new week JSON + updates manifest → Vercel auto-deploys
+#
+#  ⚠️  FIRST-TIME SETUP (one-time, 3 minutes):
+#  1. Go to themoviedb.org → sign up free → Settings → API → Request API Key
+#  2. Copy the API Read Access Token (long JWT, starts with eyJ...)
+#  3. This GitHub repo → Settings → Secrets and variables → Actions
+#  4. New repository secret → Name: TMDB_API_KEY → paste token → Save
+#
+#  Security: key lives ONLY in GitHub's encrypted vault.
+# ─────────────────────────────────────────────────────────────────────────────
+
+name: OTT Weekly Update
+
+on:
+  schedule:
+    - cron: '30 1 * * 4'   # 7:00 AM IST every Thursday
+  workflow_dispatch:         # Manual trigger from GitHub Actions UI
+
+jobs:
+  update-ott:
+    name: Update OTT Releases
+    runs-on: ubuntu-latest
+    permissions:
+      contents: write
+
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          token: ${{ secrets.GITHUB_TOKEN }}
+          fetch-depth: 0
+
+      - uses: actions/setup-node@v4
+        with:
+          node-version: '20'
+          cache: 'npm'
+
+      - name: Validate TMDB secret
+        id: check
+        run: |
+          if [ -z "${{ secrets.TMDB_API_KEY }}" ]; then
+            echo "skip=true" >> $GITHUB_OUTPUT
+            echo "::warning::TMDB_API_KEY not set. Get free key at themoviedb.org/settings/api then add to repo Secrets."
+          else
+            echo "skip=false" >> $GITHUB_OUTPUT
+            echo "✅ TMDB_API_KEY configured"
+          fi
+
+      - name: Install dependencies
+        if: steps.check.outputs.skip == 'false'
+        run: npm ci
+
+      - name: Fetch OTT releases from TMDB
+        if: steps.check.outputs.skip == 'false'
+        env:
+          TMDB_API_KEY: ${{ secrets.TMDB_API_KEY }}
+        run: node scripts/update-ott-auto.js
+
+      - name: Check output file
+        if: steps.check.outputs.skip == 'false'
+        id: result
+        run: |
+          WEEK=$(node -e "
+            const d = new Date();
+            const jan4 = new Date(d.getFullYear(), 0, 4);
+            const w = 1 + Math.round(((d - jan4) / 86400000 - 3 + (jan4.getDay() + 6) % 7) / 7);
+            console.log(d.getFullYear() + '-W' + String(w).padStart(2,'0'));
+          ")
+          FILE="public/ott/releases/${WEEK}.json"
+          if [ -f "$FILE" ]; then
+            COUNT=$(node -e "const d=JSON.parse(require('fs').readFileSync('$FILE')); console.log(d.titles.length)")
+            echo "created=true" >> $GITHUB_OUTPUT
+            echo "week=$WEEK" >> $GITHUB_OUTPUT
+            echo "count=$COUNT" >> $GITHUB_OUTPUT
+            echo "✅ $FILE created with $COUNT titles"
+          else
+            echo "created=false" >> $GITHUB_OUTPUT
+            echo "::warning::No OTT file created for $WEEK"
+          fi
+
+      - name: Commit and push
+        if: steps.result.outputs.created == 'true'
+        run: |
+          git config user.name "Forjit AI Bot"
+          git config user.email "forjitai@gmail.com"
+          git add public/ott/
+          git diff --staged --quiet || git commit -m "🎬 OTT releases ${{ steps.result.outputs.week }} — ${{ steps.result.outputs.count }} titles [auto]"
+          git push
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+
+      - name: Summary
+        run: |
+          echo "## OTT Weekly Update" >> $GITHUB_STEP_SUMMARY
+          echo "" >> $GITHUB_STEP_SUMMARY
+          if [ "${{ steps.check.outputs.skip }}" = "true" ]; then
+            echo "⚠️ **Skipped** — TMDB_API_KEY not set." >> $GITHUB_STEP_SUMMARY
+            echo "" >> $GITHUB_STEP_SUMMARY
+            echo "**One-time fix:**" >> $GITHUB_STEP_SUMMARY
+            echo "1. Get free key at [themoviedb.org/settings/api](https://www.themoviedb.org/settings/api)" >> $GITHUB_STEP_SUMMARY
+            echo "2. Repo → Settings → Secrets → Actions → New secret → \`TMDB_API_KEY\`" >> $GITHUB_STEP_SUMMARY
+          elif [ "${{ steps.result.outputs.created }}" = "true" ]; then
+            echo "✅ **Updated** — Week ${{ steps.result.outputs.week }}" >> $GITHUB_STEP_SUMMARY
+            echo "- **Titles:** ${{ steps.result.outputs.count }} OTT releases" >> $GITHUB_STEP_SUMMARY
+            echo "- Sorted by TMDB rating" >> $GITHUB_STEP_SUMMARY
+            echo "- Vercel auto-deploys within 60 seconds" >> $GITHUB_STEP_SUMMARY
+          else
+            echo "❌ **Failed** — no output file created. Check logs." >> $GITHUB_STEP_SUMMARY
+          fi

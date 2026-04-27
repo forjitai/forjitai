@@ -41,9 +41,10 @@ if (typeof window !== 'undefined') {
 /* ── Get API key from environment (GitHub Secrets) ───────────────────────── */
 const GROQ_API_KEY = process.env.GROQ_API_KEY;
 if (!GROQ_API_KEY) {
-  console.error('ERROR: GROQ_API_KEY environment variable not set.');
-  console.error('Set it in GitHub repo → Settings → Secrets and variables → Actions');
-  process.exit(1);
+  console.warn('⚠️  GROQ_API_KEY not set in GitHub Secrets — skipping blog generation.');
+  console.warn('   Fix: GitHub repo → Settings → Secrets → Actions → New repository secret');
+  console.warn('   Name: GROQ_API_KEY | Value: your key from console.groq.com (free)');
+  process.exit(0);
 }
 
 /* ── Topic rotation by day of week ──────────────────────────────────────── */

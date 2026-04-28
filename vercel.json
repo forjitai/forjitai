@@ -3,31 +3,101 @@
   "outputDirectory": "dist",
   "framework": "vite",
   "rewrites": [
-    { "source": "/sitemap",                       "destination": "/sitemap.html"                       },
-    { "source": "/community",                     "destination": "/community.html"                     },
-    { "source": "/forjit-ai",                     "destination": "/forjit-ai.html"                     },
-    { "source": "/about",                         "destination": "/about.html"                         },
-    { "source": "/privacy",                       "destination": "/privacy.html"                       },
-    { "source": "/terms",                         "destination": "/terms.html"                         },
-    { "source": "/disclaimer",                    "destination": "/disclaimer.html"                    },
-    { "source": "/contact",                       "destination": "/contact.html"                       },
-
-    { "source": "/blog",                          "destination": "/blog/index.html"                    },
-    { "source": "/blog/",                         "destination": "/blog/index.html"                    },
-    { "source": "/blog/:path",                    "destination": "/blog/post.html"                     },
-
-    { "source": "/ott",                           "destination": "/ott/index.html"                     },
-    { "source": "/ott/",                          "destination": "/ott/index.html"                     },
-
-    { "source": "/free-ai-tools-india",           "destination": "/free-ai-tools-india.html"           },
-    { "source": "/ai-tools-for-students",         "destination": "/ai-tools-for-students.html"         },
-    { "source": "/productivity-tools-online",     "destination": "/productivity-tools-online.html"     },
-    { "source": "/best-ai-tools-2026",            "destination": "/best-ai-tools-2026.html"            },
-    { "source": "/tool-comparisons",              "destination": "/tool-comparisons.html"              },
-    { "source": "/ai-tools-for-developers",       "destination": "/ai-tools-for-developers.html"       },
-    { "source": "/ai-tools-for-content-creators", "destination": "/ai-tools-for-content-creators.html" },
-    { "source": "/ai-tools-for-daily-use",        "destination": "/ai-tools-for-daily-use.html"        },
-    { "source": "/ai-tools-for-coding-beginners", "destination": "/ai-tools-for-coding-beginners.html" },
-    { "source": "/free-ai-tools-no-login",        "destination": "/free-ai-tools-no-login.html"        }
+    {
+      "source": "/sitemap",
+      "destination": "/sitemap.html"
+    },
+    {
+      "source": "/community",
+      "destination": "/community.html"
+    },
+    {
+      "source": "/forjit-ai",
+      "destination": "/forjit-ai.html"
+    },
+    {
+      "source": "/about",
+      "destination": "/about.html"
+    },
+    {
+      "source": "/privacy",
+      "destination": "/privacy.html"
+    },
+    {
+      "source": "/terms",
+      "destination": "/terms.html"
+    },
+    {
+      "source": "/disclaimer",
+      "destination": "/disclaimer.html"
+    },
+    {
+      "source": "/contact",
+      "destination": "/contact.html"
+    },
+    {
+      "source": "/blog",
+      "destination": "/blog/index.html"
+    },
+    {
+      "source": "/blog/",
+      "destination": "/blog/index.html"
+    },
+    {
+      "source": "/blog/:path",
+      "destination": "/blog/post.html"
+    },
+    {
+      "source": "/ott",
+      "destination": "/ott/index.html"
+    },
+    {
+      "source": "/ott/",
+      "destination": "/ott/index.html"
+    },
+    {
+      "source": "/free-ai-tools-india",
+      "destination": "/free-ai-tools-india.html"
+    },
+    {
+      "source": "/ai-tools-for-students",
+      "destination": "/ai-tools-for-students.html"
+    },
+    {
+      "source": "/productivity-tools-online",
+      "destination": "/productivity-tools-online.html"
+    },
+    {
+      "source": "/best-ai-tools-2026",
+      "destination": "/best-ai-tools-2026.html"
+    },
+    {
+      "source": "/tool-comparisons",
+      "destination": "/tool-comparisons.html"
+    },
+    {
+      "source": "/ai-tools-for-developers",
+      "destination": "/ai-tools-for-developers.html"
+    },
+    {
+      "source": "/ai-tools-for-content-creators",
+      "destination": "/ai-tools-for-content-creators.html"
+    },
+    {
+      "source": "/ai-tools-for-daily-use",
+      "destination": "/ai-tools-for-daily-use.html"
+    },
+    {
+      "source": "/ai-tools-for-coding-beginners",
+      "destination": "/ai-tools-for-coding-beginners.html"
+    },
+    {
+      "source": "/free-ai-tools-no-login",
+      "destination": "/free-ai-tools-no-login.html"
+    },
+    {
+      "source": "/forjit-ai-brand",
+      "destination": "/forjit-ai-brand.html"
+    }
   ]
 }

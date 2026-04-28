@@ -8,7 +8,8 @@
     "dev": "node scripts/stamp-sw.js && node scripts/gen-tools.js && vite",
     "build": "node scripts/stamp-sw.js && node scripts/gen-tools.js && vite build",
     "preview": "vite preview",
-    "gen-tools": "node scripts/gen-tools.js"
+    "gen-tools": "node scripts/gen-tools.js",
+    "gen-teacher-tools": "node scripts/gen-teacher-tools.js"
   },
   "dependencies": {
     "@sentry/browser": "^10.50.0",

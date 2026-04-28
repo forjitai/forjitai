@@ -155,12 +155,36 @@
     return p;
   }
 
-  /* ── Groq API Call (direct with user key) ─────────────────────────────── */
+  /* ── Pollinations AI — Free, no key, no signup ────────────────────────── */
+  async function callFree(prompt, onChunk) {
+    const res = await fetch("https://text.pollinations.ai/", {
+      method: "POST",
+      headers: { "Content-Type": "application/json" },
+      body: JSON.stringify({
+        messages: [
+          { role: "system", content: "You are an expert Indian teacher assistant. Be practical, clear, and concise. Format output with clear headings and sections. Use Indian curriculum context (CBSE/ICSE/State Board)." },
+          { role: "user",   content: prompt },
+        ],
+        model:    "openai",
+        private:  true,
+      }),
+    });
+
+    if (!res.ok) throw new Error("Free AI service busy. Please try again.");
+
+    const text = (await res.text()).trim();
+    if (!text) throw new Error("Empty response. Please try again.");
+
+    onChunk(text);
+    return text;
+  }
+
+  /* ── Groq API (user's own key — unlimited + better quality) ───────────── */
   async function callGroq(prompt, apiKey, onChunk) {
     const res = await fetch(GROQ_ENDPOINT, {
       method: "POST",
       headers: {
-        "Content-Type": "application/json",
+        "Content-Type":  "application/json",
         "Authorization": `Bearer ${apiKey}`,
       },
       body: JSON.stringify({
@@ -177,26 +201,25 @@
 
     if (!res.ok) {
       const err = await res.text().catch(() => "");
-      if (res.status === 401) throw new Error("Invalid API key. Check your Groq key.");
-      if (res.status === 429) throw new Error("Rate limit hit. Try again in a minute.");
-      throw new Error(`API error ${res.status}: ${err.slice(0, 100)}`);
+      if (res.status === 401) throw new Error("Invalid Groq key. Please check and save again.");
+      if (res.status === 429) throw new Error("Groq rate limit hit. Wait a minute or use free mode.");
+      throw new Error(`Groq error ${res.status}: ${err.slice(0, 80)}`);
     }
 
-    const reader = res.body.getReader();
+    const reader  = res.body.getReader();
     const decoder = new TextDecoder();
     let full = "";
 
     while (true) {
       const { done, value } = await reader.read();
       if (done) break;
-      const chunk = decoder.decode(value);
-      const lines = chunk.split("\n").filter(l => l.startsWith("data: "));
-      for (const line of lines) {
-        const data = line.slice(6).trim();
-        if (data === "[DONE]") continue;
+      for (const line of decoder.decode(value).split("\n")) {
+        if (!line.startsWith("data: ")) continue;
+        const d = line.slice(6).trim();
+        if (d === "[DONE]") continue;
         try {
-          const token = JSON.parse(data)?.choices?.[0]?.delta?.content || "";
-          full += token;
+          const t = JSON.parse(d)?.choices?.[0]?.delta?.content || "";
+          full += t;
           onChunk(full);
         } catch {}
       }
@@ -204,65 +227,81 @@
     return full;
   }
 
-  /* ── Proxy Call (no user key — uses server-side key) ──────────────────── */
-  async function callProxy(prompt, onChunk) {
-    const res = await fetch("/api/groq-proxy", {
-      method: "POST",
-      headers: { "Content-Type": "application/json" },
-      body: JSON.stringify({
-        model:     getModel(),
-        maxTokens: TOOL.maxTokens || 500,
-        messages: [
-          { role: "system", content: "You are an expert Indian teacher assistant. Be practical, clear, and concise. Format output with clear sections. Use Indian curriculum context (CBSE/ICSE/State Board)." },
-          { role: "user",   content: prompt },
-        ],
-      }),
-    });
+  /* ── Generate ──────────────────────────────────────────────────────────── */
+  async function generate(forceRegen = false) {
+    const inputs = getInputValues();
 
-    if (!res.ok) {
-      const err = await res.json().catch(() => ({}));
-      if (err.needsKey) {
-        throw new Error("__NEEDS_KEY__"); // Special signal
-      }
-      if (res.status === 429) throw new Error("Too many requests. Please wait a minute and try again.");
-      throw new Error(err.error || `Server error (${res.status}). Please try again.`);
-    }
-
-    // Check if streaming or JSON response (Netlify returns JSON, Vercel streams)
-    const contentType = res.headers.get("content-type") || "";
-
-    if (contentType.includes("application/json")) {
-      // Netlify non-streaming response
-      const data = await res.json();
-      const content = data.content || "";
-      onChunk(content);
-      return content;
-    }
-
-    // Vercel streaming response
-    const reader = res.body.getReader();
-    const decoder = new TextDecoder();
-    let full = "";
-
-    while (true) {
-      const { done, value } = await reader.read();
-      if (done) break;
-      const chunk = decoder.decode(value);
-      const lines = chunk.split("\n").filter(l => l.startsWith("data: "));
-      for (const line of lines) {
-        const data = line.slice(6).trim();
-        if (data === "[DONE]") continue;
-        try {
-          const token = JSON.parse(data)?.choices?.[0]?.delta?.content || "";
-          full += token;
-          onChunk(full);
-        } catch {}
+    // Validate
+    for (const inp of TOOL.inputs) {
+      if (inp.required !== false && !inputs[inp.id]) {
+        showError(`Please fill in: ${inp.label}`);
+        return;
       }
     }
-    return full;
+
+    hideError();
+    const outWrap    = document.getElementById("te-output-wrap");
+    const outEl      = document.getElementById("te-output");
+    const cacheBadge = document.getElementById("te-cache-badge");
+    const btn        = document.getElementById("te-generate");
+
+    // Check cache first
+    if (!forceRegen) {
+      const cached = await cacheGet(inputs);
+      if (cached) {
+        outWrap.style.display    = "block";
+        outEl.textContent        = cached;
+        cacheBadge.style.display = "inline-block";
+        updateRateBadge();
+        return;
+      }
+    }
+    cacheBadge.style.display = "none";
+
+    // Check rate limit
+    if (!checkRate()) {
+      const { reset } = rateRemaining();
+      showError(`Free limit reached. Resets in ${reset} minute${reset===1?"":"s"}. Add your free Groq key above for unlimited use.`);
+      return;
+    }
+
+    // Get user's Groq key (optional)
+    let apiKey = document.getElementById("te-api-key").value.trim();
+    if (!apiKey) apiKey = await getApiKey();
+
+    const prompt = buildPrompt(inputs);
+
+    btn.disabled    = true;
+    btn.textContent = "⏳ Generating…";
+    outWrap.style.display = "block";
+    outEl.textContent     = "Working on it…";
+
+    try {
+      let result;
+
+      if (apiKey) {
+        // Groq — best quality, unlimited
+        outEl.textContent = "Generating with Groq…";
+        result = await callGroq(prompt, apiKey, p => { outEl.textContent = p; });
+      } else {
+        // Pollinations — free, no key needed
+        outEl.textContent = "Generating (free)…";
+        result = await callFree(prompt, t => { outEl.textContent = t; });
+      }
+
+      bumpRate(); // Only count on success
+      await cacheSet(inputs, result);
+      updateRateBadge();
+
+    } catch (e) {
+      outWrap.style.display = "none";
+      outEl.textContent     = "";
+      showError(e.message || "Something went wrong. Please try again.");
+    } finally {
+      btn.disabled    = false;
+      btn.textContent = "⚡ Generate";
+    }
   }
-
-  /* ── UI Builder ────────────────────────────────────────────────────────── */
   function buildUI() {
     const mount = document.getElementById("te-mount");
     if (!mount) { console.error("[TE] No #te-mount found"); return; }
@@ -370,92 +409,6 @@
     if (!el) return;
     el.textContent = `${left}/${RATE_LIMIT} free uses left · resets in ${reset}m`;
     el.style.color = left < 3 ? "#f87171" : "var(--mu)";
-  }
-
-  /* ── Generate ──────────────────────────────────────────────────────────── */
-  async function generate(forceRegen = false) {
-    const inputs = getInputValues();
-
-    // Validate required inputs
-    for (const inp of TOOL.inputs) {
-      if (inp.required !== false && !inputs[inp.id]) {
-        showError(`Please fill in: ${inp.label}`);
-        return;
-      }
-    }
-
-    hideError();
-    const outWrap = document.getElementById("te-output-wrap");
-    const outEl   = document.getElementById("te-output");
-    const cacheBadge = document.getElementById("te-cache-badge");
-    const btn     = document.getElementById("te-generate");
-
-    // Check cache first (unless regenerating)
-    if (!forceRegen) {
-      const cached = await cacheGet(inputs);
-      if (cached) {
-        outWrap.style.display = "block";
-        outEl.textContent = cached;
-        cacheBadge.style.display = "inline-block";
-        updateRateBadge();
-        return;
-      }
-    }
-    cacheBadge.style.display = "none";
-
-    // Get API key (user's own)
-    let apiKey = document.getElementById("te-api-key").value.trim();
-    if (!apiKey) apiKey = await getApiKey();
-
-    // Check rate limit (applies to both proxy and own-key users)
-    if (!checkRate()) {
-      const { reset } = rateRemaining();
-      showError(`You've used all ${RATE_LIMIT} free generations this hour. ` +
-        `Resets in ${reset} minutes. Or save your Groq key above for unlimited use.`);
-      return;
-    }
-
-    // Build prompt
-    const prompt = buildPrompt(inputs);
-
-    // Show loading
-    btn.disabled = true;
-    btn.textContent = "⏳ Generating…";
-    outWrap.style.display = "block";
-    outEl.textContent = "";
-
-    try {
-      bumpRate();
-
-      let result;
-      if (apiKey) {
-        // User has their own key — call Groq directly (unlimited)
-        result = await callGroq(prompt, apiKey, (partial) => {
-          outEl.textContent = partial;
-        });
-      } else {
-        // No user key — use server proxy (free, rate-limited)
-        result = await callProxy(prompt, (partial) => {
-          outEl.textContent = partial;
-        });
-      }
-
-      // Save to cache
-      await cacheSet(inputs, result);
-      updateRateBadge();
-
-    } catch (e) {
-      if (e.message === "__NEEDS_KEY__") {
-        // Proxy not configured — show key input prominently
-        showError("Free usage is temporarily unavailable. Please add your free Groq key above (takes 30 seconds at console.groq.com/keys) to continue.");
-      } else {
-        showError(e.message || "Something went wrong. Try again.");
-      }
-      outWrap.style.display = "none";
-    } finally {
-      btn.disabled = false;
-      btn.textContent = "⚡ Generate";
-    }
   }
 
   /* ── Helpers ───────────────────────────────────────────────────────────── */

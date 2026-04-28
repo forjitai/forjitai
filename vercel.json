@@ -4,6 +4,10 @@
   "framework": "vite",
   "rewrites": [
     {
+      "source": "/api/groq-proxy",
+      "destination": "/api/groq-proxy"
+    },
+    {
       "source": "/sitemap",
       "destination": "/sitemap.html"
     },

@@ -155,7 +155,7 @@
     return p;
   }
 
-  /* ── Groq API Call ─────────────────────────────────────────────────────── */
+  /* ── Groq API Call (direct with user key) ─────────────────────────────── */
   async function callGroq(prompt, apiKey, onChunk) {
     const res = await fetch(GROQ_ENDPOINT, {
       method: "POST",
@@ -204,26 +204,84 @@
     return full;
   }
 
+  /* ── Proxy Call (no user key — uses server-side key) ──────────────────── */
+  async function callProxy(prompt, onChunk) {
+    const res = await fetch("/api/groq-proxy", {
+      method: "POST",
+      headers: { "Content-Type": "application/json" },
+      body: JSON.stringify({
+        model:     getModel(),
+        maxTokens: TOOL.maxTokens || 500,
+        messages: [
+          { role: "system", content: "You are an expert Indian teacher assistant. Be practical, clear, and concise. Format output with clear sections. Use Indian curriculum context (CBSE/ICSE/State Board)." },
+          { role: "user",   content: prompt },
+        ],
+      }),
+    });
+
+    if (!res.ok) {
+      const err = await res.json().catch(() => ({}));
+      if (err.needsKey) {
+        throw new Error("__NEEDS_KEY__"); // Special signal
+      }
+      if (res.status === 429) throw new Error("Too many requests. Please wait a minute and try again.");
+      throw new Error(err.error || `Server error (${res.status}). Please try again.`);
+    }
+
+    // Check if streaming or JSON response (Netlify returns JSON, Vercel streams)
+    const contentType = res.headers.get("content-type") || "";
+
+    if (contentType.includes("application/json")) {
+      // Netlify non-streaming response
+      const data = await res.json();
+      const content = data.content || "";
+      onChunk(content);
+      return content;
+    }
+
+    // Vercel streaming response
+    const reader = res.body.getReader();
+    const decoder = new TextDecoder();
+    let full = "";
+
+    while (true) {
+      const { done, value } = await reader.read();
+      if (done) break;
+      const chunk = decoder.decode(value);
+      const lines = chunk.split("\n").filter(l => l.startsWith("data: "));
+      for (const line of lines) {
+        const data = line.slice(6).trim();
+        if (data === "[DONE]") continue;
+        try {
+          const token = JSON.parse(data)?.choices?.[0]?.delta?.content || "";
+          full += token;
+          onChunk(full);
+        } catch {}
+      }
+    }
+    return full;
+  }
+
   /* ── UI Builder ────────────────────────────────────────────────────────── */
   function buildUI() {
     const mount = document.getElementById("te-mount");
     if (!mount) { console.error("[TE] No #te-mount found"); return; }
 
     mount.innerHTML = `
-      <!-- API Key Section -->
+      <!-- API Key Section (Optional) -->
       <div id="te-key-section" class="te-card" style="margin-bottom:14px">
         <div style="display:flex;align-items:center;justify-content:space-between;margin-bottom:10px">
-          <span style="font-size:13px;font-weight:600;color:var(--mu)">🔑 YOUR GROQ API KEY</span>
+          <span style="font-size:13px;font-weight:600;color:var(--mu)">🔑 YOUR GROQ KEY <span style="color:var(--su);font-weight:400">(optional — for unlimited use)</span></span>
           <span id="te-rate-badge" style="font-size:11px;color:var(--mu)"></span>
         </div>
         <div class="te-input-row">
-          <input type="password" id="te-api-key" placeholder="Paste your free Groq key — stored only in your browser"
+          <input type="password" id="te-api-key" placeholder="Optional: paste your free Groq key for unlimited use"
             style="flex:1;background:transparent;border:none;outline:none;color:var(--fg);font-size:14px;padding:10px 12px;font-family:inherit"/>
           <button id="te-save-key" class="te-btn-sm">Save</button>
           <a href="https://console.groq.com/keys" target="_blank" rel="noopener" class="te-btn-sm" style="text-decoration:none">Get Free Key ↗</a>
         </div>
         <p style="font-size:11px;color:var(--su);margin-top:6px">
-          Key stays in your browser only. Never sent to our servers. <strong>No key = 10 free uses/hour.</strong>
+          Works without a key. Add your own Groq key for <strong>unlimited</strong> use. Key stored in your browser only — never sent to our servers.
         </p>
       </div>
 
@@ -345,27 +403,15 @@
     }
     cacheBadge.style.display = "none";
 
-    // Get API key
+    // Get API key (user's own)
     let apiKey = document.getElementById("te-api-key").value.trim();
     if (!apiKey) apiKey = await getApiKey();
 
-    if (!apiKey) {
-      // Check rate limit
-      if (!checkRate()) {
-        const { reset } = rateRemaining();
-        showError(`You've used all ${RATE_LIMIT} free generations this hour. ` +
-          `Resets in ${reset} minutes. Or paste your free Groq key above for unlimited use.`);
-        return;
-      }
-      // No key — show that this needs a key (or use server key if configured)
-      showError("Please add your free Groq API key above to generate content. It takes 30 seconds to get one at console.groq.com/keys");
-      return;
-    }
-
-    // Rate limit check (even with own key, protect UX)
-    if (!await getApiKey() && !checkRate()) {
+    // Check rate limit (applies to both proxy and own-key users)
+    if (!checkRate()) {
       const { reset } = rateRemaining();
-      showError(`Free limit reached. Resets in ${reset}min. Save your Groq key above for unlimited use.`);
+      showError(`You've used all ${RATE_LIMIT} free generations this hour. ` +
+        `Resets in ${reset} minutes. Or save your Groq key above for unlimited use.`);
       return;
     }
 
@@ -380,16 +426,31 @@
 
     try {
       bumpRate();
-      const result = await callGroq(prompt, apiKey, (partial) => {
-        outEl.textContent = partial;
-      });
+
+      let result;
+      if (apiKey) {
+        // User has their own key — call Groq directly (unlimited)
+        result = await callGroq(prompt, apiKey, (partial) => {
+          outEl.textContent = partial;
+        });
+      } else {
+        // No user key — use server proxy (free, rate-limited)
+        result = await callProxy(prompt, (partial) => {
+          outEl.textContent = partial;
+        });
+      }
 
       // Save to cache
       await cacheSet(inputs, result);
       updateRateBadge();
 
     } catch (e) {
-      showError(e.message || "Something went wrong. Try again.");
+      if (e.message === "__NEEDS_KEY__") {
+        // Proxy not configured — show key input prominently
+        showError("Free usage is temporarily unavailable. Please add your free Groq key above (takes 30 seconds at console.groq.com/keys) to continue.");
+      } else {
+        showError(e.message || "Something went wrong. Try again.");
+      }
       outWrap.style.display = "none";
     } finally {
       btn.disabled = false;

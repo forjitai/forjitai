@@ -106,8 +106,25 @@
   }
 
   function cacheSet(inputs, output) {
-    return dbSet("teacherCache", cKey(inputs), { output:output, ts:Date.now() })
-      .catch(function() {});
+    var key = cKey(inputs);
+    return dbSet("teacherCache", key, { output:output, ts:Date.now() }).then(function() {
+      // Prune old entries — keep max 50
+      return openDB().then(function(db) {
+        return new Promise(function(res) {
+          var store = db.transaction("teacherCache","readwrite").objectStore("teacherCache");
+          var req   = store.getAll();
+          req.onsuccess = function() {
+            var all = req.result || [];
+            if (all.length > 50) {
+              all.sort(function(a,b) { return a.value.ts - b.value.ts; });
+              all.slice(0, all.length - 50).forEach(function(e) { store.delete(e.key); });
+            }
+            res();
+          };
+          req.onerror = function() { res(); };
+        });
+      }).catch(function() {});
+    }).catch(function() {});
   }
 
   /* ── Rate limit ─────────────────────────────────────────────────────────── */

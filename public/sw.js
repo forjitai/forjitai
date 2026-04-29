@@ -3,7 +3,7 @@
 // Cache version auto-busts on every deploy via timestamp
 // ─────────────────────────────────────────────────────────────────────────
 
-const CACHE_VERSION = 'forjitai-v1777399285824';
+const CACHE_VERSION = 'forjitai-v1777475048428';
 const CACHE_NAME    = CACHE_VERSION;
 
 // Only precache the shell — nothing else
@@ -18,9 +18,11 @@ const NETWORK_ONLY_PATTERNS = [
   'groq.com',
   'openrouter.ai',
   'anthropic.com',
+  'pollinations.ai',
   'googletagmanager.com',
   'googlesyndication.com',
   'analytics',
+  'teacher-engine.js',   // changes frequently — always fetch fresh
 ];
 
 // ── Install ───────────────────────────────────────────────────────────────

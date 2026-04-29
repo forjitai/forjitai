@@ -37,7 +37,7 @@ export default async function handler(req, res) {
   // Whitelist models + cap tokens
   const ALLOWED = ["llama-3.1-8b-instant", "llama-3.3-70b-versatile"];
   const safeModel  = ALLOWED.includes(model) ? model : "llama-3.1-8b-instant";
-  const safeTokens = Math.min(parseInt(maxTokens) || 600, 800);
+  const safeTokens = Math.min(parseInt(maxTokens) || 600, 8000); // up to 8k for main app
   const safeMessages = messages
     .filter(m => m && typeof m.role === "string" && typeof m.content === "string")
     .map(m => ({ role: m.role, content: String(m.content).slice(0, 4000) }))

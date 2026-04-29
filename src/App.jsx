@@ -136,7 +136,8 @@ export default function ForjitAI() {
   const textareaRef = useRef(null);
   const iterRef = useRef(null);
 
-  const configured = apiKey.trim().length > 0;
+  const configured = true; // proxy handles free access — key is optional for better quality
+  const hasOwnKey  = apiKey.trim().length > 0;
   const busy = generating || iterating;
   const currentModel = PROVIDERS[provider].models.find(m => m.id === model);
 
@@ -345,11 +346,6 @@ export default function ForjitAI() {
   /* ----- Generate ----- */
   async function generate() {
     if (!prompt.trim() || busy) return;
-    if (!configured) {
-      setShowSettings(true);
-      setError("Add an API key to get started.");
-      return;
-    }
     setGenerating(true);
     setError("");
     setOutput("");
@@ -426,8 +422,6 @@ export default function ForjitAI() {
   async function iterate(changeRequest) {
     const change = (changeRequest || iterPrompt).trim();
     if (!change || !output || busy) return;
-    if (!configured) { setShowSettings(true); setError("Add an API key."); return; }
-
     setIterating(true);
     setError("");
     try {
@@ -916,9 +910,9 @@ npx cap open android
             <button onClick={() => setShowDataManager(true)} className="px-3 py-1.5 rounded-md border border-stone-800 hover:border-stone-700 text-xs text-stone-400 hover:text-stone-200 transition hidden md:flex items-center gap-1.5">
               <Download className="w-4 h-4" />
             </button>
-            <button onClick={() => setShowSettings(true)} className={`px-3 py-1.5 rounded-md border text-xs transition flex items-center gap-1.5 ${configured ? "border-stone-800 hover:border-stone-700 text-stone-400 hover:text-stone-200" : "border-amber-400/50 bg-amber-400/10 text-amber-300 hover:bg-amber-400/15"}`}>
+            <button onClick={() => setShowSettings(true)} className="px-3 py-1.5 rounded-md border text-xs transition flex items-center gap-1.5 border-stone-800 hover:border-stone-700 text-stone-400 hover:text-stone-200">
               <Settings className="w-4 h-4" />
-              <span className="hidden sm:inline">{configured ? "Settings" : "Connect"}</span>
+              <span className="hidden sm:inline">Settings</span>
             </button>
             {user ? (
               <button onClick={() => setShowAuth(true)} className="px-3 py-1.5 rounded-md bg-emerald-500/10 border border-emerald-500/30 text-xs text-emerald-300 hover:bg-emerald-500/20 transition flex items-center gap-1.5">
@@ -936,35 +930,24 @@ npx cap open android
 
         <main className="max-w-6xl mx-auto px-4 md:px-10 py-6 md:py-10">
           {/* Connect prompt for new users */}
-          {!configured && (
+          {!hasOwnKey && (
             <section className="mb-8 slide-up">
-              <div className="rounded-xl border border-amber-400/30 bg-gradient-to-br from-amber-400/5 to-transparent p-5 md:p-6">
-                <div className="flex items-start gap-3">
-                  <div className="w-10 h-10 shrink-0 rounded-md bg-amber-400/15 text-amber-300 flex items-center justify-center">
-                    <KeyRound className="w-5 h-5" />
+              <div className="rounded-xl border border-stone-800 bg-stone-900/40 p-4 flex items-center justify-between gap-4 flex-wrap">
+                <div className="flex items-center gap-3">
+                  <div className="w-8 h-8 shrink-0 rounded-md bg-amber-400/10 text-amber-300 flex items-center justify-center">
+                    <Zap className="w-4 h-4" />
                   </div>
-                  <div className="flex-1">
-                    <h2 className="font-display text-xl md:text-2xl font-semibold mb-1">Quick setup</h2>
-                    <p className="text-stone-400 text-sm mb-3">Connect an open-source LLM to start. Free tier available. Both providers take 30 seconds to sign up.</p>
-                    <div className="flex flex-wrap gap-2 mb-3">
-                      <button onClick={() => setShowSettings(true)} className="px-4 py-2 rounded-md bg-amber-400 hover:bg-amber-300 text-stone-950 font-medium text-sm flex items-center gap-2">
-                        <KeyRound className="w-4 h-4" /> Add API key
-                      </button>
-                      <a href="https://console.groq.com/keys" target="_blank" rel="noreferrer" className="px-4 py-2 rounded-md border border-stone-800 hover:border-stone-700 text-sm text-stone-300 hover:text-stone-100 flex items-center gap-2">
-                        Groq key <ExternalLink className="w-3.5 h-3.5" />
-                      </a>
-                    </div>
-                    {/* Key security notice — always visible */}
-                    <div className="rounded-lg border border-emerald-500/20 bg-emerald-500/5 px-3 py-2.5">
-                      <p className="text-[11px] text-emerald-300/80 leading-relaxed">
-                        🔒 <strong className="text-emerald-200">Your key stays on your device.</strong>{" "}
-                        Stored only in your browser's IndexedDB. Sent directly to Groq/OpenRouter — never via our servers, never in any URL, never logged.
-                        Forjit AI cannot see your key at any time.{" "}
-                        <a href="/privacy" target="_blank" rel="noreferrer" className="text-emerald-300 underline underline-offset-2">Privacy Policy</a>
-                      </p>
-                    </div>
+                  <div>
+                    <p className="text-sm font-medium text-stone-200">Working free — add your key for unlimited use</p>
+                    <p className="text-[11px] text-stone-500">Free Groq key at console.groq.com · Takes 30 seconds · Better quality + no limits</p>
                   </div>
                 </div>
+                <button
+                  onClick={() => setShowSettings(true)}
+                  className="shrink-0 px-3 py-1.5 rounded-md border border-amber-400/30 text-amber-300 text-xs hover:bg-amber-400/10 transition"
+                >
+                  Add key ↗
+                </button>
               </div>
             </section>
           )}

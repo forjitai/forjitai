@@ -156,7 +156,7 @@ header{background:var(--sur);border-bottom:1px solid var(--bor);padding:12px 20p
 .logo{display:flex;align-items:center;gap:10px;text-decoration:none;color:var(--fg)}
 .lm{width:32px;height:32px;background:var(--ac);border-radius:6px;display:flex;align-items:center;justify-content:center;font-weight:800;font-size:16px;color:var(--bg)}
 .back{color:var(--mu);text-decoration:none;font-size:13px}.back:hover{color:var(--ac)}
-.wrap{max-width:720px;margin:0 auto;padding:22px 16px}
+.wrap{max-width:720px;margin:0 auto;padding:12px 16px}
 h1{font-size:26px;font-weight:700;margin-bottom:4px}
 .sub{color:var(--mu);font-size:14px;margin-bottom:24px}
 .badge{display:inline-flex;align-items:center;gap:5px;padding:3px 10px;border-radius:999px;font-size:11px;font-weight:700;background:rgba(251,191,36,.15);color:var(--ac);border:1px solid rgba(251,191,36,.25);margin-bottom:12px}
@@ -182,7 +182,7 @@ footer a{color:var(--mu);text-decoration:none}
 <main class="wrap">
 
   <!-- Breadcrumb -->
-  <nav aria-label="breadcrumb" style="font-size:12px;color:var(--su);margin-bottom:16px">
+  <nav aria-label="breadcrumb" style="font-size:12px;color:var(--su);margin-bottom:10px">
     <a href="/" style="color:var(--su);text-decoration:none">Home</a> &rsaquo;
     <a href="/tools/teacher/" style="color:var(--su);text-decoration:none">Teacher Tools</a> &rsaquo;
     <span style="color:var(--mu)">${tool.name}</span>
@@ -340,7 +340,7 @@ header{background:var(--sur);border-bottom:1px solid var(--bor);padding:12px 20p
 .logo{display:flex;align-items:center;gap:10px;text-decoration:none;color:var(--fg)}
 .lm{width:32px;height:32px;background:var(--ac);border-radius:6px;display:flex;align-items:center;justify-content:center;font-weight:800;font-size:16px;color:var(--bg)}
 .back{color:var(--mu);text-decoration:none;font-size:13px}
-.wrap{max-width:960px;margin:0 auto;padding:22px 16px}
+.wrap{max-width:960px;margin:0 auto;padding:12px 16px}
 footer{text-align:center;padding:32px 16px;color:var(--su);font-size:12px;border-top:1px solid var(--bor);margin-top:40px}
 footer a{color:var(--mu);text-decoration:none}
 input[type=search]{background:var(--sur);border:1px solid var(--bor);border-radius:10px;padding:10px 16px;color:var(--fg);font-size:14px;outline:none;width:100%;font-family:inherit}

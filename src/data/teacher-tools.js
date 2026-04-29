@@ -24,13 +24,16 @@
  * ──────────────────────────────────────────────────────────────────────────*/
 
 export const TEACHER_CATEGORIES = {
-  "cross-subject": { label: "All Teachers",       emoji: "🏫", color: "amber"  },
-  "science":       { label: "Science",             emoji: "🔬", color: "blue"   },
-  "maths":         { label: "Mathematics",         emoji: "📐", color: "purple" },
-  "language":      { label: "Languages",           emoji: "📝", color: "green"  },
-  "social-science":{ label: "Social Science",      emoji: "🌍", color: "teal"   },
-  "computer":      { label: "Computer Science",    emoji: "💻", color: "indigo" },
-  "higher-ed":     { label: "Higher Education",    emoji: "🎓", color: "rose"   },
+  "cross-subject": { label: "All Teachers",          emoji: "🏫", color: "amber"  },
+  "science":       { label: "Science",               emoji: "🔬", color: "blue"   },
+  "maths":         { label: "Mathematics",           emoji: "📐", color: "purple" },
+  "language":      { label: "Languages",             emoji: "📝", color: "green"  },
+  "social-science":{ label: "Social Science",        emoji: "🌍", color: "teal"   },
+  "computer":      { label: "Computer Science",      emoji: "💻", color: "indigo" },
+  "commerce":      { label: "Commerce",              emoji: "📊", color: "emerald"},
+  "arts":          { label: "Arts & Humanities",     emoji: "🏛️", color: "rose"   },
+  "professional":  { label: "Professional Courses",  emoji: "🎓", color: "orange" },
+  "higher-ed":     { label: "Higher Education",      emoji: "🎓", color: "rose"   },
 };
 
 export const TEACHER_TOOLS = [
@@ -1604,6 +1607,428 @@ Follow {{style}} guidelines precisely.`,
       { q: "Is it free?", a: "Completely free." },
     ],
     priority: 0.83,
+  },
+
+  /* ════════════════════════════════════════════════════════════════════════
+     TIMETABLE & PLANNER
+  ════════════════════════════════════════════════════════════════════════ */
+  {
+    id: "class-timetable-generator",
+    name: "Class Timetable Generator",
+    desc: "Generate a weekly class timetable for any school or college with periods and breaks.",
+    icon: "🗓️", category: "cross-subject",
+    audience: "teacher", model: "smart", maxTokens: 600,
+    inputs: [
+      { id: "classes", label: "Classes / Sections", type: "text", placeholder: "e.g. Class 10A, 10B, 11 Science, 11 Commerce", required: true },
+      { id: "subjects", label: "Subjects & Periods/Week", type: "textarea", placeholder: "e.g. Maths-6, Science-5, English-5, Hindi-4, SST-4, Computer-2", required: true, rows: 3 },
+      { id: "days", label: "School Days", type: "select", options: ["Monday to Friday (5 days)","Monday to Saturday (6 days)"] },
+      { id: "periods", label: "Periods Per Day", type: "select", options: ["6 periods","7 periods","8 periods"] },
+    ],
+    promptTemplate: `Create a complete weekly class timetable.
+Classes: {{classes}} | Days: {{days}} | Periods/Day: {{periods}}
+Subjects & periods needed: {{subjects}}
+
+Format as a clear table:
+DAY | Period 1 | Period 2 | Period 3 | BREAK | Period 4 | Period 5 | Period 6 | ...
+
+Rules:
+- No teacher has same subject consecutively more than 2 periods
+- Include morning assembly (15 min), lunch break, and short breaks
+- Distribute subjects evenly across the week
+- Maths and Science in morning slots preferred
+- PT/Games on Saturday if 6-day week
+Print-ready format. Indian school structure.`,
+    seoTitle: "Free Class Timetable Generator for Teachers | Forjit AI",
+    seoDesc: "Generate weekly class timetables for any school or college. Free tool for Indian teachers. Balanced subject distribution with breaks.",
+    seoKeywords: ["class timetable generator India","school timetable maker free","weekly timetable generator teacher CBSE"],
+    faqs: [
+      { q: "Can I create timetables for multiple classes?", a: "Yes. Enter multiple classes and sections." },
+      { q: "Are breaks included?", a: "Yes. Assembly, lunch, and short breaks are included." },
+      { q: "Is subject distribution balanced?", a: "Yes. Subjects are spread evenly across the week." },
+      { q: "Can I print the timetable?", a: "Yes. Copy and paste into Word or Excel for printing." },
+      { q: "Is it free?", a: "Completely free." },
+    ],
+    priority: 0.90,
+  },
+
+  {
+    id: "annual-academic-planner",
+    name: "Annual Academic Master Planner",
+    desc: "Create a full academic year plan with terms, exams, holidays, syllabus milestones, and activities.",
+    icon: "📆", category: "cross-subject",
+    audience: "teacher", model: "smart", maxTokens: 700,
+    inputs: [
+      { id: "school", label: "School / Institution Type", type: "select", options: ["CBSE School","ICSE School","State Board School","Engineering College","Arts College","Commerce College","Polytechnic / ITI"] },
+      { id: "class", label: "Class / Year", type: "text", placeholder: "e.g. Class 10, B.Com Year 2, FY Engineering", required: true },
+      { id: "startMonth", label: "Academic Year Start", type: "select", options: ["April (India Standard)","June","July","August"] },
+      { id: "exams", label: "Key Exams", type: "text", placeholder: "e.g. Unit Test, Mid-term, Pre-board, Annual", required: false },
+    ],
+    promptTemplate: `Create a detailed annual academic master planner.
+Institution: {{school}} | Class: {{class}} | Start: {{startMonth}} | Exams: {{exams}}
+
+Month-by-month plan covering all 12 months:
+MONTH | TERM | SYLLABUS FOCUS | EXAMS/TESTS | ACTIVITIES | HOLIDAYS
+Include:
+- Term 1 and Term 2 split
+- Unit test schedule (monthly)
+- Mid-term exam period
+- Pre-board / Preliminary exam
+- Annual / Board exam preparation
+- Parent-teacher meetings (2 per year)
+- Sports day, cultural events, science fair
+- Revision periods before exams
+- Summer/winter vacation blocks
+Indian academic calendar. Practical and realistic.`,
+    seoTitle: "Free Annual Academic Master Planner for Teachers | Forjit AI",
+    seoDesc: "Create a full academic year master plan for any school or college. Free tool for Indian teachers. Month-wise syllabus, exams, activities.",
+    seoKeywords: ["annual academic planner teacher India","yearly school planner generator free","academic calendar maker CBSE teacher"],
+    faqs: [
+      { q: "Does it cover the full year?", a: "Yes. All 12 months with syllabus, exams, and activities." },
+      { q: "Are vacation periods included?", a: "Yes. Summer, winter, and festival holidays are included." },
+      { q: "Is it suitable for colleges too?", a: "Yes. Works for engineering, arts, commerce, and science colleges." },
+      { q: "Are PTM dates included?", a: "Yes. Parent-teacher meeting dates are planned in." },
+      { q: "Is it free?", a: "Completely free." },
+    ],
+    priority: 0.91,
+  },
+
+  /* ════════════════════════════════════════════════════════════════════════
+     COMMERCE STREAM
+  ════════════════════════════════════════════════════════════════════════ */
+  {
+    id: "accountancy-problem-solver",
+    name: "Accountancy Problem Solver",
+    desc: "Solve accountancy problems step-by-step — journal entries, ledger, P&L, balance sheet.",
+    icon: "📒", category: "commerce",
+    audience: "teacher", model: "smart", maxTokens: 600,
+    inputs: [
+      { id: "problem", label: "Problem / Transaction", type: "textarea", placeholder: "e.g. Journalise: Goods worth ₹5000 purchased from Ram on credit", required: true, rows: 3 },
+      { id: "class", label: "Class", type: "select", options: ["Class 11","Class 12","B.Com Year 1","B.Com Year 2","B.Com Year 3"] },
+      { id: "topic", label: "Topic", type: "select", options: ["Journal Entries","Ledger Accounts","Trial Balance","P&L Account","Balance Sheet","Cash Flow","Partnership","Company Accounts"] },
+    ],
+    promptTemplate: `Solve this accountancy problem step-by-step.
+Problem: {{problem}} | Class: {{class}} | Topic: {{topic}}
+Show:
+1. IDENTIFY the type of transaction
+2. GOLDEN RULES applied (if journal)
+3. JOURNAL ENTRY or LEDGER format (proper T-format)
+4. STEP-BY-STEP WORKING
+5. FINAL ANSWER with amounts
+6. KEY RULE / CONCEPT used
+CBSE/ISC accountancy curriculum. Use ₹ symbol.`,
+    seoTitle: "Free Accountancy Problem Solver for Teachers | Forjit AI",
+    seoDesc: "Solve accountancy journal entries, ledger, P&L, balance sheet problems step-by-step. Free tool for commerce teachers. CBSE Class 11-12.",
+    seoKeywords: ["accountancy problem solver India","journal entry solver CBSE","accountancy teacher tool free India"],
+    faqs: [
+      { q: "What accountancy topics are covered?", a: "Journal entries, ledger, trial balance, P&L, balance sheet, partnership, and company accounts." },
+      { q: "Are golden rules explained?", a: "Yes. The applicable golden rules are stated for each journal entry." },
+      { q: "Is T-format used for ledger?", a: "Yes. Proper T-account format for ledger entries." },
+      { q: "Is it CBSE Class 12 aligned?", a: "Yes. Follows CBSE commerce curriculum for Class 11-12." },
+      { q: "Is it free?", a: "Completely free." },
+    ],
+    priority: 0.88,
+  },
+
+  {
+    id: "business-studies-notes",
+    name: "Business Studies Notes & Case Study Maker",
+    desc: "Generate structured notes and case studies for any Business Studies chapter or topic.",
+    icon: "💼", category: "commerce",
+    audience: "teacher", model: "smart", maxTokens: 600,
+    inputs: [
+      { id: "topic", label: "Topic / Chapter", type: "text", placeholder: "e.g. Marketing Management, Staffing, Consumer Protection Act", required: true },
+      { id: "class", label: "Class", type: "select", options: ["Class 11","Class 12","BBA Year 1","BBA Year 2","BBA Year 3","MBA"] },
+      { id: "type", label: "Content Type", type: "select", options: ["Chapter Notes","Case Study","MCQ Questions","Difference Table","Concept Map Points"] },
+    ],
+    promptTemplate: `Create {{type}} for Business Studies.
+Topic: {{topic}} | Class: {{class}}
+For Notes: Key definitions, concepts, types, importance, functions (exam-focused).
+For Case Study: Real Indian company example, problem, analysis, solution.
+For MCQ: 10 questions with answers.
+For Difference Table: Compare key terms (minimum 3 bases).
+For Concept Map: Hierarchical bullet points.
+CBSE/NCERT Business Studies curriculum.`,
+    seoTitle: "Free Business Studies Notes & Case Study Maker | Forjit AI",
+    seoDesc: "Generate Business Studies notes and case studies for any chapter. Free tool for commerce teachers. CBSE Class 11-12 and BBA.",
+    seoKeywords: ["business studies notes generator India","BST case study maker CBSE","business studies teacher tool free"],
+    faqs: [
+      { q: "What content types can I generate?", a: "Chapter notes, case studies, MCQs, difference tables, and concept map points." },
+      { q: "Are Indian company examples used?", a: "Yes. Case studies use real Indian company examples." },
+      { q: "Is it CBSE Class 12 aligned?", a: "Yes. Follows NCERT Business Studies syllabus." },
+      { q: "Can I use it for BBA?", a: "Yes. Select BBA level for college-appropriate content." },
+      { q: "Is it free?", a: "Completely free." },
+    ],
+    priority: 0.87,
+  },
+
+  {
+    id: "economics-numericals-solver",
+    name: "Economics Numericals Solver",
+    desc: "Solve economics numericals — national income, elasticity, cost-revenue, index numbers.",
+    icon: "📈", category: "commerce",
+    audience: "teacher", model: "smart", maxTokens: 550,
+    inputs: [
+      { id: "problem", label: "Problem", type: "textarea", placeholder: "e.g. Calculate GDP by expenditure method: C=800, I=200, G=150, X-M=50", required: true, rows: 3 },
+      { id: "class", label: "Class", type: "select", options: ["Class 11","Class 12","B.Com","BA Economics"] },
+      { id: "topic", label: "Topic", type: "select", options: ["National Income","Elasticity","Cost & Revenue","Index Numbers","Money & Banking","Balance of Payments","Any"] },
+    ],
+    promptTemplate: `Solve this economics numerical step-by-step.
+Problem: {{problem}} | Class: {{class}} | Topic: {{topic}}
+Show:
+1. GIVEN DATA
+2. FORMULA USED (name and write formula)
+3. STEP-BY-STEP CALCULATION
+4. ANSWER with units
+5. INTERPRETATION (what does this answer mean)
+CBSE economics curriculum. Clear and detailed.`,
+    seoTitle: "Free Economics Numericals Solver for Teachers | Forjit AI",
+    seoDesc: "Solve economics numericals step-by-step. National income, elasticity, cost-revenue. Free tool for economics teachers. CBSE Class 12.",
+    seoKeywords: ["economics numericals solver India","economics problems CBSE step by step","economics teacher tool free India"],
+    faqs: [
+      { q: "What economics topics are covered?", a: "National income, elasticity, cost/revenue, index numbers, money/banking, and more." },
+      { q: "Are formulas shown?", a: "Yes. Formula name and formula are both shown." },
+      { q: "Is working shown step by step?", a: "Yes. Every step with values substituted." },
+      { q: "Is CBSE Class 12 covered?", a: "Yes. All Class 11-12 economics numericals are covered." },
+      { q: "Is it free?", a: "Completely free." },
+    ],
+    priority: 0.87,
+  },
+
+  /* ════════════════════════════════════════════════════════════════════════
+     ARTS / HUMANITIES STREAM
+  ════════════════════════════════════════════════════════════════════════ */
+  {
+    id: "political-science-notes",
+    name: "Political Science Notes Maker",
+    desc: "Generate structured notes for any Political Science topic — Indian polity, governance, IR.",
+    icon: "🏛️", category: "arts",
+    audience: "teacher", model: "smart", maxTokens: 600,
+    inputs: [
+      { id: "topic", label: "Topic", type: "text", placeholder: "e.g. Fundamental Rights, Election Commission, Foreign Policy of India", required: true },
+      { id: "class", label: "Class / Level", type: "select", options: ["Class 11","Class 12","BA Year 1","BA Year 2","BA Year 3","UPSC Preparation"] },
+      { id: "type", label: "Content Type", type: "select", options: ["Chapter Notes","MCQ Questions","Short Answer Points","Important Definitions","Comparison Table"] },
+    ],
+    promptTemplate: `Create {{type}} for Political Science.
+Topic: {{topic}} | Level: {{class}}
+For Notes: Key concepts, provisions, significance, examples, criticisms.
+For MCQs: 10 questions with answers. Include article numbers where applicable.
+For Short Answer: 5 key points per sub-topic (exam format).
+For Definitions: Clear definitions of all key terms.
+For Comparison: Compare relevant institutions/concepts.
+NCERT/CBSE Political Science curriculum. Include article/act references.`,
+    seoTitle: "Free Political Science Notes Maker for Teachers | Forjit AI",
+    seoDesc: "Generate Political Science notes and MCQs for any topic. Free tool for Pol Science teachers. CBSE Class 11-12 and BA level.",
+    seoKeywords: ["political science notes generator India","polity notes maker CBSE free","political science MCQ teacher tool"],
+    faqs: [
+      { q: "Are article numbers included?", a: "Yes. Relevant Constitutional article numbers are referenced." },
+      { q: "Is it useful for UPSC?", a: "Yes. Select 'UPSC Preparation' for comprehensive notes." },
+      { q: "What topics are covered?", a: "Indian Constitution, governance, elections, federalism, international relations, and more." },
+      { q: "Is NCERT aligned?", a: "Yes. Follows NCERT Political Science syllabus." },
+      { q: "Is it free?", a: "Completely free." },
+    ],
+    priority: 0.86,
+  },
+
+  {
+    id: "sociology-psychology-notes",
+    name: "Sociology & Psychology Notes Maker",
+    desc: "Generate notes, theory summaries, and case studies for Sociology or Psychology topics.",
+    icon: "🧠", category: "arts",
+    audience: "teacher", model: "smart", maxTokens: 600,
+    inputs: [
+      { id: "subject", label: "Subject", type: "select", options: ["Sociology","Psychology","Social Work","Anthropology"] },
+      { id: "topic", label: "Topic / Theory", type: "text", placeholder: "e.g. Maslow's Hierarchy, Social Stratification, Indian Family System", required: true },
+      { id: "class", label: "Class / Level", type: "select", options: ["Class 11","Class 12","BA Year 1","BA Year 2","BA Year 3","MA Level"] },
+      { id: "type", label: "Content Type", type: "select", options: ["Theory Summary","Case Study","MCQ Questions","Key Thinkers & Concepts","Research Methods Notes"] },
+    ],
+    promptTemplate: `Create {{type}} for {{subject}}.
+Topic: {{topic}} | Level: {{class}}
+For Theory: Theorist, key concepts, assumptions, applications, criticisms.
+For Case Study: Real-world Indian/global example with analysis.
+For MCQs: 10 questions with answers.
+For Thinkers: Name, nationality, major works, key ideas.
+For Research: Types, methods, tools, limitations.
+NCERT/UGC curriculum. Indian social context.`,
+    seoTitle: "Free Sociology & Psychology Notes Maker for Teachers | Forjit AI",
+    seoDesc: "Generate Sociology and Psychology notes, theory summaries, case studies. Free tool for Indian teachers. Class 11-12 and BA level.",
+    seoKeywords: ["sociology notes generator India","psychology notes maker free","social science teacher tool India"],
+    faqs: [
+      { q: "Which subjects are covered?", a: "Sociology, Psychology, Social Work, and Anthropology." },
+      { q: "Are Indian examples used?", a: "Yes. Indian social context and examples are used." },
+      { q: "Are theorists covered?", a: "Yes. Major theorists with their key ideas and works." },
+      { q: "Is it UGC aligned?", a: "Yes. Follows UGC and NCERT curriculum context." },
+      { q: "Is it free?", a: "Completely free." },
+    ],
+    priority: 0.85,
+  },
+
+  /* ════════════════════════════════════════════════════════════════════════
+     PROFESSIONAL COURSES
+  ════════════════════════════════════════════════════════════════════════ */
+  {
+    id: "law-llb-notes",
+    name: "LLB / Law Notes & Case Summariser",
+    desc: "Generate law notes, case summaries, and legal concept explanations for LLB students.",
+    icon: "⚖️", category: "professional",
+    audience: "lecturer", model: "smart", maxTokens: 650,
+    inputs: [
+      { id: "topic", label: "Legal Topic / Case", type: "text", placeholder: "e.g. Doctrine of Promissory Estoppel, Kesavananda Bharati case, IPC Section 302", required: true },
+      { id: "subject", label: "Law Subject", type: "select", options: ["Constitutional Law","Contract Law","Criminal Law (IPC/BNS)","Tort Law","Family Law","Property Law","Corporate Law","Evidence Act","Any"] },
+      { id: "year", label: "LLB Year", type: "select", options: ["LLB Year 1","LLB Year 2","LLB Year 3","LLM"] },
+      { id: "type", label: "Content Type", type: "select", options: ["Topic Notes","Case Summary","Landmark Cases List","Bare Act Explanation","Exam Q&A"] },
+    ],
+    promptTemplate: `Create {{type}} for Law.
+Topic/Case: {{topic}} | Subject: {{subject}} | Level: {{year}}
+For Notes: Definition, legal provisions, elements, exceptions, landmark cases, landmark judgements.
+For Case Summary: Facts, issues, arguments, judgement, ratio decidendi, significance.
+For Landmark Cases: Case name, court, year, ratio, significance.
+For Bare Act: Section number, text simplified, explanation, illustrations.
+For Q&A: 5 likely exam questions with detailed answers.
+Relevant Indian laws and BNS (Bharatiya Nyaya Sanhita) updates where applicable.`,
+    seoTitle: "Free LLB Law Notes & Case Summariser for Law Teachers | Forjit AI",
+    seoDesc: "Generate LLB law notes, case summaries, and legal concept explanations. Free tool for Indian law teachers. Constitutional, Criminal, Contract law.",
+    seoKeywords: ["LLB notes generator India","law case summary maker free","legal notes tool India teacher"],
+    faqs: [
+      { q: "Does it cover BNS (new criminal law)?", a: "Yes. Includes updated Bharatiya Nyaya Sanhita references where applicable." },
+      { q: "Are landmark cases included?", a: "Yes. Important landmark cases are referenced in notes." },
+      { q: "What law subjects are covered?", a: "Constitutional, Contract, Criminal, Tort, Family, Property, Corporate law and more." },
+      { q: "Is it suitable for LLM level?", a: "Yes. Select LLM for advanced level content." },
+      { q: "Is it free?", a: "Completely free." },
+    ],
+    priority: 0.88,
+  },
+
+  {
+    id: "mbbs-medical-notes",
+    name: "MBBS / Medical Notes Generator",
+    desc: "Generate medical notes, case presentations, and clinical summaries for medical students.",
+    icon: "🩺", category: "professional",
+    audience: "lecturer", model: "smart", maxTokens: 650,
+    inputs: [
+      { id: "topic", label: "Medical Topic", type: "text", placeholder: "e.g. Myocardial Infarction, Diabetes Mellitus Type 2, Appendicitis management", required: true },
+      { id: "subject", label: "Medical Subject", type: "select", options: ["Anatomy","Physiology","Biochemistry","Pathology","Pharmacology","Medicine","Surgery","Obstetrics/Gynecology","Pediatrics","Any"] },
+      { id: "year", label: "MBBS Year", type: "select", options: ["1st Year MBBS","2nd Year MBBS","3rd Year MBBS","Final Year MBBS","PG/MD/MS"] },
+      { id: "type", label: "Content Type", type: "select", options: ["Topic Notes","Clinical Case Presentation","MCQ Questions","Mnemonics","Short Notes (2 marks)","Long Notes (10 marks)"] },
+    ],
+    promptTemplate: `Create {{type}} for Medical Education.
+Topic: {{topic}} | Subject: {{subject}} | Year: {{year}}
+For Topic Notes: Definition, etiology, pathophysiology, clinical features, investigations, treatment, complications, prognosis.
+For Clinical Case: Chief complaint, history, examination findings, investigations, diagnosis, management.
+For MCQs: 10 medical MCQs with answers (mark tricky options).
+For Mnemonics: Memory aids for complex lists/criteria.
+For Short Notes: 150-200 words covering key exam points.
+For Long Notes: Full detailed notes exam format.
+Current clinical guidelines. Indian context (MCI/NMC curriculum).`,
+    seoTitle: "Free MBBS Medical Notes Generator for Medical Teachers | Forjit AI",
+    seoDesc: "Generate MBBS medical notes, clinical cases, MCQs, and mnemonics. Free tool for Indian medical teachers and professors.",
+    seoKeywords: ["MBBS notes generator India","medical notes maker free","clinical notes tool medical teacher India"],
+    faqs: [
+      { q: "What medical subjects are covered?", a: "Anatomy, Physiology, Biochemistry, Pathology, Pharmacology, Medicine, Surgery, OBG, Pediatrics." },
+      { q: "Are mnemonics included?", a: "Yes. Select 'Mnemonics' type for memory aids." },
+      { q: "Is it NMC curriculum aligned?", a: "Yes. Follows NMC (National Medical Commission) curriculum." },
+      { q: "Can I get clinical case presentations?", a: "Yes. Full SOAP format clinical case presentations." },
+      { q: "Is it free?", a: "Completely free." },
+    ],
+    priority: 0.88,
+  },
+
+  {
+    id: "iti-vocational-notes",
+    name: "ITI / Vocational Training Notes Maker",
+    desc: "Generate practical notes, theory content, and worksheets for ITI and vocational trades.",
+    icon: "🔧", category: "professional",
+    audience: "teacher", model: "smart", maxTokens: 600,
+    inputs: [
+      { id: "trade", label: "Trade / Subject", type: "text", placeholder: "e.g. Electrician, Fitter, Welder, COPA, Mechanic Diesel, Plumber", required: true },
+      { id: "topic", label: "Topic / Practical", type: "text", placeholder: "e.g. Wiring circuits, Lathe operations, OSHA safety rules", required: true },
+      { id: "type", label: "Content Type", type: "select", options: ["Theory Notes","Practical Job Sheet","Safety Rules","Tool Description","MCQ Questions","Viva Questions"] },
+    ],
+    promptTemplate: `Create {{type}} for ITI/Vocational training.
+Trade: {{trade}} | Topic: {{topic}}
+For Theory Notes: Principle, working, types, applications, advantages, limitations.
+For Job Sheet: Aim, materials/tools, procedure (numbered steps), observations, result, precautions.
+For Safety Rules: 10 trade-specific safety rules in simple language.
+For Tool Description: Tool name, diagram description, parts, uses, care and maintenance.
+For MCQs: 10 questions with answers.
+For Viva: 10 viva questions with expected answers.
+NCVT/SCVT curriculum. Simple practical language.`,
+    seoTitle: "Free ITI Vocational Notes Maker for Teachers | Forjit AI",
+    seoDesc: "Generate ITI and vocational training notes, job sheets, safety rules, and MCQs. Free tool for ITI instructors. All trades covered.",
+    seoKeywords: ["ITI notes generator India","vocational training notes free","ITI job sheet maker NCVT teacher"],
+    faqs: [
+      { q: "Which ITI trades are supported?", a: "All trades — Electrician, Fitter, Welder, COPA, Mechanic, Plumber, and more." },
+      { q: "Are job sheets included?", a: "Yes. Full practical job sheets with procedure and observations." },
+      { q: "Is NCVT curriculum followed?", a: "Yes. Follows NCVT and SCVT curriculum guidelines." },
+      { q: "Are safety rules included?", a: "Yes. Trade-specific safety rules in simple language." },
+      { q: "Is it free?", a: "Completely free." },
+    ],
+    priority: 0.87,
+  },
+
+  {
+    id: "fashion-design-notes",
+    name: "Fashion Design Notes & Assignment Maker",
+    desc: "Generate notes, project briefs, and assignments for fashion design students.",
+    icon: "👗", category: "professional",
+    audience: "teacher", model: "smart", maxTokens: 600,
+    inputs: [
+      { id: "topic", label: "Topic / Subject", type: "text", placeholder: "e.g. Fabric Construction, Pattern Making, Fashion History, Garment Finishing", required: true },
+      { id: "level", label: "Course Level", type: "select", options: ["Diploma Year 1","Diploma Year 2","Degree Year 1","Degree Year 2","Degree Year 3","Certificate Course"] },
+      { id: "type", label: "Content Type", type: "select", options: ["Theory Notes","Project Brief","Assignment Questions","Practical Instruction Sheet","Design Brief","Terminology List"] },
+    ],
+    promptTemplate: `Create {{type}} for Fashion Design education.
+Topic: {{topic}} | Level: {{level}}
+For Theory Notes: Definition, types, properties, processes, industry applications.
+For Project Brief: Objective, theme, requirements, deliverables, evaluation criteria.
+For Assignment: 5 detailed assignment questions (theory + application).
+For Practical Instructions: Step-by-step practical with tools, materials, procedure.
+For Design Brief: Client profile, requirements, mood board direction, constraints.
+For Terminology: 15-20 fashion terms with clear definitions.
+NIFT/FDDI/State fashion institute curriculum context.`,
+    seoTitle: "Free Fashion Design Notes & Assignment Maker | Forjit AI",
+    seoDesc: "Generate fashion design notes, project briefs, and assignments. Free tool for fashion design teachers. NIFT/FDDI curriculum aligned.",
+    seoKeywords: ["fashion design notes generator India","fashion design assignment maker free","fashion teacher tool NIFT India"],
+    faqs: [
+      { q: "What topics are covered?", a: "Fabric, pattern making, garment construction, fashion history, illustration, retail, and more." },
+      { q: "Is it NIFT curriculum aligned?", a: "Yes. Follows NIFT and FDDI curriculum context." },
+      { q: "Can I create project briefs?", a: "Yes. Full project briefs with objectives and evaluation criteria." },
+      { q: "Are design briefs included?", a: "Yes. Client-style design briefs for project-based learning." },
+      { q: "Is it free?", a: "Completely free." },
+    ],
+    priority: 0.86,
+  },
+
+  {
+    id: "hotel-management-notes",
+    name: "Hotel Management Notes & SOP Maker",
+    desc: "Generate hospitality notes, SOPs, and training content for hotel management students.",
+    icon: "🏨", category: "professional",
+    audience: "teacher", model: "smart", maxTokens: 600,
+    inputs: [
+      { id: "topic", label: "Topic / Subject", type: "text", placeholder: "e.g. Front Office Operations, Food & Beverage Service, Housekeeping, Menu Planning", required: true },
+      { id: "level", label: "Course Level", type: "select", options: ["Certificate (NCHMCT)","Diploma","B.Sc Hotel Management Year 1","B.Sc Year 2","B.Sc Year 3","MBA Hospitality"] },
+      { id: "type", label: "Content Type", type: "select", options: ["Theory Notes","Standard Operating Procedure (SOP)","MCQ Questions","Practical Checklist","Guest Interaction Script","Case Study"] },
+    ],
+    promptTemplate: `Create {{type}} for Hotel Management education.
+Topic: {{topic}} | Level: {{level}}
+For Theory Notes: Definition, types, roles, procedures, industry standards.
+For SOP: Step-by-step standard operating procedure with quality checks.
+For MCQs: 10 hospitality MCQs with answers.
+For Checklist: Practical checklist with items to verify/complete.
+For Guest Script: Professional guest interaction dialogue (greeting, complaint, farewell).
+For Case Study: Real hotel scenario with problem and resolution.
+NCHMCT/IHM curriculum. International hospitality standards + Indian context.`,
+    seoTitle: "Free Hotel Management Notes & SOP Maker for Teachers | Forjit AI",
+    seoDesc: "Generate hotel management notes, SOPs, and training content. Free tool for hospitality teachers. NCHMCT/IHM curriculum aligned.",
+    seoKeywords: ["hotel management notes generator India","hospitality SOP maker free","hotel management teacher tool NCHMCT"],
+    faqs: [
+      { q: "Are SOPs included?", a: "Yes. Full Standard Operating Procedures with step-by-step instructions." },
+      { q: "What departments are covered?", a: "Front office, F&B service, housekeeping, kitchen, events, and more." },
+      { q: "Is NCHMCT curriculum followed?", a: "Yes. Follows NCHMCT and IHM curriculum guidelines." },
+      { q: "Are guest interaction scripts available?", a: "Yes. Professional guest handling scripts for training." },
+      { q: "Is it free?", a: "Completely free." },
+    ],
+    priority: 0.86,
   },
 
 ];

@@ -49,6 +49,18 @@ Allow: /tools/teacher/differentiated-instruction-planner.html
 Allow: /tools/teacher/notice-circular-writer.html
 Allow: /tools/teacher/thesis-chapter-outline.html
 Allow: /tools/teacher/citation-formatter.html
+Allow: /tools/teacher/class-timetable-generator.html
+Allow: /tools/teacher/annual-academic-planner.html
+Allow: /tools/teacher/accountancy-problem-solver.html
+Allow: /tools/teacher/business-studies-notes.html
+Allow: /tools/teacher/economics-numericals-solver.html
+Allow: /tools/teacher/political-science-notes.html
+Allow: /tools/teacher/sociology-psychology-notes.html
+Allow: /tools/teacher/law-llb-notes.html
+Allow: /tools/teacher/mbbs-medical-notes.html
+Allow: /tools/teacher/iti-vocational-notes.html
+Allow: /tools/teacher/fashion-design-notes.html
+Allow: /tools/teacher/hotel-management-notes.html
 
 # Sitemap
 Sitemap: https://www.forjitai.in/sitemap.xml

@@ -284,7 +284,12 @@
   /* ════════════════════════════════════════════════════════════════════════
      GENERATE
   ════════════════════════════════════════════════════════════════════════ */
+  var _isGenerating = false;
+
   function generate(forceRegen) {
+    if (_isGenerating) return;          // prevent double-tap / double-call
+    _isGenerating = true;
+
     var btn    = document.getElementById("te-generate");
     var inputs = getInputValues();
 
@@ -293,6 +298,7 @@
       var inp = TOOL.inputs[i];
       if (inp.required !== false && !inputs[inp.id]) {
         showMsg("error", "Please fill in: " + inp.label);
+        _isGenerating = false;
         return;
       }
     }
@@ -316,6 +322,7 @@
         showOutput(cached, "cache");
         showMsg("", "");
         if (btn) { btn.disabled = false; btn.textContent = "⚡ Generate"; }
+        _isGenerating = false;
         return;
       }
       runTiers(prompt, inputs, btn);
@@ -347,6 +354,7 @@
         }).catch(function(e) {
           showMsg("error", e.message);
           if (btn) { btn.disabled = false; btn.textContent = "⚡ Generate"; }
+          _isGenerating = false;
           throw new Error("__stop__");
         });
       });
@@ -358,6 +366,7 @@
         showMsg("error", "Free limit reached (" + RATE_LIMIT + "/hr). Try again in 1 hour.");
         clearOutput();
         if (btn) { btn.disabled = false; btn.textContent = "⚡ Generate"; }
+        _isGenerating = false;
         throw new Error("__stop__");
       }
       showMsg("loading", "Using free AI (may take 15–20 seconds on mobile)…");
@@ -375,12 +384,14 @@
           "Check the debug log below for details."
         );
         if (btn) { btn.disabled = false; btn.textContent = "⚡ Generate"; }
+        _isGenerating = false;
         return;
       }
       showOutput(result, tier);
       showMsg("", "");
       cacheSet(inputs, result);
       if (btn) { btn.disabled = false; btn.textContent = "⚡ Generate"; }
+      _isGenerating = false;
 
     }).catch(function(e) {
       if (e.message === "__stop__") return;
@@ -388,6 +399,7 @@
       clearOutput();
       showMsg("error", "Error: " + e.message);
       if (btn) { btn.disabled = false; btn.textContent = "⚡ Generate"; }
+      _isGenerating = false;
     });
   }
 
@@ -539,11 +551,6 @@
 
     if (genBtn) {
       genBtn.addEventListener("click", function() { generate(false); });
-      // Also handle touchend for mobile
-      genBtn.addEventListener("touchend", function(e) {
-        e.preventDefault();
-        generate(false);
-      });
     }
     if (redoBtn) redoBtn.addEventListener("click", function() { generate(true); });
     if (copyBtn) copyBtn.addEventListener("click", function() {

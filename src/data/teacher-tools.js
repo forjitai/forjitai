@@ -2031,4 +2031,1479 @@ NCHMCT/IHM curriculum. International hospitality standards + Indian context.`,
     priority: 0.86,
   },
 
+
+  /* ════════════════════════════════════════════════════════════════════
+     REGIONAL LANGUAGE TOOLS — Auto-generated
+     50 tools across 10 languages
+  ════════════════════════════════════════════════════════════════════ */
+  {
+    id: "tamil-essay-writer",
+    name: "Tamil Essay Writer (தமிழ் निबंध)",
+    desc: "Write Tamil essays on any topic for school and college students.",
+    icon: "✍️", category: "language", subCategory: "tamil",
+    audience: "teacher", model: "smart", maxTokens: 600,
+    inputs: [
+      { id: "topic", label: "Essay Topic (தமிழ்)", type: "text", placeholder: "e.g. என் தாய்நாடு, சுற்றுச்சூழல், தீபாவளி" },
+      { id: "class", label: "Class / Level", type: "select", options: ["Class 1","Class 2","Class 3","Class 4","Class 5","Class 6","Class 7","Class 8","Class 9","Class 10","Class 11","Class 12","Diploma / Certificate","ITI / Vocational","UG Year 1 (FY)","UG Year 2 (SY)","UG Year 3 (TY)","UG Year 4 (Final)","B.A.","B.Sc.","B.Com.","BBA","BCA","B.Tech / BE","B.Ed","BDS","MBBS","BPT","B.Pharm","LLB","B.Arch","B.Design / B.FTech","B.Sc Nursing","BHMCT (Hotel Mgmt)","PG Year 1","PG Year 2","M.A.","M.Sc.","M.Com.","MBA","MCA","M.Tech / ME","M.Ed","MD / MS (Medical)","LLM","M.Arch","M.Design","M.Sc Nursing","MHMCT","M.Phil","PhD / Doctorate","Post-Doctoral","UPSC / Competitive Exams","Professional Training"] },
+      { id: "wordCount", label: "Word Count", type: "select", options: ["100-150 words","200-250 words","300-350 words","400-500 words"] }
+    ],
+    promptTemplate: `Write a complete Tamil essay.
+Topic: {{topic}} | Level: {{class}} | Length: {{wordCount}}
+Write entirely in Tamil (Tamil script).
+Structure: Introduction → Main body (2-3 paragraphs) → Conclusion.
+Simple, correct Tamil. Appropriate for {{class}} level. TNBSE curriculum.`,
+    seoTitle: "Free Tamil Essay Writer for Teachers | தமிழ் निबंध | Forjit AI",
+    seoDesc: "Generate Tamil essays for any topic. Free tool for Tamil teachers. TNBSE aligned. Class 1-12 and college.",
+    seoKeywords: ["tamil essay writer free India","Tamil nibandh generator","tamil essay maker teacher"],
+    faqs: [
+      { q: "Is the essay written in Tamil?", a: "Yes. Completely in Tamil (Tamil script)." },
+      { q: "Which board is it aligned to?", a: "TNBSE and national curriculum." },
+      { q: "Can I set the word count?", a: "Yes. 100 to 500 words." },
+      { q: "Is it useful for all classes?", a: "Yes. Class 1 to PhD level." },
+      { q: "Is it free?", a: "Completely free." }
+    ],
+    priority: 0.86,
+  },
+  {
+    id: "tamil-letter-writer",
+    name: "Tamil Letter Writer (தமிழ் पत्र लेखन)",
+    desc: "Generate formal and informal Tamil letters for students and teachers.",
+    icon: "📮", category: "language", subCategory: "tamil",
+    audience: "teacher", model: "fast", maxTokens: 450,
+    inputs: [
+      { id: "type", label: "Letter Type", type: "select", options: ["Formal Letter","Informal Letter","Application Letter","Complaint Letter","Invitation Letter"] },
+      { id: "topic", label: "Purpose (தமிழ்)", type: "text", placeholder: "e.g. விடுமுறை கேட்டு, புகார் கடிதம்" },
+      { id: "class", label: "Class / Level", type: "select", options: ["Class 1","Class 2","Class 3","Class 4","Class 5","Class 6","Class 7","Class 8","Class 9","Class 10","Class 11","Class 12","Diploma / Certificate","ITI / Vocational","UG Year 1 (FY)","UG Year 2 (SY)","UG Year 3 (TY)","UG Year 4 (Final)","B.A.","B.Sc.","B.Com.","BBA","BCA","B.Tech / BE","B.Ed","BDS","MBBS","BPT","B.Pharm","LLB","B.Arch","B.Design / B.FTech","B.Sc Nursing","BHMCT (Hotel Mgmt)","PG Year 1","PG Year 2","M.A.","M.Sc.","M.Com.","MBA","MCA","M.Tech / ME","M.Ed","MD / MS (Medical)","LLM","M.Arch","M.Design","M.Sc Nursing","MHMCT","M.Phil","PhD / Doctorate","Post-Doctoral","UPSC / Competitive Exams","Professional Training"] }
+    ],
+    promptTemplate: `Write a {{type}} in Tamil.
+Purpose: {{topic}} | Level: {{class}}
+Write completely in Tamil (Tamil script).
+Use correct letter format: address, date, salutation, body, closing, signature.
+TNBSE exam format. Appropriate language for {{class}} level.`,
+    seoTitle: "Free Tamil Letter Writer for Teachers | தமிழ் पत्र | Forjit AI",
+    seoDesc: "Generate Tamil formal and informal letters. Free tool for Tamil teachers and students. TNBSE format.",
+    seoKeywords: ["tamil letter writer free","Tamil patra lekhan tool","tamil formal letter generator India"],
+    faqs: [
+      { q: "What letter types are available?", a: "Formal, informal, application, complaint, and invitation letters." },
+      { q: "Is the format correct?", a: "Yes. Correct Tamil letter format for TNBSE exams." },
+      { q: "Is it written in Tamil?", a: "Yes. Entirely in Tamil script." },
+      { q: "Is it exam ready?", a: "Yes. Follows TNBSE exam pattern." },
+      { q: "Is it free?", a: "Completely free." }
+    ],
+    priority: 0.85,
+  },
+  {
+    id: "tamil-grammar-explainer",
+    name: "Tamil Grammar Explainer (தமிழ் व्याकरण)",
+    desc: "Explain Tamil grammar topics with rules, examples, and exercises.",
+    icon: "📖", category: "language", subCategory: "tamil",
+    audience: "teacher", model: "smart", maxTokens: 500,
+    inputs: [
+      { id: "topic", label: "Grammar Topic (தமிழ்)", type: "text", placeholder: "e.g. வினைச்சொல், பெயர்ச்சொல், வேற்றுமை" },
+      { id: "class", label: "Class / Level", type: "select", options: ["Class 1","Class 2","Class 3","Class 4","Class 5","Class 6","Class 7","Class 8","Class 9","Class 10","Class 11","Class 12","Diploma / Certificate","ITI / Vocational","UG Year 1 (FY)","UG Year 2 (SY)","UG Year 3 (TY)","UG Year 4 (Final)","B.A.","B.Sc.","B.Com.","BBA","BCA","B.Tech / BE","B.Ed","BDS","MBBS","BPT","B.Pharm","LLB","B.Arch","B.Design / B.FTech","B.Sc Nursing","BHMCT (Hotel Mgmt)","PG Year 1","PG Year 2","M.A.","M.Sc.","M.Com.","MBA","MCA","M.Tech / ME","M.Ed","MD / MS (Medical)","LLM","M.Arch","M.Design","M.Sc Nursing","MHMCT","M.Phil","PhD / Doctorate","Post-Doctoral","UPSC / Competitive Exams","Professional Training"] }
+    ],
+    promptTemplate: `Explain this Tamil grammar topic.
+Topic: {{topic}} | Level: {{class}}
+Provide in BOTH Tamil and English:
+1. DEFINITION / RULE (in Tamil)
+2. TYPES (if any)
+3. EXAMPLES (5 examples in Tamil with English meaning)
+4. PRACTICE EXERCISE (5 sentences to fill/identify)
+5. COMMON MISTAKES students make
+Clear, student-friendly. TNBSE curriculum.`,
+    seoTitle: "Free Tamil Grammar Explainer for Teachers | Forjit AI",
+    seoDesc: "Explain Tamil grammar topics with rules and examples. Free tool for Tamil teachers. TNBSE aligned.",
+    seoKeywords: ["tamil grammar explainer free","Tamil vyakaran tool teacher","tamil grammar rules examples India"],
+    faqs: [
+      { q: "Is explanation in both Tamil and English?", a: "Yes. Definition in Tamil, with English meanings for examples." },
+      { q: "Are exercises included?", a: "Yes. 5 practice exercises are included." },
+      { q: "What grammar topics are covered?", a: "All Tamil grammar topics — parts of speech, tenses, sentence types, and more." },
+      { q: "Is it TNBSE aligned?", a: "Yes. Follows TNBSE grammar curriculum." },
+      { q: "Is it free?", a: "Completely free." }
+    ],
+    priority: 0.84,
+  },
+  {
+    id: "tamil-translation-helper",
+    name: "Tamil ↔ English Translation Helper",
+    desc: "Translate between Tamil and English with explanations for teachers and students.",
+    icon: "🔄", category: "language", subCategory: "tamil",
+    audience: "teacher", model: "fast", maxTokens: 400,
+    inputs: [
+      { id: "text", label: "Text to Translate", type: "textarea", placeholder: "Type in Tamil or English…", rows: 3 },
+      { id: "direction", label: "Direction", type: "select", options: ["Tamil → English","English → Tamil"] },
+      { id: "class", label: "Class / Level", type: "select", options: ["Class 1","Class 2","Class 3","Class 4","Class 5","Class 6","Class 7","Class 8","Class 9","Class 10","Class 11","Class 12","Diploma / Certificate","ITI / Vocational","UG Year 1 (FY)","UG Year 2 (SY)","UG Year 3 (TY)","UG Year 4 (Final)","B.A.","B.Sc.","B.Com.","BBA","BCA","B.Tech / BE","B.Ed","BDS","MBBS","BPT","B.Pharm","LLB","B.Arch","B.Design / B.FTech","B.Sc Nursing","BHMCT (Hotel Mgmt)","PG Year 1","PG Year 2","M.A.","M.Sc.","M.Com.","MBA","MCA","M.Tech / ME","M.Ed","MD / MS (Medical)","LLM","M.Arch","M.Design","M.Sc Nursing","MHMCT","M.Phil","PhD / Doctorate","Post-Doctoral","UPSC / Competitive Exams","Professional Training"] }
+    ],
+    promptTemplate: `Translate this text. Direction: {{direction}} | Level: {{class}}
+Text: {{text}}
+Provide:
+1. TRANSLATION (accurate, natural)
+2. WORD-BY-WORD breakdown (key words explained)
+3. NOTES (any idioms, cultural context, or grammar points)
+Keep language level appropriate for {{class}}.`,
+    seoTitle: "Free Tamil English Translation Helper for Teachers | Forjit AI",
+    seoDesc: "Translate between Tamil and English with word-by-word explanation. Free tool for Tamil teachers and students.",
+    seoKeywords: ["tamil english translation free India","Tamil translator teacher tool","tamil to english translator"],
+    faqs: [
+      { q: "Does it work both ways?", a: "Yes. Tamil to English and English to Tamil." },
+      { q: "Is word-by-word breakdown included?", a: "Yes. Key words are explained individually." },
+      { q: "Is cultural context explained?", a: "Yes. Idioms and cultural notes are included where relevant." },
+      { q: "Is it suitable for all levels?", a: "Yes. From Class 1 to PhD level translations." },
+      { q: "Is it free?", a: "Completely free." }
+    ],
+    priority: 0.83,
+  },
+  {
+    id: "tamil-mcq-maker",
+    name: "Tamil Language MCQ Maker",
+    desc: "Generate Tamil language MCQs for grammar, comprehension, and vocabulary.",
+    icon: "✅", category: "language", subCategory: "tamil",
+    audience: "teacher", model: "smart", maxTokens: 550,
+    inputs: [
+      { id: "topic", label: "Tamil Topic", type: "text", placeholder: "e.g. Grammar, Vocabulary, Comprehension, Literature" },
+      { id: "class", label: "Class / Level", type: "select", options: ["Class 1","Class 2","Class 3","Class 4","Class 5","Class 6","Class 7","Class 8","Class 9","Class 10","Class 11","Class 12","Diploma / Certificate","ITI / Vocational","UG Year 1 (FY)","UG Year 2 (SY)","UG Year 3 (TY)","UG Year 4 (Final)","B.A.","B.Sc.","B.Com.","BBA","BCA","B.Tech / BE","B.Ed","BDS","MBBS","BPT","B.Pharm","LLB","B.Arch","B.Design / B.FTech","B.Sc Nursing","BHMCT (Hotel Mgmt)","PG Year 1","PG Year 2","M.A.","M.Sc.","M.Com.","MBA","MCA","M.Tech / ME","M.Ed","MD / MS (Medical)","LLM","M.Arch","M.Design","M.Sc Nursing","MHMCT","M.Phil","PhD / Doctorate","Post-Doctoral","UPSC / Competitive Exams","Professional Training"] },
+      { id: "count", label: "Number of MCQs", type: "select", options: ["5","10","15","20"] }
+    ],
+    promptTemplate: `Generate {{count}} Tamil language MCQs.
+Topic: {{topic}} | Level: {{class}}
+Write questions in Tamil (Tamil script).
+Format: Q[N]. [question in Tamil]
+A) B) C) D)
+Answer: X
+Include grammar, vocabulary, and usage questions. TNBSE curriculum.`,
+    seoTitle: "Free Tamil MCQ Maker for Teachers | Forjit AI",
+    seoDesc: "Generate Tamil language MCQs for grammar, vocabulary, comprehension. Free tool for Tamil teachers. TNBSE aligned.",
+    seoKeywords: ["tamil MCQ generator teacher India","Tamil language quiz maker free","tamil grammar MCQ CBSE"],
+    faqs: [
+      { q: "Are questions written in Tamil?", a: "Yes. All questions are in Tamil script." },
+      { q: "What topics are covered?", a: "Grammar, vocabulary, comprehension, and literature." },
+      { q: "Is it TNBSE aligned?", a: "Yes. Follows TNBSE language curriculum." },
+      { q: "How many MCQs can I generate?", a: "5 to 20 MCQs per session." },
+      { q: "Is it free?", a: "Completely free." }
+    ],
+    priority: 0.83,
+  },
+  {
+    id: "telugu-essay-writer",
+    name: "Telugu Essay Writer (తెలుగు निबंध)",
+    desc: "Write Telugu essays on any topic for school and college students.",
+    icon: "✍️", category: "language", subCategory: "telugu",
+    audience: "teacher", model: "smart", maxTokens: 600,
+    inputs: [
+      { id: "topic", label: "Essay Topic (తెలుగు)", type: "text", placeholder: "e.g. నా దేశం, పర్యావరణం, దీపావళి" },
+      { id: "class", label: "Class / Level", type: "select", options: ["Class 1","Class 2","Class 3","Class 4","Class 5","Class 6","Class 7","Class 8","Class 9","Class 10","Class 11","Class 12","Diploma / Certificate","ITI / Vocational","UG Year 1 (FY)","UG Year 2 (SY)","UG Year 3 (TY)","UG Year 4 (Final)","B.A.","B.Sc.","B.Com.","BBA","BCA","B.Tech / BE","B.Ed","BDS","MBBS","BPT","B.Pharm","LLB","B.Arch","B.Design / B.FTech","B.Sc Nursing","BHMCT (Hotel Mgmt)","PG Year 1","PG Year 2","M.A.","M.Sc.","M.Com.","MBA","MCA","M.Tech / ME","M.Ed","MD / MS (Medical)","LLM","M.Arch","M.Design","M.Sc Nursing","MHMCT","M.Phil","PhD / Doctorate","Post-Doctoral","UPSC / Competitive Exams","Professional Training"] },
+      { id: "wordCount", label: "Word Count", type: "select", options: ["100-150 words","200-250 words","300-350 words","400-500 words"] }
+    ],
+    promptTemplate: `Write a complete Telugu essay.
+Topic: {{topic}} | Level: {{class}} | Length: {{wordCount}}
+Write entirely in Telugu (Telugu script).
+Structure: Introduction → Main body (2-3 paragraphs) → Conclusion.
+Simple, correct Telugu. Appropriate for {{class}} level. BSEAP / BSETS curriculum.`,
+    seoTitle: "Free Telugu Essay Writer for Teachers | తెలుగు निबंध | Forjit AI",
+    seoDesc: "Generate Telugu essays for any topic. Free tool for Telugu teachers. BSEAP / BSETS aligned. Class 1-12 and college.",
+    seoKeywords: ["telugu essay writer free India","Telugu nibandh generator","telugu essay maker teacher"],
+    faqs: [
+      { q: "Is the essay written in Telugu?", a: "Yes. Completely in Telugu (Telugu script)." },
+      { q: "Which board is it aligned to?", a: "BSEAP / BSETS and national curriculum." },
+      { q: "Can I set the word count?", a: "Yes. 100 to 500 words." },
+      { q: "Is it useful for all classes?", a: "Yes. Class 1 to PhD level." },
+      { q: "Is it free?", a: "Completely free." }
+    ],
+    priority: 0.86,
+  },
+  {
+    id: "telugu-letter-writer",
+    name: "Telugu Letter Writer (తెలుగు पत्र लेखन)",
+    desc: "Generate formal and informal Telugu letters for students and teachers.",
+    icon: "📮", category: "language", subCategory: "telugu",
+    audience: "teacher", model: "fast", maxTokens: 450,
+    inputs: [
+      { id: "type", label: "Letter Type", type: "select", options: ["Formal Letter","Informal Letter","Application Letter","Complaint Letter","Invitation Letter"] },
+      { id: "topic", label: "Purpose (తెలుగు)", type: "text", placeholder: "e.g. సెలవు కోసం, ఫిర్యాదు లేఖ" },
+      { id: "class", label: "Class / Level", type: "select", options: ["Class 1","Class 2","Class 3","Class 4","Class 5","Class 6","Class 7","Class 8","Class 9","Class 10","Class 11","Class 12","Diploma / Certificate","ITI / Vocational","UG Year 1 (FY)","UG Year 2 (SY)","UG Year 3 (TY)","UG Year 4 (Final)","B.A.","B.Sc.","B.Com.","BBA","BCA","B.Tech / BE","B.Ed","BDS","MBBS","BPT","B.Pharm","LLB","B.Arch","B.Design / B.FTech","B.Sc Nursing","BHMCT (Hotel Mgmt)","PG Year 1","PG Year 2","M.A.","M.Sc.","M.Com.","MBA","MCA","M.Tech / ME","M.Ed","MD / MS (Medical)","LLM","M.Arch","M.Design","M.Sc Nursing","MHMCT","M.Phil","PhD / Doctorate","Post-Doctoral","UPSC / Competitive Exams","Professional Training"] }
+    ],
+    promptTemplate: `Write a {{type}} in Telugu.
+Purpose: {{topic}} | Level: {{class}}
+Write completely in Telugu (Telugu script).
+Use correct letter format: address, date, salutation, body, closing, signature.
+BSEAP / BSETS exam format. Appropriate language for {{class}} level.`,
+    seoTitle: "Free Telugu Letter Writer for Teachers | తెలుగు पत्र | Forjit AI",
+    seoDesc: "Generate Telugu formal and informal letters. Free tool for Telugu teachers and students. BSEAP / BSETS format.",
+    seoKeywords: ["telugu letter writer free","Telugu patra lekhan tool","telugu formal letter generator India"],
+    faqs: [
+      { q: "What letter types are available?", a: "Formal, informal, application, complaint, and invitation letters." },
+      { q: "Is the format correct?", a: "Yes. Correct Telugu letter format for BSEAP / BSETS exams." },
+      { q: "Is it written in Telugu?", a: "Yes. Entirely in Telugu script." },
+      { q: "Is it exam ready?", a: "Yes. Follows BSEAP / BSETS exam pattern." },
+      { q: "Is it free?", a: "Completely free." }
+    ],
+    priority: 0.85,
+  },
+  {
+    id: "telugu-grammar-explainer",
+    name: "Telugu Grammar Explainer (తెలుగు व्याकरण)",
+    desc: "Explain Telugu grammar topics with rules, examples, and exercises.",
+    icon: "📖", category: "language", subCategory: "telugu",
+    audience: "teacher", model: "smart", maxTokens: 500,
+    inputs: [
+      { id: "topic", label: "Grammar Topic (తెలుగు)", type: "text", placeholder: "e.g. క్రియ, నామవాచకం, విభక్తి" },
+      { id: "class", label: "Class / Level", type: "select", options: ["Class 1","Class 2","Class 3","Class 4","Class 5","Class 6","Class 7","Class 8","Class 9","Class 10","Class 11","Class 12","Diploma / Certificate","ITI / Vocational","UG Year 1 (FY)","UG Year 2 (SY)","UG Year 3 (TY)","UG Year 4 (Final)","B.A.","B.Sc.","B.Com.","BBA","BCA","B.Tech / BE","B.Ed","BDS","MBBS","BPT","B.Pharm","LLB","B.Arch","B.Design / B.FTech","B.Sc Nursing","BHMCT (Hotel Mgmt)","PG Year 1","PG Year 2","M.A.","M.Sc.","M.Com.","MBA","MCA","M.Tech / ME","M.Ed","MD / MS (Medical)","LLM","M.Arch","M.Design","M.Sc Nursing","MHMCT","M.Phil","PhD / Doctorate","Post-Doctoral","UPSC / Competitive Exams","Professional Training"] }
+    ],
+    promptTemplate: `Explain this Telugu grammar topic.
+Topic: {{topic}} | Level: {{class}}
+Provide in BOTH Telugu and English:
+1. DEFINITION / RULE (in Telugu)
+2. TYPES (if any)
+3. EXAMPLES (5 examples in Telugu with English meaning)
+4. PRACTICE EXERCISE (5 sentences to fill/identify)
+5. COMMON MISTAKES students make
+Clear, student-friendly. BSEAP / BSETS curriculum.`,
+    seoTitle: "Free Telugu Grammar Explainer for Teachers | Forjit AI",
+    seoDesc: "Explain Telugu grammar topics with rules and examples. Free tool for Telugu teachers. BSEAP / BSETS aligned.",
+    seoKeywords: ["telugu grammar explainer free","Telugu vyakaran tool teacher","telugu grammar rules examples India"],
+    faqs: [
+      { q: "Is explanation in both Telugu and English?", a: "Yes. Definition in Telugu, with English meanings for examples." },
+      { q: "Are exercises included?", a: "Yes. 5 practice exercises are included." },
+      { q: "What grammar topics are covered?", a: "All Telugu grammar topics — parts of speech, tenses, sentence types, and more." },
+      { q: "Is it BSEAP / BSETS aligned?", a: "Yes. Follows BSEAP / BSETS grammar curriculum." },
+      { q: "Is it free?", a: "Completely free." }
+    ],
+    priority: 0.84,
+  },
+  {
+    id: "telugu-translation-helper",
+    name: "Telugu ↔ English Translation Helper",
+    desc: "Translate between Telugu and English with explanations for teachers and students.",
+    icon: "🔄", category: "language", subCategory: "telugu",
+    audience: "teacher", model: "fast", maxTokens: 400,
+    inputs: [
+      { id: "text", label: "Text to Translate", type: "textarea", placeholder: "Type in Telugu or English…", rows: 3 },
+      { id: "direction", label: "Direction", type: "select", options: ["Telugu → English","English → Telugu"] },
+      { id: "class", label: "Class / Level", type: "select", options: ["Class 1","Class 2","Class 3","Class 4","Class 5","Class 6","Class 7","Class 8","Class 9","Class 10","Class 11","Class 12","Diploma / Certificate","ITI / Vocational","UG Year 1 (FY)","UG Year 2 (SY)","UG Year 3 (TY)","UG Year 4 (Final)","B.A.","B.Sc.","B.Com.","BBA","BCA","B.Tech / BE","B.Ed","BDS","MBBS","BPT","B.Pharm","LLB","B.Arch","B.Design / B.FTech","B.Sc Nursing","BHMCT (Hotel Mgmt)","PG Year 1","PG Year 2","M.A.","M.Sc.","M.Com.","MBA","MCA","M.Tech / ME","M.Ed","MD / MS (Medical)","LLM","M.Arch","M.Design","M.Sc Nursing","MHMCT","M.Phil","PhD / Doctorate","Post-Doctoral","UPSC / Competitive Exams","Professional Training"] }
+    ],
+    promptTemplate: `Translate this text. Direction: {{direction}} | Level: {{class}}
+Text: {{text}}
+Provide:
+1. TRANSLATION (accurate, natural)
+2. WORD-BY-WORD breakdown (key words explained)
+3. NOTES (any idioms, cultural context, or grammar points)
+Keep language level appropriate for {{class}}.`,
+    seoTitle: "Free Telugu English Translation Helper for Teachers | Forjit AI",
+    seoDesc: "Translate between Telugu and English with word-by-word explanation. Free tool for Telugu teachers and students.",
+    seoKeywords: ["telugu english translation free India","Telugu translator teacher tool","telugu to english translator"],
+    faqs: [
+      { q: "Does it work both ways?", a: "Yes. Telugu to English and English to Telugu." },
+      { q: "Is word-by-word breakdown included?", a: "Yes. Key words are explained individually." },
+      { q: "Is cultural context explained?", a: "Yes. Idioms and cultural notes are included where relevant." },
+      { q: "Is it suitable for all levels?", a: "Yes. From Class 1 to PhD level translations." },
+      { q: "Is it free?", a: "Completely free." }
+    ],
+    priority: 0.83,
+  },
+  {
+    id: "telugu-mcq-maker",
+    name: "Telugu Language MCQ Maker",
+    desc: "Generate Telugu language MCQs for grammar, comprehension, and vocabulary.",
+    icon: "✅", category: "language", subCategory: "telugu",
+    audience: "teacher", model: "smart", maxTokens: 550,
+    inputs: [
+      { id: "topic", label: "Telugu Topic", type: "text", placeholder: "e.g. Grammar, Vocabulary, Comprehension, Literature" },
+      { id: "class", label: "Class / Level", type: "select", options: ["Class 1","Class 2","Class 3","Class 4","Class 5","Class 6","Class 7","Class 8","Class 9","Class 10","Class 11","Class 12","Diploma / Certificate","ITI / Vocational","UG Year 1 (FY)","UG Year 2 (SY)","UG Year 3 (TY)","UG Year 4 (Final)","B.A.","B.Sc.","B.Com.","BBA","BCA","B.Tech / BE","B.Ed","BDS","MBBS","BPT","B.Pharm","LLB","B.Arch","B.Design / B.FTech","B.Sc Nursing","BHMCT (Hotel Mgmt)","PG Year 1","PG Year 2","M.A.","M.Sc.","M.Com.","MBA","MCA","M.Tech / ME","M.Ed","MD / MS (Medical)","LLM","M.Arch","M.Design","M.Sc Nursing","MHMCT","M.Phil","PhD / Doctorate","Post-Doctoral","UPSC / Competitive Exams","Professional Training"] },
+      { id: "count", label: "Number of MCQs", type: "select", options: ["5","10","15","20"] }
+    ],
+    promptTemplate: `Generate {{count}} Telugu language MCQs.
+Topic: {{topic}} | Level: {{class}}
+Write questions in Telugu (Telugu script).
+Format: Q[N]. [question in Telugu]
+A) B) C) D)
+Answer: X
+Include grammar, vocabulary, and usage questions. BSEAP / BSETS curriculum.`,
+    seoTitle: "Free Telugu MCQ Maker for Teachers | Forjit AI",
+    seoDesc: "Generate Telugu language MCQs for grammar, vocabulary, comprehension. Free tool for Telugu teachers. BSEAP / BSETS aligned.",
+    seoKeywords: ["telugu MCQ generator teacher India","Telugu language quiz maker free","telugu grammar MCQ CBSE"],
+    faqs: [
+      { q: "Are questions written in Telugu?", a: "Yes. All questions are in Telugu script." },
+      { q: "What topics are covered?", a: "Grammar, vocabulary, comprehension, and literature." },
+      { q: "Is it BSEAP / BSETS aligned?", a: "Yes. Follows BSEAP / BSETS language curriculum." },
+      { q: "How many MCQs can I generate?", a: "5 to 20 MCQs per session." },
+      { q: "Is it free?", a: "Completely free." }
+    ],
+    priority: 0.83,
+  },
+  {
+    id: "kannada-essay-writer",
+    name: "Kannada Essay Writer (ಕನ್ನಡ निबंध)",
+    desc: "Write Kannada essays on any topic for school and college students.",
+    icon: "✍️", category: "language", subCategory: "kannada",
+    audience: "teacher", model: "smart", maxTokens: 600,
+    inputs: [
+      { id: "topic", label: "Essay Topic (ಕನ್ನಡ)", type: "text", placeholder: "e.g. ನನ್ನ ದೇಶ, ಪರಿಸರ, ದೀಪಾವಳಿ" },
+      { id: "class", label: "Class / Level", type: "select", options: ["Class 1","Class 2","Class 3","Class 4","Class 5","Class 6","Class 7","Class 8","Class 9","Class 10","Class 11","Class 12","Diploma / Certificate","ITI / Vocational","UG Year 1 (FY)","UG Year 2 (SY)","UG Year 3 (TY)","UG Year 4 (Final)","B.A.","B.Sc.","B.Com.","BBA","BCA","B.Tech / BE","B.Ed","BDS","MBBS","BPT","B.Pharm","LLB","B.Arch","B.Design / B.FTech","B.Sc Nursing","BHMCT (Hotel Mgmt)","PG Year 1","PG Year 2","M.A.","M.Sc.","M.Com.","MBA","MCA","M.Tech / ME","M.Ed","MD / MS (Medical)","LLM","M.Arch","M.Design","M.Sc Nursing","MHMCT","M.Phil","PhD / Doctorate","Post-Doctoral","UPSC / Competitive Exams","Professional Training"] },
+      { id: "wordCount", label: "Word Count", type: "select", options: ["100-150 words","200-250 words","300-350 words","400-500 words"] }
+    ],
+    promptTemplate: `Write a complete Kannada essay.
+Topic: {{topic}} | Level: {{class}} | Length: {{wordCount}}
+Write entirely in Kannada (Kannada script).
+Structure: Introduction → Main body (2-3 paragraphs) → Conclusion.
+Simple, correct Kannada. Appropriate for {{class}} level. KSEEB curriculum.`,
+    seoTitle: "Free Kannada Essay Writer for Teachers | ಕನ್ನಡ निबंध | Forjit AI",
+    seoDesc: "Generate Kannada essays for any topic. Free tool for Kannada teachers. KSEEB aligned. Class 1-12 and college.",
+    seoKeywords: ["kannada essay writer free India","Kannada nibandh generator","kannada essay maker teacher"],
+    faqs: [
+      { q: "Is the essay written in Kannada?", a: "Yes. Completely in Kannada (Kannada script)." },
+      { q: "Which board is it aligned to?", a: "KSEEB and national curriculum." },
+      { q: "Can I set the word count?", a: "Yes. 100 to 500 words." },
+      { q: "Is it useful for all classes?", a: "Yes. Class 1 to PhD level." },
+      { q: "Is it free?", a: "Completely free." }
+    ],
+    priority: 0.86,
+  },
+  {
+    id: "kannada-letter-writer",
+    name: "Kannada Letter Writer (ಕನ್ನಡ पत्र लेखन)",
+    desc: "Generate formal and informal Kannada letters for students and teachers.",
+    icon: "📮", category: "language", subCategory: "kannada",
+    audience: "teacher", model: "fast", maxTokens: 450,
+    inputs: [
+      { id: "type", label: "Letter Type", type: "select", options: ["Formal Letter","Informal Letter","Application Letter","Complaint Letter","Invitation Letter"] },
+      { id: "topic", label: "Purpose (ಕನ್ನಡ)", type: "text", placeholder: "e.g. ರಜೆ ಕೋರಿ, ದೂರು ಪತ್ರ" },
+      { id: "class", label: "Class / Level", type: "select", options: ["Class 1","Class 2","Class 3","Class 4","Class 5","Class 6","Class 7","Class 8","Class 9","Class 10","Class 11","Class 12","Diploma / Certificate","ITI / Vocational","UG Year 1 (FY)","UG Year 2 (SY)","UG Year 3 (TY)","UG Year 4 (Final)","B.A.","B.Sc.","B.Com.","BBA","BCA","B.Tech / BE","B.Ed","BDS","MBBS","BPT","B.Pharm","LLB","B.Arch","B.Design / B.FTech","B.Sc Nursing","BHMCT (Hotel Mgmt)","PG Year 1","PG Year 2","M.A.","M.Sc.","M.Com.","MBA","MCA","M.Tech / ME","M.Ed","MD / MS (Medical)","LLM","M.Arch","M.Design","M.Sc Nursing","MHMCT","M.Phil","PhD / Doctorate","Post-Doctoral","UPSC / Competitive Exams","Professional Training"] }
+    ],
+    promptTemplate: `Write a {{type}} in Kannada.
+Purpose: {{topic}} | Level: {{class}}
+Write completely in Kannada (Kannada script).
+Use correct letter format: address, date, salutation, body, closing, signature.
+KSEEB exam format. Appropriate language for {{class}} level.`,
+    seoTitle: "Free Kannada Letter Writer for Teachers | ಕನ್ನಡ पत्र | Forjit AI",
+    seoDesc: "Generate Kannada formal and informal letters. Free tool for Kannada teachers and students. KSEEB format.",
+    seoKeywords: ["kannada letter writer free","Kannada patra lekhan tool","kannada formal letter generator India"],
+    faqs: [
+      { q: "What letter types are available?", a: "Formal, informal, application, complaint, and invitation letters." },
+      { q: "Is the format correct?", a: "Yes. Correct Kannada letter format for KSEEB exams." },
+      { q: "Is it written in Kannada?", a: "Yes. Entirely in Kannada script." },
+      { q: "Is it exam ready?", a: "Yes. Follows KSEEB exam pattern." },
+      { q: "Is it free?", a: "Completely free." }
+    ],
+    priority: 0.85,
+  },
+  {
+    id: "kannada-grammar-explainer",
+    name: "Kannada Grammar Explainer (ಕನ್ನಡ व्याकरण)",
+    desc: "Explain Kannada grammar topics with rules, examples, and exercises.",
+    icon: "📖", category: "language", subCategory: "kannada",
+    audience: "teacher", model: "smart", maxTokens: 500,
+    inputs: [
+      { id: "topic", label: "Grammar Topic (ಕನ್ನಡ)", type: "text", placeholder: "e.g. ಕ್ರಿಯಾಪದ, ನಾಮಪದ, ವಿಭಕ್ತಿ" },
+      { id: "class", label: "Class / Level", type: "select", options: ["Class 1","Class 2","Class 3","Class 4","Class 5","Class 6","Class 7","Class 8","Class 9","Class 10","Class 11","Class 12","Diploma / Certificate","ITI / Vocational","UG Year 1 (FY)","UG Year 2 (SY)","UG Year 3 (TY)","UG Year 4 (Final)","B.A.","B.Sc.","B.Com.","BBA","BCA","B.Tech / BE","B.Ed","BDS","MBBS","BPT","B.Pharm","LLB","B.Arch","B.Design / B.FTech","B.Sc Nursing","BHMCT (Hotel Mgmt)","PG Year 1","PG Year 2","M.A.","M.Sc.","M.Com.","MBA","MCA","M.Tech / ME","M.Ed","MD / MS (Medical)","LLM","M.Arch","M.Design","M.Sc Nursing","MHMCT","M.Phil","PhD / Doctorate","Post-Doctoral","UPSC / Competitive Exams","Professional Training"] }
+    ],
+    promptTemplate: `Explain this Kannada grammar topic.
+Topic: {{topic}} | Level: {{class}}
+Provide in BOTH Kannada and English:
+1. DEFINITION / RULE (in Kannada)
+2. TYPES (if any)
+3. EXAMPLES (5 examples in Kannada with English meaning)
+4. PRACTICE EXERCISE (5 sentences to fill/identify)
+5. COMMON MISTAKES students make
+Clear, student-friendly. KSEEB curriculum.`,
+    seoTitle: "Free Kannada Grammar Explainer for Teachers | Forjit AI",
+    seoDesc: "Explain Kannada grammar topics with rules and examples. Free tool for Kannada teachers. KSEEB aligned.",
+    seoKeywords: ["kannada grammar explainer free","Kannada vyakaran tool teacher","kannada grammar rules examples India"],
+    faqs: [
+      { q: "Is explanation in both Kannada and English?", a: "Yes. Definition in Kannada, with English meanings for examples." },
+      { q: "Are exercises included?", a: "Yes. 5 practice exercises are included." },
+      { q: "What grammar topics are covered?", a: "All Kannada grammar topics — parts of speech, tenses, sentence types, and more." },
+      { q: "Is it KSEEB aligned?", a: "Yes. Follows KSEEB grammar curriculum." },
+      { q: "Is it free?", a: "Completely free." }
+    ],
+    priority: 0.84,
+  },
+  {
+    id: "kannada-translation-helper",
+    name: "Kannada ↔ English Translation Helper",
+    desc: "Translate between Kannada and English with explanations for teachers and students.",
+    icon: "🔄", category: "language", subCategory: "kannada",
+    audience: "teacher", model: "fast", maxTokens: 400,
+    inputs: [
+      { id: "text", label: "Text to Translate", type: "textarea", placeholder: "Type in Kannada or English…", rows: 3 },
+      { id: "direction", label: "Direction", type: "select", options: ["Kannada → English","English → Kannada"] },
+      { id: "class", label: "Class / Level", type: "select", options: ["Class 1","Class 2","Class 3","Class 4","Class 5","Class 6","Class 7","Class 8","Class 9","Class 10","Class 11","Class 12","Diploma / Certificate","ITI / Vocational","UG Year 1 (FY)","UG Year 2 (SY)","UG Year 3 (TY)","UG Year 4 (Final)","B.A.","B.Sc.","B.Com.","BBA","BCA","B.Tech / BE","B.Ed","BDS","MBBS","BPT","B.Pharm","LLB","B.Arch","B.Design / B.FTech","B.Sc Nursing","BHMCT (Hotel Mgmt)","PG Year 1","PG Year 2","M.A.","M.Sc.","M.Com.","MBA","MCA","M.Tech / ME","M.Ed","MD / MS (Medical)","LLM","M.Arch","M.Design","M.Sc Nursing","MHMCT","M.Phil","PhD / Doctorate","Post-Doctoral","UPSC / Competitive Exams","Professional Training"] }
+    ],
+    promptTemplate: `Translate this text. Direction: {{direction}} | Level: {{class}}
+Text: {{text}}
+Provide:
+1. TRANSLATION (accurate, natural)
+2. WORD-BY-WORD breakdown (key words explained)
+3. NOTES (any idioms, cultural context, or grammar points)
+Keep language level appropriate for {{class}}.`,
+    seoTitle: "Free Kannada English Translation Helper for Teachers | Forjit AI",
+    seoDesc: "Translate between Kannada and English with word-by-word explanation. Free tool for Kannada teachers and students.",
+    seoKeywords: ["kannada english translation free India","Kannada translator teacher tool","kannada to english translator"],
+    faqs: [
+      { q: "Does it work both ways?", a: "Yes. Kannada to English and English to Kannada." },
+      { q: "Is word-by-word breakdown included?", a: "Yes. Key words are explained individually." },
+      { q: "Is cultural context explained?", a: "Yes. Idioms and cultural notes are included where relevant." },
+      { q: "Is it suitable for all levels?", a: "Yes. From Class 1 to PhD level translations." },
+      { q: "Is it free?", a: "Completely free." }
+    ],
+    priority: 0.83,
+  },
+  {
+    id: "kannada-mcq-maker",
+    name: "Kannada Language MCQ Maker",
+    desc: "Generate Kannada language MCQs for grammar, comprehension, and vocabulary.",
+    icon: "✅", category: "language", subCategory: "kannada",
+    audience: "teacher", model: "smart", maxTokens: 550,
+    inputs: [
+      { id: "topic", label: "Kannada Topic", type: "text", placeholder: "e.g. Grammar, Vocabulary, Comprehension, Literature" },
+      { id: "class", label: "Class / Level", type: "select", options: ["Class 1","Class 2","Class 3","Class 4","Class 5","Class 6","Class 7","Class 8","Class 9","Class 10","Class 11","Class 12","Diploma / Certificate","ITI / Vocational","UG Year 1 (FY)","UG Year 2 (SY)","UG Year 3 (TY)","UG Year 4 (Final)","B.A.","B.Sc.","B.Com.","BBA","BCA","B.Tech / BE","B.Ed","BDS","MBBS","BPT","B.Pharm","LLB","B.Arch","B.Design / B.FTech","B.Sc Nursing","BHMCT (Hotel Mgmt)","PG Year 1","PG Year 2","M.A.","M.Sc.","M.Com.","MBA","MCA","M.Tech / ME","M.Ed","MD / MS (Medical)","LLM","M.Arch","M.Design","M.Sc Nursing","MHMCT","M.Phil","PhD / Doctorate","Post-Doctoral","UPSC / Competitive Exams","Professional Training"] },
+      { id: "count", label: "Number of MCQs", type: "select", options: ["5","10","15","20"] }
+    ],
+    promptTemplate: `Generate {{count}} Kannada language MCQs.
+Topic: {{topic}} | Level: {{class}}
+Write questions in Kannada (Kannada script).
+Format: Q[N]. [question in Kannada]
+A) B) C) D)
+Answer: X
+Include grammar, vocabulary, and usage questions. KSEEB curriculum.`,
+    seoTitle: "Free Kannada MCQ Maker for Teachers | Forjit AI",
+    seoDesc: "Generate Kannada language MCQs for grammar, vocabulary, comprehension. Free tool for Kannada teachers. KSEEB aligned.",
+    seoKeywords: ["kannada MCQ generator teacher India","Kannada language quiz maker free","kannada grammar MCQ CBSE"],
+    faqs: [
+      { q: "Are questions written in Kannada?", a: "Yes. All questions are in Kannada script." },
+      { q: "What topics are covered?", a: "Grammar, vocabulary, comprehension, and literature." },
+      { q: "Is it KSEEB aligned?", a: "Yes. Follows KSEEB language curriculum." },
+      { q: "How many MCQs can I generate?", a: "5 to 20 MCQs per session." },
+      { q: "Is it free?", a: "Completely free." }
+    ],
+    priority: 0.83,
+  },
+  {
+    id: "malayalam-essay-writer",
+    name: "Malayalam Essay Writer (മലയാളം निबंध)",
+    desc: "Write Malayalam essays on any topic for school and college students.",
+    icon: "✍️", category: "language", subCategory: "malayalam",
+    audience: "teacher", model: "smart", maxTokens: 600,
+    inputs: [
+      { id: "topic", label: "Essay Topic (മലയാളം)", type: "text", placeholder: "e.g. എൻ്റെ നാട്, പരിസ്ഥിതി, ദീപാവലി" },
+      { id: "class", label: "Class / Level", type: "select", options: ["Class 1","Class 2","Class 3","Class 4","Class 5","Class 6","Class 7","Class 8","Class 9","Class 10","Class 11","Class 12","Diploma / Certificate","ITI / Vocational","UG Year 1 (FY)","UG Year 2 (SY)","UG Year 3 (TY)","UG Year 4 (Final)","B.A.","B.Sc.","B.Com.","BBA","BCA","B.Tech / BE","B.Ed","BDS","MBBS","BPT","B.Pharm","LLB","B.Arch","B.Design / B.FTech","B.Sc Nursing","BHMCT (Hotel Mgmt)","PG Year 1","PG Year 2","M.A.","M.Sc.","M.Com.","MBA","MCA","M.Tech / ME","M.Ed","MD / MS (Medical)","LLM","M.Arch","M.Design","M.Sc Nursing","MHMCT","M.Phil","PhD / Doctorate","Post-Doctoral","UPSC / Competitive Exams","Professional Training"] },
+      { id: "wordCount", label: "Word Count", type: "select", options: ["100-150 words","200-250 words","300-350 words","400-500 words"] }
+    ],
+    promptTemplate: `Write a complete Malayalam essay.
+Topic: {{topic}} | Level: {{class}} | Length: {{wordCount}}
+Write entirely in Malayalam (Malayalam script).
+Structure: Introduction → Main body (2-3 paragraphs) → Conclusion.
+Simple, correct Malayalam. Appropriate for {{class}} level. SCERT Kerala curriculum.`,
+    seoTitle: "Free Malayalam Essay Writer for Teachers | മലയാളം निबंध | Forjit AI",
+    seoDesc: "Generate Malayalam essays for any topic. Free tool for Malayalam teachers. SCERT Kerala aligned. Class 1-12 and college.",
+    seoKeywords: ["malayalam essay writer free India","Malayalam nibandh generator","malayalam essay maker teacher"],
+    faqs: [
+      { q: "Is the essay written in Malayalam?", a: "Yes. Completely in Malayalam (Malayalam script)." },
+      { q: "Which board is it aligned to?", a: "SCERT Kerala and national curriculum." },
+      { q: "Can I set the word count?", a: "Yes. 100 to 500 words." },
+      { q: "Is it useful for all classes?", a: "Yes. Class 1 to PhD level." },
+      { q: "Is it free?", a: "Completely free." }
+    ],
+    priority: 0.86,
+  },
+  {
+    id: "malayalam-letter-writer",
+    name: "Malayalam Letter Writer (മലയാളം पत्र लेखन)",
+    desc: "Generate formal and informal Malayalam letters for students and teachers.",
+    icon: "📮", category: "language", subCategory: "malayalam",
+    audience: "teacher", model: "fast", maxTokens: 450,
+    inputs: [
+      { id: "type", label: "Letter Type", type: "select", options: ["Formal Letter","Informal Letter","Application Letter","Complaint Letter","Invitation Letter"] },
+      { id: "topic", label: "Purpose (മലയാളം)", type: "text", placeholder: "e.g. അവധിക്ക് അപേക്ഷ, പരാതി കത്ത്" },
+      { id: "class", label: "Class / Level", type: "select", options: ["Class 1","Class 2","Class 3","Class 4","Class 5","Class 6","Class 7","Class 8","Class 9","Class 10","Class 11","Class 12","Diploma / Certificate","ITI / Vocational","UG Year 1 (FY)","UG Year 2 (SY)","UG Year 3 (TY)","UG Year 4 (Final)","B.A.","B.Sc.","B.Com.","BBA","BCA","B.Tech / BE","B.Ed","BDS","MBBS","BPT","B.Pharm","LLB","B.Arch","B.Design / B.FTech","B.Sc Nursing","BHMCT (Hotel Mgmt)","PG Year 1","PG Year 2","M.A.","M.Sc.","M.Com.","MBA","MCA","M.Tech / ME","M.Ed","MD / MS (Medical)","LLM","M.Arch","M.Design","M.Sc Nursing","MHMCT","M.Phil","PhD / Doctorate","Post-Doctoral","UPSC / Competitive Exams","Professional Training"] }
+    ],
+    promptTemplate: `Write a {{type}} in Malayalam.
+Purpose: {{topic}} | Level: {{class}}
+Write completely in Malayalam (Malayalam script).
+Use correct letter format: address, date, salutation, body, closing, signature.
+SCERT Kerala exam format. Appropriate language for {{class}} level.`,
+    seoTitle: "Free Malayalam Letter Writer for Teachers | മലയാളം पत्र | Forjit AI",
+    seoDesc: "Generate Malayalam formal and informal letters. Free tool for Malayalam teachers and students. SCERT Kerala format.",
+    seoKeywords: ["malayalam letter writer free","Malayalam patra lekhan tool","malayalam formal letter generator India"],
+    faqs: [
+      { q: "What letter types are available?", a: "Formal, informal, application, complaint, and invitation letters." },
+      { q: "Is the format correct?", a: "Yes. Correct Malayalam letter format for SCERT Kerala exams." },
+      { q: "Is it written in Malayalam?", a: "Yes. Entirely in Malayalam script." },
+      { q: "Is it exam ready?", a: "Yes. Follows SCERT Kerala exam pattern." },
+      { q: "Is it free?", a: "Completely free." }
+    ],
+    priority: 0.85,
+  },
+  {
+    id: "malayalam-grammar-explainer",
+    name: "Malayalam Grammar Explainer (മലയാളം व्याकरण)",
+    desc: "Explain Malayalam grammar topics with rules, examples, and exercises.",
+    icon: "📖", category: "language", subCategory: "malayalam",
+    audience: "teacher", model: "smart", maxTokens: 500,
+    inputs: [
+      { id: "topic", label: "Grammar Topic (മലയാളം)", type: "text", placeholder: "e.g. ക്രിയ, നാമം, വിഭക്തി" },
+      { id: "class", label: "Class / Level", type: "select", options: ["Class 1","Class 2","Class 3","Class 4","Class 5","Class 6","Class 7","Class 8","Class 9","Class 10","Class 11","Class 12","Diploma / Certificate","ITI / Vocational","UG Year 1 (FY)","UG Year 2 (SY)","UG Year 3 (TY)","UG Year 4 (Final)","B.A.","B.Sc.","B.Com.","BBA","BCA","B.Tech / BE","B.Ed","BDS","MBBS","BPT","B.Pharm","LLB","B.Arch","B.Design / B.FTech","B.Sc Nursing","BHMCT (Hotel Mgmt)","PG Year 1","PG Year 2","M.A.","M.Sc.","M.Com.","MBA","MCA","M.Tech / ME","M.Ed","MD / MS (Medical)","LLM","M.Arch","M.Design","M.Sc Nursing","MHMCT","M.Phil","PhD / Doctorate","Post-Doctoral","UPSC / Competitive Exams","Professional Training"] }
+    ],
+    promptTemplate: `Explain this Malayalam grammar topic.
+Topic: {{topic}} | Level: {{class}}
+Provide in BOTH Malayalam and English:
+1. DEFINITION / RULE (in Malayalam)
+2. TYPES (if any)
+3. EXAMPLES (5 examples in Malayalam with English meaning)
+4. PRACTICE EXERCISE (5 sentences to fill/identify)
+5. COMMON MISTAKES students make
+Clear, student-friendly. SCERT Kerala curriculum.`,
+    seoTitle: "Free Malayalam Grammar Explainer for Teachers | Forjit AI",
+    seoDesc: "Explain Malayalam grammar topics with rules and examples. Free tool for Malayalam teachers. SCERT Kerala aligned.",
+    seoKeywords: ["malayalam grammar explainer free","Malayalam vyakaran tool teacher","malayalam grammar rules examples India"],
+    faqs: [
+      { q: "Is explanation in both Malayalam and English?", a: "Yes. Definition in Malayalam, with English meanings for examples." },
+      { q: "Are exercises included?", a: "Yes. 5 practice exercises are included." },
+      { q: "What grammar topics are covered?", a: "All Malayalam grammar topics — parts of speech, tenses, sentence types, and more." },
+      { q: "Is it SCERT Kerala aligned?", a: "Yes. Follows SCERT Kerala grammar curriculum." },
+      { q: "Is it free?", a: "Completely free." }
+    ],
+    priority: 0.84,
+  },
+  {
+    id: "malayalam-translation-helper",
+    name: "Malayalam ↔ English Translation Helper",
+    desc: "Translate between Malayalam and English with explanations for teachers and students.",
+    icon: "🔄", category: "language", subCategory: "malayalam",
+    audience: "teacher", model: "fast", maxTokens: 400,
+    inputs: [
+      { id: "text", label: "Text to Translate", type: "textarea", placeholder: "Type in Malayalam or English…", rows: 3 },
+      { id: "direction", label: "Direction", type: "select", options: ["Malayalam → English","English → Malayalam"] },
+      { id: "class", label: "Class / Level", type: "select", options: ["Class 1","Class 2","Class 3","Class 4","Class 5","Class 6","Class 7","Class 8","Class 9","Class 10","Class 11","Class 12","Diploma / Certificate","ITI / Vocational","UG Year 1 (FY)","UG Year 2 (SY)","UG Year 3 (TY)","UG Year 4 (Final)","B.A.","B.Sc.","B.Com.","BBA","BCA","B.Tech / BE","B.Ed","BDS","MBBS","BPT","B.Pharm","LLB","B.Arch","B.Design / B.FTech","B.Sc Nursing","BHMCT (Hotel Mgmt)","PG Year 1","PG Year 2","M.A.","M.Sc.","M.Com.","MBA","MCA","M.Tech / ME","M.Ed","MD / MS (Medical)","LLM","M.Arch","M.Design","M.Sc Nursing","MHMCT","M.Phil","PhD / Doctorate","Post-Doctoral","UPSC / Competitive Exams","Professional Training"] }
+    ],
+    promptTemplate: `Translate this text. Direction: {{direction}} | Level: {{class}}
+Text: {{text}}
+Provide:
+1. TRANSLATION (accurate, natural)
+2. WORD-BY-WORD breakdown (key words explained)
+3. NOTES (any idioms, cultural context, or grammar points)
+Keep language level appropriate for {{class}}.`,
+    seoTitle: "Free Malayalam English Translation Helper for Teachers | Forjit AI",
+    seoDesc: "Translate between Malayalam and English with word-by-word explanation. Free tool for Malayalam teachers and students.",
+    seoKeywords: ["malayalam english translation free India","Malayalam translator teacher tool","malayalam to english translator"],
+    faqs: [
+      { q: "Does it work both ways?", a: "Yes. Malayalam to English and English to Malayalam." },
+      { q: "Is word-by-word breakdown included?", a: "Yes. Key words are explained individually." },
+      { q: "Is cultural context explained?", a: "Yes. Idioms and cultural notes are included where relevant." },
+      { q: "Is it suitable for all levels?", a: "Yes. From Class 1 to PhD level translations." },
+      { q: "Is it free?", a: "Completely free." }
+    ],
+    priority: 0.83,
+  },
+  {
+    id: "malayalam-mcq-maker",
+    name: "Malayalam Language MCQ Maker",
+    desc: "Generate Malayalam language MCQs for grammar, comprehension, and vocabulary.",
+    icon: "✅", category: "language", subCategory: "malayalam",
+    audience: "teacher", model: "smart", maxTokens: 550,
+    inputs: [
+      { id: "topic", label: "Malayalam Topic", type: "text", placeholder: "e.g. Grammar, Vocabulary, Comprehension, Literature" },
+      { id: "class", label: "Class / Level", type: "select", options: ["Class 1","Class 2","Class 3","Class 4","Class 5","Class 6","Class 7","Class 8","Class 9","Class 10","Class 11","Class 12","Diploma / Certificate","ITI / Vocational","UG Year 1 (FY)","UG Year 2 (SY)","UG Year 3 (TY)","UG Year 4 (Final)","B.A.","B.Sc.","B.Com.","BBA","BCA","B.Tech / BE","B.Ed","BDS","MBBS","BPT","B.Pharm","LLB","B.Arch","B.Design / B.FTech","B.Sc Nursing","BHMCT (Hotel Mgmt)","PG Year 1","PG Year 2","M.A.","M.Sc.","M.Com.","MBA","MCA","M.Tech / ME","M.Ed","MD / MS (Medical)","LLM","M.Arch","M.Design","M.Sc Nursing","MHMCT","M.Phil","PhD / Doctorate","Post-Doctoral","UPSC / Competitive Exams","Professional Training"] },
+      { id: "count", label: "Number of MCQs", type: "select", options: ["5","10","15","20"] }
+    ],
+    promptTemplate: `Generate {{count}} Malayalam language MCQs.
+Topic: {{topic}} | Level: {{class}}
+Write questions in Malayalam (Malayalam script).
+Format: Q[N]. [question in Malayalam]
+A) B) C) D)
+Answer: X
+Include grammar, vocabulary, and usage questions. SCERT Kerala curriculum.`,
+    seoTitle: "Free Malayalam MCQ Maker for Teachers | Forjit AI",
+    seoDesc: "Generate Malayalam language MCQs for grammar, vocabulary, comprehension. Free tool for Malayalam teachers. SCERT Kerala aligned.",
+    seoKeywords: ["malayalam MCQ generator teacher India","Malayalam language quiz maker free","malayalam grammar MCQ CBSE"],
+    faqs: [
+      { q: "Are questions written in Malayalam?", a: "Yes. All questions are in Malayalam script." },
+      { q: "What topics are covered?", a: "Grammar, vocabulary, comprehension, and literature." },
+      { q: "Is it SCERT Kerala aligned?", a: "Yes. Follows SCERT Kerala language curriculum." },
+      { q: "How many MCQs can I generate?", a: "5 to 20 MCQs per session." },
+      { q: "Is it free?", a: "Completely free." }
+    ],
+    priority: 0.83,
+  },
+  {
+    id: "marathi-essay-writer",
+    name: "Marathi Essay Writer (मराठी निबंध)",
+    desc: "Write Marathi essays on any topic for school and college students.",
+    icon: "✍️", category: "language", subCategory: "marathi",
+    audience: "teacher", model: "smart", maxTokens: 600,
+    inputs: [
+      { id: "topic", label: "Essay Topic (मराठी)", type: "text", placeholder: "e.g. माझा देश, पर्यावरण, दिवाळी" },
+      { id: "class", label: "Class / Level", type: "select", options: ["Class 1","Class 2","Class 3","Class 4","Class 5","Class 6","Class 7","Class 8","Class 9","Class 10","Class 11","Class 12","Diploma / Certificate","ITI / Vocational","UG Year 1 (FY)","UG Year 2 (SY)","UG Year 3 (TY)","UG Year 4 (Final)","B.A.","B.Sc.","B.Com.","BBA","BCA","B.Tech / BE","B.Ed","BDS","MBBS","BPT","B.Pharm","LLB","B.Arch","B.Design / B.FTech","B.Sc Nursing","BHMCT (Hotel Mgmt)","PG Year 1","PG Year 2","M.A.","M.Sc.","M.Com.","MBA","MCA","M.Tech / ME","M.Ed","MD / MS (Medical)","LLM","M.Arch","M.Design","M.Sc Nursing","MHMCT","M.Phil","PhD / Doctorate","Post-Doctoral","UPSC / Competitive Exams","Professional Training"] },
+      { id: "wordCount", label: "Word Count", type: "select", options: ["100-150 words","200-250 words","300-350 words","400-500 words"] }
+    ],
+    promptTemplate: `Write a complete Marathi essay.
+Topic: {{topic}} | Level: {{class}} | Length: {{wordCount}}
+Write entirely in Marathi (Devanagari (Marathi)).
+Structure: Introduction → Main body (2-3 paragraphs) → Conclusion.
+Simple, correct Marathi. Appropriate for {{class}} level. Maharashtra SSC/HSC curriculum.`,
+    seoTitle: "Free Marathi Essay Writer for Teachers | मराठी निबंध | Forjit AI",
+    seoDesc: "Generate Marathi essays for any topic. Free tool for Marathi teachers. Maharashtra SSC/HSC aligned. Class 1-12 and college.",
+    seoKeywords: ["marathi essay writer free India","Marathi nibandh generator","marathi essay maker teacher"],
+    faqs: [
+      { q: "Is the essay written in Marathi?", a: "Yes. Completely in Marathi (Devanagari (Marathi))." },
+      { q: "Which board is it aligned to?", a: "Maharashtra SSC/HSC and national curriculum." },
+      { q: "Can I set the word count?", a: "Yes. 100 to 500 words." },
+      { q: "Is it useful for all classes?", a: "Yes. Class 1 to PhD level." },
+      { q: "Is it free?", a: "Completely free." }
+    ],
+    priority: 0.86,
+  },
+  {
+    id: "marathi-letter-writer",
+    name: "Marathi Letter Writer (मराठी पत्र लेखन)",
+    desc: "Generate formal and informal Marathi letters for students and teachers.",
+    icon: "📮", category: "language", subCategory: "marathi",
+    audience: "teacher", model: "fast", maxTokens: 450,
+    inputs: [
+      { id: "type", label: "Letter Type", type: "select", options: ["Formal Letter","Informal Letter","Application Letter","Complaint Letter","Invitation Letter"] },
+      { id: "topic", label: "Purpose (मराठी)", type: "text", placeholder: "e.g. रजा मागणी, तक्रार पत्र" },
+      { id: "class", label: "Class / Level", type: "select", options: ["Class 1","Class 2","Class 3","Class 4","Class 5","Class 6","Class 7","Class 8","Class 9","Class 10","Class 11","Class 12","Diploma / Certificate","ITI / Vocational","UG Year 1 (FY)","UG Year 2 (SY)","UG Year 3 (TY)","UG Year 4 (Final)","B.A.","B.Sc.","B.Com.","BBA","BCA","B.Tech / BE","B.Ed","BDS","MBBS","BPT","B.Pharm","LLB","B.Arch","B.Design / B.FTech","B.Sc Nursing","BHMCT (Hotel Mgmt)","PG Year 1","PG Year 2","M.A.","M.Sc.","M.Com.","MBA","MCA","M.Tech / ME","M.Ed","MD / MS (Medical)","LLM","M.Arch","M.Design","M.Sc Nursing","MHMCT","M.Phil","PhD / Doctorate","Post-Doctoral","UPSC / Competitive Exams","Professional Training"] }
+    ],
+    promptTemplate: `Write a {{type}} in Marathi.
+Purpose: {{topic}} | Level: {{class}}
+Write completely in Marathi (Devanagari (Marathi)).
+Use correct letter format: address, date, salutation, body, closing, signature.
+Maharashtra SSC/HSC exam format. Appropriate language for {{class}} level.`,
+    seoTitle: "Free Marathi Letter Writer for Teachers | मराठी पत्र | Forjit AI",
+    seoDesc: "Generate Marathi formal and informal letters. Free tool for Marathi teachers and students. Maharashtra SSC/HSC format.",
+    seoKeywords: ["marathi letter writer free","Marathi patra lekhan tool","marathi formal letter generator India"],
+    faqs: [
+      { q: "What letter types are available?", a: "Formal, informal, application, complaint, and invitation letters." },
+      { q: "Is the format correct?", a: "Yes. Correct Marathi letter format for Maharashtra SSC/HSC exams." },
+      { q: "Is it written in Marathi?", a: "Yes. Entirely in Marathi script." },
+      { q: "Is it exam ready?", a: "Yes. Follows Maharashtra SSC/HSC exam pattern." },
+      { q: "Is it free?", a: "Completely free." }
+    ],
+    priority: 0.85,
+  },
+  {
+    id: "marathi-grammar-explainer",
+    name: "Marathi Grammar Explainer (मराठी व्याकरण)",
+    desc: "Explain Marathi grammar topics with rules, examples, and exercises.",
+    icon: "📖", category: "language", subCategory: "marathi",
+    audience: "teacher", model: "smart", maxTokens: 500,
+    inputs: [
+      { id: "topic", label: "Grammar Topic (मराठी)", type: "text", placeholder: "e.g. क्रियापद, नाम, विभक्ती" },
+      { id: "class", label: "Class / Level", type: "select", options: ["Class 1","Class 2","Class 3","Class 4","Class 5","Class 6","Class 7","Class 8","Class 9","Class 10","Class 11","Class 12","Diploma / Certificate","ITI / Vocational","UG Year 1 (FY)","UG Year 2 (SY)","UG Year 3 (TY)","UG Year 4 (Final)","B.A.","B.Sc.","B.Com.","BBA","BCA","B.Tech / BE","B.Ed","BDS","MBBS","BPT","B.Pharm","LLB","B.Arch","B.Design / B.FTech","B.Sc Nursing","BHMCT (Hotel Mgmt)","PG Year 1","PG Year 2","M.A.","M.Sc.","M.Com.","MBA","MCA","M.Tech / ME","M.Ed","MD / MS (Medical)","LLM","M.Arch","M.Design","M.Sc Nursing","MHMCT","M.Phil","PhD / Doctorate","Post-Doctoral","UPSC / Competitive Exams","Professional Training"] }
+    ],
+    promptTemplate: `Explain this Marathi grammar topic.
+Topic: {{topic}} | Level: {{class}}
+Provide in BOTH Marathi and English:
+1. DEFINITION / RULE (in Marathi)
+2. TYPES (if any)
+3. EXAMPLES (5 examples in Marathi with English meaning)
+4. PRACTICE EXERCISE (5 sentences to fill/identify)
+5. COMMON MISTAKES students make
+Clear, student-friendly. Maharashtra SSC/HSC curriculum.`,
+    seoTitle: "Free Marathi Grammar Explainer for Teachers | Forjit AI",
+    seoDesc: "Explain Marathi grammar topics with rules and examples. Free tool for Marathi teachers. Maharashtra SSC/HSC aligned.",
+    seoKeywords: ["marathi grammar explainer free","Marathi vyakaran tool teacher","marathi grammar rules examples India"],
+    faqs: [
+      { q: "Is explanation in both Marathi and English?", a: "Yes. Definition in Marathi, with English meanings for examples." },
+      { q: "Are exercises included?", a: "Yes. 5 practice exercises are included." },
+      { q: "What grammar topics are covered?", a: "All Marathi grammar topics — parts of speech, tenses, sentence types, and more." },
+      { q: "Is it Maharashtra SSC/HSC aligned?", a: "Yes. Follows Maharashtra SSC/HSC grammar curriculum." },
+      { q: "Is it free?", a: "Completely free." }
+    ],
+    priority: 0.84,
+  },
+  {
+    id: "marathi-translation-helper",
+    name: "Marathi ↔ English Translation Helper",
+    desc: "Translate between Marathi and English with explanations for teachers and students.",
+    icon: "🔄", category: "language", subCategory: "marathi",
+    audience: "teacher", model: "fast", maxTokens: 400,
+    inputs: [
+      { id: "text", label: "Text to Translate", type: "textarea", placeholder: "Type in Marathi or English…", rows: 3 },
+      { id: "direction", label: "Direction", type: "select", options: ["Marathi → English","English → Marathi"] },
+      { id: "class", label: "Class / Level", type: "select", options: ["Class 1","Class 2","Class 3","Class 4","Class 5","Class 6","Class 7","Class 8","Class 9","Class 10","Class 11","Class 12","Diploma / Certificate","ITI / Vocational","UG Year 1 (FY)","UG Year 2 (SY)","UG Year 3 (TY)","UG Year 4 (Final)","B.A.","B.Sc.","B.Com.","BBA","BCA","B.Tech / BE","B.Ed","BDS","MBBS","BPT","B.Pharm","LLB","B.Arch","B.Design / B.FTech","B.Sc Nursing","BHMCT (Hotel Mgmt)","PG Year 1","PG Year 2","M.A.","M.Sc.","M.Com.","MBA","MCA","M.Tech / ME","M.Ed","MD / MS (Medical)","LLM","M.Arch","M.Design","M.Sc Nursing","MHMCT","M.Phil","PhD / Doctorate","Post-Doctoral","UPSC / Competitive Exams","Professional Training"] }
+    ],
+    promptTemplate: `Translate this text. Direction: {{direction}} | Level: {{class}}
+Text: {{text}}
+Provide:
+1. TRANSLATION (accurate, natural)
+2. WORD-BY-WORD breakdown (key words explained)
+3. NOTES (any idioms, cultural context, or grammar points)
+Keep language level appropriate for {{class}}.`,
+    seoTitle: "Free Marathi English Translation Helper for Teachers | Forjit AI",
+    seoDesc: "Translate between Marathi and English with word-by-word explanation. Free tool for Marathi teachers and students.",
+    seoKeywords: ["marathi english translation free India","Marathi translator teacher tool","marathi to english translator"],
+    faqs: [
+      { q: "Does it work both ways?", a: "Yes. Marathi to English and English to Marathi." },
+      { q: "Is word-by-word breakdown included?", a: "Yes. Key words are explained individually." },
+      { q: "Is cultural context explained?", a: "Yes. Idioms and cultural notes are included where relevant." },
+      { q: "Is it suitable for all levels?", a: "Yes. From Class 1 to PhD level translations." },
+      { q: "Is it free?", a: "Completely free." }
+    ],
+    priority: 0.83,
+  },
+  {
+    id: "marathi-mcq-maker",
+    name: "Marathi Language MCQ Maker",
+    desc: "Generate Marathi language MCQs for grammar, comprehension, and vocabulary.",
+    icon: "✅", category: "language", subCategory: "marathi",
+    audience: "teacher", model: "smart", maxTokens: 550,
+    inputs: [
+      { id: "topic", label: "Marathi Topic", type: "text", placeholder: "e.g. Grammar, Vocabulary, Comprehension, Literature" },
+      { id: "class", label: "Class / Level", type: "select", options: ["Class 1","Class 2","Class 3","Class 4","Class 5","Class 6","Class 7","Class 8","Class 9","Class 10","Class 11","Class 12","Diploma / Certificate","ITI / Vocational","UG Year 1 (FY)","UG Year 2 (SY)","UG Year 3 (TY)","UG Year 4 (Final)","B.A.","B.Sc.","B.Com.","BBA","BCA","B.Tech / BE","B.Ed","BDS","MBBS","BPT","B.Pharm","LLB","B.Arch","B.Design / B.FTech","B.Sc Nursing","BHMCT (Hotel Mgmt)","PG Year 1","PG Year 2","M.A.","M.Sc.","M.Com.","MBA","MCA","M.Tech / ME","M.Ed","MD / MS (Medical)","LLM","M.Arch","M.Design","M.Sc Nursing","MHMCT","M.Phil","PhD / Doctorate","Post-Doctoral","UPSC / Competitive Exams","Professional Training"] },
+      { id: "count", label: "Number of MCQs", type: "select", options: ["5","10","15","20"] }
+    ],
+    promptTemplate: `Generate {{count}} Marathi language MCQs.
+Topic: {{topic}} | Level: {{class}}
+Write questions in Marathi (Devanagari (Marathi)).
+Format: Q[N]. [question in Marathi]
+A) B) C) D)
+Answer: X
+Include grammar, vocabulary, and usage questions. Maharashtra SSC/HSC curriculum.`,
+    seoTitle: "Free Marathi MCQ Maker for Teachers | Forjit AI",
+    seoDesc: "Generate Marathi language MCQs for grammar, vocabulary, comprehension. Free tool for Marathi teachers. Maharashtra SSC/HSC aligned.",
+    seoKeywords: ["marathi MCQ generator teacher India","Marathi language quiz maker free","marathi grammar MCQ CBSE"],
+    faqs: [
+      { q: "Are questions written in Marathi?", a: "Yes. All questions are in Marathi script." },
+      { q: "What topics are covered?", a: "Grammar, vocabulary, comprehension, and literature." },
+      { q: "Is it Maharashtra SSC/HSC aligned?", a: "Yes. Follows Maharashtra SSC/HSC language curriculum." },
+      { q: "How many MCQs can I generate?", a: "5 to 20 MCQs per session." },
+      { q: "Is it free?", a: "Completely free." }
+    ],
+    priority: 0.83,
+  },
+  {
+    id: "bengali-essay-writer",
+    name: "Bengali Essay Writer (বাংলা निबंध)",
+    desc: "Write Bengali essays on any topic for school and college students.",
+    icon: "✍️", category: "language", subCategory: "bengali",
+    audience: "teacher", model: "smart", maxTokens: 600,
+    inputs: [
+      { id: "topic", label: "Essay Topic (বাংলা)", type: "text", placeholder: "e.g. আমার দেশ, পরিবেশ, দীপাবলি" },
+      { id: "class", label: "Class / Level", type: "select", options: ["Class 1","Class 2","Class 3","Class 4","Class 5","Class 6","Class 7","Class 8","Class 9","Class 10","Class 11","Class 12","Diploma / Certificate","ITI / Vocational","UG Year 1 (FY)","UG Year 2 (SY)","UG Year 3 (TY)","UG Year 4 (Final)","B.A.","B.Sc.","B.Com.","BBA","BCA","B.Tech / BE","B.Ed","BDS","MBBS","BPT","B.Pharm","LLB","B.Arch","B.Design / B.FTech","B.Sc Nursing","BHMCT (Hotel Mgmt)","PG Year 1","PG Year 2","M.A.","M.Sc.","M.Com.","MBA","MCA","M.Tech / ME","M.Ed","MD / MS (Medical)","LLM","M.Arch","M.Design","M.Sc Nursing","MHMCT","M.Phil","PhD / Doctorate","Post-Doctoral","UPSC / Competitive Exams","Professional Training"] },
+      { id: "wordCount", label: "Word Count", type: "select", options: ["100-150 words","200-250 words","300-350 words","400-500 words"] }
+    ],
+    promptTemplate: `Write a complete Bengali essay.
+Topic: {{topic}} | Level: {{class}} | Length: {{wordCount}}
+Write entirely in Bengali (Bengali script).
+Structure: Introduction → Main body (2-3 paragraphs) → Conclusion.
+Simple, correct Bengali. Appropriate for {{class}} level. WBBSE / WBCHSE curriculum.`,
+    seoTitle: "Free Bengali Essay Writer for Teachers | বাংলা निबंध | Forjit AI",
+    seoDesc: "Generate Bengali essays for any topic. Free tool for Bengali teachers. WBBSE / WBCHSE aligned. Class 1-12 and college.",
+    seoKeywords: ["bengali essay writer free India","Bengali nibandh generator","bengali essay maker teacher"],
+    faqs: [
+      { q: "Is the essay written in Bengali?", a: "Yes. Completely in Bengali (Bengali script)." },
+      { q: "Which board is it aligned to?", a: "WBBSE / WBCHSE and national curriculum." },
+      { q: "Can I set the word count?", a: "Yes. 100 to 500 words." },
+      { q: "Is it useful for all classes?", a: "Yes. Class 1 to PhD level." },
+      { q: "Is it free?", a: "Completely free." }
+    ],
+    priority: 0.86,
+  },
+  {
+    id: "bengali-letter-writer",
+    name: "Bengali Letter Writer (বাংলা पत्र लेखन)",
+    desc: "Generate formal and informal Bengali letters for students and teachers.",
+    icon: "📮", category: "language", subCategory: "bengali",
+    audience: "teacher", model: "fast", maxTokens: 450,
+    inputs: [
+      { id: "type", label: "Letter Type", type: "select", options: ["Formal Letter","Informal Letter","Application Letter","Complaint Letter","Invitation Letter"] },
+      { id: "topic", label: "Purpose (বাংলা)", type: "text", placeholder: "e.g. ছুটির আবেদন, অভিযোগ পত্র" },
+      { id: "class", label: "Class / Level", type: "select", options: ["Class 1","Class 2","Class 3","Class 4","Class 5","Class 6","Class 7","Class 8","Class 9","Class 10","Class 11","Class 12","Diploma / Certificate","ITI / Vocational","UG Year 1 (FY)","UG Year 2 (SY)","UG Year 3 (TY)","UG Year 4 (Final)","B.A.","B.Sc.","B.Com.","BBA","BCA","B.Tech / BE","B.Ed","BDS","MBBS","BPT","B.Pharm","LLB","B.Arch","B.Design / B.FTech","B.Sc Nursing","BHMCT (Hotel Mgmt)","PG Year 1","PG Year 2","M.A.","M.Sc.","M.Com.","MBA","MCA","M.Tech / ME","M.Ed","MD / MS (Medical)","LLM","M.Arch","M.Design","M.Sc Nursing","MHMCT","M.Phil","PhD / Doctorate","Post-Doctoral","UPSC / Competitive Exams","Professional Training"] }
+    ],
+    promptTemplate: `Write a {{type}} in Bengali.
+Purpose: {{topic}} | Level: {{class}}
+Write completely in Bengali (Bengali script).
+Use correct letter format: address, date, salutation, body, closing, signature.
+WBBSE / WBCHSE exam format. Appropriate language for {{class}} level.`,
+    seoTitle: "Free Bengali Letter Writer for Teachers | বাংলা पत्र | Forjit AI",
+    seoDesc: "Generate Bengali formal and informal letters. Free tool for Bengali teachers and students. WBBSE / WBCHSE format.",
+    seoKeywords: ["bengali letter writer free","Bengali patra lekhan tool","bengali formal letter generator India"],
+    faqs: [
+      { q: "What letter types are available?", a: "Formal, informal, application, complaint, and invitation letters." },
+      { q: "Is the format correct?", a: "Yes. Correct Bengali letter format for WBBSE / WBCHSE exams." },
+      { q: "Is it written in Bengali?", a: "Yes. Entirely in Bengali script." },
+      { q: "Is it exam ready?", a: "Yes. Follows WBBSE / WBCHSE exam pattern." },
+      { q: "Is it free?", a: "Completely free." }
+    ],
+    priority: 0.85,
+  },
+  {
+    id: "bengali-grammar-explainer",
+    name: "Bengali Grammar Explainer (বাংলা व्याकरण)",
+    desc: "Explain Bengali grammar topics with rules, examples, and exercises.",
+    icon: "📖", category: "language", subCategory: "bengali",
+    audience: "teacher", model: "smart", maxTokens: 500,
+    inputs: [
+      { id: "topic", label: "Grammar Topic (বাংলা)", type: "text", placeholder: "e.g. ক্রিয়া, বিশেষ্য, কারক" },
+      { id: "class", label: "Class / Level", type: "select", options: ["Class 1","Class 2","Class 3","Class 4","Class 5","Class 6","Class 7","Class 8","Class 9","Class 10","Class 11","Class 12","Diploma / Certificate","ITI / Vocational","UG Year 1 (FY)","UG Year 2 (SY)","UG Year 3 (TY)","UG Year 4 (Final)","B.A.","B.Sc.","B.Com.","BBA","BCA","B.Tech / BE","B.Ed","BDS","MBBS","BPT","B.Pharm","LLB","B.Arch","B.Design / B.FTech","B.Sc Nursing","BHMCT (Hotel Mgmt)","PG Year 1","PG Year 2","M.A.","M.Sc.","M.Com.","MBA","MCA","M.Tech / ME","M.Ed","MD / MS (Medical)","LLM","M.Arch","M.Design","M.Sc Nursing","MHMCT","M.Phil","PhD / Doctorate","Post-Doctoral","UPSC / Competitive Exams","Professional Training"] }
+    ],
+    promptTemplate: `Explain this Bengali grammar topic.
+Topic: {{topic}} | Level: {{class}}
+Provide in BOTH Bengali and English:
+1. DEFINITION / RULE (in Bengali)
+2. TYPES (if any)
+3. EXAMPLES (5 examples in Bengali with English meaning)
+4. PRACTICE EXERCISE (5 sentences to fill/identify)
+5. COMMON MISTAKES students make
+Clear, student-friendly. WBBSE / WBCHSE curriculum.`,
+    seoTitle: "Free Bengali Grammar Explainer for Teachers | Forjit AI",
+    seoDesc: "Explain Bengali grammar topics with rules and examples. Free tool for Bengali teachers. WBBSE / WBCHSE aligned.",
+    seoKeywords: ["bengali grammar explainer free","Bengali vyakaran tool teacher","bengali grammar rules examples India"],
+    faqs: [
+      { q: "Is explanation in both Bengali and English?", a: "Yes. Definition in Bengali, with English meanings for examples." },
+      { q: "Are exercises included?", a: "Yes. 5 practice exercises are included." },
+      { q: "What grammar topics are covered?", a: "All Bengali grammar topics — parts of speech, tenses, sentence types, and more." },
+      { q: "Is it WBBSE / WBCHSE aligned?", a: "Yes. Follows WBBSE / WBCHSE grammar curriculum." },
+      { q: "Is it free?", a: "Completely free." }
+    ],
+    priority: 0.84,
+  },
+  {
+    id: "bengali-translation-helper",
+    name: "Bengali ↔ English Translation Helper",
+    desc: "Translate between Bengali and English with explanations for teachers and students.",
+    icon: "🔄", category: "language", subCategory: "bengali",
+    audience: "teacher", model: "fast", maxTokens: 400,
+    inputs: [
+      { id: "text", label: "Text to Translate", type: "textarea", placeholder: "Type in Bengali or English…", rows: 3 },
+      { id: "direction", label: "Direction", type: "select", options: ["Bengali → English","English → Bengali"] },
+      { id: "class", label: "Class / Level", type: "select", options: ["Class 1","Class 2","Class 3","Class 4","Class 5","Class 6","Class 7","Class 8","Class 9","Class 10","Class 11","Class 12","Diploma / Certificate","ITI / Vocational","UG Year 1 (FY)","UG Year 2 (SY)","UG Year 3 (TY)","UG Year 4 (Final)","B.A.","B.Sc.","B.Com.","BBA","BCA","B.Tech / BE","B.Ed","BDS","MBBS","BPT","B.Pharm","LLB","B.Arch","B.Design / B.FTech","B.Sc Nursing","BHMCT (Hotel Mgmt)","PG Year 1","PG Year 2","M.A.","M.Sc.","M.Com.","MBA","MCA","M.Tech / ME","M.Ed","MD / MS (Medical)","LLM","M.Arch","M.Design","M.Sc Nursing","MHMCT","M.Phil","PhD / Doctorate","Post-Doctoral","UPSC / Competitive Exams","Professional Training"] }
+    ],
+    promptTemplate: `Translate this text. Direction: {{direction}} | Level: {{class}}
+Text: {{text}}
+Provide:
+1. TRANSLATION (accurate, natural)
+2. WORD-BY-WORD breakdown (key words explained)
+3. NOTES (any idioms, cultural context, or grammar points)
+Keep language level appropriate for {{class}}.`,
+    seoTitle: "Free Bengali English Translation Helper for Teachers | Forjit AI",
+    seoDesc: "Translate between Bengali and English with word-by-word explanation. Free tool for Bengali teachers and students.",
+    seoKeywords: ["bengali english translation free India","Bengali translator teacher tool","bengali to english translator"],
+    faqs: [
+      { q: "Does it work both ways?", a: "Yes. Bengali to English and English to Bengali." },
+      { q: "Is word-by-word breakdown included?", a: "Yes. Key words are explained individually." },
+      { q: "Is cultural context explained?", a: "Yes. Idioms and cultural notes are included where relevant." },
+      { q: "Is it suitable for all levels?", a: "Yes. From Class 1 to PhD level translations." },
+      { q: "Is it free?", a: "Completely free." }
+    ],
+    priority: 0.83,
+  },
+  {
+    id: "bengali-mcq-maker",
+    name: "Bengali Language MCQ Maker",
+    desc: "Generate Bengali language MCQs for grammar, comprehension, and vocabulary.",
+    icon: "✅", category: "language", subCategory: "bengali",
+    audience: "teacher", model: "smart", maxTokens: 550,
+    inputs: [
+      { id: "topic", label: "Bengali Topic", type: "text", placeholder: "e.g. Grammar, Vocabulary, Comprehension, Literature" },
+      { id: "class", label: "Class / Level", type: "select", options: ["Class 1","Class 2","Class 3","Class 4","Class 5","Class 6","Class 7","Class 8","Class 9","Class 10","Class 11","Class 12","Diploma / Certificate","ITI / Vocational","UG Year 1 (FY)","UG Year 2 (SY)","UG Year 3 (TY)","UG Year 4 (Final)","B.A.","B.Sc.","B.Com.","BBA","BCA","B.Tech / BE","B.Ed","BDS","MBBS","BPT","B.Pharm","LLB","B.Arch","B.Design / B.FTech","B.Sc Nursing","BHMCT (Hotel Mgmt)","PG Year 1","PG Year 2","M.A.","M.Sc.","M.Com.","MBA","MCA","M.Tech / ME","M.Ed","MD / MS (Medical)","LLM","M.Arch","M.Design","M.Sc Nursing","MHMCT","M.Phil","PhD / Doctorate","Post-Doctoral","UPSC / Competitive Exams","Professional Training"] },
+      { id: "count", label: "Number of MCQs", type: "select", options: ["5","10","15","20"] }
+    ],
+    promptTemplate: `Generate {{count}} Bengali language MCQs.
+Topic: {{topic}} | Level: {{class}}
+Write questions in Bengali (Bengali script).
+Format: Q[N]. [question in Bengali]
+A) B) C) D)
+Answer: X
+Include grammar, vocabulary, and usage questions. WBBSE / WBCHSE curriculum.`,
+    seoTitle: "Free Bengali MCQ Maker for Teachers | Forjit AI",
+    seoDesc: "Generate Bengali language MCQs for grammar, vocabulary, comprehension. Free tool for Bengali teachers. WBBSE / WBCHSE aligned.",
+    seoKeywords: ["bengali MCQ generator teacher India","Bengali language quiz maker free","bengali grammar MCQ CBSE"],
+    faqs: [
+      { q: "Are questions written in Bengali?", a: "Yes. All questions are in Bengali script." },
+      { q: "What topics are covered?", a: "Grammar, vocabulary, comprehension, and literature." },
+      { q: "Is it WBBSE / WBCHSE aligned?", a: "Yes. Follows WBBSE / WBCHSE language curriculum." },
+      { q: "How many MCQs can I generate?", a: "5 to 20 MCQs per session." },
+      { q: "Is it free?", a: "Completely free." }
+    ],
+    priority: 0.83,
+  },
+  {
+    id: "gujarati-essay-writer",
+    name: "Gujarati Essay Writer (ગુજરાતી निबंध)",
+    desc: "Write Gujarati essays on any topic for school and college students.",
+    icon: "✍️", category: "language", subCategory: "gujarati",
+    audience: "teacher", model: "smart", maxTokens: 600,
+    inputs: [
+      { id: "topic", label: "Essay Topic (ગુજરાતી)", type: "text", placeholder: "e.g. મારો દેશ, પર્યાવરણ, દીવાળી" },
+      { id: "class", label: "Class / Level", type: "select", options: ["Class 1","Class 2","Class 3","Class 4","Class 5","Class 6","Class 7","Class 8","Class 9","Class 10","Class 11","Class 12","Diploma / Certificate","ITI / Vocational","UG Year 1 (FY)","UG Year 2 (SY)","UG Year 3 (TY)","UG Year 4 (Final)","B.A.","B.Sc.","B.Com.","BBA","BCA","B.Tech / BE","B.Ed","BDS","MBBS","BPT","B.Pharm","LLB","B.Arch","B.Design / B.FTech","B.Sc Nursing","BHMCT (Hotel Mgmt)","PG Year 1","PG Year 2","M.A.","M.Sc.","M.Com.","MBA","MCA","M.Tech / ME","M.Ed","MD / MS (Medical)","LLM","M.Arch","M.Design","M.Sc Nursing","MHMCT","M.Phil","PhD / Doctorate","Post-Doctoral","UPSC / Competitive Exams","Professional Training"] },
+      { id: "wordCount", label: "Word Count", type: "select", options: ["100-150 words","200-250 words","300-350 words","400-500 words"] }
+    ],
+    promptTemplate: `Write a complete Gujarati essay.
+Topic: {{topic}} | Level: {{class}} | Length: {{wordCount}}
+Write entirely in Gujarati (Gujarati script).
+Structure: Introduction → Main body (2-3 paragraphs) → Conclusion.
+Simple, correct Gujarati. Appropriate for {{class}} level. GSEB curriculum.`,
+    seoTitle: "Free Gujarati Essay Writer for Teachers | ગુજરાતી निबंध | Forjit AI",
+    seoDesc: "Generate Gujarati essays for any topic. Free tool for Gujarati teachers. GSEB aligned. Class 1-12 and college.",
+    seoKeywords: ["gujarati essay writer free India","Gujarati nibandh generator","gujarati essay maker teacher"],
+    faqs: [
+      { q: "Is the essay written in Gujarati?", a: "Yes. Completely in Gujarati (Gujarati script)." },
+      { q: "Which board is it aligned to?", a: "GSEB and national curriculum." },
+      { q: "Can I set the word count?", a: "Yes. 100 to 500 words." },
+      { q: "Is it useful for all classes?", a: "Yes. Class 1 to PhD level." },
+      { q: "Is it free?", a: "Completely free." }
+    ],
+    priority: 0.86,
+  },
+  {
+    id: "gujarati-letter-writer",
+    name: "Gujarati Letter Writer (ગુજરાતી पत्र लेखन)",
+    desc: "Generate formal and informal Gujarati letters for students and teachers.",
+    icon: "📮", category: "language", subCategory: "gujarati",
+    audience: "teacher", model: "fast", maxTokens: 450,
+    inputs: [
+      { id: "type", label: "Letter Type", type: "select", options: ["Formal Letter","Informal Letter","Application Letter","Complaint Letter","Invitation Letter"] },
+      { id: "topic", label: "Purpose (ગુજરાતી)", type: "text", placeholder: "e.g. રજા માટે અરજી, ફરિયાદ પત્ર" },
+      { id: "class", label: "Class / Level", type: "select", options: ["Class 1","Class 2","Class 3","Class 4","Class 5","Class 6","Class 7","Class 8","Class 9","Class 10","Class 11","Class 12","Diploma / Certificate","ITI / Vocational","UG Year 1 (FY)","UG Year 2 (SY)","UG Year 3 (TY)","UG Year 4 (Final)","B.A.","B.Sc.","B.Com.","BBA","BCA","B.Tech / BE","B.Ed","BDS","MBBS","BPT","B.Pharm","LLB","B.Arch","B.Design / B.FTech","B.Sc Nursing","BHMCT (Hotel Mgmt)","PG Year 1","PG Year 2","M.A.","M.Sc.","M.Com.","MBA","MCA","M.Tech / ME","M.Ed","MD / MS (Medical)","LLM","M.Arch","M.Design","M.Sc Nursing","MHMCT","M.Phil","PhD / Doctorate","Post-Doctoral","UPSC / Competitive Exams","Professional Training"] }
+    ],
+    promptTemplate: `Write a {{type}} in Gujarati.
+Purpose: {{topic}} | Level: {{class}}
+Write completely in Gujarati (Gujarati script).
+Use correct letter format: address, date, salutation, body, closing, signature.
+GSEB exam format. Appropriate language for {{class}} level.`,
+    seoTitle: "Free Gujarati Letter Writer for Teachers | ગુજરાતી पत्र | Forjit AI",
+    seoDesc: "Generate Gujarati formal and informal letters. Free tool for Gujarati teachers and students. GSEB format.",
+    seoKeywords: ["gujarati letter writer free","Gujarati patra lekhan tool","gujarati formal letter generator India"],
+    faqs: [
+      { q: "What letter types are available?", a: "Formal, informal, application, complaint, and invitation letters." },
+      { q: "Is the format correct?", a: "Yes. Correct Gujarati letter format for GSEB exams." },
+      { q: "Is it written in Gujarati?", a: "Yes. Entirely in Gujarati script." },
+      { q: "Is it exam ready?", a: "Yes. Follows GSEB exam pattern." },
+      { q: "Is it free?", a: "Completely free." }
+    ],
+    priority: 0.85,
+  },
+  {
+    id: "gujarati-grammar-explainer",
+    name: "Gujarati Grammar Explainer (ગુજરાતી व्याकरण)",
+    desc: "Explain Gujarati grammar topics with rules, examples, and exercises.",
+    icon: "📖", category: "language", subCategory: "gujarati",
+    audience: "teacher", model: "smart", maxTokens: 500,
+    inputs: [
+      { id: "topic", label: "Grammar Topic (ગુજરાતી)", type: "text", placeholder: "e.g. ક્રિયાપદ, નામ, વિભક્તિ" },
+      { id: "class", label: "Class / Level", type: "select", options: ["Class 1","Class 2","Class 3","Class 4","Class 5","Class 6","Class 7","Class 8","Class 9","Class 10","Class 11","Class 12","Diploma / Certificate","ITI / Vocational","UG Year 1 (FY)","UG Year 2 (SY)","UG Year 3 (TY)","UG Year 4 (Final)","B.A.","B.Sc.","B.Com.","BBA","BCA","B.Tech / BE","B.Ed","BDS","MBBS","BPT","B.Pharm","LLB","B.Arch","B.Design / B.FTech","B.Sc Nursing","BHMCT (Hotel Mgmt)","PG Year 1","PG Year 2","M.A.","M.Sc.","M.Com.","MBA","MCA","M.Tech / ME","M.Ed","MD / MS (Medical)","LLM","M.Arch","M.Design","M.Sc Nursing","MHMCT","M.Phil","PhD / Doctorate","Post-Doctoral","UPSC / Competitive Exams","Professional Training"] }
+    ],
+    promptTemplate: `Explain this Gujarati grammar topic.
+Topic: {{topic}} | Level: {{class}}
+Provide in BOTH Gujarati and English:
+1. DEFINITION / RULE (in Gujarati)
+2. TYPES (if any)
+3. EXAMPLES (5 examples in Gujarati with English meaning)
+4. PRACTICE EXERCISE (5 sentences to fill/identify)
+5. COMMON MISTAKES students make
+Clear, student-friendly. GSEB curriculum.`,
+    seoTitle: "Free Gujarati Grammar Explainer for Teachers | Forjit AI",
+    seoDesc: "Explain Gujarati grammar topics with rules and examples. Free tool for Gujarati teachers. GSEB aligned.",
+    seoKeywords: ["gujarati grammar explainer free","Gujarati vyakaran tool teacher","gujarati grammar rules examples India"],
+    faqs: [
+      { q: "Is explanation in both Gujarati and English?", a: "Yes. Definition in Gujarati, with English meanings for examples." },
+      { q: "Are exercises included?", a: "Yes. 5 practice exercises are included." },
+      { q: "What grammar topics are covered?", a: "All Gujarati grammar topics — parts of speech, tenses, sentence types, and more." },
+      { q: "Is it GSEB aligned?", a: "Yes. Follows GSEB grammar curriculum." },
+      { q: "Is it free?", a: "Completely free." }
+    ],
+    priority: 0.84,
+  },
+  {
+    id: "gujarati-translation-helper",
+    name: "Gujarati ↔ English Translation Helper",
+    desc: "Translate between Gujarati and English with explanations for teachers and students.",
+    icon: "🔄", category: "language", subCategory: "gujarati",
+    audience: "teacher", model: "fast", maxTokens: 400,
+    inputs: [
+      { id: "text", label: "Text to Translate", type: "textarea", placeholder: "Type in Gujarati or English…", rows: 3 },
+      { id: "direction", label: "Direction", type: "select", options: ["Gujarati → English","English → Gujarati"] },
+      { id: "class", label: "Class / Level", type: "select", options: ["Class 1","Class 2","Class 3","Class 4","Class 5","Class 6","Class 7","Class 8","Class 9","Class 10","Class 11","Class 12","Diploma / Certificate","ITI / Vocational","UG Year 1 (FY)","UG Year 2 (SY)","UG Year 3 (TY)","UG Year 4 (Final)","B.A.","B.Sc.","B.Com.","BBA","BCA","B.Tech / BE","B.Ed","BDS","MBBS","BPT","B.Pharm","LLB","B.Arch","B.Design / B.FTech","B.Sc Nursing","BHMCT (Hotel Mgmt)","PG Year 1","PG Year 2","M.A.","M.Sc.","M.Com.","MBA","MCA","M.Tech / ME","M.Ed","MD / MS (Medical)","LLM","M.Arch","M.Design","M.Sc Nursing","MHMCT","M.Phil","PhD / Doctorate","Post-Doctoral","UPSC / Competitive Exams","Professional Training"] }
+    ],
+    promptTemplate: `Translate this text. Direction: {{direction}} | Level: {{class}}
+Text: {{text}}
+Provide:
+1. TRANSLATION (accurate, natural)
+2. WORD-BY-WORD breakdown (key words explained)
+3. NOTES (any idioms, cultural context, or grammar points)
+Keep language level appropriate for {{class}}.`,
+    seoTitle: "Free Gujarati English Translation Helper for Teachers | Forjit AI",
+    seoDesc: "Translate between Gujarati and English with word-by-word explanation. Free tool for Gujarati teachers and students.",
+    seoKeywords: ["gujarati english translation free India","Gujarati translator teacher tool","gujarati to english translator"],
+    faqs: [
+      { q: "Does it work both ways?", a: "Yes. Gujarati to English and English to Gujarati." },
+      { q: "Is word-by-word breakdown included?", a: "Yes. Key words are explained individually." },
+      { q: "Is cultural context explained?", a: "Yes. Idioms and cultural notes are included where relevant." },
+      { q: "Is it suitable for all levels?", a: "Yes. From Class 1 to PhD level translations." },
+      { q: "Is it free?", a: "Completely free." }
+    ],
+    priority: 0.83,
+  },
+  {
+    id: "gujarati-mcq-maker",
+    name: "Gujarati Language MCQ Maker",
+    desc: "Generate Gujarati language MCQs for grammar, comprehension, and vocabulary.",
+    icon: "✅", category: "language", subCategory: "gujarati",
+    audience: "teacher", model: "smart", maxTokens: 550,
+    inputs: [
+      { id: "topic", label: "Gujarati Topic", type: "text", placeholder: "e.g. Grammar, Vocabulary, Comprehension, Literature" },
+      { id: "class", label: "Class / Level", type: "select", options: ["Class 1","Class 2","Class 3","Class 4","Class 5","Class 6","Class 7","Class 8","Class 9","Class 10","Class 11","Class 12","Diploma / Certificate","ITI / Vocational","UG Year 1 (FY)","UG Year 2 (SY)","UG Year 3 (TY)","UG Year 4 (Final)","B.A.","B.Sc.","B.Com.","BBA","BCA","B.Tech / BE","B.Ed","BDS","MBBS","BPT","B.Pharm","LLB","B.Arch","B.Design / B.FTech","B.Sc Nursing","BHMCT (Hotel Mgmt)","PG Year 1","PG Year 2","M.A.","M.Sc.","M.Com.","MBA","MCA","M.Tech / ME","M.Ed","MD / MS (Medical)","LLM","M.Arch","M.Design","M.Sc Nursing","MHMCT","M.Phil","PhD / Doctorate","Post-Doctoral","UPSC / Competitive Exams","Professional Training"] },
+      { id: "count", label: "Number of MCQs", type: "select", options: ["5","10","15","20"] }
+    ],
+    promptTemplate: `Generate {{count}} Gujarati language MCQs.
+Topic: {{topic}} | Level: {{class}}
+Write questions in Gujarati (Gujarati script).
+Format: Q[N]. [question in Gujarati]
+A) B) C) D)
+Answer: X
+Include grammar, vocabulary, and usage questions. GSEB curriculum.`,
+    seoTitle: "Free Gujarati MCQ Maker for Teachers | Forjit AI",
+    seoDesc: "Generate Gujarati language MCQs for grammar, vocabulary, comprehension. Free tool for Gujarati teachers. GSEB aligned.",
+    seoKeywords: ["gujarati MCQ generator teacher India","Gujarati language quiz maker free","gujarati grammar MCQ CBSE"],
+    faqs: [
+      { q: "Are questions written in Gujarati?", a: "Yes. All questions are in Gujarati script." },
+      { q: "What topics are covered?", a: "Grammar, vocabulary, comprehension, and literature." },
+      { q: "Is it GSEB aligned?", a: "Yes. Follows GSEB language curriculum." },
+      { q: "How many MCQs can I generate?", a: "5 to 20 MCQs per session." },
+      { q: "Is it free?", a: "Completely free." }
+    ],
+    priority: 0.83,
+  },
+  {
+    id: "punjabi-essay-writer",
+    name: "Punjabi Essay Writer (ਪੰਜਾਬੀ निबंध)",
+    desc: "Write Punjabi essays on any topic for school and college students.",
+    icon: "✍️", category: "language", subCategory: "punjabi",
+    audience: "teacher", model: "smart", maxTokens: 600,
+    inputs: [
+      { id: "topic", label: "Essay Topic (ਪੰਜਾਬੀ)", type: "text", placeholder: "e.g. ਮੇਰਾ ਦੇਸ਼, ਵਾਤਾਵਰਣ, ਦੀਵਾਲੀ" },
+      { id: "class", label: "Class / Level", type: "select", options: ["Class 1","Class 2","Class 3","Class 4","Class 5","Class 6","Class 7","Class 8","Class 9","Class 10","Class 11","Class 12","Diploma / Certificate","ITI / Vocational","UG Year 1 (FY)","UG Year 2 (SY)","UG Year 3 (TY)","UG Year 4 (Final)","B.A.","B.Sc.","B.Com.","BBA","BCA","B.Tech / BE","B.Ed","BDS","MBBS","BPT","B.Pharm","LLB","B.Arch","B.Design / B.FTech","B.Sc Nursing","BHMCT (Hotel Mgmt)","PG Year 1","PG Year 2","M.A.","M.Sc.","M.Com.","MBA","MCA","M.Tech / ME","M.Ed","MD / MS (Medical)","LLM","M.Arch","M.Design","M.Sc Nursing","MHMCT","M.Phil","PhD / Doctorate","Post-Doctoral","UPSC / Competitive Exams","Professional Training"] },
+      { id: "wordCount", label: "Word Count", type: "select", options: ["100-150 words","200-250 words","300-350 words","400-500 words"] }
+    ],
+    promptTemplate: `Write a complete Punjabi essay.
+Topic: {{topic}} | Level: {{class}} | Length: {{wordCount}}
+Write entirely in Punjabi (Gurmukhi script).
+Structure: Introduction → Main body (2-3 paragraphs) → Conclusion.
+Simple, correct Punjabi. Appropriate for {{class}} level. PSEB curriculum.`,
+    seoTitle: "Free Punjabi Essay Writer for Teachers | ਪੰਜਾਬੀ निबंध | Forjit AI",
+    seoDesc: "Generate Punjabi essays for any topic. Free tool for Punjabi teachers. PSEB aligned. Class 1-12 and college.",
+    seoKeywords: ["punjabi essay writer free India","Punjabi nibandh generator","punjabi essay maker teacher"],
+    faqs: [
+      { q: "Is the essay written in Punjabi?", a: "Yes. Completely in Punjabi (Gurmukhi script)." },
+      { q: "Which board is it aligned to?", a: "PSEB and national curriculum." },
+      { q: "Can I set the word count?", a: "Yes. 100 to 500 words." },
+      { q: "Is it useful for all classes?", a: "Yes. Class 1 to PhD level." },
+      { q: "Is it free?", a: "Completely free." }
+    ],
+    priority: 0.86,
+  },
+  {
+    id: "punjabi-letter-writer",
+    name: "Punjabi Letter Writer (ਪੰਜਾਬੀ पत्र लेखन)",
+    desc: "Generate formal and informal Punjabi letters for students and teachers.",
+    icon: "📮", category: "language", subCategory: "punjabi",
+    audience: "teacher", model: "fast", maxTokens: 450,
+    inputs: [
+      { id: "type", label: "Letter Type", type: "select", options: ["Formal Letter","Informal Letter","Application Letter","Complaint Letter","Invitation Letter"] },
+      { id: "topic", label: "Purpose (ਪੰਜਾਬੀ)", type: "text", placeholder: "e.g. ਛੁੱਟੀ ਲਈ ਅਰਜ਼ੀ, ਸ਼ਿਕਾਇਤ ਪੱਤਰ" },
+      { id: "class", label: "Class / Level", type: "select", options: ["Class 1","Class 2","Class 3","Class 4","Class 5","Class 6","Class 7","Class 8","Class 9","Class 10","Class 11","Class 12","Diploma / Certificate","ITI / Vocational","UG Year 1 (FY)","UG Year 2 (SY)","UG Year 3 (TY)","UG Year 4 (Final)","B.A.","B.Sc.","B.Com.","BBA","BCA","B.Tech / BE","B.Ed","BDS","MBBS","BPT","B.Pharm","LLB","B.Arch","B.Design / B.FTech","B.Sc Nursing","BHMCT (Hotel Mgmt)","PG Year 1","PG Year 2","M.A.","M.Sc.","M.Com.","MBA","MCA","M.Tech / ME","M.Ed","MD / MS (Medical)","LLM","M.Arch","M.Design","M.Sc Nursing","MHMCT","M.Phil","PhD / Doctorate","Post-Doctoral","UPSC / Competitive Exams","Professional Training"] }
+    ],
+    promptTemplate: `Write a {{type}} in Punjabi.
+Purpose: {{topic}} | Level: {{class}}
+Write completely in Punjabi (Gurmukhi script).
+Use correct letter format: address, date, salutation, body, closing, signature.
+PSEB exam format. Appropriate language for {{class}} level.`,
+    seoTitle: "Free Punjabi Letter Writer for Teachers | ਪੰਜਾਬੀ पत्र | Forjit AI",
+    seoDesc: "Generate Punjabi formal and informal letters. Free tool for Punjabi teachers and students. PSEB format.",
+    seoKeywords: ["punjabi letter writer free","Punjabi patra lekhan tool","punjabi formal letter generator India"],
+    faqs: [
+      { q: "What letter types are available?", a: "Formal, informal, application, complaint, and invitation letters." },
+      { q: "Is the format correct?", a: "Yes. Correct Punjabi letter format for PSEB exams." },
+      { q: "Is it written in Punjabi?", a: "Yes. Entirely in Punjabi script." },
+      { q: "Is it exam ready?", a: "Yes. Follows PSEB exam pattern." },
+      { q: "Is it free?", a: "Completely free." }
+    ],
+    priority: 0.85,
+  },
+  {
+    id: "punjabi-grammar-explainer",
+    name: "Punjabi Grammar Explainer (ਪੰਜਾਬੀ व्याकरण)",
+    desc: "Explain Punjabi grammar topics with rules, examples, and exercises.",
+    icon: "📖", category: "language", subCategory: "punjabi",
+    audience: "teacher", model: "smart", maxTokens: 500,
+    inputs: [
+      { id: "topic", label: "Grammar Topic (ਪੰਜਾਬੀ)", type: "text", placeholder: "e.g. ਕ੍ਰਿਆ, ਨਾਂਵ, ਕਾਰਕ" },
+      { id: "class", label: "Class / Level", type: "select", options: ["Class 1","Class 2","Class 3","Class 4","Class 5","Class 6","Class 7","Class 8","Class 9","Class 10","Class 11","Class 12","Diploma / Certificate","ITI / Vocational","UG Year 1 (FY)","UG Year 2 (SY)","UG Year 3 (TY)","UG Year 4 (Final)","B.A.","B.Sc.","B.Com.","BBA","BCA","B.Tech / BE","B.Ed","BDS","MBBS","BPT","B.Pharm","LLB","B.Arch","B.Design / B.FTech","B.Sc Nursing","BHMCT (Hotel Mgmt)","PG Year 1","PG Year 2","M.A.","M.Sc.","M.Com.","MBA","MCA","M.Tech / ME","M.Ed","MD / MS (Medical)","LLM","M.Arch","M.Design","M.Sc Nursing","MHMCT","M.Phil","PhD / Doctorate","Post-Doctoral","UPSC / Competitive Exams","Professional Training"] }
+    ],
+    promptTemplate: `Explain this Punjabi grammar topic.
+Topic: {{topic}} | Level: {{class}}
+Provide in BOTH Punjabi and English:
+1. DEFINITION / RULE (in Punjabi)
+2. TYPES (if any)
+3. EXAMPLES (5 examples in Punjabi with English meaning)
+4. PRACTICE EXERCISE (5 sentences to fill/identify)
+5. COMMON MISTAKES students make
+Clear, student-friendly. PSEB curriculum.`,
+    seoTitle: "Free Punjabi Grammar Explainer for Teachers | Forjit AI",
+    seoDesc: "Explain Punjabi grammar topics with rules and examples. Free tool for Punjabi teachers. PSEB aligned.",
+    seoKeywords: ["punjabi grammar explainer free","Punjabi vyakaran tool teacher","punjabi grammar rules examples India"],
+    faqs: [
+      { q: "Is explanation in both Punjabi and English?", a: "Yes. Definition in Punjabi, with English meanings for examples." },
+      { q: "Are exercises included?", a: "Yes. 5 practice exercises are included." },
+      { q: "What grammar topics are covered?", a: "All Punjabi grammar topics — parts of speech, tenses, sentence types, and more." },
+      { q: "Is it PSEB aligned?", a: "Yes. Follows PSEB grammar curriculum." },
+      { q: "Is it free?", a: "Completely free." }
+    ],
+    priority: 0.84,
+  },
+  {
+    id: "punjabi-translation-helper",
+    name: "Punjabi ↔ English Translation Helper",
+    desc: "Translate between Punjabi and English with explanations for teachers and students.",
+    icon: "🔄", category: "language", subCategory: "punjabi",
+    audience: "teacher", model: "fast", maxTokens: 400,
+    inputs: [
+      { id: "text", label: "Text to Translate", type: "textarea", placeholder: "Type in Punjabi or English…", rows: 3 },
+      { id: "direction", label: "Direction", type: "select", options: ["Punjabi → English","English → Punjabi"] },
+      { id: "class", label: "Class / Level", type: "select", options: ["Class 1","Class 2","Class 3","Class 4","Class 5","Class 6","Class 7","Class 8","Class 9","Class 10","Class 11","Class 12","Diploma / Certificate","ITI / Vocational","UG Year 1 (FY)","UG Year 2 (SY)","UG Year 3 (TY)","UG Year 4 (Final)","B.A.","B.Sc.","B.Com.","BBA","BCA","B.Tech / BE","B.Ed","BDS","MBBS","BPT","B.Pharm","LLB","B.Arch","B.Design / B.FTech","B.Sc Nursing","BHMCT (Hotel Mgmt)","PG Year 1","PG Year 2","M.A.","M.Sc.","M.Com.","MBA","MCA","M.Tech / ME","M.Ed","MD / MS (Medical)","LLM","M.Arch","M.Design","M.Sc Nursing","MHMCT","M.Phil","PhD / Doctorate","Post-Doctoral","UPSC / Competitive Exams","Professional Training"] }
+    ],
+    promptTemplate: `Translate this text. Direction: {{direction}} | Level: {{class}}
+Text: {{text}}
+Provide:
+1. TRANSLATION (accurate, natural)
+2. WORD-BY-WORD breakdown (key words explained)
+3. NOTES (any idioms, cultural context, or grammar points)
+Keep language level appropriate for {{class}}.`,
+    seoTitle: "Free Punjabi English Translation Helper for Teachers | Forjit AI",
+    seoDesc: "Translate between Punjabi and English with word-by-word explanation. Free tool for Punjabi teachers and students.",
+    seoKeywords: ["punjabi english translation free India","Punjabi translator teacher tool","punjabi to english translator"],
+    faqs: [
+      { q: "Does it work both ways?", a: "Yes. Punjabi to English and English to Punjabi." },
+      { q: "Is word-by-word breakdown included?", a: "Yes. Key words are explained individually." },
+      { q: "Is cultural context explained?", a: "Yes. Idioms and cultural notes are included where relevant." },
+      { q: "Is it suitable for all levels?", a: "Yes. From Class 1 to PhD level translations." },
+      { q: "Is it free?", a: "Completely free." }
+    ],
+    priority: 0.83,
+  },
+  {
+    id: "punjabi-mcq-maker",
+    name: "Punjabi Language MCQ Maker",
+    desc: "Generate Punjabi language MCQs for grammar, comprehension, and vocabulary.",
+    icon: "✅", category: "language", subCategory: "punjabi",
+    audience: "teacher", model: "smart", maxTokens: 550,
+    inputs: [
+      { id: "topic", label: "Punjabi Topic", type: "text", placeholder: "e.g. Grammar, Vocabulary, Comprehension, Literature" },
+      { id: "class", label: "Class / Level", type: "select", options: ["Class 1","Class 2","Class 3","Class 4","Class 5","Class 6","Class 7","Class 8","Class 9","Class 10","Class 11","Class 12","Diploma / Certificate","ITI / Vocational","UG Year 1 (FY)","UG Year 2 (SY)","UG Year 3 (TY)","UG Year 4 (Final)","B.A.","B.Sc.","B.Com.","BBA","BCA","B.Tech / BE","B.Ed","BDS","MBBS","BPT","B.Pharm","LLB","B.Arch","B.Design / B.FTech","B.Sc Nursing","BHMCT (Hotel Mgmt)","PG Year 1","PG Year 2","M.A.","M.Sc.","M.Com.","MBA","MCA","M.Tech / ME","M.Ed","MD / MS (Medical)","LLM","M.Arch","M.Design","M.Sc Nursing","MHMCT","M.Phil","PhD / Doctorate","Post-Doctoral","UPSC / Competitive Exams","Professional Training"] },
+      { id: "count", label: "Number of MCQs", type: "select", options: ["5","10","15","20"] }
+    ],
+    promptTemplate: `Generate {{count}} Punjabi language MCQs.
+Topic: {{topic}} | Level: {{class}}
+Write questions in Punjabi (Gurmukhi script).
+Format: Q[N]. [question in Punjabi]
+A) B) C) D)
+Answer: X
+Include grammar, vocabulary, and usage questions. PSEB curriculum.`,
+    seoTitle: "Free Punjabi MCQ Maker for Teachers | Forjit AI",
+    seoDesc: "Generate Punjabi language MCQs for grammar, vocabulary, comprehension. Free tool for Punjabi teachers. PSEB aligned.",
+    seoKeywords: ["punjabi MCQ generator teacher India","Punjabi language quiz maker free","punjabi grammar MCQ CBSE"],
+    faqs: [
+      { q: "Are questions written in Punjabi?", a: "Yes. All questions are in Punjabi script." },
+      { q: "What topics are covered?", a: "Grammar, vocabulary, comprehension, and literature." },
+      { q: "Is it PSEB aligned?", a: "Yes. Follows PSEB language curriculum." },
+      { q: "How many MCQs can I generate?", a: "5 to 20 MCQs per session." },
+      { q: "Is it free?", a: "Completely free." }
+    ],
+    priority: 0.83,
+  },
+  {
+    id: "odia-essay-writer",
+    name: "Odia Essay Writer (ଓଡ଼ିଆ निबंध)",
+    desc: "Write Odia essays on any topic for school and college students.",
+    icon: "✍️", category: "language", subCategory: "odia",
+    audience: "teacher", model: "smart", maxTokens: 600,
+    inputs: [
+      { id: "topic", label: "Essay Topic (ଓଡ଼ିଆ)", type: "text", placeholder: "e.g. ମୋ ଦେଶ, ପରିବେଶ, ଦୀପାବଳି" },
+      { id: "class", label: "Class / Level", type: "select", options: ["Class 1","Class 2","Class 3","Class 4","Class 5","Class 6","Class 7","Class 8","Class 9","Class 10","Class 11","Class 12","Diploma / Certificate","ITI / Vocational","UG Year 1 (FY)","UG Year 2 (SY)","UG Year 3 (TY)","UG Year 4 (Final)","B.A.","B.Sc.","B.Com.","BBA","BCA","B.Tech / BE","B.Ed","BDS","MBBS","BPT","B.Pharm","LLB","B.Arch","B.Design / B.FTech","B.Sc Nursing","BHMCT (Hotel Mgmt)","PG Year 1","PG Year 2","M.A.","M.Sc.","M.Com.","MBA","MCA","M.Tech / ME","M.Ed","MD / MS (Medical)","LLM","M.Arch","M.Design","M.Sc Nursing","MHMCT","M.Phil","PhD / Doctorate","Post-Doctoral","UPSC / Competitive Exams","Professional Training"] },
+      { id: "wordCount", label: "Word Count", type: "select", options: ["100-150 words","200-250 words","300-350 words","400-500 words"] }
+    ],
+    promptTemplate: `Write a complete Odia essay.
+Topic: {{topic}} | Level: {{class}} | Length: {{wordCount}}
+Write entirely in Odia (Odia script).
+Structure: Introduction → Main body (2-3 paragraphs) → Conclusion.
+Simple, correct Odia. Appropriate for {{class}} level. BSE Odisha curriculum.`,
+    seoTitle: "Free Odia Essay Writer for Teachers | ଓଡ଼ିଆ निबंध | Forjit AI",
+    seoDesc: "Generate Odia essays for any topic. Free tool for Odia teachers. BSE Odisha aligned. Class 1-12 and college.",
+    seoKeywords: ["odia essay writer free India","Odia nibandh generator","odia essay maker teacher"],
+    faqs: [
+      { q: "Is the essay written in Odia?", a: "Yes. Completely in Odia (Odia script)." },
+      { q: "Which board is it aligned to?", a: "BSE Odisha and national curriculum." },
+      { q: "Can I set the word count?", a: "Yes. 100 to 500 words." },
+      { q: "Is it useful for all classes?", a: "Yes. Class 1 to PhD level." },
+      { q: "Is it free?", a: "Completely free." }
+    ],
+    priority: 0.86,
+  },
+  {
+    id: "odia-letter-writer",
+    name: "Odia Letter Writer (ଓଡ଼ିଆ पत्र लेखन)",
+    desc: "Generate formal and informal Odia letters for students and teachers.",
+    icon: "📮", category: "language", subCategory: "odia",
+    audience: "teacher", model: "fast", maxTokens: 450,
+    inputs: [
+      { id: "type", label: "Letter Type", type: "select", options: ["Formal Letter","Informal Letter","Application Letter","Complaint Letter","Invitation Letter"] },
+      { id: "topic", label: "Purpose (ଓଡ଼ିଆ)", type: "text", placeholder: "e.g. ଛୁଟି ଆବେଦନ, ଅଭିଯୋଗ ପତ୍ର" },
+      { id: "class", label: "Class / Level", type: "select", options: ["Class 1","Class 2","Class 3","Class 4","Class 5","Class 6","Class 7","Class 8","Class 9","Class 10","Class 11","Class 12","Diploma / Certificate","ITI / Vocational","UG Year 1 (FY)","UG Year 2 (SY)","UG Year 3 (TY)","UG Year 4 (Final)","B.A.","B.Sc.","B.Com.","BBA","BCA","B.Tech / BE","B.Ed","BDS","MBBS","BPT","B.Pharm","LLB","B.Arch","B.Design / B.FTech","B.Sc Nursing","BHMCT (Hotel Mgmt)","PG Year 1","PG Year 2","M.A.","M.Sc.","M.Com.","MBA","MCA","M.Tech / ME","M.Ed","MD / MS (Medical)","LLM","M.Arch","M.Design","M.Sc Nursing","MHMCT","M.Phil","PhD / Doctorate","Post-Doctoral","UPSC / Competitive Exams","Professional Training"] }
+    ],
+    promptTemplate: `Write a {{type}} in Odia.
+Purpose: {{topic}} | Level: {{class}}
+Write completely in Odia (Odia script).
+Use correct letter format: address, date, salutation, body, closing, signature.
+BSE Odisha exam format. Appropriate language for {{class}} level.`,
+    seoTitle: "Free Odia Letter Writer for Teachers | ଓଡ଼ିଆ पत्र | Forjit AI",
+    seoDesc: "Generate Odia formal and informal letters. Free tool for Odia teachers and students. BSE Odisha format.",
+    seoKeywords: ["odia letter writer free","Odia patra lekhan tool","odia formal letter generator India"],
+    faqs: [
+      { q: "What letter types are available?", a: "Formal, informal, application, complaint, and invitation letters." },
+      { q: "Is the format correct?", a: "Yes. Correct Odia letter format for BSE Odisha exams." },
+      { q: "Is it written in Odia?", a: "Yes. Entirely in Odia script." },
+      { q: "Is it exam ready?", a: "Yes. Follows BSE Odisha exam pattern." },
+      { q: "Is it free?", a: "Completely free." }
+    ],
+    priority: 0.85,
+  },
+  {
+    id: "odia-grammar-explainer",
+    name: "Odia Grammar Explainer (ଓଡ଼ିଆ व्याकरण)",
+    desc: "Explain Odia grammar topics with rules, examples, and exercises.",
+    icon: "📖", category: "language", subCategory: "odia",
+    audience: "teacher", model: "smart", maxTokens: 500,
+    inputs: [
+      { id: "topic", label: "Grammar Topic (ଓଡ଼ିଆ)", type: "text", placeholder: "e.g. ক্রিয়া, নাম, বিভক্তি" },
+      { id: "class", label: "Class / Level", type: "select", options: ["Class 1","Class 2","Class 3","Class 4","Class 5","Class 6","Class 7","Class 8","Class 9","Class 10","Class 11","Class 12","Diploma / Certificate","ITI / Vocational","UG Year 1 (FY)","UG Year 2 (SY)","UG Year 3 (TY)","UG Year 4 (Final)","B.A.","B.Sc.","B.Com.","BBA","BCA","B.Tech / BE","B.Ed","BDS","MBBS","BPT","B.Pharm","LLB","B.Arch","B.Design / B.FTech","B.Sc Nursing","BHMCT (Hotel Mgmt)","PG Year 1","PG Year 2","M.A.","M.Sc.","M.Com.","MBA","MCA","M.Tech / ME","M.Ed","MD / MS (Medical)","LLM","M.Arch","M.Design","M.Sc Nursing","MHMCT","M.Phil","PhD / Doctorate","Post-Doctoral","UPSC / Competitive Exams","Professional Training"] }
+    ],
+    promptTemplate: `Explain this Odia grammar topic.
+Topic: {{topic}} | Level: {{class}}
+Provide in BOTH Odia and English:
+1. DEFINITION / RULE (in Odia)
+2. TYPES (if any)
+3. EXAMPLES (5 examples in Odia with English meaning)
+4. PRACTICE EXERCISE (5 sentences to fill/identify)
+5. COMMON MISTAKES students make
+Clear, student-friendly. BSE Odisha curriculum.`,
+    seoTitle: "Free Odia Grammar Explainer for Teachers | Forjit AI",
+    seoDesc: "Explain Odia grammar topics with rules and examples. Free tool for Odia teachers. BSE Odisha aligned.",
+    seoKeywords: ["odia grammar explainer free","Odia vyakaran tool teacher","odia grammar rules examples India"],
+    faqs: [
+      { q: "Is explanation in both Odia and English?", a: "Yes. Definition in Odia, with English meanings for examples." },
+      { q: "Are exercises included?", a: "Yes. 5 practice exercises are included." },
+      { q: "What grammar topics are covered?", a: "All Odia grammar topics — parts of speech, tenses, sentence types, and more." },
+      { q: "Is it BSE Odisha aligned?", a: "Yes. Follows BSE Odisha grammar curriculum." },
+      { q: "Is it free?", a: "Completely free." }
+    ],
+    priority: 0.84,
+  },
+  {
+    id: "odia-translation-helper",
+    name: "Odia ↔ English Translation Helper",
+    desc: "Translate between Odia and English with explanations for teachers and students.",
+    icon: "🔄", category: "language", subCategory: "odia",
+    audience: "teacher", model: "fast", maxTokens: 400,
+    inputs: [
+      { id: "text", label: "Text to Translate", type: "textarea", placeholder: "Type in Odia or English…", rows: 3 },
+      { id: "direction", label: "Direction", type: "select", options: ["Odia → English","English → Odia"] },
+      { id: "class", label: "Class / Level", type: "select", options: ["Class 1","Class 2","Class 3","Class 4","Class 5","Class 6","Class 7","Class 8","Class 9","Class 10","Class 11","Class 12","Diploma / Certificate","ITI / Vocational","UG Year 1 (FY)","UG Year 2 (SY)","UG Year 3 (TY)","UG Year 4 (Final)","B.A.","B.Sc.","B.Com.","BBA","BCA","B.Tech / BE","B.Ed","BDS","MBBS","BPT","B.Pharm","LLB","B.Arch","B.Design / B.FTech","B.Sc Nursing","BHMCT (Hotel Mgmt)","PG Year 1","PG Year 2","M.A.","M.Sc.","M.Com.","MBA","MCA","M.Tech / ME","M.Ed","MD / MS (Medical)","LLM","M.Arch","M.Design","M.Sc Nursing","MHMCT","M.Phil","PhD / Doctorate","Post-Doctoral","UPSC / Competitive Exams","Professional Training"] }
+    ],
+    promptTemplate: `Translate this text. Direction: {{direction}} | Level: {{class}}
+Text: {{text}}
+Provide:
+1. TRANSLATION (accurate, natural)
+2. WORD-BY-WORD breakdown (key words explained)
+3. NOTES (any idioms, cultural context, or grammar points)
+Keep language level appropriate for {{class}}.`,
+    seoTitle: "Free Odia English Translation Helper for Teachers | Forjit AI",
+    seoDesc: "Translate between Odia and English with word-by-word explanation. Free tool for Odia teachers and students.",
+    seoKeywords: ["odia english translation free India","Odia translator teacher tool","odia to english translator"],
+    faqs: [
+      { q: "Does it work both ways?", a: "Yes. Odia to English and English to Odia." },
+      { q: "Is word-by-word breakdown included?", a: "Yes. Key words are explained individually." },
+      { q: "Is cultural context explained?", a: "Yes. Idioms and cultural notes are included where relevant." },
+      { q: "Is it suitable for all levels?", a: "Yes. From Class 1 to PhD level translations." },
+      { q: "Is it free?", a: "Completely free." }
+    ],
+    priority: 0.83,
+  },
+  {
+    id: "odia-mcq-maker",
+    name: "Odia Language MCQ Maker",
+    desc: "Generate Odia language MCQs for grammar, comprehension, and vocabulary.",
+    icon: "✅", category: "language", subCategory: "odia",
+    audience: "teacher", model: "smart", maxTokens: 550,
+    inputs: [
+      { id: "topic", label: "Odia Topic", type: "text", placeholder: "e.g. Grammar, Vocabulary, Comprehension, Literature" },
+      { id: "class", label: "Class / Level", type: "select", options: ["Class 1","Class 2","Class 3","Class 4","Class 5","Class 6","Class 7","Class 8","Class 9","Class 10","Class 11","Class 12","Diploma / Certificate","ITI / Vocational","UG Year 1 (FY)","UG Year 2 (SY)","UG Year 3 (TY)","UG Year 4 (Final)","B.A.","B.Sc.","B.Com.","BBA","BCA","B.Tech / BE","B.Ed","BDS","MBBS","BPT","B.Pharm","LLB","B.Arch","B.Design / B.FTech","B.Sc Nursing","BHMCT (Hotel Mgmt)","PG Year 1","PG Year 2","M.A.","M.Sc.","M.Com.","MBA","MCA","M.Tech / ME","M.Ed","MD / MS (Medical)","LLM","M.Arch","M.Design","M.Sc Nursing","MHMCT","M.Phil","PhD / Doctorate","Post-Doctoral","UPSC / Competitive Exams","Professional Training"] },
+      { id: "count", label: "Number of MCQs", type: "select", options: ["5","10","15","20"] }
+    ],
+    promptTemplate: `Generate {{count}} Odia language MCQs.
+Topic: {{topic}} | Level: {{class}}
+Write questions in Odia (Odia script).
+Format: Q[N]. [question in Odia]
+A) B) C) D)
+Answer: X
+Include grammar, vocabulary, and usage questions. BSE Odisha curriculum.`,
+    seoTitle: "Free Odia MCQ Maker for Teachers | Forjit AI",
+    seoDesc: "Generate Odia language MCQs for grammar, vocabulary, comprehension. Free tool for Odia teachers. BSE Odisha aligned.",
+    seoKeywords: ["odia MCQ generator teacher India","Odia language quiz maker free","odia grammar MCQ CBSE"],
+    faqs: [
+      { q: "Are questions written in Odia?", a: "Yes. All questions are in Odia script." },
+      { q: "What topics are covered?", a: "Grammar, vocabulary, comprehension, and literature." },
+      { q: "Is it BSE Odisha aligned?", a: "Yes. Follows BSE Odisha language curriculum." },
+      { q: "How many MCQs can I generate?", a: "5 to 20 MCQs per session." },
+      { q: "Is it free?", a: "Completely free." }
+    ],
+    priority: 0.83,
+  },
+  {
+    id: "urdu-essay-writer",
+    name: "Urdu Essay Writer (اردو निबंध)",
+    desc: "Write Urdu essays on any topic for school and college students.",
+    icon: "✍️", category: "language", subCategory: "urdu",
+    audience: "teacher", model: "smart", maxTokens: 600,
+    inputs: [
+      { id: "topic", label: "Essay Topic (اردو)", type: "text", placeholder: "e.g. میرا وطن, ماحولیات, عید" },
+      { id: "class", label: "Class / Level", type: "select", options: ["Class 1","Class 2","Class 3","Class 4","Class 5","Class 6","Class 7","Class 8","Class 9","Class 10","Class 11","Class 12","Diploma / Certificate","ITI / Vocational","UG Year 1 (FY)","UG Year 2 (SY)","UG Year 3 (TY)","UG Year 4 (Final)","B.A.","B.Sc.","B.Com.","BBA","BCA","B.Tech / BE","B.Ed","BDS","MBBS","BPT","B.Pharm","LLB","B.Arch","B.Design / B.FTech","B.Sc Nursing","BHMCT (Hotel Mgmt)","PG Year 1","PG Year 2","M.A.","M.Sc.","M.Com.","MBA","MCA","M.Tech / ME","M.Ed","MD / MS (Medical)","LLM","M.Arch","M.Design","M.Sc Nursing","MHMCT","M.Phil","PhD / Doctorate","Post-Doctoral","UPSC / Competitive Exams","Professional Training"] },
+      { id: "wordCount", label: "Word Count", type: "select", options: ["100-150 words","200-250 words","300-350 words","400-500 words"] }
+    ],
+    promptTemplate: `Write a complete Urdu essay.
+Topic: {{topic}} | Level: {{class}} | Length: {{wordCount}}
+Write entirely in Urdu (Nastaliq (Urdu script)).
+Structure: Introduction → Main body (2-3 paragraphs) → Conclusion.
+Simple, correct Urdu. Appropriate for {{class}} level. JKBOSE / UPMSP / CBSE Urdu curriculum.`,
+    seoTitle: "Free Urdu Essay Writer for Teachers | اردو निबंध | Forjit AI",
+    seoDesc: "Generate Urdu essays for any topic. Free tool for Urdu teachers. JKBOSE / UPMSP / CBSE Urdu aligned. Class 1-12 and college.",
+    seoKeywords: ["urdu essay writer free India","Urdu nibandh generator","urdu essay maker teacher"],
+    faqs: [
+      { q: "Is the essay written in Urdu?", a: "Yes. Completely in Urdu (Nastaliq (Urdu script))." },
+      { q: "Which board is it aligned to?", a: "JKBOSE / UPMSP / CBSE Urdu and national curriculum." },
+      { q: "Can I set the word count?", a: "Yes. 100 to 500 words." },
+      { q: "Is it useful for all classes?", a: "Yes. Class 1 to PhD level." },
+      { q: "Is it free?", a: "Completely free." }
+    ],
+    priority: 0.86,
+  },
+  {
+    id: "urdu-letter-writer",
+    name: "Urdu Letter Writer (اردو पत्र लेखन)",
+    desc: "Generate formal and informal Urdu letters for students and teachers.",
+    icon: "📮", category: "language", subCategory: "urdu",
+    audience: "teacher", model: "fast", maxTokens: 450,
+    inputs: [
+      { id: "type", label: "Letter Type", type: "select", options: ["Formal Letter","Informal Letter","Application Letter","Complaint Letter","Invitation Letter"] },
+      { id: "topic", label: "Purpose (اردو)", type: "text", placeholder: "e.g. چھٹی کی درخواست, شکایتی خط" },
+      { id: "class", label: "Class / Level", type: "select", options: ["Class 1","Class 2","Class 3","Class 4","Class 5","Class 6","Class 7","Class 8","Class 9","Class 10","Class 11","Class 12","Diploma / Certificate","ITI / Vocational","UG Year 1 (FY)","UG Year 2 (SY)","UG Year 3 (TY)","UG Year 4 (Final)","B.A.","B.Sc.","B.Com.","BBA","BCA","B.Tech / BE","B.Ed","BDS","MBBS","BPT","B.Pharm","LLB","B.Arch","B.Design / B.FTech","B.Sc Nursing","BHMCT (Hotel Mgmt)","PG Year 1","PG Year 2","M.A.","M.Sc.","M.Com.","MBA","MCA","M.Tech / ME","M.Ed","MD / MS (Medical)","LLM","M.Arch","M.Design","M.Sc Nursing","MHMCT","M.Phil","PhD / Doctorate","Post-Doctoral","UPSC / Competitive Exams","Professional Training"] }
+    ],
+    promptTemplate: `Write a {{type}} in Urdu.
+Purpose: {{topic}} | Level: {{class}}
+Write completely in Urdu (Nastaliq (Urdu script)).
+Use correct letter format: address, date, salutation, body, closing, signature.
+JKBOSE / UPMSP / CBSE Urdu exam format. Appropriate language for {{class}} level.`,
+    seoTitle: "Free Urdu Letter Writer for Teachers | اردو पत्र | Forjit AI",
+    seoDesc: "Generate Urdu formal and informal letters. Free tool for Urdu teachers and students. JKBOSE / UPMSP / CBSE Urdu format.",
+    seoKeywords: ["urdu letter writer free","Urdu patra lekhan tool","urdu formal letter generator India"],
+    faqs: [
+      { q: "What letter types are available?", a: "Formal, informal, application, complaint, and invitation letters." },
+      { q: "Is the format correct?", a: "Yes. Correct Urdu letter format for JKBOSE / UPMSP / CBSE Urdu exams." },
+      { q: "Is it written in Urdu?", a: "Yes. Entirely in Urdu script." },
+      { q: "Is it exam ready?", a: "Yes. Follows JKBOSE / UPMSP / CBSE Urdu exam pattern." },
+      { q: "Is it free?", a: "Completely free." }
+    ],
+    priority: 0.85,
+  },
+  {
+    id: "urdu-grammar-explainer",
+    name: "Urdu Grammar Explainer (اردو व्याकरण)",
+    desc: "Explain Urdu grammar topics with rules, examples, and exercises.",
+    icon: "📖", category: "language", subCategory: "urdu",
+    audience: "teacher", model: "smart", maxTokens: 500,
+    inputs: [
+      { id: "topic", label: "Grammar Topic (اردو)", type: "text", placeholder: "e.g. فعل, اسم, ضمیر" },
+      { id: "class", label: "Class / Level", type: "select", options: ["Class 1","Class 2","Class 3","Class 4","Class 5","Class 6","Class 7","Class 8","Class 9","Class 10","Class 11","Class 12","Diploma / Certificate","ITI / Vocational","UG Year 1 (FY)","UG Year 2 (SY)","UG Year 3 (TY)","UG Year 4 (Final)","B.A.","B.Sc.","B.Com.","BBA","BCA","B.Tech / BE","B.Ed","BDS","MBBS","BPT","B.Pharm","LLB","B.Arch","B.Design / B.FTech","B.Sc Nursing","BHMCT (Hotel Mgmt)","PG Year 1","PG Year 2","M.A.","M.Sc.","M.Com.","MBA","MCA","M.Tech / ME","M.Ed","MD / MS (Medical)","LLM","M.Arch","M.Design","M.Sc Nursing","MHMCT","M.Phil","PhD / Doctorate","Post-Doctoral","UPSC / Competitive Exams","Professional Training"] }
+    ],
+    promptTemplate: `Explain this Urdu grammar topic.
+Topic: {{topic}} | Level: {{class}}
+Provide in BOTH Urdu and English:
+1. DEFINITION / RULE (in Urdu)
+2. TYPES (if any)
+3. EXAMPLES (5 examples in Urdu with English meaning)
+4. PRACTICE EXERCISE (5 sentences to fill/identify)
+5. COMMON MISTAKES students make
+Clear, student-friendly. JKBOSE / UPMSP / CBSE Urdu curriculum.`,
+    seoTitle: "Free Urdu Grammar Explainer for Teachers | Forjit AI",
+    seoDesc: "Explain Urdu grammar topics with rules and examples. Free tool for Urdu teachers. JKBOSE / UPMSP / CBSE Urdu aligned.",
+    seoKeywords: ["urdu grammar explainer free","Urdu vyakaran tool teacher","urdu grammar rules examples India"],
+    faqs: [
+      { q: "Is explanation in both Urdu and English?", a: "Yes. Definition in Urdu, with English meanings for examples." },
+      { q: "Are exercises included?", a: "Yes. 5 practice exercises are included." },
+      { q: "What grammar topics are covered?", a: "All Urdu grammar topics — parts of speech, tenses, sentence types, and more." },
+      { q: "Is it JKBOSE / UPMSP / CBSE Urdu aligned?", a: "Yes. Follows JKBOSE / UPMSP / CBSE Urdu grammar curriculum." },
+      { q: "Is it free?", a: "Completely free." }
+    ],
+    priority: 0.84,
+  },
+  {
+    id: "urdu-translation-helper",
+    name: "Urdu ↔ English Translation Helper",
+    desc: "Translate between Urdu and English with explanations for teachers and students.",
+    icon: "🔄", category: "language", subCategory: "urdu",
+    audience: "teacher", model: "fast", maxTokens: 400,
+    inputs: [
+      { id: "text", label: "Text to Translate", type: "textarea", placeholder: "Type in Urdu or English…", rows: 3 },
+      { id: "direction", label: "Direction", type: "select", options: ["Urdu → English","English → Urdu"] },
+      { id: "class", label: "Class / Level", type: "select", options: ["Class 1","Class 2","Class 3","Class 4","Class 5","Class 6","Class 7","Class 8","Class 9","Class 10","Class 11","Class 12","Diploma / Certificate","ITI / Vocational","UG Year 1 (FY)","UG Year 2 (SY)","UG Year 3 (TY)","UG Year 4 (Final)","B.A.","B.Sc.","B.Com.","BBA","BCA","B.Tech / BE","B.Ed","BDS","MBBS","BPT","B.Pharm","LLB","B.Arch","B.Design / B.FTech","B.Sc Nursing","BHMCT (Hotel Mgmt)","PG Year 1","PG Year 2","M.A.","M.Sc.","M.Com.","MBA","MCA","M.Tech / ME","M.Ed","MD / MS (Medical)","LLM","M.Arch","M.Design","M.Sc Nursing","MHMCT","M.Phil","PhD / Doctorate","Post-Doctoral","UPSC / Competitive Exams","Professional Training"] }
+    ],
+    promptTemplate: `Translate this text. Direction: {{direction}} | Level: {{class}}
+Text: {{text}}
+Provide:
+1. TRANSLATION (accurate, natural)
+2. WORD-BY-WORD breakdown (key words explained)
+3. NOTES (any idioms, cultural context, or grammar points)
+Keep language level appropriate for {{class}}.`,
+    seoTitle: "Free Urdu English Translation Helper for Teachers | Forjit AI",
+    seoDesc: "Translate between Urdu and English with word-by-word explanation. Free tool for Urdu teachers and students.",
+    seoKeywords: ["urdu english translation free India","Urdu translator teacher tool","urdu to english translator"],
+    faqs: [
+      { q: "Does it work both ways?", a: "Yes. Urdu to English and English to Urdu." },
+      { q: "Is word-by-word breakdown included?", a: "Yes. Key words are explained individually." },
+      { q: "Is cultural context explained?", a: "Yes. Idioms and cultural notes are included where relevant." },
+      { q: "Is it suitable for all levels?", a: "Yes. From Class 1 to PhD level translations." },
+      { q: "Is it free?", a: "Completely free." }
+    ],
+    priority: 0.83,
+  },
+  {
+    id: "urdu-mcq-maker",
+    name: "Urdu Language MCQ Maker",
+    desc: "Generate Urdu language MCQs for grammar, comprehension, and vocabulary.",
+    icon: "✅", category: "language", subCategory: "urdu",
+    audience: "teacher", model: "smart", maxTokens: 550,
+    inputs: [
+      { id: "topic", label: "Urdu Topic", type: "text", placeholder: "e.g. Grammar, Vocabulary, Comprehension, Literature" },
+      { id: "class", label: "Class / Level", type: "select", options: ["Class 1","Class 2","Class 3","Class 4","Class 5","Class 6","Class 7","Class 8","Class 9","Class 10","Class 11","Class 12","Diploma / Certificate","ITI / Vocational","UG Year 1 (FY)","UG Year 2 (SY)","UG Year 3 (TY)","UG Year 4 (Final)","B.A.","B.Sc.","B.Com.","BBA","BCA","B.Tech / BE","B.Ed","BDS","MBBS","BPT","B.Pharm","LLB","B.Arch","B.Design / B.FTech","B.Sc Nursing","BHMCT (Hotel Mgmt)","PG Year 1","PG Year 2","M.A.","M.Sc.","M.Com.","MBA","MCA","M.Tech / ME","M.Ed","MD / MS (Medical)","LLM","M.Arch","M.Design","M.Sc Nursing","MHMCT","M.Phil","PhD / Doctorate","Post-Doctoral","UPSC / Competitive Exams","Professional Training"] },
+      { id: "count", label: "Number of MCQs", type: "select", options: ["5","10","15","20"] }
+    ],
+    promptTemplate: `Generate {{count}} Urdu language MCQs.
+Topic: {{topic}} | Level: {{class}}
+Write questions in Urdu (Nastaliq (Urdu script)).
+Format: Q[N]. [question in Urdu]
+A) B) C) D)
+Answer: X
+Include grammar, vocabulary, and usage questions. JKBOSE / UPMSP / CBSE Urdu curriculum.`,
+    seoTitle: "Free Urdu MCQ Maker for Teachers | Forjit AI",
+    seoDesc: "Generate Urdu language MCQs for grammar, vocabulary, comprehension. Free tool for Urdu teachers. JKBOSE / UPMSP / CBSE Urdu aligned.",
+    seoKeywords: ["urdu MCQ generator teacher India","Urdu language quiz maker free","urdu grammar MCQ CBSE"],
+    faqs: [
+      { q: "Are questions written in Urdu?", a: "Yes. All questions are in Urdu script." },
+      { q: "What topics are covered?", a: "Grammar, vocabulary, comprehension, and literature." },
+      { q: "Is it JKBOSE / UPMSP / CBSE Urdu aligned?", a: "Yes. Follows JKBOSE / UPMSP / CBSE Urdu language curriculum." },
+      { q: "How many MCQs can I generate?", a: "5 to 20 MCQs per session." },
+      { q: "Is it free?", a: "Completely free." }
+    ],
+    priority: 0.83,
+  },
 ];

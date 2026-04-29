@@ -228,21 +228,78 @@
   }
 
   /* ════════════════════════════════════════════════════════════════════════
-     TIER 3 — POLLINATIONS (free, no key)
+     TIER 3 — POLLINATIONS (free, no key, POST + GET fallback)
   ════════════════════════════════════════════════════════════════════════ */
   async function callPollinations(prompt, onChunk) {
-    const res = await fetch("https://text.pollinations.ai/", {
-      method:"POST", headers:{"Content-Type":"application/json"},
-      body: JSON.stringify({
-        messages:[{role:"system",content:SYSTEM_PROMPT},{role:"user",content:prompt}],
-        model:"openai", private:true,
-      }),
-    });
-    if (!res.ok) throw new Error("Free AI is busy — please try again.");
-    const text = (await res.text()).trim();
-    if (!text) throw new Error("Empty response — please try again.");
-    onChunk(text);
-    return text;
+    // Try POST first
+    try {
+      const res = await fetch("https://text.pollinations.ai/", {
+        method:  "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify({
+          messages: [
+            { role: "system", content: SYSTEM_PROMPT },
+            { role: "user",   content: prompt },
+          ],
+          model: "openai", private: true,
+        }),
+      });
+      if (res.ok) {
+        const text = (await res.text()).trim();
+        if (text) { onChunk(text); return text; }
+      }
+    } catch {}
+
+    // GET fallback (simpler, more reliable)
+    try {
+      const encoded = encodeURIComponent(
+        SYSTEM_PROMPT.slice(0, 200) + "\n\n" + prompt
+      );
+      const res = await fetch(
+        `https://text.pollinations.ai/${encoded}?model=openai&private=true`,
+        { method: "GET" }
+      );
+      if (res.ok) {
+        const text = (await res.text()).trim();
+        if (text) { onChunk(text); return text; }
+      }
+    } catch {}
+
+    throw new Error(
+      "Free AI is currently busy. Please try again in a moment, or add your " +
+      "<a href='https://console.groq.com/keys' target='_blank' style='color:var(--ac)'>free Groq key</a> above for reliable unlimited use."
+    );
+  }
+
+  /* ════════════════════════════════════════════════════════════════════════
+     TIER 2.5 — SERVER PROXY (our Groq key, no user key needed)
+  ════════════════════════════════════════════════════════════════════════ */
+  async function callProxy(prompt, onChunk) {
+    try {
+      const res = await fetch("/api/groq-proxy", {
+        method:  "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify({
+          model:     GROQ_MODELS[TOOL.model || "fast"],
+          maxTokens: TOOL.maxTokens || 500,
+          messages:  [
+            { role: "system", content: SYSTEM_PROMPT },
+            { role: "user",   content: prompt },
+          ],
+        }),
+      });
+      if (!res.ok) {
+        if (res.status === 503) return null; // Proxy not configured — try Pollinations
+        return null;
+      }
+      const contentType = res.headers.get("content-type") || "";
+      if (contentType.includes("application/json")) {
+        const data = await res.json();
+        const content = data.content || "";
+        if (content) { onChunk(content); return content; }
+      }
+    } catch {}
+    return null; // Proxy failed — fall through
   }
 
   /* ════════════════════════════════════════════════════════════════════════
@@ -253,7 +310,7 @@
 
     for (const inp of TOOL.inputs) {
       if (inp.required !== false && !inputs[inp.id]) {
-        showError(`Please fill in: ${inp.label}`); return;
+        showError(`⚠️ Please fill in: <strong>${inp.label}</strong>`); return;
       }
     }
 
@@ -278,7 +335,7 @@
     const prompt = buildPrompt(inputs);
     btn.disabled = true; btn.textContent = "⏳ Generating…";
     outWrap.style.display = "block";
-    outEl.textContent = "";
+    outEl.textContent     = "Working on it…";
 
     try {
       let result = "";
@@ -294,10 +351,11 @@
         } catch (e) {
           console.warn("[TE] Chrome AI failed:", e.message);
           _chromeSession = null; result = "";
+          outEl.textContent = "";
         }
       }
 
-      // ── Tier 2: Groq ────────────────────────────────────────────────────
+      // ── Tier 2: User's Groq key ─────────────────────────────────────────
       if (!result) {
         let apiKey = document.getElementById("te-api-key").value.trim();
         if (!apiKey) apiKey = await getApiKey();
@@ -309,16 +367,30 @@
             showBadge("groq");
           } catch (e) {
             console.warn("[TE] Groq failed:", e.message);
-            result = "";
+            result = ""; outEl.textContent = "";
           }
         }
       }
 
-      // ── Tier 3: Pollinations ────────────────────────────────────────────
+      // ── Tier 2.5: Server proxy (our Groq key) ───────────────────────────
+      if (!result) {
+        showBadge("groq", true);
+        outEl.textContent = "Generating…";
+        const proxyResult = await callProxy(prompt, t => { outEl.textContent = t; });
+        if (proxyResult) {
+          result = proxyResult;
+          showBadge("groq");
+        }
+      }
+
+      // ── Tier 3: Pollinations free ───────────────────────────────────────
       if (!result) {
         if (!checkRate()) {
-          const {reset} = rateRemaining();
-          throw new Error(`Free limit reached (${RATE_LIMIT}/hour). Resets in ${reset}min. Add Groq key above for unlimited use.`);
+          const { reset } = rateRemaining();
+          throw new Error(
+            `Free limit reached (${RATE_LIMIT}/hour). Resets in ${reset}min. ` +
+            `Add your <a href="https://console.groq.com/keys" target="_blank" style="color:var(--ac)">free Groq key</a> above for unlimited use.`
+          );
         }
         showBadge("free", true);
         outEl.textContent = "Generating (free)…";
@@ -327,14 +399,22 @@
         showBadge("free");
       }
 
+      // ── Success ─────────────────────────────────────────────────────────
+      outEl.textContent = result;
       await cacheSet(inputs, result);
       updateRateBadge();
 
     } catch (e) {
-      outWrap.style.display = "none";
+      // Show error but KEEP output wrap visible with error state
       outEl.textContent = "";
+      outWrap.style.display = "none";
       showBadge(null);
-      showError(e.message || "Something went wrong. Please try again.");
+      showError(
+        (e.message || "Something went wrong.") +
+        `<br><br>💡 <strong>Quick fix:</strong> Add your ` +
+        `<a href="https://console.groq.com/keys" target="_blank" style="color:var(--ac)">free Groq key</a> ` +
+        `above — takes 30 seconds and gives unlimited use.`
+      );
     } finally {
       btn.disabled = false; btn.textContent = "⚡ Generate";
     }
@@ -520,7 +600,7 @@
 
   function showError(msg) {
     const el = document.getElementById("te-error");
-    if (el) { el.textContent = msg; el.style.display = "block"; }
+    if (el) { el.innerHTML = msg; el.style.display = "block"; }
   }
 
   function hideError() {

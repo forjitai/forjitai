@@ -702,4 +702,908 @@ Include:
     priority: 0.82,
   },
 
+  /* ════════════════════════════════════════════════════════════════════════
+     CHEMISTRY
+  ════════════════════════════════════════════════════════════════════════ */
+  {
+    id: "chemistry-equation-balancer",
+    name: "Chemical Equation Balancer & Explainer",
+    desc: "Balance chemical equations and explain the reaction with step-by-step working.",
+    icon: "⚗️", category: "science", subCategory: "chemistry",
+    audience: "teacher", model: "smart", maxTokens: 500,
+    inputs: [
+      { id: "equation", label: "Chemical Equation", type: "text", placeholder: "e.g. H2 + O2 → H2O", required: true },
+      { id: "class", label: "Class", type: "select", options: ["Class 9","Class 10","Class 11","Class 12"] },
+    ],
+    promptTemplate: `Balance this chemical equation and explain it clearly.
+Equation: {{equation}} | Class: {{class}}
+Provide:
+1. BALANCED EQUATION (with correct coefficients)
+2. STEP-BY-STEP BALANCING (show atom count before and after)
+3. TYPE OF REACTION (combination/decomposition/displacement etc.)
+4. WHAT HAPPENS (plain English explanation)
+5. REAL-LIFE EXAMPLE of this reaction
+CBSE chemistry curriculum.`,
+    seoTitle: "Free Chemical Equation Balancer for Teachers | Forjit AI",
+    seoDesc: "Balance chemical equations with step-by-step explanation. Free tool for Chemistry teachers. CBSE Class 9-12 aligned.",
+    seoKeywords: ["chemical equation balancer teacher","balance equation CBSE","chemistry equation solver India"],
+    faqs: [
+      { q: "Does it show the balancing steps?", a: "Yes. Each step shows atom count before and after balancing." },
+      { q: "What reaction types are covered?", a: "Combination, decomposition, displacement, double displacement, redox, and more." },
+      { q: "Is it CBSE aligned?", a: "Yes. Follows CBSE Class 9-12 chemistry curriculum." },
+      { q: "Can it explain the reaction?", a: "Yes. A plain English explanation and real-life example are included." },
+      { q: "Is it free?", a: "Completely free. No login or signup required." },
+    ],
+    priority: 0.88,
+  },
+
+  {
+    id: "chemistry-lab-report",
+    name: "Chemistry Lab Report Generator",
+    desc: "Generate a complete lab report for any chemistry practical with observations and conclusions.",
+    icon: "🧪", category: "science", subCategory: "chemistry",
+    audience: "teacher", model: "smart", maxTokens: 650,
+    inputs: [
+      { id: "practical", label: "Practical Name", type: "text", placeholder: "e.g. Preparation of Ferrous Sulphate crystals", required: true },
+      { id: "class", label: "Class", type: "select", options: ["Class 9","Class 10","Class 11","Class 12"] },
+      { id: "board", label: "Board", type: "select", options: ["CBSE","ICSE","State Board"] },
+    ],
+    promptTemplate: `Write a complete chemistry lab report.
+Practical: {{practical}} | Class: {{class}} | Board: {{board}}
+Sections:
+1. AIM
+2. APPARATUS & CHEMICALS REQUIRED
+3. THEORY (brief scientific principle)
+4. PROCEDURE (numbered steps)
+5. OBSERVATIONS (table format where applicable)
+6. RESULT
+7. PRECAUTIONS (5 points)
+8. VIVA QUESTIONS (3 likely questions with answers)
+Standard school lab report format.`,
+    seoTitle: "Free Chemistry Lab Report Generator for Teachers | Forjit AI",
+    seoDesc: "Generate complete chemistry practical lab reports for CBSE/ICSE. Free tool for chemistry teachers. Aim, procedure, observations included.",
+    seoKeywords: ["chemistry lab report generator","practical report writer CBSE","chemistry practical format India"],
+    faqs: [
+      { q: "Does it include all sections?", a: "Yes. Aim, apparatus, theory, procedure, observations, result, precautions, and viva questions." },
+      { q: "Which boards are supported?", a: "CBSE, ICSE, and State Board formats." },
+      { q: "Are viva questions included?", a: "Yes. 3 likely viva questions with answers are included." },
+      { q: "Can I use it for any practical?", a: "Yes. Works for any chemistry practical from Class 9-12." },
+      { q: "Is it free?", a: "Completely free." },
+    ],
+    priority: 0.87,
+  },
+
+  {
+    id: "chemistry-mcq-maker",
+    name: "Chemistry MCQ Maker (Class 9–12)",
+    desc: "Generate chemistry MCQs with answers for any topic — organic, inorganic, or physical chemistry.",
+    icon: "🔬", category: "science", subCategory: "chemistry",
+    audience: "teacher", model: "smart", maxTokens: 600,
+    inputs: [
+      { id: "topic", label: "Chemistry Topic", type: "text", placeholder: "e.g. Acids Bases Salts, Organic Chemistry", required: true },
+      { id: "class", label: "Class", type: "select", options: ["Class 9","Class 10","Class 11","Class 12"] },
+      { id: "count", label: "Number of MCQs", type: "select", options: ["5","10","15","20"] },
+      { id: "type", label: "Chemistry Type", type: "select", options: ["Any","Organic","Inorganic","Physical","Electrochemistry"] },
+    ],
+    promptTemplate: `Generate {{count}} chemistry MCQs with answers.
+Topic: {{topic}} | Class: {{class}} | Type: {{type}}
+Format: Q[N]. question \n A) B) C) D) \n Answer: X \n Explanation: one line
+Include concept-based, numerical, and formula questions. CBSE curriculum.`,
+    seoTitle: "Free Chemistry MCQ Maker Class 9-12 | Forjit AI",
+    seoDesc: "Generate chemistry MCQs with answers for any topic. Free quiz maker for CBSE chemistry teachers. Organic, inorganic, physical chemistry covered.",
+    seoKeywords: ["chemistry MCQ generator CBSE","chemistry quiz maker teacher","chemistry questions class 12 India"],
+    faqs: [
+      { q: "Does it cover organic chemistry?", a: "Yes. Select 'Organic' type for organic chemistry specific questions." },
+      { q: "Are explanations included?", a: "Yes. Each answer includes a one-line explanation." },
+      { q: "Can I get numerical problems?", a: "Yes. The tool includes numerical, concept, and formula-based MCQs." },
+      { q: "Which classes are supported?", a: "Class 9 through Class 12." },
+      { q: "Is it CBSE aligned?", a: "Yes. Follows CBSE chemistry syllabus." },
+    ],
+    priority: 0.85,
+  },
+
+  {
+    id: "mole-concept-solver",
+    name: "Mole Concept Problem Solver",
+    desc: "Solve mole concept numericals step-by-step with formula, working, and explanation.",
+    icon: "🧮", category: "science", subCategory: "chemistry",
+    audience: "teacher", model: "smart", maxTokens: 500,
+    inputs: [
+      { id: "problem", label: "Problem Statement", type: "textarea", placeholder: "e.g. Calculate the number of moles in 36g of water (H2O)", required: true, rows: 3 },
+      { id: "class", label: "Class", type: "select", options: ["Class 9","Class 10","Class 11","Class 12"] },
+    ],
+    promptTemplate: `Solve this mole concept problem step-by-step.
+Problem: {{problem}} | Class: {{class}}
+Show:
+1. GIVEN DATA
+2. FORMULA USED
+3. STEP-BY-STEP CALCULATION (with units)
+4. ANSWER (with proper units)
+5. KEY CONCEPT used in this problem
+Clear, student-friendly explanation. CBSE format.`,
+    seoTitle: "Free Mole Concept Problem Solver for Teachers | Forjit AI",
+    seoDesc: "Solve mole concept numericals step-by-step. Free chemistry tool for Indian teachers. Shows formula, working, and explanation.",
+    seoKeywords: ["mole concept solver India","mole numericals step by step CBSE","chemistry mole calculator teacher"],
+    faqs: [
+      { q: "Does it show all working steps?", a: "Yes. Every step with formula, substitution, and units is shown." },
+      { q: "Can I use any mole concept problem?", a: "Yes. Moles, mass, volume, Avogadro's number, molarity problems all work." },
+      { q: "Is it suitable for Class 9?", a: "Yes. Works for Class 9-12 mole concept problems." },
+      { q: "Are units shown?", a: "Yes. All units are shown at each step." },
+      { q: "Is it free?", a: "Completely free." },
+    ],
+    priority: 0.84,
+  },
+
+  /* ════════════════════════════════════════════════════════════════════════
+     BIOLOGY
+  ════════════════════════════════════════════════════════════════════════ */
+  {
+    id: "biology-diagram-notes",
+    name: "Biology Diagram Description Generator",
+    desc: "Generate detailed text descriptions of biology diagrams with labels and functions.",
+    icon: "🦠", category: "science", subCategory: "biology",
+    audience: "teacher", model: "smart", maxTokens: 550,
+    inputs: [
+      { id: "diagram", label: "Diagram / Structure", type: "text", placeholder: "e.g. Plant Cell, Heart, Nephron, Mitochondria", required: true },
+      { id: "class", label: "Class", type: "select", options: ["Class 6","Class 7","Class 8","Class 9","Class 10","Class 11","Class 12"] },
+    ],
+    promptTemplate: `Describe this biology diagram in detail for students.
+Structure: {{diagram}} | Class: {{class}}
+Provide:
+1. WHAT TO DRAW (shape, size, orientation)
+2. LABELLED PARTS (list each part with label name)
+3. FUNCTION OF EACH PART (one line per part)
+4. HOW TO DRAW (step-by-step drawing instructions)
+5. EXAM TIPS (what examiners look for in this diagram)
+CBSE/NCERT curriculum. Clear and student-friendly.`,
+    seoTitle: "Biology Diagram Description Generator for Teachers | Forjit AI",
+    seoDesc: "Generate detailed biology diagram descriptions with labels and functions. Free tool for biology teachers. CBSE/NCERT aligned.",
+    seoKeywords: ["biology diagram notes teacher","biology diagram labels CBSE","biology diagram description generator India"],
+    faqs: [
+      { q: "Does it include drawing instructions?", a: "Yes. Step-by-step drawing instructions are included." },
+      { q: "What diagrams can it describe?", a: "Any biology structure — cell, organ, system, organism, cycle." },
+      { q: "Are functions of each part included?", a: "Yes. Function of each labeled part is described." },
+      { q: "Is it useful for Class 10 boards?", a: "Yes. Includes exam tips for board diagrams." },
+      { q: "Is it free?", a: "Completely free." },
+    ],
+    priority: 0.86,
+  },
+
+  {
+    id: "genetics-punnett-square",
+    name: "Genetics & Punnett Square Solver",
+    desc: "Solve genetics problems with Punnett squares, phenotype ratios, and explanations.",
+    icon: "🧬", category: "science", subCategory: "biology",
+    audience: "teacher", model: "smart", maxTokens: 500,
+    inputs: [
+      { id: "cross", label: "Genetic Cross", type: "text", placeholder: "e.g. Tall (TT) × Dwarf (tt), Monohybrid cross", required: true },
+      { id: "class", label: "Class", type: "select", options: ["Class 10","Class 11","Class 12"] },
+    ],
+    promptTemplate: `Solve this genetics problem with a Punnett square.
+Cross: {{cross}} | Class: {{class}}
+Show:
+1. PARENT GENOTYPES
+2. GAMETES PRODUCED
+3. PUNNETT SQUARE (text format with | separators)
+4. GENOTYPE RATIO
+5. PHENOTYPE RATIO
+6. CONCLUSION
+7. LAW DEMONSTRATED (Mendel's law)
+CBSE biology curriculum. Student-friendly.`,
+    seoTitle: "Free Genetics Punnett Square Solver for Teachers | Forjit AI",
+    seoDesc: "Solve genetics problems with Punnett squares and phenotype ratios. Free biology tool for Indian teachers. CBSE Class 10-12.",
+    seoKeywords: ["punnett square solver India","genetics problem solver CBSE","Mendel genetics teacher tool"],
+    faqs: [
+      { q: "Does it show the Punnett square?", a: "Yes. Complete Punnett square with all combinations." },
+      { q: "Are ratios calculated?", a: "Yes. Both genotype and phenotype ratios are given." },
+      { q: "Can it handle dihybrid crosses?", a: "Yes. Enter dihybrid cross details and it solves them." },
+      { q: "Which Mendel laws are covered?", a: "Law of Dominance, Segregation, and Independent Assortment." },
+      { q: "Is it free?", a: "Completely free." },
+    ],
+    priority: 0.85,
+  },
+
+  {
+    id: "biology-mcq-maker",
+    name: "Biology MCQ Maker (Class 6–12)",
+    desc: "Generate biology MCQs with answers for botany, zoology, and human biology topics.",
+    icon: "🌿", category: "science", subCategory: "biology",
+    audience: "teacher", model: "smart", maxTokens: 600,
+    inputs: [
+      { id: "topic", label: "Biology Topic", type: "text", placeholder: "e.g. Photosynthesis, Cell Division, Human Digestive System", required: true },
+      { id: "class", label: "Class", type: "select", options: ["Class 6","Class 7","Class 8","Class 9","Class 10","Class 11","Class 12"] },
+      { id: "count", label: "Number of MCQs", type: "select", options: ["5","10","15","20"] },
+    ],
+    promptTemplate: `Generate {{count}} biology MCQs with answers.
+Topic: {{topic}} | Class: {{class}}
+Format: Q[N]. question \n A) B) C) D) \n Answer: X \n Explanation: one line
+Include diagram-based and application questions. NCERT/CBSE curriculum.`,
+    seoTitle: "Free Biology MCQ Maker Class 6-12 | Forjit AI",
+    seoDesc: "Generate biology MCQs with answers. Free quiz maker for CBSE biology teachers. Botany, zoology, and human biology topics covered.",
+    seoKeywords: ["biology MCQ generator CBSE","biology quiz maker teacher India","biology questions class 10 free"],
+    faqs: [
+      { q: "Does it cover both botany and zoology?", a: "Yes. Enter any biology topic and get relevant MCQs." },
+      { q: "Are explanations included?", a: "Yes. One-line explanation with each answer." },
+      { q: "Is it NCERT aligned?", a: "Yes. Follows NCERT biology syllabus." },
+      { q: "Can I get 20 questions at once?", a: "Yes. Select up to 20 MCQs per generation." },
+      { q: "Is it free?", a: "Completely free." },
+    ],
+    priority: 0.85,
+  },
+
+  /* ════════════════════════════════════════════════════════════════════════
+     MATHEMATICS — Phase 2
+  ════════════════════════════════════════════════════════════════════════ */
+  {
+    id: "maths-formula-sheet",
+    name: "Maths Formula Sheet Generator",
+    desc: "Generate a complete formula sheet for any maths topic or chapter.",
+    icon: "📐", category: "maths",
+    audience: "teacher", model: "fast", maxTokens: 500,
+    inputs: [
+      { id: "topic", label: "Topic / Chapter", type: "text", placeholder: "e.g. Trigonometry, Quadratic Equations, Statistics", required: true },
+      { id: "class", label: "Class", type: "select", options: ["Class 8","Class 9","Class 10","Class 11","Class 12"] },
+    ],
+    promptTemplate: `Create a complete maths formula sheet.
+Topic: {{topic}} | Class: {{class}}
+Format:
+TOPIC: [name]
+[Formula Name]: [formula with variables defined]
+...all formulas listed...
+IMPORTANT NOTES: 2-3 key reminders
+COMMON MISTAKES: 2-3 mistakes students make
+Comprehensive. All formulas a student needs for exams.`,
+    seoTitle: "Free Maths Formula Sheet Generator for Teachers | Forjit AI",
+    seoDesc: "Generate complete maths formula sheets for any topic. Free tool for Indian maths teachers. CBSE Class 8-12 aligned.",
+    seoKeywords: ["maths formula sheet generator India","math formulas CBSE teacher","maths formula list maker free"],
+    faqs: [
+      { q: "Are all formulas included?", a: "Yes. Complete formula sheet with all formulas for the topic." },
+      { q: "Does it include notes?", a: "Yes. Important notes and common mistakes are included." },
+      { q: "What topics are supported?", a: "All maths topics from Class 8-12 — algebra, geometry, trigonometry, calculus, statistics." },
+      { q: "Can students use this?", a: "Yes. Print and give to students as a revision sheet." },
+      { q: "Is it free?", a: "Completely free." },
+    ],
+    priority: 0.85,
+  },
+
+  {
+    id: "statistics-calculator-teacher",
+    name: "Statistics Problem Solver",
+    desc: "Solve mean, median, mode, standard deviation, and probability problems step-by-step.",
+    icon: "📊", category: "maths",
+    audience: "teacher", model: "smart", maxTokens: 500,
+    inputs: [
+      { id: "problem", label: "Problem / Data", type: "textarea", placeholder: "e.g. Find mean, median, mode of: 5, 8, 3, 8, 9, 2, 8, 10", required: true, rows: 3 },
+      { id: "class", label: "Class", type: "select", options: ["Class 8","Class 9","Class 10","Class 11","Class 12"] },
+      { id: "topic", label: "Statistics Topic", type: "select", options: ["Mean/Median/Mode","Standard Deviation","Probability","Correlation","All of above"] },
+    ],
+    promptTemplate: `Solve this statistics problem step-by-step.
+Problem: {{problem}} | Class: {{class}} | Topic: {{topic}}
+Show:
+1. IDENTIFY what is asked
+2. FORMULA USED
+3. STEP-BY-STEP CALCULATION (tabular where needed)
+4. ANSWER
+5. INTERPRETATION of the result
+CBSE maths curriculum. Clear and detailed.`,
+    seoTitle: "Free Statistics Problem Solver for Teachers | Forjit AI",
+    seoDesc: "Solve mean, median, mode, standard deviation problems step-by-step. Free statistics tool for Indian maths teachers.",
+    seoKeywords: ["statistics solver teacher India","mean median mode calculator CBSE","statistics problem step by step free"],
+    faqs: [
+      { q: "What statistics topics are covered?", a: "Mean, median, mode, standard deviation, probability, and correlation." },
+      { q: "Are steps shown?", a: "Yes. Full step-by-step working with formula and substitution." },
+      { q: "Can I paste raw data?", a: "Yes. Paste your data set directly into the problem field." },
+      { q: "Is the result interpreted?", a: "Yes. A plain English interpretation of the answer is included." },
+      { q: "Is it free?", a: "Completely free." },
+    ],
+    priority: 0.84,
+  },
+
+  /* ════════════════════════════════════════════════════════════════════════
+     COMPUTER SCIENCE
+  ════════════════════════════════════════════════════════════════════════ */
+  {
+    id: "code-explainer-teacher",
+    name: "Code Explainer for Students",
+    desc: "Paste any code — get a plain English line-by-line explanation for students.",
+    icon: "💻", category: "computer",
+    audience: "teacher", model: "smart", maxTokens: 600,
+    inputs: [
+      { id: "code", label: "Paste Code Here", type: "textarea", placeholder: "Paste Python, C++, Java, or any code…", required: true, rows: 5 },
+      { id: "language", label: "Language", type: "select", options: ["Python","C++","Java","C","JavaScript","SQL","Any"] },
+      { id: "class", label: "Level", type: "select", options: ["Class 11","Class 12","College UG","Beginner"] },
+    ],
+    promptTemplate: `Explain this code to students in plain language.
+Language: {{language}} | Level: {{class}}
+Code:
+{{code}}
+
+Provide:
+1. WHAT THIS PROGRAM DOES (2-3 sentences)
+2. LINE-BY-LINE EXPLANATION (each line explained simply)
+3. KEY CONCEPTS used (list)
+4. SAMPLE OUTPUT (if applicable)
+5. COMMON ERRORS beginners make with this type of code
+Student-friendly. No jargon.`,
+    seoTitle: "Free Code Explainer for CS Teachers | Forjit AI",
+    seoDesc: "Explain any code in plain English for students. Free tool for computer science teachers. Python, C++, Java, SQL supported.",
+    seoKeywords: ["code explainer teacher India","explain code to students free","programming code explanation CBSE CS"],
+    faqs: [
+      { q: "What languages are supported?", a: "Python, C++, Java, C, JavaScript, SQL, and more." },
+      { q: "Is it suitable for Class 11-12 CS?", a: "Yes. CBSE Class 11-12 computer science level explanations." },
+      { q: "Does it explain line by line?", a: "Yes. Each line is explained in simple English." },
+      { q: "Can it show sample output?", a: "Yes. Expected output is shown where applicable." },
+      { q: "Is it free?", a: "Completely free." },
+    ],
+    priority: 0.87,
+  },
+
+  {
+    id: "pseudocode-generator",
+    name: "Pseudocode Generator",
+    desc: "Convert algorithm descriptions or code into clean pseudocode for teaching.",
+    icon: "📝", category: "computer",
+    audience: "teacher", model: "fast", maxTokens: 400,
+    inputs: [
+      { id: "algorithm", label: "Algorithm / Program Description", type: "textarea", placeholder: "e.g. Find the largest number in an array, or paste actual code", required: true, rows: 3 },
+      { id: "style", label: "Pseudocode Style", type: "select", options: ["Simple English","CBSE Format","Structured (Begin/End)","Flowchart-friendly"] },
+    ],
+    promptTemplate: `Convert this into clear pseudocode.
+Algorithm: {{algorithm}}
+Style: {{style}}
+Write clean, readable pseudocode that students can follow.
+Use: INPUT/OUTPUT/IF-THEN-ELSE/FOR/WHILE/BEGIN/END as appropriate.
+Add brief comments where helpful.`,
+    seoTitle: "Free Pseudocode Generator for CS Teachers | Forjit AI",
+    seoDesc: "Convert algorithms into clean pseudocode for students. Free tool for computer science teachers. CBSE format supported.",
+    seoKeywords: ["pseudocode generator teacher India","algorithm to pseudocode CBSE","pseudocode maker CS teacher free"],
+    faqs: [
+      { q: "What styles are available?", a: "Simple English, CBSE format, Structured (Begin/End), and Flowchart-friendly." },
+      { q: "Can I paste code to convert to pseudocode?", a: "Yes. Paste actual code and it converts to pseudocode." },
+      { q: "Is CBSE format supported?", a: "Yes. Select 'CBSE Format' for board-exam style pseudocode." },
+      { q: "Is it useful for teaching algorithms?", a: "Yes. Great for explaining algorithms before coding." },
+      { q: "Is it free?", a: "Completely free." },
+    ],
+    priority: 0.84,
+  },
+
+  {
+    id: "cs-project-ideas",
+    name: "CS Project Idea Generator",
+    desc: "Generate original computer science project ideas with scope, features, and tech stack.",
+    icon: "🖥️", category: "computer",
+    audience: "teacher", model: "smart", maxTokens: 500,
+    inputs: [
+      { id: "class", label: "Level", type: "select", options: ["Class 11","Class 12","BCA/BSc Year 1","BCA/BSc Year 2","BCA/BSc Year 3","MCA/MSc"] },
+      { id: "domain", label: "Domain", type: "select", options: ["Any Domain","Education","Healthcare","Agriculture","Finance","E-commerce","Social Media","Gaming","Environment"] },
+      { id: "language", label: "Language/Tech", type: "select", options: ["Python","Java","C++","Web (HTML/CSS/JS)","Any"] },
+      { id: "count", label: "Number of Ideas", type: "select", options: ["3","5","8","10"] },
+    ],
+    promptTemplate: `Generate {{count}} original CS project ideas.
+Level: {{class}} | Domain: {{domain}} | Tech: {{language}}
+For each idea:
+PROJECT [N]: [Name]
+DESCRIPTION: What it does (2 sentences)
+KEY FEATURES: 3-4 bullet points
+TECH STACK: Technologies to use
+DIFFICULTY: Easy/Medium/Hard
+INDIA RELEVANCE: Why useful in Indian context
+Original, practical, implementable ideas.`,
+    seoTitle: "Free CS Project Idea Generator for Teachers | Forjit AI",
+    seoDesc: "Generate original computer science project ideas with features and tech stack. Free tool for CS teachers. Class 11-12 and college level.",
+    seoKeywords: ["CS project ideas India","computer science project generator CBSE","programming project ideas class 12"],
+    faqs: [
+      { q: "Are the project ideas original?", a: "Yes. Fresh, practical project ideas relevant to Indian context." },
+      { q: "Is it suitable for Class 12?", a: "Yes. Works for Class 11-12 and college level projects." },
+      { q: "Are tech stacks suggested?", a: "Yes. Relevant technologies are suggested for each project." },
+      { q: "Can I get ideas for a specific domain?", a: "Yes. Select education, healthcare, agriculture, finance, and more." },
+      { q: "Is it free?", a: "Completely free." },
+    ],
+    priority: 0.85,
+  },
+
+  {
+    id: "sql-query-builder",
+    name: "SQL Query Builder for Students",
+    desc: "Generate SQL queries with explanation for teaching database concepts.",
+    icon: "🗄️", category: "computer",
+    audience: "teacher", model: "smart", maxTokens: 450,
+    inputs: [
+      { id: "task", label: "What Query to Write", type: "textarea", placeholder: "e.g. Find all students with marks > 75 from student table, or create a table for library", required: true, rows: 2 },
+      { id: "level", label: "Level", type: "select", options: ["Class 11","Class 12","College Basic","College Advanced"] },
+    ],
+    promptTemplate: `Write SQL query/queries for this task with explanation.
+Task: {{task}} | Level: {{level}}
+Provide:
+1. SQL QUERY (clean, formatted)
+2. LINE-BY-LINE EXPLANATION
+3. SAMPLE TABLE STRUCTURE (if creating/querying)
+4. SAMPLE OUTPUT (what result looks like)
+5. VARIATIONS (2 similar queries to practice)
+CBSE/college database curriculum.`,
+    seoTitle: "Free SQL Query Builder for CS Teachers | Forjit AI",
+    seoDesc: "Generate SQL queries with explanation for students. Free tool for computer science teachers. CBSE Class 11-12 and college level.",
+    seoKeywords: ["SQL query generator teacher India","SQL for students CBSE","database query builder CS teacher free"],
+    faqs: [
+      { q: "Which SQL concepts are covered?", a: "SELECT, INSERT, UPDATE, DELETE, JOIN, GROUP BY, CREATE TABLE, and more." },
+      { q: "Is it explained line by line?", a: "Yes. Each part of the query is explained simply." },
+      { q: "Does it show sample output?", a: "Yes. Expected query output is shown." },
+      { q: "Is it CBSE Class 11-12 aligned?", a: "Yes. Covers CBSE database/SQL curriculum." },
+      { q: "Is it free?", a: "Completely free." },
+    ],
+    priority: 0.84,
+  },
+
+  /* ════════════════════════════════════════════════════════════════════════
+     GEOGRAPHY
+  ════════════════════════════════════════════════════════════════════════ */
+  {
+    id: "geography-case-study",
+    name: "Geography Case Study Notes Maker",
+    desc: "Generate detailed case study notes for any geography topic — rivers, cities, disasters, agriculture.",
+    icon: "🗺️", category: "social-science", subCategory: "geography",
+    audience: "teacher", model: "smart", maxTokens: 600,
+    inputs: [
+      { id: "topic", label: "Case Study Topic", type: "text", placeholder: "e.g. Amazon Rainforest, Chennai Floods 2015, Green Revolution in India", required: true },
+      { id: "class", label: "Class", type: "select", options: ["Class 6","Class 7","Class 8","Class 9","Class 10","Class 11","Class 12"] },
+      { id: "type", label: "Topic Type", type: "select", options: ["Natural Disaster","River/Water Body","Agriculture","City/Region","Climate","Industrial Region","Any"] },
+    ],
+    promptTemplate: `Create detailed geography case study notes.
+Topic: {{topic}} | Class: {{class}} | Type: {{type}}
+Sections:
+1. OVERVIEW (location, key facts)
+2. IMPORTANT FEATURES (geographical characteristics)
+3. CAUSES / FORMATION (how it came about)
+4. IMPACT / SIGNIFICANCE (economic, social, environmental)
+5. CHALLENGES & SOLUTIONS
+6. KEY STATISTICS / DATA POINTS
+7. MAP NOTES (what to show on a map)
+8. EXAM-LIKELY QUESTIONS (3 questions)
+NCERT/CBSE curriculum context.`,
+    seoTitle: "Free Geography Case Study Notes Maker | Forjit AI",
+    seoDesc: "Generate geography case study notes for any topic. Free tool for Indian geography teachers. Rivers, disasters, agriculture, cities covered.",
+    seoKeywords: ["geography case study notes maker","geography notes generator CBSE","geography teacher tool India free"],
+    faqs: [
+      { q: "What topics can I create case studies for?", a: "Any geography topic — natural disasters, rivers, agriculture, climate, cities, industrial regions." },
+      { q: "Is it NCERT aligned?", a: "Yes. Follows NCERT and CBSE geography curriculum." },
+      { q: "Are map notes included?", a: "Yes. Notes on what to show on a map are included." },
+      { q: "Does it include exam questions?", a: "Yes. 3 likely exam questions are included." },
+      { q: "Is it free?", a: "Completely free." },
+    ],
+    priority: 0.85,
+  },
+
+  {
+    id: "geography-mcq-maker",
+    name: "Geography MCQ Maker",
+    desc: "Generate geography MCQs for physical, human, and economic geography topics.",
+    icon: "🌍", category: "social-science", subCategory: "geography",
+    audience: "teacher", model: "smart", maxTokens: 550,
+    inputs: [
+      { id: "topic", label: "Geography Topic", type: "text", placeholder: "e.g. Monsoon, Soil Types, Population Distribution", required: true },
+      { id: "class", label: "Class", type: "select", options: ["Class 6","Class 7","Class 8","Class 9","Class 10","Class 11","Class 12"] },
+      { id: "count", label: "Number of MCQs", type: "select", options: ["5","10","15","20"] },
+    ],
+    promptTemplate: `Generate {{count}} geography MCQs with answers.
+Topic: {{topic}} | Class: {{class}}
+Format: Q[N]. question \n A) B) C) D) \n Answer: X
+Include map-based, data-based, and concept questions. NCERT/CBSE curriculum.`,
+    seoTitle: "Free Geography MCQ Maker for Teachers | Forjit AI",
+    seoDesc: "Generate geography MCQs for any topic. Free quiz maker for CBSE geography teachers. Physical, human, and economic geography covered.",
+    seoKeywords: ["geography MCQ generator CBSE","geography quiz maker teacher India","geography questions class 10 free"],
+    faqs: [
+      { q: "What geography types are covered?", a: "Physical, human, economic, and Indian geography." },
+      { q: "Is it NCERT aligned?", a: "Yes. Follows NCERT geography syllabus." },
+      { q: "Are map-based questions included?", a: "Yes. Map-based and data-interpretation questions are included." },
+      { q: "Which classes are supported?", a: "Class 6 through Class 12." },
+      { q: "Is it free?", a: "Completely free." },
+    ],
+    priority: 0.84,
+  },
+
+  /* ════════════════════════════════════════════════════════════════════════
+     ENGLISH LANGUAGE — Phase 2
+  ════════════════════════════════════════════════════════════════════════ */
+  {
+    id: "english-grammar-worksheet",
+    name: "English Grammar Worksheet Generator",
+    desc: "Generate grammar worksheets with exercises and answer keys for any grammar topic.",
+    icon: "✍️", category: "language", subCategory: "english",
+    audience: "teacher", model: "smart", maxTokens: 600,
+    inputs: [
+      { id: "topic", label: "Grammar Topic", type: "text", placeholder: "e.g. Tenses, Articles, Prepositions, Subject-Verb Agreement", required: true },
+      { id: "class", label: "Class", type: "select", options: ["Class 4","Class 5","Class 6","Class 7","Class 8","Class 9","Class 10"] },
+      { id: "type", label: "Exercise Type", type: "select", options: ["Fill in the Blanks","Correct the Sentences","Match the Following","Rewrite Sentences","Mixed Types"] },
+      { id: "count", label: "Number of Questions", type: "select", options: ["5","8","10","15"] },
+    ],
+    promptTemplate: `Create an English grammar worksheet.
+Topic: {{topic}} | Class: {{class}} | Type: {{type}} | Count: {{count}} questions
+Format:
+WORKSHEET: [Title]
+INSTRUCTIONS: [clear instructions]
+EXERCISES: [{{count}} numbered exercises]
+---
+ANSWER KEY: [all answers]
+Age-appropriate. CBSE/ICSE English curriculum.`,
+    seoTitle: "Free English Grammar Worksheet Generator for Teachers | Forjit AI",
+    seoDesc: "Generate English grammar worksheets with answer keys. Free tool for English teachers. CBSE/ICSE aligned. Fill in blanks, correction, matching.",
+    seoKeywords: ["english grammar worksheet generator teacher","grammar exercises maker India free","english worksheet CBSE teacher"],
+    faqs: [
+      { q: "Is the answer key included?", a: "Yes. Complete answer key at the end of every worksheet." },
+      { q: "What exercise types are available?", a: "Fill in the blanks, correct the sentences, match the following, rewrite sentences." },
+      { q: "Can I get worksheets for any grammar topic?", a: "Yes. Tenses, articles, prepositions, conjunctions, modals, and more." },
+      { q: "Which classes are supported?", a: "Class 4 through Class 10." },
+      { q: "Is it free?", a: "Completely free." },
+    ],
+    priority: 0.87,
+  },
+
+  {
+    id: "english-comprehension-generator",
+    name: "Reading Comprehension Generator",
+    desc: "Generate unseen passages with comprehension questions and answers for any class.",
+    icon: "📖", category: "language", subCategory: "english",
+    audience: "teacher", model: "smart", maxTokens: 650,
+    inputs: [
+      { id: "theme", label: "Passage Theme", type: "text", placeholder: "e.g. Environment, Science, Indian Culture, Sports", required: true },
+      { id: "class", label: "Class", type: "select", options: ["Class 4","Class 5","Class 6","Class 7","Class 8","Class 9","Class 10"] },
+      { id: "length", label: "Passage Length", type: "select", options: ["Short (100-150 words)","Medium (200-250 words)","Long (300-350 words)"] },
+    ],
+    promptTemplate: `Create an unseen reading comprehension passage with questions.
+Theme: {{theme}} | Class: {{class}} | Length: {{length}}
+Format:
+PASSAGE: [original passage, {{length}}, engaging and age-appropriate]
+QUESTIONS:
+1. [Factual question]
+2. [Inference question]
+3. [Vocabulary question — find word meaning from context]
+4. [True/False or Yes/No — 2 statements]
+5. [Give title to passage]
+ANSWERS: [complete answer key]
+Indian English curriculum context.`,
+    seoTitle: "Free Reading Comprehension Generator for English Teachers | Forjit AI",
+    seoDesc: "Generate unseen comprehension passages with questions and answers. Free tool for English teachers. CBSE/ICSE Class 4-10.",
+    seoKeywords: ["comprehension passage generator teacher","unseen passage maker CBSE","reading comprehension generator India free"],
+    faqs: [
+      { q: "Are the passages original?", a: "Yes. Fresh, original passages on any theme you choose." },
+      { q: "Are answer keys included?", a: "Yes. Complete answer key for all questions." },
+      { q: "What question types are included?", a: "Factual, inference, vocabulary, true/false, and title questions." },
+      { q: "Is it suitable for board exams?", a: "Yes. Follows CBSE/ICSE comprehension question pattern." },
+      { q: "Is it free?", a: "Completely free." },
+    ],
+    priority: 0.88,
+  },
+
+  {
+    id: "english-formal-letter",
+    name: "Formal Letter Writer (English)",
+    desc: "Generate formal letters for students — complaint, request, application, editor letters.",
+    icon: "📩", category: "language", subCategory: "english",
+    audience: "teacher", model: "fast", maxTokens: 450,
+    inputs: [
+      { id: "type", label: "Letter Type", type: "select", options: ["Application Letter","Complaint Letter","Request Letter","Letter to Editor","Notice","Advertisement"] },
+      { id: "topic", label: "Purpose / Topic", type: "text", placeholder: "e.g. Complaining about poor road condition, Requesting leave", required: true },
+      { id: "class", label: "Class", type: "select", options: ["Class 6","Class 7","Class 8","Class 9","Class 10","Class 11","Class 12"] },
+    ],
+    promptTemplate: `Write a {{type}} for students to use as a model.
+Purpose: {{topic}} | Class: {{class}}
+Use correct format:
+- Sender's address + date
+- Receiver's address
+- Subject line
+- Salutation
+- Body (2-3 paragraphs)
+- Closing + signature
+CBSE English exam format. Formal tone. Word limit 120-150 words.`,
+    seoTitle: "Free Formal Letter Writer for English Teachers | Forjit AI",
+    seoDesc: "Generate formal letters for students. Application, complaint, request, editor letters. Free tool for English teachers. CBSE format.",
+    seoKeywords: ["formal letter generator English teacher","letter writing CBSE class 10","formal letter maker India free"],
+    faqs: [
+      { q: "What letter types are available?", a: "Application, complaint, request, letter to editor, notice, and advertisement." },
+      { q: "Is CBSE format followed?", a: "Yes. Correct CBSE exam format with all required sections." },
+      { q: "Is word limit maintained?", a: "Yes. Approximately 120-150 words as required for board exams." },
+      { q: "Can students use these as model letters?", a: "Yes. Teachers can use as model answers in class." },
+      { q: "Is it free?", a: "Completely free." },
+    ],
+    priority: 0.86,
+  },
+
+  /* ════════════════════════════════════════════════════════════════════════
+     HINDI — Phase 2
+  ════════════════════════════════════════════════════════════════════════ */
+  {
+    id: "hindi-anuched-lekhan",
+    name: "Hindi Anuched Lekhan Generator (अनुच्छेद लेखन)",
+    desc: "किसी भी विषय पर 80-100 शब्दों का हिंदी अनुच्छेद बनाएं।",
+    icon: "📝", category: "language", subCategory: "hindi",
+    audience: "teacher", model: "fast", maxTokens: 350,
+    inputs: [
+      { id: "topic", label: "विषय (Topic)", type: "text", placeholder: "e.g. समय की पाबंदी, पर्यावरण प्रदूषण, मोबाइल फोन", required: true },
+      { id: "class", label: "कक्षा (Class)", type: "select", options: ["Class 6","Class 7","Class 8","Class 9","Class 10"] },
+    ],
+    promptTemplate: `एक उत्कृष्ट हिंदी अनुच्छेद लिखें।
+विषय: {{topic}} | कक्षा: {{class}}
+80-100 शब्दों में। सरल हिंदी। परिचय, मुख्य विचार, और निष्कर्ष के साथ।
+CBSE/NCERT पाठ्यक्रम के अनुसार।`,
+    seoTitle: "Hindi Anuched Lekhan Generator Free | अनुच्छेद लेखन | Forjit AI",
+    seoDesc: "किसी भी विषय पर हिंदी अनुच्छेद बनाएं। Free Hindi anuched lekhan tool for teachers and students. CBSE Class 6-10.",
+    seoKeywords: ["hindi anuched lekhan generator","अनुच्छेद लेखन AI","CBSE hindi paragraph writer free"],
+    faqs: [
+      { q: "शब्द सीमा कितनी होगी?", a: "80-100 शब्द — परीक्षा के अनुसार।" },
+      { q: "क्या यह CBSE के लिए उपयुक्त है?", a: "हाँ। CBSE और NCERT पाठ्यक्रम के अनुसार।" },
+      { q: "किस कक्षा के लिए उपयोगी है?", a: "Class 6 से Class 10 तक।" },
+      { q: "क्या भाषा सरल होगी?", a: "हाँ। सरल और शुद्ध हिंदी में।" },
+      { q: "क्या यह मुफ्त है?", a: "हाँ। बिल्कुल मुफ्त।" },
+    ],
+    priority: 0.85,
+  },
+
+  {
+    id: "hindi-muhavare-explainer",
+    name: "Hindi Muhavare & Lokoktiyan Explainer (मुहावरे और लोकोक्तियाँ)",
+    desc: "हिंदी मुहावरों और लोकोक्तियों का अर्थ, उदाहरण, और वाक्य प्रयोग।",
+    icon: "💬", category: "language", subCategory: "hindi",
+    audience: "teacher", model: "fast", maxTokens: 400,
+    inputs: [
+      { id: "muhavara", label: "मुहावरा / लोकोक्ति", type: "text", placeholder: "e.g. आम के आम गुठलियों के दाम, नाच न जाने आँगन टेढ़ा", required: true },
+      { id: "class", label: "कक्षा (Class)", type: "select", options: ["Class 6","Class 7","Class 8","Class 9","Class 10"] },
+    ],
+    promptTemplate: `हिंदी मुहावरे/लोकोक्ति समझाएं।
+मुहावरा: {{muhavara}} | कक्षा: {{class}}
+बताएं:
+1. अर्थ (Meaning in Hindi)
+2. English meaning
+3. वाक्य प्रयोग (3 example sentences)
+4. इसे कब उपयोग करते हैं (When to use)
+5. इसी तरह के 2 अन्य मुहावरे
+सरल हिंदी में। CBSE परीक्षा के अनुसार।`,
+    seoTitle: "Hindi Muhavare Explainer Free | मुहावरे और लोकोक्तियाँ | Forjit AI",
+    seoDesc: "हिंदी मुहावरों और लोकोक्तियों का अर्थ और वाक्य प्रयोग। Free Hindi muhavare tool for teachers and students. CBSE aligned.",
+    seoKeywords: ["hindi muhavare explainer free","मुहावरे अर्थ AI","hindi idioms meaning tool India"],
+    faqs: [
+      { q: "क्या English meaning भी मिलेगी?", a: "हाँ। Hindi और English दोनों में अर्थ दिया जाता है।" },
+      { q: "क्या वाक्य प्रयोग भी मिलेगा?", a: "हाँ। 3 example sentences मिलते हैं।" },
+      { q: "क्या यह परीक्षा के लिए उपयोगी है?", a: "हाँ। CBSE परीक्षा pattern के अनुसार।" },
+      { q: "क्या मिलते-जुलते मुहावरे भी बताए जाते हैं?", a: "हाँ। 2 similar मुहावरे भी बताए जाते हैं।" },
+      { q: "क्या यह मुफ्त है?", a: "हाँ। बिल्कुल मुफ्त।" },
+    ],
+    priority: 0.84,
+  },
+
+  /* ════════════════════════════════════════════════════════════════════════
+     ADMIN / CROSS-SUBJECT — Phase 2
+  ════════════════════════════════════════════════════════════════════════ */
+  {
+    id: "syllabus-completion-tracker",
+    name: "Syllabus Completion Planner",
+    desc: "Create a month-wise syllabus completion plan for any subject and class.",
+    icon: "📅", category: "cross-subject",
+    audience: "teacher", model: "smart", maxTokens: 600,
+    inputs: [
+      { id: "subject", label: "Subject", type: "text", placeholder: "e.g. Physics Class 12", required: true },
+      { id: "chapters", label: "Chapters to Cover", type: "textarea", placeholder: "List chapters e.g. Electric Charges, Current Electricity, Magnetism…", required: true, rows: 3 },
+      { id: "months", label: "Available Months", type: "select", options: ["3 months","4 months","5 months","6 months","8 months","10 months"] },
+      { id: "periods", label: "Periods Per Week", type: "select", options: ["3","4","5","6"] },
+    ],
+    promptTemplate: `Create a syllabus completion planner.
+Subject: {{subject}} | Chapters: {{chapters}}
+Duration: {{months}} | Periods/week: {{periods}}
+Format as a month-wise table:
+MONTH | CHAPTERS TO COVER | PERIODS NEEDED | TESTS/ACTIVITIES
+Include:
+- Revision weeks
+- Unit test schedule  
+- Buffer time for slow topics
+- Practical sessions if applicable
+Realistic and practical for Indian school schedule.`,
+    seoTitle: "Free Syllabus Completion Planner for Teachers | Forjit AI",
+    seoDesc: "Create month-wise syllabus completion plans for any subject. Free tool for Indian school teachers. Includes test schedule and revision.",
+    seoKeywords: ["syllabus completion planner teacher India","lesson planner month-wise free","syllabus tracker teacher CBSE"],
+    faqs: [
+      { q: "Does it include test schedules?", a: "Yes. Unit test and revision schedules are built in." },
+      { q: "Is buffer time included?", a: "Yes. Buffer time for slow topics and revision is factored in." },
+      { q: "Can I use it for any subject?", a: "Yes. Works for all subjects — science, maths, language, social science." },
+      { q: "Is it suitable for the full academic year?", a: "Yes. Works for 3 months to 10 months of planning." },
+      { q: "Is it free?", a: "Completely free." },
+    ],
+    priority: 0.86,
+  },
+
+  {
+    id: "student-recommendation-letter",
+    name: "Student Recommendation Letter Writer",
+    desc: "Generate professional recommendation letters for students — college, scholarship, or job.",
+    icon: "🎓", category: "cross-subject",
+    audience: "teacher", model: "smart", maxTokens: 500,
+    inputs: [
+      { id: "studentName", label: "Student Name", type: "text", placeholder: "e.g. Priya Sharma", required: true },
+      { id: "purpose", label: "Purpose", type: "select", options: ["College Admission","Scholarship Application","Internship","Job Application","Award Nomination"] },
+      { id: "subject", label: "Your Subject", type: "text", placeholder: "e.g. Mathematics, Physics", required: true },
+      { id: "qualities", label: "Student's Key Strengths", type: "text", placeholder: "e.g. analytical thinking, hardworking, leadership", required: false },
+    ],
+    promptTemplate: `Write a professional student recommendation letter.
+Student: {{studentName}} | Purpose: {{purpose}} | Teacher's Subject: {{subject}}
+Strengths: {{qualities}}
+Format:
+- Date, teacher's designation
+- "To Whom It May Concern"
+- Para 1: How long known, in what capacity
+- Para 2: Academic performance and subject strengths
+- Para 3: Character, qualities, extra-curricular
+- Para 4: Strong recommendation and contact offer
+- Closing: Name, Designation, School, Contact
+Professional, specific, warm tone. 250-300 words.`,
+    seoTitle: "Free Student Recommendation Letter Writer for Teachers | Forjit AI",
+    seoDesc: "Generate professional student recommendation letters. Free tool for Indian teachers. College, scholarship, internship, job letters.",
+    seoKeywords: ["recommendation letter generator teacher India","student recommendation letter free","letter of recommendation writer school India"],
+    faqs: [
+      { q: "What purposes are supported?", a: "College admission, scholarship, internship, job, and award nomination." },
+      { q: "Is it professional quality?", a: "Yes. Professional English suitable for official use." },
+      { q: "How long is the letter?", a: "Approximately 250-300 words — appropriate length for recommendations." },
+      { q: "Can I customise it?", a: "Yes. Copy and personalise with specific details." },
+      { q: "Is it free?", a: "Completely free." },
+    ],
+    priority: 0.85,
+  },
+
+  {
+    id: "differentiated-instruction-planner",
+    name: "Differentiated Instruction Planner",
+    desc: "Create teaching plans that address weak, average, and advanced students in the same class.",
+    icon: "🎯", category: "cross-subject",
+    audience: "teacher", model: "smart", maxTokens: 600,
+    inputs: [
+      { id: "topic", label: "Topic", type: "text", placeholder: "e.g. Fractions, Photosynthesis, World War II", required: true },
+      { id: "subject", label: "Subject", type: "text", placeholder: "e.g. Mathematics", required: true },
+      { id: "class", label: "Class", type: "select", options: ["Class 5","Class 6","Class 7","Class 8","Class 9","Class 10"] },
+    ],
+    promptTemplate: `Create a differentiated instruction plan.
+Topic: {{topic}} | Subject: {{subject}} | Class: {{class}}
+Provide 3 versions of the lesson:
+WEAK STUDENTS:
+- Learning objective (simplified)
+- Activity (concrete, visual, hands-on)
+- Assessment (basic recall)
+- Support strategies
+
+AVERAGE STUDENTS:
+- Learning objective (standard)
+- Activity (guided practice)
+- Assessment (application)
+
+ADVANCED STUDENTS:
+- Learning objective (extended)
+- Activity (higher-order thinking)
+- Assessment (analysis/creation)
+- Extension task
+
+WHOLE CLASS: One activity that includes all levels.
+Indian classroom context.`,
+    seoTitle: "Free Differentiated Instruction Planner for Teachers | Forjit AI",
+    seoDesc: "Create differentiated teaching plans for weak, average, and advanced students. Free tool for Indian school teachers.",
+    seoKeywords: ["differentiated instruction planner India","inclusive teaching plan teacher free","differentiated learning CBSE teacher tool"],
+    faqs: [
+      { q: "What is differentiated instruction?", a: "Teaching the same topic at different levels to meet each student's needs." },
+      { q: "Does it cover all student levels?", a: "Yes. Weak, average, and advanced students all get appropriate activities." },
+      { q: "Is it suitable for B.Ed?", a: "Yes. Excellent for B.Ed lesson plans and inclusive education assignments." },
+      { q: "Can I use it for any subject?", a: "Yes. Works for maths, science, language, social science, and more." },
+      { q: "Is it free?", a: "Completely free." },
+    ],
+    priority: 0.86,
+  },
+
+  {
+    id: "notice-circular-writer",
+    name: "School Notice & Circular Writer",
+    desc: "Generate professional school notices and circulars for any event or announcement.",
+    icon: "📋", category: "cross-subject",
+    audience: "teacher", model: "fast", maxTokens: 350,
+    inputs: [
+      { id: "type", label: "Notice Type", type: "select", options: ["School Notice","Circular to Parents","Meeting Notice","Event Announcement","Holiday Notice","Exam Circular","General Circular"] },
+      { id: "topic", label: "Subject / Purpose", type: "text", placeholder: "e.g. Annual Sports Day, Parent-Teacher Meeting, Diwali Holiday", required: true },
+      { id: "details", label: "Key Details", type: "textarea", placeholder: "Date, time, venue, any special instructions…", rows: 2, required: false },
+    ],
+    promptTemplate: `Write a professional school {{type}}.
+Subject: {{topic}}
+Details: {{details}}
+Format:
+NOTICE / CIRCULAR
+[Title in caps]
+Date: [today's date placeholder]
+[Body — clear, concise, 3-4 sentences]
+[Any action required]
+[Signature: Class Teacher / Principal / School Office]
+Professional tone. Clear language. Indian school format.`,
+    seoTitle: "Free School Notice & Circular Writer for Teachers | Forjit AI",
+    seoDesc: "Generate professional school notices and circulars. Free tool for Indian school teachers. Events, meetings, holidays, exams covered.",
+    seoKeywords: ["school notice writer teacher India","circular generator school free","notice board content maker teacher"],
+    faqs: [
+      { q: "What notice types can I create?", a: "School notice, parent circular, meeting notice, event announcement, holiday notice, exam circular." },
+      { q: "Is the format professional?", a: "Yes. Standard Indian school notice/circular format." },
+      { q: "Can I add specific details?", a: "Yes. Add date, time, venue in the key details field." },
+      { q: "Is it suitable for printing?", a: "Yes. Copy and paste into Word for printing." },
+      { q: "Is it free?", a: "Completely free." },
+    ],
+    priority: 0.84,
+  },
+
+  /* ════════════════════════════════════════════════════════════════════════
+     HIGHER EDUCATION — Phase 2
+  ════════════════════════════════════════════════════════════════════════ */
+  {
+    id: "thesis-chapter-outline",
+    name: "Thesis / Dissertation Chapter Outline Maker",
+    desc: "Generate a detailed chapter outline for any research thesis or dissertation.",
+    icon: "📚", category: "higher-ed",
+    audience: "lecturer", model: "smart", maxTokens: 600,
+    inputs: [
+      { id: "title", label: "Thesis Title / Topic", type: "text", placeholder: "e.g. Impact of E-learning on Student Performance in Rural India", required: true },
+      { id: "discipline", label: "Discipline", type: "text", placeholder: "e.g. Education, Computer Science, Economics", required: true },
+      { id: "level", label: "Level", type: "select", options: ["UG Dissertation","PG Dissertation","PhD Thesis","M.Phil"] },
+    ],
+    promptTemplate: `Create a detailed thesis/dissertation chapter outline.
+Title: {{title}} | Discipline: {{discipline}} | Level: {{level}}
+Provide:
+CHAPTER 1: Introduction
+- Background, problem statement, objectives, research questions, significance, limitations, chapter scheme
+
+CHAPTER 2: Literature Review
+- Key themes to cover, suggested sub-sections, gap identification
+
+CHAPTER 3: Research Methodology
+- Research design, data collection, sampling, instruments, analysis plan
+
+CHAPTER 4: Data Analysis & Findings
+- Sub-sections for presenting results, tables, figures
+
+CHAPTER 5: Discussion & Conclusions
+- Interpretation, implications, recommendations, future scope
+
+REFERENCES: Format suggestion (APA/MLA)
+Each chapter with estimated page count and key points to address.`,
+    seoTitle: "Free Thesis Chapter Outline Maker for Researchers | Forjit AI",
+    seoDesc: "Generate detailed thesis and dissertation chapter outlines. Free tool for Indian college researchers and PhD scholars.",
+    seoKeywords: ["thesis outline generator India","dissertation chapter outline free","PhD thesis structure maker India"],
+    faqs: [
+      { q: "Does it cover all chapters?", a: "Yes. All 5 standard chapters with detailed sub-sections." },
+      { q: "Is it suitable for PhD thesis?", a: "Yes. Works for UG dissertation, PG dissertation, M.Phil, and PhD." },
+      { q: "Are page counts suggested?", a: "Yes. Estimated page count per chapter is included." },
+      { q: "Can it handle any discipline?", a: "Yes. Works for all academic disciplines." },
+      { q: "Is it free?", a: "Completely free." },
+    ],
+    priority: 0.84,
+  },
+
+  {
+    id: "citation-formatter",
+    name: "Reference & Citation Formatter",
+    desc: "Format references in APA, MLA, or Chicago style for research papers and assignments.",
+    icon: "🔖", category: "higher-ed",
+    audience: "lecturer", model: "fast", maxTokens: 400,
+    inputs: [
+      { id: "source", label: "Source Details", type: "textarea", placeholder: "e.g. Author name, book/article title, publisher, year, URL…", required: true, rows: 3 },
+      { id: "style", label: "Citation Style", type: "select", options: ["APA 7th Edition","MLA 9th Edition","Chicago","Harvard","Vancouver (Medical)"] },
+      { id: "type", label: "Source Type", type: "select", options: ["Book","Journal Article","Website","Newspaper","Thesis","Conference Paper","Any"] },
+    ],
+    promptTemplate: `Format this reference in {{style}} citation style.
+Source: {{source}}
+Source Type: {{type}}
+Provide:
+1. FORMATTED REFERENCE (exact format for reference list)
+2. IN-TEXT CITATION (how to cite within the paper)
+3. COMMON MISTAKES to avoid with this citation
+Follow {{style}} guidelines precisely.`,
+    seoTitle: "Free Citation & Reference Formatter for Teachers | Forjit AI",
+    seoDesc: "Format references in APA, MLA, Chicago, Harvard style. Free citation tool for Indian college researchers and lecturers.",
+    seoKeywords: ["citation formatter India free","APA MLA reference generator","bibliography maker college India"],
+    faqs: [
+      { q: "Which citation styles are supported?", a: "APA 7th, MLA 9th, Chicago, Harvard, and Vancouver (Medical)." },
+      { q: "Does it include in-text citations?", a: "Yes. Both reference list format and in-text citation format are given." },
+      { q: "What source types are supported?", a: "Books, journal articles, websites, newspapers, theses, and conference papers." },
+      { q: "Are common mistakes highlighted?", a: "Yes. Common citation mistakes for that format are noted." },
+      { q: "Is it free?", a: "Completely free." },
+    ],
+    priority: 0.83,
+  },
+
 ];

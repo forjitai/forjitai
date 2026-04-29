@@ -54,7 +54,7 @@ export const TEACHER_TOOLS = [
     inputs: [
       { id: "subject",  label: "Subject",  type: "text",   placeholder: "e.g. Physics, Hindi, History", required: true },
       { id: "topic",    label: "Topic",    type: "text",   placeholder: "e.g. Newton's Laws of Motion",  required: true },
-      { id: "class",    label: "Class",    type: "select", options: ["Class 1","Class 2","Class 3","Class 4","Class 5","Class 6","Class 7","Class 8","Class 9","Class 10","Class 11","Class 12","College"] },
+      { id: "class",    label: "Class",    type: "select", options: ["Class 1","Class 2","Class 3","Class 4","Class 5","Class 6","Class 7","Class 8","Class 9","Class 10","Class 11","Class 12","Diploma / Certificate","ITI / Vocational","UG Year 1 (FY)","UG Year 2 (SY)","UG Year 3 (TY)","UG Year 4 (Final)","B.A.","B.Sc.","B.Com.","BBA","BCA","B.Tech / BE","B.Ed","BDS","MBBS","BPT","B.Pharm","LLB","B.Arch","B.Design / B.FTech","B.Sc Nursing","BHMCT (Hotel Mgmt)","PG Year 1","PG Year 2","M.A.","M.Sc.","M.Com.","MBA","MCA","M.Tech / ME","M.Ed","MD / MS (Medical)","LLM","M.Arch","M.Design","M.Sc Nursing","MHMCT","M.Phil","PhD / Doctorate","Post-Doctoral","UPSC / Competitive Exams","Professional Training"] },
       { id: "board",    label: "Board",    type: "select", options: ["CBSE","ICSE","State Board","IB"] },
       { id: "duration", label: "Duration", type: "select", options: ["30 minutes","45 minutes","60 minutes","90 minutes"] },
     ],
@@ -95,7 +95,7 @@ Indian classroom context. Practical and specific.`,
     inputs: [
       { id: "subject",    label: "Subject",           type: "text",   placeholder: "e.g. Science, Maths, English", required: true },
       { id: "topic",      label: "Topic",             type: "text",   placeholder: "e.g. Photosynthesis",           required: true },
-      { id: "class",      label: "Class",             type: "select", options: ["Class 6","Class 7","Class 8","Class 9","Class 10","Class 11","Class 12"] },
+      { id: "class",      label: "Class",             type: "select", options: ["Class 1","Class 2","Class 3","Class 4","Class 5","Class 6","Class 7","Class 8","Class 9","Class 10","Class 11","Class 12","Diploma / Certificate","ITI / Vocational","UG Year 1 (FY)","UG Year 2 (SY)","UG Year 3 (TY)","UG Year 4 (Final)","B.A.","B.Sc.","B.Com.","BBA","BCA","B.Tech / BE","B.Ed","BDS","MBBS","BPT","B.Pharm","LLB","B.Arch","B.Design / B.FTech","B.Sc Nursing","BHMCT (Hotel Mgmt)","PG Year 1","PG Year 2","M.A.","M.Sc.","M.Com.","MBA","MCA","M.Tech / ME","M.Ed","MD / MS (Medical)","LLM","M.Arch","M.Design","M.Sc Nursing","MHMCT","M.Phil","PhD / Doctorate","Post-Doctoral","UPSC / Competitive Exams","Professional Training"] },
       { id: "count",      label: "Number of MCQs",   type: "select", options: ["5","10","15","20","25"] },
       { id: "difficulty", label: "Difficulty",        type: "select", options: ["Easy","Medium","Hard","Mixed"] },
     ],
@@ -132,7 +132,7 @@ Make questions varied — recall, application, and analysis types. CBSE curricul
     inputs: [
       { id: "subject",  label: "Subject",         type: "text",   placeholder: "e.g. Geography, Chemistry", required: true },
       { id: "topic",    label: "Topic",            type: "text",   placeholder: "e.g. Water Resources",      required: true },
-      { id: "class",    label: "Class",            type: "select", options: ["Class 6","Class 7","Class 8","Class 9","Class 10","Class 11","Class 12"] },
+      { id: "class",    label: "Class",            type: "select", options: ["Class 1","Class 2","Class 3","Class 4","Class 5","Class 6","Class 7","Class 8","Class 9","Class 10","Class 11","Class 12","Diploma / Certificate","ITI / Vocational","UG Year 1 (FY)","UG Year 2 (SY)","UG Year 3 (TY)","UG Year 4 (Final)","B.A.","B.Sc.","B.Com.","BBA","BCA","B.Tech / BE","B.Ed","BDS","MBBS","BPT","B.Pharm","LLB","B.Arch","B.Design / B.FTech","B.Sc Nursing","BHMCT (Hotel Mgmt)","PG Year 1","PG Year 2","M.A.","M.Sc.","M.Com.","MBA","MCA","M.Tech / ME","M.Ed","MD / MS (Medical)","LLM","M.Arch","M.Design","M.Sc Nursing","MHMCT","M.Phil","PhD / Doctorate","Post-Doctoral","UPSC / Competitive Exams","Professional Training"] },
       { id: "types",    label: "Question Types",  type: "select", options: ["Short Answer (2 marks)","Long Answer (5 marks)","Mixed (1+2+5 marks)","Case-Based","Application-Based"] },
       { id: "count",    label: "Total Questions", type: "select", options: ["5","8","10","12","15"] },
     ],
@@ -202,7 +202,7 @@ Label them: Comment 1, Comment 2, Comment 3. Teacher can pick the best one.`,
     inputs: [
       { id: "purpose",      label: "Letter Purpose",   type: "select", options: ["Parent-Teacher Meeting Invite","Student Performance Update","Behaviour Concern","Fee Reminder","Event Announcement","General Update","Student Achievement"] },
       { id: "studentName",  label: "Student Name",     type: "text",   placeholder: "e.g. Rahul Sharma" },
-      { id: "class",        label: "Class",            type: "select", options: ["Class 1","Class 2","Class 3","Class 4","Class 5","Class 6","Class 7","Class 8","Class 9","Class 10","Class 11","Class 12"] },
+      { id: "class",        label: "Class",            type: "select", options: ["Class 1","Class 2","Class 3","Class 4","Class 5","Class 6","Class 7","Class 8","Class 9","Class 10","Class 11","Class 12","Diploma / Certificate","ITI / Vocational","UG Year 1 (FY)","UG Year 2 (SY)","UG Year 3 (TY)","UG Year 4 (Final)","B.A.","B.Sc.","B.Com.","BBA","BCA","B.Tech / BE","B.Ed","BDS","MBBS","BPT","B.Pharm","LLB","B.Arch","B.Design / B.FTech","B.Sc Nursing","BHMCT (Hotel Mgmt)","PG Year 1","PG Year 2","M.A.","M.Sc.","M.Com.","MBA","MCA","M.Tech / ME","M.Ed","MD / MS (Medical)","LLM","M.Arch","M.Design","M.Sc Nursing","MHMCT","M.Phil","PhD / Doctorate","Post-Doctoral","UPSC / Competitive Exams","Professional Training"] },
       { id: "details",      label: "Key Details",      type: "textarea", placeholder: "Any specific points to include…", rows: 2, required: false },
     ],
     promptTemplate: `Write a formal parent communication letter from a school teacher.
@@ -235,7 +235,7 @@ Tone: professional, respectful, warm. Indian school context. English language.`,
     inputs: [
       { id: "subject", label: "Subject", type: "text",   placeholder: "e.g. Biology, History", required: true },
       { id: "topic",   label: "Topic",   type: "text",   placeholder: "e.g. Cell Division",    required: true },
-      { id: "class",   label: "Class",   type: "select", options: ["Class 6","Class 7","Class 8","Class 9","Class 10","Class 11","Class 12"] },
+      { id: "class",   label: "Class",   type: "select", options: ["Class 1","Class 2","Class 3","Class 4","Class 5","Class 6","Class 7","Class 8","Class 9","Class 10","Class 11","Class 12","Diploma / Certificate","ITI / Vocational","UG Year 1 (FY)","UG Year 2 (SY)","UG Year 3 (TY)","UG Year 4 (Final)","B.A.","B.Sc.","B.Com.","BBA","BCA","B.Tech / BE","B.Ed","BDS","MBBS","BPT","B.Pharm","LLB","B.Arch","B.Design / B.FTech","B.Sc Nursing","BHMCT (Hotel Mgmt)","PG Year 1","PG Year 2","M.A.","M.Sc.","M.Com.","MBA","MCA","M.Tech / ME","M.Ed","MD / MS (Medical)","LLM","M.Arch","M.Design","M.Sc Nursing","MHMCT","M.Phil","PhD / Doctorate","Post-Doctoral","UPSC / Competitive Exams","Professional Training"] },
       { id: "levels",  label: "Levels",  type: "select", options: ["All 6 Levels","Remember + Understand","Apply + Analyse","Evaluate + Create"] },
     ],
     promptTemplate: `Generate Bloom's Taxonomy questions for a lesson.
@@ -273,7 +273,7 @@ Label each level clearly. Questions should be thought-provoking and age-appropri
     inputs: [
       { id: "task",     label: "Task/Assignment",  type: "text",   placeholder: "e.g. Science Project, Essay, Presentation", required: true },
       { id: "subject",  label: "Subject",          type: "text",   placeholder: "e.g. Chemistry",  required: true },
-      { id: "class",    label: "Class",            type: "select", options: ["Class 6","Class 7","Class 8","Class 9","Class 10","Class 11","Class 12"] },
+      { id: "class",    label: "Class",            type: "select", options: ["Class 1","Class 2","Class 3","Class 4","Class 5","Class 6","Class 7","Class 8","Class 9","Class 10","Class 11","Class 12","Diploma / Certificate","ITI / Vocational","UG Year 1 (FY)","UG Year 2 (SY)","UG Year 3 (TY)","UG Year 4 (Final)","B.A.","B.Sc.","B.Com.","BBA","BCA","B.Tech / BE","B.Ed","BDS","MBBS","BPT","B.Pharm","LLB","B.Arch","B.Design / B.FTech","B.Sc Nursing","BHMCT (Hotel Mgmt)","PG Year 1","PG Year 2","M.A.","M.Sc.","M.Com.","MBA","MCA","M.Tech / ME","M.Ed","MD / MS (Medical)","LLM","M.Arch","M.Design","M.Sc Nursing","MHMCT","M.Phil","PhD / Doctorate","Post-Doctoral","UPSC / Competitive Exams","Professional Training"] },
       { id: "maxMarks", label: "Total Marks",      type: "select", options: ["10","20","25","50","100"] },
       { id: "criteria", label: "Key Criteria",     type: "text",   placeholder: "e.g. content, presentation, creativity (or leave blank)", required: false },
     ],
@@ -315,7 +315,7 @@ Format clearly with criteria, levels, marks, and descriptions. Indian school con
     maxTokens: 700,
     inputs: [
       { id: "topic",    label: "Physics Topic", type: "text",   placeholder: "e.g. Newton's Laws, Ohm's Law, Optics", required: true },
-      { id: "class",    label: "Class",         type: "select", options: ["Class 8","Class 9","Class 10","Class 11","Class 12"] },
+      { id: "class",    label: "Class",         type: "select", options: ["Class 1","Class 2","Class 3","Class 4","Class 5","Class 6","Class 7","Class 8","Class 9","Class 10","Class 11","Class 12","Diploma / Certificate","ITI / Vocational","UG Year 1 (FY)","UG Year 2 (SY)","UG Year 3 (TY)","UG Year 4 (Final)","B.A.","B.Sc.","B.Com.","BBA","BCA","B.Tech / BE","B.Ed","BDS","MBBS","BPT","B.Pharm","LLB","B.Arch","B.Design / B.FTech","B.Sc Nursing","BHMCT (Hotel Mgmt)","PG Year 1","PG Year 2","M.A.","M.Sc.","M.Com.","MBA","MCA","M.Tech / ME","M.Ed","MD / MS (Medical)","LLM","M.Arch","M.Design","M.Sc Nursing","MHMCT","M.Phil","PhD / Doctorate","Post-Doctoral","UPSC / Competitive Exams","Professional Training"] },
       { id: "board",    label: "Board",         type: "select", options: ["CBSE","ICSE","State Board"] },
       { id: "duration", label: "Duration",      type: "select", options: ["30 minutes","45 minutes","60 minutes"] },
       { id: "hasLab",   label: "Lab Available?",type: "select", options: ["Yes — include practical activity","No — theory only"] },
@@ -359,7 +359,7 @@ Indian physics curriculum. Precise and practical.`,
     inputs: [
       { id: "scienceType", label: "Science Type",     type: "select", options: ["Physics","Chemistry","Biology","General Science (Mixed)"] },
       { id: "topic",       label: "Topic",            type: "text",   placeholder: "e.g. Acids and Bases, Photosynthesis", required: true },
-      { id: "class",       label: "Class",            type: "select", options: ["Class 6","Class 7","Class 8","Class 9","Class 10"] },
+      { id: "class",       label: "Class",            type: "select", options: ["Class 1","Class 2","Class 3","Class 4","Class 5","Class 6","Class 7","Class 8","Class 9","Class 10","Class 11","Class 12","Diploma / Certificate","ITI / Vocational","UG Year 1 (FY)","UG Year 2 (SY)","UG Year 3 (TY)","UG Year 4 (Final)","B.A.","B.Sc.","B.Com.","BBA","BCA","B.Tech / BE","B.Ed","BDS","MBBS","BPT","B.Pharm","LLB","B.Arch","B.Design / B.FTech","B.Sc Nursing","BHMCT (Hotel Mgmt)","PG Year 1","PG Year 2","M.A.","M.Sc.","M.Com.","MBA","MCA","M.Tech / ME","M.Ed","MD / MS (Medical)","LLM","M.Arch","M.Design","M.Sc Nursing","MHMCT","M.Phil","PhD / Doctorate","Post-Doctoral","UPSC / Competitive Exams","Professional Training"] },
       { id: "count",       label: "Number of MCQs",  type: "select", options: ["5","10","15","20"] },
     ],
     promptTemplate: `Generate {{count}} science MCQs with answers.
@@ -400,7 +400,7 @@ Include diagram-based questions where relevant. CBSE science curriculum.`,
     maxTokens: 450,
     inputs: [
       { id: "essayTopic", label: "Essay Topic",  type: "text",   placeholder: "e.g. Importance of Trees, My Favourite Season", required: true },
-      { id: "class",      label: "Class",        type: "select", options: ["Class 4","Class 5","Class 6","Class 7","Class 8","Class 9","Class 10","Class 11","Class 12"] },
+      { id: "class",      label: "Class",        type: "select", options: ["Class 1","Class 2","Class 3","Class 4","Class 5","Class 6","Class 7","Class 8","Class 9","Class 10","Class 11","Class 12","Diploma / Certificate","ITI / Vocational","UG Year 1 (FY)","UG Year 2 (SY)","UG Year 3 (TY)","UG Year 4 (Final)","B.A.","B.Sc.","B.Com.","BBA","BCA","B.Tech / BE","B.Ed","BDS","MBBS","BPT","B.Pharm","LLB","B.Arch","B.Design / B.FTech","B.Sc Nursing","BHMCT (Hotel Mgmt)","PG Year 1","PG Year 2","M.A.","M.Sc.","M.Com.","MBA","MCA","M.Tech / ME","M.Ed","MD / MS (Medical)","LLM","M.Arch","M.Design","M.Sc Nursing","MHMCT","M.Phil","PhD / Doctorate","Post-Doctoral","UPSC / Competitive Exams","Professional Training"] },
       { id: "wordCount",  label: "Word Count",   type: "select", options: ["100-150 words","200-250 words","300-350 words","400-500 words","500+ words"] },
       { id: "type",       label: "Essay Type",   type: "select", options: ["Descriptive","Narrative","Argumentative","Expository","Formal"] },
     ],
@@ -440,7 +440,7 @@ Indian English curriculum context. Age-appropriate language.`,
     maxTokens: 600,
     inputs: [
       { id: "topic",     label: "निबंध का विषय (Topic)", type: "text",   placeholder: "e.g. मेरा प्रिय त्योहार, पर्यावरण संरक्षण", required: true },
-      { id: "class",     label: "कक्षा (Class)",          type: "select", options: ["Class 4","Class 5","Class 6","Class 7","Class 8","Class 9","Class 10","Class 11","Class 12"] },
+      { id: "class",     label: "कक्षा (Class)",          type: "select", options: ["Class 1","Class 2","Class 3","Class 4","Class 5","Class 6","Class 7","Class 8","Class 9","Class 10","Class 11","Class 12","Diploma / Certificate","ITI / Vocational","UG Year 1 (FY)","UG Year 2 (SY)","UG Year 3 (TY)","UG Year 4 (Final)","B.A.","B.Sc.","B.Com.","BBA","BCA","B.Tech / BE","B.Ed","BDS","MBBS","BPT","B.Pharm","LLB","B.Arch","B.Design / B.FTech","B.Sc Nursing","BHMCT (Hotel Mgmt)","PG Year 1","PG Year 2","M.A.","M.Sc.","M.Com.","MBA","MCA","M.Tech / ME","M.Ed","MD / MS (Medical)","LLM","M.Arch","M.Design","M.Sc Nursing","MHMCT","M.Phil","PhD / Doctorate","Post-Doctoral","UPSC / Competitive Exams","Professional Training"] },
       { id: "wordCount", label: "शब्द सीमा (Words)",      type: "select", options: ["100-150 शब्द","200-250 शब्द","300-350 शब्द","400-500 शब्द"] },
     ],
     promptTemplate: `एक उत्कृष्ट हिंदी निबंध लिखें।
@@ -476,7 +476,7 @@ Indian English curriculum context. Age-appropriate language.`,
     inputs: [
       { id: "patraType",  label: "पत्र का प्रकार (Type)",    type: "select", options: ["औपचारिक पत्र (Formal)","अनौपचारिक पत्र (Informal)","प्रार्थना पत्र (Application)","सम्पादक को पत्र (Editor)"] },
       { id: "topic",      label: "विषय / कारण (Purpose)",   type: "text",   placeholder: "e.g. अवकाश के लिए, शिकायत के लिए, बधाई के लिए", required: true },
-      { id: "class",      label: "कक्षा (Class)",            type: "select", options: ["Class 6","Class 7","Class 8","Class 9","Class 10","Class 11","Class 12"] },
+      { id: "class",      label: "कक्षा (Class)",            type: "select", options: ["Class 1","Class 2","Class 3","Class 4","Class 5","Class 6","Class 7","Class 8","Class 9","Class 10","Class 11","Class 12","Diploma / Certificate","ITI / Vocational","UG Year 1 (FY)","UG Year 2 (SY)","UG Year 3 (TY)","UG Year 4 (Final)","B.A.","B.Sc.","B.Com.","BBA","BCA","B.Tech / BE","B.Ed","BDS","MBBS","BPT","B.Pharm","LLB","B.Arch","B.Design / B.FTech","B.Sc Nursing","BHMCT (Hotel Mgmt)","PG Year 1","PG Year 2","M.A.","M.Sc.","M.Com.","MBA","MCA","M.Tech / ME","M.Ed","MD / MS (Medical)","LLM","M.Arch","M.Design","M.Sc Nursing","MHMCT","M.Phil","PhD / Doctorate","Post-Doctoral","UPSC / Competitive Exams","Professional Training"] },
     ],
     promptTemplate: `एक {{patraType}} हिंदी पत्र लिखें।
 उद्देश्य: {{topic}} | कक्षा: {{class}}
@@ -515,7 +515,7 @@ Indian English curriculum context. Age-appropriate language.`,
     maxTokens: 550,
     inputs: [
       { id: "topic",      label: "Maths Topic",       type: "text",   placeholder: "e.g. Percentages, Simple Interest, Triangles", required: true },
-      { id: "class",      label: "Class",             type: "select", options: ["Class 4","Class 5","Class 6","Class 7","Class 8","Class 9","Class 10"] },
+      { id: "class",      label: "Class",             type: "select", options: ["Class 1","Class 2","Class 3","Class 4","Class 5","Class 6","Class 7","Class 8","Class 9","Class 10","Class 11","Class 12","Diploma / Certificate","ITI / Vocational","UG Year 1 (FY)","UG Year 2 (SY)","UG Year 3 (TY)","UG Year 4 (Final)","B.A.","B.Sc.","B.Com.","BBA","BCA","B.Tech / BE","B.Ed","BDS","MBBS","BPT","B.Pharm","LLB","B.Arch","B.Design / B.FTech","B.Sc Nursing","BHMCT (Hotel Mgmt)","PG Year 1","PG Year 2","M.A.","M.Sc.","M.Com.","MBA","MCA","M.Tech / ME","M.Ed","MD / MS (Medical)","LLM","M.Arch","M.Design","M.Sc Nursing","MHMCT","M.Phil","PhD / Doctorate","Post-Doctoral","UPSC / Competitive Exams","Professional Training"] },
       { id: "count",      label: "Number of Problems",type: "select", options: ["3","5","8","10"] },
       { id: "difficulty", label: "Difficulty",        type: "select", options: ["Easy","Medium","Hard","Mixed"] },
       { id: "context",    label: "Real-life Context", type: "select", options: ["Shopping / Money","Cricket / Sports","Travel / Distance","Cooking / Recipes","General Mixed"] },
@@ -557,7 +557,7 @@ Use Indian names (Raju, Priya, Deepak etc.) and Indian context (rupees, kilometr
     maxTokens: 500,
     inputs: [
       { id: "period",  label: "Historical Period / Topic", type: "text",   placeholder: "e.g. Indian Independence Movement, Mughal Empire", required: true },
-      { id: "class",   label: "Class",                    type: "select", options: ["Class 6","Class 7","Class 8","Class 9","Class 10","Class 11","Class 12"] },
+      { id: "class",   label: "Class",                    type: "select", options: ["Class 1","Class 2","Class 3","Class 4","Class 5","Class 6","Class 7","Class 8","Class 9","Class 10","Class 11","Class 12","Diploma / Certificate","ITI / Vocational","UG Year 1 (FY)","UG Year 2 (SY)","UG Year 3 (TY)","UG Year 4 (Final)","B.A.","B.Sc.","B.Com.","BBA","BCA","B.Tech / BE","B.Ed","BDS","MBBS","BPT","B.Pharm","LLB","B.Arch","B.Design / B.FTech","B.Sc Nursing","BHMCT (Hotel Mgmt)","PG Year 1","PG Year 2","M.A.","M.Sc.","M.Com.","MBA","MCA","M.Tech / ME","M.Ed","MD / MS (Medical)","LLM","M.Arch","M.Design","M.Sc Nursing","MHMCT","M.Phil","PhD / Doctorate","Post-Doctoral","UPSC / Competitive Exams","Professional Training"] },
       { id: "detail",  label: "Detail Level",             type: "select", options: ["Brief (key events only)","Standard (events + significance)","Detailed (events + causes + impact)"] },
     ],
     promptTemplate: `Create a structured history timeline.
@@ -638,7 +638,7 @@ Academic English. Passive voice where appropriate. Past tense for methodology/fi
     inputs: [
       { id: "subject", label: "Subject",       type: "text",   placeholder: "e.g. Microeconomics, Organic Chemistry", required: true },
       { id: "topic",   label: "Topic",         type: "text",   placeholder: "e.g. Law of Demand, Aldol Condensation",  required: true },
-      { id: "level",   label: "Level",         type: "select", options: ["UG First Year","UG Second Year","UG Third Year","PG Level"] },
+      { id: "level",   label: "Level",         type: "select", options: ["Class 1","Class 2","Class 3","Class 4","Class 5","Class 6","Class 7","Class 8","Class 9","Class 10","Class 11","Class 12","Diploma / Certificate","ITI / Vocational","UG Year 1 (FY)","UG Year 2 (SY)","UG Year 3 (TY)","UG Year 4 (Final)","B.A.","B.Sc.","B.Com.","BBA","BCA","B.Tech / BE","B.Ed","BDS","MBBS","BPT","B.Pharm","LLB","B.Arch","B.Design / B.FTech","B.Sc Nursing","BHMCT (Hotel Mgmt)","PG Year 1","PG Year 2","M.A.","M.Sc.","M.Com.","MBA","MCA","M.Tech / ME","M.Ed","MD / MS (Medical)","LLM","M.Arch","M.Design","M.Sc Nursing","MHMCT","M.Phil","PhD / Doctorate","Post-Doctoral","UPSC / Competitive Exams","Professional Training"] },
       { id: "depth",   label: "Depth",         type: "select", options: ["Overview (key points)","Standard (explanations + examples)","Detailed (full lecture notes)"] },
     ],
     promptTemplate: `Create structured lecture notes for college students.
@@ -716,7 +716,7 @@ Include:
     audience: "teacher", model: "smart", maxTokens: 500,
     inputs: [
       { id: "equation", label: "Chemical Equation", type: "text", placeholder: "e.g. H2 + O2 → H2O", required: true },
-      { id: "class", label: "Class", type: "select", options: ["Class 9","Class 10","Class 11","Class 12"] },
+      { id: "class", label: "Class", type: "select", options: ["Class 1","Class 2","Class 3","Class 4","Class 5","Class 6","Class 7","Class 8","Class 9","Class 10","Class 11","Class 12","Diploma / Certificate","ITI / Vocational","UG Year 1 (FY)","UG Year 2 (SY)","UG Year 3 (TY)","UG Year 4 (Final)","B.A.","B.Sc.","B.Com.","BBA","BCA","B.Tech / BE","B.Ed","BDS","MBBS","BPT","B.Pharm","LLB","B.Arch","B.Design / B.FTech","B.Sc Nursing","BHMCT (Hotel Mgmt)","PG Year 1","PG Year 2","M.A.","M.Sc.","M.Com.","MBA","MCA","M.Tech / ME","M.Ed","MD / MS (Medical)","LLM","M.Arch","M.Design","M.Sc Nursing","MHMCT","M.Phil","PhD / Doctorate","Post-Doctoral","UPSC / Competitive Exams","Professional Training"] },
     ],
     promptTemplate: `Balance this chemical equation and explain it clearly.
 Equation: {{equation}} | Class: {{class}}
@@ -748,7 +748,7 @@ CBSE chemistry curriculum.`,
     audience: "teacher", model: "smart", maxTokens: 650,
     inputs: [
       { id: "practical", label: "Practical Name", type: "text", placeholder: "e.g. Preparation of Ferrous Sulphate crystals", required: true },
-      { id: "class", label: "Class", type: "select", options: ["Class 9","Class 10","Class 11","Class 12"] },
+      { id: "class", label: "Class", type: "select", options: ["Class 1","Class 2","Class 3","Class 4","Class 5","Class 6","Class 7","Class 8","Class 9","Class 10","Class 11","Class 12","Diploma / Certificate","ITI / Vocational","UG Year 1 (FY)","UG Year 2 (SY)","UG Year 3 (TY)","UG Year 4 (Final)","B.A.","B.Sc.","B.Com.","BBA","BCA","B.Tech / BE","B.Ed","BDS","MBBS","BPT","B.Pharm","LLB","B.Arch","B.Design / B.FTech","B.Sc Nursing","BHMCT (Hotel Mgmt)","PG Year 1","PG Year 2","M.A.","M.Sc.","M.Com.","MBA","MCA","M.Tech / ME","M.Ed","MD / MS (Medical)","LLM","M.Arch","M.Design","M.Sc Nursing","MHMCT","M.Phil","PhD / Doctorate","Post-Doctoral","UPSC / Competitive Exams","Professional Training"] },
       { id: "board", label: "Board", type: "select", options: ["CBSE","ICSE","State Board"] },
     ],
     promptTemplate: `Write a complete chemistry lab report.
@@ -784,7 +784,7 @@ Standard school lab report format.`,
     audience: "teacher", model: "smart", maxTokens: 600,
     inputs: [
       { id: "topic", label: "Chemistry Topic", type: "text", placeholder: "e.g. Acids Bases Salts, Organic Chemistry", required: true },
-      { id: "class", label: "Class", type: "select", options: ["Class 9","Class 10","Class 11","Class 12"] },
+      { id: "class", label: "Class", type: "select", options: ["Class 1","Class 2","Class 3","Class 4","Class 5","Class 6","Class 7","Class 8","Class 9","Class 10","Class 11","Class 12","Diploma / Certificate","ITI / Vocational","UG Year 1 (FY)","UG Year 2 (SY)","UG Year 3 (TY)","UG Year 4 (Final)","B.A.","B.Sc.","B.Com.","BBA","BCA","B.Tech / BE","B.Ed","BDS","MBBS","BPT","B.Pharm","LLB","B.Arch","B.Design / B.FTech","B.Sc Nursing","BHMCT (Hotel Mgmt)","PG Year 1","PG Year 2","M.A.","M.Sc.","M.Com.","MBA","MCA","M.Tech / ME","M.Ed","MD / MS (Medical)","LLM","M.Arch","M.Design","M.Sc Nursing","MHMCT","M.Phil","PhD / Doctorate","Post-Doctoral","UPSC / Competitive Exams","Professional Training"] },
       { id: "count", label: "Number of MCQs", type: "select", options: ["5","10","15","20"] },
       { id: "type", label: "Chemistry Type", type: "select", options: ["Any","Organic","Inorganic","Physical","Electrochemistry"] },
     ],
@@ -813,7 +813,7 @@ Include concept-based, numerical, and formula questions. CBSE curriculum.`,
     audience: "teacher", model: "smart", maxTokens: 500,
     inputs: [
       { id: "problem", label: "Problem Statement", type: "textarea", placeholder: "e.g. Calculate the number of moles in 36g of water (H2O)", required: true, rows: 3 },
-      { id: "class", label: "Class", type: "select", options: ["Class 9","Class 10","Class 11","Class 12"] },
+      { id: "class", label: "Class", type: "select", options: ["Class 1","Class 2","Class 3","Class 4","Class 5","Class 6","Class 7","Class 8","Class 9","Class 10","Class 11","Class 12","Diploma / Certificate","ITI / Vocational","UG Year 1 (FY)","UG Year 2 (SY)","UG Year 3 (TY)","UG Year 4 (Final)","B.A.","B.Sc.","B.Com.","BBA","BCA","B.Tech / BE","B.Ed","BDS","MBBS","BPT","B.Pharm","LLB","B.Arch","B.Design / B.FTech","B.Sc Nursing","BHMCT (Hotel Mgmt)","PG Year 1","PG Year 2","M.A.","M.Sc.","M.Com.","MBA","MCA","M.Tech / ME","M.Ed","MD / MS (Medical)","LLM","M.Arch","M.Design","M.Sc Nursing","MHMCT","M.Phil","PhD / Doctorate","Post-Doctoral","UPSC / Competitive Exams","Professional Training"] },
     ],
     promptTemplate: `Solve this mole concept problem step-by-step.
 Problem: {{problem}} | Class: {{class}}
@@ -848,7 +848,7 @@ Clear, student-friendly explanation. CBSE format.`,
     audience: "teacher", model: "smart", maxTokens: 550,
     inputs: [
       { id: "diagram", label: "Diagram / Structure", type: "text", placeholder: "e.g. Plant Cell, Heart, Nephron, Mitochondria", required: true },
-      { id: "class", label: "Class", type: "select", options: ["Class 6","Class 7","Class 8","Class 9","Class 10","Class 11","Class 12"] },
+      { id: "class", label: "Class", type: "select", options: ["Class 1","Class 2","Class 3","Class 4","Class 5","Class 6","Class 7","Class 8","Class 9","Class 10","Class 11","Class 12","Diploma / Certificate","ITI / Vocational","UG Year 1 (FY)","UG Year 2 (SY)","UG Year 3 (TY)","UG Year 4 (Final)","B.A.","B.Sc.","B.Com.","BBA","BCA","B.Tech / BE","B.Ed","BDS","MBBS","BPT","B.Pharm","LLB","B.Arch","B.Design / B.FTech","B.Sc Nursing","BHMCT (Hotel Mgmt)","PG Year 1","PG Year 2","M.A.","M.Sc.","M.Com.","MBA","MCA","M.Tech / ME","M.Ed","MD / MS (Medical)","LLM","M.Arch","M.Design","M.Sc Nursing","MHMCT","M.Phil","PhD / Doctorate","Post-Doctoral","UPSC / Competitive Exams","Professional Training"] },
     ],
     promptTemplate: `Describe this biology diagram in detail for students.
 Structure: {{diagram}} | Class: {{class}}
@@ -880,7 +880,7 @@ CBSE/NCERT curriculum. Clear and student-friendly.`,
     audience: "teacher", model: "smart", maxTokens: 500,
     inputs: [
       { id: "cross", label: "Genetic Cross", type: "text", placeholder: "e.g. Tall (TT) × Dwarf (tt), Monohybrid cross", required: true },
-      { id: "class", label: "Class", type: "select", options: ["Class 10","Class 11","Class 12"] },
+      { id: "class", label: "Class", type: "select", options: ["Class 1","Class 2","Class 3","Class 4","Class 5","Class 6","Class 7","Class 8","Class 9","Class 10","Class 11","Class 12","Diploma / Certificate","ITI / Vocational","UG Year 1 (FY)","UG Year 2 (SY)","UG Year 3 (TY)","UG Year 4 (Final)","B.A.","B.Sc.","B.Com.","BBA","BCA","B.Tech / BE","B.Ed","BDS","MBBS","BPT","B.Pharm","LLB","B.Arch","B.Design / B.FTech","B.Sc Nursing","BHMCT (Hotel Mgmt)","PG Year 1","PG Year 2","M.A.","M.Sc.","M.Com.","MBA","MCA","M.Tech / ME","M.Ed","MD / MS (Medical)","LLM","M.Arch","M.Design","M.Sc Nursing","MHMCT","M.Phil","PhD / Doctorate","Post-Doctoral","UPSC / Competitive Exams","Professional Training"] },
     ],
     promptTemplate: `Solve this genetics problem with a Punnett square.
 Cross: {{cross}} | Class: {{class}}
@@ -914,7 +914,7 @@ CBSE biology curriculum. Student-friendly.`,
     audience: "teacher", model: "smart", maxTokens: 600,
     inputs: [
       { id: "topic", label: "Biology Topic", type: "text", placeholder: "e.g. Photosynthesis, Cell Division, Human Digestive System", required: true },
-      { id: "class", label: "Class", type: "select", options: ["Class 6","Class 7","Class 8","Class 9","Class 10","Class 11","Class 12"] },
+      { id: "class", label: "Class", type: "select", options: ["Class 1","Class 2","Class 3","Class 4","Class 5","Class 6","Class 7","Class 8","Class 9","Class 10","Class 11","Class 12","Diploma / Certificate","ITI / Vocational","UG Year 1 (FY)","UG Year 2 (SY)","UG Year 3 (TY)","UG Year 4 (Final)","B.A.","B.Sc.","B.Com.","BBA","BCA","B.Tech / BE","B.Ed","BDS","MBBS","BPT","B.Pharm","LLB","B.Arch","B.Design / B.FTech","B.Sc Nursing","BHMCT (Hotel Mgmt)","PG Year 1","PG Year 2","M.A.","M.Sc.","M.Com.","MBA","MCA","M.Tech / ME","M.Ed","MD / MS (Medical)","LLM","M.Arch","M.Design","M.Sc Nursing","MHMCT","M.Phil","PhD / Doctorate","Post-Doctoral","UPSC / Competitive Exams","Professional Training"] },
       { id: "count", label: "Number of MCQs", type: "select", options: ["5","10","15","20"] },
     ],
     promptTemplate: `Generate {{count}} biology MCQs with answers.
@@ -945,7 +945,7 @@ Include diagram-based and application questions. NCERT/CBSE curriculum.`,
     audience: "teacher", model: "fast", maxTokens: 500,
     inputs: [
       { id: "topic", label: "Topic / Chapter", type: "text", placeholder: "e.g. Trigonometry, Quadratic Equations, Statistics", required: true },
-      { id: "class", label: "Class", type: "select", options: ["Class 8","Class 9","Class 10","Class 11","Class 12"] },
+      { id: "class", label: "Class", type: "select", options: ["Class 1","Class 2","Class 3","Class 4","Class 5","Class 6","Class 7","Class 8","Class 9","Class 10","Class 11","Class 12","Diploma / Certificate","ITI / Vocational","UG Year 1 (FY)","UG Year 2 (SY)","UG Year 3 (TY)","UG Year 4 (Final)","B.A.","B.Sc.","B.Com.","BBA","BCA","B.Tech / BE","B.Ed","BDS","MBBS","BPT","B.Pharm","LLB","B.Arch","B.Design / B.FTech","B.Sc Nursing","BHMCT (Hotel Mgmt)","PG Year 1","PG Year 2","M.A.","M.Sc.","M.Com.","MBA","MCA","M.Tech / ME","M.Ed","MD / MS (Medical)","LLM","M.Arch","M.Design","M.Sc Nursing","MHMCT","M.Phil","PhD / Doctorate","Post-Doctoral","UPSC / Competitive Exams","Professional Training"] },
     ],
     promptTemplate: `Create a complete maths formula sheet.
 Topic: {{topic}} | Class: {{class}}
@@ -977,7 +977,7 @@ Comprehensive. All formulas a student needs for exams.`,
     audience: "teacher", model: "smart", maxTokens: 500,
     inputs: [
       { id: "problem", label: "Problem / Data", type: "textarea", placeholder: "e.g. Find mean, median, mode of: 5, 8, 3, 8, 9, 2, 8, 10", required: true, rows: 3 },
-      { id: "class", label: "Class", type: "select", options: ["Class 8","Class 9","Class 10","Class 11","Class 12"] },
+      { id: "class", label: "Class", type: "select", options: ["Class 1","Class 2","Class 3","Class 4","Class 5","Class 6","Class 7","Class 8","Class 9","Class 10","Class 11","Class 12","Diploma / Certificate","ITI / Vocational","UG Year 1 (FY)","UG Year 2 (SY)","UG Year 3 (TY)","UG Year 4 (Final)","B.A.","B.Sc.","B.Com.","BBA","BCA","B.Tech / BE","B.Ed","BDS","MBBS","BPT","B.Pharm","LLB","B.Arch","B.Design / B.FTech","B.Sc Nursing","BHMCT (Hotel Mgmt)","PG Year 1","PG Year 2","M.A.","M.Sc.","M.Com.","MBA","MCA","M.Tech / ME","M.Ed","MD / MS (Medical)","LLM","M.Arch","M.Design","M.Sc Nursing","MHMCT","M.Phil","PhD / Doctorate","Post-Doctoral","UPSC / Competitive Exams","Professional Training"] },
       { id: "topic", label: "Statistics Topic", type: "select", options: ["Mean/Median/Mode","Standard Deviation","Probability","Correlation","All of above"] },
     ],
     promptTemplate: `Solve this statistics problem step-by-step.
@@ -1014,7 +1014,7 @@ CBSE maths curriculum. Clear and detailed.`,
     inputs: [
       { id: "code", label: "Paste Code Here", type: "textarea", placeholder: "Paste Python, C++, Java, or any code…", required: true, rows: 5 },
       { id: "language", label: "Language", type: "select", options: ["Python","C++","Java","C","JavaScript","SQL","Any"] },
-      { id: "class", label: "Level", type: "select", options: ["Class 11","Class 12","College UG","Beginner"] },
+      { id: "class", label: "Level", type: "select", options: ["Class 1","Class 2","Class 3","Class 4","Class 5","Class 6","Class 7","Class 8","Class 9","Class 10","Class 11","Class 12","Diploma / Certificate","ITI / Vocational","UG Year 1 (FY)","UG Year 2 (SY)","UG Year 3 (TY)","UG Year 4 (Final)","B.A.","B.Sc.","B.Com.","BBA","BCA","B.Tech / BE","B.Ed","BDS","MBBS","BPT","B.Pharm","LLB","B.Arch","B.Design / B.FTech","B.Sc Nursing","BHMCT (Hotel Mgmt)","PG Year 1","PG Year 2","M.A.","M.Sc.","M.Com.","MBA","MCA","M.Tech / ME","M.Ed","MD / MS (Medical)","LLM","M.Arch","M.Design","M.Sc Nursing","MHMCT","M.Phil","PhD / Doctorate","Post-Doctoral","UPSC / Competitive Exams","Professional Training"] },
     ],
     promptTemplate: `Explain this code to students in plain language.
 Language: {{language}} | Level: {{class}}
@@ -1077,7 +1077,7 @@ Add brief comments where helpful.`,
     icon: "🖥️", category: "computer",
     audience: "teacher", model: "smart", maxTokens: 500,
     inputs: [
-      { id: "class", label: "Level", type: "select", options: ["Class 11","Class 12","BCA/BSc Year 1","BCA/BSc Year 2","BCA/BSc Year 3","MCA/MSc"] },
+      { id: "class", label: "Level", type: "select", options: ["Class 1","Class 2","Class 3","Class 4","Class 5","Class 6","Class 7","Class 8","Class 9","Class 10","Class 11","Class 12","Diploma / Certificate","ITI / Vocational","UG Year 1 (FY)","UG Year 2 (SY)","UG Year 3 (TY)","UG Year 4 (Final)","B.A.","B.Sc.","B.Com.","BBA","BCA","B.Tech / BE","B.Ed","BDS","MBBS","BPT","B.Pharm","LLB","B.Arch","B.Design / B.FTech","B.Sc Nursing","BHMCT (Hotel Mgmt)","PG Year 1","PG Year 2","M.A.","M.Sc.","M.Com.","MBA","MCA","M.Tech / ME","M.Ed","MD / MS (Medical)","LLM","M.Arch","M.Design","M.Sc Nursing","MHMCT","M.Phil","PhD / Doctorate","Post-Doctoral","UPSC / Competitive Exams","Professional Training"] },
       { id: "domain", label: "Domain", type: "select", options: ["Any Domain","Education","Healthcare","Agriculture","Finance","E-commerce","Social Media","Gaming","Environment"] },
       { id: "language", label: "Language/Tech", type: "select", options: ["Python","Java","C++","Web (HTML/CSS/JS)","Any"] },
       { id: "count", label: "Number of Ideas", type: "select", options: ["3","5","8","10"] },
@@ -1113,7 +1113,7 @@ Original, practical, implementable ideas.`,
     audience: "teacher", model: "smart", maxTokens: 450,
     inputs: [
       { id: "task", label: "What Query to Write", type: "textarea", placeholder: "e.g. Find all students with marks > 75 from student table, or create a table for library", required: true, rows: 2 },
-      { id: "level", label: "Level", type: "select", options: ["Class 11","Class 12","College Basic","College Advanced"] },
+      { id: "level", label: "Level", type: "select", options: ["Class 1","Class 2","Class 3","Class 4","Class 5","Class 6","Class 7","Class 8","Class 9","Class 10","Class 11","Class 12","Diploma / Certificate","ITI / Vocational","UG Year 1 (FY)","UG Year 2 (SY)","UG Year 3 (TY)","UG Year 4 (Final)","B.A.","B.Sc.","B.Com.","BBA","BCA","B.Tech / BE","B.Ed","BDS","MBBS","BPT","B.Pharm","LLB","B.Arch","B.Design / B.FTech","B.Sc Nursing","BHMCT (Hotel Mgmt)","PG Year 1","PG Year 2","M.A.","M.Sc.","M.Com.","MBA","MCA","M.Tech / ME","M.Ed","MD / MS (Medical)","LLM","M.Arch","M.Design","M.Sc Nursing","MHMCT","M.Phil","PhD / Doctorate","Post-Doctoral","UPSC / Competitive Exams","Professional Training"] },
     ],
     promptTemplate: `Write SQL query/queries for this task with explanation.
 Task: {{task}} | Level: {{level}}
@@ -1148,7 +1148,7 @@ CBSE/college database curriculum.`,
     audience: "teacher", model: "smart", maxTokens: 600,
     inputs: [
       { id: "topic", label: "Case Study Topic", type: "text", placeholder: "e.g. Amazon Rainforest, Chennai Floods 2015, Green Revolution in India", required: true },
-      { id: "class", label: "Class", type: "select", options: ["Class 6","Class 7","Class 8","Class 9","Class 10","Class 11","Class 12"] },
+      { id: "class", label: "Class", type: "select", options: ["Class 1","Class 2","Class 3","Class 4","Class 5","Class 6","Class 7","Class 8","Class 9","Class 10","Class 11","Class 12","Diploma / Certificate","ITI / Vocational","UG Year 1 (FY)","UG Year 2 (SY)","UG Year 3 (TY)","UG Year 4 (Final)","B.A.","B.Sc.","B.Com.","BBA","BCA","B.Tech / BE","B.Ed","BDS","MBBS","BPT","B.Pharm","LLB","B.Arch","B.Design / B.FTech","B.Sc Nursing","BHMCT (Hotel Mgmt)","PG Year 1","PG Year 2","M.A.","M.Sc.","M.Com.","MBA","MCA","M.Tech / ME","M.Ed","MD / MS (Medical)","LLM","M.Arch","M.Design","M.Sc Nursing","MHMCT","M.Phil","PhD / Doctorate","Post-Doctoral","UPSC / Competitive Exams","Professional Training"] },
       { id: "type", label: "Topic Type", type: "select", options: ["Natural Disaster","River/Water Body","Agriculture","City/Region","Climate","Industrial Region","Any"] },
     ],
     promptTemplate: `Create detailed geography case study notes.
@@ -1184,7 +1184,7 @@ NCERT/CBSE curriculum context.`,
     audience: "teacher", model: "smart", maxTokens: 550,
     inputs: [
       { id: "topic", label: "Geography Topic", type: "text", placeholder: "e.g. Monsoon, Soil Types, Population Distribution", required: true },
-      { id: "class", label: "Class", type: "select", options: ["Class 6","Class 7","Class 8","Class 9","Class 10","Class 11","Class 12"] },
+      { id: "class", label: "Class", type: "select", options: ["Class 1","Class 2","Class 3","Class 4","Class 5","Class 6","Class 7","Class 8","Class 9","Class 10","Class 11","Class 12","Diploma / Certificate","ITI / Vocational","UG Year 1 (FY)","UG Year 2 (SY)","UG Year 3 (TY)","UG Year 4 (Final)","B.A.","B.Sc.","B.Com.","BBA","BCA","B.Tech / BE","B.Ed","BDS","MBBS","BPT","B.Pharm","LLB","B.Arch","B.Design / B.FTech","B.Sc Nursing","BHMCT (Hotel Mgmt)","PG Year 1","PG Year 2","M.A.","M.Sc.","M.Com.","MBA","MCA","M.Tech / ME","M.Ed","MD / MS (Medical)","LLM","M.Arch","M.Design","M.Sc Nursing","MHMCT","M.Phil","PhD / Doctorate","Post-Doctoral","UPSC / Competitive Exams","Professional Training"] },
       { id: "count", label: "Number of MCQs", type: "select", options: ["5","10","15","20"] },
     ],
     promptTemplate: `Generate {{count}} geography MCQs with answers.
@@ -1215,7 +1215,7 @@ Include map-based, data-based, and concept questions. NCERT/CBSE curriculum.`,
     audience: "teacher", model: "smart", maxTokens: 600,
     inputs: [
       { id: "topic", label: "Grammar Topic", type: "text", placeholder: "e.g. Tenses, Articles, Prepositions, Subject-Verb Agreement", required: true },
-      { id: "class", label: "Class", type: "select", options: ["Class 4","Class 5","Class 6","Class 7","Class 8","Class 9","Class 10"] },
+      { id: "class", label: "Class", type: "select", options: ["Class 1","Class 2","Class 3","Class 4","Class 5","Class 6","Class 7","Class 8","Class 9","Class 10","Class 11","Class 12","Diploma / Certificate","ITI / Vocational","UG Year 1 (FY)","UG Year 2 (SY)","UG Year 3 (TY)","UG Year 4 (Final)","B.A.","B.Sc.","B.Com.","BBA","BCA","B.Tech / BE","B.Ed","BDS","MBBS","BPT","B.Pharm","LLB","B.Arch","B.Design / B.FTech","B.Sc Nursing","BHMCT (Hotel Mgmt)","PG Year 1","PG Year 2","M.A.","M.Sc.","M.Com.","MBA","MCA","M.Tech / ME","M.Ed","MD / MS (Medical)","LLM","M.Arch","M.Design","M.Sc Nursing","MHMCT","M.Phil","PhD / Doctorate","Post-Doctoral","UPSC / Competitive Exams","Professional Training"] },
       { id: "type", label: "Exercise Type", type: "select", options: ["Fill in the Blanks","Correct the Sentences","Match the Following","Rewrite Sentences","Mixed Types"] },
       { id: "count", label: "Number of Questions", type: "select", options: ["5","8","10","15"] },
     ],
@@ -1249,7 +1249,7 @@ Age-appropriate. CBSE/ICSE English curriculum.`,
     audience: "teacher", model: "smart", maxTokens: 650,
     inputs: [
       { id: "theme", label: "Passage Theme", type: "text", placeholder: "e.g. Environment, Science, Indian Culture, Sports", required: true },
-      { id: "class", label: "Class", type: "select", options: ["Class 4","Class 5","Class 6","Class 7","Class 8","Class 9","Class 10"] },
+      { id: "class", label: "Class", type: "select", options: ["Class 1","Class 2","Class 3","Class 4","Class 5","Class 6","Class 7","Class 8","Class 9","Class 10","Class 11","Class 12","Diploma / Certificate","ITI / Vocational","UG Year 1 (FY)","UG Year 2 (SY)","UG Year 3 (TY)","UG Year 4 (Final)","B.A.","B.Sc.","B.Com.","BBA","BCA","B.Tech / BE","B.Ed","BDS","MBBS","BPT","B.Pharm","LLB","B.Arch","B.Design / B.FTech","B.Sc Nursing","BHMCT (Hotel Mgmt)","PG Year 1","PG Year 2","M.A.","M.Sc.","M.Com.","MBA","MCA","M.Tech / ME","M.Ed","MD / MS (Medical)","LLM","M.Arch","M.Design","M.Sc Nursing","MHMCT","M.Phil","PhD / Doctorate","Post-Doctoral","UPSC / Competitive Exams","Professional Training"] },
       { id: "length", label: "Passage Length", type: "select", options: ["Short (100-150 words)","Medium (200-250 words)","Long (300-350 words)"] },
     ],
     promptTemplate: `Create an unseen reading comprehension passage with questions.
@@ -1286,7 +1286,7 @@ Indian English curriculum context.`,
     inputs: [
       { id: "type", label: "Letter Type", type: "select", options: ["Application Letter","Complaint Letter","Request Letter","Letter to Editor","Notice","Advertisement"] },
       { id: "topic", label: "Purpose / Topic", type: "text", placeholder: "e.g. Complaining about poor road condition, Requesting leave", required: true },
-      { id: "class", label: "Class", type: "select", options: ["Class 6","Class 7","Class 8","Class 9","Class 10","Class 11","Class 12"] },
+      { id: "class", label: "Class", type: "select", options: ["Class 1","Class 2","Class 3","Class 4","Class 5","Class 6","Class 7","Class 8","Class 9","Class 10","Class 11","Class 12","Diploma / Certificate","ITI / Vocational","UG Year 1 (FY)","UG Year 2 (SY)","UG Year 3 (TY)","UG Year 4 (Final)","B.A.","B.Sc.","B.Com.","BBA","BCA","B.Tech / BE","B.Ed","BDS","MBBS","BPT","B.Pharm","LLB","B.Arch","B.Design / B.FTech","B.Sc Nursing","BHMCT (Hotel Mgmt)","PG Year 1","PG Year 2","M.A.","M.Sc.","M.Com.","MBA","MCA","M.Tech / ME","M.Ed","MD / MS (Medical)","LLM","M.Arch","M.Design","M.Sc Nursing","MHMCT","M.Phil","PhD / Doctorate","Post-Doctoral","UPSC / Competitive Exams","Professional Training"] },
     ],
     promptTemplate: `Write a {{type}} for students to use as a model.
 Purpose: {{topic}} | Class: {{class}}
@@ -1322,7 +1322,7 @@ CBSE English exam format. Formal tone. Word limit 120-150 words.`,
     audience: "teacher", model: "fast", maxTokens: 350,
     inputs: [
       { id: "topic", label: "विषय (Topic)", type: "text", placeholder: "e.g. समय की पाबंदी, पर्यावरण प्रदूषण, मोबाइल फोन", required: true },
-      { id: "class", label: "कक्षा (Class)", type: "select", options: ["Class 6","Class 7","Class 8","Class 9","Class 10"] },
+      { id: "class", label: "कक्षा (Class)", type: "select", options: ["Class 1","Class 2","Class 3","Class 4","Class 5","Class 6","Class 7","Class 8","Class 9","Class 10","Class 11","Class 12","Diploma / Certificate","ITI / Vocational","UG Year 1 (FY)","UG Year 2 (SY)","UG Year 3 (TY)","UG Year 4 (Final)","B.A.","B.Sc.","B.Com.","BBA","BCA","B.Tech / BE","B.Ed","BDS","MBBS","BPT","B.Pharm","LLB","B.Arch","B.Design / B.FTech","B.Sc Nursing","BHMCT (Hotel Mgmt)","PG Year 1","PG Year 2","M.A.","M.Sc.","M.Com.","MBA","MCA","M.Tech / ME","M.Ed","MD / MS (Medical)","LLM","M.Arch","M.Design","M.Sc Nursing","MHMCT","M.Phil","PhD / Doctorate","Post-Doctoral","UPSC / Competitive Exams","Professional Training"] },
     ],
     promptTemplate: `एक उत्कृष्ट हिंदी अनुच्छेद लिखें।
 विषय: {{topic}} | कक्षा: {{class}}
@@ -1349,7 +1349,7 @@ CBSE/NCERT पाठ्यक्रम के अनुसार।`,
     audience: "teacher", model: "fast", maxTokens: 400,
     inputs: [
       { id: "muhavara", label: "मुहावरा / लोकोक्ति", type: "text", placeholder: "e.g. आम के आम गुठलियों के दाम, नाच न जाने आँगन टेढ़ा", required: true },
-      { id: "class", label: "कक्षा (Class)", type: "select", options: ["Class 6","Class 7","Class 8","Class 9","Class 10"] },
+      { id: "class", label: "कक्षा (Class)", type: "select", options: ["Class 1","Class 2","Class 3","Class 4","Class 5","Class 6","Class 7","Class 8","Class 9","Class 10","Class 11","Class 12","Diploma / Certificate","ITI / Vocational","UG Year 1 (FY)","UG Year 2 (SY)","UG Year 3 (TY)","UG Year 4 (Final)","B.A.","B.Sc.","B.Com.","BBA","BCA","B.Tech / BE","B.Ed","BDS","MBBS","BPT","B.Pharm","LLB","B.Arch","B.Design / B.FTech","B.Sc Nursing","BHMCT (Hotel Mgmt)","PG Year 1","PG Year 2","M.A.","M.Sc.","M.Com.","MBA","MCA","M.Tech / ME","M.Ed","MD / MS (Medical)","LLM","M.Arch","M.Design","M.Sc Nursing","MHMCT","M.Phil","PhD / Doctorate","Post-Doctoral","UPSC / Competitive Exams","Professional Training"] },
     ],
     promptTemplate: `हिंदी मुहावरे/लोकोक्ति समझाएं।
 मुहावरा: {{muhavara}} | कक्षा: {{class}}
@@ -1458,7 +1458,7 @@ Professional, specific, warm tone. 250-300 words.`,
     inputs: [
       { id: "topic", label: "Topic", type: "text", placeholder: "e.g. Fractions, Photosynthesis, World War II", required: true },
       { id: "subject", label: "Subject", type: "text", placeholder: "e.g. Mathematics", required: true },
-      { id: "class", label: "Class", type: "select", options: ["Class 5","Class 6","Class 7","Class 8","Class 9","Class 10"] },
+      { id: "class", label: "Class", type: "select", options: ["Class 1","Class 2","Class 3","Class 4","Class 5","Class 6","Class 7","Class 8","Class 9","Class 10","Class 11","Class 12","Diploma / Certificate","ITI / Vocational","UG Year 1 (FY)","UG Year 2 (SY)","UG Year 3 (TY)","UG Year 4 (Final)","B.A.","B.Sc.","B.Com.","BBA","BCA","B.Tech / BE","B.Ed","BDS","MBBS","BPT","B.Pharm","LLB","B.Arch","B.Design / B.FTech","B.Sc Nursing","BHMCT (Hotel Mgmt)","PG Year 1","PG Year 2","M.A.","M.Sc.","M.Com.","MBA","MCA","M.Tech / ME","M.Ed","MD / MS (Medical)","LLM","M.Arch","M.Design","M.Sc Nursing","MHMCT","M.Phil","PhD / Doctorate","Post-Doctoral","UPSC / Competitive Exams","Professional Training"] },
     ],
     promptTemplate: `Create a differentiated instruction plan.
 Topic: {{topic}} | Subject: {{subject}} | Class: {{class}}
@@ -1542,7 +1542,7 @@ Professional tone. Clear language. Indian school format.`,
     inputs: [
       { id: "title", label: "Thesis Title / Topic", type: "text", placeholder: "e.g. Impact of E-learning on Student Performance in Rural India", required: true },
       { id: "discipline", label: "Discipline", type: "text", placeholder: "e.g. Education, Computer Science, Economics", required: true },
-      { id: "level", label: "Level", type: "select", options: ["UG Dissertation","PG Dissertation","PhD Thesis","M.Phil"] },
+      { id: "level", label: "Level", type: "select", options: ["Class 1","Class 2","Class 3","Class 4","Class 5","Class 6","Class 7","Class 8","Class 9","Class 10","Class 11","Class 12","Diploma / Certificate","ITI / Vocational","UG Year 1 (FY)","UG Year 2 (SY)","UG Year 3 (TY)","UG Year 4 (Final)","B.A.","B.Sc.","B.Com.","BBA","BCA","B.Tech / BE","B.Ed","BDS","MBBS","BPT","B.Pharm","LLB","B.Arch","B.Design / B.FTech","B.Sc Nursing","BHMCT (Hotel Mgmt)","PG Year 1","PG Year 2","M.A.","M.Sc.","M.Com.","MBA","MCA","M.Tech / ME","M.Ed","MD / MS (Medical)","LLM","M.Arch","M.Design","M.Sc Nursing","MHMCT","M.Phil","PhD / Doctorate","Post-Doctoral","UPSC / Competitive Exams","Professional Training"] },
     ],
     promptTemplate: `Create a detailed thesis/dissertation chapter outline.
 Title: {{title}} | Discipline: {{discipline}} | Level: {{level}}
@@ -1703,7 +1703,7 @@ Indian academic calendar. Practical and realistic.`,
     audience: "teacher", model: "smart", maxTokens: 600,
     inputs: [
       { id: "problem", label: "Problem / Transaction", type: "textarea", placeholder: "e.g. Journalise: Goods worth ₹5000 purchased from Ram on credit", required: true, rows: 3 },
-      { id: "class", label: "Class", type: "select", options: ["Class 11","Class 12","B.Com Year 1","B.Com Year 2","B.Com Year 3"] },
+      { id: "class", label: "Class", type: "select", options: ["Class 1","Class 2","Class 3","Class 4","Class 5","Class 6","Class 7","Class 8","Class 9","Class 10","Class 11","Class 12","Diploma / Certificate","ITI / Vocational","UG Year 1 (FY)","UG Year 2 (SY)","UG Year 3 (TY)","UG Year 4 (Final)","B.A.","B.Sc.","B.Com.","BBA","BCA","B.Tech / BE","B.Ed","BDS","MBBS","BPT","B.Pharm","LLB","B.Arch","B.Design / B.FTech","B.Sc Nursing","BHMCT (Hotel Mgmt)","PG Year 1","PG Year 2","M.A.","M.Sc.","M.Com.","MBA","MCA","M.Tech / ME","M.Ed","MD / MS (Medical)","LLM","M.Arch","M.Design","M.Sc Nursing","MHMCT","M.Phil","PhD / Doctorate","Post-Doctoral","UPSC / Competitive Exams","Professional Training"] },
       { id: "topic", label: "Topic", type: "select", options: ["Journal Entries","Ledger Accounts","Trial Balance","P&L Account","Balance Sheet","Cash Flow","Partnership","Company Accounts"] },
     ],
     promptTemplate: `Solve this accountancy problem step-by-step.
@@ -1737,7 +1737,7 @@ CBSE/ISC accountancy curriculum. Use ₹ symbol.`,
     audience: "teacher", model: "smart", maxTokens: 600,
     inputs: [
       { id: "topic", label: "Topic / Chapter", type: "text", placeholder: "e.g. Marketing Management, Staffing, Consumer Protection Act", required: true },
-      { id: "class", label: "Class", type: "select", options: ["Class 11","Class 12","BBA Year 1","BBA Year 2","BBA Year 3","MBA"] },
+      { id: "class", label: "Class", type: "select", options: ["Class 1","Class 2","Class 3","Class 4","Class 5","Class 6","Class 7","Class 8","Class 9","Class 10","Class 11","Class 12","Diploma / Certificate","ITI / Vocational","UG Year 1 (FY)","UG Year 2 (SY)","UG Year 3 (TY)","UG Year 4 (Final)","B.A.","B.Sc.","B.Com.","BBA","BCA","B.Tech / BE","B.Ed","BDS","MBBS","BPT","B.Pharm","LLB","B.Arch","B.Design / B.FTech","B.Sc Nursing","BHMCT (Hotel Mgmt)","PG Year 1","PG Year 2","M.A.","M.Sc.","M.Com.","MBA","MCA","M.Tech / ME","M.Ed","MD / MS (Medical)","LLM","M.Arch","M.Design","M.Sc Nursing","MHMCT","M.Phil","PhD / Doctorate","Post-Doctoral","UPSC / Competitive Exams","Professional Training"] },
       { id: "type", label: "Content Type", type: "select", options: ["Chapter Notes","Case Study","MCQ Questions","Difference Table","Concept Map Points"] },
     ],
     promptTemplate: `Create {{type}} for Business Studies.
@@ -1769,7 +1769,7 @@ CBSE/NCERT Business Studies curriculum.`,
     audience: "teacher", model: "smart", maxTokens: 550,
     inputs: [
       { id: "problem", label: "Problem", type: "textarea", placeholder: "e.g. Calculate GDP by expenditure method: C=800, I=200, G=150, X-M=50", required: true, rows: 3 },
-      { id: "class", label: "Class", type: "select", options: ["Class 11","Class 12","B.Com","BA Economics"] },
+      { id: "class", label: "Class", type: "select", options: ["Class 1","Class 2","Class 3","Class 4","Class 5","Class 6","Class 7","Class 8","Class 9","Class 10","Class 11","Class 12","Diploma / Certificate","ITI / Vocational","UG Year 1 (FY)","UG Year 2 (SY)","UG Year 3 (TY)","UG Year 4 (Final)","B.A.","B.Sc.","B.Com.","BBA","BCA","B.Tech / BE","B.Ed","BDS","MBBS","BPT","B.Pharm","LLB","B.Arch","B.Design / B.FTech","B.Sc Nursing","BHMCT (Hotel Mgmt)","PG Year 1","PG Year 2","M.A.","M.Sc.","M.Com.","MBA","MCA","M.Tech / ME","M.Ed","MD / MS (Medical)","LLM","M.Arch","M.Design","M.Sc Nursing","MHMCT","M.Phil","PhD / Doctorate","Post-Doctoral","UPSC / Competitive Exams","Professional Training"] },
       { id: "topic", label: "Topic", type: "select", options: ["National Income","Elasticity","Cost & Revenue","Index Numbers","Money & Banking","Balance of Payments","Any"] },
     ],
     promptTemplate: `Solve this economics numerical step-by-step.
@@ -1805,7 +1805,7 @@ CBSE economics curriculum. Clear and detailed.`,
     audience: "teacher", model: "smart", maxTokens: 600,
     inputs: [
       { id: "topic", label: "Topic", type: "text", placeholder: "e.g. Fundamental Rights, Election Commission, Foreign Policy of India", required: true },
-      { id: "class", label: "Class / Level", type: "select", options: ["Class 11","Class 12","BA Year 1","BA Year 2","BA Year 3","UPSC Preparation"] },
+      { id: "class", label: "Class / Level", type: "select", options: ["Class 1","Class 2","Class 3","Class 4","Class 5","Class 6","Class 7","Class 8","Class 9","Class 10","Class 11","Class 12","Diploma / Certificate","ITI / Vocational","UG Year 1 (FY)","UG Year 2 (SY)","UG Year 3 (TY)","UG Year 4 (Final)","B.A.","B.Sc.","B.Com.","BBA","BCA","B.Tech / BE","B.Ed","BDS","MBBS","BPT","B.Pharm","LLB","B.Arch","B.Design / B.FTech","B.Sc Nursing","BHMCT (Hotel Mgmt)","PG Year 1","PG Year 2","M.A.","M.Sc.","M.Com.","MBA","MCA","M.Tech / ME","M.Ed","MD / MS (Medical)","LLM","M.Arch","M.Design","M.Sc Nursing","MHMCT","M.Phil","PhD / Doctorate","Post-Doctoral","UPSC / Competitive Exams","Professional Training"] },
       { id: "type", label: "Content Type", type: "select", options: ["Chapter Notes","MCQ Questions","Short Answer Points","Important Definitions","Comparison Table"] },
     ],
     promptTemplate: `Create {{type}} for Political Science.
@@ -1838,7 +1838,7 @@ NCERT/CBSE Political Science curriculum. Include article/act references.`,
     inputs: [
       { id: "subject", label: "Subject", type: "select", options: ["Sociology","Psychology","Social Work","Anthropology"] },
       { id: "topic", label: "Topic / Theory", type: "text", placeholder: "e.g. Maslow's Hierarchy, Social Stratification, Indian Family System", required: true },
-      { id: "class", label: "Class / Level", type: "select", options: ["Class 11","Class 12","BA Year 1","BA Year 2","BA Year 3","MA Level"] },
+      { id: "class", label: "Class / Level", type: "select", options: ["Class 1","Class 2","Class 3","Class 4","Class 5","Class 6","Class 7","Class 8","Class 9","Class 10","Class 11","Class 12","Diploma / Certificate","ITI / Vocational","UG Year 1 (FY)","UG Year 2 (SY)","UG Year 3 (TY)","UG Year 4 (Final)","B.A.","B.Sc.","B.Com.","BBA","BCA","B.Tech / BE","B.Ed","BDS","MBBS","BPT","B.Pharm","LLB","B.Arch","B.Design / B.FTech","B.Sc Nursing","BHMCT (Hotel Mgmt)","PG Year 1","PG Year 2","M.A.","M.Sc.","M.Com.","MBA","MCA","M.Tech / ME","M.Ed","MD / MS (Medical)","LLM","M.Arch","M.Design","M.Sc Nursing","MHMCT","M.Phil","PhD / Doctorate","Post-Doctoral","UPSC / Competitive Exams","Professional Training"] },
       { id: "type", label: "Content Type", type: "select", options: ["Theory Summary","Case Study","MCQ Questions","Key Thinkers & Concepts","Research Methods Notes"] },
     ],
     promptTemplate: `Create {{type}} for {{subject}}.

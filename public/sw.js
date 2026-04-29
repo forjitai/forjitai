@@ -3,7 +3,7 @@
 // Cache version auto-busts on every deploy via timestamp
 // ─────────────────────────────────────────────────────────────────────────
 
-const CACHE_VERSION = 'forjitai-v1777476255661';
+const CACHE_VERSION = 'forjitai-v1777478664489';
 const CACHE_NAME    = CACHE_VERSION;
 
 // Only precache the shell — nothing else

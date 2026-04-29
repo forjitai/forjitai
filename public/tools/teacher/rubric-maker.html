@@ -273,14 +273,14 @@ footer a{color:var(--mu);text-decoration:none}
 
 <!-- Tool Config -->
 <script id="tool-config" type="application/json">
-{"id":"rubric-maker","name":"Grading Rubric Maker","model":"smart","maxTokens":550,"inputs":[{"id":"task","label":"Task/Assignment","type":"text","placeholder":"e.g. Science Project, Essay, Presentation","required":true},{"id":"subject","label":"Subject","type":"text","placeholder":"e.g. Chemistry","required":true},{"id":"class","label":"Class","type":"select","options":["Class 6","Class 7","Class 8","Class 9","Class 10","Class 11","Class 12"]},{"id":"maxMarks","label":"Total Marks","type":"select","options":["10","20","25","50","100"]},{"id":"criteria","label":"Key Criteria","type":"text","placeholder":"e.g. content, presentation, creativity (or leave blank)","required":false}],"promptTemplate":"Create a grading rubric for teachers.\nTask: {{task}} | Subject: {{subject}} | Class: {{class}} | Total Marks: {{maxMarks}}\nCriteria hint: {{criteria}}\nCreate a rubric table with:\n- 4-5 evaluation criteria\n- 4 performance levels: Excellent / Good / Satisfactory / Needs Improvement\n- Marks for each cell\n- Clear descriptors for what each level looks like\nFormat clearly with criteria, levels, marks, and descriptions. Indian school context."}
+{"id":"rubric-maker","name":"Grading Rubric Maker","model":"smart","maxTokens":550,"inputs":[{"id":"task","label":"Task/Assignment","type":"text","placeholder":"e.g. Science Project, Essay, Presentation","required":true},{"id":"subject","label":"Subject","type":"text","placeholder":"e.g. Chemistry","required":true},{"id":"class","label":"Class","type":"select","options":["Class 1","Class 2","Class 3","Class 4","Class 5","Class 6","Class 7","Class 8","Class 9","Class 10","Class 11","Class 12","Diploma / Certificate","ITI / Vocational","UG Year 1 (FY)","UG Year 2 (SY)","UG Year 3 (TY)","UG Year 4 (Final)","B.A.","B.Sc.","B.Com.","BBA","BCA","B.Tech / BE","B.Ed","BDS","MBBS","BPT","B.Pharm","LLB","B.Arch","B.Design / B.FTech","B.Sc Nursing","BHMCT (Hotel Mgmt)","PG Year 1","PG Year 2","M.A.","M.Sc.","M.Com.","MBA","MCA","M.Tech / ME","M.Ed","MD / MS (Medical)","LLM","M.Arch","M.Design","M.Sc Nursing","MHMCT","M.Phil","PhD / Doctorate","Post-Doctoral","UPSC / Competitive Exams","Professional Training"]},{"id":"maxMarks","label":"Total Marks","type":"select","options":["10","20","25","50","100"]},{"id":"criteria","label":"Key Criteria","type":"text","placeholder":"e.g. content, presentation, creativity (or leave blank)","required":false}],"promptTemplate":"Create a grading rubric for teachers.\nTask: {{task}} | Subject: {{subject}} | Class: {{class}} | Total Marks: {{maxMarks}}\nCriteria hint: {{criteria}}\nCreate a rubric table with:\n- 4-5 evaluation criteria\n- 4 performance levels: Excellent / Good / Satisfactory / Needs Improvement\n- Marks for each cell\n- Clear descriptors for what each level looks like\nFormat clearly with criteria, levels, marks, and descriptions. Indian school context."}
 </script>
 
 <!-- Cookie Consent -->
 <script src="/cookie-consent.js"></script>
 
 <!-- Teacher Engine -->
-<script src="/tools/teacher-engine.js?v=1777476076117"></script>
+<script src="/tools/teacher-engine.js?v=1777478657214"></script>
 
 </body>
 </html>

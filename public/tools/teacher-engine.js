@@ -416,6 +416,10 @@
     el.style.cssText = "display:block;border-radius:10px;padding:14px 16px;" +
       "font-size:14px;margin-top:12px;white-space:pre-line;line-height:1.75;" + bg;
     el.textContent = (type === "loading" ? "⏳ " : "⚠️ ") + text;
+    // Scroll into view on mobile
+    setTimeout(function() {
+      el.scrollIntoView({ behavior:"smooth", block:"nearest" });
+    }, 100);
   }
 
   function showOutput(text, tier) {
@@ -432,6 +436,10 @@
         "color:#fbbf24;border:1px solid rgba(251,191,36,.3)";
       bdg.textContent = labels[tier] || tier;
     }
+    // Scroll output into view on mobile
+    setTimeout(function() {
+      wrap.scrollIntoView({ behavior:"smooth", block:"start" });
+    }, 100);
   }
 
   function clearOutput() {

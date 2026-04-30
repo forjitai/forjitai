@@ -498,22 +498,70 @@
                   'text-transform:uppercase;letter-spacing:.07em">Result</span>' +
             '<span id="te-ai-badge" style="display:none"></span>' +
           '</div>' +
-          '<div style="display:flex;gap:8px">' +
-            '<button id="te-copy" style="padding:8px 14px;font-size:13px;' +
+          '<div style="display:flex;gap:6px;flex-wrap:wrap">' +
+            '<button id="te-copy" style="padding:7px 12px;font-size:12px;' +
               'background:#292524;color:#a8a29e;border:none;border-radius:7px;' +
               'cursor:pointer;font-family:inherit;touch-action:manipulation">' +
               '📋 Copy' +
             '</button>' +
-            '<button id="te-regen" style="padding:8px 14px;font-size:13px;' +
+            '<button id="te-regen" style="padding:7px 12px;font-size:12px;' +
               'background:#292524;color:#a8a29e;border:none;border-radius:7px;' +
               'cursor:pointer;font-family:inherit;touch-action:manipulation">' +
               '🔄 Redo' +
+            '</button>' +
+            '<button id="te-word" style="padding:7px 12px;font-size:12px;' +
+              'background:#1d4ed8;color:#fff;border:none;border-radius:7px;' +
+              'cursor:pointer;font-family:inherit;touch-action:manipulation">' +
+              '📄 Word' +
+            '</button>' +
+            '<button id="te-pdf" style="padding:7px 12px;font-size:12px;' +
+              'background:#dc2626;color:#fff;border:none;border-radius:7px;' +
+              'cursor:pointer;font-family:inherit;touch-action:manipulation">' +
+              '🖨️ PDF' +
             '</button>' +
           '</div>' +
         '</div>' +
         '<div id="te-output" style="white-space:pre-wrap;font-size:15px;' +
              'line-height:1.85;color:#e7e5e4;min-height:40px;' +
              'word-break:break-word;overflow-wrap:break-word"></div>' +
+
+        // Share Bar
+        '<div id="te-share-bar" style="margin-top:18px;padding-top:14px;border-top:1px solid #292524">' +
+          '<div style="font-size:11px;font-weight:700;color:#78716c;text-transform:uppercase;' +
+               'letter-spacing:.07em;margin-bottom:10px">📤 Share this result</div>' +
+          '<div style="display:flex;gap:8px;flex-wrap:wrap">' +
+            '<button id="te-share-wa" title="Share on WhatsApp" style="padding:8px 14px;font-size:13px;font-weight:600;' +
+              'background:#25D366;color:#fff;border:none;border-radius:8px;cursor:pointer;font-family:inherit;touch-action:manipulation">' +
+              '💬 WhatsApp' +
+            '</button>' +
+            '<button id="te-share-tg" title="Share on Telegram" style="padding:8px 14px;font-size:13px;font-weight:600;' +
+              'background:#229ED9;color:#fff;border:none;border-radius:8px;cursor:pointer;font-family:inherit;touch-action:manipulation">' +
+              '✈️ Telegram' +
+            '</button>' +
+            '<button id="te-share-fb" title="Share on Facebook" style="padding:8px 14px;font-size:13px;font-weight:600;' +
+              'background:#1877F2;color:#fff;border:none;border-radius:8px;cursor:pointer;font-family:inherit;touch-action:manipulation">' +
+              'f Facebook' +
+            '</button>' +
+            '<button id="te-share-tw" title="Share on X / Twitter" style="padding:8px 14px;font-size:13px;font-weight:600;' +
+              'background:#000;color:#fff;border:none;border-radius:8px;cursor:pointer;font-family:inherit;touch-action:manipulation">' +
+              '𝕏 Twitter' +
+            '</button>' +
+            '<button id="te-share-li" title="Share on LinkedIn" style="padding:8px 14px;font-size:13px;font-weight:600;' +
+              'background:#0A66C2;color:#fff;border:none;border-radius:8px;cursor:pointer;font-family:inherit;touch-action:manipulation">' +
+              'in LinkedIn' +
+            '</button>' +
+            '<button id="te-share-em" title="Share via Email" style="padding:8px 14px;font-size:13px;font-weight:600;' +
+              'background:#292524;color:#a8a29e;border:1px solid #3f3a38;border-radius:8px;cursor:pointer;font-family:inherit;touch-action:manipulation">' +
+              '✉️ Email' +
+            '</button>' +
+            '<button id="te-share-native" title="More share options" style="display:none;padding:8px 14px;font-size:13px;font-weight:600;' +
+              'background:#fbbf24;color:#0c0a09;border:none;border-radius:8px;cursor:pointer;font-family:inherit;touch-action:manipulation">' +
+              '↑ Share' +
+            '</button>' +
+          '</div>' +
+          '<div id="te-share-msg" style="font-size:12px;color:#22c55e;margin-top:8px;display:none">✓ Link copied to clipboard!</div>' +
+        '</div>' +
+
       '</div>' +
 
       // Own key (optional)
@@ -597,7 +645,135 @@
         setTimeout(function() { saveBtn.textContent = "Save Key"; }, 2000);
       });
     });
+
+    /* ── Export: Word ──────────────────────────────────────────────────── */
+    var wordBtn = document.getElementById("te-word");
+    if (wordBtn) wordBtn.addEventListener("click", function() {
+      var out = document.getElementById("te-output");
+      if (!out || !out.textContent.trim()) return;
+      var text = out.textContent;
+      var toolName = TOOL.name || "Forjit AI Result";
+      var date = new Date().toLocaleDateString("en-IN");
+      // Build Word-compatible HTML
+      var wordHtml =
+        '<html xmlns:o="urn:schemas-microsoft-com:office:office" ' +
+        'xmlns:w="urn:schemas-microsoft-com:office:word" xmlns="http://www.w3.org/TR/REC-html40">' +
+        '<head><meta charset="utf-8"/>' +
+        '<style>' +
+        'body{font-family:Calibri,Arial,sans-serif;font-size:12pt;line-height:1.8;color:#000;margin:2cm;}' +
+        'h1{font-size:16pt;font-weight:bold;margin-bottom:6pt;}' +
+        '.meta{color:#666;font-size:10pt;margin-bottom:18pt;}' +
+        'pre{white-space:pre-wrap;font-family:Calibri,Arial,sans-serif;font-size:12pt;line-height:1.8;}' +
+        '</style></head><body>' +
+        '<h1>' + toolName + '</h1>' +
+        '<div class="meta">Generated by Forjit AI · forjitai.in · ' + date + '</div>' +
+        '<pre>' + text.replace(/&/g,'&amp;').replace(/</g,'&lt;').replace(/>/g,'&gt;') + '</pre>' +
+        '<div style="margin-top:24pt;font-size:9pt;color:#888">© 2025 Forjit AI · forjitai.in · Free AI tools for India</div>' +
+        '</body></html>';
+      var blob = new Blob(['\ufeff' + wordHtml], { type: 'application/msword' });
+      var url = URL.createObjectURL(blob);
+      var a = document.createElement("a");
+      a.href = url;
+      a.download = (toolName.toLowerCase().replace(/[^a-z0-9]+/g,"-") + "-forjitai.doc");
+      document.body.appendChild(a);
+      a.click();
+      document.body.removeChild(a);
+      URL.revokeObjectURL(url);
+      wordBtn.textContent = "✓ Downloading…";
+      setTimeout(function() { wordBtn.textContent = "📄 Word"; }, 2500);
+    });
+
+    /* ── Export: PDF (print) ───────────────────────────────────────────── */
+    var pdfBtn = document.getElementById("te-pdf");
+    if (pdfBtn) pdfBtn.addEventListener("click", function() {
+      var out = document.getElementById("te-output");
+      if (!out || !out.textContent.trim()) return;
+      var text = out.textContent;
+      var toolName = TOOL.name || "Forjit AI Result";
+      var date = new Date().toLocaleDateString("en-IN");
+      var printWin = window.open("", "_blank");
+      printWin.document.write(
+        '<!doctype html><html><head><meta charset="utf-8"/>' +
+        '<title>' + toolName + ' — Forjit AI</title>' +
+        '<style>' +
+        '@page{margin:2cm}' +
+        'body{font-family:Calibri,Arial,sans-serif;font-size:12pt;line-height:1.8;color:#000;max-width:170mm;margin:0 auto}' +
+        'h1{font-size:16pt;margin-bottom:4pt}' +
+        '.meta{color:#666;font-size:9pt;margin-bottom:20pt;border-bottom:1px solid #ccc;padding-bottom:8pt}' +
+        'pre{white-space:pre-wrap;font-family:Calibri,Arial,sans-serif;font-size:11.5pt;line-height:1.8}' +
+        'footer{margin-top:24pt;font-size:8pt;color:#888;border-top:1px solid #ddd;padding-top:6pt}' +
+        '</style></head><body>' +
+        '<h1>' + toolName + '</h1>' +
+        '<div class="meta">Generated by Forjit AI &nbsp;·&nbsp; forjitai.in &nbsp;·&nbsp; ' + date + '</div>' +
+        '<pre>' + text.replace(/&/g,'&amp;').replace(/</g,'&lt;').replace(/>/g,'&gt;') + '</pre>' +
+        '<footer>© 2025 Forjit AI · forjitai.in — Free AI tools for India · This document was generated using Forjit AI</footer>' +
+        '</body></html>'
+      );
+      printWin.document.close();
+      printWin.focus();
+      setTimeout(function() {
+        printWin.print();
+      }, 400);
+    });
+
+    /* ── Share helpers ─────────────────────────────────────────────────── */
+    function getShareText() {
+      var out = document.getElementById("te-output");
+      var text = out ? out.textContent.trim() : "";
+      var preview = text.length > 280 ? text.substring(0, 280) + "…" : text;
+      return preview;
+    }
+    function getShareUrl() { return window.location.href; }
+    function getShareTitle() { return (TOOL.name || "Forjit AI") + " — Free AI Tool"; }
+
+    function wireShare(id, fn) {
+      var btn = document.getElementById(id);
+      if (btn) btn.addEventListener("click", fn);
+    }
+
+    wireShare("te-share-wa", function() {
+      var msg = "✝️ " + getShareTitle() + "\n\n" + getShareText() + "\n\n🔗 " + getShareUrl() + "\n\n📱 Free at forjitai.in";
+      window.open("https://api.whatsapp.com/send?text=" + encodeURIComponent(msg), "_blank");
+    });
+
+    wireShare("te-share-tg", function() {
+      var msg = getShareTitle() + "\n\n" + getShareText().substring(0,200);
+      window.open("https://t.me/share/url?url=" + encodeURIComponent(getShareUrl()) + "&text=" + encodeURIComponent(msg), "_blank");
+    });
+
+    wireShare("te-share-fb", function() {
+      window.open("https://www.facebook.com/sharer/sharer.php?u=" + encodeURIComponent(getShareUrl()), "_blank");
+    });
+
+    wireShare("te-share-tw", function() {
+      var msg = getShareTitle() + " — Free at @forjitai\n" + getShareUrl();
+      window.open("https://twitter.com/intent/tweet?text=" + encodeURIComponent(msg), "_blank");
+    });
+
+    wireShare("te-share-li", function() {
+      window.open("https://www.linkedin.com/sharing/share-offsite/?url=" + encodeURIComponent(getShareUrl()), "_blank");
+    });
+
+    wireShare("te-share-em", function() {
+      var subject = getShareTitle();
+      var body = getShareText() + "\n\n--- Generated by Forjit AI ---\n" + getShareUrl();
+      window.location.href = "mailto:?subject=" + encodeURIComponent(subject) + "&body=" + encodeURIComponent(body);
+    });
+
+    // Native share (mobile)
+    var nativeBtn = document.getElementById("te-share-native");
+    if (navigator.share && nativeBtn) {
+      nativeBtn.style.display = "inline-block";
+      nativeBtn.addEventListener("click", function() {
+        navigator.share({
+          title: getShareTitle(),
+          text:  getShareText().substring(0, 300),
+          url:   getShareUrl(),
+        }).catch(function() {});
+      });
+    }
   }
+
 
   /* ── Render input ─────────────────────────────────────────────────────── */
   function renderInput(inp) {

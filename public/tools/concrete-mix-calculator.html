@@ -1,0 +1,731 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="UTF-8"/><meta name="viewport" content="width=device-width,initial-scale=1.0"/>
+<title>Concrete Mix Design Calculator — M15 M20 M25 M30 Grade | Forjit AI</title>
+<meta name="description" content="Free concrete mix design calculator for Indian civil engineers. Calculate cement, sand, aggregate & water quantities for M15, M20, M25, M30, M35, M40 grade concrete as per IS 10262:2019 and IS 456:2000."/>
+<meta name="keywords" content="concrete mix design calculator, M20 concrete mix ratio, cement sand aggregate ratio, IS 10262 mix design, concrete grade calculator India, concrete mix proportion, water cement ratio, M25 concrete quantity, civil engineering calculator"/>
+<link rel="canonical" href="https://www.forjitai.in/tools/concrete-mix-calculator.html"/>
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-DYR402JFVG"></script>
+<script>window.dataLayer=window.dataLayer||[];function gtag(){dataLayer.push(arguments);}gtag('js',new Date());gtag('config','G-DYR402JFVG');</script>
+<style>
+*{box-sizing:border-box;margin:0;padding:0}
+:root{--bg:#0c0a09;--sur:#1c1917;--bor:#292524;--fg:#e7e5e4;--mu:#a8a29e;--su:#78716c;--ac:#fbbf24;--gr:#22c55e;--bl:#3b82f6;--rd:#ef4444}
+body{font-family:'Segoe UI',system-ui,sans-serif;background:var(--bg);color:var(--fg);min-height:100vh}
+header{background:var(--sur);border-bottom:1px solid var(--bor);padding:12px 20px;display:flex;align-items:center;justify-content:space-between;position:sticky;top:0;z-index:10}
+.logo{display:flex;align-items:center;gap:10px;text-decoration:none;color:var(--fg)}
+.lm{width:32px;height:32px;background:var(--ac);border-radius:6px;display:flex;align-items:center;justify-content:center;font-weight:800;font-size:16px;color:var(--bg)}
+.back{color:var(--mu);text-decoration:none;font-size:13px}.back:hover{color:var(--ac)}
+.wrap{max-width:960px;margin:0 auto;padding:22px 16px}
+h1{font-size:26px;font-weight:700;margin-bottom:4px}
+.sub{color:var(--mu);font-size:14px;margin-bottom:20px}
+.card{background:var(--sur);border:1px solid var(--bor);border-radius:12px;padding:20px;margin-bottom:14px}
+.mode-tabs{display:flex;background:var(--bg);border:1px solid var(--bor);border-radius:8px;padding:3px;margin-bottom:18px;gap:3px}
+.mt{flex:1;padding:9px 6px;border:none;border-radius:6px;cursor:pointer;font-size:13px;font-weight:600;background:transparent;color:var(--mu);transition:all .15s;font-family:inherit}
+.mt.on{background:var(--ac);color:var(--bg)}
+.lbl{display:block;font-size:11px;color:var(--mu);margin-bottom:5px;font-weight:600;text-transform:uppercase;letter-spacing:.06em}
+.ig{display:flex;align-items:stretch;background:var(--bg);border:1px solid var(--bor);border-radius:8px;overflow:hidden;margin-bottom:8px;transition:border-color .15s}
+.ig:focus-within{border-color:var(--ac)}
+.pfx{padding:10px 12px;background:var(--bor);color:var(--mu);font-size:13px;display:flex;align-items:center;white-space:nowrap;flex-shrink:0}
+input[type=number],select{flex:1;background:transparent;border:none;outline:none;color:var(--fg);font-size:15px;padding:10px 12px;width:100%;font-family:inherit}
+select{appearance:none;background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='12' height='12' viewBox='0 0 24 24' fill='none' stroke='%23a8a29e' stroke-width='2'%3E%3Cpolyline points='6 9 12 15 18 9'%3E%3C/polyline%3E%3C/svg%3E");background-repeat:no-repeat;background-position:right 10px center;padding-right:28px}
+select option{background:var(--sur)}
+.grid2{display:grid;grid-template-columns:1fr 1fr;gap:12px}
+.grid3{display:grid;grid-template-columns:1fr 1fr 1fr;gap:12px}
+@media(max-width:600px){.grid2,.grid3{grid-template-columns:1fr}}
+.btn-row{display:flex;gap:8px;margin-top:6px;flex-wrap:wrap}
+.btn{padding:11px 22px;border-radius:8px;cursor:pointer;font-size:14px;font-weight:600;border:none;font-family:inherit;transition:all .15s;display:flex;align-items:center;gap:6px}
+.btn-pri{background:var(--ac);color:var(--bg)}.btn-pri:hover{opacity:.9}
+.btn-sec{background:var(--bor);color:var(--mu)}.btn-sec:hover{background:#3c3836;color:var(--fg)}
+.res{display:none}.res.show{display:block}
+.res-head{font-size:13px;font-weight:700;text-transform:uppercase;letter-spacing:.08em;color:var(--mu);margin-bottom:12px}
+.mat-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(160px,1fr));gap:10px;margin-bottom:14px}
+.mat-card{background:var(--bg);border:1px solid var(--bor);border-radius:10px;padding:14px;text-align:center;position:relative}
+.mat-icon{font-size:24px;margin-bottom:6px}
+.mat-name{font-size:11px;color:var(--mu);text-transform:uppercase;letter-spacing:.06em;margin-bottom:4px}
+.mat-val{font-size:20px;font-weight:700;color:var(--ac)}
+.mat-unit{font-size:11px;color:var(--su)}
+.mat-sub{font-size:11px;color:var(--mu);margin-top:2px}
+.ratio-bar{background:var(--bg);border:1px solid var(--bor);border-radius:10px;padding:14px;margin-bottom:10px}
+.ratio-label{font-size:13px;font-weight:600;margin-bottom:8px}
+.bar-wrap{display:flex;height:28px;border-radius:6px;overflow:hidden;gap:2px;margin-bottom:6px}
+.bar-seg{display:flex;align-items:center;justify-content:center;font-size:11px;font-weight:700;color:#fff;transition:flex .4s;min-width:0;overflow:hidden;white-space:nowrap}
+.bar-leg{display:flex;gap:12px;flex-wrap:wrap}
+.leg-item{display:flex;align-items:center;gap:5px;font-size:12px;color:var(--mu)}
+.leg-dot{width:10px;height:10px;border-radius:3px;flex-shrink:0}
+.info-row{display:flex;justify-content:space-between;align-items:center;padding:8px 0;border-bottom:1px solid var(--bor);font-size:14px}
+.info-row:last-child{border:none}
+.info-key{color:var(--mu)}
+.info-val{font-weight:600}
+.copy-all{padding:8px 16px;background:var(--bor);border:1px solid var(--bor);border-radius:7px;cursor:pointer;font-size:12px;font-weight:600;color:var(--mu);font-family:inherit;transition:all .15s}
+.copy-all:hover{background:var(--ac);color:var(--bg);border-color:var(--ac)}
+.note{background:rgba(251,191,36,.07);border:1px solid rgba(251,191,36,.2);border-radius:8px;padding:10px 14px;font-size:12px;color:#fcd34d;margin-top:10px;line-height:1.6}
+.err{background:rgba(239,68,68,.08);border:1px solid rgba(239,68,68,.2);border-radius:8px;padding:10px 14px;font-size:13px;color:#f87171;display:none;margin-bottom:10px}
+.grade-btn-row{display:flex;gap:6px;flex-wrap:wrap;margin-bottom:14px}
+.gb{padding:7px 14px;border:1px solid var(--bor);border-radius:7px;cursor:pointer;font-size:13px;font-weight:700;background:var(--bg);color:var(--mu);transition:all .15s}
+.gb:hover{border-color:var(--ac);color:var(--ac)}
+.gb.on{background:var(--ac);color:var(--bg);border-color:var(--ac)}
+.badge-new{display:inline-block;padding:1px 6px;border-radius:4px;font-size:9px;font-weight:700;background:rgba(34,197,94,.15);color:#4ade80;border:1px solid rgba(34,197,94,.25);vertical-align:middle;margin-left:4px}
+/* SEO content */
+.seo{color:var(--mu);font-size:14px;line-height:1.8}
+.seo h2{font-size:18px;font-weight:700;color:var(--fg);margin:20px 0 8px}
+.seo h3{font-size:15px;font-weight:600;color:var(--fg);margin:14px 0 5px}
+.seo ul{padding-left:18px;margin:6px 0}
+.seo table{width:100%;border-collapse:collapse;margin:12px 0;font-size:13px}
+.seo th{background:var(--bor);padding:8px 12px;text-align:left;font-weight:600;color:var(--fg)}
+.seo td{padding:7px 12px;border-top:1px solid var(--bor)}
+.seo tr:nth-child(even) td{background:rgba(255,255,255,.02)}
+footer{text-align:center;padding:30px 20px;color:var(--su);font-size:12px;border-top:1px solid var(--bor);margin-top:30px}
+footer a{color:var(--mu);text-decoration:none}.footer a:hover{color:var(--ac)}
+.tabs-panel{display:none}.tabs-panel.on{display:block}
+</style>
+</head>
+<body>
+
+<header>
+  <a class="logo" href="/">
+    <div class="lm">F</div>
+    <span style="font-weight:700;font-size:16px">Forjit AI</span>
+  </a>
+  <a class="back" href="/">← All Tools</a>
+</header>
+
+<!-- AdSense Top -->
+<div class="wrap">
+
+<h1>🏗️ Concrete Mix Design Calculator</h1>
+<p class="sub">Calculate cement, sand, aggregate &amp; water quantities per IS 10262:2019 &amp; IS 456:2000 | M15 to M40 grade</p>
+
+<div class="card">
+  <div class="mode-tabs">
+    <button class="mt on" onclick="switchTab('nominal',this)">Nominal Mix (IS 456)</button>
+    <button class="mt" onclick="switchTab('design',this)">Design Mix (IS 10262)</button>
+    <button class="mt" onclick="switchTab('bags',this)">Bags to Volume</button>
+  </div>
+
+  <!-- ── TAB 1: Nominal Mix ───────────────────────────────── -->
+  <div id="tab-nominal" class="tabs-panel on">
+    <p style="font-size:13px;color:var(--mu);margin-bottom:14px">Quick concrete mix ratios as per <strong style="color:var(--fg)">IS 456:2000 Table 9</strong>. Best for small works, footings, slabs up to M25.</p>
+
+    <div class="lbl">Select Concrete Grade</div>
+    <div class="grade-btn-row" id="nomGrades">
+      <button class="gb on" data-g="M15" onclick="setGrade(this,'nom')">M15</button>
+      <button class="gb" data-g="M20" onclick="setGrade(this,'nom')">M20</button>
+      <button class="gb" data-g="M25" onclick="setGrade(this,'nom')">M25</button>
+      <button class="gb" data-g="M30" onclick="setGrade(this,'nom')">M30 <span class="badge-new">Design</span></button>
+      <button class="gb" data-g="M35" onclick="setGrade(this,'nom')">M35 <span class="badge-new">Design</span></button>
+      <button class="gb" data-g="M40" onclick="setGrade(this,'nom')">M40 <span class="badge-new">Design</span></button>
+    </div>
+
+    <div class="grid2">
+      <div>
+        <label class="lbl">Volume of Concrete Required</label>
+        <div class="ig"><div class="pfx">m³</div><input type="number" id="nomVol" value="1" min="0.01" step="0.1"/></div>
+      </div>
+      <div>
+        <label class="lbl">Exposure Condition</label>
+        <div class="ig"><select id="nomExp">
+          <option value="mild">Mild (footings, columns below GL)</option>
+          <option value="moderate" selected>Moderate (beams, slabs, columns)</option>
+          <option value="severe">Severe (exposed to rain/soil)</option>
+          <option value="verysevere">Very Severe (coastal area)</option>
+          <option value="extreme">Extreme (sea, chemicals)</option>
+        </select></div>
+      </div>
+    </div>
+
+    <div class="grid3">
+      <div>
+        <label class="lbl">Cement Density (kg/m³)</label>
+        <div class="ig"><input type="number" id="nomCemDen" value="1440" min="1300" max="1600"/></div>
+      </div>
+      <div>
+        <label class="lbl">Sand Density (kg/m³)</label>
+        <div class="ig"><input type="number" id="nomSandDen" value="1600" min="1400" max="1800"/></div>
+      </div>
+      <div>
+        <label class="lbl">Aggregate Density (kg/m³)</label>
+        <div class="ig"><input type="number" id="nomAggDen" value="1500" min="1400" max="1800"/></div>
+      </div>
+    </div>
+
+    <div id="nomErr" class="err">⚠️ Please enter valid values.</div>
+    <div class="btn-row">
+      <button class="btn btn-pri" onclick="calcNominal()">⚡ Calculate Mix</button>
+      <button class="btn btn-sec" onclick="resetNominal()">↺ Reset</button>
+    </div>
+
+    <div id="nomRes" class="res" style="margin-top:18px">
+      <div style="display:flex;justify-content:space-between;align-items:center;margin-bottom:12px">
+        <div class="res-head" style="margin:0">📊 Mix Results</div>
+        <button class="copy-all" onclick="copyResult('nom')">⧉ Copy Results</button>
+      </div>
+      <div class="mat-grid" id="nomMats"></div>
+      <div class="ratio-bar">
+        <div class="ratio-label">Mix Proportion Visualisation — <span id="nomRatioText"></span></div>
+        <div class="bar-wrap" id="nomBar"></div>
+        <div class="bar-leg">
+          <div class="leg-item"><div class="leg-dot" style="background:#fbbf24"></div>Cement</div>
+          <div class="leg-item"><div class="leg-dot" style="background:#78716c"></div>Sand (FA)</div>
+          <div class="leg-item"><div class="leg-dot" style="background:#44403c"></div>Aggregate (CA)</div>
+        </div>
+      </div>
+      <div id="nomInfo"></div>
+      <div class="note" id="nomNote"></div>
+    </div>
+  </div>
+
+  <!-- ── TAB 2: Design Mix ───────────────────────────────── -->
+  <div id="tab-design" class="tabs-panel">
+    <p style="font-size:13px;color:var(--mu);margin-bottom:14px">Detailed mix design as per <strong style="color:var(--fg)">IS 10262:2019</strong>. For structural concrete, RCC works, bridges and all M25+ grades.</p>
+
+    <div class="grid2">
+      <div>
+        <label class="lbl">Grade of Concrete</label>
+        <div class="ig"><select id="desGrade">
+          <option>M15</option><option>M20</option><option selected>M25</option>
+          <option>M30</option><option>M35</option><option>M40</option><option>M45</option><option>M50</option>
+        </select></div>
+      </div>
+      <div>
+        <label class="lbl">Type of Cement</label>
+        <div class="ig"><select id="desCem">
+          <option value="OPC43">OPC 43 Grade</option>
+          <option value="OPC53" selected>OPC 53 Grade</option>
+          <option value="PPC">PPC (Portland Pozzolana)</option>
+          <option value="PSC">PSC (Portland Slag)</option>
+        </select></div>
+      </div>
+    </div>
+
+    <div class="grid3">
+      <div>
+        <label class="lbl">Volume Required (m³)</label>
+        <div class="ig"><input type="number" id="desVol" value="1" min="0.01" step="0.1"/></div>
+      </div>
+      <div>
+        <label class="lbl">Max Aggregate Size (mm)</label>
+        <div class="ig"><select id="desAgg">
+          <option value="10">10 mm</option>
+          <option value="20" selected>20 mm</option>
+          <option value="40">40 mm</option>
+        </select></div>
+      </div>
+      <div>
+        <label class="lbl">Workability (Slump mm)</label>
+        <div class="ig"><select id="desSlump">
+          <option value="25">25–50 mm (stiff)</option>
+          <option value="75" selected>75–100 mm (medium)</option>
+          <option value="125">100–150 mm (high)</option>
+          <option value="150">150+ mm (very high/pump)</option>
+        </select></div>
+      </div>
+    </div>
+
+    <div class="grid2">
+      <div>
+        <label class="lbl">Exposure Condition (IS 456:2000)</label>
+        <div class="ig"><select id="desExp">
+          <option value="mild">Mild</option>
+          <option value="moderate" selected>Moderate</option>
+          <option value="severe">Severe</option>
+          <option value="verysevere">Very Severe</option>
+          <option value="extreme">Extreme</option>
+        </select></div>
+      </div>
+      <div>
+        <label class="lbl">Zone of Fine Aggregate (Sand)</label>
+        <div class="ig"><select id="desSandZone">
+          <option value="I">Zone I (coarse)</option>
+          <option value="II" selected>Zone II (medium)</option>
+          <option value="III">Zone III (fine)</option>
+          <option value="IV">Zone IV (very fine)</option>
+        </select></div>
+      </div>
+    </div>
+
+    <div id="desErr" class="err">⚠️ Please check input values.</div>
+    <div class="btn-row">
+      <button class="btn btn-pri" onclick="calcDesign()">⚡ Calculate Mix</button>
+      <button class="btn btn-sec" onclick="resetDesign()">↺ Reset</button>
+    </div>
+
+    <div id="desRes" class="res" style="margin-top:18px">
+      <div style="display:flex;justify-content:space-between;align-items:center;margin-bottom:12px">
+        <div class="res-head" style="margin:0">📊 Design Mix Results</div>
+        <button class="copy-all" onclick="copyResult('des')">⧉ Copy Results</button>
+      </div>
+      <div class="mat-grid" id="desMats"></div>
+      <div class="ratio-bar">
+        <div class="ratio-label">Proportion by Weight — <span id="desRatioText"></span></div>
+        <div class="bar-wrap" id="desBar"></div>
+        <div class="bar-leg">
+          <div class="leg-item"><div class="leg-dot" style="background:#fbbf24"></div>Cement</div>
+          <div class="leg-item"><div class="leg-dot" style="background:#3b82f6"></div>Water</div>
+          <div class="leg-item"><div class="leg-dot" style="background:#78716c"></div>Fine Aggregate</div>
+          <div class="leg-item"><div class="leg-dot" style="background:#44403c"></div>Coarse Aggregate</div>
+        </div>
+      </div>
+      <div id="desInfo"></div>
+      <div class="note" id="desNote"></div>
+    </div>
+  </div>
+
+  <!-- ── TAB 3: Bags to Volume ───────────────────────────── -->
+  <div id="tab-bags" class="tabs-panel">
+    <p style="font-size:13px;color:var(--mu);margin-bottom:14px">Find how many <strong style="color:var(--fg)">bags of cement</strong> are needed for any volume, or reverse-calculate volume from bags.</p>
+
+    <div class="mode-tabs" style="margin-bottom:14px">
+      <button class="mt on" id="bagModeBtn1" onclick="setBagMode('vol')">Volume → Bags</button>
+      <button class="mt" id="bagModeBtn2" onclick="setBagMode('bags')">Bags → Volume</button>
+    </div>
+
+    <div class="grid2">
+      <div>
+        <label class="lbl">Grade of Concrete</label>
+        <div class="ig"><select id="bagGrade">
+          <option>M15</option><option selected>M20</option><option>M25</option><option>M30</option><option>M35</option><option>M40</option>
+        </select></div>
+      </div>
+      <div id="bagInputWrap">
+        <label class="lbl" id="bagInputLbl">Volume of Concrete (m³)</label>
+        <div class="ig"><input type="number" id="bagInput" value="10" min="0.1" step="0.5"/></div>
+      </div>
+    </div>
+    <div class="grid2">
+      <div>
+        <label class="lbl">Bag Size</label>
+        <div class="ig"><select id="bagSize">
+          <option value="50" selected>50 kg bag</option>
+          <option value="25">25 kg bag</option>
+        </select></div>
+      </div>
+      <div>
+        <label class="lbl">Wastage %</label>
+        <div class="ig"><input type="number" id="bagWaste" value="5" min="0" max="20"/></div>
+      </div>
+    </div>
+
+    <div class="btn-row">
+      <button class="btn btn-pri" onclick="calcBags()">⚡ Calculate</button>
+      <button class="btn btn-sec" onclick="resetBags()">↺ Reset</button>
+    </div>
+
+    <div id="bagRes" class="res" style="margin-top:18px">
+      <div style="display:flex;justify-content:space-between;align-items:center;margin-bottom:12px">
+        <div class="res-head" style="margin:0">📊 Material Required</div>
+        <button class="copy-all" onclick="copyResult('bag')">⧉ Copy Results</button>
+      </div>
+      <div class="mat-grid" id="bagMats"></div>
+      <div id="bagInfo"></div>
+    </div>
+  </div>
+
+</div><!-- /card -->
+
+<!-- AdSense Middle -->
+
+<!-- ── NOMINAL MIX DATA ─────────────────────────────────── -->
+<script>
+const NOM = {
+  M15:{ ratio:[1,2,4],   wc:0.60, fck:15, minCem:250 },
+  M20:{ ratio:[1,1.5,3], wc:0.55, fck:20, minCem:300 },
+  M25:{ ratio:[1,1,2],   wc:0.50, fck:25, minCem:320 },
+  M30:{ ratio:[1,0.75,1.5], wc:0.45, fck:30, minCem:340 },
+  M35:{ ratio:[1,0.5,1], wc:0.45, fck:35, minCem:360 },
+  M40:{ ratio:[1,0.5,0.8],wc:0.40, fck:40, minCem:380 },
+};
+const EXP_MIN_GRADE = {
+  mild:'M15', moderate:'M20', severe:'M25', verysevere:'M30', extreme:'M35'
+};
+const EXP_MAX_WC = {
+  mild:0.60, moderate:0.55, severe:0.50, verysevere:0.45, extreme:0.40
+};
+
+let currentNomGrade = 'M15';
+let bagMode = 'vol';
+
+function setGrade(btn, t) {
+  document.querySelectorAll('#nomGrades .gb').forEach(b=>b.classList.remove('on'));
+  btn.classList.add('on');
+  currentNomGrade = btn.dataset.g;
+}
+
+function switchTab(t, btn) {
+  document.querySelectorAll('.tabs-panel').forEach(p=>p.classList.remove('on'));
+  document.querySelectorAll('.mode-tabs .mt').forEach(b=>b.classList.remove('on'));
+  document.getElementById('tab-'+t).classList.add('on');
+  btn.classList.add('on');
+}
+
+function matCard(icon, name, val, unit, sub) {
+  return `<div class="mat-card">
+    <div class="mat-icon">${icon}</div>
+    <div class="mat-name">${name}</div>
+    <div class="mat-val">${val}</div>
+    <div class="mat-unit">${unit}</div>
+    ${sub?`<div class="mat-sub">${sub}</div>`:''}
+  </div>`;
+}
+
+function infoRow(key,val){ return `<div class="info-row"><span class="info-key">${key}</span><span class="info-val">${val}</span></div>`; }
+
+function calcNominal() {
+  const vol = parseFloat(document.getElementById('nomVol').value);
+  const cemDen = parseFloat(document.getElementById('nomCemDen').value);
+  const sandDen = parseFloat(document.getElementById('nomSandDen').value);
+  const aggDen = parseFloat(document.getElementById('nomAggDen').value);
+  const exp = document.getElementById('nomExp').value;
+  const err = document.getElementById('nomErr');
+  if (!vol || vol<=0) { err.style.display='block'; err.textContent='⚠️ Enter a valid concrete volume (m³).'; return; }
+  err.style.display='none';
+
+  const g = NOM[currentNomGrade];
+  const [c,s,a] = g.ratio;
+  const totalParts = c + s + a;
+
+  // Dry volume = wet volume × 1.54 (bulking factor)
+  const dryVol = vol * 1.54;
+
+  // Volumes of each material
+  const cemVol  = (c/totalParts) * dryVol;
+  const sandVol = (s/totalParts) * dryVol;
+  const aggVol  = (a/totalParts) * dryVol;
+
+  const cemKg   = cemVol  * cemDen;
+  const sandKg  = sandVol * sandDen;
+  const aggKg   = aggVol  * aggDen;
+  const waterL  = cemKg   * g.wc;
+  const bags50  = Math.ceil(cemKg / 50);
+  const bags25  = Math.ceil(cemKg / 25);
+
+  document.getElementById('nomMats').innerHTML =
+    matCard('🪨','Cement',cemKg.toFixed(1),'kg', `${bags50} bags (50 kg)`) +
+    matCard('🏖️','Fine Agg. (Sand)',sandKg.toFixed(1),'kg', `${sandVol.toFixed(3)} m³`) +
+    matCard('🪨','Coarse Agg.',aggKg.toFixed(1),'kg', `${aggVol.toFixed(3)} m³`) +
+    matCard('💧','Water',waterL.toFixed(1),'litres', `W/C = ${g.wc}`);
+
+  const ratioStr = `1 : ${s} : ${a}`;
+  document.getElementById('nomRatioText').textContent = ratioStr;
+  const total = c+s+a;
+  document.getElementById('nomBar').innerHTML =
+    `<div class="bar-seg" style="flex:${c};background:#fbbf24;color:#000">C</div>` +
+    `<div class="bar-seg" style="flex:${s};background:#78716c">S</div>` +
+    `<div class="bar-seg" style="flex:${a};background:#44403c">CA</div>`;
+
+  const minG = EXP_MIN_GRADE[exp];
+  const maxWC = EXP_MAX_WC[exp];
+  const gradeNums = ['M15','M20','M25','M30','M35','M40'];
+  const warn = gradeNums.indexOf(currentNomGrade) < gradeNums.indexOf(minG)
+    ? `⚠️ IS 456:2000 recommends minimum <b>${minG}</b> for <b>${exp}</b> exposure.` : '';
+
+  document.getElementById('nomInfo').innerHTML =
+    `<div style="margin-top:12px">` +
+    infoRow('Mix Ratio (C:S:CA)', ratioStr) +
+    infoRow('Dry Volume', (dryVol).toFixed(3)+' m³') +
+    infoRow('W/C Ratio', g.wc) +
+    infoRow('Characteristic Strength', `${g.fck} N/mm²`) +
+    infoRow('Min. Cement Content', `${g.minCem} kg/m³`) +
+    infoRow('50 kg Bags Required', `${bags50} bags`) +
+    infoRow('25 kg Bags Required', `${bags25} bags`) +
+    `</div>`;
+
+  document.getElementById('nomNote').innerHTML =
+    `<b>Note:</b> Dry volume = wet volume × 1.54 (accounts for voids &amp; bulking). ` +
+    `Densities used — Cement: ${cemDen} kg/m³, Sand: ${sandDen} kg/m³, CA: ${aggDen} kg/m³. ` +
+    `Add 5–10% wastage for site losses. ${warn}`;
+
+  window._nomResult = { vol, grade:currentNomGrade, cemKg, sandKg, aggKg, waterL, bags50 };
+  document.getElementById('nomRes').classList.add('show');
+}
+
+function resetNominal() {
+  document.getElementById('nomVol').value=1;
+  document.getElementById('nomCemDen').value=1440;
+  document.getElementById('nomSandDen').value=1600;
+  document.getElementById('nomAggDen').value=1500;
+  document.getElementById('nomErr').style.display='none';
+  document.getElementById('nomRes').classList.remove('show');
+}
+
+// ── DESIGN MIX ─────────────────────────────────────────────
+const DES = {
+  M15:{fck:15,sd:3.5}, M20:{fck:20,sd:4.0}, M25:{fck:25,sd:4.0},
+  M30:{fck:30,sd:5.0}, M35:{fck:35,sd:5.0}, M40:{fck:40,sd:5.0},
+  M45:{fck:45,sd:5.0}, M50:{fck:50,sd:5.0},
+};
+// Water content for 20mm max agg, medium workability as base (IS 10262 Table 2)
+const WATER_BASE = { '10':208, '20':186, '40':165 };
+// Slump correction (+3% per 25mm above 75mm; -3% below)
+const SLUMP_ADJ  = { '25':-0.03, '75':0, '125':0.03, '150':0.06 };
+// Sand zone correction on water (Zone I: +2%, II: 0, III: -2%, IV: -4%)
+const ZONE_ADJ   = { 'I':0.02, 'II':0, 'III':-0.02, 'IV':-0.04 };
+// Max w/c by exposure (IS 456)
+const MAX_WC     = { mild:0.60, moderate:0.55, severe:0.50, verysevere:0.45, extreme:0.40 };
+// Min cement by exposure
+const MIN_CEM    = { mild:300, moderate:300, severe:320, verysevere:340, extreme:360 };
+// Volume of CA per unit volume of concrete (IS 10262 Table 3, Fz II, 20mm)
+const CA_VOL_BASE= { '10':{ 'I':0.50,'II':0.48,'III':0.46,'IV':0.44 },
+                     '20':{ 'I':0.62,'II':0.60,'III':0.58,'IV':0.56 },
+                     '40':{ 'I':0.71,'II':0.69,'III':0.67,'IV':0.65 } };
+
+function calcDesign() {
+  const grade = document.getElementById('desGrade').value;
+  const vol   = parseFloat(document.getElementById('desVol').value);
+  const agg   = document.getElementById('desAgg').value;
+  const slump = document.getElementById('desSlump').value;
+  const exp   = document.getElementById('desExp').value;
+  const zone  = document.getElementById('desSandZone').value;
+  const cemType = document.getElementById('desCem').value;
+  const err   = document.getElementById('desErr');
+
+  if (!vol||vol<=0) { err.style.display='block'; return; }
+  err.style.display='none';
+
+  const g = DES[grade];
+  // Target mean strength
+  const fcm = g.fck + 1.65 * g.sd;
+
+  // Water content
+  let water = WATER_BASE[agg];
+  water *= (1 + SLUMP_ADJ[slump]);
+  water *= (1 + ZONE_ADJ[zone]);
+  water = Math.round(water);
+
+  // W/C ratio (Abrams law approximation for IS 10262)
+  // w/c = a / (b^fck) where a=0.98, b=1.013 (simplified)
+  let wc = parseFloat((0.98 / Math.pow(1.013, fcm)).toFixed(2));
+  wc = Math.min(wc, MAX_WC[exp]);
+  wc = parseFloat(wc.toFixed(2));
+
+  // Cement content
+  let cem = Math.round(water / wc);
+  cem = Math.max(cem, MIN_CEM[exp]);
+
+  // Air content (approx 1-2% for vibrated concrete)
+  const airVol = 0.02;
+
+  // Coarse aggregate volume
+  const caVolFrac = CA_VOL_BASE[agg][zone];
+  const aggDry = 1450; // kg/m³ loose bulk density
+  const caKg = caVolFrac * aggDry;
+
+  // Volume of cement, water, CA per m³
+  const cemDen  = 3150; // specific gravity of cement
+  const waterDen= 1000;
+  const aggSG   = 2.65;  // SG of CA
+  const sandSG  = 2.65;
+
+  const cemVolm  = cem / cemDen;
+  const waterVol = water / waterDen;
+  const caVolm   = caVolFrac;
+  const faVolm   = 1 - cemVolm - waterVol - caVolm - airVol;
+  const faKg     = faVolm * sandSG * 1000;
+
+  // Scale to requested volume
+  const cemTotal  = (cem  * vol).toFixed(1);
+  const waterTotal= (water * vol).toFixed(1);
+  const faTotal   = (faKg * vol).toFixed(1);
+  const caTotal   = (caKg * vol).toFixed(1);
+  const bags50    = Math.ceil(cem * vol / 50);
+
+  // Ratios
+  const ratio = `1 : ${(faKg/cem).toFixed(2)} : ${(caKg/cem).toFixed(2)}`;
+
+  document.getElementById('desMats').innerHTML =
+    matCard('🪨','Cement',cemTotal,'kg', `${bags50} bags (50 kg)`) +
+    matCard('💧','Water',waterTotal,'litres', `W/C = ${wc}`) +
+    matCard('🏖️','Fine Aggregate',faTotal,'kg', `${(faVolm*vol).toFixed(3)} m³`) +
+    matCard('🪨','Coarse Agg.',caTotal,'kg', `${(caVolFrac*vol).toFixed(3)} m³`);
+
+  document.getElementById('desRatioText').textContent = `C:FA:CA = ${ratio}`;
+  const barTotal = parseFloat(cemTotal)+parseFloat(waterTotal)+parseFloat(faTotal)+parseFloat(caTotal);
+  document.getElementById('desBar').innerHTML =
+    `<div class="bar-seg" style="flex:${parseFloat(cemTotal)/barTotal};background:#fbbf24;color:#000"> C </div>` +
+    `<div class="bar-seg" style="flex:${parseFloat(waterTotal)/barTotal};background:#3b82f6"> W </div>` +
+    `<div class="bar-seg" style="flex:${parseFloat(faTotal)/barTotal};background:#78716c"> FA </div>` +
+    `<div class="bar-seg" style="flex:${parseFloat(caTotal)/barTotal};background:#44403c"> CA </div>`;
+
+  document.getElementById('desInfo').innerHTML =
+    `<div style="margin-top:12px">` +
+    infoRow('Grade', grade) +
+    infoRow('Target Mean Strength (fcm)', `${fcm.toFixed(1)} N/mm²`) +
+    infoRow('Water-Cement Ratio', wc) +
+    infoRow('Water Content (per m³)', `${water} litres`) +
+    infoRow('Cement Content (per m³)', `${cem} kg/m³`) +
+    infoRow('Mix Ratio (C:FA:CA)', ratio) +
+    infoRow('Volume of Fine Agg. (per m³)', `${(faVolm).toFixed(3)} m³`) +
+    infoRow('Volume of Coarse Agg. (per m³)', `${caVolFrac} m³`) +
+    infoRow('50 kg Bags Required', `${bags50} bags`) +
+    `</div>`;
+
+  document.getElementById('desNote').innerHTML =
+    `<b>IS 10262:2019 Note:</b> Design mix should be verified with trial mixes at site. Standard deviation (S.D.) = ${g.sd} N/mm² (IS 456 Cl. 9.2.4.2). ` +
+    `Cement type: <b>${cemType}</b>. Slump target: ${slump} mm. Sand zone: <b>${zone}</b>. ` +
+    `Always add 3–5% wastage for site conditions. Air content assumed 2%.`;
+
+  window._desResult = { vol, grade, cemTotal, waterTotal, faTotal, caTotal, wc, bags50 };
+  document.getElementById('desRes').classList.add('show');
+}
+
+function resetDesign() {
+  document.getElementById('desErr').style.display='none';
+  document.getElementById('desRes').classList.remove('show');
+}
+
+// ── BAGS MODE ─────────────────────────────────────────────
+function setBagMode(mode) {
+  bagMode = mode;
+  document.getElementById('bagModeBtn1').classList.toggle('on', mode==='vol');
+  document.getElementById('bagModeBtn2').classList.toggle('on', mode==='bags');
+  if (mode==='vol') {
+    document.getElementById('bagInputLbl').textContent = 'Volume of Concrete (m³)';
+    document.getElementById('bagInput').value = 10;
+    document.getElementById('bagInput').step = 0.5;
+  } else {
+    document.getElementById('bagInputLbl').textContent = 'Number of Cement Bags';
+    document.getElementById('bagInput').value = 100;
+    document.getElementById('bagInput').step = 1;
+  }
+  document.getElementById('bagRes').classList.remove('show');
+}
+
+function calcBags() {
+  const grade  = document.getElementById('bagGrade').value;
+  const input  = parseFloat(document.getElementById('bagInput').value);
+  const bagSz  = parseFloat(document.getElementById('bagSize').value);
+  const waste  = parseFloat(document.getElementById('bagWaste').value)||0;
+  if (!input||input<=0) return;
+
+  const g = NOM[grade];
+  const [c,s,a] = g.ratio;
+  const totalParts = c+s+a;
+  const dryFactor  = 1.54;
+  const wasteFactor = 1 + waste/100;
+
+  let vol, cemKg, sandKg, aggKg, waterL, bags;
+
+  if (bagMode==='vol') {
+    vol    = input;
+    const dryVol = vol * dryFactor * wasteFactor;
+    cemKg  = (c/totalParts)*dryVol*1440;
+    sandKg = (s/totalParts)*dryVol*1600;
+    aggKg  = (a/totalParts)*dryVol*1500;
+    waterL = cemKg * g.wc;
+    bags   = Math.ceil(cemKg/bagSz);
+  } else {
+    bags  = Math.ceil(input * wasteFactor);
+    cemKg = bags * bagSz;
+    const dryVol = cemKg / (1440 * c/totalParts);
+    vol   = dryVol / (dryFactor * wasteFactor);
+    sandKg = (s/totalParts)*dryVol*1600;
+    aggKg  = (a/totalParts)*dryVol*1500;
+    waterL = cemKg * g.wc;
+  }
+
+  const sandCFT = sandKg/1600*35.315;
+  const aggCFT  = aggKg/1500*35.315;
+
+  document.getElementById('bagMats').innerHTML =
+    matCard('🪨','Cement', bagMode==='vol'?`${bags} bags`:`${vol.toFixed(2)} m³`,
+      bagMode==='vol'?`${bagSz} kg/bag`:'concrete volume',
+      bagMode==='vol'?`${cemKg.toFixed(0)} kg`:`${bags} bags (${bagSz} kg)`) +
+    matCard('🏖️','Sand', sandKg.toFixed(0),'kg', `${sandCFT.toFixed(1)} CFT`) +
+    matCard('🪨','Aggregate', aggKg.toFixed(0),'kg', `${aggCFT.toFixed(1)} CFT`) +
+    matCard('💧','Water', waterL.toFixed(0),'litres', `W/C = ${g.wc}`);
+
+  document.getElementById('bagInfo').innerHTML =
+    `<div style="margin-top:12px">` +
+    infoRow('Grade', grade + ` (ratio 1:${s}:${a})`) +
+    infoRow('Concrete Volume', vol.toFixed(3)+' m³') +
+    infoRow('Wastage Included', waste+'%') +
+    infoRow('Cement Bags', `${bags} × ${bagSz} kg`) +
+    infoRow('Sand', `${sandKg.toFixed(0)} kg / ${sandCFT.toFixed(1)} CFT`) +
+    infoRow('Coarse Aggregate', `${aggKg.toFixed(0)} kg / ${aggCFT.toFixed(1)} CFT`) +
+    infoRow('Water', `${waterL.toFixed(0)} litres`) +
+    `</div>`;
+
+  window._bagResult = { vol, grade, bags, bagSz, cemKg, sandKg, aggKg, waterL, waste };
+  document.getElementById('bagRes').classList.add('show');
+}
+
+function resetBags() {
+  document.getElementById('bagRes').classList.remove('show');
+}
+
+// ── COPY ────────────────────────────────────────────────
+function copyResult(t) {
+  let txt='';
+  if (t==='nom' && window._nomResult) {
+    const r=window._nomResult;
+    txt=`Concrete Mix Result — ${r.grade} (Nominal Mix)\nVolume: ${r.vol} m³\nCement: ${r.cemKg} kg (${r.bags50} bags × 50 kg)\nSand: ${r.sandKg} kg\nAggregate: ${r.aggKg} kg\nWater: ${r.waterL} litres\nGenerated by forjitai.in`;
+  } else if (t==='des' && window._desResult) {
+    const r=window._desResult;
+    txt=`Concrete Mix Design — ${r.grade} (IS 10262:2019)\nVolume: ${r.vol} m³\nCement: ${r.cemTotal} kg (${r.bags50} bags)\nWater: ${r.waterTotal} L | W/C = ${r.wc}\nFine Aggregate: ${r.faTotal} kg\nCoarse Aggregate: ${r.caTotal} kg\nGenerated by forjitai.in`;
+  } else if (t==='bag' && window._bagResult) {
+    const r=window._bagResult;
+    txt=`Concrete Quantity — ${r.grade}\nVolume: ${r.vol.toFixed(2)} m³\nCement: ${r.bags} × ${r.bagSz} kg bags (${r.cemKg.toFixed(0)} kg)\nSand: ${r.sandKg.toFixed(0)} kg | Aggregate: ${r.aggKg.toFixed(0)} kg\nWater: ${r.waterL.toFixed(0)} litres\nGenerated by forjitai.in`;
+  }
+  if (txt) { navigator.clipboard.writeText(txt).then(()=>{
+    const btn = event.target; btn.textContent='✓ Copied!'; btn.style.background='var(--gr)'; btn.style.color='#000';
+    setTimeout(()=>{ btn.textContent='⧉ Copy Results'; btn.style.background=''; btn.style.color=''; },2000);
+  }); }
+}
+</script>
+
+<!-- ── SEO CONTENT ─────────────────────────────────────── -->
+<div class="card seo">
+  <h2>Concrete Mix Design Calculator — For Indian Civil Engineers</h2>
+  <p>This free online <strong>concrete mix design calculator</strong> helps civil engineers, site supervisors, contractors and students calculate the exact quantities of <strong>cement, sand (fine aggregate), coarse aggregate, and water</strong> required for any grade of concrete — from M15 to M50 — as per <strong>IS 10262:2019</strong> and <strong>IS 456:2000</strong>.</p>
+
+  <h3>What is Concrete Mix Design?</h3>
+  <p>Concrete mix design is the process of determining the right proportions of cement, water, fine aggregate (sand) and coarse aggregate to achieve the desired <strong>workability, strength, and durability</strong>. In India, all RCC structures must follow IS 10262:2019 for design mix and IS 456:2000 for nominal mix guidelines.</p>
+
+  <h3>Nominal Mix vs Design Mix</h3>
+  <p><strong>Nominal Mix</strong> (IS 456:2000): Uses fixed volumetric ratios like 1:2:4 (M15) or 1:1.5:3 (M20). Suitable for small, non-structural work. Easy to implement at site without lab testing.</p>
+  <p><strong>Design Mix</strong> (IS 10262:2019): Scientifically determined proportions based on <strong>water-cement ratio</strong>, target mean strength, aggregate grading and exposure conditions. Mandatory for M25 and above structural concrete.</p>
+
+  <h3>How to Use This Calculator</h3>
+  <ul>
+    <li>Select the <strong>grade of concrete</strong> required (M15, M20, M25, M30 etc.)</li>
+    <li>Enter the <strong>volume</strong> of concrete needed in cubic metres</li>
+    <li>Choose <strong>exposure condition</strong> as per IS 456:2000</li>
+    <li>Click Calculate to get cement, sand, aggregate &amp; water quantities</li>
+    <li>Use <strong>Bags to Volume</strong> tab to find exact number of cement bags required</li>
+  </ul>
+
+  <h3>Concrete Mix Ratio Quick Reference (IS 456:2000)</h3>
+  <table>
+    <tr><th>Grade</th><th>Ratio (C:S:CA)</th><th>Max W/C</th><th>Min Cement (kg/m³)</th><th>Use Case</th></tr>
+    <tr><td>M15</td><td>1:2:4</td><td>0.60</td><td>250</td><td>PCC, levelling courses</td></tr>
+    <tr><td>M20</td><td>1:1.5:3</td><td>0.55</td><td>300</td><td>Slabs, beams, columns</td></tr>
+    <tr><td>M25</td><td>1:1:2</td><td>0.50</td><td>320</td><td>Bridges, water tanks</td></tr>
+    <tr><td>M30</td><td>Design Mix</td><td>0.45</td><td>340</td><td>High-rise columns</td></tr>
+    <tr><td>M40</td><td>Design Mix</td><td>0.40</td><td>380</td><td>Prestressed, flyovers</td></tr>
+  </table>
+
+  <h3>Why Water-Cement Ratio Matters</h3>
+  <p>The <strong>water-cement ratio (W/C)</strong> is the single most important factor controlling concrete strength. As per Abrams' law, lower W/C = higher strength. IS 456:2000 specifies maximum W/C ratios based on exposure conditions — 0.60 for mild to 0.40 for extreme exposure.</p>
+
+  <h3>Benefits of Using This Tool</h3>
+  <ul>
+    <li>Instant calculations — no manual computation errors</li>
+    <li>Follows <strong>IS 10262:2019</strong> and <strong>IS 456:2000</strong> Indian standards</li>
+    <li>Results in both kg and CFT (cubic feet) for site convenience</li>
+    <li>Accounts for bulking factor (1.54) and site wastage</li>
+    <li>Works on mobile — useful directly at construction sites</li>
+  </ul>
+</div>
+
+<!-- AdSense Bottom -->
+
+<footer>
+  <p>© 2025 Forjit AI · All rights reserved</p>
+  <p style="margin-top:6px"><a href="mailto:forjitai@gmail.com">forjitai@gmail.com</a> · <a href="/">All Tools</a></p>
+</footer>
+
+<script src="tool-common.js"></script>
+<script src="cookie-consent.js"></script>
+</div>
+</body>
+</html>

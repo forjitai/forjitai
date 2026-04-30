@@ -31,6 +31,7 @@ export const CATEGORIES = {
   text:     { label: "Text & Writing",        color: "purple", emoji: "✍️"  },
   dev:      { label: "Developer Tools",       color: "purple", emoji: "👨‍💻" },
   teacher:  { label: "Teacher Tools",         color: "amber",  emoji: "👩‍🏫" },
+  civil:    { label: "Civil Engineering",     color: "stone",  emoji: "🏗️"  },
 };
 
 export const TOOLS = [
@@ -495,5 +496,14 @@ export const TOOLS = [
     icon: "🎤", cat: "teacher",
     tags: "viva questions practical exam teacher college India",
     priority: 0.82, changefreq: "monthly", new: true,
+  },
+  /* ── Civil Engineering ───────────────────────────────────────────────── */
+  {
+    slug: "concrete-mix-calculator",
+    name: "Concrete Mix Calculator",
+    desc: "Calculate cement, sand, aggregate & water for M15–M40 grade concrete as per IS 10262:2019 & IS 456:2000.",
+    icon: "🏗️", cat: "civil",
+    tags: "concrete mix design M20 M25 cement sand aggregate water cement ratio IS 10262 civil engineering",
+    priority: 0.90, changefreq: "monthly", new: true,
   },
 ];

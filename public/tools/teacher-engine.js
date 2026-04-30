@@ -530,11 +530,11 @@
           '<div style="font-size:11px;font-weight:700;color:#78716c;text-transform:uppercase;' +
                'letter-spacing:.07em;margin-bottom:10px">📤 Share this result</div>' +
           '<div style="display:flex;gap:8px;flex-wrap:wrap">' +
-            '<button id="te-share-wa" title="Share on WhatsApp" style="padding:8px 14px;font-size:13px;font-weight:600;' +
+            '<button id="te-share-wa" title="Share full content on WhatsApp" style="padding:8px 14px;font-size:13px;font-weight:600;' +
               'background:#25D366;color:#fff;border:none;border-radius:8px;cursor:pointer;font-family:inherit;touch-action:manipulation">' +
               '💬 WhatsApp' +
             '</button>' +
-            '<button id="te-share-tg" title="Share on Telegram" style="padding:8px 14px;font-size:13px;font-weight:600;' +
+            '<button id="te-share-tg" title="Share full content on Telegram" style="padding:8px 14px;font-size:13px;font-weight:600;' +
               'background:#229ED9;color:#fff;border:none;border-radius:8px;cursor:pointer;font-family:inherit;touch-action:manipulation">' +
               '✈️ Telegram' +
             '</button>' +
@@ -550,16 +550,20 @@
               'background:#0A66C2;color:#fff;border:none;border-radius:8px;cursor:pointer;font-family:inherit;touch-action:manipulation">' +
               'in LinkedIn' +
             '</button>' +
-            '<button id="te-share-em" title="Share via Email" style="padding:8px 14px;font-size:13px;font-weight:600;' +
+            '<button id="te-share-em" title="Send full content via Email" style="padding:8px 14px;font-size:13px;font-weight:600;' +
               'background:#292524;color:#a8a29e;border:1px solid #3f3a38;border-radius:8px;cursor:pointer;font-family:inherit;touch-action:manipulation">' +
               '✉️ Email' +
+            '</button>' +
+            '<button id="te-share-copy" title="Copy full content to clipboard" style="padding:8px 14px;font-size:13px;font-weight:600;' +
+              'background:#292524;color:#fbbf24;border:1px solid rgba(251,191,36,.3);border-radius:8px;cursor:pointer;font-family:inherit;touch-action:manipulation">' +
+              '📋 Copy All' +
             '</button>' +
             '<button id="te-share-native" title="More share options" style="display:none;padding:8px 14px;font-size:13px;font-weight:600;' +
               'background:#fbbf24;color:#0c0a09;border:none;border-radius:8px;cursor:pointer;font-family:inherit;touch-action:manipulation">' +
               '↑ Share' +
             '</button>' +
           '</div>' +
-          '<div id="te-share-msg" style="font-size:12px;color:#22c55e;margin-top:8px;display:none">✓ Link copied to clipboard!</div>' +
+          '<div id="te-share-msg" style="font-size:12px;color:#22c55e;margin-top:8px;display:none"></div>' +
         '</div>' +
 
       '</div>' +
@@ -717,63 +721,164 @@
     });
 
     /* ── Share helpers ─────────────────────────────────────────────────── */
-    function getShareText() {
+
+    // Returns FULL generated text — no truncation
+    function getFullText() {
       var out = document.getElementById("te-output");
-      var text = out ? out.textContent.trim() : "";
-      var preview = text.length > 280 ? text.substring(0, 280) + "…" : text;
-      return preview;
+      return out ? out.textContent.trim() : "";
     }
-    function getShareUrl() { return window.location.href; }
+    function getShareUrl()   { return window.location.href; }
     function getShareTitle() { return (TOOL.name || "Forjit AI") + " — Free AI Tool"; }
+
+    // Toast notification
+    function showToast(msg, color) {
+      var el = document.getElementById("te-share-msg");
+      if (!el) return;
+      el.textContent = msg;
+      el.style.color = color || "#22c55e";
+      el.style.display = "block";
+      setTimeout(function() { el.style.display = "none"; }, 4000);
+    }
+
+    // Cross-browser clipboard copy — returns Promise
+    function copyToClip(text) {
+      if (navigator.clipboard && navigator.clipboard.writeText) {
+        return navigator.clipboard.writeText(text);
+      }
+      return new Promise(function(resolve, reject) {
+        try {
+          var ta = document.createElement("textarea");
+          ta.value = text;
+          ta.style.cssText = "position:fixed;opacity:0;top:0;left:0;width:1px;height:1px";
+          document.body.appendChild(ta);
+          ta.focus(); ta.select();
+          var ok = document.execCommand("copy");
+          document.body.removeChild(ta);
+          ok ? resolve() : reject(new Error("execCommand failed"));
+        } catch(e) { reject(e); }
+      });
+    }
 
     function wireShare(id, fn) {
       var btn = document.getElementById(id);
       if (btn) btn.addEventListener("click", fn);
     }
 
+    /* WhatsApp — full content strategy:
+       ≤3800 chars → send via URL directly
+       >3800 chars → copy full text to clipboard → open WhatsApp → user pastes */
     wireShare("te-share-wa", function() {
-      var msg = "✝️ " + getShareTitle() + "\n\n" + getShareText() + "\n\n🔗 " + getShareUrl() + "\n\n📱 Free at forjitai.in";
-      window.open("https://api.whatsapp.com/send?text=" + encodeURIComponent(msg), "_blank");
+      var full = getFullText();
+      if (!full) { showToast("⚠️ Generate a result first!", "#f59e0b"); return; }
+      var title  = TOOL.name || "Forjit AI";
+      var url    = getShareUrl();
+      var header = "*" + title + "*\n\n";
+      var footer = "\n\n🔗 Free at: " + url + "\n📱 forjitai.in";
+      var fullMsg = header + full + footer;
+
+      if (fullMsg.length <= 3800) {
+        // Short enough — send directly via URL
+        window.open("https://api.whatsapp.com/send?text=" + encodeURIComponent(fullMsg), "_blank");
+      } else {
+        // Too long — copy full content then open WhatsApp
+        copyToClip(fullMsg).then(function() {
+          showToast("📋 Full content copied! WhatsApp opening — long-press in chat and paste.", "#25D366");
+          setTimeout(function() {
+            window.open("https://api.whatsapp.com/send?text=" + encodeURIComponent(
+              "*" + title + "* — Generated by Forjit AI\n\n" +
+              "📋 Paste the full content from your clipboard below this message.\n\n" +
+              "🔗 Generate yours free: " + url
+            ), "_blank");
+          }, 1500);
+        }).catch(function() {
+          // Clipboard failed — send as much as fits
+          var shortMsg = header + full.substring(0, 3400) + "\n\n[...full result at:]\n" + url;
+          window.open("https://api.whatsapp.com/send?text=" + encodeURIComponent(shortMsg), "_blank");
+        });
+      }
     });
 
+    /* Telegram — same full-content strategy */
     wireShare("te-share-tg", function() {
-      var msg = getShareTitle() + "\n\n" + getShareText().substring(0,200);
-      window.open("https://t.me/share/url?url=" + encodeURIComponent(getShareUrl()) + "&text=" + encodeURIComponent(msg), "_blank");
+      var full = getFullText();
+      if (!full) { showToast("⚠️ Generate a result first!", "#f59e0b"); return; }
+      var title  = TOOL.name || "Forjit AI";
+      var url    = getShareUrl();
+      var header = "✝️ " + title + "\n\n";
+      var footer = "\n\n🔗 " + url + " — forjitai.in";
+      var fullMsg = header + full + footer;
+
+      if (fullMsg.length <= 3800) {
+        window.open(
+          "https://t.me/share/url?url=" + encodeURIComponent(url) +
+          "&text=" + encodeURIComponent(header + full),
+          "_blank"
+        );
+      } else {
+        copyToClip(fullMsg).then(function() {
+          showToast("📋 Full content copied! Telegram opening — paste in any chat.", "#229ED9");
+          setTimeout(function() {
+            window.open(
+              "https://t.me/share/url?url=" + encodeURIComponent(url) +
+              "&text=" + encodeURIComponent(title + " — Generated by Forjit AI. Full result copied to clipboard — paste below."),
+              "_blank"
+            );
+          }, 1500);
+        }).catch(function() {
+          window.open(
+            "https://t.me/share/url?url=" + encodeURIComponent(url) +
+            "&text=" + encodeURIComponent(header + full.substring(0, 3400)),
+            "_blank"
+          );
+        });
+      }
     });
 
+    /* Facebook — URL only (FB strips external text from sharer) */
     wireShare("te-share-fb", function() {
       window.open("https://www.facebook.com/sharer/sharer.php?u=" + encodeURIComponent(getShareUrl()), "_blank");
     });
 
+    /* Twitter / X — 280 char limit: title + URL */
     wireShare("te-share-tw", function() {
-      var msg = getShareTitle() + " — Free at @forjitai\n" + getShareUrl();
+      var msg = (TOOL.name || "Forjit AI") + " — Free AI tool for India 🇮🇳 @forjitai\n" + getShareUrl();
       window.open("https://twitter.com/intent/tweet?text=" + encodeURIComponent(msg), "_blank");
     });
 
+    /* LinkedIn — URL only */
     wireShare("te-share-li", function() {
       window.open("https://www.linkedin.com/sharing/share-offsite/?url=" + encodeURIComponent(getShareUrl()), "_blank");
     });
 
+    /* Email — full content, no limit */
     wireShare("te-share-em", function() {
+      var full = getFullText();
+      if (!full) { showToast("⚠️ Generate a result first!", "#f59e0b"); return; }
       var subject = getShareTitle();
-      var body = getShareText() + "\n\n--- Generated by Forjit AI ---\n" + getShareUrl();
+      var body =
+        (TOOL.name || "Forjit AI") + "\n" +
+        "Generated by Forjit AI — forjitai.in\n" +
+        "================================\n\n" +
+        full +
+        "\n\n================================\n" +
+        "Generate your own free at: " + getShareUrl();
       window.location.href = "mailto:?subject=" + encodeURIComponent(subject) + "&body=" + encodeURIComponent(body);
     });
 
-    // Native share (mobile)
+    /* Native OS share sheet — mobile only, passes full text */
     var nativeBtn = document.getElementById("te-share-native");
     if (navigator.share && nativeBtn) {
       nativeBtn.style.display = "inline-block";
       nativeBtn.addEventListener("click", function() {
+        var full = getFullText();
         navigator.share({
           title: getShareTitle(),
-          text:  getShareText().substring(0, 300),
+          text:  full || getShareTitle(),
           url:   getShareUrl(),
         }).catch(function() {});
       });
     }
   }
-
 
   /* ── Render input ─────────────────────────────────────────────────────── */
   function renderInput(inp) {

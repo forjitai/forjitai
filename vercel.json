@@ -103,5 +103,18 @@
       "source": "/forjit-ai-brand",
       "destination": "/forjit-ai-brand.html"
     }
+  ],
+  "redirects": [
+    {
+      "source": "/(.*)",
+      "has": [
+        {
+          "type": "host",
+          "value": "(?<!www\\.)forjitai\\.in"
+        }
+      ],
+      "destination": "https://www.forjitai.in/$1",
+      "permanent": true
+    }
   ]
 }

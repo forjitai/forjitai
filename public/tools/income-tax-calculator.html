@@ -584,5 +584,22 @@ function buildSuggestions(gross,d80c,d80d,hra,nps,homeLoan,newTax,oldTax){
 <a href="/tools/hra-calculator.html" style="display:inline-block;margin:4px;padding:6px 12px;background:#1c1917;border:1px solid #292524;border-radius:999px;color:#a8a29e;font-size:12px;text-decoration:none">HRA Calculator</a>
 <a href="/tools/ppf-calculator.html" style="display:inline-block;margin:4px;padding:6px 12px;background:#1c1917;border:1px solid #292524;border-radius:999px;color:#a8a29e;font-size:12px;text-decoration:none">PPF Calculator</a>
 </div>
+<script>
+/* ad-collapse: hide empty AdSense slots to prevent blank gaps */
+window.addEventListener('load',function(){
+  setTimeout(function(){
+    document.querySelectorAll('.ad-wrap').forEach(function(w){
+      var ins=w.querySelector('ins.adsbygoogle');
+      if(!ins) return;
+      var status=ins.getAttribute('data-ad-status');
+      if(status==='unfilled'||ins.offsetHeight===0){
+        w.style.display='none';
+      } else {
+        w.style.margin='20px 0';
+      }
+    });
+  },2000);
+});
+</script>
 </body>
 </html>

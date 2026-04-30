@@ -52,7 +52,7 @@ footer{text-align:center;padding:32px 16px;color:var(--su);font-size:12px;border
 footer a{color:var(--mu);text-decoration:none}
 input[type=search]{background:var(--sur);border:1px solid var(--bor);border-radius:10px;padding:10px 16px;color:var(--fg);font-size:14px;outline:none;width:100%;font-family:inherit}
 input[type=search]:focus{border-color:var(--ac)}
-.ad-wrap{margin:20px 0;text-align:center}
+.ad-wrap{margin:0;text-align:center}
 </style>
 </head>
 <body>
@@ -1254,6 +1254,23 @@ s.addEventListener('input', function() {
   document.querySelectorAll('a[href*="/tools/teacher/"]').forEach(function(el) {
     el.parentElement.style.display = (!q || el.textContent.toLowerCase().includes(q)) ? '' : 'none';
   });
+});
+</script>
+<script>
+/* ad-collapse: hide empty AdSense slots to prevent blank gaps */
+window.addEventListener('load',function(){
+  setTimeout(function(){
+    document.querySelectorAll('.ad-wrap').forEach(function(w){
+      var ins=w.querySelector('ins.adsbygoogle');
+      if(!ins) return;
+      var status=ins.getAttribute('data-ad-status');
+      if(status==='unfilled'||ins.offsetHeight===0){
+        w.style.display='none';
+      } else {
+        w.style.margin='20px 0';
+      }
+    });
+  },2000);
 });
 </script>
 </body>

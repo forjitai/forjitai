@@ -156,7 +156,7 @@ h1{font-size:26px;font-weight:700;margin-bottom:4px}
 .related-card:hover{border-color:var(--ac)}
 footer{text-align:center;padding:32px 16px;color:var(--su);font-size:12px;border-top:1px solid var(--bor);margin-top:40px}
 footer a{color:var(--mu);text-decoration:none}
-.ad-wrap{margin:20px 0;min-height:90px;text-align:center}
+.ad-wrap{margin:0;text-align:center}
 </style>
 </head>
 <body>
@@ -282,5 +282,22 @@ footer a{color:var(--mu);text-decoration:none}
 <!-- Teacher Engine -->
 <script src="/tools/teacher-engine.js?v=1777557003800"></script>
 
+<script>
+/* ad-collapse: hide empty AdSense slots to prevent blank gaps */
+window.addEventListener('load',function(){
+  setTimeout(function(){
+    document.querySelectorAll('.ad-wrap').forEach(function(w){
+      var ins=w.querySelector('ins.adsbygoogle');
+      if(!ins) return;
+      var status=ins.getAttribute('data-ad-status');
+      if(status==='unfilled'||ins.offsetHeight===0){
+        w.style.display='none';
+      } else {
+        w.style.margin='20px 0';
+      }
+    });
+  },2000);
+});
+</script>
 </body>
 </html>

@@ -209,5 +209,22 @@ function loadSample(){
   </div>
 </div>
 <script src="tool-common.js"></script>
+<script>
+/* ad-collapse: hide empty AdSense slots to prevent blank gaps */
+window.addEventListener('load',function(){
+  setTimeout(function(){
+    document.querySelectorAll('.ad-wrap').forEach(function(w){
+      var ins=w.querySelector('ins.adsbygoogle');
+      if(!ins) return;
+      var status=ins.getAttribute('data-ad-status');
+      if(status==='unfilled'||ins.offsetHeight===0){
+        w.style.display='none';
+      } else {
+        w.style.margin='20px 0';
+      }
+    });
+  },2000);
+});
+</script>
 </body>
 </html>

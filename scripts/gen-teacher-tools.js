@@ -261,10 +261,14 @@ ${toolConfigJSON}
 /* ── Hub page ──────────────────────────────────────────────────────────── */
 function hubPageHTML(tools, cats) {
   const grouped = {};
-  tools.forEach(t => {
+  // Exclude priest tools from teacher hub — they have their own hub at /tools/priest/
+  tools.filter(t => t.category !== 'priest').forEach(t => {
     if (!grouped[t.category]) grouped[t.category] = [];
     grouped[t.category].push(t);
   });
+
+  // Count priest tools for the banner
+  const priestCount = tools.filter(t => t.category === 'priest').length;
 
   const sections = Object.entries(grouped).map(([catKey, catTools]) => {
     const cat   = cats[catKey] || { label: catKey, emoji: "🔧" };
@@ -290,6 +294,21 @@ function hubPageHTML(tools, cats) {
       </div>
     </section>`;
   }).join("");
+
+  // Priest redirect banner inserted before sections
+  const priestBanner = `
+  <a href="/tools/priest/" style="display:flex;align-items:center;justify-content:space-between;
+    background:rgba(139,92,246,.08);border:1px solid rgba(139,92,246,.3);border-radius:12px;
+    padding:16px 20px;text-decoration:none;color:#a78bfa;margin-bottom:28px;gap:12px">
+    <div>
+      <div style="font-size:16px;font-weight:700;margin-bottom:4px">⛪ Priest & Clergy Tools — ${priestCount} Tools</div>
+      <div style="font-size:13px;color:#78716c;line-height:1.5">
+        Homilies · Sermon Notes · Bible Study · Devotionals · Novenas · Rosary · Parish Newsletters · Lenten Reflections
+        — in Kannada, Tamil, Telugu, Malayalam, Hindi, Marathi &amp; English
+      </div>
+    </div>
+    <div style="font-size:22px;flex-shrink:0">→</div>
+  </a>`;
 
   return `<!doctype html>
 <html lang="en">
@@ -368,7 +387,7 @@ input[type=search]:focus{border-color:var(--ac)}
   <!-- Ad — top of hub -->
   <div class="ad-wrap">${adUnit("2957174915")}</div>
 
-  <div id="tools-container">${sections}</div>
+  <div id="tools-container">${priestBanner}${sections}</div>
 
   <!-- Ad — bottom of hub -->
   <div class="ad-wrap">${adUnit("7384629103")}</div>

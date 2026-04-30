@@ -7,7 +7,7 @@
 
   var GROQ_URL    = "https://api.groq.com/openai/v1/chat/completions";
   var GROQ_MODELS = { fast:"llama-3.1-8b-instant", smart:"llama-3.3-70b-versatile" };
-  var SYS = "You are an expert Indian teacher assistant. Write in plain text with clear headings. No markdown. Follow CBSE/ICSE curriculum.";
+  var SYS = "You are an expert Indian teacher and clergy assistant. Use markdown formatting: ### for section headings, **bold** for key terms, - for bullet points, numbered lists where appropriate. Use --- for section dividers. Follow CBSE/ICSE curriculum and Indian context. Produce well-structured, complete, professional output.";
   var CACHE_TTL  = 7 * 24 * 60 * 60 * 1000;
   var DB_NAME    = "forjitai_db";
   var RATE_LIMIT = 10;
@@ -445,7 +445,12 @@
     var bdg  = document.getElementById("te-ai-badge");
     if (!wrap) return;
     wrap.style.display = "block";
-    if (out) out.textContent = text;
+    if (out) {
+      // Store raw text for copy/share/export
+      out.dataset.rawText = text;
+      // Render markdown as formatted HTML
+      out.innerHTML = markdownToHtml(text);
+    }
     if (bdg && tier) {
       var labels = { server:"⚡ Forjit AI", groq:"⚡ Groq", free:"🌐 Free AI", cache:"💾 Cached" };
       bdg.style.cssText = "display:inline-block;font-size:11px;padding:2px 9px;" +
@@ -457,6 +462,116 @@
     setTimeout(function() {
       wrap.scrollIntoView({ behavior:"smooth", block:"start" });
     }, 100);
+  }
+
+  /* ── Markdown → HTML renderer ──────────────────────────────────────────
+     Handles: ### headings, **bold**, *italic*, --- dividers,
+     bullet lists (- and *), numbered lists, blank line paragraphs
+  ────────────────────────────────────────────────────────────────────── */
+  function markdownToHtml(md) {
+    if (!md) return "";
+    var lines = md.split("\n");
+    var html  = "";
+    var inList = false;   // unordered
+    var inOList = false;  // ordered
+
+    function closeList() {
+      if (inList)  { html += "</ul>"; inList  = false; }
+      if (inOList) { html += "</ol>"; inOList = false; }
+    }
+
+    function inlineFormat(s) {
+      // Escape HTML entities first
+      s = s.replace(/&/g,"&amp;").replace(/</g,"&lt;").replace(/>/g,"&gt;");
+      // Bold+italic ***text***
+      s = s.replace(/\*\*\*(.+?)\*\*\*/g,"<strong><em>$1</em></strong>");
+      // Bold **text**
+      s = s.replace(/\*\*(.+?)\*\*/g,"<strong>$1</strong>");
+      // Italic *text* (not list bullets)
+      s = s.replace(/(?<!\*)\*(?!\*)(.+?)(?<!\*)\*(?!\*)/g,"<em>$1</em>");
+      // Bold __text__
+      s = s.replace(/__(.+?)__/g,"<strong>$1</strong>");
+      // Italic _text_
+      s = s.replace(/_(.+?)_/g,"<em>$1</em>");
+      // Inline code `code`
+      s = s.replace(/`([^`]+)`/g,'<code style="background:#292524;padding:1px 5px;border-radius:4px;font-size:13px">$1</code>');
+      return s;
+    }
+
+    for (var i = 0; i < lines.length; i++) {
+      var line = lines[i];
+      var trimmed = line.trim();
+
+      // Horizontal rule ---
+      if (/^---+$/.test(trimmed) || /^\*\*\*+$/.test(trimmed)) {
+        closeList();
+        html += '<hr style="border:none;border-top:1px solid #3f3a38;margin:16px 0"/>';
+        continue;
+      }
+
+      // H1 #
+      if (/^# /.test(trimmed)) {
+        closeList();
+        html += '<h2 style="font-size:20px;font-weight:800;color:#e7e5e4;margin:20px 0 10px">' + inlineFormat(trimmed.slice(2)) + "</h2>";
+        continue;
+      }
+      // H2 ##
+      if (/^## /.test(trimmed)) {
+        closeList();
+        html += '<h3 style="font-size:17px;font-weight:700;color:#e7e5e4;margin:18px 0 8px">' + inlineFormat(trimmed.slice(3)) + "</h3>";
+        continue;
+      }
+      // H3 ###
+      if (/^### /.test(trimmed)) {
+        closeList();
+        html += '<h4 style="font-size:15px;font-weight:700;color:#fbbf24;margin:14px 0 6px">' + inlineFormat(trimmed.slice(4)) + "</h4>";
+        continue;
+      }
+      // H4 ####
+      if (/^#### /.test(trimmed)) {
+        closeList();
+        html += '<h5 style="font-size:14px;font-weight:700;color:#a8a29e;margin:12px 0 4px;text-transform:uppercase;letter-spacing:.05em">' + inlineFormat(trimmed.slice(5)) + "</h5>";
+        continue;
+      }
+
+      // Numbered list  1. 2. etc
+      var olMatch = trimmed.match(/^(\d+)\.\s+(.+)/);
+      if (olMatch) {
+        if (!inOList) { closeList(); html += '<ol style="padding-left:22px;margin:8px 0;color:#e7e5e4;line-height:1.8">'; inOList = true; }
+        html += "<li>" + inlineFormat(olMatch[2]) + "</li>";
+        continue;
+      }
+
+      // Unordered list  - or *
+      var ulMatch = trimmed.match(/^[-*]\s+(.+)/);
+      if (ulMatch) {
+        if (!inList) { closeList(); html += '<ul style="padding-left:20px;margin:8px 0;color:#e7e5e4;line-height:1.8">'; inList = true; }
+        html += "<li>" + inlineFormat(ulMatch[1]) + "</li>";
+        continue;
+      }
+
+      // Empty line → close lists / paragraph break
+      if (trimmed === "") {
+        closeList();
+        html += '<div style="height:8px"></div>';
+        continue;
+      }
+
+      // Bold-only line (acts like a subheading e.g. **Board:** CBSE)
+      if (/^\*\*[^*]+\*\*/.test(trimmed) && trimmed.endsWith("**") === false) {
+        // Inline bold line — treat as paragraph
+        closeList();
+        html += '<p style="color:#e7e5e4;line-height:1.75;margin:4px 0">' + inlineFormat(trimmed) + "</p>";
+        continue;
+      }
+
+      // Regular paragraph
+      closeList();
+      html += '<p style="color:#e7e5e4;line-height:1.75;margin:4px 0">' + inlineFormat(trimmed) + "</p>";
+    }
+
+    closeList();
+    return html;
   }
 
   function clearOutput() {
@@ -521,8 +636,8 @@
             '</button>' +
           '</div>' +
         '</div>' +
-        '<div id="te-output" style="white-space:pre-wrap;font-size:15px;' +
-             'line-height:1.85;color:#e7e5e4;min-height:40px;' +
+        '<div id="te-output" style="font-size:15px;' +
+             'line-height:1.75;color:#e7e5e4;min-height:40px;' +
              'word-break:break-word;overflow-wrap:break-word"></div>' +
 
         // Share Bar
@@ -632,9 +747,11 @@
     if (redoBtn) redoBtn.addEventListener("click", function() { generate(true); });
     if (copyBtn) copyBtn.addEventListener("click", function() {
       var out = document.getElementById("te-output");
-      if (!out || !out.textContent) return;
+      if (!out) return;
+      var text = out.dataset.rawText || out.textContent;
+      if (!text.trim()) return;
       if (navigator.clipboard && navigator.clipboard.writeText) {
-        navigator.clipboard.writeText(out.textContent).then(function() {
+        navigator.clipboard.writeText(text.trim()).then(function() {
           copyBtn.textContent = "✓ Copied!";
           setTimeout(function() { copyBtn.textContent = "📋 Copy"; }, 2000);
         }).catch(function() {});
@@ -722,10 +839,10 @@
 
     /* ── Share helpers ─────────────────────────────────────────────────── */
 
-    // Returns FULL generated text — no truncation
+    // Returns FULL generated text — reads raw text stored on dataset, not rendered HTML
     function getFullText() {
       var out = document.getElementById("te-output");
-      return out ? out.textContent.trim() : "";
+      return out ? (out.dataset.rawText || out.textContent).trim() : "";
     }
     function getShareUrl()   { return window.location.href; }
     function getShareTitle() { return (TOOL.name || "Forjit AI") + " — Free AI Tool"; }

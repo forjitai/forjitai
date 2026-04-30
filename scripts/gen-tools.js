@@ -37,6 +37,8 @@ const TAG_CSS = {
   utility:  "background:rgba(20,184,166,.1);color:#2dd4bf;border:1px solid rgba(20,184,166,.2)",
   text:     "background:rgba(168,85,247,.1);color:#c084fc;border:1px solid rgba(168,85,247,.2)",
   dev:      "background:rgba(168,85,247,.1);color:#c084fc;border:1px solid rgba(168,85,247,.2)",
+  civil:    "background:rgba(251,191,36,.1);color:#fbbf24;border:1px solid rgba(251,191,36,.2)",
+  teacher:  "background:rgba(251,191,36,.1);color:#fbbf24;border:1px solid rgba(251,191,36,.2)",
 };
 
 /* ── Group tools by category ────────────────────────────────────────────── */
@@ -204,6 +206,25 @@ footer a{color:var(--muted);text-decoration:none}
 
   <div class="ad-slot">Advertisement · <a href="https://adsense.google.com" target="_blank">Connect AdSense</a></div>
 
+  <!-- Civil Engineering Hub Banner -->
+  <a href="/tools/civil/" style="display:flex;align-items:center;gap:16px;background:linear-gradient(135deg,rgba(251,191,36,.1),rgba(245,158,11,.04));border:1px solid rgba(251,191,36,.28);border-radius:14px;padding:18px 22px;margin-bottom:22px;text-decoration:none;color:var(--fg);transition:all .2s;flex-wrap:wrap" onmouseover="this.style.borderColor='var(--accent)';this.style.boxShadow='0 8px 28px rgba(251,191,36,.12)'" onmouseout="this.style.borderColor='rgba(251,191,36,.28)';this.style.boxShadow=''">
+    <div style="font-size:44px;flex-shrink:0">🏗️</div>
+    <div style="flex:1;min-width:200px">
+      <div style="display:flex;align-items:center;gap:8px;margin-bottom:5px">
+        <span style="font-size:15px;font-weight:800">Civil Engineering Tools Hub</span>
+        <span style="background:#fbbf24;color:#0c0a09;font-size:9px;font-weight:800;padding:2px 7px;border-radius:999px;text-transform:uppercase;letter-spacing:.05em">New</span>
+      </div>
+      <div style="font-size:12px;color:var(--muted);line-height:1.6">IS code compliant calculators for Indian civil engineers. Steel bar weight (d²/162), concrete mix design, BBS &amp; more.</div>
+      <div style="display:flex;gap:10px;flex-wrap:wrap;margin-top:8px">
+        <span style="font-size:11px;color:var(--muted)">⚖️ Steel Bar Weight</span>
+        <span style="font-size:11px;color:var(--muted)">🏗️ Concrete Mix</span>
+        <span style="font-size:11px;color:var(--muted)">📋 Bar Schedule (BBS)</span>
+        <span style="font-size:11px;color:var(--muted)">8+ Tools Coming</span>
+      </div>
+    </div>
+    <div style="font-size:22px;color:var(--accent);flex-shrink:0">→</div>
+  </a>
+
 ${sections}
 
   <div class="no-results" id="noResults">No tools found. Try a different search.</div>
@@ -352,6 +373,13 @@ function generateSitemap() {
     <lastmod>${LAST_MOD}</lastmod>
     <changefreq>yearly</changefreq>
     <priority>0.3</priority>
+  </url>
+
+  <url>
+    <loc>${BASE_URL}/tools/civil/</loc>
+    <lastmod>${LAST_MOD}</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.90</priority>
   </url>
 ${toolUrls}
 

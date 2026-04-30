@@ -108,7 +108,7 @@ header{background:var(--sur);border-bottom:1px solid var(--bor);padding:12px 20p
 .why-desc{font-size:12px;color:var(--mu);line-height:1.6}
 
 /* Ad */
-.ad-wrap{margin:24px 0;text-align:center;min-height:90px}
+.ad-wrap{margin:0;text-align:center;overflow:hidden}
 
 footer{text-align:center;padding:32px 16px;color:var(--su);font-size:12px;border-top:1px solid var(--bor);margin-top:40px}
 footer a{color:var(--mu);text-decoration:none;transition:color .15s}
@@ -145,7 +145,7 @@ footer a:hover{color:var(--ac)}
 </div>
 
 <!-- AdSense Top -->
-<div class="ad-wrap">
+<div class="ad-wrap" id="adWrap1">
   <ins class="adsbygoogle" style="display:block" data-ad-client="ca-pub-5102938260449475" data-ad-slot="2957174915" data-ad-format="auto" data-full-width-responsive="true"></ins>
   <script>(adsbygoogle=window.adsbygoogle||[]).push({});</script>
 </div>
@@ -216,7 +216,7 @@ footer a:hover{color:var(--ac)}
 </div>
 
 <!-- AdSense Middle -->
-<div class="ad-wrap">
+<div class="ad-wrap" id="adWrap2">
   <ins class="adsbygoogle" style="display:block" data-ad-client="ca-pub-5102938260449475" data-ad-slot="2957174915" data-ad-format="auto" data-full-width-responsive="true"></ins>
   <script>(adsbygoogle=window.adsbygoogle||[]).push({});</script>
 </div>
@@ -359,7 +359,7 @@ footer a:hover{color:var(--ac)}
 </div>
 
 <!-- AdSense Bottom -->
-<div class="ad-wrap">
+<div class="ad-wrap" id="adWrap3">
   <ins class="adsbygoogle" style="display:block" data-ad-client="ca-pub-5102938260449475" data-ad-slot="2957174915" data-ad-format="auto" data-full-width-responsive="true"></ins>
   <script>(adsbygoogle=window.adsbygoogle||[]).push({});</script>
 </div>
@@ -384,6 +384,25 @@ document.getElementById('search').addEventListener('input',function(){
   document.querySelectorAll('#toolsGrid .tool-card').forEach(card=>{
     card.style.display=card.textContent.toLowerCase().includes(q)?'':'none';
   });
+});
+
+// Collapse empty ad slots — fixes blank gaps when AdSense not yet approved
+window.addEventListener('load', function() {
+  setTimeout(function() {
+    document.querySelectorAll('.ad-wrap').forEach(function(wrap) {
+      const ins = wrap.querySelector('ins.adsbygoogle');
+      if (!ins) return;
+      const status = ins.getAttribute('data-ad-status');
+      const filled = ins.getAttribute('data-ad-client') && 
+                     ins.offsetHeight > 0 && 
+                     status !== 'unfilled';
+      if (!filled || status === 'unfilled') {
+        wrap.style.display = 'none';
+      } else {
+        wrap.style.margin = '24px 0';
+      }
+    });
+  }, 2000); // wait 2s for AdSense to respond
 });
 </script>
 <script src="/tools/tool-common.js"></script>

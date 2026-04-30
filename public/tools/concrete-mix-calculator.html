@@ -727,5 +727,19 @@ function copyResult(t) {
 <script src="tool-common.js"></script>
 <script src="cookie-consent.js"></script>
 </div>
+<script>
+window.addEventListener('load',function(){
+  setTimeout(function(){
+    document.querySelectorAll('.ad-wrap').forEach(function(w){
+      var ins=w.querySelector('ins.adsbygoogle');
+      if(ins&&(ins.getAttribute('data-ad-status')==='unfilled'||ins.offsetHeight===0)){
+        w.style.display='none';
+      } else if(ins&&ins.offsetHeight>0){
+        w.style.margin='20px 0';
+      }
+    });
+  },2000);
+}); // adCollapse
+</script>
 </body>
 </html>

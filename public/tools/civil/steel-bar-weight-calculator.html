@@ -208,7 +208,7 @@ tbody tr:last-child td{font-weight:700;color:var(--ac);background:rgba(251,191,3
 .faq-a.open{display:block;animation:fadeIn .2s ease}
 
 /* ── Ad ── */
-.ad-wrap{margin:20px 0;text-align:center;min-height:90px}
+.ad-wrap{margin:0;text-align:center}
 
 /* ── Footer ── */
 footer{text-align:center;padding:32px 20px;color:var(--su);font-size:12px;border-top:1px solid var(--bor);margin-top:30px}
@@ -841,5 +841,19 @@ addSchRow(8,12,15,'Distribution bars (slab)');
 <script src="/tools/tool-common.js"></script>
 <script src="/cookie-consent.js"></script>
 </div>
+<script>
+window.addEventListener('load',function(){
+  setTimeout(function(){
+    document.querySelectorAll('.ad-wrap').forEach(function(w){
+      var ins=w.querySelector('ins.adsbygoogle');
+      if(ins&&(ins.getAttribute('data-ad-status')==='unfilled'||ins.offsetHeight===0)){
+        w.style.display='none';
+      } else if(ins&&ins.offsetHeight>0){
+        w.style.margin='20px 0';
+      }
+    });
+  },2000);
+}); // adCollapse
+</script>
 </body>
 </html>

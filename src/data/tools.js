@@ -506,4 +506,12 @@ export const TOOLS = [
     tags: "concrete mix design M20 M25 cement sand aggregate water cement ratio IS 10262 civil engineering",
     priority: 0.90, changefreq: "monthly", new: true,
   },
+  {
+    slug: "civil/steel-bar-weight-calculator",
+    name: "Steel Bar Weight Calculator",
+    desc: "TMT rebar weight using d²/162 formula. Quick calc, full bar bending schedule (BBS) & unit weight table. IS 1786:2008.",
+    icon: "⚖️", cat: "civil",
+    tags: "steel bar weight TMT rebar d squared 162 bar bending schedule BBS IS 1786 civil engineering",
+    priority: 0.92, changefreq: "monthly", new: true,
+  },
 ];

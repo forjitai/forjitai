@@ -1,0 +1,844 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="UTF-8"/>
+<meta name="viewport" content="width=device-width,initial-scale=1.0"/>
+<meta name="robots" content="index, follow, max-snippet:-1, max-image-preview:large"/>
+<meta name="author" content="Forjit AI"/>
+<title>Steel Bar Weight Calculator — TMT Rebar Weight India | Forjit AI</title>
+<meta name="description" content="Free online steel bar weight calculator for Indian civil engineers. Calculate TMT rebar weight using d²/162 formula. Supports 8mm to 40mm diameter bars. As per IS 1786:2008."/>
+<meta name="keywords" content="steel bar weight calculator, TMT bar weight calculator, rebar weight formula, d squared by 162, steel rod weight calculator India, MS bar weight, IS 1786 steel bar, unit weight of steel bar, bar bending schedule calculator"/>
+<link rel="canonical" href="https://www.forjitai.in/tools/civil/steel-bar-weight-calculator.html"/>
+<meta property="og:title" content="Steel Bar Weight Calculator — TMT Rebar | Forjit AI"/>
+<meta property="og:description" content="Calculate TMT steel bar weight instantly. d²/162 formula. Supports multi-diameter bar schedules. Free for Indian civil engineers."/>
+<meta property="og:url" content="https://www.forjitai.in/tools/civil/steel-bar-weight-calculator.html"/>
+<meta property="og:type" content="website"/>
+<meta property="og:image" content="https://www.forjitai.in/og-image.png"/>
+<meta property="og:site_name" content="Forjit AI"/>
+<meta property="og:locale" content="en_IN"/>
+<meta name="twitter:card" content="summary_large_image"/>
+<meta name="twitter:title" content="Steel Bar Weight Calculator | Forjit AI"/>
+<meta name="twitter:description" content="Instant TMT rebar weight using d²/162. Free civil engineering tool."/>
+<meta name="twitter:image" content="https://www.forjitai.in/og-image.png"/>
+<script type="application/ld+json">
+{
+  "@context":"https://schema.org",
+  "@type":"SoftwareApplication",
+  "name":"Steel Bar Weight Calculator",
+  "applicationCategory":"UtilitiesApplication",
+  "operatingSystem":"Web",
+  "url":"https://www.forjitai.in/tools/civil/steel-bar-weight-calculator.html",
+  "description":"Calculate TMT rebar weight using d²/162 formula as per IS 1786:2008. Free online tool for Indian civil engineers.",
+  "offers":{"@type":"Offer","price":"0","priceCurrency":"INR"},
+  "provider":{"@type":"Organization","name":"Forjit AI","url":"https://www.forjitai.in"}
+}
+</script>
+<script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-5102938260449475" crossorigin="anonymous"></script>
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-DYR402JFVG"></script>
+<script>window.dataLayer=window.dataLayer||[];function gtag(){dataLayer.push(arguments);}gtag('js',new Date());gtag('config','G-DYR402JFVG');</script>
+<style>
+*{box-sizing:border-box;margin:0;padding:0}
+:root{
+  --bg:#0c0a09;--sur:#1c1917;--sur2:#231f1d;--bor:#292524;--bor2:#3c3836;
+  --fg:#e7e5e4;--mu:#a8a29e;--su:#78716c;
+  --ac:#fbbf24;--ac2:#f59e0b;--gr:#22c55e;--rd:#ef4444;--bl:#3b82f6;
+  --steel:#94a3b8;
+}
+body{font-family:'Segoe UI',system-ui,sans-serif;background:var(--bg);color:var(--fg);min-height:100vh;line-height:1.5}
+
+/* ── Header ── */
+header{background:var(--sur);border-bottom:1px solid var(--bor);padding:12px 20px;display:flex;align-items:center;justify-content:space-between;position:sticky;top:0;z-index:100}
+.logo{display:flex;align-items:center;gap:10px;text-decoration:none;color:var(--fg)}
+.lm{width:32px;height:32px;background:var(--ac);border-radius:6px;display:flex;align-items:center;justify-content:center;font-weight:800;font-size:16px;color:var(--bg);flex-shrink:0}
+.nav-links{display:flex;align-items:center;gap:16px}
+.nav-links a{color:var(--mu);text-decoration:none;font-size:13px;transition:color .15s}
+.nav-links a:hover{color:var(--ac)}
+
+/* ── Layout ── */
+.wrap{max-width:980px;margin:0 auto;padding:24px 16px}
+
+/* ── Hero ── */
+.hero{text-align:center;padding:36px 0 28px}
+.hero-badge{display:inline-flex;align-items:center;gap:6px;background:rgba(251,191,36,.1);border:1px solid rgba(251,191,36,.25);border-radius:999px;padding:4px 12px;font-size:11px;font-weight:700;color:var(--ac);letter-spacing:.06em;text-transform:uppercase;margin-bottom:16px}
+.hero h1{font-size:clamp(22px,4vw,34px);font-weight:800;margin-bottom:10px;line-height:1.2}
+.hero p{color:var(--mu);font-size:15px;max-width:540px;margin:0 auto 20px}
+.std-chips{display:flex;gap:8px;justify-content:center;flex-wrap:wrap}
+.chip{padding:4px 12px;background:var(--sur);border:1px solid var(--bor);border-radius:999px;font-size:11px;color:var(--mu);font-weight:600}
+
+/* ── Cards ── */
+.card{background:var(--sur);border:1px solid var(--bor);border-radius:14px;padding:22px;margin-bottom:16px}
+.card-title{font-size:13px;font-weight:700;text-transform:uppercase;letter-spacing:.08em;color:var(--mu);margin-bottom:16px;display:flex;align-items:center;gap:8px}
+.card-title span{font-size:16px}
+
+/* ── Mode Tabs ── */
+.tabs{display:flex;background:var(--bg);border:1px solid var(--bor);border-radius:10px;padding:3px;gap:3px;margin-bottom:20px}
+.tab{flex:1;padding:9px 8px;border:none;border-radius:8px;cursor:pointer;font-size:13px;font-weight:600;background:transparent;color:var(--mu);transition:all .15s;font-family:inherit;white-space:nowrap}
+.tab.on{background:var(--ac);color:var(--bg)}
+.tab-panel{display:none}.tab-panel.on{display:block}
+
+/* ── Diameter Quick-Pick ── */
+.dia-grid{display:flex;gap:7px;flex-wrap:wrap;margin-bottom:16px}
+.dg{width:52px;height:52px;border:1px solid var(--bor);border-radius:10px;cursor:pointer;font-size:13px;font-weight:700;background:var(--bg);color:var(--mu);transition:all .15s;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:2px}
+.dg:hover{border-color:var(--ac);color:var(--ac)}
+.dg.on{background:var(--ac);color:var(--bg);border-color:var(--ac);box-shadow:0 0 0 3px rgba(251,191,36,.2)}
+.dg small{font-size:9px;font-weight:500;opacity:.7}
+
+/* ── Input Group ── */
+.form-row{display:grid;grid-template-columns:1fr 1fr 1fr;gap:12px;margin-bottom:14px}
+@media(max-width:640px){.form-row{grid-template-columns:1fr 1fr}.form-row .span2{grid-column:1/-1}}
+.lbl{display:block;font-size:11px;color:var(--mu);margin-bottom:6px;font-weight:600;text-transform:uppercase;letter-spacing:.06em}
+.ig{display:flex;align-items:stretch;background:var(--bg);border:1px solid var(--bor);border-radius:9px;overflow:hidden;transition:border-color .15s}
+.ig:focus-within{border-color:var(--ac);box-shadow:0 0 0 3px rgba(251,191,36,.1)}
+.pfx,.sfx{padding:10px 12px;background:var(--bor);color:var(--mu);font-size:12px;font-weight:600;display:flex;align-items:center;white-space:nowrap;flex-shrink:0}
+input[type=number],input[type=text],select{flex:1;background:transparent;border:none;outline:none;color:var(--fg);font-size:15px;padding:10px 12px;width:100%;font-family:inherit}
+select{appearance:none;background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='12' height='12' viewBox='0 0 24 24' fill='none' stroke='%23a8a29e' stroke-width='2'%3E%3Cpolyline points='6 9 12 15 18 9'%3E%3C/polyline%3E%3C/svg%3E");background-repeat:no-repeat;background-position:right 10px center;padding-right:28px}
+select option{background:var(--sur)}
+input[type=number]::-webkit-outer-spin-button,
+input[type=number]::-webkit-inner-spin-button{-webkit-appearance:none}
+
+/* ── Buttons ── */
+.btn-row{display:flex;gap:8px;flex-wrap:wrap;margin-top:6px}
+.btn{padding:12px 24px;border-radius:9px;cursor:pointer;font-size:14px;font-weight:700;border:none;font-family:inherit;transition:all .15s;display:inline-flex;align-items:center;gap:7px}
+.btn-pri{background:var(--ac);color:var(--bg)}.btn-pri:hover{background:var(--ac2);transform:translateY(-1px);box-shadow:0 4px 12px rgba(251,191,36,.3)}
+.btn-pri:active{transform:translateY(0)}
+.btn-sec{background:var(--bor);color:var(--mu)}.btn-sec:hover{background:var(--bor2);color:var(--fg)}
+.btn-ghost{background:transparent;border:1px solid var(--bor);color:var(--mu)}.btn-ghost:hover{border-color:var(--ac);color:var(--ac)}
+.btn-sm{padding:7px 14px;font-size:12px;border-radius:7px}
+
+/* ── Result Section ── */
+.result-wrap{display:none}.result-wrap.show{display:block;animation:fadeIn .3s ease}
+@keyframes fadeIn{from{opacity:0;transform:translateY(8px)}to{opacity:1;transform:translateY(0)}}
+
+/* ── Summary Cards ── */
+.sum-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(150px,1fr));gap:10px;margin-bottom:16px}
+.sum-card{background:var(--bg);border:1px solid var(--bor);border-radius:12px;padding:16px;text-align:center;position:relative;overflow:hidden}
+.sum-card::before{content:'';position:absolute;top:0;left:0;right:0;height:3px;background:var(--ac)}
+.sum-card.blue::before{background:var(--bl)}
+.sum-card.green::before{background:var(--gr)}
+.sum-card.steel::before{background:var(--steel)}
+.sum-icon{font-size:22px;margin-bottom:6px}
+.sum-label{font-size:10px;color:var(--mu);text-transform:uppercase;letter-spacing:.07em;font-weight:600;margin-bottom:4px}
+.sum-val{font-size:22px;font-weight:800;color:var(--ac);line-height:1.1}
+.sum-card.blue .sum-val{color:var(--bl)}
+.sum-card.green .sum-val{color:var(--gr)}
+.sum-card.steel .sum-val{color:var(--steel)}
+.sum-unit{font-size:11px;color:var(--su);margin-top:2px}
+
+/* ── Formula Box ── */
+.formula-box{background:var(--bg);border:1px solid rgba(251,191,36,.25);border-radius:10px;padding:14px 18px;margin-bottom:14px;font-family:'Courier New',monospace;font-size:14px;color:var(--fg);line-height:1.8}
+.formula-box .formula-main{font-size:17px;font-weight:700;color:var(--ac);display:block;margin-bottom:4px}
+.formula-box .formula-sub{font-size:12px;color:var(--mu)}
+
+/* ── Table ── */
+.tbl-wrap{overflow-x:auto;margin-bottom:14px;border-radius:10px;border:1px solid var(--bor)}
+table{width:100%;border-collapse:collapse;font-size:13px}
+thead th{background:var(--bor);padding:10px 14px;text-align:left;font-size:11px;font-weight:700;text-transform:uppercase;letter-spacing:.07em;color:var(--mu);white-space:nowrap}
+tbody td{padding:10px 14px;border-top:1px solid var(--bor);color:var(--fg);white-space:nowrap}
+tbody tr:hover td{background:rgba(255,255,255,.02)}
+tbody tr:last-child td{font-weight:700;color:var(--ac);background:rgba(251,191,36,.05)}
+.td-right{text-align:right}
+.td-center{text-align:center}
+.tag{display:inline-block;padding:2px 8px;border-radius:5px;font-size:10px;font-weight:700;text-transform:uppercase}
+.tag-fe415{background:rgba(59,130,246,.15);color:#60a5fa;border:1px solid rgba(59,130,246,.2)}
+.tag-fe500{background:rgba(34,197,94,.15);color:#4ade80;border:1px solid rgba(34,197,94,.2)}
+.tag-fe550{background:rgba(251,191,36,.15);color:#fbbf24;border:1px solid rgba(251,191,36,.2)}
+
+/* ── Bar Schedule (Multi) ── */
+.sch-row{display:grid;grid-template-columns:48px 90px 1fr 80px 80px 80px 36px;gap:8px;align-items:center;margin-bottom:8px}
+@media(max-width:640px){.sch-row{grid-template-columns:40px 70px 1fr 70px 36px}}
+.sch-row .sch-input{background:var(--bg);border:1px solid var(--bor);border-radius:7px;padding:8px 10px;color:var(--fg);font-size:13px;font-family:inherit;outline:none;width:100%;transition:border-color .15s}
+.sch-row .sch-input:focus{border-color:var(--ac)}
+.sch-row .sch-select{background:var(--bg);border:1px solid var(--bor);border-radius:7px;padding:8px 8px;color:var(--fg);font-size:13px;font-family:inherit;outline:none;width:100%;appearance:none;cursor:pointer}
+.sch-row .sch-select:focus{border-color:var(--ac)}
+.rm-btn{width:32px;height:32px;background:rgba(239,68,68,.08);border:1px solid rgba(239,68,68,.15);border-radius:7px;cursor:pointer;color:#f87171;font-size:15px;display:flex;align-items:center;justify-content:center;flex-shrink:0;transition:all .15s}
+.rm-btn:hover{background:rgba(239,68,68,.2)}
+.sch-head{display:grid;grid-template-columns:48px 90px 1fr 80px 80px 80px 36px;gap:8px;padding:0 0 6px;margin-bottom:4px;border-bottom:1px solid var(--bor)}
+@media(max-width:640px){.sch-head{display:none}}
+.sch-head span{font-size:10px;font-weight:700;text-transform:uppercase;letter-spacing:.06em;color:var(--su)}
+.add-row-btn{padding:9px 18px;background:var(--bg);border:1px dashed var(--bor2);border-radius:8px;cursor:pointer;color:var(--mu);font-size:13px;font-family:inherit;margin-bottom:14px;transition:all .15s;width:100%;text-align:center}
+.add-row-btn:hover{border-color:var(--ac);color:var(--ac)}
+
+/* ── Info Rows ── */
+.info-section{background:var(--bg);border:1px solid var(--bor);border-radius:10px;overflow:hidden;margin-bottom:14px}
+.info-row{display:flex;justify-content:space-between;align-items:center;padding:10px 14px;border-bottom:1px solid var(--bor);font-size:13px}
+.info-row:last-child{border:none}
+.info-key{color:var(--mu)}
+.info-val{font-weight:600;color:var(--fg)}
+.info-val.ac{color:var(--ac)}
+
+/* ── Copy bar ── */
+.copy-bar{display:flex;justify-content:space-between;align-items:center;margin-bottom:12px;flex-wrap:wrap;gap:8px}
+.copy-btn{padding:7px 16px;background:var(--bor);border:1px solid var(--bor2);border-radius:7px;cursor:pointer;font-size:12px;font-weight:600;color:var(--mu);font-family:inherit;transition:all .15s;display:inline-flex;align-items:center;gap:5px}
+.copy-btn:hover{background:var(--ac);color:var(--bg);border-color:var(--ac)}
+
+/* ── Unit Weight Reference ── */
+.ref-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(140px,1fr));gap:8px;margin-bottom:14px}
+.ref-card{background:var(--bg);border:1px solid var(--bor);border-radius:9px;padding:12px 14px;text-align:center;cursor:pointer;transition:all .15s}
+.ref-card:hover{border-color:var(--ac)}
+.ref-card.on{border-color:var(--ac);background:rgba(251,191,36,.06)}
+.ref-dia{font-size:18px;font-weight:800;color:var(--fg)}
+.ref-wt{font-size:12px;color:var(--ac);font-weight:700;margin-top:2px}
+.ref-unit{font-size:10px;color:var(--su)}
+
+/* ── Note / Alert ── */
+.note{background:rgba(251,191,36,.07);border:1px solid rgba(251,191,36,.18);border-radius:9px;padding:11px 15px;font-size:12px;color:#fcd34d;line-height:1.7;margin-top:10px}
+.note b{color:#fde68a}
+.err{background:rgba(239,68,68,.08);border:1px solid rgba(239,68,68,.2);border-radius:9px;padding:10px 14px;font-size:13px;color:#f87171;display:none;margin-bottom:12px}
+
+/* ── SEO Content ── */
+.seo{color:var(--mu);font-size:14px;line-height:1.85}
+.seo h2{font-size:20px;font-weight:800;color:var(--fg);margin:24px 0 10px;padding-top:4px}
+.seo h3{font-size:16px;font-weight:700;color:var(--fg);margin:16px 0 6px}
+.seo p{margin-bottom:10px}
+.seo ul,.seo ol{padding-left:20px;margin:8px 0 12px}
+.seo li{margin-bottom:5px}
+.seo table{width:100%;border-collapse:collapse;margin:14px 0;font-size:13px}
+.seo th{background:var(--bor);padding:9px 14px;text-align:left;font-weight:700;color:var(--fg)}
+.seo td{padding:8px 14px;border-top:1px solid var(--bor)}
+.seo tr:nth-child(even) td{background:rgba(255,255,255,.018)}
+.highlight{background:rgba(251,191,36,.1);border-left:3px solid var(--ac);padding:10px 14px;border-radius:0 8px 8px 0;margin:12px 0;font-size:13px;color:var(--fg)}
+
+/* ── FAQ ── */
+.faq-item{border:1px solid var(--bor);border-radius:10px;margin-bottom:8px;overflow:hidden}
+.faq-q{width:100%;padding:14px 18px;background:var(--sur);border:none;cursor:pointer;text-align:left;font-size:14px;font-weight:600;color:var(--fg);font-family:inherit;display:flex;justify-content:space-between;align-items:center;gap:12px;transition:background .15s}
+.faq-q:hover{background:var(--sur2)}
+.faq-q .arr{font-size:16px;color:var(--mu);flex-shrink:0;transition:transform .2s}
+.faq-q.open .arr{transform:rotate(180deg);color:var(--ac)}
+.faq-a{display:none;padding:14px 18px;background:var(--bg);font-size:14px;color:var(--mu);line-height:1.75;border-top:1px solid var(--bor)}
+.faq-a.open{display:block;animation:fadeIn .2s ease}
+
+/* ── Ad ── */
+.ad-wrap{margin:20px 0;text-align:center;min-height:90px}
+
+/* ── Footer ── */
+footer{text-align:center;padding:32px 20px;color:var(--su);font-size:12px;border-top:1px solid var(--bor);margin-top:30px}
+footer a{color:var(--mu);text-decoration:none}
+footer a:hover{color:var(--ac)}
+.footer-links{display:flex;gap:16px;justify-content:center;flex-wrap:wrap;margin-top:8px}
+
+/* ── Responsive ── */
+@media(max-width:480px){
+  .hero h1{font-size:22px}
+  .dg{width:44px;height:44px;font-size:12px}
+  .sum-val{font-size:18px}
+}
+</style>
+</head>
+<body>
+
+<header>
+  <a class="logo" href="/">
+    <div class="lm">F</div>
+    <span style="font-weight:700;font-size:16px">Forjit AI</span>
+  </a>
+  <div class="nav-links">
+    <a href="/tools/civil/">🏗️ Civil Tools</a>
+    <a href="/">All Tools</a>
+  </div>
+</header>
+
+<!-- AdSense Top -->
+<div class="wrap">
+<div class="ad-wrap">
+  <ins class="adsbygoogle" style="display:block" data-ad-client="ca-pub-5102938260449475" data-ad-slot="2957174915" data-ad-format="auto" data-full-width-responsive="true"></ins>
+  <script>(adsbygoogle=window.adsbygoogle||[]).push({});</script>
+</div>
+
+<!-- ── Hero ── -->
+<div class="hero">
+  <div class="hero-badge">🇮🇳 IS 1786:2008 Compliant</div>
+  <h1>Steel Bar Weight Calculator</h1>
+  <p>Calculate TMT rebar weight instantly using the <strong>d²/162 formula</strong>. Single bars, multiple diameters, or full bar schedules — all in one tool.</p>
+  <div class="std-chips">
+    <span class="chip">IS 1786:2008</span>
+    <span class="chip">IS 456:2000</span>
+    <span class="chip">8mm – 40mm</span>
+    <span class="chip">Fe 415 / Fe 500 / Fe 550</span>
+  </div>
+</div>
+
+<!-- ── Main Calculator Card ── -->
+<div class="card">
+  <div class="tabs">
+    <button class="tab on" onclick="switchTab('single',this)">⚡ Quick Calculate</button>
+    <button class="tab" onclick="switchTab('schedule',this)">📋 Bar Schedule</button>
+    <button class="tab" onclick="switchTab('reftable',this)">📊 Unit Weight Table</button>
+  </div>
+
+  <!-- ═══════════════ TAB 1 — QUICK ═══════════════ -->
+  <div id="tab-single" class="tab-panel on">
+
+    <div class="card-title"><span>📐</span> Select Bar Diameter</div>
+    <div class="dia-grid" id="diaButtons">
+      <button class="dg" data-d="8"  onclick="pickDia(this)">8<small>mm</small></button>
+      <button class="dg" data-d="10" onclick="pickDia(this)">10<small>mm</small></button>
+      <button class="dg on" data-d="12" onclick="pickDia(this)">12<small>mm</small></button>
+      <button class="dg" data-d="16" onclick="pickDia(this)">16<small>mm</small></button>
+      <button class="dg" data-d="20" onclick="pickDia(this)">20<small>mm</small></button>
+      <button class="dg" data-d="25" onclick="pickDia(this)">25<small>mm</small></button>
+      <button class="dg" data-d="28" onclick="pickDia(this)">28<small>mm</small></button>
+      <button class="dg" data-d="32" onclick="pickDia(this)">32<small>mm</small></button>
+      <button class="dg" data-d="36" onclick="pickDia(this)">36<small>mm</small></button>
+      <button class="dg" data-d="40" onclick="pickDia(this)">40<small>mm</small></button>
+    </div>
+
+    <div class="form-row">
+      <div>
+        <label class="lbl">Diameter (mm)</label>
+        <div class="ig"><div class="pfx">∅</div><input type="number" id="sDia" value="12" min="1" max="100" step="1" onchange="syncDiaPicker()"/><div class="sfx">mm</div></div>
+      </div>
+      <div>
+        <label class="lbl">Length per Bar</label>
+        <div class="ig"><input type="number" id="sLen" value="12" min="0.01" step="0.5"/><div class="sfx">m</div></div>
+      </div>
+      <div>
+        <label class="lbl">Number of Bars</label>
+        <div class="ig"><input type="number" id="sNos" value="10" min="1" step="1"/><div class="sfx">nos</div></div>
+      </div>
+    </div>
+
+    <div class="form-row">
+      <div>
+        <label class="lbl">Steel Grade</label>
+        <div class="ig"><select id="sGrade">
+          <option value="Fe415">Fe 415</option>
+          <option value="Fe500" selected>Fe 500</option>
+          <option value="Fe500D">Fe 500D</option>
+          <option value="Fe550">Fe 550</option>
+          <option value="Fe550D">Fe 550D</option>
+          <option value="Fe600">Fe 600</option>
+        </select></div>
+      </div>
+      <div>
+        <label class="lbl">Wastage / Lapping (%)</label>
+        <div class="ig"><input type="number" id="sWaste" value="5" min="0" max="30" step="0.5"/><div class="sfx">%</div></div>
+      </div>
+      <div>
+        <label class="lbl">Rate per kg (₹)</label>
+        <div class="ig"><div class="pfx">₹</div><input type="number" id="sRate" value="65" min="0" step="0.5"/><div class="pfx">/kg</div></div>
+      </div>
+    </div>
+
+    <div id="sErr" class="err">⚠️ Please enter valid input values.</div>
+    <div class="btn-row">
+      <button class="btn btn-pri" onclick="calcSingle()">⚡ Calculate Weight</button>
+      <button class="btn btn-sec" onclick="resetSingle()">↺ Reset</button>
+    </div>
+
+    <div id="sResult" class="result-wrap" style="margin-top:22px">
+      <div class="copy-bar">
+        <div class="card-title" style="margin:0"><span>📊</span> Results</div>
+        <button class="copy-btn" onclick="copyResult('single')">⧉ Copy Report</button>
+      </div>
+
+      <div class="sum-grid" id="sSumGrid"></div>
+
+      <div class="formula-box" id="sFormula"></div>
+
+      <div class="info-section" id="sInfoRows"></div>
+
+      <div class="note" id="sNote"></div>
+    </div>
+  </div>
+
+  <!-- ═══════════════ TAB 2 — BAR SCHEDULE ═══════════════ -->
+  <div id="tab-schedule" class="tab-panel">
+    <p style="font-size:13px;color:var(--mu);margin-bottom:16px">Add multiple bar entries — different diameters, lengths and quantities. Calculates total weight for the entire <strong style="color:var(--fg)">bar bending schedule</strong>.</p>
+
+    <div class="sch-head">
+      <span>S.No</span><span>Dia (mm)</span><span>Description</span>
+      <span>Length (m)</span><span>Nos</span><span>Wt (kg)</span><span></span>
+    </div>
+    <div id="schRows"></div>
+    <button class="add-row-btn" onclick="addSchRow()">＋ Add Another Bar</button>
+
+    <div class="form-row" style="margin-bottom:14px">
+      <div>
+        <label class="lbl">Wastage / Lapping (%)</label>
+        <div class="ig"><input type="number" id="schWaste" value="5" min="0" max="30"/><div class="sfx">%</div></div>
+      </div>
+      <div>
+        <label class="lbl">Rate per kg (₹)</label>
+        <div class="ig"><div class="pfx">₹</div><input type="number" id="schRate" value="65" min="0"/><div class="pfx">/kg</div></div>
+      </div>
+      <div>
+        <label class="lbl">Steel Grade</label>
+        <div class="ig"><select id="schGrade">
+          <option>Fe 415</option><option selected>Fe 500</option><option>Fe 500D</option><option>Fe 550</option>
+        </select></div>
+      </div>
+    </div>
+
+    <div class="btn-row">
+      <button class="btn btn-pri" onclick="calcSchedule()">📋 Calculate Schedule</button>
+      <button class="btn btn-sec" onclick="resetSchedule()">↺ Reset All</button>
+    </div>
+
+    <div id="schResult" class="result-wrap" style="margin-top:22px">
+      <div class="copy-bar">
+        <div class="card-title" style="margin:0"><span>📋</span> Bar Schedule Results</div>
+        <button class="copy-btn" onclick="copyResult('schedule')">⧉ Copy Schedule</button>
+      </div>
+      <div class="sum-grid" id="schSumGrid"></div>
+      <div class="tbl-wrap" id="schTable"></div>
+      <div class="note" id="schNote"></div>
+    </div>
+  </div>
+
+  <!-- ═══════════════ TAB 3 — UNIT WEIGHT TABLE ═══════════════ -->
+  <div id="tab-reftable" class="tab-panel">
+    <p style="font-size:13px;color:var(--mu);margin-bottom:16px">Standard unit weight of TMT steel bars as per <strong style="color:var(--fg)">IS 1786:2008</strong> using the d²/162.27 formula. Click any bar to auto-fill the Quick Calculator.</p>
+
+    <div class="ref-grid" id="refCards"></div>
+
+    <div class="tbl-wrap">
+      <table>
+        <thead>
+          <tr>
+            <th>Dia (mm)</th><th>Formula</th><th>Unit Wt (kg/m)</th>
+            <th>1 bar @ 6m</th><th>1 bar @ 12m</th><th>100 bars @ 12m</th>
+          </tr>
+        </thead>
+        <tbody id="refTableBody"></tbody>
+      </table>
+    </div>
+    <div class="note">
+      <b>Formula:</b> Unit Weight (kg/m) = d² ÷ 162.27 &nbsp;|&nbsp;
+      Density of steel = 7850 kg/m³ &nbsp;|&nbsp;
+      Values as per <b>IS 1786:2008</b>
+    </div>
+  </div>
+</div><!-- /card -->
+
+<!-- AdSense Middle -->
+<div class="ad-wrap">
+  <ins class="adsbygoogle" style="display:block" data-ad-client="ca-pub-5102938260449475" data-ad-slot="2957174915" data-ad-format="auto" data-full-width-responsive="true"></ins>
+  <script>(adsbygoogle=window.adsbygoogle||[]).push({});</script>
+</div>
+
+<!-- ── SEO CONTENT ── -->
+<div class="card seo">
+  <h2>Steel Bar Weight Calculator — How It Works</h2>
+
+  <p>This free online <strong>steel bar weight calculator</strong> is built for Indian civil engineers, site supervisors, structural designers, and quantity surveyors. Whether you're estimating TMT rebar for a building column, calculating the bar bending schedule (BBS) for a slab, or simply verifying material procurement, this tool gives you instant, accurate results as per <strong>IS 1786:2008</strong> and <strong>IS 456:2000</strong>.</p>
+
+  <h3>The d²/162 Formula — Explained</h3>
+  <div class="highlight">
+    <strong>Unit Weight (kg/m) = d² ÷ 162</strong><br>
+    where <em>d</em> = diameter of the bar in millimetres
+  </div>
+
+  <p>This formula is derived from the fundamental physics of steel density:</p>
+  <ul>
+    <li>Cross-sectional area of a round bar = π/4 × d² (mm²)</li>
+    <li>Density of mild/TMT steel = 7850 kg/m³ = 0.00785 g/mm³</li>
+    <li>Weight per metre = Area × Density = (π/4 × d²) × 0.00785 g/mm³</li>
+    <li>Simplified: Weight = d² × (π/4 × 0.00785) = d² / <strong>162.27</strong> ≈ d² / 162</li>
+  </ul>
+  <p>The value 162.27 is a constant derived from the steel density and unit conversion factors. In practice, Indian engineers round this to <strong>162</strong> for quicker field calculations.</p>
+
+  <h3>Example Calculation — M20 Slab</h3>
+  <p>Suppose you need to calculate weight for:</p>
+  <ul>
+    <li>Diameter: <strong>12 mm</strong></li>
+    <li>Length per bar: <strong>6 m</strong></li>
+    <li>Number of bars: <strong>50 nos</strong></li>
+  </ul>
+  <p><strong>Step 1:</strong> Unit weight = 12² ÷ 162 = 144 ÷ 162 = <strong>0.888 kg/m</strong></p>
+  <p><strong>Step 2:</strong> Weight per bar = 0.888 × 6 = <strong>5.33 kg</strong></p>
+  <p><strong>Step 3:</strong> Total weight = 5.33 × 50 = <strong>266.7 kg</strong></p>
+  <p>Adding 5% wastage/lapping: 266.7 × 1.05 = <strong>280.0 kg</strong> ≈ <strong>0.28 tonnes</strong></p>
+
+  <h3>Standard Unit Weights of TMT Bars (IS 1786:2008)</h3>
+  <table>
+    <tr><th>Diameter (mm)</th><th>Unit Weight (kg/m)</th><th>Weight per 6m bar</th><th>Weight per 12m bar</th></tr>
+    <tr><td>8 mm</td><td>0.395 kg/m</td><td>2.37 kg</td><td>4.74 kg</td></tr>
+    <tr><td>10 mm</td><td>0.617 kg/m</td><td>3.70 kg</td><td>7.40 kg</td></tr>
+    <tr><td>12 mm</td><td>0.888 kg/m</td><td>5.33 kg</td><td>10.66 kg</td></tr>
+    <tr><td>16 mm</td><td>1.580 kg/m</td><td>9.48 kg</td><td>18.96 kg</td></tr>
+    <tr><td>20 mm</td><td>2.469 kg/m</td><td>14.81 kg</td><td>29.63 kg</td></tr>
+    <tr><td>25 mm</td><td>3.858 kg/m</td><td>23.15 kg</td><td>46.30 kg</td></tr>
+    <tr><td>32 mm</td><td>6.313 kg/m</td><td>37.88 kg</td><td>75.76 kg</td></tr>
+    <tr><td>40 mm</td><td>9.864 kg/m</td><td>59.18 kg</td><td>118.37 kg</td></tr>
+  </table>
+
+  <h3>TMT Steel Grades Used in India</h3>
+  <p>As per <strong>IS 1786:2008</strong>, TMT bars are available in the following grades, each with different yield strength (fy):</p>
+  <ul>
+    <li><strong>Fe 415</strong> — 415 N/mm² yield strength. Used in general residential construction.</li>
+    <li><strong>Fe 500 / Fe 500D</strong> — 500 N/mm² yield strength. Most widely used in India for RCC columns, beams, slabs.</li>
+    <li><strong>Fe 550 / Fe 550D</strong> — 550 N/mm² yield strength. High-rise buildings, industrial structures.</li>
+    <li><strong>Fe 600</strong> — 600 N/mm² yield strength. Heavy engineering, bridges, dams.</li>
+  </ul>
+  <p><em>Note: The 'D' suffix (e.g., Fe 500D) indicates enhanced ductility — mandatory for earthquake-resistant structures as per IS 13920.</em></p>
+
+  <h3>What is a Bar Bending Schedule (BBS)?</h3>
+  <p>A <strong>Bar Bending Schedule (BBS)</strong> is a detailed document prepared by structural engineers and quantity surveyors listing all reinforcement bars in an RCC member — their diameter, shape, cutting length, number, and total weight. The BBS is used for:</p>
+  <ul>
+    <li>Material procurement and cost estimation</li>
+    <li>Site supervision and quality control</li>
+    <li>Billing and contractor payments</li>
+    <li>Structural auditing and as-built documentation</li>
+  </ul>
+  <p>Use the <strong>Bar Schedule tab</strong> above to calculate multi-bar BBS totals instantly.</p>
+
+  <h3>Why Use This Calculator Instead of Manual Calculation?</h3>
+  <ul>
+    <li>⚡ <strong>Instant results</strong> — no pen-paper or Excel needed at site</li>
+    <li>✅ <strong>IS 1786:2008 compliant</strong> values — verified formula constants</li>
+    <li>📋 <strong>Full bar schedule</strong> — add 10+ different diameter entries at once</li>
+    <li>💰 <strong>Cost estimation</strong> — built-in rate per kg and total cost output</li>
+    <li>📱 <strong>Mobile-friendly</strong> — works perfectly on site with any device</li>
+    <li>📤 <strong>Copy results</strong> — paste into WhatsApp or email instantly</li>
+  </ul>
+
+  <h3>Lapping Length for TMT Bars (IS 456:2000)</h3>
+  <p>When bars need to be joined (lapped), extra length is required. As per IS 456:2000, the minimum lap length is:</p>
+  <ul>
+    <li><strong>Tension zone:</strong> 45 × diameter (e.g., 45 × 16mm = 720mm)</li>
+    <li><strong>Compression zone:</strong> 24 × diameter (e.g., 24 × 16mm = 384mm)</li>
+    <li><strong>Minimum in any case:</strong> 300 mm</li>
+  </ul>
+  <p>This calculator adds a configurable <strong>wastage + lapping percentage</strong> (default 5%) to account for these overlaps and site cutting losses.</p>
+</div>
+
+<!-- ── FAQ ── -->
+<div class="card">
+  <div class="card-title"><span>❓</span> Frequently Asked Questions</div>
+
+  <div class="faq-item">
+    <button class="faq-q" onclick="toggleFaq(this)">What is the formula for steel bar weight calculation? <span class="arr">▼</span></button>
+    <div class="faq-a">The standard formula is: <strong>Weight (kg) = (d² / 162) × Length (m) × Number of bars</strong>, where d is the diameter in mm. This is derived from the steel density (7850 kg/m³) and cross-sectional area calculation. The precise divisor is 162.27, commonly rounded to 162 for field use.</div>
+  </div>
+
+  <div class="faq-item">
+    <button class="faq-q" onclick="toggleFaq(this)">What is the unit weight of 12mm TMT bar? <span class="arr">▼</span></button>
+    <div class="faq-a">The unit weight of a 12mm steel bar is <strong>0.888 kg/m</strong> (calculated as 12² ÷ 162 = 144 ÷ 162 = 0.888 kg/m). A standard 12m bar weighs 10.67 kg and a 6m bar weighs 5.33 kg.</div>
+  </div>
+
+  <div class="faq-item">
+    <button class="faq-q" onclick="toggleFaq(this)">How many kg is 1 bundle of TMT bars? <span class="arr">▼</span></button>
+    <div class="faq-a">In India, TMT bars are typically supplied in bundles of <strong>approximately 1 MT (1000 kg)</strong> or custom cut lengths. The number of bars per bundle depends on the diameter — for 12mm bars at 12m length, roughly 93–94 bars make 1 MT. Some suppliers sell in 20 kg bundles for small orders.</div>
+  </div>
+
+  <div class="faq-item">
+    <button class="faq-q" onclick="toggleFaq(this)">What is the difference between Fe 415 and Fe 500 TMT bars? <span class="arr">▼</span></button>
+    <div class="faq-a"><strong>Fe 415</strong> has a yield strength of 415 N/mm² while <strong>Fe 500</strong> has 500 N/mm². Fe 500 is stronger and now more commonly used across India. Fe 500D has the same strength but enhanced ductility, making it suitable for earthquake-prone zones as per IS 13920. IS 456:2000 permits both grades for RCC construction.</div>
+  </div>
+
+  <div class="faq-item">
+    <button class="faq-q" onclick="toggleFaq(this)">Why do we add 5% wastage for steel bar calculations? <span class="arr">▼</span></button>
+    <div class="faq-a">The 5% wastage accounts for: (1) <strong>cutting waste</strong> — off-cuts when bars are cut to required lengths, (2) <strong>lapping lengths</strong> — overlap required when bars are joined (45×d in tension zones), and (3) <strong>bending allowance</strong> — extra length consumed in hooks, bends and cranks. For complex structures, 7–10% wastage is more realistic.</div>
+  </div>
+
+  <div class="faq-item">
+    <button class="faq-q" onclick="toggleFaq(this)">What is the weight of 1 metre of 20mm TMT bar? <span class="arr">▼</span></button>
+    <div class="faq-a">Weight of 1m of 20mm bar = 20² ÷ 162 = 400 ÷ 162 = <strong>2.469 kg/m</strong>. A standard 12m bar of 20mm weighs 29.63 kg.</div>
+  </div>
+
+  <div class="faq-item">
+    <button class="faq-q" onclick="toggleFaq(this)">Which TMT bar is best for home construction in India? <span class="arr">▼</span></button>
+    <div class="faq-a">For residential home construction, <strong>Fe 500D TMT bars</strong> from reputed brands (TATA Tiscon, JSW Neosteel, Vizag Steel) are recommended. The 'D' grade offers better ductility (elongation ≥ 16%) which is crucial for earthquake safety as per IS 13920. For normal residential use in non-seismic zones, Fe 500 is sufficient and IS 456:2000 compliant.</div>
+  </div>
+
+  <div class="faq-item">
+    <button class="faq-q" onclick="toggleFaq(this)">How to calculate steel for a 1000 sq ft slab? <span class="arr">▼</span></button>
+    <div class="faq-a">For a typical M20 grade, 125mm thick two-way RCC slab of 1000 sq ft (93 m²): Main bars (12mm @ 150mm c/c) and distribution bars (8mm @ 200mm c/c). Approximate steel requirement: <strong>65–80 kg per m²</strong> of slab area, so 93 × 70 ≈ <strong>6,500 kg (6.5 MT)</strong>. Use our Bar Schedule calculator above for precise calculations with your specific spacing.</div>
+  </div>
+</div>
+
+<!-- AdSense Bottom -->
+<div class="ad-wrap">
+  <ins class="adsbygoogle" style="display:block" data-ad-client="ca-pub-5102938260449475" data-ad-slot="2957174915" data-ad-format="auto" data-full-width-responsive="true"></ins>
+  <script>(adsbygoogle=window.adsbygoogle||[]).push({});</script>
+</div>
+
+<footer>
+  <p>© 2025 Forjit AI · All rights reserved</p>
+  <div class="footer-links">
+    <a href="/tools/civil/">🏗️ Civil Tools Hub</a>
+    <a href="/tools/concrete-mix-calculator.html">Concrete Mix Calculator</a>
+    <a href="mailto:forjitai@gmail.com">forjitai@gmail.com</a>
+    <a href="/">All Tools</a>
+  </div>
+</footer>
+
+<!-- ══════════════════════════ JAVASCRIPT ══════════════════════════ -->
+<script>
+/* ── Data ── */
+const BARS = [
+  {d:6,  uw:0.222}, {d:8,  uw:0.395}, {d:10, uw:0.617}, {d:12, uw:0.888},
+  {d:16, uw:1.580}, {d:20, uw:2.469}, {d:25, uw:3.858}, {d:28, uw:4.834},
+  {d:32, uw:6.313}, {d:36, uw:7.990}, {d:40, uw:9.864},
+];
+function unitWt(d){ return parseFloat((d*d/162.27).toFixed(3)); }
+
+/* ── Tab Switching ── */
+function switchTab(id, btn) {
+  document.querySelectorAll('.tab-panel').forEach(p=>p.classList.remove('on'));
+  document.querySelectorAll('.tab').forEach(b=>b.classList.remove('on'));
+  document.getElementById('tab-'+id).classList.add('on');
+  btn.classList.add('on');
+}
+
+/* ── Diameter Picker ── */
+function pickDia(btn) {
+  document.querySelectorAll('#diaButtons .dg').forEach(b=>b.classList.remove('on'));
+  btn.classList.add('on');
+  document.getElementById('sDia').value = btn.dataset.d;
+}
+function syncDiaPicker() {
+  const v = parseInt(document.getElementById('sDia').value);
+  document.querySelectorAll('#diaButtons .dg').forEach(b=>{
+    b.classList.toggle('on', parseInt(b.dataset.d)===v);
+  });
+}
+
+/* ── Helpers ── */
+function fmt(n,dp=2){ return parseFloat(n.toFixed(dp)).toLocaleString('en-IN',{minimumFractionDigits:dp,maximumFractionDigits:dp}); }
+function fmtRs(n){ return '₹'+parseFloat(n.toFixed(0)).toLocaleString('en-IN'); }
+function sumCard(cls,icon,label,val,unit){
+  return `<div class="sum-card ${cls}"><div class="sum-icon">${icon}</div><div class="sum-label">${label}</div><div class="sum-val">${val}</div><div class="sum-unit">${unit}</div></div>`;
+}
+function infoRow(k,v,ac=false){
+  return `<div class="info-row"><span class="info-key">${k}</span><span class="info-val ${ac?'ac':''}">${v}</span></div>`;
+}
+
+/* ═════════════ QUICK CALCULATOR ═════════════ */
+function calcSingle() {
+  const d     = parseFloat(document.getElementById('sDia').value);
+  const len   = parseFloat(document.getElementById('sLen').value);
+  const nos   = parseFloat(document.getElementById('sNos').value);
+  const waste = parseFloat(document.getElementById('sWaste').value)||0;
+  const rate  = parseFloat(document.getElementById('sRate').value)||0;
+  const grade = document.getElementById('sGrade').value;
+  const err   = document.getElementById('sErr');
+
+  if (!d||d<=0||!len||len<=0||!nos||nos<1) {
+    err.style.display='block'; err.textContent='⚠️ Enter valid diameter, length and number of bars.'; return;
+  }
+  err.style.display='none';
+
+  const uw      = unitWt(d);
+  const wtPerBar= uw * len;
+  const netWt   = wtPerBar * nos;
+  const totalWt = netWt * (1 + waste/100);
+  const tonnes  = totalWt / 1000;
+  const cost    = totalWt * rate;
+
+  document.getElementById('sSumGrid').innerHTML =
+    sumCard('',    '⚖️', 'Unit Weight',  fmt(uw,3),    'kg/m') +
+    sumCard('blue','🔩', 'Per Bar',       fmt(wtPerBar,3),'kg') +
+    sumCard('',    '📦', 'Net Weight',   fmt(netWt,2), 'kg') +
+    sumCard('green','🏗️','Total (+ waste)',fmt(totalWt,2),'kg') +
+    sumCard('steel','🔢','In Tonnes',    fmt(tonnes,3), 'MT') +
+    (rate>0 ? sumCard('blue','💰','Est. Cost',fmtRs(cost),'total') : '');
+
+  document.getElementById('sFormula').innerHTML =
+    `<span class="formula-main">W = (d² ÷ 162.27) × L × N</span>` +
+    `<span class="formula-sub">= (${d}² ÷ 162.27) × ${len} × ${nos}</span><br>` +
+    `<span class="formula-sub">= ${fmt(uw,3)} kg/m × ${len} m × ${nos} bars = <strong style="color:var(--ac)">${fmt(netWt,2)} kg</strong> net</span>`;
+
+  document.getElementById('sInfoRows').innerHTML =
+    infoRow('Diameter', `${d} mm`) +
+    infoRow('Steel Grade', `<span class="tag tag-${grade.replace(' ','')}">${grade}</span>`) +
+    infoRow('Unit Weight (d²/162.27)', `${fmt(uw,3)} kg/m`) +
+    infoRow('Length × Nos', `${len} m × ${nos} = ${len*nos} m total`) +
+    infoRow('Net Weight (no wastage)', `${fmt(netWt,2)} kg`) +
+    infoRow(`Wastage / Lapping (${waste}%)`, `+ ${fmt(netWt*waste/100,2)} kg`) +
+    infoRow('Total Weight (with wastage)', `${fmt(totalWt,2)} kg`, true) +
+    infoRow('Weight in Tonnes', `${fmt(tonnes,3)} MT`) +
+    (rate>0 ? infoRow('Estimated Cost @ ₹'+rate+'/kg', fmtRs(cost), true) : '');
+
+  document.getElementById('sNote').innerHTML =
+    `<b>IS 1786:2008 Note:</b> Theoretical weight calculated using d²/162.27 (steel density 7850 kg/m³). ` +
+    `Actual weight may vary ±2.5% based on manufacturer tolerances. ` +
+    `Lapping length per IS 456:2000: <b>${Math.round(45*d)} mm</b> (45d) in tension zone.`;
+
+  window._singleResult = {d,len,nos,waste,rate,grade,uw,wtPerBar,netWt,totalWt,tonnes,cost};
+  document.getElementById('sResult').classList.add('show');
+}
+
+function resetSingle() {
+  document.getElementById('sDia').value=12;
+  document.getElementById('sLen').value=12;
+  document.getElementById('sNos').value=10;
+  document.getElementById('sWaste').value=5;
+  document.getElementById('sRate').value=65;
+  document.getElementById('sErr').style.display='none';
+  document.getElementById('sResult').classList.remove('show');
+  // reset picker
+  document.querySelectorAll('#diaButtons .dg').forEach(b=>b.classList.toggle('on',b.dataset.d==='12'));
+}
+
+/* ═════════════ BAR SCHEDULE ═════════════ */
+let schRowCount = 0;
+function addSchRow(d='',len='',nos='',desc='') {
+  schRowCount++;
+  const n = schRowCount;
+  const opts = [6,8,10,12,16,20,25,28,32,36,40].map(x=>
+    `<option value="${x}" ${x===(parseInt(d)||12)?'selected':''}>${x}mm</option>`
+  ).join('');
+  const row = document.createElement('div');
+  row.className='sch-row'; row.id='schRow'+n;
+  row.innerHTML=`
+    <span style="font-size:12px;color:var(--su);font-weight:700;text-align:center">${n}</span>
+    <select class="sch-select" id="schD${n}">${opts}</select>
+    <input class="sch-input" type="text" id="schDesc${n}" placeholder="e.g. Main bars, slab" value="${desc}"/>
+    <input class="sch-input" type="number" id="schL${n}" placeholder="m" value="${len||12}" min="0.1" step="0.5"/>
+    <input class="sch-input" type="number" id="schN${n}" placeholder="nos" value="${nos||1}" min="1"/>
+    <span id="schW${n}" style="font-size:12px;color:var(--ac);font-weight:700;text-align:right;padding:0 4px">—</span>
+    <button class="rm-btn" onclick="rmSchRow(${n})" title="Remove">✕</button>`;
+  document.getElementById('schRows').appendChild(row);
+  // live update weight preview
+  ['schD','schL','schN'].forEach(k=>{
+    const el=document.getElementById(k+n);
+    if(el) el.addEventListener('input',()=>previewSchRow(n));
+  });
+}
+function previewSchRow(n){
+  const d=parseFloat(document.getElementById('schD'+n)?.value||0);
+  const l=parseFloat(document.getElementById('schL'+n)?.value||0);
+  const nos=parseFloat(document.getElementById('schN'+n)?.value||0);
+  const w=document.getElementById('schW'+n);
+  if(d&&l&&nos) w.textContent=fmt(unitWt(d)*l*nos,2)+' kg';
+  else if(w) w.textContent='—';
+}
+function rmSchRow(n) {
+  const el=document.getElementById('schRow'+n);
+  if(el) el.remove();
+}
+function resetSchedule() {
+  document.getElementById('schRows').innerHTML='';
+  schRowCount=0;
+  document.getElementById('schResult').classList.remove('show');
+  addSchRow(12,12,10,'Main bars');
+  addSchRow(8,12,15,'Distribution bars');
+}
+function calcSchedule() {
+  const waste = parseFloat(document.getElementById('schWaste').value)||0;
+  const rate  = parseFloat(document.getElementById('schRate').value)||0;
+  const grade = document.getElementById('schGrade').value;
+  const rows  = document.querySelectorAll('#schRows .sch-row');
+  if(!rows.length){ alert('Add at least one bar row.'); return; }
+
+  let totalNet=0, totalGross=0, tableRows='', idx=1;
+  const entries=[];
+  rows.forEach(row=>{
+    const id=row.id.replace('schRow','');
+    const d  =parseFloat(document.getElementById('schD'+id)?.value)||0;
+    const l  =parseFloat(document.getElementById('schL'+id)?.value)||0;
+    const nos=parseFloat(document.getElementById('schN'+id)?.value)||0;
+    const desc=document.getElementById('schDesc'+id)?.value||'—';
+    if(!d||!l||!nos) return;
+    const uw=unitWt(d);
+    const wt=uw*l*nos;
+    totalNet+=wt;
+    entries.push({idx:idx++,d,l,nos,uw,wt,desc});
+    tableRows+=`<tr>
+      <td class="td-center">${idx-1}</td>
+      <td><strong>${d}mm</strong></td>
+      <td style="color:var(--mu);font-size:12px">${desc}</td>
+      <td class="td-right">${fmt(uw,3)}</td>
+      <td class="td-right">${l}</td>
+      <td class="td-right">${nos}</td>
+      <td class="td-right">${fmt(wt,2)}</td>
+    </tr>`;
+  });
+  if(!entries.length){ alert('No valid entries found.'); return; }
+  totalGross=totalNet*(1+waste/100);
+  const tonnes=totalGross/1000;
+  const cost=totalGross*rate;
+
+  document.getElementById('schSumGrid').innerHTML=
+    sumCard('','📦','Net Weight',fmt(totalNet,2),'kg')+
+    sumCard('green','🏗️','Total (+ waste)',fmt(totalGross,2),'kg')+
+    sumCard('steel','🔢','In Tonnes',fmt(tonnes,3),'MT')+
+    (rate>0?sumCard('blue','💰','Est. Cost',fmtRs(cost),'total'):'');
+
+  document.getElementById('schTable').innerHTML=`<table>
+    <thead><tr><th>#</th><th>Dia</th><th>Description</th><th class="td-right">Unit Wt (kg/m)</th><th class="td-right">Length (m)</th><th class="td-right">Nos</th><th class="td-right">Weight (kg)</th></tr></thead>
+    <tbody>
+      ${tableRows}
+      <tr><td colspan="6" style="text-align:right;font-weight:700;padding:12px 14px">Net Total →</td><td class="td-right" style="color:var(--ac)">${fmt(totalNet,2)} kg</td></tr>
+      <tr><td colspan="6" style="text-align:right;font-weight:700;padding:12px 14px">+ Wastage (${waste}%) →</td><td class="td-right" style="color:var(--gr)">${fmt(totalGross,2)} kg</td></tr>
+    </tbody>
+  </table>`;
+
+  document.getElementById('schNote').innerHTML=
+    `<b>Bar Schedule Summary</b> — ${entries.length} bar type(s) | Grade: <b>${grade}</b> | ` +
+    `Wastage: ${waste}% | Total: <b>${fmt(totalGross,2)} kg (${fmt(tonnes,3)} MT)</b>` +
+    (rate>0?` | Estimated cost: <b>${fmtRs(cost)}</b>`:'');
+
+  window._schedResult={entries,totalNet,totalGross,tonnes,cost,waste,grade,rate};
+  document.getElementById('schResult').classList.add('show');
+}
+
+/* ═════════════ REFERENCE TABLE ═════════════ */
+function buildRefTable() {
+  const DIAMETERS=[6,8,10,12,16,20,25,28,32,36,40];
+  const refCards=document.getElementById('refCards');
+  const tbody=document.getElementById('refTableBody');
+  refCards.innerHTML=''; tbody.innerHTML='';
+  DIAMETERS.forEach(d=>{
+    const uw=unitWt(d);
+    // card
+    const card=document.createElement('div');
+    card.className='ref-card'; card.innerHTML=
+      `<div class="ref-dia">${d}mm</div><div class="ref-wt">${fmt(uw,3)} kg/m</div><div class="ref-unit">unit weight</div>`;
+    card.onclick=()=>{
+      document.getElementById('sDia').value=d;
+      syncDiaPicker();
+      switchTab('single',document.querySelectorAll('.tab')[0]);
+    };
+    refCards.appendChild(card);
+    // table row
+    tbody.innerHTML+=`<tr>
+      <td><strong>${d} mm</strong></td>
+      <td style="font-family:monospace;font-size:12px">${d}² ÷ 162.27</td>
+      <td style="color:var(--ac);font-weight:700">${fmt(uw,3)} kg/m</td>
+      <td>${fmt(uw*6,3)} kg</td>
+      <td>${fmt(uw*12,3)} kg</td>
+      <td>${fmt(uw*12*100,1)} kg</td>
+    </tr>`;
+  });
+}
+buildRefTable();
+
+/* ═════════════ COPY ═════════════ */
+function copyResult(type) {
+  let txt='';
+  if(type==='single'&&window._singleResult){
+    const r=window._singleResult;
+    txt=`Steel Bar Weight — ${r.grade}\n${'─'.repeat(40)}\nDiameter: ${r.d}mm | Length: ${r.len}m | Nos: ${r.nos}\nUnit Weight: ${fmt(r.uw,3)} kg/m\nNet Weight: ${fmt(r.netWt,2)} kg\nWastage (${r.waste}%): +${fmt(r.netWt*r.waste/100,2)} kg\nTotal Weight: ${fmt(r.totalWt,2)} kg (${fmt(r.tonnes,3)} MT)\n`+(r.cost>0?`Est. Cost: ${fmtRs(r.cost)}\n`:'')+`\nGenerated by forjitai.in`;
+  } else if(type==='schedule'&&window._schedResult){
+    const r=window._schedResult;
+    let lines=`Bar Bending Schedule — ${r.grade}\n${'─'.repeat(50)}\n`;
+    r.entries.forEach(e=>{ lines+=`${e.idx}. ${e.d}mm | ${e.desc} | ${e.l}m × ${e.nos} nos = ${fmt(e.wt,2)} kg\n`; });
+    lines+=`${'─'.repeat(50)}\nNet: ${fmt(r.totalNet,2)} kg | +${r.waste}% = ${fmt(r.totalGross,2)} kg | ${fmt(r.tonnes,3)} MT\n`+(r.cost>0?`Est. Cost: ${fmtRs(r.cost)}\n`:'')+`\nGenerated by forjitai.in`;
+    txt=lines;
+  }
+  if(txt){ navigator.clipboard.writeText(txt).then(()=>{
+    const btn=event.target; btn.textContent='✓ Copied!'; btn.style.background='var(--gr)'; btn.style.color='#000';
+    setTimeout(()=>{ btn.textContent='⧉ Copy Report'; btn.style.background=''; btn.style.color='';},2200);
+  });}
+}
+
+/* ═════════════ FAQ TOGGLE ═════════════ */
+function toggleFaq(btn){
+  const ans=btn.nextElementSibling;
+  const isOpen=ans.classList.contains('open');
+  document.querySelectorAll('.faq-a').forEach(a=>a.classList.remove('open'));
+  document.querySelectorAll('.faq-q').forEach(b=>b.classList.remove('open'));
+  if(!isOpen){ ans.classList.add('open'); btn.classList.add('open'); }
+}
+
+/* ═════════════ INIT ═════════════ */
+addSchRow(12,12,10,'Main bars (slab)');
+addSchRow(8,12,15,'Distribution bars (slab)');
+</script>
+
+<script src="/cookie-consent.js"></script>
+</div>
+</body>
+</html>

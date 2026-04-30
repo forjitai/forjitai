@@ -34,6 +34,8 @@ export const TEACHER_CATEGORIES = {
   "arts":          { label: "Arts & Humanities",     emoji: "🏛️", color: "rose"   },
   "professional":  { label: "Professional Courses",  emoji: "🎓", color: "orange" },
   "higher-ed":     { label: "Higher Education",      emoji: "🎓", color: "rose"   },
+  "christian":     { label: "Christian Ministry",    emoji: "✝️",  color: "blue"   },
+  "priest":        { label: "Priest & Clergy Tools", emoji: "⛪",  color: "violet" },
 };
 
 export const TEACHER_TOOLS = [
@@ -3506,4 +3508,2861 @@ Include grammar, vocabulary, and usage questions. JKBOSE / UPMSP / CBSE Urdu cur
     ],
     priority: 0.83,
   },
+
+
+  /* ═══════════════════════════════════════════════════════════════
+     CHRISTIAN MINISTRY TOOLS — 15 tools
+════════════════════════════════════════════════════════════════ */
+
+  {
+    id: "bible-verse-explainer",
+    name: "Bible Verse Explainer",
+    desc: "Get a deep, contextual explanation of any Bible verse — meaning, theology, and daily application.",
+    icon: "📖",
+    category: "christian",
+    audience: "teacher",
+    model: "smart",
+    maxTokens: 650,
+    inputs: [
+      { id: "verse",        label: "Bible Verse",    type: "text",   placeholder: "e.g. John 3:16 or Romans 8:28", required: true },
+      { id: "testament",    label: "Testament",      type: "select", options: ["Old Testament","New Testament","Any"] },
+      { id: "denomination", label: "Denomination",   type: "select", options: ["Catholic","Protestant","Orthodox","Any"] },
+      { id: "language",     label: "Language",       type: "select", options: ["English","Hindi","Tamil","Telugu","Malayalam","Kannada","Any"] },
+    ],
+    promptTemplate: `Explain the Bible verse: {{verse}} ({{testament}}, {{denomination}} perspective).
+Language: {{language}}.
+Include: 1) Historical & literary context, 2) Word-by-word meaning, 3) Theological significance, 4) Application for daily life today, 5) Related cross-references. Clear, devotional, and academically grounded.`,
+    seoTitle: "Free Bible Verse Explainer India | Christian AI Tool | Forjit AI",
+    seoDesc: "Explain any Bible verse with context, theology, and daily application. Free AI tool for Indian Christian pastors, teachers, and believers. No login needed.",
+    seoKeywords: ["Bible verse explainer India","free Christian AI tool","Bible meaning in Hindi","Bible verse explanation Tamil","online Bible study tool free India"],
+    faqs: [
+      { q: "Which Bible translations does this cover?", a: "It explains verses across major translations — KJV, NIV, NRSV, and Catholic editions." },
+      { q: "Can I get explanations in Indian languages?", a: "Yes. Hindi, Tamil, Telugu, Malayalam, and Kannada explanations are supported." },
+      { q: "Is it suitable for all denominations?", a: "Yes. You can select Catholic, Protestant, Orthodox, or Any for a balanced explanation." },
+      { q: "Can pastors use this for sermon prep?", a: "Absolutely. It's designed to help pastors, Sunday school teachers, and Bible study leaders." },
+      { q: "Is it completely free?", a: "Completely free. No login required." },
+    ],
+    priority: 0.90,
+  },
+
+  {
+    id: "sunday-sermon-notes-maker",
+    name: "Sunday Sermon Notes Maker",
+    desc: "Create structured sermon notes with introduction, three points, scripture, illustrations, and closing prayer.",
+    icon: "🎤",
+    category: "christian",
+    audience: "teacher",
+    model: "smart",
+    maxTokens: 700,
+    inputs: [
+      { id: "topic",       label: "Sermon Topic",        type: "text",   placeholder: "e.g. The Grace of God", required: true },
+      { id: "bibleRef",    label: "Bible Reference",     type: "text",   placeholder: "e.g. Ephesians 2:8-9" },
+      { id: "congType",    label: "Congregation Type",   type: "select", options: ["General","Youth","Children","Senior","New Believers"] },
+      { id: "language",    label: "Language",            type: "select", options: ["English","Hindi","Tamil","Telugu","Malayalam","Kannada","Any"] },
+    ],
+    promptTemplate: `Create structured Sunday sermon notes.
+Topic: {{topic}} | Scripture: {{bibleRef}} | Congregation: {{congType}} | Language: {{language}}.
+Structure: 1) Title & Text, 2) Introduction / Hook (story or question), 3) Three main points with sub-points and scripture references, 4) Illustration for each point, 5) Application for daily life, 6) Closing prayer and altar call. Warm, pastoral tone.`,
+    seoTitle: "Free Sunday Sermon Notes Maker India | AI Pastor Tool | Forjit AI",
+    seoDesc: "Generate complete sermon notes with introduction, three points, illustrations, and prayer. Free AI sermon writer for Indian pastors. No login required.",
+    seoKeywords: ["sermon notes maker India free","AI sermon generator India","pastor sermon preparation tool","Sunday sermon notes free","Christian sermon writer India"],
+    faqs: [
+      { q: "Is this suitable for all types of churches?", a: "Yes. It works for Catholic, Protestant, Pentecostal, and non-denominational churches." },
+      { q: "Can I use it for youth sermons?", a: "Yes. Select 'Youth' as congregation type for age-appropriate language and illustrations." },
+      { q: "Does it include scripture references?", a: "Yes. It automatically includes relevant scripture references and cross-references." },
+      { q: "Can pastors in India use regional languages?", a: "Yes. Hindi, Tamil, Telugu, Malayalam, and Kannada are supported." },
+      { q: "Is it completely free?", a: "Completely free." },
+    ],
+    priority: 0.90,
+  },
+
+  {
+    id: "sunday-school-lesson-plan",
+    name: "Sunday School Lesson Plan",
+    desc: "Full Sunday school lesson plan with Bible story, activities, memory verse, craft idea, and prayer.",
+    icon: "🎨",
+    category: "christian",
+    audience: "teacher",
+    model: "smart",
+    maxTokens: 700,
+    inputs: [
+      { id: "topic",     label: "Topic",       type: "text",   placeholder: "e.g. David and Goliath", required: true },
+      { id: "ageGroup",  label: "Age Group",   type: "select", options: ["3-5 yrs","6-8 yrs","9-12 yrs","Teens","Adults"] },
+      { id: "bibleStory",label: "Bible Story", type: "text",   placeholder: "e.g. 1 Samuel 17" },
+      { id: "language",  label: "Language",    type: "select", options: ["English","Hindi","Tamil","Telugu","Malayalam","Kannada","Any"] },
+    ],
+    promptTemplate: `Create a complete Sunday School lesson plan.
+Topic: {{topic}} | Bible Story: {{bibleStory}} | Age Group: {{ageGroup}} | Language: {{language}}.
+Include: 1) Lesson Aim, 2) Bible Story summary with key points, 3) Interactive activities (2-3), 4) Discussion questions for age group, 5) Memory verse, 6) Craft or visual activity idea, 7) Closing prayer. Fun, engaging, age-appropriate.`,
+    seoTitle: "Free Sunday School Lesson Plan Maker India | Forjit AI",
+    seoDesc: "Create engaging Sunday school lesson plans with Bible story, activities, memory verse, and craft ideas. Free for Indian Sunday school teachers. No login needed.",
+    seoKeywords: ["Sunday school lesson plan India free","Christian children class lesson","Bible class lesson plan India","Sunday school activities India","VBS lesson plan free India"],
+    faqs: [
+      { q: "What age groups are supported?", a: "Ages 3-5, 6-8, 9-12, Teens, and Adults — each with age-appropriate content." },
+      { q: "Does it include craft ideas?", a: "Yes. A craft or visual activity idea is included in every lesson plan." },
+      { q: "Can I use it for VBS (Vacation Bible School)?", a: "Yes. It works perfectly for VBS, Sunday school, and children's church." },
+      { q: "Is it available in regional Indian languages?", a: "Yes. Hindi, Tamil, Telugu, Malayalam, and Kannada are supported." },
+      { q: "Is it completely free?", a: "Completely free." },
+    ],
+    priority: 0.88,
+  },
+
+  {
+    id: "christian-prayer-generator",
+    name: "Christian Prayer Generator",
+    desc: "Write heartfelt prayers for any church occasion — Sunday service, wedding, funeral, Christmas, and more.",
+    icon: "🙏",
+    category: "christian",
+    audience: "teacher",
+    model: "smart",
+    maxTokens: 500,
+    inputs: [
+      { id: "occasion",  label: "Occasion",  type: "select", options: ["Sunday Service","Funeral","Wedding","Baptism","Christmas","Easter","General Intercession","Thanksgiving","Morning Prayer","Evening Prayer"] },
+      { id: "language",  label: "Language",  type: "select", options: ["English","Hindi","Tamil","Telugu","Malayalam","Kannada","Any"] },
+      { id: "tone",      label: "Tone",      type: "select", options: ["Formal Liturgical","Simple Conversational","Youth Style"] },
+    ],
+    promptTemplate: `Write a heartfelt Christian prayer for: {{occasion}}.
+Language: {{language}} | Tone: {{tone}}.
+Include: 1) Opening praise and adoration, 2) Thanksgiving, 3) Intercession for the specific occasion, 4) Petition, 5) Closing in Jesus' name. Appropriate for public church use. Sincere and biblically grounded.`,
+    seoTitle: "Free Christian Prayer Generator India | AI Prayer Writer | Forjit AI",
+    seoDesc: "Generate heartfelt prayers for Sunday service, wedding, funeral, Christmas, Easter and more. Free AI prayer writer for Indian pastors. No login required.",
+    seoKeywords: ["Christian prayer generator India free","AI prayer writer India","church prayer online free","Sunday service prayer India","prayer for wedding India free"],
+    faqs: [
+      { q: "What occasions are supported?", a: "Sunday service, funeral, wedding, baptism, Christmas, Easter, thanksgiving, morning and evening prayers." },
+      { q: "Can I choose the prayer tone?", a: "Yes. Choose from Formal Liturgical, Simple Conversational, or Youth Style." },
+      { q: "Is it suitable for Catholic churches?", a: "Yes. It works for Catholic, Protestant, Orthodox, and Pentecostal congregations." },
+      { q: "Can the prayer be in Tamil or Hindi?", a: "Yes. Select your preferred Indian language from the dropdown." },
+      { q: "Is it completely free?", a: "Completely free." },
+    ],
+    priority: 0.88,
+  },
+
+  {
+    id: "bible-study-guide-maker",
+    name: "Bible Study Guide Maker",
+    desc: "Create complete Bible study guides with background, questions, interpretation, application, and group discussion.",
+    icon: "📚",
+    category: "christian",
+    audience: "teacher",
+    model: "smart",
+    maxTokens: 700,
+    inputs: [
+      { id: "passage",   label: "Book / Passage",  type: "text",   placeholder: "e.g. Romans 8 or Psalm 23", required: true },
+      { id: "studyType", label: "Study Type",       type: "select", options: ["Inductive","Topical","Character Study","Book Study"] },
+      { id: "groupType", label: "Group Type",       type: "select", options: ["Small Group","Youth","Women","Men","Mixed"] },
+      { id: "language",  label: "Language",         type: "select", options: ["English","Hindi","Tamil","Telugu","Malayalam","Kannada","Any"] },
+    ],
+    promptTemplate: `Create a complete Bible study guide.
+Passage: {{passage}} | Type: {{studyType}} | Group: {{groupType}} | Language: {{language}}.
+Include: 1) Background & context, 2) Observation questions (What does it say?), 3) Interpretation questions (What does it mean?), 4) Application questions (How does it apply?), 5) Group discussion starters, 6) Prayer points. Thoughtful, theologically sound.`,
+    seoTitle: "Free Bible Study Guide Maker India | AI Bible Study Tool | Forjit AI",
+    seoDesc: "Generate complete Bible study guides for any book or passage. Free for Indian church small groups, youth groups, and women's/men's ministries. No login needed.",
+    seoKeywords: ["Bible study guide maker India free","church small group Bible study","AI Bible study India","free Bible study questions India","Bible study guide Tamil"],
+    faqs: [
+      { q: "What study types are available?", a: "Inductive, Topical, Character Study, and Book Study methods are all supported." },
+      { q: "Can I use it for women's or men's ministry?", a: "Yes. Select your group type for tailored discussion questions and application." },
+      { q: "Does it include discussion questions?", a: "Yes. Every guide includes observation, interpretation, application, and group discussion questions." },
+      { q: "Is it available in regional languages?", a: "Yes. Hindi, Tamil, Telugu, Malayalam, and Kannada are supported." },
+      { q: "Is it completely free?", a: "Completely free." },
+    ],
+    priority: 0.87,
+  },
+
+  {
+    id: "church-announcement-writer",
+    name: "Church Announcement & Notice Writer",
+    desc: "Write professional church announcements, Sunday bulletins, event notices, and circulars in minutes.",
+    icon: "📢",
+    category: "christian",
+    audience: "teacher",
+    model: "smart",
+    maxTokens: 500,
+    inputs: [
+      { id: "type",     label: "Type",     type: "select",   options: ["Sunday Bulletin","Event Announcement","Funeral Notice","Wedding Notice","General Circular"] },
+      { id: "details",  label: "Details",  type: "textarea", placeholder: "Enter event name, date, time, venue, and any special notes…", required: true },
+      { id: "language", label: "Language", type: "select",   options: ["English","Hindi","Tamil","Telugu","Malayalam","Kannada","Any"] },
+    ],
+    promptTemplate: `Write a professional church {{type}}.
+Details: {{details}} | Language: {{language}}.
+Use a warm, formal Christian tone appropriate for a church notice board or Sunday bulletin. Include proper salutation, key information clearly organized, and a closing blessing or invitation. Keep it concise and dignified.`,
+    seoTitle: "Free Church Announcement Writer India | AI Church Notice | Forjit AI",
+    seoDesc: "Write professional church announcements, Sunday bulletins, and event notices instantly. Free AI tool for Indian churches. No login required.",
+    seoKeywords: ["church announcement writer India free","Sunday bulletin maker India","church notice writer AI","church circular India free","church event announcement India"],
+    faqs: [
+      { q: "What types of announcements can I write?", a: "Sunday bulletins, event announcements, funeral notices, wedding notices, and general circulars." },
+      { q: "Can it write in Tamil or Hindi?", a: "Yes. Select your preferred language for the announcement." },
+      { q: "Is it suitable for Catholic parish notices?", a: "Yes. It works for Catholic, Protestant, and all Christian denominations." },
+      { q: "Can I use it for funeral announcements?", a: "Yes. It writes compassionate and dignified funeral notices." },
+      { q: "Is it completely free?", a: "Completely free." },
+    ],
+    priority: 0.86,
+  },
+
+  {
+    id: "christian-hymn-explainer",
+    name: "Christian Song & Hymn Explainer",
+    desc: "Understand the theological meaning, history, and devotional significance of any hymn or worship song.",
+    icon: "🎵",
+    category: "christian",
+    audience: "teacher",
+    model: "smart",
+    maxTokens: 600,
+    inputs: [
+      { id: "hymn",     label: "Hymn Name or Theme", type: "text",   placeholder: "e.g. Amazing Grace, or 'songs about grace'", required: true },
+      { id: "language", label: "Language",            type: "select", options: ["English","Hindi","Tamil","Telugu","Malayalam","Kannada","Any"] },
+    ],
+    promptTemplate: `Explain the Christian hymn/song: {{hymn}}.
+Language: {{language}}.
+Cover: 1) Origin and history of the hymn, 2) Author background, 3) Theological themes and doctrine, 4) Scriptural connections, 5) Devotional significance, 6) How to use it effectively in worship. Rich, worshipful, educational.`,
+    seoTitle: "Free Christian Hymn Explainer India | AI Worship Tool | Forjit AI",
+    seoDesc: "Understand the history, theology, and meaning of any Christian hymn or worship song. Free AI tool for Indian worship leaders and musicians. No login needed.",
+    seoKeywords: ["Christian hymn explainer India free","worship song meaning India","Amazing Grace history India","hymn theology India","church music meaning free"],
+    faqs: [
+      { q: "Which hymns are covered?", a: "All major traditional hymns (Amazing Grace, How Great Thou Art, etc.) and modern worship songs." },
+      { q: "Is it useful for worship leaders?", a: "Yes. Worship leaders, choir directors, and musicians will find it very helpful." },
+      { q: "Can it explain Tamil Christian songs?", a: "Yes. Select Tamil and enter the song name for an explanation in Tamil." },
+      { q: "Does it cover the theology of the song?", a: "Yes. Every explanation includes theological themes and scriptural connections." },
+      { q: "Is it completely free?", a: "Completely free." },
+    ],
+    priority: 0.85,
+  },
+
+  {
+    id: "baptism-confirmation-class-notes",
+    name: "Baptism & Confirmation Class Notes",
+    desc: "Create structured class notes for baptism or confirmation preparation — doctrine, meaning, and scripture.",
+    icon: "💧",
+    category: "christian",
+    audience: "teacher",
+    model: "smart",
+    maxTokens: 650,
+    inputs: [
+      { id: "topic",        label: "Topic",        type: "text",   placeholder: "e.g. Meaning of Baptism, The Eucharist", required: true },
+      { id: "denomination", label: "Denomination", type: "select", options: ["Catholic","Protestant","Orthodox","Any"] },
+      { id: "ageGroup",     label: "Age Group",    type: "select", options: ["Children","Youth","Adult"] },
+      { id: "language",     label: "Language",     type: "select", options: ["English","Hindi","Tamil","Telugu","Malayalam","Kannada","Any"] },
+    ],
+    promptTemplate: `Create structured class notes for: {{topic}}.
+Denomination: {{denomination}} | Age Group: {{ageGroup}} | Language: {{language}}.
+Include: 1) Introduction & purpose, 2) Biblical basis with key scripture, 3) Doctrinal explanation, 4) Historical significance in the church, 5) Personal reflection questions, 6) What to expect / commitments involved, 7) Closing prayer. Clear, catechetical, spiritually formative.`,
+    seoTitle: "Free Baptism Confirmation Class Notes India | Christian Education | Forjit AI",
+    seoDesc: "Create class notes for baptism and confirmation preparation. Free AI tool for Indian Catholic and Protestant catechism teachers. No login required.",
+    seoKeywords: ["baptism class notes India free","confirmation class notes India","catechism lesson plan India","Catholic confirmation India AI","baptism preparation notes free"],
+    faqs: [
+      { q: "Is this suitable for Catholic First Communion preparation?", a: "Yes. It's ideal for Catholic catechism, First Communion, and Confirmation preparation." },
+      { q: "Does it work for Protestant baptism classes?", a: "Yes. Select 'Protestant' for denomination-specific content." },
+      { q: "Can it be used for adult baptism classes?", a: "Yes. Select 'Adult' as the age group for mature, theological content." },
+      { q: "Is it available in regional languages?", a: "Yes. Hindi, Tamil, Telugu, Malayalam, and Kannada are available." },
+      { q: "Is it completely free?", a: "Completely free." },
+    ],
+    priority: 0.85,
+  },
+
+  {
+    id: "christmas-easter-programme-planner",
+    name: "Christmas & Easter Programme Planner",
+    desc: "Plan complete church programmes for Christmas, Easter, Good Friday, Palm Sunday, and other special occasions.",
+    icon: "🎄",
+    category: "christian",
+    audience: "teacher",
+    model: "smart",
+    maxTokens: 700,
+    inputs: [
+      { id: "event",    label: "Event",    type: "select", options: ["Christmas","Easter","Good Friday","Palm Sunday","Pentecost","Advent Sunday"] },
+      { id: "type",     label: "Type",     type: "select", options: ["Church Service","School Programme","Children's Programme","Community Event"] },
+      { id: "language", label: "Language", type: "select", options: ["English","Hindi","Tamil","Telugu","Malayalam","Kannada","Any"] },
+    ],
+    promptTemplate: `Create a complete programme plan for: {{event}} — {{type}}.
+Language: {{language}}.
+Include: 1) Programme title and theme, 2) Complete order of service with timings, 3) Scripture readings, 4) Suggested hymns/songs (3-4), 5) Drama or skit ideas, 6) Children's segment, 7) Special offering or activity, 8) Closing. Practical, celebratory, easy to follow.`,
+    seoTitle: "Free Christmas Easter Church Programme Planner India | Forjit AI",
+    seoDesc: "Plan complete Christmas, Easter, Good Friday, and Advent church programmes. Free AI tool for Indian churches and Christian schools. No login required.",
+    seoKeywords: ["Christmas church programme India free","Easter programme planner India","Good Friday service plan India","Christmas skit ideas India church","Christian school programme India"],
+    faqs: [
+      { q: "What events are covered?", a: "Christmas, Easter, Good Friday, Palm Sunday, Pentecost, and Advent Sunday." },
+      { q: "Can it plan programmes for Christian schools?", a: "Yes. Select 'School Programme' for a school-appropriate event plan." },
+      { q: "Does it include drama and skit ideas?", a: "Yes. Every programme includes drama or skit suggestions." },
+      { q: "Is it available in regional Indian languages?", a: "Yes. All major South Indian and North Indian languages are supported." },
+      { q: "Is it completely free?", a: "Completely free." },
+    ],
+    priority: 0.87,
+  },
+
+  {
+    id: "pastoral-counselling-guide",
+    name: "Pastoral Counselling Session Guide",
+    desc: "Structured pastoral counselling session guide with scripture, discussion framework, and practical steps.",
+    icon: "💙",
+    category: "christian",
+    audience: "teacher",
+    model: "smart",
+    maxTokens: 650,
+    inputs: [
+      { id: "situation", label: "Situation",   type: "select", options: ["Grief / Bereavement","Marriage Issues","Addiction","Depression / Anxiety","Family Conflict","Career / Purpose","General Pastoral Care"] },
+      { id: "approach",  label: "Approach",    type: "select", options: ["Biblical","Integrated (Biblical + Psychological)","Non-directive Listening"] },
+      { id: "language",  label: "Language",    type: "select", options: ["English","Hindi","Tamil","Telugu","Malayalam","Kannada","Any"] },
+    ],
+    promptTemplate: `Create a pastoral counselling session guide for: {{situation}}.
+Approach: {{approach}} | Language: {{language}}.
+Structure: 1) Opening prayer, 2) Key scripture passages (3-4), 3) Active listening framework, 4) Questions to explore the situation, 5) Biblical principles to apply, 6) Practical next steps, 7) Referral guidance if needed, 8) Closing prayer. Compassionate, ethical, non-judgmental.`,
+    seoTitle: "Free Pastoral Counselling Guide India | AI Pastor Tool | Forjit AI",
+    seoDesc: "Generate structured pastoral counselling session guides for grief, marriage, addiction, depression, and more. Free for Indian pastors. No login required.",
+    seoKeywords: ["pastoral counselling guide India free","pastor counselling tool India","Biblical counselling session plan","church counselling India AI","Christian counsellor tool India"],
+    faqs: [
+      { q: "Is this a replacement for professional therapy?", a: "No. This is a pastoral guide only. For clinical mental health issues, always refer to licensed professionals." },
+      { q: "What situations are covered?", a: "Grief, marriage, addiction, depression, family conflict, career, and general pastoral care." },
+      { q: "Can it help with marriage counselling?", a: "Yes. It provides a Biblical framework for pastoral marriage counselling sessions." },
+      { q: "Is it available in Indian languages?", a: "Yes. Hindi, Tamil, Telugu, Malayalam, and Kannada are supported." },
+      { q: "Is it completely free?", a: "Completely free." },
+    ],
+    priority: 0.85,
+  },
+
+  {
+    id: "christian-moral-story-generator",
+    name: "Christian Moral Story Generator",
+    desc: "Write original Christian moral stories for children, youth, or adults with a Biblical message.",
+    icon: "📜",
+    category: "christian",
+    audience: "teacher",
+    model: "smart",
+    maxTokens: 600,
+    inputs: [
+      { id: "moral",    label: "Moral / Theme", type: "text",   placeholder: "e.g. Forgiveness, Honesty, Trust in God", required: true },
+      { id: "ageGroup", label: "Age Group",     type: "select", options: ["Children","Youth","Adults"] },
+      { id: "language", label: "Language",      type: "select", options: ["English","Hindi","Tamil","Telugu","Malayalam","Kannada","Any"] },
+    ],
+    promptTemplate: `Write an original Christian moral story (300-400 words).
+Moral/Theme: {{moral}} | Audience: {{ageGroup}} | Language: {{language}}.
+Format: 1) Engaging title, 2) Story with relatable characters and Indian context where possible, 3) Clear Biblical moral woven naturally into the narrative, 4) A reflection question, 5) Memory verse. Warm, age-appropriate, faith-building.`,
+    seoTitle: "Free Christian Moral Story Generator India | Bible Stories AI | Forjit AI",
+    seoDesc: "Generate original Christian moral stories for children, youth, and adults. Free AI story writer for Indian Sunday school teachers and parents. No login needed.",
+    seoKeywords: ["Christian moral story India free","Bible story generator India","Sunday school story India","Christian story for children India","moral story with Bible verse India"],
+    faqs: [
+      { q: "Can I use these for Sunday school?", a: "Yes. These stories are perfect for Sunday school, VBS, and children's church." },
+      { q: "Are the stories original?", a: "Yes. Every story is AI-generated and original, not copied from existing sources." },
+      { q: "Can it write stories in Tamil or Hindi?", a: "Yes. Select your preferred language for the story." },
+      { q: "Does it include a Bible verse?", a: "Yes. Every story ends with a relevant memory verse." },
+      { q: "Is it completely free?", a: "Completely free." },
+    ],
+    priority: 0.86,
+  },
+
+  {
+    id: "church-event-planning-checklist",
+    name: "Church Event Planning Checklist",
+    desc: "Comprehensive event planning checklist covering venue, volunteers, publicity, budget, and day-of tasks.",
+    icon: "✅",
+    category: "christian",
+    audience: "teacher",
+    model: "smart",
+    maxTokens: 650,
+    inputs: [
+      { id: "event",    label: "Event Name",  type: "text",   placeholder: "e.g. Annual Church Conference, Youth Camp", required: true },
+      { id: "timeline", label: "Date / Timeline", type: "text", placeholder: "e.g. 15 June, 6 weeks from now" },
+      { id: "size",     label: "Event Size",  type: "select", options: ["Small (under 50)","Medium (50-200)","Large (200+)"] },
+      { id: "language", label: "Language",    type: "select", options: ["English","Hindi","Tamil","Telugu","Malayalam","Kannada","Any"] },
+    ],
+    promptTemplate: `Create a comprehensive church event planning checklist for: {{event}}.
+Timeline: {{timeline}} | Size: {{size}} | Language: {{language}}.
+Include sections: 1) Venue & logistics, 2) Sound / AV / projection, 3) Decoration & setup, 4) Catering / refreshments, 5) Volunteer roles and roster, 6) Publicity (WhatsApp, notice board, social media), 7) Budget estimate, 8) Day-of-event checklist, 9) Post-event follow-up. Practical for Indian churches.`,
+    seoTitle: "Free Church Event Planning Checklist India | AI Church Planner | Forjit AI",
+    seoDesc: "Generate a complete church event planning checklist for conferences, camps, Christmas, and more. Free AI tool for Indian churches. No login required.",
+    seoKeywords: ["church event planning checklist India free","church conference planning India","Christian event organizer India","church camp checklist India","Christmas event plan church India"],
+    faqs: [
+      { q: "What events is this checklist suitable for?", a: "Conferences, camps, Christmas programmes, Easter services, wedding receptions, and any church event." },
+      { q: "Does it include a budget template?", a: "Yes. A budget estimate section is included in every checklist." },
+      { q: "Can it handle large events (200+ people)?", a: "Yes. Select 'Large' for a more detailed checklist with additional logistics." },
+      { q: "Is it available in regional languages?", a: "Yes. Hindi, Tamil, Telugu, Malayalam, and Kannada are supported." },
+      { q: "Is it completely free?", a: "Completely free." },
+    ],
+    priority: 0.84,
+  },
+
+  {
+    id: "christian-devotional-writer",
+    name: "Christian Devotional Writer",
+    desc: "Write daily devotionals with title, scripture, reflection, personal application, and closing prayer.",
+    icon: "🕯️",
+    category: "christian",
+    audience: "teacher",
+    model: "smart",
+    maxTokens: 650,
+    inputs: [
+      { id: "theme",    label: "Theme",    type: "text",   placeholder: "e.g. God's faithfulness, Overcoming fear", required: true },
+      { id: "scripture",label: "Scripture",type: "text",   placeholder: "e.g. Psalm 46:1" },
+      { id: "length",   label: "Length",   type: "select", options: ["Short (200 words)","Standard (400 words)","Long (600 words)"] },
+      { id: "language", label: "Language", type: "select", options: ["English","Hindi","Tamil","Telugu","Malayalam","Kannada","Any"] },
+    ],
+    promptTemplate: `Write a Christian devotional.
+Theme: {{theme}} | Scripture: {{scripture}} | Length: {{length}} | Language: {{language}}.
+Format: 1) Devotional title, 2) Key scripture, 3) Opening reflection (story or observation), 4) Deeper reflection on the theme, 5) Personal application ("Today I will…"), 6) Closing prayer. Warm, encouraging, spiritually nourishing tone.`,
+    seoTitle: "Free Christian Devotional Writer India | AI Daily Devotional | Forjit AI",
+    seoDesc: "Write beautiful daily devotionals with scripture, reflection, and prayer. Free AI devotional generator for Indian Christians. No login required.",
+    seoKeywords: ["Christian devotional writer India free","daily devotional generator India","AI devotional India","morning devotion writer India","Christian reflection writer free India"],
+    faqs: [
+      { q: "Can I use this for WhatsApp devotionals?", a: "Yes. Choose 'Short' for a compact WhatsApp-ready devotional." },
+      { q: "Is it suitable for church newsletters?", a: "Yes. The 'Standard' or 'Long' formats are ideal for church newsletters and bulletins." },
+      { q: "Can it write devotionals in Tamil or Hindi?", a: "Yes. Select your preferred regional language." },
+      { q: "Does it include a prayer at the end?", a: "Yes. Every devotional ends with a short personal prayer." },
+      { q: "Is it completely free?", a: "Completely free." },
+    ],
+    priority: 0.88,
+  },
+
+  {
+    id: "theology-doctrine-notes-maker",
+    name: "Theology & Doctrine Notes Maker",
+    desc: "Create structured theology notes covering definition, scripture, history, denominational views, and significance.",
+    icon: "🏛️",
+    category: "christian",
+    audience: "teacher",
+    model: "smart",
+    maxTokens: 700,
+    inputs: [
+      { id: "doctrine",     label: "Doctrine / Topic", type: "text",   placeholder: "e.g. Trinity, Atonement, Sanctification", required: true },
+      { id: "denomination", label: "Denomination",     type: "select", options: ["Catholic","Protestant","Orthodox","Pentecostal","Any"] },
+      { id: "level",        label: "Level",            type: "select", options: ["Beginner","Intermediate","Advanced"] },
+      { id: "language",     label: "Language",         type: "select", options: ["English","Hindi","Tamil","Telugu","Malayalam","Kannada","Any"] },
+    ],
+    promptTemplate: `Create structured theology notes on: {{doctrine}}.
+Denomination: {{denomination}} | Level: {{level}} | Language: {{language}}.
+Include: 1) Clear definition, 2) Key scriptural basis (5-6 verses), 3) Historical development in church history, 4) Denominational perspectives comparison, 5) Common misconceptions, 6) Practical significance for Christian life, 7) Suggested further reading. Scholarly yet accessible.`,
+    seoTitle: "Free Theology & Doctrine Notes Maker India | Christian AI Tool | Forjit AI",
+    seoDesc: "Create structured theology notes on any Christian doctrine. Free AI theology tool for Indian seminary students, pastors, and Bible teachers. No login needed.",
+    seoKeywords: ["theology notes maker India free","Christian doctrine notes India","seminary notes AI India","Bible theology tool India free","doctrine of Trinity notes India"],
+    faqs: [
+      { q: "Is this suitable for seminary students?", a: "Yes. The 'Advanced' level is suitable for seminary and theological college students." },
+      { q: "Does it cover Catholic theology?", a: "Yes. Select 'Catholic' for Catholic doctrinal perspectives and Magisterium references." },
+      { q: "What doctrines can I explore?", a: "Trinity, Salvation, Atonement, Sanctification, Eschatology, Baptism, Eucharist, and any other Christian doctrine." },
+      { q: "Is it available in regional languages?", a: "Yes. Hindi, Tamil, Telugu, Malayalam, and Kannada are supported." },
+      { q: "Is it completely free?", a: "Completely free." },
+    ],
+    priority: 0.86,
+  },
+
+  {
+    id: "church-liturgy-planner",
+    name: "Church Timetable & Liturgy Planner",
+    desc: "Generate a complete order of service with timings, scripture readings, prayer slots, and suggested hymns.",
+    icon: "📋",
+    category: "christian",
+    audience: "teacher",
+    model: "smart",
+    maxTokens: 700,
+    inputs: [
+      { id: "serviceType",  label: "Service Type",  type: "select", options: ["Sunday Mass","Morning Prayer","Evening Prayer","Youth Service","Special Service"] },
+      { id: "denomination", label: "Denomination",  type: "select", options: ["Catholic","Protestant","Orthodox","Pentecostal","Any"] },
+      { id: "language",     label: "Language",      type: "select", options: ["English","Hindi","Tamil","Telugu","Malayalam","Kannada","Any"] },
+    ],
+    promptTemplate: `Create a complete church order of service / liturgy.
+Service: {{serviceType}} | Denomination: {{denomination}} | Language: {{language}}.
+Include: 1) Welcome and opening, 2) Call to worship, 3) Praise & worship segment with song suggestions, 4) Scripture reading(s) with references, 5) Sermon slot (title placeholder), 6) Offering, 7) Communion / Eucharist if applicable, 8) Intercessory prayer, 9) Announcements, 10) Benediction / Closing blessing. With timings for a 90-minute service.`,
+    seoTitle: "Free Church Liturgy & Order of Service Planner India | Forjit AI",
+    seoDesc: "Create a complete church order of service with timings, readings, hymns, and prayer slots. Free AI liturgy planner for Indian churches. No login required.",
+    seoKeywords: ["church order of service planner India free","liturgy planner India AI","Sunday mass order India","church timetable maker India","order of service Catholic India free"],
+    faqs: [
+      { q: "Does it work for Catholic Mass planning?", a: "Yes. Select 'Sunday Mass' and 'Catholic' for a liturgically appropriate order of service." },
+      { q: "Can I use it for youth services?", a: "Yes. Select 'Youth Service' for a contemporary, engaging order of service." },
+      { q: "Does it include song/hymn suggestions?", a: "Yes. Appropriate hymns and contemporary songs are suggested for each section." },
+      { q: "Is it available in Indian languages?", a: "Yes. Hindi, Tamil, Telugu, Malayalam, and Kannada are all supported." },
+      { q: "Is it completely free?", a: "Completely free." },
+    ],
+    priority: 0.87,
+  },
+
+  /* ════════════════════════════════════════════════════════════════
+     PRIEST & CLERGY TOOLS — 20 tools (Separate Category)
+  ════════════════════════════════════════════════════════════════ */
+
+  {
+    id: "homily-writer",
+    name: "Homily Writer (Catholic / Orthodox)",
+    desc: "Write a structured homily for Sunday Mass or any liturgical occasion based on the day's readings.",
+    icon: "✝️",
+    category: "priest",
+    audience: "teacher",
+    model: "smart",
+    maxTokens: 700,
+    inputs: [
+      { id: "readings",     label: "Day's Readings",    type: "text",   placeholder: "e.g. Isaiah 55:1-11, Romans 6:3-11, Mark 16:1-7", required: true },
+      { id: "occasion",     label: "Liturgical Occasion", type: "text", placeholder: "e.g. Easter Sunday, 2nd Sunday Ordinary Time" },
+      { id: "denomination", label: "Denomination",       type: "select", options: ["Catholic","Orthodox","Anglican","Any"] },
+      { id: "language",     label: "Language",           type: "select", options: ["English","Hindi","Tamil","Telugu","Malayalam","Kannada","Any"] },
+    ],
+    promptTemplate: `Write a complete homily for: {{occasion}}.
+Readings: {{readings}} | Denomination: {{denomination}} | Language: {{language}}.
+Structure: 1) Opening story or hook, 2) Exegesis of the key reading, 3) Three theological points with supporting scripture, 4) Illustration for each point (Indian context preferred), 5) Application for daily life, 6) Closing challenge and blessing. 8-10 minute delivery length. Doctrinally sound.`,
+    seoTitle: "Free Homily Writer India | Catholic Homily AI Tool | Forjit AI",
+    seoDesc: "Write complete homilies for Sunday Mass based on the day's readings. Free AI tool for Indian Catholic priests and Orthodox clergy. No login required.",
+    seoKeywords: ["homily writer India free","Catholic homily AI India","priest homily tool India","Sunday Mass homily generator","homily for Sunday India free"],
+    faqs: [
+      { q: "Is this suitable for Catholic priests?", a: "Yes. It follows Catholic homiletics and is based on the day's liturgical readings." },
+      { q: "Can it write homilies in Malayalam or Tamil?", a: "Yes. All major Indian languages are supported." },
+      { q: "How long is the generated homily?", a: "Approximately 8-10 minutes of speaking time (600-800 words)." },
+      { q: "Does it follow the lectionary?", a: "Enter the specific readings for the day for a lectionary-based homily." },
+      { q: "Is it completely free?", a: "Completely free." },
+    ],
+    priority: 0.92,
+  },
+
+  {
+    id: "mass-intentions-writer",
+    name: "Mass Intentions & Petitions Writer",
+    desc: "Write meaningful Mass intentions, prayers of the faithful, and petitions for any occasion.",
+    icon: "🕊️",
+    category: "priest",
+    audience: "teacher",
+    model: "smart",
+    maxTokens: 500,
+    inputs: [
+      { id: "intention",  label: "Intention / Occasion", type: "text",   placeholder: "e.g. For the soul of [name], for sick parishioners, for peace", required: true },
+      { id: "type",       label: "Type",                 type: "select", options: ["Mass Intention","Prayer of the Faithful","General Intercession","Novena Prayer","Rosary Meditation"] },
+      { id: "language",   label: "Language",             type: "select", options: ["English","Hindi","Tamil","Telugu","Malayalam","Kannada","Any"] },
+    ],
+    promptTemplate: `Write a {{type}} for: {{intention}}.
+Language: {{language}}.
+Include: 1) Opening invocation, 2) Main petition / intention clearly stated, 3) Intercession for broader community, 4) Response phrase ("Lord, hear our prayer" or equivalent), 5) Closing in Jesus' name through Mary. Reverent, sincere, liturgically appropriate.`,
+    seoTitle: "Free Mass Intentions & Petitions Writer India | Catholic AI | Forjit AI",
+    seoDesc: "Write Mass intentions, prayers of the faithful, and intercessions for any occasion. Free AI tool for Indian Catholic priests and deacons. No login needed.",
+    seoKeywords: ["Mass intention writer India free","prayers of the faithful India","Catholic petition writer India free","intercession prayer writer India","novena prayer generator India"],
+    faqs: [
+      { q: "Can I use this for the Prayer of the Faithful at Mass?", a: "Yes. It generates liturgically appropriate intercessions for the Prayer of the Faithful." },
+      { q: "Can it write for specific Mass intentions like anniversaries?", a: "Yes. Enter the specific intention (e.g., for the repose of a soul) for a personalised prayer." },
+      { q: "Is it available in all Indian languages?", a: "Yes. Hindi, Tamil, Telugu, Malayalam, and Kannada are all supported." },
+      { q: "Can deacons use this too?", a: "Yes. It's suitable for priests, deacons, lay readers, and prayer leaders." },
+      { q: "Is it completely free?", a: "Completely free." },
+    ],
+    priority: 0.90,
+  },
+
+  {
+    id: "funeral-eulogy-writer",
+    name: "Funeral Eulogy & Oration Writer",
+    desc: "Write a compassionate, dignified funeral eulogy or funeral oration for a Christian service.",
+    icon: "🕯️",
+    category: "priest",
+    audience: "teacher",
+    model: "smart",
+    maxTokens: 650,
+    inputs: [
+      { id: "deceased",   label: "Name of the Deceased",  type: "text",   placeholder: "e.g. John Thomas (age 72)", required: true },
+      { id: "details",    label: "Key Life Details",       type: "textarea", placeholder: "Occupation, family, faith journey, memorable qualities…" },
+      { id: "scriptures", label: "Favourite Scripture",   type: "text",   placeholder: "e.g. John 14:1-6 (optional)" },
+      { id: "language",   label: "Language",              type: "select", options: ["English","Hindi","Tamil","Telugu","Malayalam","Kannada","Any"] },
+    ],
+    promptTemplate: `Write a compassionate Christian funeral eulogy for {{deceased}}.
+Life details: {{details}} | Scripture: {{scriptures}} | Language: {{language}}.
+Include: 1) Warm opening about the person's life, 2) Faith journey and spiritual legacy, 3) Scripture reading and reflection, 4) Comfort for the grieving family, 5) Hope of resurrection, 6) Closing blessing. Dignified, comforting, hope-filled. 5-7 minute speaking length.`,
+    seoTitle: "Free Funeral Eulogy Writer India | Christian Funeral Oration | Forjit AI",
+    seoDesc: "Write a compassionate Christian funeral eulogy or oration. Free AI tool for Indian Catholic and Protestant pastors and priests. No login required.",
+    seoKeywords: ["funeral eulogy writer India free","Christian funeral oration India","Catholic funeral homily India","funeral speech India free","eulogy generator India"],
+    faqs: [
+      { q: "How long is the generated eulogy?", a: "Approximately 5-7 minutes of speaking time — suitable for a funeral service." },
+      { q: "Can I provide personal details about the deceased?", a: "Yes. Add the name, life details, and faith journey for a personalised eulogy." },
+      { q: "Is it suitable for Catholic funeral Masses?", a: "Yes. It includes resurrection hope and Catholic theological elements." },
+      { q: "Can it be written in Tamil or Malayalam?", a: "Yes. Select your preferred regional language." },
+      { q: "Is it completely free?", a: "Completely free." },
+    ],
+    priority: 0.90,
+  },
+
+  {
+    id: "wedding-homily-writer",
+    name: "Wedding Homily & Blessing Writer",
+    desc: "Write a joyful, biblically-grounded wedding homily, blessing, or speech for Christian marriages.",
+    icon: "💍",
+    category: "priest",
+    audience: "teacher",
+    model: "smart",
+    maxTokens: 650,
+    inputs: [
+      { id: "couple",       label: "Couple's Names",     type: "text",   placeholder: "e.g. Thomas & Mary", required: true },
+      { id: "scripture",    label: "Scripture",          type: "text",   placeholder: "e.g. 1 Corinthians 13, John 15:12" },
+      { id: "denomination", label: "Denomination",       type: "select", options: ["Catholic","Protestant","Orthodox","Any"] },
+      { id: "language",     label: "Language",           type: "select", options: ["English","Hindi","Tamil","Telugu","Malayalam","Kannada","Any"] },
+    ],
+    promptTemplate: `Write a joyful Christian wedding homily for {{couple}}.
+Scripture: {{scripture}} | Denomination: {{denomination}} | Language: {{language}}.
+Include: 1) Joyful opening and welcome, 2) Meaning of Christian marriage, 3) Scripture reflection, 4) Three keys to a Christ-centred marriage, 5) Personal challenge and blessing for the couple, 6) Prayer for their life together. Warm, celebratory, 5-6 minutes.`,
+    seoTitle: "Free Wedding Homily Writer India | Christian Marriage Blessing | Forjit AI",
+    seoDesc: "Write a joyful Christian wedding homily, blessing, or speech for marriages. Free AI tool for Indian priests and pastors. No login required.",
+    seoKeywords: ["wedding homily writer India free","Christian wedding speech India","Catholic wedding homily India","wedding blessing India free","marriage homily generator India"],
+    faqs: [
+      { q: "Is this for Catholic weddings?", a: "Yes. It's suitable for Catholic, Protestant, and any Christian denomination." },
+      { q: "Can I include the couple's names?", a: "Yes. The homily is personalised with the couple's names and scripture choice." },
+      { q: "How long is the homily?", a: "Approximately 5-6 minutes — ideal for a wedding Mass or ceremony." },
+      { q: "Can it be written in Malayalam or Telugu?", a: "Yes. All major Indian languages are supported." },
+      { q: "Is it completely free?", a: "Completely free." },
+    ],
+    priority: 0.89,
+  },
+
+  {
+    id: "baptism-homily-generator",
+    name: "Baptism & Christening Homily",
+    desc: "Generate a meaningful homily or address for infant baptism, adult baptism, or christening ceremonies.",
+    icon: "💦",
+    category: "priest",
+    audience: "teacher",
+    model: "smart",
+    maxTokens: 600,
+    inputs: [
+      { id: "name",         label: "Name of Person",   type: "text",   placeholder: "e.g. Baby John or Adult convert Maria", required: true },
+      { id: "type",         label: "Type",             type: "select", options: ["Infant Baptism","Adult Baptism / RCIA","Christening","Confirmation"] },
+      { id: "denomination", label: "Denomination",     type: "select", options: ["Catholic","Protestant","Orthodox","Any"] },
+      { id: "language",     label: "Language",         type: "select", options: ["English","Hindi","Tamil","Telugu","Malayalam","Kannada","Any"] },
+    ],
+    promptTemplate: `Write a meaningful {{type}} homily for {{name}}.
+Denomination: {{denomination}} | Language: {{language}}.
+Include: 1) Welcome of the person / family, 2) Meaning and theology of baptism, 3) Key scripture (e.g. Matthew 28:19, Romans 6:3-4), 4) Responsibilities of godparents/family/community, 5) Challenge and blessing, 6) Closing prayer. Joyful, theologically sound, 5 minutes.`,
+    seoTitle: "Free Baptism Homily Generator India | Christening Address AI | Forjit AI",
+    seoDesc: "Generate meaningful baptism or christening homilies for any denomination. Free AI tool for Indian Catholic priests and Protestant pastors. No login needed.",
+    seoKeywords: ["baptism homily India free","christening speech India","Catholic baptism homily India","infant baptism address India","adult baptism homily free India"],
+    faqs: [
+      { q: "Is it suitable for infant and adult baptism?", a: "Yes. Both infant and adult (RCIA) baptism homilies are supported." },
+      { q: "Does it address godparents and families?", a: "Yes. It includes a specific section on responsibilities of godparents and family." },
+      { q: "Is it theologically accurate for Catholic baptism?", a: "Yes. It follows Catholic sacramental theology for baptism." },
+      { q: "Can it be in Malayalam or Tamil?", a: "Yes. All major Indian languages are available." },
+      { q: "Is it completely free?", a: "Completely free." },
+    ],
+    priority: 0.88,
+  },
+
+  {
+    id: "parish-newsletter-writer",
+    name: "Parish Newsletter Writer",
+    desc: "Write engaging, informative parish newsletters with news, devotionals, upcoming events, and parish announcements.",
+    icon: "📰",
+    category: "priest",
+    audience: "teacher",
+    model: "smart",
+    maxTokens: 700,
+    inputs: [
+      { id: "parishName",  label: "Parish Name",       type: "text",   placeholder: "e.g. Sacred Heart Church, Pune", required: true },
+      { id: "items",       label: "News / Events",     type: "textarea", placeholder: "List upcoming events, announcements, or special news…" },
+      { id: "month",       label: "Month",             type: "text",   placeholder: "e.g. June 2025" },
+      { id: "language",    label: "Language",          type: "select", options: ["English","Hindi","Tamil","Telugu","Malayalam","Kannada","Any"] },
+    ],
+    promptTemplate: `Write a parish newsletter for {{parishName}}, {{month}}.
+Events/News: {{items}} | Language: {{language}}.
+Structure: 1) Warm greeting from the parish priest, 2) Spiritual reflection (150 words), 3) Parish news and announcements, 4) Upcoming events schedule, 5) Prayer intentions for the month, 6) Closing blessing. Warm, community-building tone. Suitable for printing and WhatsApp distribution.`,
+    seoTitle: "Free Parish Newsletter Writer India | Church Newsletter AI | Forjit AI",
+    seoDesc: "Write complete parish newsletters with news, devotionals, and event schedules. Free AI tool for Indian Catholic and Protestant churches. No login required.",
+    seoKeywords: ["parish newsletter writer India free","church newsletter AI India","Catholic parish bulletin India","church WhatsApp newsletter India","parish circular India free"],
+    faqs: [
+      { q: "Can I use this for WhatsApp group messages?", a: "Yes. The newsletter is formatted to work for both printed bulletins and WhatsApp." },
+      { q: "Can I add specific parish events?", a: "Yes. Enter your events and news in the text box for a fully personalised newsletter." },
+      { q: "Is it suitable for small rural parishes?", a: "Yes. It works for parishes of any size across India." },
+      { q: "Can it be written in regional languages?", a: "Yes. Hindi, Tamil, Telugu, Malayalam, and Kannada are supported." },
+      { q: "Is it completely free?", a: "Completely free." },
+    ],
+    priority: 0.87,
+  },
+
+  {
+    id: "confession-preparation-guide",
+    name: "Confession & Examination of Conscience Guide",
+    desc: "Generate a thorough examination of conscience for personal or group confession preparation.",
+    icon: "🙏",
+    category: "priest",
+    audience: "teacher",
+    model: "smart",
+    maxTokens: 600,
+    inputs: [
+      { id: "ageGroup",     label: "Age Group",     type: "select", options: ["Children (7-12)","Teens","Adults","Elderly"] },
+      { id: "denomination", label: "Denomination",  type: "select", options: ["Catholic","Protestant","Orthodox","Any"] },
+      { id: "language",     label: "Language",      type: "select", options: ["English","Hindi","Tamil","Telugu","Malayalam","Kannada","Any"] },
+    ],
+    promptTemplate: `Create an examination of conscience / confession preparation guide.
+Age Group: {{ageGroup}} | Denomination: {{denomination}} | Language: {{language}}.
+Include: 1) Opening prayer, 2) How to examine your conscience (step-by-step), 3) Examination questions based on the Ten Commandments and Beatitudes, 4) Questions for sins of omission, 5) Act of Contrition prayer, 6) What to say to the priest (for first confessions), 7) After confession — thanksgiving prayer. Gentle, non-shaming, spiritually formative.`,
+    seoTitle: "Free Confession Examination of Conscience India | Catholic AI Tool | Forjit AI",
+    seoDesc: "Generate examination of conscience guides for children, teens, and adults. Free AI tool for Indian Catholic parishes and confession preparation. No login needed.",
+    seoKeywords: ["examination of conscience India free","confession preparation India","Catholic confession guide India free","first confession preparation India","examination of conscience Tamil"],
+    faqs: [
+      { q: "Is this suitable for First Confession (First Penance)?", a: "Yes. Select 'Children' for a gentle, simple guide for first confession." },
+      { q: "Does it include the Act of Contrition?", a: "Yes. The Act of Contrition is included in every guide." },
+      { q: "Can adults use this for regular confession?", a: "Yes. The adult version includes a thorough examination based on the Ten Commandments." },
+      { q: "Is it available in Tamil or Malayalam?", a: "Yes. All major Indian languages are supported." },
+      { q: "Is it completely free?", a: "Completely free." },
+    ],
+    priority: 0.88,
+  },
+
+  {
+    id: "rosary-meditation-writer",
+    name: "Rosary Meditation Writer",
+    desc: "Write beautiful, reflective meditations for each mystery of the Rosary for personal or group prayer.",
+    icon: "📿",
+    category: "priest",
+    audience: "teacher",
+    model: "smart",
+    maxTokens: 650,
+    inputs: [
+      { id: "mysteries",  label: "Mysteries",  type: "select", options: ["Joyful Mysteries","Sorrowful Mysteries","Glorious Mysteries","Luminous Mysteries","All Mysteries"] },
+      { id: "audience",   label: "Audience",   type: "select", options: ["Personal","Family","Parish Group","Children"] },
+      { id: "language",   label: "Language",   type: "select", options: ["English","Hindi","Tamil","Telugu","Malayalam","Kannada","Any"] },
+    ],
+    promptTemplate: `Write Rosary meditations for the {{mysteries}}.
+Audience: {{audience}} | Language: {{language}}.
+For each mystery provide: 1) Mystery name, 2) Scripture text, 3) A short reflective meditation (80-100 words), 4) A fruit of the mystery, 5) A brief intention to pray during the decade. Beautiful, contemplative, Marian, suitable for praying aloud during each decade.`,
+    seoTitle: "Free Rosary Meditation Writer India | AI Catholic Prayer Tool | Forjit AI",
+    seoDesc: "Write reflective Rosary meditations for all four mysteries. Free AI tool for Indian Catholic families, parishes, and prayer groups. No login required.",
+    seoKeywords: ["Rosary meditation writer India free","Catholic Rosary meditation India","rosary reflection India","joyful mysteries meditation India","Rosary prayer India AI"],
+    faqs: [
+      { q: "Which mysteries are covered?", a: "All four sets — Joyful, Sorrowful, Glorious, and Luminous (Mysteries of Light)." },
+      { q: "Can I use this for family Rosary?", a: "Yes. Select 'Family' for meditations suitable for all ages." },
+      { q: "Is it available in regional languages?", a: "Yes. Hindi, Tamil, Telugu, Malayalam, and Kannada are all supported." },
+      { q: "Can parish groups use this for Rosary rallies?", a: "Yes. It's ideal for May and October Rosary devotions." },
+      { q: "Is it completely free?", a: "Completely free." },
+    ],
+    priority: 0.87,
+  },
+
+  {
+    id: "novena-prayer-generator",
+    name: "Novena Prayer Generator",
+    desc: "Generate 9-day novena prayers to any saint or for any special intention — complete with daily meditations.",
+    icon: "⭐",
+    category: "priest",
+    audience: "teacher",
+    model: "smart",
+    maxTokens: 700,
+    inputs: [
+      { id: "saint",     label: "Saint / Intention",  type: "text",   placeholder: "e.g. St. Anthony, Our Lady of Perpetual Succour", required: true },
+      { id: "intention", label: "Special Intention",  type: "text",   placeholder: "e.g. healing, job, family peace" },
+      { id: "language",  label: "Language",           type: "select", options: ["English","Hindi","Tamil","Telugu","Malayalam","Kannada","Any"] },
+    ],
+    promptTemplate: `Generate a 9-day Novena to {{saint}} for the intention: {{intention}}.
+Language: {{language}}.
+For each of the 9 days provide: 1) Day number and theme, 2) Opening prayer, 3) Scripture verse, 4) Short reflection (50-70 words), 5) Specific novena prayer (100-120 words) addressed to {{saint}}, 6) Response: "Pray for us." Reverent, devotional, faith-filled.`,
+    seoTitle: "Free Novena Prayer Generator India | AI Saint Novena | Forjit AI",
+    seoDesc: "Generate complete 9-day novena prayers to any saint for healing, jobs, family, and more. Free AI tool for Indian Catholics. No login required.",
+    seoKeywords: ["novena prayer generator India free","St Anthony novena India","Catholic novena India AI","9-day prayer India free","novena generator Tamil Malayalam"],
+    faqs: [
+      { q: "Can I generate a novena to any saint?", a: "Yes. Enter any saint's name — St. Anthony, Our Lady of Lourdes, St. Joseph, and more." },
+      { q: "Does it generate all 9 days?", a: "Yes. A complete 9-day novena with daily themes and prayers is generated." },
+      { q: "Can it write in Tamil or Malayalam?", a: "Yes. All major Indian languages are supported." },
+      { q: "Is it doctrinally Catholic?", a: "Yes. All novenas follow Catholic devotional tradition." },
+      { q: "Is it completely free?", a: "Completely free." },
+    ],
+    priority: 0.88,
+  },
+
+  {
+    id: "retreat-programme-planner",
+    name: "Retreat Programme Planner",
+    desc: "Plan a complete spiritual retreat programme with schedule, talks, prayer sessions, and group activities.",
+    icon: "🏔️",
+    category: "priest",
+    audience: "teacher",
+    model: "smart",
+    maxTokens: 700,
+    inputs: [
+      { id: "theme",     label: "Retreat Theme",  type: "text",   placeholder: "e.g. Encounter with God, Healing & Renewal", required: true },
+      { id: "audience",  label: "Audience",       type: "select", options: ["Youth","Young Adults","Married Couples","General Parish","Clergy & Religious","Women","Men"] },
+      { id: "duration",  label: "Duration",       type: "select", options: ["1 Day (Day Retreat)","2 Days","3 Days","Weekend (Fri-Sun)"] },
+      { id: "language",  label: "Language",       type: "select", options: ["English","Hindi","Tamil","Telugu","Malayalam","Kannada","Any"] },
+    ],
+    promptTemplate: `Create a complete spiritual retreat programme.
+Theme: {{theme}} | Audience: {{audience}} | Duration: {{duration}} | Language: {{language}}.
+Include: 1) Programme title and objectives, 2) Day-by-day schedule with timings, 3) Talk topics with scripture and key points for each session, 4) Morning and evening prayer times, 5) Adoration / silent prayer slots, 6) Small group activities, 7) Reconciliation service, 8) Closing Mass/Service and commissioning. Practical and spiritually rich.`,
+    seoTitle: "Free Church Retreat Programme Planner India | AI Retreat Planner | Forjit AI",
+    seoDesc: "Plan complete spiritual retreats for youth, couples, and parishes. Free AI retreat programme maker for Indian Catholic and Christian churches. No login required.",
+    seoKeywords: ["church retreat planner India free","Catholic retreat programme India","youth retreat plan India","spiritual retreat schedule India","Christian retreat India AI"],
+    faqs: [
+      { q: "Can I plan a youth retreat with this?", a: "Yes. Select 'Youth' for an energetic, contemporary retreat programme." },
+      { q: "Does it include a confession/reconciliation session?", a: "Yes. A Sacrament of Reconciliation service is included in the schedule." },
+      { q: "Is it suitable for couples retreats?", a: "Yes. Select 'Married Couples' for a marriage enrichment retreat programme." },
+      { q: "Can it generate a one-day retreat?", a: "Yes. Select '1 Day (Day Retreat)' for a compact, manageable schedule." },
+      { q: "Is it completely free?", a: "Completely free." },
+    ],
+    priority: 0.87,
+  },
+
+  {
+    id: "lenten-reflection-writer",
+    name: "Lenten & Advent Reflection Writer",
+    desc: "Write daily Lenten or Advent reflections for parish use, WhatsApp groups, or personal prayer journals.",
+    icon: "🌿",
+    category: "priest",
+    audience: "teacher",
+    model: "smart",
+    maxTokens: 600,
+    inputs: [
+      { id: "season",    label: "Season",    type: "select", options: ["Lent","Advent","Holy Week","Easter Season","Ordinary Time"] },
+      { id: "day",       label: "Day / Week", type: "text",  placeholder: "e.g. Day 1, Week 2 of Lent, Palm Sunday" },
+      { id: "scripture", label: "Scripture", type: "text",   placeholder: "e.g. Matthew 6:1-6 (optional)" },
+      { id: "language",  label: "Language",  type: "select", options: ["English","Hindi","Tamil","Telugu","Malayalam","Kannada","Any"] },
+    ],
+    promptTemplate: `Write a {{season}} daily reflection for {{day}}.
+Scripture: {{scripture}} | Language: {{language}}.
+Format: 1) Reflection title, 2) Scripture text, 3) Meditation (150-200 words — story, insight, or analogy), 4) Personal application ("Today I will…"), 5) Short prayer (3-4 sentences), 6) Daily challenge. Suitable for WhatsApp daily message or printed booklet. Warm, convicting, hope-filled.`,
+    seoTitle: "Free Lenten Reflection Writer India | Advent Devotional AI | Forjit AI",
+    seoDesc: "Write daily Lenten and Advent reflections for WhatsApp, parish bulletins, and prayer journals. Free AI tool for Indian Catholic priests. No login needed.",
+    seoKeywords: ["Lenten reflection writer India free","Advent devotional India AI","Lent daily prayer India","Holy Week reflection India","Catholic Advent reflection free India"],
+    faqs: [
+      { q: "Can I use this for a Lenten WhatsApp daily message?", a: "Yes. It's specifically formatted for WhatsApp and printed booklet use." },
+      { q: "Does it cover all 40 days of Lent?", a: "Yes. Generate a separate reflection for each day of Lent or Advent." },
+      { q: "Is it available in Tamil, Malayalam, or Hindi?", a: "Yes. All major Indian regional languages are supported." },
+      { q: "Can I use it for Holy Week?", a: "Yes. Select 'Holy Week' for Palm Sunday, Holy Thursday, Good Friday, and Easter reflections." },
+      { q: "Is it completely free?", a: "Completely free." },
+    ],
+    priority: 0.88,
+  },
+
+  {
+    id: "catechism-lesson-planner",
+    name: "Catechism Lesson Planner (Catholic / Protestant)",
+    desc: "Create structured catechism lessons covering doctrine, scripture, church teaching, and personal faith formation.",
+    icon: "📘",
+    category: "priest",
+    audience: "teacher",
+    model: "smart",
+    maxTokens: 700,
+    inputs: [
+      { id: "topic",        label: "Catechism Topic",  type: "text",   placeholder: "e.g. The Eucharist, The Creed, Grace and Salvation", required: true },
+      { id: "denomination", label: "Denomination",     type: "select", options: ["Catholic (CCC)","Protestant","Orthodox","Any"] },
+      { id: "ageGroup",     label: "Age Group",        type: "select", options: ["Children (7-10)","Pre-teens (11-13)","Youth (14-17)","Adults","RCIA"] },
+      { id: "language",     label: "Language",         type: "select", options: ["English","Hindi","Tamil","Telugu","Malayalam","Kannada","Any"] },
+    ],
+    promptTemplate: `Create a catechism lesson plan on: {{topic}}.
+Denomination: {{denomination}} | Age Group: {{ageGroup}} | Language: {{language}}.
+Include: 1) Lesson objective, 2) Opening prayer, 3) Doctrinal explanation (simple, clear), 4) Key scripture (3-4 verses), 5) Church teaching / CCC reference (if Catholic), 6) Story or illustration, 7) Discussion questions, 8) Activity or memory exercise, 9) Homework / further reading, 10) Closing prayer. Faithful to tradition.`,
+    seoTitle: "Free Catechism Lesson Planner India | Catholic RE Teacher AI | Forjit AI",
+    seoDesc: "Create structured catechism lessons for children, teens, and RCIA adults. Free AI tool for Indian Catholic RE teachers and catechists. No login required.",
+    seoKeywords: ["catechism lesson plan India free","Catholic RE teacher India AI","RCIA lesson plan India","catechism class India free","Catholic doctrine lesson India"],
+    faqs: [
+      { q: "Does it reference the Catechism of the Catholic Church (CCC)?", a: "Yes. For Catholic lessons, relevant CCC paragraph references are included." },
+      { q: "Can I use it for RCIA (adult initiation)?", a: "Yes. Select 'RCIA' for adult initiation lessons." },
+      { q: "Is it suitable for Protestant Sunday school?", a: "Yes. Select 'Protestant' for non-Catholic catechism lessons." },
+      { q: "Can it be in Tamil or Hindi?", a: "Yes. All major Indian languages are supported." },
+      { q: "Is it completely free?", a: "Completely free." },
+    ],
+    priority: 0.88,
+  },
+
+  {
+    id: "feast-day-programme-maker",
+    name: "Feast Day & Parish Day Programme Maker",
+    desc: "Plan complete parish feast day celebrations with timetable, Mass, cultural programme, and announcements.",
+    icon: "🎉",
+    category: "priest",
+    audience: "teacher",
+    model: "smart",
+    maxTokens: 700,
+    inputs: [
+      { id: "feast",    label: "Feast / Saint",   type: "text",   placeholder: "e.g. Feast of St. Francis Xavier, Parish Anniversary", required: true },
+      { id: "date",     label: "Date",            type: "text",   placeholder: "e.g. 3rd December 2025" },
+      { id: "type",     label: "Programme Type",  type: "select", options: ["Church Feast Day","Parish Anniversary","Patronal Feast","Marian Feast","All Saints / Souls"] },
+      { id: "language", label: "Language",        type: "select", options: ["English","Hindi","Tamil","Telugu","Malayalam","Kannada","Any"] },
+    ],
+    promptTemplate: `Plan a complete programme for: {{feast}} on {{date}}.
+Type: {{type}} | Language: {{language}}.
+Include: 1) Programme title and theme, 2) Morning timetable (Novena / Mass timings), 3) Solemn High Mass / Feast Day service programme, 4) Cultural programme schedule (songs, skits, cultural items), 5) Procession details if applicable, 6) Feast day meal / refreshments plan, 7) Volunteer roles, 8) Evening programme, 9) Announcements text. Joyful, organized.`,
+    seoTitle: "Free Feast Day Programme Planner India | Parish Day AI | Forjit AI",
+    seoDesc: "Plan complete parish feast day programmes with Mass, cultural events, and processions. Free AI tool for Indian Catholic parishes. No login required.",
+    seoKeywords: ["feast day programme India free","Catholic feast day plan India","parish anniversary programme India","patronal feast programme India","parish feast celebration plan India"],
+    faqs: [
+      { q: "Can I plan a feast day for any saint?", a: "Yes. Enter any saint's feast (e.g. St. Francis Xavier, Our Lady of Lourdes) for a complete programme." },
+      { q: "Does it include a procession plan?", a: "Yes. Procession details are included for applicable feast days." },
+      { q: "Is it suitable for large parish celebrations?", a: "Yes. It plans for all sizes from small chapel feasts to large parish festivals." },
+      { q: "Can it be written in regional languages?", a: "Yes. Tamil, Telugu, Malayalam, Kannada, and Hindi are all supported." },
+      { q: "Is it completely free?", a: "Completely free." },
+    ],
+    priority: 0.87,
+  },
+
+  {
+    id: "saint-life-biography-writer",
+    name: "Saint's Life & Biography Writer",
+    desc: "Write an inspiring short biography of any Catholic or Christian saint for feast day talks or parish education.",
+    icon: "👼",
+    category: "priest",
+    audience: "teacher",
+    model: "smart",
+    maxTokens: 650,
+    inputs: [
+      { id: "saint",    label: "Saint's Name",  type: "text",   placeholder: "e.g. St. Thomas the Apostle, St. Alphonsa", required: true },
+      { id: "occasion", label: "Occasion",      type: "select", options: ["Feast Day Talk","Sunday School","Youth Group","Parish Bulletin","General Education"] },
+      { id: "language", label: "Language",      type: "select", options: ["English","Hindi","Tamil","Telugu","Malayalam","Kannada","Any"] },
+    ],
+    promptTemplate: `Write an inspiring biography of {{saint}}.
+Occasion: {{occasion}} | Language: {{language}}.
+Include: 1) Birth and early life, 2) Conversion or call to faith, 3) Key miracles or works, 4) Spiritual legacy and teachings, 5) Death and canonisation, 6) Patronage and relevance today, 7) A lesson or application for the listener. 400-500 words. Inspiring, accurate, devotional.`,
+    seoTitle: "Free Saint's Life Biography Writer India | Catholic AI Tool | Forjit AI",
+    seoDesc: "Write inspiring biographies of any Catholic or Christian saint for feast days, Sunday school, and parish education. Free AI tool for Indian churches. No login needed.",
+    seoKeywords: ["saint biography writer India free","Catholic saint story India","St Thomas Apostle India story","saint feast day talk India","saint biography Tamil free"],
+    faqs: [
+      { q: "Which saints can I look up?", a: "Any canonised Catholic or recognized Christian saint — including Indian saints like St. Alphonsa and Blessed Mariam Thresia." },
+      { q: "Is it available in Indian languages?", a: "Yes. Hindi, Tamil, Telugu, Malayalam, and Kannada are all supported." },
+      { q: "Can I use it for children's Sunday school?", a: "Yes. Select 'Sunday School' for a child-friendly biography." },
+      { q: "Is the information historically accurate?", a: "The AI draws on well-documented sources but always verify major facts for formal publications." },
+      { q: "Is it completely free?", a: "Completely free." },
+    ],
+    priority: 0.86,
+  },
+
+  {
+    id: "eucharistic-adoration-reflections",
+    name: "Eucharistic Adoration Reflection Writer",
+    desc: "Write beautiful silent prayer guides and reflections for Eucharistic Adoration or Benediction services.",
+    icon: "✨",
+    category: "priest",
+    audience: "teacher",
+    model: "smart",
+    maxTokens: 650,
+    inputs: [
+      { id: "theme",     label: "Theme",    type: "text",   placeholder: "e.g. Trust in God, Mercy, Healing, Thanksgiving", required: true },
+      { id: "duration",  label: "Duration", type: "select", options: ["30 minutes","1 Hour","All Night Vigil"] },
+      { id: "language",  label: "Language", type: "select", options: ["English","Hindi","Tamil","Telugu","Malayalam","Kannada","Any"] },
+    ],
+    promptTemplate: `Write a Eucharistic Adoration guide/reflection.
+Theme: {{theme}} | Duration: {{duration}} | Language: {{language}}.
+Include: 1) Opening antiphon and exposition prayer, 2) Scripture reading, 3) Extended meditation on the theme (3-4 paragraphs), 4) Time of silent reflection with prompts, 5) Litany or prayers, 6) Act of Consecration to the Blessed Sacrament, 7) Benediction prayers, 8) Closing hymn suggestion. Contemplative, reverent, deeply prayerful.`,
+    seoTitle: "Free Eucharistic Adoration Reflection Writer India | Catholic AI Prayer | Forjit AI",
+    seoDesc: "Write complete Adoration guides and Benediction reflections. Free AI tool for Indian Catholic parishes conducting Eucharistic Adoration. No login required.",
+    seoKeywords: ["Eucharistic Adoration reflection India free","Benediction prayer India","adoration hour guide India","Catholic adoration reflection India","holy hour guide India free"],
+    faqs: [
+      { q: "Can I use this for a Holy Hour?", a: "Yes. The '1 Hour' option generates a complete Holy Hour guide." },
+      { q: "Does it include the Benediction prayers?", a: "Yes. Opening exposition and closing Benediction prayers are included." },
+      { q: "Is it suitable for all-night vigils?", a: "Yes. Select 'All Night Vigil' for an extended, multi-section adoration guide." },
+      { q: "Can it be in Tamil or Malayalam?", a: "Yes. All major Indian languages are supported." },
+      { q: "Is it completely free?", a: "Completely free." },
+    ],
+    priority: 0.86,
+  },
+
+  {
+    id: "annual-pastoral-plan-maker",
+    name: "Annual Pastoral Plan Maker",
+    desc: "Create a comprehensive annual pastoral plan for a parish — ministry goals, sacraments calendar, and outreach.",
+    icon: "📅",
+    category: "priest",
+    audience: "teacher",
+    model: "smart",
+    maxTokens: 700,
+    inputs: [
+      { id: "parishName", label: "Parish Name",   type: "text",   placeholder: "e.g. St. Mary's Church, Bangalore", required: true },
+      { id: "year",       label: "Year",          type: "text",   placeholder: "e.g. 2025-26" },
+      { id: "diocese",    label: "Diocese",       type: "text",   placeholder: "e.g. Archdiocese of Bombay (optional)" },
+      { id: "language",   label: "Language",      type: "select", options: ["English","Hindi","Tamil","Telugu","Malayalam","Kannada","Any"] },
+    ],
+    promptTemplate: `Create an Annual Pastoral Plan for {{parishName}} for {{year}}.
+Diocese: {{diocese}} | Language: {{language}}.
+Include: 1) Parish vision and mission statement, 2) Sacraments calendar (baptisms, first communions, confirmations, marriages), 3) Liturgical year highlights and special events, 4) Ministry goals for: youth, women, men, elderly, outreach, 5) Social justice / charity initiatives, 6) Financial stewardship goals, 7) Formation and catechesis plan, 8) Monthly action items. Practical, Catholic, comprehensive.`,
+    seoTitle: "Free Annual Pastoral Plan Maker India | Parish Planning AI | Forjit AI",
+    seoDesc: "Create a comprehensive annual pastoral plan for your parish. Free AI planning tool for Indian Catholic priests and parish councils. No login required.",
+    seoKeywords: ["annual pastoral plan India free","parish plan maker India","Catholic parish planning India AI","parish annual programme India","parish ministry goals India free"],
+    faqs: [
+      { q: "Is this suitable for Catholic parish planning?", a: "Yes. It follows Catholic pastoral planning frameworks aligned with diocesan guidelines." },
+      { q: "Does it include a sacraments calendar?", a: "Yes. A full sacraments calendar for the year is included." },
+      { q: "Can the parish council use this?", a: "Yes. It's designed to be used jointly by the priest and parish pastoral council." },
+      { q: "Can it be written in regional languages?", a: "Yes. Hindi, Tamil, Telugu, Malayalam, and Kannada are all supported." },
+      { q: "Is it completely free?", a: "Completely free." },
+    ],
+    priority: 0.86,
+  },
+
+  {
+    id: "ordination-anniversary-message",
+    name: "Ordination & Anniversary Message Writer",
+    desc: "Write heartfelt messages and addresses for priestly ordination anniversaries, episcopal consecrations, and jubilees.",
+    icon: "🎊",
+    category: "priest",
+    audience: "teacher",
+    model: "smart",
+    maxTokens: 500,
+    inputs: [
+      { id: "name",       label: "Name of Priest / Religious", type: "text",   placeholder: "e.g. Fr. Joseph Mathew", required: true },
+      { id: "milestone",  label: "Milestone",                  type: "select", options: ["1st Anniversary","Silver Jubilee (25 yrs)","Golden Jubilee (50 yrs)","Ordination","Episcopal Consecration","Profession of Vows"] },
+      { id: "from",       label: "Message From",               type: "text",   placeholder: "e.g. Parish Community, Diocese, Family" },
+      { id: "language",   label: "Language",                   type: "select", options: ["English","Hindi","Tamil","Telugu","Malayalam","Kannada","Any"] },
+    ],
+    promptTemplate: `Write a heartfelt {{milestone}} message for {{name}} from {{from}}.
+Language: {{language}}.
+Include: 1) Warm congratulatory opening, 2) Gratitude for years of faithful service, 3) Specific ministry highlights if known, 4) Biblical blessing reference, 5) Prayer for continued grace and health, 6) Closing blessing and signatures. Dignified, warm, ecclesiastically appropriate.`,
+    seoTitle: "Free Priest Anniversary Message Writer India | Ordination Jubilee AI | Forjit AI",
+    seoDesc: "Write heartfelt messages for priestly ordination anniversaries, silver and golden jubilees. Free AI tool for Indian Catholic parishes. No login required.",
+    seoKeywords: ["priest ordination anniversary message India free","silver jubilee priest India","golden jubilee priest message India","Catholic jubilee message India","priest anniversary speech India"],
+    faqs: [
+      { q: "Can I use this for a priest's silver jubilee?", a: "Yes. Select 'Silver Jubilee (25 yrs)' for a 25th anniversary message." },
+      { q: "Is it suitable for religious sisters' jubilees too?", a: "Yes. Enter the sister's name and 'Profession of Vows' milestone." },
+      { q: "Can it be written in Tamil or Malayalam?", a: "Yes. All major Indian languages are supported." },
+      { q: "Can a parish committee use this?", a: "Yes. Enter 'Parish Community' as the message sender for a community message." },
+      { q: "Is it completely free?", a: "Completely free." },
+    ],
+    priority: 0.84,
+  },
+
+  {
+    id: "interfaith-dialogue-notes",
+    name: "Interfaith Dialogue Notes Maker",
+    desc: "Create structured notes for Christian-Hindu, Christian-Muslim, or other interfaith dialogue sessions.",
+    icon: "🤝",
+    category: "priest",
+    audience: "teacher",
+    model: "smart",
+    maxTokens: 650,
+    inputs: [
+      { id: "faiths",  label: "Faith Traditions",  type: "text",   placeholder: "e.g. Christian-Hindu, Christian-Muslim, Christian-Sikh", required: true },
+      { id: "topic",   label: "Dialogue Topic",    type: "text",   placeholder: "e.g. Prayer, Concept of God, Service to the Poor" },
+      { id: "context", label: "Context",           type: "select", options: ["Academic","Community Event","Pastoral","Parish Education","National Day of Prayer"] },
+      { id: "language",label: "Language",          type: "select", options: ["English","Hindi","Tamil","Telugu","Malayalam","Kannada","Any"] },
+    ],
+    promptTemplate: `Create interfaith dialogue notes between {{faiths}} on: {{topic}}.
+Context: {{context}} | Language: {{language}}.
+Include: 1) Objective and guiding principles, 2) Christian perspective on the topic, 3) Other tradition's perspective (respectful, accurate), 4) Common ground and shared values, 5) Points of respectful difference, 6) Discussion questions for dialogue, 7) Practical collaboration opportunities, 8) Closing reflection. Respectful, academically grounded, pastoral.`,
+    seoTitle: "Free Interfaith Dialogue Notes India | Christian AI Tool | Forjit AI",
+    seoDesc: "Create structured notes for Christian-Hindu, Christian-Muslim interfaith dialogue. Free AI tool for Indian priests and community leaders. No login required.",
+    seoKeywords: ["interfaith dialogue notes India free","Christian Hindu dialogue India","Christian Muslim dialogue India","interfaith meeting India AI","religious harmony India notes"],
+    faqs: [
+      { q: "Is it suitable for Christian-Hindu dialogue?", a: "Yes. Enter 'Christian-Hindu' for notes covering both traditions respectfully." },
+      { q: "Does it show both perspectives fairly?", a: "Yes. Both faith perspectives are presented respectfully and accurately." },
+      { q: "Can it be used at community events?", a: "Yes. Select 'Community Event' for a tone suitable for public interfaith gatherings." },
+      { q: "Is it available in Indian languages?", a: "Yes. Hindi, Tamil, Telugu, Malayalam, and Kannada are supported." },
+      { q: "Is it completely free?", a: "Completely free." },
+    ],
+    priority: 0.83,
+  },
+
+
+  /* ════════════════════════════════════════════════════════════════
+     LANGUAGE-SPECIFIC PRIEST & CHRISTIAN TOOLS
+     60 tools: Kannada · Tamil · Telugu · Malayalam · Hindi · Marathi
+     (10 tool types × 6 languages)
+  ════════════════════════════════════════════════════════════════ */
+
+  {
+    id: "kannada-homily-writer",
+    name: "Kannada Homily Writer (ಕನ್ನಡ)",
+    desc: "Write complete Sunday Mass homilies in Kannada (ಕನ್ನಡ) based on the day's scripture readings.",
+    icon: "✝️",
+    category: "priest",
+    subCategory: "kannada-christian",
+    audience: "teacher",
+    model: "smart",
+    maxTokens: 700,
+    inputs: [
+      { id: "readings", label: "Scripture Readings", type: "text", placeholder: "e.g. Isaiah 55:1-11, John 6:1-15", required: true },
+      { id: "occasion", label: "Occasion", type: "text", placeholder: "e.g. Easter Sunday, 3rd Sunday Ordinary Time" },
+      { id: "denom", label: "Denomination", type: "select", options: ["Catholic","Protestant","Orthodox","Any"] }
+    ],
+    promptTemplate: `Write a complete Sunday homily in Kannada language for: {{occasion}}.
+Readings: {{readings}} | Denomination: {{denom}}.
+Write entirely in Kannada script. Structure: 1) Opening hook, 2) Exegesis of key reading, 3) Three theological points with scripture, 4) Indian/local context illustration, 5) Application, 6) Closing blessing. 8-10 minute delivery.`,
+    seoTitle: "Free Kannada Homily Writer | Kannada Catholic Priest Tool | Forjit AI",
+    seoDesc: "Write complete Sunday homilies in Kannada for Catholic, Protestant and Orthodox churches. Free AI Kannada homily generator for Karnataka priests. No login needed.",
+    seoKeywords: ["kannada homily writer free India","Kannada Catholic homily Karnataka","priest homily kannada language","Sunday Mass homily Kannada","kannada sermon notes free"],
+    faqs: [
+      { q: "Is the output written in Kannada script?", a: "Yes. The entire output is in Kannada (ಕನ್ನಡ) script." },
+      { q: "Is this useful for Karnataka churches?", a: "Yes. It's designed for Kannada-speaking Christian communities across Karnataka." },
+      { q: "Can I use it for Catholic and Protestant churches?", a: "Yes. Select your denomination for appropriate content." },
+      { q: "Are Indian/local illustrations included?", a: "Yes. It uses Karnataka cultural context where appropriate." },
+      { q: "Is it completely free?", a: "Completely free." },
+    ],
+    priority: 0.9,
+  },
+
+  {
+    id: "kannada-sermon-notes",
+    name: "Kannada Sermon Notes Maker (ಕನ್ನಡ)",
+    desc: "Create structured Sunday sermon notes in Kannada (ಕನ್ನಡ) with introduction, three points, and closing prayer.",
+    icon: "🎤",
+    category: "christian",
+    subCategory: "kannada-christian",
+    audience: "teacher",
+    model: "smart",
+    maxTokens: 700,
+    inputs: [
+      { id: "topic", label: "Sermon Topic", type: "text", placeholder: "e.g. The Grace of God", required: true },
+      { id: "bibleRef", label: "Bible Reference", type: "text", placeholder: "e.g. Ephesians 2:8-9" },
+      { id: "congType", label: "Congregation", type: "select", options: ["General","Youth","Children","New Believers","Senior"] }
+    ],
+    promptTemplate: `Create structured Sunday sermon notes in Kannada language.
+Topic: {{topic}} | Scripture: {{bibleRef}} | Congregation: {{congType}}.
+Write entirely in Kannada script. Structure: 1) Title, 2) Introduction/hook, 3) Three main points with scripture references, 4) Illustration for each point, 5) Application, 6) Closing prayer. Warm pastoral tone.`,
+    seoTitle: "Free Kannada Sermon Notes Maker | Kannada Pastor Tool | Forjit AI",
+    seoDesc: "Generate Sunday sermon notes in Kannada with introduction, three points, illustrations, and prayer. Free AI tool for Karnataka pastors and ministers. No login needed.",
+    seoKeywords: ["kannada sermon notes maker free","Kannada sermon generator India","pastor sermon kannada language","kannada church sermon free India","Sunday sermon Kannada"],
+    faqs: [
+      { q: "Is the output written in Kannada script?", a: "Yes. The entire output is in Kannada (ಕನ್ನಡ) script." },
+      { q: "Is this useful for Karnataka churches?", a: "Yes. It's designed for Kannada-speaking Christian communities across Karnataka." },
+      { q: "Can I use it for Catholic and Protestant churches?", a: "Yes. Select your denomination for appropriate content." },
+      { q: "Are Indian/local illustrations included?", a: "Yes. It uses Karnataka cultural context where appropriate." },
+      { q: "Is it completely free?", a: "Completely free." },
+    ],
+    priority: 0.89,
+  },
+
+  {
+    id: "kannada-prayer-generator",
+    name: "Kannada Christian Prayer Generator (ಕನ್ನಡ)",
+    desc: "Write heartfelt Kannada (ಕನ್ನಡ) Christian prayers for Sunday service, weddings, funerals, and special occasions.",
+    icon: "🙏",
+    category: "christian",
+    subCategory: "kannada-christian",
+    audience: "teacher",
+    model: "smart",
+    maxTokens: 500,
+    inputs: [
+      { id: "occasion", label: "Occasion", type: "select", options: ["Sunday Service","Funeral","Wedding","Baptism","Christmas","Easter","Thanksgiving","Morning Prayer","Evening Prayer"] },
+      { id: "tone", label: "Tone", type: "select", options: ["Formal Liturgical","Simple Conversational","Youth Style"] }
+    ],
+    promptTemplate: `Write a heartfelt Christian prayer in Kannada language for: {{occasion}}.
+Tone: {{tone}}.
+Write entirely in Kannada script. Include: 1) Opening praise, 2) Thanksgiving, 3) Intercession for the occasion, 4) Petition, 5) Closing in Jesus name. Sincere and biblically grounded.`,
+    seoTitle: "Free Kannada Christian Prayer Generator | Kannada Church Prayer | Forjit AI",
+    seoDesc: "Write heartfelt Kannada Christian prayers for Sunday service, weddings, funerals and more. Free AI prayer generator for Karnataka churches. No login required.",
+    seoKeywords: ["kannada Christian prayer generator free","Kannada church prayer India","prayer in Kannada free","Christian prayer Karnataka","kannada Sunday service prayer"],
+    faqs: [
+      { q: "Is the output written in Kannada script?", a: "Yes. The entire output is in Kannada (ಕನ್ನಡ) script." },
+      { q: "Is this useful for Karnataka churches?", a: "Yes. It's designed for Kannada-speaking Christian communities across Karnataka." },
+      { q: "Can I use it for Catholic and Protestant churches?", a: "Yes. Select your denomination for appropriate content." },
+      { q: "Are Indian/local illustrations included?", a: "Yes. It uses Karnataka cultural context where appropriate." },
+      { q: "Is it completely free?", a: "Completely free." },
+    ],
+    priority: 0.88,
+  },
+
+  {
+    id: "kannada-bible-verse-explainer",
+    name: "Kannada Bible Verse Explainer (ಕನ್ನಡ)",
+    desc: "Get deep contextual explanations of any Bible verse in Kannada (ಕನ್ನಡ) — meaning, theology, and daily application.",
+    icon: "📖",
+    category: "christian",
+    subCategory: "kannada-christian",
+    audience: "teacher",
+    model: "smart",
+    maxTokens: 650,
+    inputs: [
+      { id: "verse", label: "Bible Verse", type: "text", placeholder: "e.g. John 3:16 or Romans 8:28", required: true },
+      { id: "denomination", label: "Denomination", type: "select", options: ["Catholic","Protestant","Orthodox","Any"] }
+    ],
+    promptTemplate: `Explain this Bible verse in Kannada language: {{verse}} ({{denomination}} perspective).
+Write entirely in Kannada script. Include: 1) Historical context, 2) Word-by-word meaning, 3) Theological significance, 4) Application for daily life, 5) Related verses. Clear, devotional, academically grounded.`,
+    seoTitle: "Free Kannada Bible Verse Explainer | Kannada Bible Study | Forjit AI",
+    seoDesc: "Explain any Bible verse in Kannada with context, theology, and daily application. Free AI Kannada Bible study tool for Karnataka Christians. No login needed.",
+    seoKeywords: ["kannada Bible verse explainer free","Bible meaning in Kannada","kannada Bible study tool India","Kannada Bible explanation free","Bible in kannada India"],
+    faqs: [
+      { q: "Is the output written in Kannada script?", a: "Yes. The entire output is in Kannada (ಕನ್ನಡ) script." },
+      { q: "Is this useful for Karnataka churches?", a: "Yes. It's designed for Kannada-speaking Christian communities across Karnataka." },
+      { q: "Can I use it for Catholic and Protestant churches?", a: "Yes. Select your denomination for appropriate content." },
+      { q: "Are Indian/local illustrations included?", a: "Yes. It uses Karnataka cultural context where appropriate." },
+      { q: "Is it completely free?", a: "Completely free." },
+    ],
+    priority: 0.88,
+  },
+
+  {
+    id: "kannada-novena-prayer",
+    name: "Kannada Novena Prayer Generator (ಕನ್ನಡ)",
+    desc: "Generate complete 9-day novena prayers in Kannada (ಕನ್ನಡ) to any saint for healing, family, and special intentions.",
+    icon: "⭐",
+    category: "priest",
+    subCategory: "kannada-christian",
+    audience: "teacher",
+    model: "smart",
+    maxTokens: 700,
+    inputs: [
+      { id: "saint", label: "Saint / Intention", type: "text", placeholder: "e.g. St. Anthony, Our Lady of Perpetual Succour", required: true },
+      { id: "intention", label: "Special Intention", type: "text", placeholder: "e.g. healing, job, family peace" }
+    ],
+    promptTemplate: `Generate a complete 9-day Novena in Kannada language to {{saint}} for: {{intention}}.
+Write entirely in Kannada script. For each of 9 days: 1) Day number and theme, 2) Opening prayer, 3) Scripture verse, 4) Short reflection (50 words), 5) Novena prayer (100 words) to {{saint}}, 6) Response line. Reverent, devotional, Catholic.`,
+    seoTitle: "Free Kannada Novena Prayer Generator | Kannada Catholic Prayer | Forjit AI",
+    seoDesc: "Generate complete 9-day novena prayers in Kannada to any saint. Free AI Catholic Kannada prayer tool for Karnataka believers. No login required.",
+    seoKeywords: ["kannada novena prayer free","Catholic novena in Kannada","Kannada saint prayer India","novena kannada language free","9-day prayer Kannada"],
+    faqs: [
+      { q: "Is the output written in Kannada script?", a: "Yes. The entire output is in Kannada (ಕನ್ನಡ) script." },
+      { q: "Is this useful for Karnataka churches?", a: "Yes. It's designed for Kannada-speaking Christian communities across Karnataka." },
+      { q: "Can I use it for Catholic and Protestant churches?", a: "Yes. Select your denomination for appropriate content." },
+      { q: "Are Indian/local illustrations included?", a: "Yes. It uses Karnataka cultural context where appropriate." },
+      { q: "Is it completely free?", a: "Completely free." },
+    ],
+    priority: 0.87,
+  },
+
+  {
+    id: "kannada-devotional-writer",
+    name: "Kannada Christian Devotional Writer (ಕನ್ನಡ)",
+    desc: "Write daily Kannada (ಕನ್ನಡ) Christian devotionals with scripture, reflection, application, and prayer for WhatsApp or print.",
+    icon: "🕯️",
+    category: "christian",
+    subCategory: "kannada-christian",
+    audience: "teacher",
+    model: "smart",
+    maxTokens: 650,
+    inputs: [
+      { id: "theme", label: "Theme", type: "text", placeholder: "e.g. Trust in God, Forgiveness, Hope", required: true },
+      { id: "scripture", label: "Scripture", type: "text", placeholder: "e.g. Psalm 23:1" },
+      { id: "length", label: "Length", type: "select", options: ["Short (200 words)","Standard (400 words)","Long (600 words)"] }
+    ],
+    promptTemplate: `Write a Kannada language Christian devotional.
+Theme: {{theme}} | Scripture: {{scripture}} | Length: {{length}}.
+Write entirely in Kannada script. Format: 1) Title, 2) Scripture, 3) Opening reflection, 4) Main devotional thought, 5) Today's application, 6) Closing prayer. Warm encouraging tone. Suitable for WhatsApp daily message or church bulletin.`,
+    seoTitle: "Free Kannada Christian Devotional Writer | Daily Kannada Devotion | Forjit AI",
+    seoDesc: "Write daily Kannada Christian devotionals for WhatsApp, church bulletins, and personal prayer. Free AI devotional generator for Karnataka Christians. No login required.",
+    seoKeywords: ["kannada Christian devotional free","daily devotional in Kannada","Kannada devotion writer India","kannada WhatsApp devotional free","Christian Kannada daily prayer"],
+    faqs: [
+      { q: "Is the output written in Kannada script?", a: "Yes. The entire output is in Kannada (ಕನ್ನಡ) script." },
+      { q: "Is this useful for Karnataka churches?", a: "Yes. It's designed for Kannada-speaking Christian communities across Karnataka." },
+      { q: "Can I use it for Catholic and Protestant churches?", a: "Yes. Select your denomination for appropriate content." },
+      { q: "Are Indian/local illustrations included?", a: "Yes. It uses Karnataka cultural context where appropriate." },
+      { q: "Is it completely free?", a: "Completely free." },
+    ],
+    priority: 0.88,
+  },
+
+  {
+    id: "kannada-sunday-school-lesson",
+    name: "Kannada Sunday School Lesson Plan (ಕನ್ನಡ)",
+    desc: "Full Kannada (ಕನ್ನಡ) Sunday school lesson plans with Bible story, activities, memory verse, and prayer.",
+    icon: "🎨",
+    category: "christian",
+    subCategory: "kannada-christian",
+    audience: "teacher",
+    model: "smart",
+    maxTokens: 700,
+    inputs: [
+      { id: "topic", label: "Topic", type: "text", placeholder: "e.g. David and Goliath", required: true },
+      { id: "ageGroup", label: "Age Group", type: "select", options: ["3-5 yrs","6-8 yrs","9-12 yrs","Teens","Adults"] },
+      { id: "bibleStory", label: "Bible Story", type: "text", placeholder: "e.g. 1 Samuel 17" }
+    ],
+    promptTemplate: `Create a Kannada Sunday school lesson plan.
+Topic: {{topic}} | Bible: {{bibleStory}} | Age: {{ageGroup}}.
+Write entirely in Kannada script. Include: 1) Lesson aim, 2) Bible story summary, 3) Activities (2-3), 4) Discussion questions, 5) Memory verse, 6) Craft idea, 7) Closing prayer. Fun, age-appropriate, faith-building.`,
+    seoTitle: "Free Kannada Sunday School Lesson Plan | Kannada Church Children | Forjit AI",
+    seoDesc: "Create Kannada Sunday school lesson plans with Bible story, activities, memory verse and craft ideas. Free for Karnataka church teachers. No login needed.",
+    seoKeywords: ["kannada Sunday school lesson plan free","Kannada Bible class children India","kannada church children lesson","Sunday school Kannada free","VBS lesson kannada"],
+    faqs: [
+      { q: "Is the output written in Kannada script?", a: "Yes. The entire output is in Kannada (ಕನ್ನಡ) script." },
+      { q: "Is this useful for Karnataka churches?", a: "Yes. It's designed for Kannada-speaking Christian communities across Karnataka." },
+      { q: "Can I use it for Catholic and Protestant churches?", a: "Yes. Select your denomination for appropriate content." },
+      { q: "Are Indian/local illustrations included?", a: "Yes. It uses Karnataka cultural context where appropriate." },
+      { q: "Is it completely free?", a: "Completely free." },
+    ],
+    priority: 0.87,
+  },
+
+  {
+    id: "kannada-parish-newsletter",
+    name: "Kannada Parish Newsletter Writer (ಕನ್ನಡ)",
+    desc: "Write engaging Kannada (ಕನ್ನಡ) parish newsletters with news, devotionals, events, and announcements for WhatsApp or print.",
+    icon: "📰",
+    category: "priest",
+    subCategory: "kannada-christian",
+    audience: "teacher",
+    model: "smart",
+    maxTokens: 700,
+    inputs: [
+      { id: "parishName", label: "Parish Name", type: "text", placeholder: "e.g. Sacred Heart Church", required: true },
+      { id: "items", label: "News / Events", type: "textarea", placeholder: "List events, announcements, special news…" },
+      { id: "month", label: "Month", type: "text", placeholder: "e.g. June 2025" }
+    ],
+    promptTemplate: `Write a Kannada language parish newsletter for {{parishName}}, {{month}}.
+Events/News: {{items}}.
+Write entirely in Kannada script. Structure: 1) Greeting from priest, 2) Spiritual reflection (150 words), 3) Parish news & announcements, 4) Events schedule, 5) Prayer intentions, 6) Closing blessing. Warm, community tone.`,
+    seoTitle: "Free Kannada Parish Newsletter Writer | Kannada Church Bulletin | Forjit AI",
+    seoDesc: "Write complete Kannada parish newsletters with news, devotionals, and events. Free AI tool for Karnataka Catholic and Christian churches. No login required.",
+    seoKeywords: ["kannada parish newsletter free","Kannada church bulletin India","Catholic kannada newsletter","church WhatsApp Kannada message","kannada parish circular free"],
+    faqs: [
+      { q: "Is the output written in Kannada script?", a: "Yes. The entire output is in Kannada (ಕನ್ನಡ) script." },
+      { q: "Is this useful for Karnataka churches?", a: "Yes. It's designed for Kannada-speaking Christian communities across Karnataka." },
+      { q: "Can I use it for Catholic and Protestant churches?", a: "Yes. Select your denomination for appropriate content." },
+      { q: "Are Indian/local illustrations included?", a: "Yes. It uses Karnataka cultural context where appropriate." },
+      { q: "Is it completely free?", a: "Completely free." },
+    ],
+    priority: 0.86,
+  },
+
+  {
+    id: "kannada-funeral-eulogy",
+    name: "Kannada Funeral Eulogy Writer (ಕನ್ನಡ)",
+    desc: "Write compassionate, dignified Kannada (ಕನ್ನಡ) Christian funeral eulogies and orations for any denomination.",
+    icon: "🕊️",
+    category: "priest",
+    subCategory: "kannada-christian",
+    audience: "teacher",
+    model: "smart",
+    maxTokens: 650,
+    inputs: [
+      { id: "deceased", label: "Name of Deceased", type: "text", placeholder: "e.g. Thomas Mathew (age 72)", required: true },
+      { id: "details", label: "Key Life Details", type: "textarea", placeholder: "Family, faith, occupation, memorable qualities…" },
+      { id: "scripture", label: "Favourite Scripture", type: "text", placeholder: "e.g. John 14:1-6 (optional)" }
+    ],
+    promptTemplate: `Write a compassionate Kannada language Christian funeral eulogy for {{deceased}}.
+Life details: {{details}} | Scripture: {{scripture}}.
+Write entirely in Kannada script. Include: 1) Warm opening about the person, 2) Faith journey and legacy, 3) Scripture reflection, 4) Comfort for grieving family, 5) Hope of resurrection, 6) Closing blessing. Dignified, comforting. 5-7 minutes.`,
+    seoTitle: "Free Kannada Funeral Eulogy Writer | Kannada Christian Funeral | Forjit AI",
+    seoDesc: "Write compassionate Kannada Christian funeral eulogies and orations. Free AI tool for Karnataka Catholic and Protestant pastors. No login required.",
+    seoKeywords: ["kannada funeral eulogy free","Christian funeral oration Kannada","Catholic funeral kannada","Kannada funeral speech India","funeral homily kannada free"],
+    faqs: [
+      { q: "Is the output written in Kannada script?", a: "Yes. The entire output is in Kannada (ಕನ್ನಡ) script." },
+      { q: "Is this useful for Karnataka churches?", a: "Yes. It's designed for Kannada-speaking Christian communities across Karnataka." },
+      { q: "Can I use it for Catholic and Protestant churches?", a: "Yes. Select your denomination for appropriate content." },
+      { q: "Are Indian/local illustrations included?", a: "Yes. It uses Karnataka cultural context where appropriate." },
+      { q: "Is it completely free?", a: "Completely free." },
+    ],
+    priority: 0.88,
+  },
+
+  {
+    id: "kannada-lenten-reflection",
+    name: "Kannada Lenten & Advent Reflection Writer (ಕನ್ನಡ)",
+    desc: "Write daily Kannada (ಕನ್ನಡ) Lenten and Advent reflections for WhatsApp groups, parish bulletins, and personal prayer.",
+    icon: "🌿",
+    category: "priest",
+    subCategory: "kannada-christian",
+    audience: "teacher",
+    model: "smart",
+    maxTokens: 600,
+    inputs: [
+      { id: "season", label: "Season", type: "select", options: ["Lent","Advent","Holy Week","Easter Season","Ordinary Time"] },
+      { id: "day", label: "Day / Week", type: "text", placeholder: "e.g. Day 1 of Lent, Palm Sunday" },
+      { id: "scripture", label: "Scripture", type: "text", placeholder: "e.g. Matthew 6:1-6 (optional)" }
+    ],
+    promptTemplate: `Write a Kannada language {{season}} daily reflection for {{day}}.
+Scripture: {{scripture}}.
+Write entirely in Kannada script. Format: 1) Title, 2) Scripture text, 3) Meditation (150-200 words), 4) Today's application, 5) Short prayer, 6) Daily challenge. Suitable for WhatsApp daily message. Warm, convicting, hope-filled.`,
+    seoTitle: "Free Kannada Lenten Reflection Writer | Kannada Advent Devotional | Forjit AI",
+    seoDesc: "Write daily Kannada Lenten and Advent reflections for WhatsApp and parish bulletins. Free AI tool for Karnataka Catholic churches. No login required.",
+    seoKeywords: ["kannada Lenten reflection free","Advent devotional Kannada","Lent daily prayer kannada","Holy Week reflection Kannada","Catholic kannada Lent WhatsApp"],
+    faqs: [
+      { q: "Is the output written in Kannada script?", a: "Yes. The entire output is in Kannada (ಕನ್ನಡ) script." },
+      { q: "Is this useful for Karnataka churches?", a: "Yes. It's designed for Kannada-speaking Christian communities across Karnataka." },
+      { q: "Can I use it for Catholic and Protestant churches?", a: "Yes. Select your denomination for appropriate content." },
+      { q: "Are Indian/local illustrations included?", a: "Yes. It uses Karnataka cultural context where appropriate." },
+      { q: "Is it completely free?", a: "Completely free." },
+    ],
+    priority: 0.87,
+  },
+
+  {
+    id: "tamil-homily-writer",
+    name: "Tamil Homily Writer (தமிழ்)",
+    desc: "Write complete Sunday Mass homilies in Tamil (தமிழ்) based on the day's scripture readings.",
+    icon: "✝️",
+    category: "priest",
+    subCategory: "tamil-christian",
+    audience: "teacher",
+    model: "smart",
+    maxTokens: 700,
+    inputs: [
+      { id: "readings", label: "Scripture Readings", type: "text", placeholder: "e.g. Isaiah 55:1-11, John 6:1-15", required: true },
+      { id: "occasion", label: "Occasion", type: "text", placeholder: "e.g. Easter Sunday, 3rd Sunday Ordinary Time" },
+      { id: "denom", label: "Denomination", type: "select", options: ["Catholic","Protestant","Orthodox","Any"] }
+    ],
+    promptTemplate: `Write a complete Sunday homily in Tamil language for: {{occasion}}.
+Readings: {{readings}} | Denomination: {{denom}}.
+Write entirely in Tamil script. Structure: 1) Opening hook, 2) Exegesis of key reading, 3) Three theological points with scripture, 4) Indian/local context illustration, 5) Application, 6) Closing blessing. 8-10 minute delivery.`,
+    seoTitle: "Free Tamil Homily Writer | Tamil Catholic Priest Tool | Forjit AI",
+    seoDesc: "Write complete Sunday homilies in Tamil for Catholic, Protestant and Orthodox churches. Free AI Tamil homily generator for Tamil Nadu priests. No login needed.",
+    seoKeywords: ["tamil homily writer free India","Tamil Catholic homily Tamil Nadu","priest homily tamil language","Sunday Mass homily Tamil","tamil sermon notes free"],
+    faqs: [
+      { q: "Is the output written in Tamil script?", a: "Yes. The entire output is in Tamil (தமிழ்) script." },
+      { q: "Is this useful for Tamil Nadu churches?", a: "Yes. It's designed for Tamil-speaking Christian communities across Tamil Nadu." },
+      { q: "Can I use it for Catholic and Protestant churches?", a: "Yes. Select your denomination for appropriate content." },
+      { q: "Are Indian/local illustrations included?", a: "Yes. It uses Tamil Nadu cultural context where appropriate." },
+      { q: "Is it completely free?", a: "Completely free." },
+    ],
+    priority: 0.9,
+  },
+
+  {
+    id: "tamil-sermon-notes",
+    name: "Tamil Sermon Notes Maker (தமிழ்)",
+    desc: "Create structured Sunday sermon notes in Tamil (தமிழ்) with introduction, three points, and closing prayer.",
+    icon: "🎤",
+    category: "christian",
+    subCategory: "tamil-christian",
+    audience: "teacher",
+    model: "smart",
+    maxTokens: 700,
+    inputs: [
+      { id: "topic", label: "Sermon Topic", type: "text", placeholder: "e.g. The Grace of God", required: true },
+      { id: "bibleRef", label: "Bible Reference", type: "text", placeholder: "e.g. Ephesians 2:8-9" },
+      { id: "congType", label: "Congregation", type: "select", options: ["General","Youth","Children","New Believers","Senior"] }
+    ],
+    promptTemplate: `Create structured Sunday sermon notes in Tamil language.
+Topic: {{topic}} | Scripture: {{bibleRef}} | Congregation: {{congType}}.
+Write entirely in Tamil script. Structure: 1) Title, 2) Introduction/hook, 3) Three main points with scripture references, 4) Illustration for each point, 5) Application, 6) Closing prayer. Warm pastoral tone.`,
+    seoTitle: "Free Tamil Sermon Notes Maker | Tamil Pastor Tool | Forjit AI",
+    seoDesc: "Generate Sunday sermon notes in Tamil with introduction, three points, illustrations, and prayer. Free AI tool for Tamil Nadu pastors and ministers. No login needed.",
+    seoKeywords: ["tamil sermon notes maker free","Tamil sermon generator India","pastor sermon tamil language","tamil church sermon free India","Sunday sermon Tamil"],
+    faqs: [
+      { q: "Is the output written in Tamil script?", a: "Yes. The entire output is in Tamil (தமிழ்) script." },
+      { q: "Is this useful for Tamil Nadu churches?", a: "Yes. It's designed for Tamil-speaking Christian communities across Tamil Nadu." },
+      { q: "Can I use it for Catholic and Protestant churches?", a: "Yes. Select your denomination for appropriate content." },
+      { q: "Are Indian/local illustrations included?", a: "Yes. It uses Tamil Nadu cultural context where appropriate." },
+      { q: "Is it completely free?", a: "Completely free." },
+    ],
+    priority: 0.89,
+  },
+
+  {
+    id: "tamil-prayer-generator",
+    name: "Tamil Christian Prayer Generator (தமிழ்)",
+    desc: "Write heartfelt Tamil (தமிழ்) Christian prayers for Sunday service, weddings, funerals, and special occasions.",
+    icon: "🙏",
+    category: "christian",
+    subCategory: "tamil-christian",
+    audience: "teacher",
+    model: "smart",
+    maxTokens: 500,
+    inputs: [
+      { id: "occasion", label: "Occasion", type: "select", options: ["Sunday Service","Funeral","Wedding","Baptism","Christmas","Easter","Thanksgiving","Morning Prayer","Evening Prayer"] },
+      { id: "tone", label: "Tone", type: "select", options: ["Formal Liturgical","Simple Conversational","Youth Style"] }
+    ],
+    promptTemplate: `Write a heartfelt Christian prayer in Tamil language for: {{occasion}}.
+Tone: {{tone}}.
+Write entirely in Tamil script. Include: 1) Opening praise, 2) Thanksgiving, 3) Intercession for the occasion, 4) Petition, 5) Closing in Jesus name. Sincere and biblically grounded.`,
+    seoTitle: "Free Tamil Christian Prayer Generator | Tamil Church Prayer | Forjit AI",
+    seoDesc: "Write heartfelt Tamil Christian prayers for Sunday service, weddings, funerals and more. Free AI prayer generator for Tamil Nadu churches. No login required.",
+    seoKeywords: ["tamil Christian prayer generator free","Tamil church prayer India","prayer in Tamil free","Christian prayer Tamil Nadu","tamil Sunday service prayer"],
+    faqs: [
+      { q: "Is the output written in Tamil script?", a: "Yes. The entire output is in Tamil (தமிழ்) script." },
+      { q: "Is this useful for Tamil Nadu churches?", a: "Yes. It's designed for Tamil-speaking Christian communities across Tamil Nadu." },
+      { q: "Can I use it for Catholic and Protestant churches?", a: "Yes. Select your denomination for appropriate content." },
+      { q: "Are Indian/local illustrations included?", a: "Yes. It uses Tamil Nadu cultural context where appropriate." },
+      { q: "Is it completely free?", a: "Completely free." },
+    ],
+    priority: 0.88,
+  },
+
+  {
+    id: "tamil-bible-verse-explainer",
+    name: "Tamil Bible Verse Explainer (தமிழ்)",
+    desc: "Get deep contextual explanations of any Bible verse in Tamil (தமிழ்) — meaning, theology, and daily application.",
+    icon: "📖",
+    category: "christian",
+    subCategory: "tamil-christian",
+    audience: "teacher",
+    model: "smart",
+    maxTokens: 650,
+    inputs: [
+      { id: "verse", label: "Bible Verse", type: "text", placeholder: "e.g. John 3:16 or Romans 8:28", required: true },
+      { id: "denomination", label: "Denomination", type: "select", options: ["Catholic","Protestant","Orthodox","Any"] }
+    ],
+    promptTemplate: `Explain this Bible verse in Tamil language: {{verse}} ({{denomination}} perspective).
+Write entirely in Tamil script. Include: 1) Historical context, 2) Word-by-word meaning, 3) Theological significance, 4) Application for daily life, 5) Related verses. Clear, devotional, academically grounded.`,
+    seoTitle: "Free Tamil Bible Verse Explainer | Tamil Bible Study | Forjit AI",
+    seoDesc: "Explain any Bible verse in Tamil with context, theology, and daily application. Free AI Tamil Bible study tool for Tamil Nadu Christians. No login needed.",
+    seoKeywords: ["tamil Bible verse explainer free","Bible meaning in Tamil","tamil Bible study tool India","Tamil Bible explanation free","Bible in tamil India"],
+    faqs: [
+      { q: "Is the output written in Tamil script?", a: "Yes. The entire output is in Tamil (தமிழ்) script." },
+      { q: "Is this useful for Tamil Nadu churches?", a: "Yes. It's designed for Tamil-speaking Christian communities across Tamil Nadu." },
+      { q: "Can I use it for Catholic and Protestant churches?", a: "Yes. Select your denomination for appropriate content." },
+      { q: "Are Indian/local illustrations included?", a: "Yes. It uses Tamil Nadu cultural context where appropriate." },
+      { q: "Is it completely free?", a: "Completely free." },
+    ],
+    priority: 0.88,
+  },
+
+  {
+    id: "tamil-novena-prayer",
+    name: "Tamil Novena Prayer Generator (தமிழ்)",
+    desc: "Generate complete 9-day novena prayers in Tamil (தமிழ்) to any saint for healing, family, and special intentions.",
+    icon: "⭐",
+    category: "priest",
+    subCategory: "tamil-christian",
+    audience: "teacher",
+    model: "smart",
+    maxTokens: 700,
+    inputs: [
+      { id: "saint", label: "Saint / Intention", type: "text", placeholder: "e.g. St. Anthony, Our Lady of Perpetual Succour", required: true },
+      { id: "intention", label: "Special Intention", type: "text", placeholder: "e.g. healing, job, family peace" }
+    ],
+    promptTemplate: `Generate a complete 9-day Novena in Tamil language to {{saint}} for: {{intention}}.
+Write entirely in Tamil script. For each of 9 days: 1) Day number and theme, 2) Opening prayer, 3) Scripture verse, 4) Short reflection (50 words), 5) Novena prayer (100 words) to {{saint}}, 6) Response line. Reverent, devotional, Catholic.`,
+    seoTitle: "Free Tamil Novena Prayer Generator | Tamil Catholic Prayer | Forjit AI",
+    seoDesc: "Generate complete 9-day novena prayers in Tamil to any saint. Free AI Catholic Tamil prayer tool for Tamil Nadu believers. No login required.",
+    seoKeywords: ["tamil novena prayer free","Catholic novena in Tamil","Tamil saint prayer India","novena tamil language free","9-day prayer Tamil"],
+    faqs: [
+      { q: "Is the output written in Tamil script?", a: "Yes. The entire output is in Tamil (தமிழ்) script." },
+      { q: "Is this useful for Tamil Nadu churches?", a: "Yes. It's designed for Tamil-speaking Christian communities across Tamil Nadu." },
+      { q: "Can I use it for Catholic and Protestant churches?", a: "Yes. Select your denomination for appropriate content." },
+      { q: "Are Indian/local illustrations included?", a: "Yes. It uses Tamil Nadu cultural context where appropriate." },
+      { q: "Is it completely free?", a: "Completely free." },
+    ],
+    priority: 0.87,
+  },
+
+  {
+    id: "tamil-devotional-writer",
+    name: "Tamil Christian Devotional Writer (தமிழ்)",
+    desc: "Write daily Tamil (தமிழ்) Christian devotionals with scripture, reflection, application, and prayer for WhatsApp or print.",
+    icon: "🕯️",
+    category: "christian",
+    subCategory: "tamil-christian",
+    audience: "teacher",
+    model: "smart",
+    maxTokens: 650,
+    inputs: [
+      { id: "theme", label: "Theme", type: "text", placeholder: "e.g. Trust in God, Forgiveness, Hope", required: true },
+      { id: "scripture", label: "Scripture", type: "text", placeholder: "e.g. Psalm 23:1" },
+      { id: "length", label: "Length", type: "select", options: ["Short (200 words)","Standard (400 words)","Long (600 words)"] }
+    ],
+    promptTemplate: `Write a Tamil language Christian devotional.
+Theme: {{theme}} | Scripture: {{scripture}} | Length: {{length}}.
+Write entirely in Tamil script. Format: 1) Title, 2) Scripture, 3) Opening reflection, 4) Main devotional thought, 5) Today's application, 6) Closing prayer. Warm encouraging tone. Suitable for WhatsApp daily message or church bulletin.`,
+    seoTitle: "Free Tamil Christian Devotional Writer | Daily Tamil Devotion | Forjit AI",
+    seoDesc: "Write daily Tamil Christian devotionals for WhatsApp, church bulletins, and personal prayer. Free AI devotional generator for Tamil Nadu Christians. No login required.",
+    seoKeywords: ["tamil Christian devotional free","daily devotional in Tamil","Tamil devotion writer India","tamil WhatsApp devotional free","Christian Tamil daily prayer"],
+    faqs: [
+      { q: "Is the output written in Tamil script?", a: "Yes. The entire output is in Tamil (தமிழ்) script." },
+      { q: "Is this useful for Tamil Nadu churches?", a: "Yes. It's designed for Tamil-speaking Christian communities across Tamil Nadu." },
+      { q: "Can I use it for Catholic and Protestant churches?", a: "Yes. Select your denomination for appropriate content." },
+      { q: "Are Indian/local illustrations included?", a: "Yes. It uses Tamil Nadu cultural context where appropriate." },
+      { q: "Is it completely free?", a: "Completely free." },
+    ],
+    priority: 0.88,
+  },
+
+  {
+    id: "tamil-sunday-school-lesson",
+    name: "Tamil Sunday School Lesson Plan (தமிழ்)",
+    desc: "Full Tamil (தமிழ்) Sunday school lesson plans with Bible story, activities, memory verse, and prayer.",
+    icon: "🎨",
+    category: "christian",
+    subCategory: "tamil-christian",
+    audience: "teacher",
+    model: "smart",
+    maxTokens: 700,
+    inputs: [
+      { id: "topic", label: "Topic", type: "text", placeholder: "e.g. David and Goliath", required: true },
+      { id: "ageGroup", label: "Age Group", type: "select", options: ["3-5 yrs","6-8 yrs","9-12 yrs","Teens","Adults"] },
+      { id: "bibleStory", label: "Bible Story", type: "text", placeholder: "e.g. 1 Samuel 17" }
+    ],
+    promptTemplate: `Create a Tamil Sunday school lesson plan.
+Topic: {{topic}} | Bible: {{bibleStory}} | Age: {{ageGroup}}.
+Write entirely in Tamil script. Include: 1) Lesson aim, 2) Bible story summary, 3) Activities (2-3), 4) Discussion questions, 5) Memory verse, 6) Craft idea, 7) Closing prayer. Fun, age-appropriate, faith-building.`,
+    seoTitle: "Free Tamil Sunday School Lesson Plan | Tamil Church Children | Forjit AI",
+    seoDesc: "Create Tamil Sunday school lesson plans with Bible story, activities, memory verse and craft ideas. Free for Tamil Nadu church teachers. No login needed.",
+    seoKeywords: ["tamil Sunday school lesson plan free","Tamil Bible class children India","tamil church children lesson","Sunday school Tamil free","VBS lesson tamil"],
+    faqs: [
+      { q: "Is the output written in Tamil script?", a: "Yes. The entire output is in Tamil (தமிழ்) script." },
+      { q: "Is this useful for Tamil Nadu churches?", a: "Yes. It's designed for Tamil-speaking Christian communities across Tamil Nadu." },
+      { q: "Can I use it for Catholic and Protestant churches?", a: "Yes. Select your denomination for appropriate content." },
+      { q: "Are Indian/local illustrations included?", a: "Yes. It uses Tamil Nadu cultural context where appropriate." },
+      { q: "Is it completely free?", a: "Completely free." },
+    ],
+    priority: 0.87,
+  },
+
+  {
+    id: "tamil-parish-newsletter",
+    name: "Tamil Parish Newsletter Writer (தமிழ்)",
+    desc: "Write engaging Tamil (தமிழ்) parish newsletters with news, devotionals, events, and announcements for WhatsApp or print.",
+    icon: "📰",
+    category: "priest",
+    subCategory: "tamil-christian",
+    audience: "teacher",
+    model: "smart",
+    maxTokens: 700,
+    inputs: [
+      { id: "parishName", label: "Parish Name", type: "text", placeholder: "e.g. Sacred Heart Church", required: true },
+      { id: "items", label: "News / Events", type: "textarea", placeholder: "List events, announcements, special news…" },
+      { id: "month", label: "Month", type: "text", placeholder: "e.g. June 2025" }
+    ],
+    promptTemplate: `Write a Tamil language parish newsletter for {{parishName}}, {{month}}.
+Events/News: {{items}}.
+Write entirely in Tamil script. Structure: 1) Greeting from priest, 2) Spiritual reflection (150 words), 3) Parish news & announcements, 4) Events schedule, 5) Prayer intentions, 6) Closing blessing. Warm, community tone.`,
+    seoTitle: "Free Tamil Parish Newsletter Writer | Tamil Church Bulletin | Forjit AI",
+    seoDesc: "Write complete Tamil parish newsletters with news, devotionals, and events. Free AI tool for Tamil Nadu Catholic and Christian churches. No login required.",
+    seoKeywords: ["tamil parish newsletter free","Tamil church bulletin India","Catholic tamil newsletter","church WhatsApp Tamil message","tamil parish circular free"],
+    faqs: [
+      { q: "Is the output written in Tamil script?", a: "Yes. The entire output is in Tamil (தமிழ்) script." },
+      { q: "Is this useful for Tamil Nadu churches?", a: "Yes. It's designed for Tamil-speaking Christian communities across Tamil Nadu." },
+      { q: "Can I use it for Catholic and Protestant churches?", a: "Yes. Select your denomination for appropriate content." },
+      { q: "Are Indian/local illustrations included?", a: "Yes. It uses Tamil Nadu cultural context where appropriate." },
+      { q: "Is it completely free?", a: "Completely free." },
+    ],
+    priority: 0.86,
+  },
+
+  {
+    id: "tamil-funeral-eulogy",
+    name: "Tamil Funeral Eulogy Writer (தமிழ்)",
+    desc: "Write compassionate, dignified Tamil (தமிழ்) Christian funeral eulogies and orations for any denomination.",
+    icon: "🕊️",
+    category: "priest",
+    subCategory: "tamil-christian",
+    audience: "teacher",
+    model: "smart",
+    maxTokens: 650,
+    inputs: [
+      { id: "deceased", label: "Name of Deceased", type: "text", placeholder: "e.g. Thomas Mathew (age 72)", required: true },
+      { id: "details", label: "Key Life Details", type: "textarea", placeholder: "Family, faith, occupation, memorable qualities…" },
+      { id: "scripture", label: "Favourite Scripture", type: "text", placeholder: "e.g. John 14:1-6 (optional)" }
+    ],
+    promptTemplate: `Write a compassionate Tamil language Christian funeral eulogy for {{deceased}}.
+Life details: {{details}} | Scripture: {{scripture}}.
+Write entirely in Tamil script. Include: 1) Warm opening about the person, 2) Faith journey and legacy, 3) Scripture reflection, 4) Comfort for grieving family, 5) Hope of resurrection, 6) Closing blessing. Dignified, comforting. 5-7 minutes.`,
+    seoTitle: "Free Tamil Funeral Eulogy Writer | Tamil Christian Funeral | Forjit AI",
+    seoDesc: "Write compassionate Tamil Christian funeral eulogies and orations. Free AI tool for Tamil Nadu Catholic and Protestant pastors. No login required.",
+    seoKeywords: ["tamil funeral eulogy free","Christian funeral oration Tamil","Catholic funeral tamil","Tamil funeral speech India","funeral homily tamil free"],
+    faqs: [
+      { q: "Is the output written in Tamil script?", a: "Yes. The entire output is in Tamil (தமிழ்) script." },
+      { q: "Is this useful for Tamil Nadu churches?", a: "Yes. It's designed for Tamil-speaking Christian communities across Tamil Nadu." },
+      { q: "Can I use it for Catholic and Protestant churches?", a: "Yes. Select your denomination for appropriate content." },
+      { q: "Are Indian/local illustrations included?", a: "Yes. It uses Tamil Nadu cultural context where appropriate." },
+      { q: "Is it completely free?", a: "Completely free." },
+    ],
+    priority: 0.88,
+  },
+
+  {
+    id: "tamil-lenten-reflection",
+    name: "Tamil Lenten & Advent Reflection Writer (தமிழ்)",
+    desc: "Write daily Tamil (தமிழ்) Lenten and Advent reflections for WhatsApp groups, parish bulletins, and personal prayer.",
+    icon: "🌿",
+    category: "priest",
+    subCategory: "tamil-christian",
+    audience: "teacher",
+    model: "smart",
+    maxTokens: 600,
+    inputs: [
+      { id: "season", label: "Season", type: "select", options: ["Lent","Advent","Holy Week","Easter Season","Ordinary Time"] },
+      { id: "day", label: "Day / Week", type: "text", placeholder: "e.g. Day 1 of Lent, Palm Sunday" },
+      { id: "scripture", label: "Scripture", type: "text", placeholder: "e.g. Matthew 6:1-6 (optional)" }
+    ],
+    promptTemplate: `Write a Tamil language {{season}} daily reflection for {{day}}.
+Scripture: {{scripture}}.
+Write entirely in Tamil script. Format: 1) Title, 2) Scripture text, 3) Meditation (150-200 words), 4) Today's application, 5) Short prayer, 6) Daily challenge. Suitable for WhatsApp daily message. Warm, convicting, hope-filled.`,
+    seoTitle: "Free Tamil Lenten Reflection Writer | Tamil Advent Devotional | Forjit AI",
+    seoDesc: "Write daily Tamil Lenten and Advent reflections for WhatsApp and parish bulletins. Free AI tool for Tamil Nadu Catholic churches. No login required.",
+    seoKeywords: ["tamil Lenten reflection free","Advent devotional Tamil","Lent daily prayer tamil","Holy Week reflection Tamil","Catholic tamil Lent WhatsApp"],
+    faqs: [
+      { q: "Is the output written in Tamil script?", a: "Yes. The entire output is in Tamil (தமிழ்) script." },
+      { q: "Is this useful for Tamil Nadu churches?", a: "Yes. It's designed for Tamil-speaking Christian communities across Tamil Nadu." },
+      { q: "Can I use it for Catholic and Protestant churches?", a: "Yes. Select your denomination for appropriate content." },
+      { q: "Are Indian/local illustrations included?", a: "Yes. It uses Tamil Nadu cultural context where appropriate." },
+      { q: "Is it completely free?", a: "Completely free." },
+    ],
+    priority: 0.87,
+  },
+
+  {
+    id: "telugu-homily-writer",
+    name: "Telugu Homily Writer (తెలుగు)",
+    desc: "Write complete Sunday Mass homilies in Telugu (తెలుగు) based on the day's scripture readings.",
+    icon: "✝️",
+    category: "priest",
+    subCategory: "telugu-christian",
+    audience: "teacher",
+    model: "smart",
+    maxTokens: 700,
+    inputs: [
+      { id: "readings", label: "Scripture Readings", type: "text", placeholder: "e.g. Isaiah 55:1-11, John 6:1-15", required: true },
+      { id: "occasion", label: "Occasion", type: "text", placeholder: "e.g. Easter Sunday, 3rd Sunday Ordinary Time" },
+      { id: "denom", label: "Denomination", type: "select", options: ["Catholic","Protestant","Orthodox","Any"] }
+    ],
+    promptTemplate: `Write a complete Sunday homily in Telugu language for: {{occasion}}.
+Readings: {{readings}} | Denomination: {{denom}}.
+Write entirely in Telugu script. Structure: 1) Opening hook, 2) Exegesis of key reading, 3) Three theological points with scripture, 4) Indian/local context illustration, 5) Application, 6) Closing blessing. 8-10 minute delivery.`,
+    seoTitle: "Free Telugu Homily Writer | Telugu Catholic Priest Tool | Forjit AI",
+    seoDesc: "Write complete Sunday homilies in Telugu for Catholic, Protestant and Orthodox churches. Free AI Telugu homily generator for Andhra Pradesh & Telangana priests. No login needed.",
+    seoKeywords: ["telugu homily writer free India","Telugu Catholic homily Andhra Pradesh Telangana","priest homily telugu language","Sunday Mass homily Telugu","telugu sermon notes free"],
+    faqs: [
+      { q: "Is the output written in Telugu script?", a: "Yes. The entire output is in Telugu (తెలుగు) script." },
+      { q: "Is this useful for Andhra Pradesh & Telangana churches?", a: "Yes. It's designed for Telugu-speaking Christian communities across Andhra Pradesh & Telangana." },
+      { q: "Can I use it for Catholic and Protestant churches?", a: "Yes. Select your denomination for appropriate content." },
+      { q: "Are Indian/local illustrations included?", a: "Yes. It uses Andhra Pradesh & Telangana cultural context where appropriate." },
+      { q: "Is it completely free?", a: "Completely free." },
+    ],
+    priority: 0.9,
+  },
+
+  {
+    id: "telugu-sermon-notes",
+    name: "Telugu Sermon Notes Maker (తెలుగు)",
+    desc: "Create structured Sunday sermon notes in Telugu (తెలుగు) with introduction, three points, and closing prayer.",
+    icon: "🎤",
+    category: "christian",
+    subCategory: "telugu-christian",
+    audience: "teacher",
+    model: "smart",
+    maxTokens: 700,
+    inputs: [
+      { id: "topic", label: "Sermon Topic", type: "text", placeholder: "e.g. The Grace of God", required: true },
+      { id: "bibleRef", label: "Bible Reference", type: "text", placeholder: "e.g. Ephesians 2:8-9" },
+      { id: "congType", label: "Congregation", type: "select", options: ["General","Youth","Children","New Believers","Senior"] }
+    ],
+    promptTemplate: `Create structured Sunday sermon notes in Telugu language.
+Topic: {{topic}} | Scripture: {{bibleRef}} | Congregation: {{congType}}.
+Write entirely in Telugu script. Structure: 1) Title, 2) Introduction/hook, 3) Three main points with scripture references, 4) Illustration for each point, 5) Application, 6) Closing prayer. Warm pastoral tone.`,
+    seoTitle: "Free Telugu Sermon Notes Maker | Telugu Pastor Tool | Forjit AI",
+    seoDesc: "Generate Sunday sermon notes in Telugu with introduction, three points, illustrations, and prayer. Free AI tool for Andhra Pradesh & Telangana pastors and ministers. No login needed.",
+    seoKeywords: ["telugu sermon notes maker free","Telugu sermon generator India","pastor sermon telugu language","telugu church sermon free India","Sunday sermon Telugu"],
+    faqs: [
+      { q: "Is the output written in Telugu script?", a: "Yes. The entire output is in Telugu (తెలుగు) script." },
+      { q: "Is this useful for Andhra Pradesh & Telangana churches?", a: "Yes. It's designed for Telugu-speaking Christian communities across Andhra Pradesh & Telangana." },
+      { q: "Can I use it for Catholic and Protestant churches?", a: "Yes. Select your denomination for appropriate content." },
+      { q: "Are Indian/local illustrations included?", a: "Yes. It uses Andhra Pradesh & Telangana cultural context where appropriate." },
+      { q: "Is it completely free?", a: "Completely free." },
+    ],
+    priority: 0.89,
+  },
+
+  {
+    id: "telugu-prayer-generator",
+    name: "Telugu Christian Prayer Generator (తెలుగు)",
+    desc: "Write heartfelt Telugu (తెలుగు) Christian prayers for Sunday service, weddings, funerals, and special occasions.",
+    icon: "🙏",
+    category: "christian",
+    subCategory: "telugu-christian",
+    audience: "teacher",
+    model: "smart",
+    maxTokens: 500,
+    inputs: [
+      { id: "occasion", label: "Occasion", type: "select", options: ["Sunday Service","Funeral","Wedding","Baptism","Christmas","Easter","Thanksgiving","Morning Prayer","Evening Prayer"] },
+      { id: "tone", label: "Tone", type: "select", options: ["Formal Liturgical","Simple Conversational","Youth Style"] }
+    ],
+    promptTemplate: `Write a heartfelt Christian prayer in Telugu language for: {{occasion}}.
+Tone: {{tone}}.
+Write entirely in Telugu script. Include: 1) Opening praise, 2) Thanksgiving, 3) Intercession for the occasion, 4) Petition, 5) Closing in Jesus name. Sincere and biblically grounded.`,
+    seoTitle: "Free Telugu Christian Prayer Generator | Telugu Church Prayer | Forjit AI",
+    seoDesc: "Write heartfelt Telugu Christian prayers for Sunday service, weddings, funerals and more. Free AI prayer generator for Andhra Pradesh & Telangana churches. No login required.",
+    seoKeywords: ["telugu Christian prayer generator free","Telugu church prayer India","prayer in Telugu free","Christian prayer Andhra Pradesh Telangana","telugu Sunday service prayer"],
+    faqs: [
+      { q: "Is the output written in Telugu script?", a: "Yes. The entire output is in Telugu (తెలుగు) script." },
+      { q: "Is this useful for Andhra Pradesh & Telangana churches?", a: "Yes. It's designed for Telugu-speaking Christian communities across Andhra Pradesh & Telangana." },
+      { q: "Can I use it for Catholic and Protestant churches?", a: "Yes. Select your denomination for appropriate content." },
+      { q: "Are Indian/local illustrations included?", a: "Yes. It uses Andhra Pradesh & Telangana cultural context where appropriate." },
+      { q: "Is it completely free?", a: "Completely free." },
+    ],
+    priority: 0.88,
+  },
+
+  {
+    id: "telugu-bible-verse-explainer",
+    name: "Telugu Bible Verse Explainer (తెలుగు)",
+    desc: "Get deep contextual explanations of any Bible verse in Telugu (తెలుగు) — meaning, theology, and daily application.",
+    icon: "📖",
+    category: "christian",
+    subCategory: "telugu-christian",
+    audience: "teacher",
+    model: "smart",
+    maxTokens: 650,
+    inputs: [
+      { id: "verse", label: "Bible Verse", type: "text", placeholder: "e.g. John 3:16 or Romans 8:28", required: true },
+      { id: "denomination", label: "Denomination", type: "select", options: ["Catholic","Protestant","Orthodox","Any"] }
+    ],
+    promptTemplate: `Explain this Bible verse in Telugu language: {{verse}} ({{denomination}} perspective).
+Write entirely in Telugu script. Include: 1) Historical context, 2) Word-by-word meaning, 3) Theological significance, 4) Application for daily life, 5) Related verses. Clear, devotional, academically grounded.`,
+    seoTitle: "Free Telugu Bible Verse Explainer | Telugu Bible Study | Forjit AI",
+    seoDesc: "Explain any Bible verse in Telugu with context, theology, and daily application. Free AI Telugu Bible study tool for Andhra Pradesh & Telangana Christians. No login needed.",
+    seoKeywords: ["telugu Bible verse explainer free","Bible meaning in Telugu","telugu Bible study tool India","Telugu Bible explanation free","Bible in telugu India"],
+    faqs: [
+      { q: "Is the output written in Telugu script?", a: "Yes. The entire output is in Telugu (తెలుగు) script." },
+      { q: "Is this useful for Andhra Pradesh & Telangana churches?", a: "Yes. It's designed for Telugu-speaking Christian communities across Andhra Pradesh & Telangana." },
+      { q: "Can I use it for Catholic and Protestant churches?", a: "Yes. Select your denomination for appropriate content." },
+      { q: "Are Indian/local illustrations included?", a: "Yes. It uses Andhra Pradesh & Telangana cultural context where appropriate." },
+      { q: "Is it completely free?", a: "Completely free." },
+    ],
+    priority: 0.88,
+  },
+
+  {
+    id: "telugu-novena-prayer",
+    name: "Telugu Novena Prayer Generator (తెలుగు)",
+    desc: "Generate complete 9-day novena prayers in Telugu (తెలుగు) to any saint for healing, family, and special intentions.",
+    icon: "⭐",
+    category: "priest",
+    subCategory: "telugu-christian",
+    audience: "teacher",
+    model: "smart",
+    maxTokens: 700,
+    inputs: [
+      { id: "saint", label: "Saint / Intention", type: "text", placeholder: "e.g. St. Anthony, Our Lady of Perpetual Succour", required: true },
+      { id: "intention", label: "Special Intention", type: "text", placeholder: "e.g. healing, job, family peace" }
+    ],
+    promptTemplate: `Generate a complete 9-day Novena in Telugu language to {{saint}} for: {{intention}}.
+Write entirely in Telugu script. For each of 9 days: 1) Day number and theme, 2) Opening prayer, 3) Scripture verse, 4) Short reflection (50 words), 5) Novena prayer (100 words) to {{saint}}, 6) Response line. Reverent, devotional, Catholic.`,
+    seoTitle: "Free Telugu Novena Prayer Generator | Telugu Catholic Prayer | Forjit AI",
+    seoDesc: "Generate complete 9-day novena prayers in Telugu to any saint. Free AI Catholic Telugu prayer tool for Andhra Pradesh & Telangana believers. No login required.",
+    seoKeywords: ["telugu novena prayer free","Catholic novena in Telugu","Telugu saint prayer India","novena telugu language free","9-day prayer Telugu"],
+    faqs: [
+      { q: "Is the output written in Telugu script?", a: "Yes. The entire output is in Telugu (తెలుగు) script." },
+      { q: "Is this useful for Andhra Pradesh & Telangana churches?", a: "Yes. It's designed for Telugu-speaking Christian communities across Andhra Pradesh & Telangana." },
+      { q: "Can I use it for Catholic and Protestant churches?", a: "Yes. Select your denomination for appropriate content." },
+      { q: "Are Indian/local illustrations included?", a: "Yes. It uses Andhra Pradesh & Telangana cultural context where appropriate." },
+      { q: "Is it completely free?", a: "Completely free." },
+    ],
+    priority: 0.87,
+  },
+
+  {
+    id: "telugu-devotional-writer",
+    name: "Telugu Christian Devotional Writer (తెలుగు)",
+    desc: "Write daily Telugu (తెలుగు) Christian devotionals with scripture, reflection, application, and prayer for WhatsApp or print.",
+    icon: "🕯️",
+    category: "christian",
+    subCategory: "telugu-christian",
+    audience: "teacher",
+    model: "smart",
+    maxTokens: 650,
+    inputs: [
+      { id: "theme", label: "Theme", type: "text", placeholder: "e.g. Trust in God, Forgiveness, Hope", required: true },
+      { id: "scripture", label: "Scripture", type: "text", placeholder: "e.g. Psalm 23:1" },
+      { id: "length", label: "Length", type: "select", options: ["Short (200 words)","Standard (400 words)","Long (600 words)"] }
+    ],
+    promptTemplate: `Write a Telugu language Christian devotional.
+Theme: {{theme}} | Scripture: {{scripture}} | Length: {{length}}.
+Write entirely in Telugu script. Format: 1) Title, 2) Scripture, 3) Opening reflection, 4) Main devotional thought, 5) Today's application, 6) Closing prayer. Warm encouraging tone. Suitable for WhatsApp daily message or church bulletin.`,
+    seoTitle: "Free Telugu Christian Devotional Writer | Daily Telugu Devotion | Forjit AI",
+    seoDesc: "Write daily Telugu Christian devotionals for WhatsApp, church bulletins, and personal prayer. Free AI devotional generator for Andhra Pradesh & Telangana Christians. No login required.",
+    seoKeywords: ["telugu Christian devotional free","daily devotional in Telugu","Telugu devotion writer India","telugu WhatsApp devotional free","Christian Telugu daily prayer"],
+    faqs: [
+      { q: "Is the output written in Telugu script?", a: "Yes. The entire output is in Telugu (తెలుగు) script." },
+      { q: "Is this useful for Andhra Pradesh & Telangana churches?", a: "Yes. It's designed for Telugu-speaking Christian communities across Andhra Pradesh & Telangana." },
+      { q: "Can I use it for Catholic and Protestant churches?", a: "Yes. Select your denomination for appropriate content." },
+      { q: "Are Indian/local illustrations included?", a: "Yes. It uses Andhra Pradesh & Telangana cultural context where appropriate." },
+      { q: "Is it completely free?", a: "Completely free." },
+    ],
+    priority: 0.88,
+  },
+
+  {
+    id: "telugu-sunday-school-lesson",
+    name: "Telugu Sunday School Lesson Plan (తెలుగు)",
+    desc: "Full Telugu (తెలుగు) Sunday school lesson plans with Bible story, activities, memory verse, and prayer.",
+    icon: "🎨",
+    category: "christian",
+    subCategory: "telugu-christian",
+    audience: "teacher",
+    model: "smart",
+    maxTokens: 700,
+    inputs: [
+      { id: "topic", label: "Topic", type: "text", placeholder: "e.g. David and Goliath", required: true },
+      { id: "ageGroup", label: "Age Group", type: "select", options: ["3-5 yrs","6-8 yrs","9-12 yrs","Teens","Adults"] },
+      { id: "bibleStory", label: "Bible Story", type: "text", placeholder: "e.g. 1 Samuel 17" }
+    ],
+    promptTemplate: `Create a Telugu Sunday school lesson plan.
+Topic: {{topic}} | Bible: {{bibleStory}} | Age: {{ageGroup}}.
+Write entirely in Telugu script. Include: 1) Lesson aim, 2) Bible story summary, 3) Activities (2-3), 4) Discussion questions, 5) Memory verse, 6) Craft idea, 7) Closing prayer. Fun, age-appropriate, faith-building.`,
+    seoTitle: "Free Telugu Sunday School Lesson Plan | Telugu Church Children | Forjit AI",
+    seoDesc: "Create Telugu Sunday school lesson plans with Bible story, activities, memory verse and craft ideas. Free for Andhra Pradesh & Telangana church teachers. No login needed.",
+    seoKeywords: ["telugu Sunday school lesson plan free","Telugu Bible class children India","telugu church children lesson","Sunday school Telugu free","VBS lesson telugu"],
+    faqs: [
+      { q: "Is the output written in Telugu script?", a: "Yes. The entire output is in Telugu (తెలుగు) script." },
+      { q: "Is this useful for Andhra Pradesh & Telangana churches?", a: "Yes. It's designed for Telugu-speaking Christian communities across Andhra Pradesh & Telangana." },
+      { q: "Can I use it for Catholic and Protestant churches?", a: "Yes. Select your denomination for appropriate content." },
+      { q: "Are Indian/local illustrations included?", a: "Yes. It uses Andhra Pradesh & Telangana cultural context where appropriate." },
+      { q: "Is it completely free?", a: "Completely free." },
+    ],
+    priority: 0.87,
+  },
+
+  {
+    id: "telugu-parish-newsletter",
+    name: "Telugu Parish Newsletter Writer (తెలుగు)",
+    desc: "Write engaging Telugu (తెలుగు) parish newsletters with news, devotionals, events, and announcements for WhatsApp or print.",
+    icon: "📰",
+    category: "priest",
+    subCategory: "telugu-christian",
+    audience: "teacher",
+    model: "smart",
+    maxTokens: 700,
+    inputs: [
+      { id: "parishName", label: "Parish Name", type: "text", placeholder: "e.g. Sacred Heart Church", required: true },
+      { id: "items", label: "News / Events", type: "textarea", placeholder: "List events, announcements, special news…" },
+      { id: "month", label: "Month", type: "text", placeholder: "e.g. June 2025" }
+    ],
+    promptTemplate: `Write a Telugu language parish newsletter for {{parishName}}, {{month}}.
+Events/News: {{items}}.
+Write entirely in Telugu script. Structure: 1) Greeting from priest, 2) Spiritual reflection (150 words), 3) Parish news & announcements, 4) Events schedule, 5) Prayer intentions, 6) Closing blessing. Warm, community tone.`,
+    seoTitle: "Free Telugu Parish Newsletter Writer | Telugu Church Bulletin | Forjit AI",
+    seoDesc: "Write complete Telugu parish newsletters with news, devotionals, and events. Free AI tool for Andhra Pradesh & Telangana Catholic and Christian churches. No login required.",
+    seoKeywords: ["telugu parish newsletter free","Telugu church bulletin India","Catholic telugu newsletter","church WhatsApp Telugu message","telugu parish circular free"],
+    faqs: [
+      { q: "Is the output written in Telugu script?", a: "Yes. The entire output is in Telugu (తెలుగు) script." },
+      { q: "Is this useful for Andhra Pradesh & Telangana churches?", a: "Yes. It's designed for Telugu-speaking Christian communities across Andhra Pradesh & Telangana." },
+      { q: "Can I use it for Catholic and Protestant churches?", a: "Yes. Select your denomination for appropriate content." },
+      { q: "Are Indian/local illustrations included?", a: "Yes. It uses Andhra Pradesh & Telangana cultural context where appropriate." },
+      { q: "Is it completely free?", a: "Completely free." },
+    ],
+    priority: 0.86,
+  },
+
+  {
+    id: "telugu-funeral-eulogy",
+    name: "Telugu Funeral Eulogy Writer (తెలుగు)",
+    desc: "Write compassionate, dignified Telugu (తెలుగు) Christian funeral eulogies and orations for any denomination.",
+    icon: "🕊️",
+    category: "priest",
+    subCategory: "telugu-christian",
+    audience: "teacher",
+    model: "smart",
+    maxTokens: 650,
+    inputs: [
+      { id: "deceased", label: "Name of Deceased", type: "text", placeholder: "e.g. Thomas Mathew (age 72)", required: true },
+      { id: "details", label: "Key Life Details", type: "textarea", placeholder: "Family, faith, occupation, memorable qualities…" },
+      { id: "scripture", label: "Favourite Scripture", type: "text", placeholder: "e.g. John 14:1-6 (optional)" }
+    ],
+    promptTemplate: `Write a compassionate Telugu language Christian funeral eulogy for {{deceased}}.
+Life details: {{details}} | Scripture: {{scripture}}.
+Write entirely in Telugu script. Include: 1) Warm opening about the person, 2) Faith journey and legacy, 3) Scripture reflection, 4) Comfort for grieving family, 5) Hope of resurrection, 6) Closing blessing. Dignified, comforting. 5-7 minutes.`,
+    seoTitle: "Free Telugu Funeral Eulogy Writer | Telugu Christian Funeral | Forjit AI",
+    seoDesc: "Write compassionate Telugu Christian funeral eulogies and orations. Free AI tool for Andhra Pradesh & Telangana Catholic and Protestant pastors. No login required.",
+    seoKeywords: ["telugu funeral eulogy free","Christian funeral oration Telugu","Catholic funeral telugu","Telugu funeral speech India","funeral homily telugu free"],
+    faqs: [
+      { q: "Is the output written in Telugu script?", a: "Yes. The entire output is in Telugu (తెలుగు) script." },
+      { q: "Is this useful for Andhra Pradesh & Telangana churches?", a: "Yes. It's designed for Telugu-speaking Christian communities across Andhra Pradesh & Telangana." },
+      { q: "Can I use it for Catholic and Protestant churches?", a: "Yes. Select your denomination for appropriate content." },
+      { q: "Are Indian/local illustrations included?", a: "Yes. It uses Andhra Pradesh & Telangana cultural context where appropriate." },
+      { q: "Is it completely free?", a: "Completely free." },
+    ],
+    priority: 0.88,
+  },
+
+  {
+    id: "telugu-lenten-reflection",
+    name: "Telugu Lenten & Advent Reflection Writer (తెలుగు)",
+    desc: "Write daily Telugu (తెలుగు) Lenten and Advent reflections for WhatsApp groups, parish bulletins, and personal prayer.",
+    icon: "🌿",
+    category: "priest",
+    subCategory: "telugu-christian",
+    audience: "teacher",
+    model: "smart",
+    maxTokens: 600,
+    inputs: [
+      { id: "season", label: "Season", type: "select", options: ["Lent","Advent","Holy Week","Easter Season","Ordinary Time"] },
+      { id: "day", label: "Day / Week", type: "text", placeholder: "e.g. Day 1 of Lent, Palm Sunday" },
+      { id: "scripture", label: "Scripture", type: "text", placeholder: "e.g. Matthew 6:1-6 (optional)" }
+    ],
+    promptTemplate: `Write a Telugu language {{season}} daily reflection for {{day}}.
+Scripture: {{scripture}}.
+Write entirely in Telugu script. Format: 1) Title, 2) Scripture text, 3) Meditation (150-200 words), 4) Today's application, 5) Short prayer, 6) Daily challenge. Suitable for WhatsApp daily message. Warm, convicting, hope-filled.`,
+    seoTitle: "Free Telugu Lenten Reflection Writer | Telugu Advent Devotional | Forjit AI",
+    seoDesc: "Write daily Telugu Lenten and Advent reflections for WhatsApp and parish bulletins. Free AI tool for Andhra Pradesh & Telangana Catholic churches. No login required.",
+    seoKeywords: ["telugu Lenten reflection free","Advent devotional Telugu","Lent daily prayer telugu","Holy Week reflection Telugu","Catholic telugu Lent WhatsApp"],
+    faqs: [
+      { q: "Is the output written in Telugu script?", a: "Yes. The entire output is in Telugu (తెలుగు) script." },
+      { q: "Is this useful for Andhra Pradesh & Telangana churches?", a: "Yes. It's designed for Telugu-speaking Christian communities across Andhra Pradesh & Telangana." },
+      { q: "Can I use it for Catholic and Protestant churches?", a: "Yes. Select your denomination for appropriate content." },
+      { q: "Are Indian/local illustrations included?", a: "Yes. It uses Andhra Pradesh & Telangana cultural context where appropriate." },
+      { q: "Is it completely free?", a: "Completely free." },
+    ],
+    priority: 0.87,
+  },
+
+  {
+    id: "malayalam-homily-writer",
+    name: "Malayalam Homily Writer (മലയാളം)",
+    desc: "Write complete Sunday Mass homilies in Malayalam (മലയാളം) based on the day's scripture readings.",
+    icon: "✝️",
+    category: "priest",
+    subCategory: "malayalam-christian",
+    audience: "teacher",
+    model: "smart",
+    maxTokens: 700,
+    inputs: [
+      { id: "readings", label: "Scripture Readings", type: "text", placeholder: "e.g. Isaiah 55:1-11, John 6:1-15", required: true },
+      { id: "occasion", label: "Occasion", type: "text", placeholder: "e.g. Easter Sunday, 3rd Sunday Ordinary Time" },
+      { id: "denom", label: "Denomination", type: "select", options: ["Catholic","Protestant","Orthodox","Any"] }
+    ],
+    promptTemplate: `Write a complete Sunday homily in Malayalam language for: {{occasion}}.
+Readings: {{readings}} | Denomination: {{denom}}.
+Write entirely in Malayalam script. Structure: 1) Opening hook, 2) Exegesis of key reading, 3) Three theological points with scripture, 4) Indian/local context illustration, 5) Application, 6) Closing blessing. 8-10 minute delivery.`,
+    seoTitle: "Free Malayalam Homily Writer | Malayalam Catholic Priest Tool | Forjit AI",
+    seoDesc: "Write complete Sunday homilies in Malayalam for Catholic, Protestant and Orthodox churches. Free AI Malayalam homily generator for Kerala priests. No login needed.",
+    seoKeywords: ["malayalam homily writer free India","Malayalam Catholic homily Kerala","priest homily malayalam language","Sunday Mass homily Malayalam","malayalam sermon notes free"],
+    faqs: [
+      { q: "Is the output written in Malayalam script?", a: "Yes. The entire output is in Malayalam (മലയാളം) script." },
+      { q: "Is this useful for Kerala churches?", a: "Yes. It's designed for Malayalam-speaking Christian communities across Kerala." },
+      { q: "Can I use it for Catholic and Protestant churches?", a: "Yes. Select your denomination for appropriate content." },
+      { q: "Are Indian/local illustrations included?", a: "Yes. It uses Kerala cultural context where appropriate." },
+      { q: "Is it completely free?", a: "Completely free." },
+    ],
+    priority: 0.9,
+  },
+
+  {
+    id: "malayalam-sermon-notes",
+    name: "Malayalam Sermon Notes Maker (മലയാളം)",
+    desc: "Create structured Sunday sermon notes in Malayalam (മലയാളം) with introduction, three points, and closing prayer.",
+    icon: "🎤",
+    category: "christian",
+    subCategory: "malayalam-christian",
+    audience: "teacher",
+    model: "smart",
+    maxTokens: 700,
+    inputs: [
+      { id: "topic", label: "Sermon Topic", type: "text", placeholder: "e.g. The Grace of God", required: true },
+      { id: "bibleRef", label: "Bible Reference", type: "text", placeholder: "e.g. Ephesians 2:8-9" },
+      { id: "congType", label: "Congregation", type: "select", options: ["General","Youth","Children","New Believers","Senior"] }
+    ],
+    promptTemplate: `Create structured Sunday sermon notes in Malayalam language.
+Topic: {{topic}} | Scripture: {{bibleRef}} | Congregation: {{congType}}.
+Write entirely in Malayalam script. Structure: 1) Title, 2) Introduction/hook, 3) Three main points with scripture references, 4) Illustration for each point, 5) Application, 6) Closing prayer. Warm pastoral tone.`,
+    seoTitle: "Free Malayalam Sermon Notes Maker | Malayalam Pastor Tool | Forjit AI",
+    seoDesc: "Generate Sunday sermon notes in Malayalam with introduction, three points, illustrations, and prayer. Free AI tool for Kerala pastors and ministers. No login needed.",
+    seoKeywords: ["malayalam sermon notes maker free","Malayalam sermon generator India","pastor sermon malayalam language","malayalam church sermon free India","Sunday sermon Malayalam"],
+    faqs: [
+      { q: "Is the output written in Malayalam script?", a: "Yes. The entire output is in Malayalam (മലയാളം) script." },
+      { q: "Is this useful for Kerala churches?", a: "Yes. It's designed for Malayalam-speaking Christian communities across Kerala." },
+      { q: "Can I use it for Catholic and Protestant churches?", a: "Yes. Select your denomination for appropriate content." },
+      { q: "Are Indian/local illustrations included?", a: "Yes. It uses Kerala cultural context where appropriate." },
+      { q: "Is it completely free?", a: "Completely free." },
+    ],
+    priority: 0.89,
+  },
+
+  {
+    id: "malayalam-prayer-generator",
+    name: "Malayalam Christian Prayer Generator (മലയാളം)",
+    desc: "Write heartfelt Malayalam (മലയാളം) Christian prayers for Sunday service, weddings, funerals, and special occasions.",
+    icon: "🙏",
+    category: "christian",
+    subCategory: "malayalam-christian",
+    audience: "teacher",
+    model: "smart",
+    maxTokens: 500,
+    inputs: [
+      { id: "occasion", label: "Occasion", type: "select", options: ["Sunday Service","Funeral","Wedding","Baptism","Christmas","Easter","Thanksgiving","Morning Prayer","Evening Prayer"] },
+      { id: "tone", label: "Tone", type: "select", options: ["Formal Liturgical","Simple Conversational","Youth Style"] }
+    ],
+    promptTemplate: `Write a heartfelt Christian prayer in Malayalam language for: {{occasion}}.
+Tone: {{tone}}.
+Write entirely in Malayalam script. Include: 1) Opening praise, 2) Thanksgiving, 3) Intercession for the occasion, 4) Petition, 5) Closing in Jesus name. Sincere and biblically grounded.`,
+    seoTitle: "Free Malayalam Christian Prayer Generator | Malayalam Church Prayer | Forjit AI",
+    seoDesc: "Write heartfelt Malayalam Christian prayers for Sunday service, weddings, funerals and more. Free AI prayer generator for Kerala churches. No login required.",
+    seoKeywords: ["malayalam Christian prayer generator free","Malayalam church prayer India","prayer in Malayalam free","Christian prayer Kerala","malayalam Sunday service prayer"],
+    faqs: [
+      { q: "Is the output written in Malayalam script?", a: "Yes. The entire output is in Malayalam (മലയാളം) script." },
+      { q: "Is this useful for Kerala churches?", a: "Yes. It's designed for Malayalam-speaking Christian communities across Kerala." },
+      { q: "Can I use it for Catholic and Protestant churches?", a: "Yes. Select your denomination for appropriate content." },
+      { q: "Are Indian/local illustrations included?", a: "Yes. It uses Kerala cultural context where appropriate." },
+      { q: "Is it completely free?", a: "Completely free." },
+    ],
+    priority: 0.88,
+  },
+
+  {
+    id: "malayalam-bible-verse-explainer",
+    name: "Malayalam Bible Verse Explainer (മലയാളം)",
+    desc: "Get deep contextual explanations of any Bible verse in Malayalam (മലയാളം) — meaning, theology, and daily application.",
+    icon: "📖",
+    category: "christian",
+    subCategory: "malayalam-christian",
+    audience: "teacher",
+    model: "smart",
+    maxTokens: 650,
+    inputs: [
+      { id: "verse", label: "Bible Verse", type: "text", placeholder: "e.g. John 3:16 or Romans 8:28", required: true },
+      { id: "denomination", label: "Denomination", type: "select", options: ["Catholic","Protestant","Orthodox","Any"] }
+    ],
+    promptTemplate: `Explain this Bible verse in Malayalam language: {{verse}} ({{denomination}} perspective).
+Write entirely in Malayalam script. Include: 1) Historical context, 2) Word-by-word meaning, 3) Theological significance, 4) Application for daily life, 5) Related verses. Clear, devotional, academically grounded.`,
+    seoTitle: "Free Malayalam Bible Verse Explainer | Malayalam Bible Study | Forjit AI",
+    seoDesc: "Explain any Bible verse in Malayalam with context, theology, and daily application. Free AI Malayalam Bible study tool for Kerala Christians. No login needed.",
+    seoKeywords: ["malayalam Bible verse explainer free","Bible meaning in Malayalam","malayalam Bible study tool India","Malayalam Bible explanation free","Bible in malayalam India"],
+    faqs: [
+      { q: "Is the output written in Malayalam script?", a: "Yes. The entire output is in Malayalam (മലയാളം) script." },
+      { q: "Is this useful for Kerala churches?", a: "Yes. It's designed for Malayalam-speaking Christian communities across Kerala." },
+      { q: "Can I use it for Catholic and Protestant churches?", a: "Yes. Select your denomination for appropriate content." },
+      { q: "Are Indian/local illustrations included?", a: "Yes. It uses Kerala cultural context where appropriate." },
+      { q: "Is it completely free?", a: "Completely free." },
+    ],
+    priority: 0.88,
+  },
+
+  {
+    id: "malayalam-novena-prayer",
+    name: "Malayalam Novena Prayer Generator (മലയാളം)",
+    desc: "Generate complete 9-day novena prayers in Malayalam (മലയാളം) to any saint for healing, family, and special intentions.",
+    icon: "⭐",
+    category: "priest",
+    subCategory: "malayalam-christian",
+    audience: "teacher",
+    model: "smart",
+    maxTokens: 700,
+    inputs: [
+      { id: "saint", label: "Saint / Intention", type: "text", placeholder: "e.g. St. Anthony, Our Lady of Perpetual Succour", required: true },
+      { id: "intention", label: "Special Intention", type: "text", placeholder: "e.g. healing, job, family peace" }
+    ],
+    promptTemplate: `Generate a complete 9-day Novena in Malayalam language to {{saint}} for: {{intention}}.
+Write entirely in Malayalam script. For each of 9 days: 1) Day number and theme, 2) Opening prayer, 3) Scripture verse, 4) Short reflection (50 words), 5) Novena prayer (100 words) to {{saint}}, 6) Response line. Reverent, devotional, Catholic.`,
+    seoTitle: "Free Malayalam Novena Prayer Generator | Malayalam Catholic Prayer | Forjit AI",
+    seoDesc: "Generate complete 9-day novena prayers in Malayalam to any saint. Free AI Catholic Malayalam prayer tool for Kerala believers. No login required.",
+    seoKeywords: ["malayalam novena prayer free","Catholic novena in Malayalam","Malayalam saint prayer India","novena malayalam language free","9-day prayer Malayalam"],
+    faqs: [
+      { q: "Is the output written in Malayalam script?", a: "Yes. The entire output is in Malayalam (മലയാളം) script." },
+      { q: "Is this useful for Kerala churches?", a: "Yes. It's designed for Malayalam-speaking Christian communities across Kerala." },
+      { q: "Can I use it for Catholic and Protestant churches?", a: "Yes. Select your denomination for appropriate content." },
+      { q: "Are Indian/local illustrations included?", a: "Yes. It uses Kerala cultural context where appropriate." },
+      { q: "Is it completely free?", a: "Completely free." },
+    ],
+    priority: 0.87,
+  },
+
+  {
+    id: "malayalam-devotional-writer",
+    name: "Malayalam Christian Devotional Writer (മലയാളം)",
+    desc: "Write daily Malayalam (മലയാളം) Christian devotionals with scripture, reflection, application, and prayer for WhatsApp or print.",
+    icon: "🕯️",
+    category: "christian",
+    subCategory: "malayalam-christian",
+    audience: "teacher",
+    model: "smart",
+    maxTokens: 650,
+    inputs: [
+      { id: "theme", label: "Theme", type: "text", placeholder: "e.g. Trust in God, Forgiveness, Hope", required: true },
+      { id: "scripture", label: "Scripture", type: "text", placeholder: "e.g. Psalm 23:1" },
+      { id: "length", label: "Length", type: "select", options: ["Short (200 words)","Standard (400 words)","Long (600 words)"] }
+    ],
+    promptTemplate: `Write a Malayalam language Christian devotional.
+Theme: {{theme}} | Scripture: {{scripture}} | Length: {{length}}.
+Write entirely in Malayalam script. Format: 1) Title, 2) Scripture, 3) Opening reflection, 4) Main devotional thought, 5) Today's application, 6) Closing prayer. Warm encouraging tone. Suitable for WhatsApp daily message or church bulletin.`,
+    seoTitle: "Free Malayalam Christian Devotional Writer | Daily Malayalam Devotion | Forjit AI",
+    seoDesc: "Write daily Malayalam Christian devotionals for WhatsApp, church bulletins, and personal prayer. Free AI devotional generator for Kerala Christians. No login required.",
+    seoKeywords: ["malayalam Christian devotional free","daily devotional in Malayalam","Malayalam devotion writer India","malayalam WhatsApp devotional free","Christian Malayalam daily prayer"],
+    faqs: [
+      { q: "Is the output written in Malayalam script?", a: "Yes. The entire output is in Malayalam (മലയാളം) script." },
+      { q: "Is this useful for Kerala churches?", a: "Yes. It's designed for Malayalam-speaking Christian communities across Kerala." },
+      { q: "Can I use it for Catholic and Protestant churches?", a: "Yes. Select your denomination for appropriate content." },
+      { q: "Are Indian/local illustrations included?", a: "Yes. It uses Kerala cultural context where appropriate." },
+      { q: "Is it completely free?", a: "Completely free." },
+    ],
+    priority: 0.88,
+  },
+
+  {
+    id: "malayalam-sunday-school-lesson",
+    name: "Malayalam Sunday School Lesson Plan (മലയാളം)",
+    desc: "Full Malayalam (മലയാളം) Sunday school lesson plans with Bible story, activities, memory verse, and prayer.",
+    icon: "🎨",
+    category: "christian",
+    subCategory: "malayalam-christian",
+    audience: "teacher",
+    model: "smart",
+    maxTokens: 700,
+    inputs: [
+      { id: "topic", label: "Topic", type: "text", placeholder: "e.g. David and Goliath", required: true },
+      { id: "ageGroup", label: "Age Group", type: "select", options: ["3-5 yrs","6-8 yrs","9-12 yrs","Teens","Adults"] },
+      { id: "bibleStory", label: "Bible Story", type: "text", placeholder: "e.g. 1 Samuel 17" }
+    ],
+    promptTemplate: `Create a Malayalam Sunday school lesson plan.
+Topic: {{topic}} | Bible: {{bibleStory}} | Age: {{ageGroup}}.
+Write entirely in Malayalam script. Include: 1) Lesson aim, 2) Bible story summary, 3) Activities (2-3), 4) Discussion questions, 5) Memory verse, 6) Craft idea, 7) Closing prayer. Fun, age-appropriate, faith-building.`,
+    seoTitle: "Free Malayalam Sunday School Lesson Plan | Malayalam Church Children | Forjit AI",
+    seoDesc: "Create Malayalam Sunday school lesson plans with Bible story, activities, memory verse and craft ideas. Free for Kerala church teachers. No login needed.",
+    seoKeywords: ["malayalam Sunday school lesson plan free","Malayalam Bible class children India","malayalam church children lesson","Sunday school Malayalam free","VBS lesson malayalam"],
+    faqs: [
+      { q: "Is the output written in Malayalam script?", a: "Yes. The entire output is in Malayalam (മലയാളം) script." },
+      { q: "Is this useful for Kerala churches?", a: "Yes. It's designed for Malayalam-speaking Christian communities across Kerala." },
+      { q: "Can I use it for Catholic and Protestant churches?", a: "Yes. Select your denomination for appropriate content." },
+      { q: "Are Indian/local illustrations included?", a: "Yes. It uses Kerala cultural context where appropriate." },
+      { q: "Is it completely free?", a: "Completely free." },
+    ],
+    priority: 0.87,
+  },
+
+  {
+    id: "malayalam-parish-newsletter",
+    name: "Malayalam Parish Newsletter Writer (മലയാളം)",
+    desc: "Write engaging Malayalam (മലയാളം) parish newsletters with news, devotionals, events, and announcements for WhatsApp or print.",
+    icon: "📰",
+    category: "priest",
+    subCategory: "malayalam-christian",
+    audience: "teacher",
+    model: "smart",
+    maxTokens: 700,
+    inputs: [
+      { id: "parishName", label: "Parish Name", type: "text", placeholder: "e.g. Sacred Heart Church", required: true },
+      { id: "items", label: "News / Events", type: "textarea", placeholder: "List events, announcements, special news…" },
+      { id: "month", label: "Month", type: "text", placeholder: "e.g. June 2025" }
+    ],
+    promptTemplate: `Write a Malayalam language parish newsletter for {{parishName}}, {{month}}.
+Events/News: {{items}}.
+Write entirely in Malayalam script. Structure: 1) Greeting from priest, 2) Spiritual reflection (150 words), 3) Parish news & announcements, 4) Events schedule, 5) Prayer intentions, 6) Closing blessing. Warm, community tone.`,
+    seoTitle: "Free Malayalam Parish Newsletter Writer | Malayalam Church Bulletin | Forjit AI",
+    seoDesc: "Write complete Malayalam parish newsletters with news, devotionals, and events. Free AI tool for Kerala Catholic and Christian churches. No login required.",
+    seoKeywords: ["malayalam parish newsletter free","Malayalam church bulletin India","Catholic malayalam newsletter","church WhatsApp Malayalam message","malayalam parish circular free"],
+    faqs: [
+      { q: "Is the output written in Malayalam script?", a: "Yes. The entire output is in Malayalam (മലയാളം) script." },
+      { q: "Is this useful for Kerala churches?", a: "Yes. It's designed for Malayalam-speaking Christian communities across Kerala." },
+      { q: "Can I use it for Catholic and Protestant churches?", a: "Yes. Select your denomination for appropriate content." },
+      { q: "Are Indian/local illustrations included?", a: "Yes. It uses Kerala cultural context where appropriate." },
+      { q: "Is it completely free?", a: "Completely free." },
+    ],
+    priority: 0.86,
+  },
+
+  {
+    id: "malayalam-funeral-eulogy",
+    name: "Malayalam Funeral Eulogy Writer (മലയാളം)",
+    desc: "Write compassionate, dignified Malayalam (മലയാളം) Christian funeral eulogies and orations for any denomination.",
+    icon: "🕊️",
+    category: "priest",
+    subCategory: "malayalam-christian",
+    audience: "teacher",
+    model: "smart",
+    maxTokens: 650,
+    inputs: [
+      { id: "deceased", label: "Name of Deceased", type: "text", placeholder: "e.g. Thomas Mathew (age 72)", required: true },
+      { id: "details", label: "Key Life Details", type: "textarea", placeholder: "Family, faith, occupation, memorable qualities…" },
+      { id: "scripture", label: "Favourite Scripture", type: "text", placeholder: "e.g. John 14:1-6 (optional)" }
+    ],
+    promptTemplate: `Write a compassionate Malayalam language Christian funeral eulogy for {{deceased}}.
+Life details: {{details}} | Scripture: {{scripture}}.
+Write entirely in Malayalam script. Include: 1) Warm opening about the person, 2) Faith journey and legacy, 3) Scripture reflection, 4) Comfort for grieving family, 5) Hope of resurrection, 6) Closing blessing. Dignified, comforting. 5-7 minutes.`,
+    seoTitle: "Free Malayalam Funeral Eulogy Writer | Malayalam Christian Funeral | Forjit AI",
+    seoDesc: "Write compassionate Malayalam Christian funeral eulogies and orations. Free AI tool for Kerala Catholic and Protestant pastors. No login required.",
+    seoKeywords: ["malayalam funeral eulogy free","Christian funeral oration Malayalam","Catholic funeral malayalam","Malayalam funeral speech India","funeral homily malayalam free"],
+    faqs: [
+      { q: "Is the output written in Malayalam script?", a: "Yes. The entire output is in Malayalam (മലയാളം) script." },
+      { q: "Is this useful for Kerala churches?", a: "Yes. It's designed for Malayalam-speaking Christian communities across Kerala." },
+      { q: "Can I use it for Catholic and Protestant churches?", a: "Yes. Select your denomination for appropriate content." },
+      { q: "Are Indian/local illustrations included?", a: "Yes. It uses Kerala cultural context where appropriate." },
+      { q: "Is it completely free?", a: "Completely free." },
+    ],
+    priority: 0.88,
+  },
+
+  {
+    id: "malayalam-lenten-reflection",
+    name: "Malayalam Lenten & Advent Reflection Writer (മലയാളം)",
+    desc: "Write daily Malayalam (മലയാളം) Lenten and Advent reflections for WhatsApp groups, parish bulletins, and personal prayer.",
+    icon: "🌿",
+    category: "priest",
+    subCategory: "malayalam-christian",
+    audience: "teacher",
+    model: "smart",
+    maxTokens: 600,
+    inputs: [
+      { id: "season", label: "Season", type: "select", options: ["Lent","Advent","Holy Week","Easter Season","Ordinary Time"] },
+      { id: "day", label: "Day / Week", type: "text", placeholder: "e.g. Day 1 of Lent, Palm Sunday" },
+      { id: "scripture", label: "Scripture", type: "text", placeholder: "e.g. Matthew 6:1-6 (optional)" }
+    ],
+    promptTemplate: `Write a Malayalam language {{season}} daily reflection for {{day}}.
+Scripture: {{scripture}}.
+Write entirely in Malayalam script. Format: 1) Title, 2) Scripture text, 3) Meditation (150-200 words), 4) Today's application, 5) Short prayer, 6) Daily challenge. Suitable for WhatsApp daily message. Warm, convicting, hope-filled.`,
+    seoTitle: "Free Malayalam Lenten Reflection Writer | Malayalam Advent Devotional | Forjit AI",
+    seoDesc: "Write daily Malayalam Lenten and Advent reflections for WhatsApp and parish bulletins. Free AI tool for Kerala Catholic churches. No login required.",
+    seoKeywords: ["malayalam Lenten reflection free","Advent devotional Malayalam","Lent daily prayer malayalam","Holy Week reflection Malayalam","Catholic malayalam Lent WhatsApp"],
+    faqs: [
+      { q: "Is the output written in Malayalam script?", a: "Yes. The entire output is in Malayalam (മലയാളം) script." },
+      { q: "Is this useful for Kerala churches?", a: "Yes. It's designed for Malayalam-speaking Christian communities across Kerala." },
+      { q: "Can I use it for Catholic and Protestant churches?", a: "Yes. Select your denomination for appropriate content." },
+      { q: "Are Indian/local illustrations included?", a: "Yes. It uses Kerala cultural context where appropriate." },
+      { q: "Is it completely free?", a: "Completely free." },
+    ],
+    priority: 0.87,
+  },
+
+  {
+    id: "hindi-homily-writer",
+    name: "Hindi Homily Writer (हिंदी)",
+    desc: "Write complete Sunday Mass homilies in Hindi (हिंदी) based on the day's scripture readings.",
+    icon: "✝️",
+    category: "priest",
+    subCategory: "hindi-christian",
+    audience: "teacher",
+    model: "smart",
+    maxTokens: 700,
+    inputs: [
+      { id: "readings", label: "Scripture Readings", type: "text", placeholder: "e.g. Isaiah 55:1-11, John 6:1-15", required: true },
+      { id: "occasion", label: "Occasion", type: "text", placeholder: "e.g. Easter Sunday, 3rd Sunday Ordinary Time" },
+      { id: "denom", label: "Denomination", type: "select", options: ["Catholic","Protestant","Orthodox","Any"] }
+    ],
+    promptTemplate: `Write a complete Sunday homily in Hindi language for: {{occasion}}.
+Readings: {{readings}} | Denomination: {{denom}}.
+Write entirely in Hindi script. Structure: 1) Opening hook, 2) Exegesis of key reading, 3) Three theological points with scripture, 4) Indian/local context illustration, 5) Application, 6) Closing blessing. 8-10 minute delivery.`,
+    seoTitle: "Free Hindi Homily Writer | Hindi Catholic Priest Tool | Forjit AI",
+    seoDesc: "Write complete Sunday homilies in Hindi for Catholic, Protestant and Orthodox churches. Free AI Hindi homily generator for North India priests. No login needed.",
+    seoKeywords: ["hindi homily writer free India","Hindi Catholic homily North India","priest homily hindi language","Sunday Mass homily Hindi","hindi sermon notes free"],
+    faqs: [
+      { q: "Is the output written in Hindi script?", a: "Yes. The entire output is in Hindi (हिंदी) script." },
+      { q: "Is this useful for North India churches?", a: "Yes. It's designed for Hindi-speaking Christian communities across North India." },
+      { q: "Can I use it for Catholic and Protestant churches?", a: "Yes. Select your denomination for appropriate content." },
+      { q: "Are Indian/local illustrations included?", a: "Yes. It uses North India cultural context where appropriate." },
+      { q: "Is it completely free?", a: "Completely free." },
+    ],
+    priority: 0.9,
+  },
+
+  {
+    id: "hindi-sermon-notes",
+    name: "Hindi Sermon Notes Maker (हिंदी)",
+    desc: "Create structured Sunday sermon notes in Hindi (हिंदी) with introduction, three points, and closing prayer.",
+    icon: "🎤",
+    category: "christian",
+    subCategory: "hindi-christian",
+    audience: "teacher",
+    model: "smart",
+    maxTokens: 700,
+    inputs: [
+      { id: "topic", label: "Sermon Topic", type: "text", placeholder: "e.g. The Grace of God", required: true },
+      { id: "bibleRef", label: "Bible Reference", type: "text", placeholder: "e.g. Ephesians 2:8-9" },
+      { id: "congType", label: "Congregation", type: "select", options: ["General","Youth","Children","New Believers","Senior"] }
+    ],
+    promptTemplate: `Create structured Sunday sermon notes in Hindi language.
+Topic: {{topic}} | Scripture: {{bibleRef}} | Congregation: {{congType}}.
+Write entirely in Hindi script. Structure: 1) Title, 2) Introduction/hook, 3) Three main points with scripture references, 4) Illustration for each point, 5) Application, 6) Closing prayer. Warm pastoral tone.`,
+    seoTitle: "Free Hindi Sermon Notes Maker | Hindi Pastor Tool | Forjit AI",
+    seoDesc: "Generate Sunday sermon notes in Hindi with introduction, three points, illustrations, and prayer. Free AI tool for North India pastors and ministers. No login needed.",
+    seoKeywords: ["hindi sermon notes maker free","Hindi sermon generator India","pastor sermon hindi language","hindi church sermon free India","Sunday sermon Hindi"],
+    faqs: [
+      { q: "Is the output written in Hindi script?", a: "Yes. The entire output is in Hindi (हिंदी) script." },
+      { q: "Is this useful for North India churches?", a: "Yes. It's designed for Hindi-speaking Christian communities across North India." },
+      { q: "Can I use it for Catholic and Protestant churches?", a: "Yes. Select your denomination for appropriate content." },
+      { q: "Are Indian/local illustrations included?", a: "Yes. It uses North India cultural context where appropriate." },
+      { q: "Is it completely free?", a: "Completely free." },
+    ],
+    priority: 0.89,
+  },
+
+  {
+    id: "hindi-prayer-generator",
+    name: "Hindi Christian Prayer Generator (हिंदी)",
+    desc: "Write heartfelt Hindi (हिंदी) Christian prayers for Sunday service, weddings, funerals, and special occasions.",
+    icon: "🙏",
+    category: "christian",
+    subCategory: "hindi-christian",
+    audience: "teacher",
+    model: "smart",
+    maxTokens: 500,
+    inputs: [
+      { id: "occasion", label: "Occasion", type: "select", options: ["Sunday Service","Funeral","Wedding","Baptism","Christmas","Easter","Thanksgiving","Morning Prayer","Evening Prayer"] },
+      { id: "tone", label: "Tone", type: "select", options: ["Formal Liturgical","Simple Conversational","Youth Style"] }
+    ],
+    promptTemplate: `Write a heartfelt Christian prayer in Hindi language for: {{occasion}}.
+Tone: {{tone}}.
+Write entirely in Hindi script. Include: 1) Opening praise, 2) Thanksgiving, 3) Intercession for the occasion, 4) Petition, 5) Closing in Jesus name. Sincere and biblically grounded.`,
+    seoTitle: "Free Hindi Christian Prayer Generator | Hindi Church Prayer | Forjit AI",
+    seoDesc: "Write heartfelt Hindi Christian prayers for Sunday service, weddings, funerals and more. Free AI prayer generator for North India churches. No login required.",
+    seoKeywords: ["hindi Christian prayer generator free","Hindi church prayer India","prayer in Hindi free","Christian prayer North India","hindi Sunday service prayer"],
+    faqs: [
+      { q: "Is the output written in Hindi script?", a: "Yes. The entire output is in Hindi (हिंदी) script." },
+      { q: "Is this useful for North India churches?", a: "Yes. It's designed for Hindi-speaking Christian communities across North India." },
+      { q: "Can I use it for Catholic and Protestant churches?", a: "Yes. Select your denomination for appropriate content." },
+      { q: "Are Indian/local illustrations included?", a: "Yes. It uses North India cultural context where appropriate." },
+      { q: "Is it completely free?", a: "Completely free." },
+    ],
+    priority: 0.88,
+  },
+
+  {
+    id: "hindi-bible-verse-explainer",
+    name: "Hindi Bible Verse Explainer (हिंदी)",
+    desc: "Get deep contextual explanations of any Bible verse in Hindi (हिंदी) — meaning, theology, and daily application.",
+    icon: "📖",
+    category: "christian",
+    subCategory: "hindi-christian",
+    audience: "teacher",
+    model: "smart",
+    maxTokens: 650,
+    inputs: [
+      { id: "verse", label: "Bible Verse", type: "text", placeholder: "e.g. John 3:16 or Romans 8:28", required: true },
+      { id: "denomination", label: "Denomination", type: "select", options: ["Catholic","Protestant","Orthodox","Any"] }
+    ],
+    promptTemplate: `Explain this Bible verse in Hindi language: {{verse}} ({{denomination}} perspective).
+Write entirely in Hindi script. Include: 1) Historical context, 2) Word-by-word meaning, 3) Theological significance, 4) Application for daily life, 5) Related verses. Clear, devotional, academically grounded.`,
+    seoTitle: "Free Hindi Bible Verse Explainer | Hindi Bible Study | Forjit AI",
+    seoDesc: "Explain any Bible verse in Hindi with context, theology, and daily application. Free AI Hindi Bible study tool for North India Christians. No login needed.",
+    seoKeywords: ["hindi Bible verse explainer free","Bible meaning in Hindi","hindi Bible study tool India","Hindi Bible explanation free","Bible in hindi India"],
+    faqs: [
+      { q: "Is the output written in Hindi script?", a: "Yes. The entire output is in Hindi (हिंदी) script." },
+      { q: "Is this useful for North India churches?", a: "Yes. It's designed for Hindi-speaking Christian communities across North India." },
+      { q: "Can I use it for Catholic and Protestant churches?", a: "Yes. Select your denomination for appropriate content." },
+      { q: "Are Indian/local illustrations included?", a: "Yes. It uses North India cultural context where appropriate." },
+      { q: "Is it completely free?", a: "Completely free." },
+    ],
+    priority: 0.88,
+  },
+
+  {
+    id: "hindi-novena-prayer",
+    name: "Hindi Novena Prayer Generator (हिंदी)",
+    desc: "Generate complete 9-day novena prayers in Hindi (हिंदी) to any saint for healing, family, and special intentions.",
+    icon: "⭐",
+    category: "priest",
+    subCategory: "hindi-christian",
+    audience: "teacher",
+    model: "smart",
+    maxTokens: 700,
+    inputs: [
+      { id: "saint", label: "Saint / Intention", type: "text", placeholder: "e.g. St. Anthony, Our Lady of Perpetual Succour", required: true },
+      { id: "intention", label: "Special Intention", type: "text", placeholder: "e.g. healing, job, family peace" }
+    ],
+    promptTemplate: `Generate a complete 9-day Novena in Hindi language to {{saint}} for: {{intention}}.
+Write entirely in Hindi script. For each of 9 days: 1) Day number and theme, 2) Opening prayer, 3) Scripture verse, 4) Short reflection (50 words), 5) Novena prayer (100 words) to {{saint}}, 6) Response line. Reverent, devotional, Catholic.`,
+    seoTitle: "Free Hindi Novena Prayer Generator | Hindi Catholic Prayer | Forjit AI",
+    seoDesc: "Generate complete 9-day novena prayers in Hindi to any saint. Free AI Catholic Hindi prayer tool for North India believers. No login required.",
+    seoKeywords: ["hindi novena prayer free","Catholic novena in Hindi","Hindi saint prayer India","novena hindi language free","9-day prayer Hindi"],
+    faqs: [
+      { q: "Is the output written in Hindi script?", a: "Yes. The entire output is in Hindi (हिंदी) script." },
+      { q: "Is this useful for North India churches?", a: "Yes. It's designed for Hindi-speaking Christian communities across North India." },
+      { q: "Can I use it for Catholic and Protestant churches?", a: "Yes. Select your denomination for appropriate content." },
+      { q: "Are Indian/local illustrations included?", a: "Yes. It uses North India cultural context where appropriate." },
+      { q: "Is it completely free?", a: "Completely free." },
+    ],
+    priority: 0.87,
+  },
+
+  {
+    id: "hindi-devotional-writer",
+    name: "Hindi Christian Devotional Writer (हिंदी)",
+    desc: "Write daily Hindi (हिंदी) Christian devotionals with scripture, reflection, application, and prayer for WhatsApp or print.",
+    icon: "🕯️",
+    category: "christian",
+    subCategory: "hindi-christian",
+    audience: "teacher",
+    model: "smart",
+    maxTokens: 650,
+    inputs: [
+      { id: "theme", label: "Theme", type: "text", placeholder: "e.g. Trust in God, Forgiveness, Hope", required: true },
+      { id: "scripture", label: "Scripture", type: "text", placeholder: "e.g. Psalm 23:1" },
+      { id: "length", label: "Length", type: "select", options: ["Short (200 words)","Standard (400 words)","Long (600 words)"] }
+    ],
+    promptTemplate: `Write a Hindi language Christian devotional.
+Theme: {{theme}} | Scripture: {{scripture}} | Length: {{length}}.
+Write entirely in Hindi script. Format: 1) Title, 2) Scripture, 3) Opening reflection, 4) Main devotional thought, 5) Today's application, 6) Closing prayer. Warm encouraging tone. Suitable for WhatsApp daily message or church bulletin.`,
+    seoTitle: "Free Hindi Christian Devotional Writer | Daily Hindi Devotion | Forjit AI",
+    seoDesc: "Write daily Hindi Christian devotionals for WhatsApp, church bulletins, and personal prayer. Free AI devotional generator for North India Christians. No login required.",
+    seoKeywords: ["hindi Christian devotional free","daily devotional in Hindi","Hindi devotion writer India","hindi WhatsApp devotional free","Christian Hindi daily prayer"],
+    faqs: [
+      { q: "Is the output written in Hindi script?", a: "Yes. The entire output is in Hindi (हिंदी) script." },
+      { q: "Is this useful for North India churches?", a: "Yes. It's designed for Hindi-speaking Christian communities across North India." },
+      { q: "Can I use it for Catholic and Protestant churches?", a: "Yes. Select your denomination for appropriate content." },
+      { q: "Are Indian/local illustrations included?", a: "Yes. It uses North India cultural context where appropriate." },
+      { q: "Is it completely free?", a: "Completely free." },
+    ],
+    priority: 0.88,
+  },
+
+  {
+    id: "hindi-sunday-school-lesson",
+    name: "Hindi Sunday School Lesson Plan (हिंदी)",
+    desc: "Full Hindi (हिंदी) Sunday school lesson plans with Bible story, activities, memory verse, and prayer.",
+    icon: "🎨",
+    category: "christian",
+    subCategory: "hindi-christian",
+    audience: "teacher",
+    model: "smart",
+    maxTokens: 700,
+    inputs: [
+      { id: "topic", label: "Topic", type: "text", placeholder: "e.g. David and Goliath", required: true },
+      { id: "ageGroup", label: "Age Group", type: "select", options: ["3-5 yrs","6-8 yrs","9-12 yrs","Teens","Adults"] },
+      { id: "bibleStory", label: "Bible Story", type: "text", placeholder: "e.g. 1 Samuel 17" }
+    ],
+    promptTemplate: `Create a Hindi Sunday school lesson plan.
+Topic: {{topic}} | Bible: {{bibleStory}} | Age: {{ageGroup}}.
+Write entirely in Hindi script. Include: 1) Lesson aim, 2) Bible story summary, 3) Activities (2-3), 4) Discussion questions, 5) Memory verse, 6) Craft idea, 7) Closing prayer. Fun, age-appropriate, faith-building.`,
+    seoTitle: "Free Hindi Sunday School Lesson Plan | Hindi Church Children | Forjit AI",
+    seoDesc: "Create Hindi Sunday school lesson plans with Bible story, activities, memory verse and craft ideas. Free for North India church teachers. No login needed.",
+    seoKeywords: ["hindi Sunday school lesson plan free","Hindi Bible class children India","hindi church children lesson","Sunday school Hindi free","VBS lesson hindi"],
+    faqs: [
+      { q: "Is the output written in Hindi script?", a: "Yes. The entire output is in Hindi (हिंदी) script." },
+      { q: "Is this useful for North India churches?", a: "Yes. It's designed for Hindi-speaking Christian communities across North India." },
+      { q: "Can I use it for Catholic and Protestant churches?", a: "Yes. Select your denomination for appropriate content." },
+      { q: "Are Indian/local illustrations included?", a: "Yes. It uses North India cultural context where appropriate." },
+      { q: "Is it completely free?", a: "Completely free." },
+    ],
+    priority: 0.87,
+  },
+
+  {
+    id: "hindi-parish-newsletter",
+    name: "Hindi Parish Newsletter Writer (हिंदी)",
+    desc: "Write engaging Hindi (हिंदी) parish newsletters with news, devotionals, events, and announcements for WhatsApp or print.",
+    icon: "📰",
+    category: "priest",
+    subCategory: "hindi-christian",
+    audience: "teacher",
+    model: "smart",
+    maxTokens: 700,
+    inputs: [
+      { id: "parishName", label: "Parish Name", type: "text", placeholder: "e.g. Sacred Heart Church", required: true },
+      { id: "items", label: "News / Events", type: "textarea", placeholder: "List events, announcements, special news…" },
+      { id: "month", label: "Month", type: "text", placeholder: "e.g. June 2025" }
+    ],
+    promptTemplate: `Write a Hindi language parish newsletter for {{parishName}}, {{month}}.
+Events/News: {{items}}.
+Write entirely in Hindi script. Structure: 1) Greeting from priest, 2) Spiritual reflection (150 words), 3) Parish news & announcements, 4) Events schedule, 5) Prayer intentions, 6) Closing blessing. Warm, community tone.`,
+    seoTitle: "Free Hindi Parish Newsletter Writer | Hindi Church Bulletin | Forjit AI",
+    seoDesc: "Write complete Hindi parish newsletters with news, devotionals, and events. Free AI tool for North India Catholic and Christian churches. No login required.",
+    seoKeywords: ["hindi parish newsletter free","Hindi church bulletin India","Catholic hindi newsletter","church WhatsApp Hindi message","hindi parish circular free"],
+    faqs: [
+      { q: "Is the output written in Hindi script?", a: "Yes. The entire output is in Hindi (हिंदी) script." },
+      { q: "Is this useful for North India churches?", a: "Yes. It's designed for Hindi-speaking Christian communities across North India." },
+      { q: "Can I use it for Catholic and Protestant churches?", a: "Yes. Select your denomination for appropriate content." },
+      { q: "Are Indian/local illustrations included?", a: "Yes. It uses North India cultural context where appropriate." },
+      { q: "Is it completely free?", a: "Completely free." },
+    ],
+    priority: 0.86,
+  },
+
+  {
+    id: "hindi-funeral-eulogy",
+    name: "Hindi Funeral Eulogy Writer (हिंदी)",
+    desc: "Write compassionate, dignified Hindi (हिंदी) Christian funeral eulogies and orations for any denomination.",
+    icon: "🕊️",
+    category: "priest",
+    subCategory: "hindi-christian",
+    audience: "teacher",
+    model: "smart",
+    maxTokens: 650,
+    inputs: [
+      { id: "deceased", label: "Name of Deceased", type: "text", placeholder: "e.g. Thomas Mathew (age 72)", required: true },
+      { id: "details", label: "Key Life Details", type: "textarea", placeholder: "Family, faith, occupation, memorable qualities…" },
+      { id: "scripture", label: "Favourite Scripture", type: "text", placeholder: "e.g. John 14:1-6 (optional)" }
+    ],
+    promptTemplate: `Write a compassionate Hindi language Christian funeral eulogy for {{deceased}}.
+Life details: {{details}} | Scripture: {{scripture}}.
+Write entirely in Hindi script. Include: 1) Warm opening about the person, 2) Faith journey and legacy, 3) Scripture reflection, 4) Comfort for grieving family, 5) Hope of resurrection, 6) Closing blessing. Dignified, comforting. 5-7 minutes.`,
+    seoTitle: "Free Hindi Funeral Eulogy Writer | Hindi Christian Funeral | Forjit AI",
+    seoDesc: "Write compassionate Hindi Christian funeral eulogies and orations. Free AI tool for North India Catholic and Protestant pastors. No login required.",
+    seoKeywords: ["hindi funeral eulogy free","Christian funeral oration Hindi","Catholic funeral hindi","Hindi funeral speech India","funeral homily hindi free"],
+    faqs: [
+      { q: "Is the output written in Hindi script?", a: "Yes. The entire output is in Hindi (हिंदी) script." },
+      { q: "Is this useful for North India churches?", a: "Yes. It's designed for Hindi-speaking Christian communities across North India." },
+      { q: "Can I use it for Catholic and Protestant churches?", a: "Yes. Select your denomination for appropriate content." },
+      { q: "Are Indian/local illustrations included?", a: "Yes. It uses North India cultural context where appropriate." },
+      { q: "Is it completely free?", a: "Completely free." },
+    ],
+    priority: 0.88,
+  },
+
+  {
+    id: "hindi-lenten-reflection",
+    name: "Hindi Lenten & Advent Reflection Writer (हिंदी)",
+    desc: "Write daily Hindi (हिंदी) Lenten and Advent reflections for WhatsApp groups, parish bulletins, and personal prayer.",
+    icon: "🌿",
+    category: "priest",
+    subCategory: "hindi-christian",
+    audience: "teacher",
+    model: "smart",
+    maxTokens: 600,
+    inputs: [
+      { id: "season", label: "Season", type: "select", options: ["Lent","Advent","Holy Week","Easter Season","Ordinary Time"] },
+      { id: "day", label: "Day / Week", type: "text", placeholder: "e.g. Day 1 of Lent, Palm Sunday" },
+      { id: "scripture", label: "Scripture", type: "text", placeholder: "e.g. Matthew 6:1-6 (optional)" }
+    ],
+    promptTemplate: `Write a Hindi language {{season}} daily reflection for {{day}}.
+Scripture: {{scripture}}.
+Write entirely in Hindi script. Format: 1) Title, 2) Scripture text, 3) Meditation (150-200 words), 4) Today's application, 5) Short prayer, 6) Daily challenge. Suitable for WhatsApp daily message. Warm, convicting, hope-filled.`,
+    seoTitle: "Free Hindi Lenten Reflection Writer | Hindi Advent Devotional | Forjit AI",
+    seoDesc: "Write daily Hindi Lenten and Advent reflections for WhatsApp and parish bulletins. Free AI tool for North India Catholic churches. No login required.",
+    seoKeywords: ["hindi Lenten reflection free","Advent devotional Hindi","Lent daily prayer hindi","Holy Week reflection Hindi","Catholic hindi Lent WhatsApp"],
+    faqs: [
+      { q: "Is the output written in Hindi script?", a: "Yes. The entire output is in Hindi (हिंदी) script." },
+      { q: "Is this useful for North India churches?", a: "Yes. It's designed for Hindi-speaking Christian communities across North India." },
+      { q: "Can I use it for Catholic and Protestant churches?", a: "Yes. Select your denomination for appropriate content." },
+      { q: "Are Indian/local illustrations included?", a: "Yes. It uses North India cultural context where appropriate." },
+      { q: "Is it completely free?", a: "Completely free." },
+    ],
+    priority: 0.87,
+  },
+
+  {
+    id: "marathi-homily-writer",
+    name: "Marathi Homily Writer (मराठी)",
+    desc: "Write complete Sunday Mass homilies in Marathi (मराठी) based on the day's scripture readings.",
+    icon: "✝️",
+    category: "priest",
+    subCategory: "marathi-christian",
+    audience: "teacher",
+    model: "smart",
+    maxTokens: 700,
+    inputs: [
+      { id: "readings", label: "Scripture Readings", type: "text", placeholder: "e.g. Isaiah 55:1-11, John 6:1-15", required: true },
+      { id: "occasion", label: "Occasion", type: "text", placeholder: "e.g. Easter Sunday, 3rd Sunday Ordinary Time" },
+      { id: "denom", label: "Denomination", type: "select", options: ["Catholic","Protestant","Orthodox","Any"] }
+    ],
+    promptTemplate: `Write a complete Sunday homily in Marathi language for: {{occasion}}.
+Readings: {{readings}} | Denomination: {{denom}}.
+Write entirely in Marathi script. Structure: 1) Opening hook, 2) Exegesis of key reading, 3) Three theological points with scripture, 4) Indian/local context illustration, 5) Application, 6) Closing blessing. 8-10 minute delivery.`,
+    seoTitle: "Free Marathi Homily Writer | Marathi Catholic Priest Tool | Forjit AI",
+    seoDesc: "Write complete Sunday homilies in Marathi for Catholic, Protestant and Orthodox churches. Free AI Marathi homily generator for Maharashtra priests. No login needed.",
+    seoKeywords: ["marathi homily writer free India","Marathi Catholic homily Maharashtra Goa","priest homily marathi language","Sunday Mass homily Marathi","marathi sermon notes free"],
+    faqs: [
+      { q: "Is the output written in Marathi script?", a: "Yes. The entire output is in Marathi (मराठी) script." },
+      { q: "Is this useful for Maharashtra churches?", a: "Yes. It's designed for Marathi-speaking Christian communities across Maharashtra." },
+      { q: "Can I use it for Catholic and Protestant churches?", a: "Yes. Select your denomination for appropriate content." },
+      { q: "Are Indian/local illustrations included?", a: "Yes. It uses Maharashtra cultural context where appropriate." },
+      { q: "Is it completely free?", a: "Completely free." },
+    ],
+    priority: 0.9,
+  },
+
+  {
+    id: "marathi-sermon-notes",
+    name: "Marathi Sermon Notes Maker (मराठी)",
+    desc: "Create structured Sunday sermon notes in Marathi (मराठी) with introduction, three points, and closing prayer.",
+    icon: "🎤",
+    category: "christian",
+    subCategory: "marathi-christian",
+    audience: "teacher",
+    model: "smart",
+    maxTokens: 700,
+    inputs: [
+      { id: "topic", label: "Sermon Topic", type: "text", placeholder: "e.g. The Grace of God", required: true },
+      { id: "bibleRef", label: "Bible Reference", type: "text", placeholder: "e.g. Ephesians 2:8-9" },
+      { id: "congType", label: "Congregation", type: "select", options: ["General","Youth","Children","New Believers","Senior"] }
+    ],
+    promptTemplate: `Create structured Sunday sermon notes in Marathi language.
+Topic: {{topic}} | Scripture: {{bibleRef}} | Congregation: {{congType}}.
+Write entirely in Marathi script. Structure: 1) Title, 2) Introduction/hook, 3) Three main points with scripture references, 4) Illustration for each point, 5) Application, 6) Closing prayer. Warm pastoral tone.`,
+    seoTitle: "Free Marathi Sermon Notes Maker | Marathi Pastor Tool | Forjit AI",
+    seoDesc: "Generate Sunday sermon notes in Marathi with introduction, three points, illustrations, and prayer. Free AI tool for Maharashtra pastors and ministers. No login needed.",
+    seoKeywords: ["marathi sermon notes maker free","Marathi sermon generator India","pastor sermon marathi language","marathi church sermon free India","Sunday sermon Marathi"],
+    faqs: [
+      { q: "Is the output written in Marathi script?", a: "Yes. The entire output is in Marathi (मराठी) script." },
+      { q: "Is this useful for Maharashtra churches?", a: "Yes. It's designed for Marathi-speaking Christian communities across Maharashtra." },
+      { q: "Can I use it for Catholic and Protestant churches?", a: "Yes. Select your denomination for appropriate content." },
+      { q: "Are Indian/local illustrations included?", a: "Yes. It uses Maharashtra cultural context where appropriate." },
+      { q: "Is it completely free?", a: "Completely free." },
+    ],
+    priority: 0.89,
+  },
+
+  {
+    id: "marathi-prayer-generator",
+    name: "Marathi Christian Prayer Generator (मराठी)",
+    desc: "Write heartfelt Marathi (मराठी) Christian prayers for Sunday service, weddings, funerals, and special occasions.",
+    icon: "🙏",
+    category: "christian",
+    subCategory: "marathi-christian",
+    audience: "teacher",
+    model: "smart",
+    maxTokens: 500,
+    inputs: [
+      { id: "occasion", label: "Occasion", type: "select", options: ["Sunday Service","Funeral","Wedding","Baptism","Christmas","Easter","Thanksgiving","Morning Prayer","Evening Prayer"] },
+      { id: "tone", label: "Tone", type: "select", options: ["Formal Liturgical","Simple Conversational","Youth Style"] }
+    ],
+    promptTemplate: `Write a heartfelt Christian prayer in Marathi language for: {{occasion}}.
+Tone: {{tone}}.
+Write entirely in Marathi script. Include: 1) Opening praise, 2) Thanksgiving, 3) Intercession for the occasion, 4) Petition, 5) Closing in Jesus name. Sincere and biblically grounded.`,
+    seoTitle: "Free Marathi Christian Prayer Generator | Marathi Church Prayer | Forjit AI",
+    seoDesc: "Write heartfelt Marathi Christian prayers for Sunday service, weddings, funerals and more. Free AI prayer generator for Maharashtra churches. No login required.",
+    seoKeywords: ["marathi Christian prayer generator free","Marathi church prayer India","prayer in Marathi free","Christian prayer Maharashtra Goa","marathi Sunday service prayer"],
+    faqs: [
+      { q: "Is the output written in Marathi script?", a: "Yes. The entire output is in Marathi (मराठी) script." },
+      { q: "Is this useful for Maharashtra churches?", a: "Yes. It's designed for Marathi-speaking Christian communities across Maharashtra." },
+      { q: "Can I use it for Catholic and Protestant churches?", a: "Yes. Select your denomination for appropriate content." },
+      { q: "Are Indian/local illustrations included?", a: "Yes. It uses Maharashtra cultural context where appropriate." },
+      { q: "Is it completely free?", a: "Completely free." },
+    ],
+    priority: 0.88,
+  },
+
+  {
+    id: "marathi-bible-verse-explainer",
+    name: "Marathi Bible Verse Explainer (मराठी)",
+    desc: "Get deep contextual explanations of any Bible verse in Marathi (मराठी) — meaning, theology, and daily application.",
+    icon: "📖",
+    category: "christian",
+    subCategory: "marathi-christian",
+    audience: "teacher",
+    model: "smart",
+    maxTokens: 650,
+    inputs: [
+      { id: "verse", label: "Bible Verse", type: "text", placeholder: "e.g. John 3:16 or Romans 8:28", required: true },
+      { id: "denomination", label: "Denomination", type: "select", options: ["Catholic","Protestant","Orthodox","Any"] }
+    ],
+    promptTemplate: `Explain this Bible verse in Marathi language: {{verse}} ({{denomination}} perspective).
+Write entirely in Marathi script. Include: 1) Historical context, 2) Word-by-word meaning, 3) Theological significance, 4) Application for daily life, 5) Related verses. Clear, devotional, academically grounded.`,
+    seoTitle: "Free Marathi Bible Verse Explainer | Marathi Bible Study | Forjit AI",
+    seoDesc: "Explain any Bible verse in Marathi with context, theology, and daily application. Free AI Marathi Bible study tool for Maharashtra Christians. No login needed.",
+    seoKeywords: ["marathi Bible verse explainer free","Bible meaning in Marathi","marathi Bible study tool India","Marathi Bible explanation free","Bible in marathi India"],
+    faqs: [
+      { q: "Is the output written in Marathi script?", a: "Yes. The entire output is in Marathi (मराठी) script." },
+      { q: "Is this useful for Maharashtra churches?", a: "Yes. It's designed for Marathi-speaking Christian communities across Maharashtra." },
+      { q: "Can I use it for Catholic and Protestant churches?", a: "Yes. Select your denomination for appropriate content." },
+      { q: "Are Indian/local illustrations included?", a: "Yes. It uses Maharashtra cultural context where appropriate." },
+      { q: "Is it completely free?", a: "Completely free." },
+    ],
+    priority: 0.88,
+  },
+
+  {
+    id: "marathi-novena-prayer",
+    name: "Marathi Novena Prayer Generator (मराठी)",
+    desc: "Generate complete 9-day novena prayers in Marathi (मराठी) to any saint for healing, family, and special intentions.",
+    icon: "⭐",
+    category: "priest",
+    subCategory: "marathi-christian",
+    audience: "teacher",
+    model: "smart",
+    maxTokens: 700,
+    inputs: [
+      { id: "saint", label: "Saint / Intention", type: "text", placeholder: "e.g. St. Anthony, Our Lady of Perpetual Succour", required: true },
+      { id: "intention", label: "Special Intention", type: "text", placeholder: "e.g. healing, job, family peace" }
+    ],
+    promptTemplate: `Generate a complete 9-day Novena in Marathi language to {{saint}} for: {{intention}}.
+Write entirely in Marathi script. For each of 9 days: 1) Day number and theme, 2) Opening prayer, 3) Scripture verse, 4) Short reflection (50 words), 5) Novena prayer (100 words) to {{saint}}, 6) Response line. Reverent, devotional, Catholic.`,
+    seoTitle: "Free Marathi Novena Prayer Generator | Marathi Catholic Prayer | Forjit AI",
+    seoDesc: "Generate complete 9-day novena prayers in Marathi to any saint. Free AI Catholic Marathi prayer tool for Maharashtra believers. No login required.",
+    seoKeywords: ["marathi novena prayer free","Catholic novena in Marathi","Marathi saint prayer India","novena marathi language free","9-day prayer Marathi"],
+    faqs: [
+      { q: "Is the output written in Marathi script?", a: "Yes. The entire output is in Marathi (मराठी) script." },
+      { q: "Is this useful for Maharashtra churches?", a: "Yes. It's designed for Marathi-speaking Christian communities across Maharashtra." },
+      { q: "Can I use it for Catholic and Protestant churches?", a: "Yes. Select your denomination for appropriate content." },
+      { q: "Are Indian/local illustrations included?", a: "Yes. It uses Maharashtra cultural context where appropriate." },
+      { q: "Is it completely free?", a: "Completely free." },
+    ],
+    priority: 0.87,
+  },
+
+  {
+    id: "marathi-devotional-writer",
+    name: "Marathi Christian Devotional Writer (मराठी)",
+    desc: "Write daily Marathi (मराठी) Christian devotionals with scripture, reflection, application, and prayer for WhatsApp or print.",
+    icon: "🕯️",
+    category: "christian",
+    subCategory: "marathi-christian",
+    audience: "teacher",
+    model: "smart",
+    maxTokens: 650,
+    inputs: [
+      { id: "theme", label: "Theme", type: "text", placeholder: "e.g. Trust in God, Forgiveness, Hope", required: true },
+      { id: "scripture", label: "Scripture", type: "text", placeholder: "e.g. Psalm 23:1" },
+      { id: "length", label: "Length", type: "select", options: ["Short (200 words)","Standard (400 words)","Long (600 words)"] }
+    ],
+    promptTemplate: `Write a Marathi language Christian devotional.
+Theme: {{theme}} | Scripture: {{scripture}} | Length: {{length}}.
+Write entirely in Marathi script. Format: 1) Title, 2) Scripture, 3) Opening reflection, 4) Main devotional thought, 5) Today's application, 6) Closing prayer. Warm encouraging tone. Suitable for WhatsApp daily message or church bulletin.`,
+    seoTitle: "Free Marathi Christian Devotional Writer | Daily Marathi Devotion | Forjit AI",
+    seoDesc: "Write daily Marathi Christian devotionals for WhatsApp, church bulletins, and personal prayer. Free AI devotional generator for Maharashtra Christians. No login required.",
+    seoKeywords: ["marathi Christian devotional free","daily devotional in Marathi","Marathi devotion writer India","marathi WhatsApp devotional free","Christian Marathi daily prayer"],
+    faqs: [
+      { q: "Is the output written in Marathi script?", a: "Yes. The entire output is in Marathi (मराठी) script." },
+      { q: "Is this useful for Maharashtra churches?", a: "Yes. It's designed for Marathi-speaking Christian communities across Maharashtra." },
+      { q: "Can I use it for Catholic and Protestant churches?", a: "Yes. Select your denomination for appropriate content." },
+      { q: "Are Indian/local illustrations included?", a: "Yes. It uses Maharashtra cultural context where appropriate." },
+      { q: "Is it completely free?", a: "Completely free." },
+    ],
+    priority: 0.88,
+  },
+
+  {
+    id: "marathi-sunday-school-lesson",
+    name: "Marathi Sunday School Lesson Plan (मराठी)",
+    desc: "Full Marathi (मराठी) Sunday school lesson plans with Bible story, activities, memory verse, and prayer.",
+    icon: "🎨",
+    category: "christian",
+    subCategory: "marathi-christian",
+    audience: "teacher",
+    model: "smart",
+    maxTokens: 700,
+    inputs: [
+      { id: "topic", label: "Topic", type: "text", placeholder: "e.g. David and Goliath", required: true },
+      { id: "ageGroup", label: "Age Group", type: "select", options: ["3-5 yrs","6-8 yrs","9-12 yrs","Teens","Adults"] },
+      { id: "bibleStory", label: "Bible Story", type: "text", placeholder: "e.g. 1 Samuel 17" }
+    ],
+    promptTemplate: `Create a Marathi Sunday school lesson plan.
+Topic: {{topic}} | Bible: {{bibleStory}} | Age: {{ageGroup}}.
+Write entirely in Marathi script. Include: 1) Lesson aim, 2) Bible story summary, 3) Activities (2-3), 4) Discussion questions, 5) Memory verse, 6) Craft idea, 7) Closing prayer. Fun, age-appropriate, faith-building.`,
+    seoTitle: "Free Marathi Sunday School Lesson Plan | Marathi Church Children | Forjit AI",
+    seoDesc: "Create Marathi Sunday school lesson plans with Bible story, activities, memory verse and craft ideas. Free for Maharashtra church teachers. No login needed.",
+    seoKeywords: ["marathi Sunday school lesson plan free","Marathi Bible class children India","marathi church children lesson","Sunday school Marathi free","VBS lesson marathi"],
+    faqs: [
+      { q: "Is the output written in Marathi script?", a: "Yes. The entire output is in Marathi (मराठी) script." },
+      { q: "Is this useful for Maharashtra churches?", a: "Yes. It's designed for Marathi-speaking Christian communities across Maharashtra." },
+      { q: "Can I use it for Catholic and Protestant churches?", a: "Yes. Select your denomination for appropriate content." },
+      { q: "Are Indian/local illustrations included?", a: "Yes. It uses Maharashtra cultural context where appropriate." },
+      { q: "Is it completely free?", a: "Completely free." },
+    ],
+    priority: 0.87,
+  },
+
+  {
+    id: "marathi-parish-newsletter",
+    name: "Marathi Parish Newsletter Writer (मराठी)",
+    desc: "Write engaging Marathi (मराठी) parish newsletters with news, devotionals, events, and announcements for WhatsApp or print.",
+    icon: "📰",
+    category: "priest",
+    subCategory: "marathi-christian",
+    audience: "teacher",
+    model: "smart",
+    maxTokens: 700,
+    inputs: [
+      { id: "parishName", label: "Parish Name", type: "text", placeholder: "e.g. Sacred Heart Church", required: true },
+      { id: "items", label: "News / Events", type: "textarea", placeholder: "List events, announcements, special news…" },
+      { id: "month", label: "Month", type: "text", placeholder: "e.g. June 2025" }
+    ],
+    promptTemplate: `Write a Marathi language parish newsletter for {{parishName}}, {{month}}.
+Events/News: {{items}}.
+Write entirely in Marathi script. Structure: 1) Greeting from priest, 2) Spiritual reflection (150 words), 3) Parish news & announcements, 4) Events schedule, 5) Prayer intentions, 6) Closing blessing. Warm, community tone.`,
+    seoTitle: "Free Marathi Parish Newsletter Writer | Marathi Church Bulletin | Forjit AI",
+    seoDesc: "Write complete Marathi parish newsletters with news, devotionals, and events. Free AI tool for Maharashtra Catholic and Christian churches. No login required.",
+    seoKeywords: ["marathi parish newsletter free","Marathi church bulletin India","Catholic marathi newsletter","church WhatsApp Marathi message","marathi parish circular free"],
+    faqs: [
+      { q: "Is the output written in Marathi script?", a: "Yes. The entire output is in Marathi (मराठी) script." },
+      { q: "Is this useful for Maharashtra churches?", a: "Yes. It's designed for Marathi-speaking Christian communities across Maharashtra." },
+      { q: "Can I use it for Catholic and Protestant churches?", a: "Yes. Select your denomination for appropriate content." },
+      { q: "Are Indian/local illustrations included?", a: "Yes. It uses Maharashtra cultural context where appropriate." },
+      { q: "Is it completely free?", a: "Completely free." },
+    ],
+    priority: 0.86,
+  },
+
+  {
+    id: "marathi-funeral-eulogy",
+    name: "Marathi Funeral Eulogy Writer (मराठी)",
+    desc: "Write compassionate, dignified Marathi (मराठी) Christian funeral eulogies and orations for any denomination.",
+    icon: "🕊️",
+    category: "priest",
+    subCategory: "marathi-christian",
+    audience: "teacher",
+    model: "smart",
+    maxTokens: 650,
+    inputs: [
+      { id: "deceased", label: "Name of Deceased", type: "text", placeholder: "e.g. Thomas Mathew (age 72)", required: true },
+      { id: "details", label: "Key Life Details", type: "textarea", placeholder: "Family, faith, occupation, memorable qualities…" },
+      { id: "scripture", label: "Favourite Scripture", type: "text", placeholder: "e.g. John 14:1-6 (optional)" }
+    ],
+    promptTemplate: `Write a compassionate Marathi language Christian funeral eulogy for {{deceased}}.
+Life details: {{details}} | Scripture: {{scripture}}.
+Write entirely in Marathi script. Include: 1) Warm opening about the person, 2) Faith journey and legacy, 3) Scripture reflection, 4) Comfort for grieving family, 5) Hope of resurrection, 6) Closing blessing. Dignified, comforting. 5-7 minutes.`,
+    seoTitle: "Free Marathi Funeral Eulogy Writer | Marathi Christian Funeral | Forjit AI",
+    seoDesc: "Write compassionate Marathi Christian funeral eulogies and orations. Free AI tool for Maharashtra Catholic and Protestant pastors. No login required.",
+    seoKeywords: ["marathi funeral eulogy free","Christian funeral oration Marathi","Catholic funeral marathi","Marathi funeral speech India","funeral homily marathi free"],
+    faqs: [
+      { q: "Is the output written in Marathi script?", a: "Yes. The entire output is in Marathi (मराठी) script." },
+      { q: "Is this useful for Maharashtra churches?", a: "Yes. It's designed for Marathi-speaking Christian communities across Maharashtra." },
+      { q: "Can I use it for Catholic and Protestant churches?", a: "Yes. Select your denomination for appropriate content." },
+      { q: "Are Indian/local illustrations included?", a: "Yes. It uses Maharashtra cultural context where appropriate." },
+      { q: "Is it completely free?", a: "Completely free." },
+    ],
+    priority: 0.88,
+  },
+
+  {
+    id: "marathi-lenten-reflection",
+    name: "Marathi Lenten & Advent Reflection Writer (मराठी)",
+    desc: "Write daily Marathi (मराठी) Lenten and Advent reflections for WhatsApp groups, parish bulletins, and personal prayer.",
+    icon: "🌿",
+    category: "priest",
+    subCategory: "marathi-christian",
+    audience: "teacher",
+    model: "smart",
+    maxTokens: 600,
+    inputs: [
+      { id: "season", label: "Season", type: "select", options: ["Lent","Advent","Holy Week","Easter Season","Ordinary Time"] },
+      { id: "day", label: "Day / Week", type: "text", placeholder: "e.g. Day 1 of Lent, Palm Sunday" },
+      { id: "scripture", label: "Scripture", type: "text", placeholder: "e.g. Matthew 6:1-6 (optional)" }
+    ],
+    promptTemplate: `Write a Marathi language {{season}} daily reflection for {{day}}.
+Scripture: {{scripture}}.
+Write entirely in Marathi script. Format: 1) Title, 2) Scripture text, 3) Meditation (150-200 words), 4) Today's application, 5) Short prayer, 6) Daily challenge. Suitable for WhatsApp daily message. Warm, convicting, hope-filled.`,
+    seoTitle: "Free Marathi Lenten Reflection Writer | Marathi Advent Devotional | Forjit AI",
+    seoDesc: "Write daily Marathi Lenten and Advent reflections for WhatsApp and parish bulletins. Free AI tool for Maharashtra Catholic churches. No login required.",
+    seoKeywords: ["marathi Lenten reflection free","Advent devotional Marathi","Lent daily prayer marathi","Holy Week reflection Marathi","Catholic marathi Lent WhatsApp"],
+    faqs: [
+      { q: "Is the output written in Marathi script?", a: "Yes. The entire output is in Marathi (मराठी) script." },
+      { q: "Is this useful for Maharashtra churches?", a: "Yes. It's designed for Marathi-speaking Christian communities across Maharashtra." },
+      { q: "Can I use it for Catholic and Protestant churches?", a: "Yes. Select your denomination for appropriate content." },
+      { q: "Are Indian/local illustrations included?", a: "Yes. It uses Maharashtra cultural context where appropriate." },
+      { q: "Is it completely free?", a: "Completely free." },
+    ],
+    priority: 0.87,
+  }
+
+
 ];

@@ -248,54 +248,72 @@
   }
 
   /* ════════════════════════════════════════════════════════════════════════
-     TIER 3 — Pollinations
+     TIER 3 — Pollinations (multi-model fallback with retry)
   ════════════════════════════════════════════════════════════════════════ */
   function callPollinations(prompt) {
-    log("Trying Pollinations…");
-    return withTimeout(
-      fetch("https://text.pollinations.ai/", {
-        method:  "POST",
-        headers: { "Content-Type": "application/json" },
-        body: JSON.stringify({
-          messages: [
-            { role: "system", content: SYS },
-            { role: "user",   content: prompt }
-          ],
-          model:   "openai",
-          private: true
-        })
-      }),
-      20000
-    ).then(function(res) {
-      log("Pollinations POST: HTTP " + res.status);
-      if (!res.ok) throw new Error("HTTP " + res.status);
-      return res.text();
-    }).then(function(t) {
-      t = (t || "").trim();
-      if (t.length > 20) { log("Pollinations success ✓"); return t; }
-      throw new Error("Empty response");
-    }).catch(function(e1) {
-      log("Pollinations POST failed: " + e1.message + " — trying GET");
+    // Try multiple models in sequence — if one is rate-limited, try the next
+    var models = ["openai", "mistral", "llama", "llamascout", "gemini"];
+    var shortPrompt = prompt.slice(0, 600);
+
+    function tryModel(idx) {
+      if (idx >= models.length) {
+        log("All Pollinations models failed");
+        return Promise.resolve(null);
+      }
+      var mdl = models[idx];
+      log("Trying Pollinations model: " + mdl);
+
+      // Try POST first
       return withTimeout(
-        fetch(
-          "https://text.pollinations.ai/" +
-          encodeURIComponent(prompt.slice(0, 400)) +
-          "?model=openai&private=true"
-        ),
-        20000
+        fetch("https://text.pollinations.ai/", {
+          method: "POST",
+          headers: { "Content-Type": "application/json" },
+          body: JSON.stringify({
+            messages: [
+              { role: "system", content: SYS },
+              { role: "user",   content: prompt }
+            ],
+            model:   mdl,
+            private: true
+          })
+        }),
+        25000
       ).then(function(res) {
-        log("Pollinations GET: HTTP " + res.status);
-        if (!res.ok) return null;
+        log("Pollinations POST [" + mdl + "]: HTTP " + res.status);
+        if (res.status === 429 || res.status === 503) {
+          // Rate limited — try next model after brief wait
+          return new Promise(function(resolve) {
+            setTimeout(function() { resolve(tryModel(idx + 1)); }, 1500);
+          });
+        }
+        if (!res.ok) return tryModel(idx + 1);
         return res.text().then(function(t) {
           t = (t || "").trim();
-          if (t.length > 20) { log("Pollinations GET success ✓"); return t; }
-          return null;
+          if (t.length > 30) { log("Pollinations [" + mdl + "] success ✓"); return t; }
+          return tryModel(idx + 1);
         });
-      }).catch(function(e2) {
-        log("Pollinations GET failed: " + e2.message);
-        return null;
+      }).catch(function(e) {
+        log("Pollinations [" + mdl + "] error: " + e.message);
+        // Fallback: GET request with truncated prompt
+        return withTimeout(
+          fetch(
+            "https://text.pollinations.ai/" +
+            encodeURIComponent(shortPrompt) +
+            "?model=" + mdl + "&private=true"
+          ),
+          20000
+        ).then(function(res) {
+          if (!res.ok) return tryModel(idx + 1);
+          return res.text().then(function(t) {
+            t = (t || "").trim();
+            if (t.length > 30) { log("Pollinations GET [" + mdl + "] ✓"); return t; }
+            return tryModel(idx + 1);
+          });
+        }).catch(function() { return tryModel(idx + 1); });
       });
-    });
+    }
+
+    return tryModel(0);
   }
 
   /* ════════════════════════════════════════════════════════════════════════
@@ -386,7 +404,7 @@
         _isGenerating = false;
         throw new Error("__stop__");
       }
-      showMsg("loading", "Using free AI (may take 15–20 seconds on mobile)…");
+      showMsg("loading", "Using free AI backup — this may take 15–30 seconds, please wait…");
       return callPollinations(prompt).then(function(r) {
         if (r) { useOne(); result = r; tier = "free"; }
       });
@@ -396,9 +414,18 @@
       if (!result) {
         clearOutput();
         showMsg("error",
-          "All AI methods failed on your device.\n\n" +
-          "Most likely fix: The site owner needs to set GROQ_API_KEY in Vercel.\n\n" +
-          "Check the debug log below for details."
+          "<strong>AI generation failed</strong><br><br>" +
+          "The free AI service is currently busy. Please try:<br><br>" +
+          "<strong>Option 1 — Try again</strong> (usually works in 30 seconds)<br>" +
+          '<button onclick="document.getElementById(\'te-generate\').click()" ' +
+          'style="margin-top:6px;padding:8px 16px;background:#fbbf24;color:#000;' +
+          'border:none;border-radius:7px;cursor:pointer;font-weight:700;font-size:13px">' +
+          "🔄 Retry Now</button><br><br>" +
+          "<strong>Option 2 — Add your free Groq key</strong><br>" +
+          'Get a free key at <a href="https://console.groq.com/keys" target="_blank" ' +
+          'style="color:#fbbf24">console.groq.com/keys</a> and paste it below ↓<br><br>' +
+          "<em style='font-size:12px;color:#78716c'>Debug: check log below for details</em>",
+          true
         );
         if (btn) { btn.disabled = false; btn.textContent = "⚡ Generate"; }
         _isGenerating = false;
@@ -423,7 +450,7 @@
   /* ════════════════════════════════════════════════════════════════════════
      UI HELPERS
   ════════════════════════════════════════════════════════════════════════ */
-  function showMsg(type, text) {
+  function showMsg(type, text, isHtml) {
     var el = document.getElementById("te-msg");
     if (!el) return;
     if (!type || !text) { el.style.display = "none"; return; }
@@ -432,8 +459,11 @@
       : "background:rgba(239,68,68,.08);border:1px solid rgba(239,68,68,.3);color:#f87171";
     el.style.cssText = "display:block;border-radius:10px;padding:14px 16px;" +
       "font-size:14px;margin-top:12px;white-space:pre-line;line-height:1.75;" + bg;
-    el.textContent = (type === "loading" ? "⏳ " : "⚠️ ") + text;
-    // Scroll into view on mobile
+    if (isHtml) {
+      el.innerHTML = (type === "loading" ? "⏳ " : "⚠️ ") + text;
+    } else {
+      el.textContent = (type === "loading" ? "⏳ " : "⚠️ ") + text;
+    }
     setTimeout(function() {
       el.scrollIntoView({ behavior:"smooth", block:"nearest" });
     }, 100);

@@ -25,6 +25,7 @@ import {
 
 /* ── Phase 2 components ─────────────────────────────────────────────────── */
 import { Modal, Drawer, TabBtn, LinkRow, Stat } from "./components/ui";
+import ForjitLogo from "./components/ForjitLogo";
 import SettingsPanel from "./components/SettingsPanel";
 import AdminPanel from "./components/AdminPanel";
 import { HistoryPanel, GalleryPanel } from "./components/HistoryPanel";
@@ -43,27 +44,6 @@ import {
   estimateTokens, minifyHtml, renderMarkdown,
   loadJSZip, loadJsPDF, loadDocx, loadPptxGenJS,
 } from "./utils";
-
-/* ── Forjit AI Logo Component ───────────────────────────────────────────── */
-function ForjitLogo({ size = 32 }) {
-  return (
-    <svg width={size} height={size} viewBox="0 0 32 32" fill="none" xmlns="http://www.w3.org/2000/svg" aria-label="Forjit AI">
-      <defs>
-        <linearGradient id="fj-grad" x1="0" y1="0" x2="1" y2="1">
-          <stop offset="0%" stopColor="#3b82f6"/>
-          <stop offset="100%" stopColor="#8b5cf6"/>
-        </linearGradient>
-        <filter id="fj-glow">
-          <feGaussianBlur stdDeviation="1.5" result="blur"/>
-          <feMerge><feMergeNode in="blur"/><feMergeNode in="SourceGraphic"/></feMerge>
-        </filter>
-      </defs>
-      <rect width="32" height="32" rx="8" fill="url(#fj-grad)"/>
-      <path d="M18.5 5.5 L11 17.5 L16.5 17.5 L13.5 26.5 L21 14.5 L15.5 14.5 Z"
-            fill="white" fillOpacity="0.95" filter="url(#fj-glow)"/>
-    </svg>
-  );
-}
 
 /* ── Icon map for main tab bar ──────────────────────────────────────────── */
 const ICON_MAP = {
@@ -96,6 +76,12 @@ export default function ForjitAI() {
   const [contentType, setContentType] = useState("lesson_plan");
 
   const generatorRef = useRef(null);
+
+  /* ----- Last session (Continue where you left) ----- */
+  const [lastSession, setLastSession] = useState(() => {
+    try { return JSON.parse(localStorage.getItem("forjit_last") || "null"); }
+    catch { return null; }
+  });
 
   const [prompt, setPrompt] = useState("");
   const [generating, setGenerating] = useState(false);
@@ -443,6 +429,16 @@ export default function ForjitAI() {
       setHistory((h) => [entry, ...h].slice(0, 30));
       // Also add to public repository (optional — only if user is logged in)
       if (user) setRepository((r) => [entry, ...r].slice(0, 100));
+      // Save "continue where you left" to localStorage
+      const sessionSnap = {
+        prompt: prompt.trim().slice(0, 120),
+        tab: activeTab,
+        contentType: activeTab === "content" ? contentType : null,
+        outputType: expectedType,
+        ts: id,
+      };
+      try { localStorage.setItem("forjit_last", JSON.stringify(sessionSnap)); } catch {}
+      setLastSession(sessionSnap);
     } catch (e) {
       logError("generate", e);
       setError(e.message || "Something went wrong.");
@@ -903,14 +899,7 @@ npx cap open android
         {/* HEADER */}
         <header className="border-b border-stone-800/80 px-4 md:px-10 py-4 flex items-center justify-between backdrop-blur-sm sticky top-0 z-30 bg-stone-950/85">
           <div className="flex items-center gap-3">
-            <ForjitLogo size={34} />
-            <div className="leading-tight">
-              <div className="font-display text-xl font-semibold tracking-tight">
-                <span className="text-stone-100">Forjit</span>
-                <span className="bg-gradient-to-r from-blue-400 to-violet-400 bg-clip-text text-transparent"> AI</span>
-              </div>
-              <div className="text-[10px] text-stone-500 font-mono uppercase tracking-widest">{APP_TAG}</div>
-            </div>
+            <ForjitLogo size="md" showTag={false} />
           </div>
           <div className="flex items-center gap-1.5 md:gap-2">
             {showInstallBtn && (
@@ -988,23 +977,23 @@ npx cap open android
           )}
 
           {/* Hero */}
-          <section className="mb-8 slide-up">
+          <section className="mb-8 hero-1">
             <h1 className="font-display text-3xl md:text-5xl font-semibold tracking-tight leading-tight mb-3">
               <span className="bg-gradient-to-r from-blue-400 via-violet-400 to-amber-400 bg-clip-text text-transparent">Forjit AI</span>
               <br />
               <span className="text-stone-200 text-2xl md:text-4xl font-normal italic">Build apps, generate content, and use<br className="hidden md:block" /> smart tools — all in one place.</span>
             </h1>
-            <p className="text-stone-400 text-sm md:text-base max-w-2xl font-sans mt-2">
+            <p className="text-stone-400 text-sm md:text-base max-w-2xl font-sans mt-2 hero-2">
               Free AI platform for India — app generator, content creator, 60+ smart tools. No login needed.
             </p>
-            <div className="mt-4 inline-flex items-center gap-2 px-3 py-1.5 rounded-full bg-blue-500/10 border border-blue-500/20 text-[11px] font-mono text-blue-300">
+            <div className="mt-4 inline-flex items-center gap-2 px-3 py-1.5 rounded-full bg-blue-500/10 border border-blue-500/20 text-[11px] font-mono text-blue-300 hero-3">
               <span className="w-1.5 h-1.5 rounded-full bg-blue-400 pulse-dot" />
               Initial phase — actively evolving · not production-ready yet
             </div>
           </section>
 
           {/* ── QUICK ACTIONS ─────────────────────────────────────────── */}
-          <section className="mb-8 slide-up">
+          <section className="mb-8 hero-4">
             <div className="grid grid-cols-1 sm:grid-cols-3 gap-3">
               {/* Create App */}
               <button
@@ -1014,7 +1003,7 @@ npx cap open android
                   generatorRef.current?.scrollIntoView({ behavior: "smooth", block: "start" });
                   setTimeout(() => textareaRef.current?.focus(), 400);
                 }}
-                className="group relative overflow-hidden rounded-2xl border border-blue-500/25 bg-gradient-to-br from-blue-500/10 via-stone-900/80 to-stone-900 p-5 text-left hover:border-blue-500/50 hover:from-blue-500/15 transition-all duration-300"
+                className="card-shine group relative overflow-hidden rounded-2xl border border-blue-500/25 bg-gradient-to-br from-blue-500/10 via-stone-900/80 to-stone-900 p-5 text-left hover:border-blue-500/50 hover:from-blue-500/15 transition-all duration-300"
               >
                 <div className="absolute top-0 right-0 w-28 h-28 bg-blue-500/5 rounded-full -translate-y-10 translate-x-10 group-hover:scale-125 transition-transform duration-500" />
                 <div className="w-10 h-10 rounded-xl bg-blue-500/15 text-blue-300 flex items-center justify-center mb-3">
@@ -1036,7 +1025,7 @@ npx cap open android
                   generatorRef.current?.scrollIntoView({ behavior: "smooth", block: "start" });
                   setTimeout(() => textareaRef.current?.focus(), 400);
                 }}
-                className="group relative overflow-hidden rounded-2xl border border-violet-500/25 bg-gradient-to-br from-violet-500/10 via-stone-900/80 to-stone-900 p-5 text-left hover:border-violet-500/50 hover:from-violet-500/15 transition-all duration-300"
+                className="card-shine group relative overflow-hidden rounded-2xl border border-violet-500/25 bg-gradient-to-br from-violet-500/10 via-stone-900/80 to-stone-900 p-5 text-left hover:border-violet-500/50 hover:from-violet-500/15 transition-all duration-300"
               >
                 <div className="absolute top-0 right-0 w-28 h-28 bg-violet-500/5 rounded-full -translate-y-10 translate-x-10 group-hover:scale-125 transition-transform duration-500" />
                 <div className="w-10 h-10 rounded-xl bg-violet-500/15 text-violet-300 flex items-center justify-center mb-3">
@@ -1053,7 +1042,7 @@ npx cap open android
               {/* Explore Tools */}
               <a
                 href="/tools/"
-                className="group relative overflow-hidden rounded-2xl border border-emerald-500/25 bg-gradient-to-br from-emerald-500/10 via-stone-900/80 to-stone-900 p-5 text-left hover:border-emerald-500/50 hover:from-emerald-500/15 transition-all duration-300 block"
+                className="card-shine group relative overflow-hidden rounded-2xl border border-emerald-500/25 bg-gradient-to-br from-emerald-500/10 via-stone-900/80 to-stone-900 p-5 text-left hover:border-emerald-500/50 hover:from-emerald-500/15 transition-all duration-300 block"
               >
                 <div className="absolute top-0 right-0 w-28 h-28 bg-emerald-500/5 rounded-full -translate-y-10 translate-x-10 group-hover:scale-125 transition-transform duration-500" />
                 <div className="w-10 h-10 rounded-xl bg-emerald-500/15 text-emerald-300 flex items-center justify-center mb-3">
@@ -1366,7 +1355,7 @@ npx cap open android
           )}
 
           {/* ── TOOL CATEGORIES PREVIEW ───────────────────────────── */}
-          <section className="mt-14 mb-2 slide-up">
+          <section className="mt-14 mb-2 hero-5">
             <div className="flex items-center justify-between mb-4">
               <div>
                 <h2 className="font-display text-xl font-semibold text-stone-100">Specialized Tools</h2>

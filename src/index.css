@@ -159,3 +159,17 @@
 .prose-md hr { border: 0; border-top: 1px solid #e7e5e4; margin: 2em 0; }
 .prose-md a { color: #0284c7; text-decoration: underline; }
 .prose-md a:hover { color: #0369a1; }
+
+/* ── Safe area + Mobile bottom nav ───────────────────────────── */
+.safe-bottom {
+  padding-bottom: env(safe-area-inset-bottom, 0px);
+}
+
+/* Bottom nav tap highlight */
+@media (hover: none) {
+  nav.safe-bottom button:active,
+  nav.safe-bottom a:active {
+    background: rgba(255,255,255,0.04);
+    border-radius: 10px;
+  }
+}

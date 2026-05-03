@@ -952,7 +952,7 @@ npx cap open android
           </div>
         </header>
 
-        <main className="max-w-6xl mx-auto px-4 md:px-10 py-6 md:py-10">
+        <main className="max-w-6xl mx-auto px-4 md:px-10 py-6 md:py-10 pb-24 md:pb-10">
           {/* Connect prompt for new users */}
           {!hasOwnKey && (
             <section className="mb-8 slide-up">
@@ -1059,33 +1059,69 @@ npx cap open android
           </section>
 
           {/* ── CONTINUE WHERE YOU LEFT ───────────────────────────── */}
-          {history.length > 0 && (
-            <section className="mb-6 slide-up">
+          {(history.length > 0 || lastSession) && (
+            <section className="mb-6 hero-5">
               <div className="flex items-center gap-2 mb-3">
                 <History className="w-4 h-4 text-stone-500" />
                 <span className="text-[11px] font-mono uppercase tracking-widest text-stone-500">Continue where you left</span>
               </div>
-              <div className="flex gap-2 flex-wrap">
-                {history.slice(0, 3).map((item) => {
-                  const tabColors2 = { app: "border-blue-500/30 bg-blue-500/5 text-blue-300", content: "border-violet-500/30 bg-violet-500/5 text-violet-300", planner: "border-emerald-500/30 bg-emerald-500/5 text-emerald-300", document: "border-sky-500/30 bg-sky-500/5 text-sky-300" };
-                  const tc = tabColors2[item.tab] || tabColors2.app;
-                  return (
-                    <button
-                      key={item.id}
-                      onClick={() => loadFromHistory(item)}
-                      className={`group px-3 py-2 rounded-xl border ${tc} hover:brightness-125 transition-all text-left max-w-xs`}
-                    >
-                      <div className="text-[11px] font-mono uppercase tracking-wide opacity-60 mb-0.5">{TABS[item.tab]?.label || item.tab}</div>
-                      <div className="text-xs font-medium truncate max-w-[200px] group-hover:text-stone-100 transition">{item.prompt}</div>
+
+              {/* lastSession banner — shown when no in-memory history yet (fresh page load) */}
+              {lastSession && history.length === 0 && (
+                <div className="mb-3 flex items-center gap-3 px-4 py-3 rounded-xl border border-amber-400/20 bg-amber-400/5 hover:border-amber-400/35 transition-all group cursor-pointer"
+                  onClick={() => {
+                    setActiveTab(lastSession.tab || "app");
+                    if (lastSession.contentType) setContentType(lastSession.contentType);
+                    setPrompt(lastSession.prompt || "");
+                    generatorRef.current?.scrollIntoView({ behavior: "smooth", block: "start" });
+                    setTimeout(() => textareaRef.current?.focus(), 400);
+                  }}
+                >
+                  <div className="w-8 h-8 rounded-lg bg-amber-400/15 text-amber-300 flex items-center justify-center shrink-0">
+                    <Zap className="w-4 h-4" />
+                  </div>
+                  <div className="flex-1 min-w-0">
+                    <div className="text-[10px] font-mono uppercase tracking-widest text-amber-400/70 mb-0.5">
+                      {TABS[lastSession.tab]?.label || "Last session"}
+                      {lastSession.contentType && ` · ${CONTENT_TYPES[lastSession.contentType]?.label || ""}`}
+                    </div>
+                    <div className="text-sm text-stone-200 truncate font-medium group-hover:text-white transition">{lastSession.prompt}</div>
+                  </div>
+                  <div className="flex items-center gap-1 text-xs text-amber-400/60 group-hover:gap-2 transition-all shrink-0">
+                    Resume <ArrowRight className="w-3.5 h-3.5" />
+                  </div>
+                </div>
+              )}
+
+              {/* In-memory history chips */}
+              {history.length > 0 && (
+                <div className="flex gap-2 flex-wrap">
+                  {history.slice(0, 3).map((item) => {
+                    const tabColors2 = {
+                      app:      "border-blue-500/30 bg-blue-500/5 text-blue-300",
+                      content:  "border-violet-500/30 bg-violet-500/5 text-violet-300",
+                      planner:  "border-emerald-500/30 bg-emerald-500/5 text-emerald-300",
+                      document: "border-sky-500/30 bg-sky-500/5 text-sky-300",
+                    };
+                    const tc = tabColors2[item.tab] || tabColors2.app;
+                    return (
+                      <button
+                        key={item.id}
+                        onClick={() => loadFromHistory(item)}
+                        className={`group px-3 py-2 rounded-xl border ${tc} hover:brightness-125 transition-all text-left max-w-xs`}
+                      >
+                        <div className="text-[11px] font-mono uppercase tracking-wide opacity-60 mb-0.5">{TABS[item.tab]?.label || item.tab}</div>
+                        <div className="text-xs font-medium truncate max-w-[200px] group-hover:text-stone-100 transition">{item.prompt}</div>
+                      </button>
+                    );
+                  })}
+                  {history.length > 3 && (
+                    <button onClick={() => setShowHistory(true)} className="px-3 py-2 rounded-xl border border-stone-800 hover:border-stone-700 text-xs text-stone-500 hover:text-stone-300 transition">
+                      +{history.length - 3} more
                     </button>
-                  );
-                })}
-                {history.length > 3 && (
-                  <button onClick={() => setShowHistory(true)} className="px-3 py-2 rounded-xl border border-stone-800 hover:border-stone-700 text-xs text-stone-500 hover:text-stone-300 transition">
-                    +{history.length - 3} more
-                  </button>
-                )}
-              </div>
+                  )}
+                </div>
+              )}
             </section>
           )}
 
@@ -1437,6 +1473,85 @@ npx cap open android
             </div>
           </footer>
         </main>
+
+        {/* ── MOBILE BOTTOM NAV ─────────────────────────────────────
+             Only visible on mobile (md:hidden). 5 tabs: Home · Create App ·
+             Content · Tools · History                                       */}
+        <nav className="md:hidden fixed bottom-0 inset-x-0 z-40 bg-stone-950/95 backdrop-blur-md border-t border-stone-800/80 safe-bottom">
+          <div className="flex items-stretch">
+
+            {/* Home */}
+            <a href="/" className={`flex-1 flex flex-col items-center justify-center gap-1 py-2.5 text-stone-500 hover:text-stone-200 transition-colors`}>
+              <svg className="w-5 h-5" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
+                <path d="M3 9.5L12 3l9 6.5V20a1 1 0 01-1 1H4a1 1 0 01-1-1V9.5z"/>
+                <path d="M9 21V12h6v9"/>
+              </svg>
+              <span className="text-[10px] font-medium">Home</span>
+            </a>
+
+            {/* Create App */}
+            <button
+              onClick={() => {
+                setActiveTab("app");
+                reset();
+                generatorRef.current?.scrollIntoView({ behavior: "smooth", block: "start" });
+              }}
+              className={`flex-1 flex flex-col items-center justify-center gap-1 py-2.5 transition-colors ${
+                activeTab === "app" && !output ? "text-amber-400" : "text-stone-500 hover:text-stone-200"
+              }`}
+            >
+              <Code2 className="w-5 h-5" />
+              <span className="text-[10px] font-medium">App</span>
+              {activeTab === "app" && !output && (
+                <span className="absolute bottom-0 w-8 h-0.5 rounded-full bg-amber-400" />
+              )}
+            </button>
+
+            {/* Create — centre pill (main CTA) */}
+            <button
+              onClick={() => {
+                setActiveTab("content");
+                reset();
+                generatorRef.current?.scrollIntoView({ behavior: "smooth", block: "start" });
+                setTimeout(() => textareaRef.current?.focus(), 400);
+              }}
+              className="flex-1 flex flex-col items-center justify-center gap-1 py-2 -mt-3 relative"
+            >
+              <div className={`w-12 h-12 rounded-2xl flex items-center justify-center shadow-lg transition-all ${
+                activeTab === "content"
+                  ? "bg-violet-500 shadow-violet-500/40"
+                  : "bg-gradient-to-br from-amber-400 to-violet-500 shadow-amber-400/30"
+              }`}>
+                <Wand2 className="w-5 h-5 text-white" />
+              </div>
+              <span className="text-[10px] font-medium text-stone-400 mt-0.5">Create</span>
+            </button>
+
+            {/* Tools */}
+            <a
+              href="/tools/"
+              className="flex-1 flex flex-col items-center justify-center gap-1 py-2.5 text-stone-500 hover:text-stone-200 transition-colors"
+            >
+              <Sparkles className="w-5 h-5" />
+              <span className="text-[10px] font-medium">Tools</span>
+            </a>
+
+            {/* History */}
+            <button
+              onClick={() => setShowHistory(true)}
+              className="flex-1 flex flex-col items-center justify-center gap-1 py-2.5 text-stone-500 hover:text-stone-200 transition-colors relative"
+            >
+              <History className="w-5 h-5" />
+              <span className="text-[10px] font-medium">History</span>
+              {history.length > 0 && (
+                <span className="absolute top-2 right-[calc(50%-14px)] min-w-[16px] h-4 px-1 rounded-full bg-amber-400 text-stone-950 text-[9px] font-bold flex items-center justify-center leading-none">
+                  {history.length > 9 ? "9+" : history.length}
+                </span>
+              )}
+            </button>
+
+          </div>
+        </nav>
 
         {/* AUTH MODAL */}
         {showAuth && (

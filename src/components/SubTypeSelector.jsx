@@ -6,8 +6,8 @@
  * ──────────────────────────────────────────────────────────────────────────*/
 
 import React from "react";
-import { Monitor, Smartphone, Calendar, FileText } from "lucide-react";
-import { PLANNER_TYPES, DOC_TYPES } from "../constants";
+import { Monitor, Smartphone, Calendar, FileText, GraduationCap, BookOpen, PenLine, NotebookPen, Mic, Share2 } from "lucide-react";
+import { PLANNER_TYPES, DOC_TYPES, CONTENT_TYPES } from "../constants";
 
 const ICON_MAP = {
   Calendar, FileText,
@@ -130,6 +130,36 @@ export function DocSubTypeSelector({ docType, setDocType }) {
               }`}
             >
               <Icon name={t.icon} className="w-3.5 h-3.5" />
+              {t.label}
+            </button>
+          );
+        })}
+      </div>
+    </div>
+  );
+}
+
+/* ── Content tab: lesson/sermon/blog/notes/speech/social buttons ─────────── */
+const CONTENT_ICON_MAP = { GraduationCap, BookOpen, PenLine, NotebookPen, Mic, Share2 };
+
+export function ContentSubTypeSelector({ contentType, setContentType }) {
+  return (
+    <div className="mb-4 -mx-2 px-2 overflow-x-auto scrollbar-thin">
+      <div className="flex items-center gap-1.5 pb-1 min-w-max justify-center flex-wrap">
+        {Object.entries(CONTENT_TYPES).map(([key, t]) => {
+          const active = contentType === key;
+          const IconComp = CONTENT_ICON_MAP[t.icon] || FileText;
+          return (
+            <button
+              key={key}
+              onClick={() => setContentType(key)}
+              className={`px-3 py-1.5 rounded-md text-xs font-medium border transition flex items-center gap-1.5 whitespace-nowrap ${
+                active
+                  ? "bg-violet-400 text-stone-950 border-violet-400"
+                  : "bg-stone-900 border-stone-800 text-stone-400 hover:border-stone-700"
+              }`}
+            >
+              <IconComp className="w-3.5 h-3.5" />
               {t.label}
             </button>
           );

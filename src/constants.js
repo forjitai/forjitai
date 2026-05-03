@@ -57,8 +57,14 @@ export const TABS = {
     color:       "amber",
     description: "Web & mobile apps from a prompt",
   },
+  content: {
+    label:       "Create Content",
+    icon:        "Wand2",
+    color:       "violet",
+    description: "Lesson plans, sermons, blogs, notes — AI-powered content",
+  },
   planner: {
-    label:       "Content Planner",
+    label:       "Life Planner",
     icon:        "Calendar",
     color:       "emerald",
     description: "Meal plans, recipes, workouts, diaries — with storage",
@@ -199,3 +205,53 @@ Return ONLY the Markdown.`;
 export const ITERATE_SYSTEM_PROMPT_HTML = `You are modifying existing HTML. Apply the change and return COMPLETE updated HTML. Preserve everything not asked to change. Return ONLY raw HTML.`;
 
 export const ITERATE_SYSTEM_PROMPT_MD = `You are refining existing Markdown. Apply the change and return COMPLETE updated Markdown. Return ONLY raw Markdown.`;
+
+/* ── Content sub-types ──────────────────────────────────────────────────── */
+export const CONTENT_TYPES = {
+  lesson_plan: {
+    label:       "Lesson Plan",
+    icon:        "GraduationCap",
+    placeholder: "Class 8 Science — photosynthesis, 45 min period, activity-based",
+  },
+  sermon: {
+    label:       "Sermon / Discourse",
+    icon:        "BookOpen",
+    placeholder: "Sunday sermon on gratitude and faith, 15 minutes, Bible-based",
+  },
+  blog: {
+    label:       "Blog Post",
+    icon:        "PenLine",
+    placeholder: "Benefits of yoga for office workers, 800 words, SEO-friendly",
+  },
+  notes: {
+    label:       "Study Notes",
+    icon:        "NotebookPen",
+    placeholder: "UPSC notes on Indian Constitution — Fundamental Rights, concise",
+  },
+  speech: {
+    label:       "Speech / Script",
+    icon:        "Mic",
+    placeholder: "Farewell speech for a teacher, 5 minutes, emotional and heartfelt",
+  },
+  social: {
+    label:       "Social Media",
+    icon:        "Share2",
+    placeholder: "Instagram captions for a bakery launch, 5 creative posts with hashtags",
+  },
+};
+
+/* ── Content system prompt ──────────────────────────────────────────────── */
+export const CONTENT_SYSTEM_PROMPT = `You are an expert Indian content writer. Generate high-quality, well-structured Markdown content.
+
+RULES:
+1. Return ONLY Markdown. No code fences wrapping the whole response.
+2. Use proper headings (# ## ###), bullet points, tables where relevant.
+3. For lesson plans: Include objectives, materials, introduction, main activity, assessment, homework. Indian curriculum-aware.
+4. For sermons/discourses: Include scripture/text, theme, main points (3-5), story/illustration, application, closing prayer/reflection.
+5. For blog posts: Engaging headline, introduction hook, 4-6 sections with subheadings, practical tips, conclusion with CTA.
+6. For study notes: Concise bullet points, key terms bolded, tables for comparisons, mnemonics where helpful.
+7. For speeches: Opening hook, 3 main points with transitions, personal anecdotes, strong closing.
+8. For social media: Platform-aware tone, emojis where appropriate, hashtags, call-to-action.
+9. Write in clear English unless the user specifies another language.
+10. Be culturally relevant for Indian audience when appropriate.
+Return ONLY the Markdown content.`;

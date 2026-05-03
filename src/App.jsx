@@ -7,7 +7,8 @@ import {
   Star, Bug, Smartphone, Monitor, Search, BarChart3, Heart, Send,
   ChefHat, Mail, Users, Lock, Phone, FileSearch, LogIn, LogOut, Shield,
   UtensilsCrossed, Dumbbell, NotebookPen, FilePlus, FileDown, User,
-  Calendar, Layers,
+  Calendar, Layers, GraduationCap, BookOpen, PenLine, Mic, Share2,
+  ArrowRight, BookMarked, Stethoscope, HardHat, Tv2, PencilRuler, ChevronDown,
 } from "lucide-react";
 
 /* ── Phase 1 modules ────────────────────────────────────────────────────── */
@@ -16,9 +17,9 @@ import { callLLM as _callLLM } from "./api";
 import "./errorLogger.js"; // Global error capture - auto-logs all JS errors
 import {
   APP_NAME, APP_TAG, APP_URL, ADMIN_EMAIL,
-  PROVIDERS, TABS, PLANNER_TYPES, DOC_TYPES,
+  PROVIDERS, TABS, PLANNER_TYPES, DOC_TYPES, CONTENT_TYPES,
   APP_SYSTEM_PROMPT, MOBILE_SYSTEM_PROMPT, PLANNER_SYSTEM_PROMPT,
-  DOCUMENT_SYSTEM_PROMPT_MARKDOWN,
+  DOCUMENT_SYSTEM_PROMPT_MARKDOWN, CONTENT_SYSTEM_PROMPT,
   ITERATE_SYSTEM_PROMPT_HTML, ITERATE_SYSTEM_PROMPT_MD,
 } from "./constants";
 
@@ -31,6 +32,7 @@ import {
   AppSubTypeSelector,
   PlannerSubTypeSelector,
   DocSubTypeSelector,
+  ContentSubTypeSelector,
 } from "./components/SubTypeSelector";
 import AuthModal from "./components/AuthModal";
 import SharePanel from "./components/SharePanel";
@@ -45,7 +47,7 @@ import {
 /* ── Icon map for main tab bar ──────────────────────────────────────────── */
 const ICON_MAP = {
   Code2, Calendar, FileText, Monitor, Smartphone,
-  UtensilsCrossed, ChefHat, Dumbbell, NotebookPen, Mail, Layers,
+  UtensilsCrossed, ChefHat, Dumbbell, NotebookPen, Mail, Layers, Wand2,
 };
 
 /* ---------- MAIN COMPONENT ---------- */
@@ -70,6 +72,9 @@ export default function ForjitAI() {
   const [appSubType, setAppSubType] = useState("web"); // web | mobile
   const [plannerType, setPlannerType] = useState("meal_week");
   const [docType, setDocType] = useState("resume_pdf");
+  const [contentType, setContentType] = useState("lesson_plan");
+
+  const generatorRef = useRef(null);
 
   const [prompt, setPrompt] = useState("");
   const [generating, setGenerating] = useState(false);
@@ -357,6 +362,13 @@ export default function ForjitAI() {
       if (activeTab === "app") {
         sysPrompt = appSubType === "mobile" ? MOBILE_SYSTEM_PROMPT : APP_SYSTEM_PROMPT;
         expectedType = "html";
+      } else if (activeTab === "content") {
+        sysPrompt = CONTENT_SYSTEM_PROMPT;
+        expectedType = "markdown";
+        const ctype = CONTENT_TYPES[contentType];
+        if (ctype) {
+          sysPrompt = CONTENT_SYSTEM_PROMPT + `\n\n[CONTENT TYPE: ${ctype.label}]`;
+        }
       } else if (activeTab === "planner") {
         sysPrompt = PLANNER_SYSTEM_PROMPT;
         expectedType = "html";
@@ -403,7 +415,7 @@ export default function ForjitAI() {
       const entry = {
         id, prompt: prompt.trim(), content: cleaned, outputType: expectedType,
         ts: id, model, provider, tab: activeTab,
-        subType: activeTab === "app" ? appSubType : activeTab === "planner" ? plannerType : docType,
+        subType: activeTab === "app" ? appSubType : activeTab === "planner" ? plannerType : activeTab === "content" ? contentType : docType,
         userId: user?.id || "anon", userName: user?.name || "Guest",
         iterations: [],
       };
@@ -457,7 +469,7 @@ export default function ForjitAI() {
       setHistory((h) => [{
         id, prompt: prompt.trim(), content: cleaned, outputType, ts: id, model, provider,
         tab: activeTab,
-        subType: activeTab === "app" ? appSubType : activeTab === "planner" ? plannerType : docType,
+        subType: activeTab === "app" ? appSubType : activeTab === "planner" ? plannerType : activeTab === "content" ? contentType : docType,
         userId: user?.id || "anon", userName: user?.name || "Guest",
         iterations: newIterations, parentChange: change, isIteration: true,
       }, ...h].slice(0, 30));
@@ -857,9 +869,10 @@ npx cap open android
 
   /* ----- Tab colors ----- */
   const tabColors = {
-    amber: { btn: "bg-amber-400 text-stone-950 border-amber-400", badge: "bg-amber-400/20 text-amber-300" },
-    emerald: { btn: "bg-emerald-400 text-stone-950 border-emerald-400", badge: "bg-emerald-400/20 text-emerald-300" },
-    sky: { btn: "bg-sky-400 text-stone-950 border-sky-400", badge: "bg-sky-400/20 text-sky-300" },
+    amber:  { btn: "bg-amber-400 text-stone-950 border-amber-400",   badge: "bg-amber-400/20 text-amber-300"   },
+    emerald:{ btn: "bg-emerald-400 text-stone-950 border-emerald-400",badge: "bg-emerald-400/20 text-emerald-300"},
+    sky:    { btn: "bg-sky-400 text-stone-950 border-sky-400",        badge: "bg-sky-400/20 text-sky-300"       },
+    violet: { btn: "bg-violet-400 text-stone-950 border-violet-400",  badge: "bg-violet-400/20 text-violet-300" },
   };
 
   /* ---------- RENDER ---------- */
@@ -953,13 +966,13 @@ npx cap open android
           )}
 
           {/* Hero */}
-          <section className="mb-6">
+          <section className="mb-8 slide-up">
             <h1 className="font-display text-3xl md:text-5xl font-semibold tracking-tight leading-tight mb-2">
-              <span className="text-amber-400">Forjit AI</span> — Build apps, plan life,<br />
-              <span className="italic font-normal text-stone-300">generate documents instantly.</span>
+              <span className="text-amber-400">Forjit AI</span> — Build apps, generate content,<br />
+              <span className="italic font-normal text-stone-300">and use smart Indian tools.</span>
             </h1>
             <p className="text-stone-400 text-base max-w-2xl font-sans">
-              Free AI tool — one prompt creates working web apps, life planners with storage, or downloadable PDF/DOCX documents. Powered by Llama, Qwen, DeepSeek.
+              Free AI platform — one prompt creates apps, content, documents, or opens specialized tools for teachers, nurses, engineers & more.
             </p>
             <div className="mt-3 inline-flex items-center gap-2 px-3 py-1.5 rounded-full bg-amber-400/10 border border-amber-400/20 text-[11px] font-mono text-amber-300">
               <span className="w-1.5 h-1.5 rounded-full bg-amber-400 pulse-dot" />
@@ -967,9 +980,70 @@ npx cap open android
             </div>
           </section>
 
+          {/* ── QUICK ACTIONS ─────────────────────────────────────────── */}
+          <section className="mb-8 slide-up">
+            <div className="grid grid-cols-1 sm:grid-cols-3 gap-3">
+              {/* Create App */}
+              <button
+                onClick={() => {
+                  setActiveTab("app");
+                  reset();
+                  generatorRef.current?.scrollIntoView({ behavior: "smooth", block: "start" });
+                }}
+                className="group relative overflow-hidden rounded-2xl border border-amber-400/25 bg-gradient-to-br from-amber-400/10 via-stone-900/80 to-stone-900 p-5 text-left hover:border-amber-400/50 hover:from-amber-400/15 transition-all duration-300"
+              >
+                <div className="absolute top-0 right-0 w-24 h-24 bg-amber-400/5 rounded-full -translate-y-8 translate-x-8 group-hover:scale-125 transition-transform duration-500" />
+                <div className="w-10 h-10 rounded-xl bg-amber-400/15 text-amber-300 flex items-center justify-center mb-3">
+                  <Code2 className="w-5 h-5" />
+                </div>
+                <div className="font-display text-lg font-semibold text-stone-100 mb-1">Create App</div>
+                <div className="text-xs text-stone-400 leading-relaxed mb-3">Web apps, mobile UIs, dashboards — from a single prompt</div>
+                <div className="flex items-center gap-1 text-xs text-amber-300/80 group-hover:gap-2 transition-all">
+                  Start building <ArrowRight className="w-3.5 h-3.5" />
+                </div>
+              </button>
+
+              {/* Create Content */}
+              <button
+                onClick={() => {
+                  setActiveTab("content");
+                  reset();
+                  generatorRef.current?.scrollIntoView({ behavior: "smooth", block: "start" });
+                }}
+                className="group relative overflow-hidden rounded-2xl border border-violet-400/25 bg-gradient-to-br from-violet-400/10 via-stone-900/80 to-stone-900 p-5 text-left hover:border-violet-400/50 hover:from-violet-400/15 transition-all duration-300"
+              >
+                <div className="absolute top-0 right-0 w-24 h-24 bg-violet-400/5 rounded-full -translate-y-8 translate-x-8 group-hover:scale-125 transition-transform duration-500" />
+                <div className="w-10 h-10 rounded-xl bg-violet-400/15 text-violet-300 flex items-center justify-center mb-3">
+                  <Wand2 className="w-5 h-5" />
+                </div>
+                <div className="font-display text-lg font-semibold text-stone-100 mb-1">Create Content</div>
+                <div className="text-xs text-stone-400 leading-relaxed mb-3">Lesson plans, sermons, blogs, study notes & speeches</div>
+                <div className="flex items-center gap-1 text-xs text-violet-300/80 group-hover:gap-2 transition-all">
+                  Generate now <ArrowRight className="w-3.5 h-3.5" />
+                </div>
+              </button>
+
+              {/* Explore Tools */}
+              <a
+                href="/tools/"
+                className="group relative overflow-hidden rounded-2xl border border-emerald-400/25 bg-gradient-to-br from-emerald-400/10 via-stone-900/80 to-stone-900 p-5 text-left hover:border-emerald-400/50 hover:from-emerald-400/15 transition-all duration-300 block"
+              >
+                <div className="absolute top-0 right-0 w-24 h-24 bg-emerald-400/5 rounded-full -translate-y-8 translate-x-8 group-hover:scale-125 transition-transform duration-500" />
+                <div className="w-10 h-10 rounded-xl bg-emerald-400/15 text-emerald-300 flex items-center justify-center mb-3">
+                  <Sparkles className="w-5 h-5" />
+                </div>
+                <div className="font-display text-lg font-semibold text-stone-100 mb-1">Explore Tools</div>
+                <div className="text-xs text-stone-400 leading-relaxed mb-3">Teacher, nursing, finance, civil & 40+ Indian tools</div>
+                <div className="flex items-center gap-1 text-xs text-emerald-300/80 group-hover:gap-2 transition-all">
+                  Browse all <ArrowRight className="w-3.5 h-3.5" />
+                </div>
+              </a>
+            </div>
+          </section>
+
           {/* MAIN TABS */}
-          <section className="mb-5">
-            <div className="grid grid-cols-3 gap-2 bg-stone-900/60 border border-stone-800 p-1 rounded-xl">
+          <section className="mb-5" ref={generatorRef}>
+            <div className="grid grid-cols-2 md:grid-cols-4 gap-2 bg-stone-900/60 border border-stone-800 p-1 rounded-xl">
               {Object.entries(TABS).map(([key, tab]) => {
                 const Icon = ICON_MAP[tab.icon] || Code2;
                 const active = activeTab === key;
@@ -998,6 +1072,10 @@ npx cap open android
             <AppSubTypeSelector appSubType={appSubType} setAppSubType={setAppSubType} />
           )}
 
+          {activeTab === "content" && (
+            <ContentSubTypeSelector contentType={contentType} setContentType={setContentType} />
+          )}
+
           {activeTab === "planner" && (
             <PlannerSubTypeSelector plannerType={plannerType} setPlannerType={setPlannerType} />
           )}
@@ -1016,6 +1094,7 @@ npx cap open android
                 onKeyDown={handleKeyDown}
                 placeholder={`e.g. ${
                   activeTab === "app" ? (appSubType === "mobile" ? "Habit tracker with swipe gestures and bottom nav" : "Pomodoro timer with circular progress ring") :
+                  activeTab === "content" ? CONTENT_TYPES[contentType].placeholder :
                   activeTab === "planner" ? PLANNER_TYPES[plannerType].placeholder :
                   DOC_TYPES[docType].placeholder
                 }`}
@@ -1214,6 +1293,122 @@ npx cap open android
               )}
             </section>
           )}
+
+          {/* ── TOOL CATEGORIES PREVIEW ───────────────────────────── */}
+          <section className="mt-14 mb-2 slide-up">
+            <div className="flex items-center justify-between mb-4">
+              <div>
+                <h2 className="font-display text-xl font-semibold text-stone-100">Explore Tools</h2>
+                <p className="text-xs text-stone-500 mt-0.5">Specialized tools built for India</p>
+              </div>
+              <a href="/tools/" className="flex items-center gap-1.5 text-xs text-amber-300 hover:text-amber-200 border border-amber-400/20 hover:border-amber-400/40 px-3 py-1.5 rounded-lg transition">
+                View all <ArrowRight className="w-3.5 h-3.5" />
+              </a>
+            </div>
+
+            {/* Mobile: horizontal scroll · Desktop: grid */}
+            <div className="-mx-4 px-4 md:mx-0 md:px-0 overflow-x-auto md:overflow-visible scrollbar-thin">
+              <div className="flex md:grid md:grid-cols-3 gap-3 pb-2 md:pb-0 min-w-max md:min-w-0">
+
+                {/* Teacher Tools */}
+                <a href="/tools/?cat=teacher" className="group flex-shrink-0 w-64 md:w-auto rounded-xl border border-stone-800 hover:border-amber-400/30 bg-stone-900/50 hover:bg-amber-400/5 p-4 transition-all duration-200 block">
+                  <div className="flex items-center gap-3 mb-2">
+                    <span className="text-2xl">👩‍🏫</span>
+                    <div>
+                      <div className="font-medium text-stone-200 text-sm group-hover:text-amber-200 transition">Teacher Tools</div>
+                      <div className="text-[10px] text-stone-500">Lesson plans, question papers, rubrics</div>
+                    </div>
+                  </div>
+                  <div className="flex flex-wrap gap-1">
+                    {["Lesson Plan", "Question Paper", "MCQ Generator"].map(t => (
+                      <span key={t} className="px-1.5 py-0.5 rounded text-[10px] bg-amber-400/10 text-amber-400/70">{t}</span>
+                    ))}
+                  </div>
+                </a>
+
+                {/* Nursing Tools */}
+                <a href="/tools/?cat=health" className="group flex-shrink-0 w-64 md:w-auto rounded-xl border border-stone-800 hover:border-sky-400/30 bg-stone-900/50 hover:bg-sky-400/5 p-4 transition-all duration-200 block">
+                  <div className="flex items-center gap-3 mb-2">
+                    <span className="text-2xl">🩺</span>
+                    <div>
+                      <div className="font-medium text-stone-200 text-sm group-hover:text-sky-200 transition">Nursing & Health</div>
+                      <div className="text-[10px] text-stone-500">BMI, drug dosage, vitals calculators</div>
+                    </div>
+                  </div>
+                  <div className="flex flex-wrap gap-1">
+                    {["BMI", "Calorie", "Water Intake"].map(t => (
+                      <span key={t} className="px-1.5 py-0.5 rounded text-[10px] bg-sky-400/10 text-sky-400/70">{t}</span>
+                    ))}
+                  </div>
+                </a>
+
+                {/* Civil Tools */}
+                <a href="/tools/?cat=civil" className="group flex-shrink-0 w-64 md:w-auto rounded-xl border border-stone-800 hover:border-stone-400/30 bg-stone-900/50 hover:bg-stone-400/5 p-4 transition-all duration-200 block">
+                  <div className="flex items-center gap-3 mb-2">
+                    <span className="text-2xl">🏗️</span>
+                    <div>
+                      <div className="font-medium text-stone-200 text-sm group-hover:text-stone-100 transition">Civil Engineering</div>
+                      <div className="text-[10px] text-stone-500">Concrete, steel, beam calculators</div>
+                    </div>
+                  </div>
+                  <div className="flex flex-wrap gap-1">
+                    {["Concrete Mix", "Steel Bar", "Beam Load"].map(t => (
+                      <span key={t} className="px-1.5 py-0.5 rounded text-[10px] bg-stone-400/10 text-stone-400/70">{t}</span>
+                    ))}
+                  </div>
+                </a>
+
+                {/* Finance Tools */}
+                <a href="/tools/?cat=finance" className="group flex-shrink-0 w-64 md:w-auto rounded-xl border border-stone-800 hover:border-emerald-400/30 bg-stone-900/50 hover:bg-emerald-400/5 p-4 transition-all duration-200 block">
+                  <div className="flex items-center gap-3 mb-2">
+                    <span className="text-2xl">💰</span>
+                    <div>
+                      <div className="font-medium text-stone-200 text-sm group-hover:text-emerald-200 transition">Finance & Investment</div>
+                      <div className="text-[10px] text-stone-500">EMI, SIP, FD, retirement calculators</div>
+                    </div>
+                  </div>
+                  <div className="flex flex-wrap gap-1">
+                    {["EMI", "SIP", "FD Calculator"].map(t => (
+                      <span key={t} className="px-1.5 py-0.5 rounded text-[10px] bg-emerald-400/10 text-emerald-400/70">{t}</span>
+                    ))}
+                  </div>
+                </a>
+
+                {/* India Specific */}
+                <a href="/tools/?cat=india" className="group flex-shrink-0 w-64 md:w-auto rounded-xl border border-stone-800 hover:border-amber-500/30 bg-stone-900/50 hover:bg-amber-500/5 p-4 transition-all duration-200 block">
+                  <div className="flex items-center gap-3 mb-2">
+                    <span className="text-2xl">🇮🇳</span>
+                    <div>
+                      <div className="font-medium text-stone-200 text-sm group-hover:text-amber-200 transition">India-Specific</div>
+                      <div className="text-[10px] text-stone-500">GST, income tax, PPF, HRA tools</div>
+                    </div>
+                  </div>
+                  <div className="flex flex-wrap gap-1">
+                    {["GST Calc", "Income Tax", "PPF"].map(t => (
+                      <span key={t} className="px-1.5 py-0.5 rounded text-[10px] bg-amber-500/10 text-amber-500/70">{t}</span>
+                    ))}
+                  </div>
+                </a>
+
+                {/* Blog/OTT */}
+                <a href="/tools/?cat=text" className="group flex-shrink-0 w-64 md:w-auto rounded-xl border border-stone-800 hover:border-pink-400/30 bg-stone-900/50 hover:bg-pink-400/5 p-4 transition-all duration-200 block">
+                  <div className="flex items-center gap-3 mb-2">
+                    <span className="text-2xl">✍️</span>
+                    <div>
+                      <div className="font-medium text-stone-200 text-sm group-hover:text-pink-200 transition">Blog & Writing</div>
+                      <div className="text-[10px] text-stone-500">Content, paraphraser, summaries</div>
+                    </div>
+                  </div>
+                  <div className="flex flex-wrap gap-1">
+                    {["Blog Writer", "Paraphraser", "Summary"].map(t => (
+                      <span key={t} className="px-1.5 py-0.5 rounded text-[10px] bg-pink-400/10 text-pink-400/70">{t}</span>
+                    ))}
+                  </div>
+                </a>
+
+              </div>
+            </div>
+          </section>
 
           {/* FOOTER */}
           <footer className="mt-12 pt-6 border-t border-stone-800/50 pb-6">

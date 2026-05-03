@@ -39,6 +39,7 @@ const TAG_CSS = {
   dev:      "background:rgba(168,85,247,.1);color:#c084fc;border:1px solid rgba(168,85,247,.2)",
   civil:    "background:rgba(251,191,36,.1);color:#fbbf24;border:1px solid rgba(251,191,36,.2)",
   teacher:  "background:rgba(251,191,36,.1);color:#fbbf24;border:1px solid rgba(251,191,36,.2)",
+  priest:   "background:rgba(251,146,60,.1);color:#fb923c;border:1px solid rgba(251,146,60,.2)",
 };
 
 /* ── Group tools by category ────────────────────────────────────────────── */
@@ -197,10 +198,10 @@ footer a{color:var(--muted);text-decoration:none}
   </div>
 
   <div class="cat-tabs">
-    <button class="cat-tab on" onclick="filterCat('all',this)">All (${totalTools})</button>
+    <button class="cat-tab on" data-catkey="all" onclick="filterCat('all',this)">All (${totalTools})</button>
     ${Object.entries(CATEGORIES).map(([key, cat]) => {
       const count = (groups[key] || []).length;
-      return count ? `<button class="cat-tab" onclick="filterCat('${key}',this)">${cat.emoji} ${cat.label} (${count})</button>` : "";
+      return count ? `<button class="cat-tab" data-catkey="${key}" onclick="filterCat('${key}',this)">${cat.emoji} ${cat.label} (${count})</button>` : "";
     }).join("\n    ")}
   </div>
 
@@ -251,6 +252,11 @@ function filterCat(cat, btn) {
   activeCat = cat;
   document.querySelectorAll('.cat-tab').forEach(b => b.classList.remove('on'));
   btn.classList.add('on');
+  // Update URL without reload for shareable links
+  const url = new URL(location.href);
+  if (cat === 'all') url.searchParams.delete('cat');
+  else url.searchParams.set('cat', cat);
+  history.replaceState(null, '', url.toString());
   filterTools();
 }
 function filterTools() {
@@ -277,6 +283,15 @@ function filterTools() {
   });
   document.getElementById('noResults').style.display = visible === 0 ? 'block' : 'none';
 }
+// Init from URL ?cat= param on page load
+(function() {
+  const params = new URLSearchParams(location.search);
+  const cat = params.get('cat');
+  if (cat && cat !== 'all') {
+    const btn = document.querySelector('.cat-tab[data-catkey="' + cat + '"]');
+    if (btn) { activeCat = cat; document.querySelectorAll('.cat-tab').forEach(b=>b.classList.remove('on')); btn.classList.add('on'); filterTools(); }
+  }
+})();
 </script>
 </body>
 </html>`;

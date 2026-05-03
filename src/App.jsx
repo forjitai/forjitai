@@ -44,6 +44,27 @@ import {
   loadJSZip, loadJsPDF, loadDocx, loadPptxGenJS,
 } from "./utils";
 
+/* ── Forjit AI Logo Component ───────────────────────────────────────────── */
+function ForjitLogo({ size = 32 }) {
+  return (
+    <svg width={size} height={size} viewBox="0 0 32 32" fill="none" xmlns="http://www.w3.org/2000/svg" aria-label="Forjit AI">
+      <defs>
+        <linearGradient id="fj-grad" x1="0" y1="0" x2="1" y2="1">
+          <stop offset="0%" stopColor="#3b82f6"/>
+          <stop offset="100%" stopColor="#8b5cf6"/>
+        </linearGradient>
+        <filter id="fj-glow">
+          <feGaussianBlur stdDeviation="1.5" result="blur"/>
+          <feMerge><feMergeNode in="blur"/><feMergeNode in="SourceGraphic"/></feMerge>
+        </filter>
+      </defs>
+      <rect width="32" height="32" rx="8" fill="url(#fj-grad)"/>
+      <path d="M18.5 5.5 L11 17.5 L16.5 17.5 L13.5 26.5 L21 14.5 L15.5 14.5 Z"
+            fill="white" fillOpacity="0.95" filter="url(#fj-glow)"/>
+    </svg>
+  );
+}
+
 /* ── Icon map for main tab bar ──────────────────────────────────────────── */
 const ICON_MAP = {
   Code2, Calendar, FileText, Monitor, Smartphone,
@@ -882,12 +903,13 @@ npx cap open android
         {/* HEADER */}
         <header className="border-b border-stone-800/80 px-4 md:px-10 py-4 flex items-center justify-between backdrop-blur-sm sticky top-0 z-30 bg-stone-950/85">
           <div className="flex items-center gap-3">
-            <div className="w-9 h-9 rounded-md bg-amber-400 text-stone-950 flex items-center justify-center">
-              <Hammer className="w-5 h-5" strokeWidth={2.5} />
-            </div>
+            <ForjitLogo size={34} />
             <div className="leading-tight">
-              <div className="font-display text-xl font-semibold tracking-tight">{APP_NAME}</div>
-              <div className="text-[10px] text-amber-400/70 font-mono uppercase tracking-widest">{APP_TAG}</div>
+              <div className="font-display text-xl font-semibold tracking-tight">
+                <span className="text-stone-100">Forjit</span>
+                <span className="bg-gradient-to-r from-blue-400 to-violet-400 bg-clip-text text-transparent"> AI</span>
+              </div>
+              <div className="text-[10px] text-stone-500 font-mono uppercase tracking-widest">{APP_TAG}</div>
             </div>
           </div>
           <div className="flex items-center gap-1.5 md:gap-2">
@@ -967,15 +989,16 @@ npx cap open android
 
           {/* Hero */}
           <section className="mb-8 slide-up">
-            <h1 className="font-display text-3xl md:text-5xl font-semibold tracking-tight leading-tight mb-2">
-              <span className="text-amber-400">Forjit AI</span> — Build apps, generate content,<br />
-              <span className="italic font-normal text-stone-300">and use smart Indian tools.</span>
+            <h1 className="font-display text-3xl md:text-5xl font-semibold tracking-tight leading-tight mb-3">
+              <span className="bg-gradient-to-r from-blue-400 via-violet-400 to-amber-400 bg-clip-text text-transparent">Forjit AI</span>
+              <br />
+              <span className="text-stone-200 text-2xl md:text-4xl font-normal italic">Build apps, generate content, and use<br className="hidden md:block" /> smart tools — all in one place.</span>
             </h1>
-            <p className="text-stone-400 text-base max-w-2xl font-sans">
-              Free AI platform — one prompt creates apps, content, documents, or opens specialized tools for teachers, nurses, engineers & more.
+            <p className="text-stone-400 text-sm md:text-base max-w-2xl font-sans mt-2">
+              Free AI platform for India — app generator, content creator, 60+ smart tools. No login needed.
             </p>
-            <div className="mt-3 inline-flex items-center gap-2 px-3 py-1.5 rounded-full bg-amber-400/10 border border-amber-400/20 text-[11px] font-mono text-amber-300">
-              <span className="w-1.5 h-1.5 rounded-full bg-amber-400 pulse-dot" />
+            <div className="mt-4 inline-flex items-center gap-2 px-3 py-1.5 rounded-full bg-blue-500/10 border border-blue-500/20 text-[11px] font-mono text-blue-300">
+              <span className="w-1.5 h-1.5 rounded-full bg-blue-400 pulse-dot" />
               Initial phase — actively evolving · not production-ready yet
             </div>
           </section>
@@ -987,18 +1010,20 @@ npx cap open android
               <button
                 onClick={() => {
                   setActiveTab("app");
-                  reset();
+                  setPrompt("Build a Pomodoro timer app with dark theme, circular progress ring, and sound alert");
                   generatorRef.current?.scrollIntoView({ behavior: "smooth", block: "start" });
+                  setTimeout(() => textareaRef.current?.focus(), 400);
                 }}
-                className="group relative overflow-hidden rounded-2xl border border-amber-400/25 bg-gradient-to-br from-amber-400/10 via-stone-900/80 to-stone-900 p-5 text-left hover:border-amber-400/50 hover:from-amber-400/15 transition-all duration-300"
+                className="group relative overflow-hidden rounded-2xl border border-blue-500/25 bg-gradient-to-br from-blue-500/10 via-stone-900/80 to-stone-900 p-5 text-left hover:border-blue-500/50 hover:from-blue-500/15 transition-all duration-300"
               >
-                <div className="absolute top-0 right-0 w-24 h-24 bg-amber-400/5 rounded-full -translate-y-8 translate-x-8 group-hover:scale-125 transition-transform duration-500" />
-                <div className="w-10 h-10 rounded-xl bg-amber-400/15 text-amber-300 flex items-center justify-center mb-3">
+                <div className="absolute top-0 right-0 w-28 h-28 bg-blue-500/5 rounded-full -translate-y-10 translate-x-10 group-hover:scale-125 transition-transform duration-500" />
+                <div className="w-10 h-10 rounded-xl bg-blue-500/15 text-blue-300 flex items-center justify-center mb-3">
                   <Code2 className="w-5 h-5" />
                 </div>
                 <div className="font-display text-lg font-semibold text-stone-100 mb-1">Create App</div>
-                <div className="text-xs text-stone-400 leading-relaxed mb-3">Web apps, mobile UIs, dashboards — from a single prompt</div>
-                <div className="flex items-center gap-1 text-xs text-amber-300/80 group-hover:gap-2 transition-all">
+                <div className="text-xs text-stone-400 leading-relaxed mb-3">Web apps, mobile UIs, dashboards — from one prompt</div>
+                <div className="text-[11px] font-mono text-stone-600 mb-2 italic">"Build a Pomodoro timer app…"</div>
+                <div className="flex items-center gap-1 text-xs text-blue-300/80 font-medium group-hover:gap-2 transition-all">
                   Start building <ArrowRight className="w-3.5 h-3.5" />
                 </div>
               </button>
@@ -1007,18 +1032,20 @@ npx cap open android
               <button
                 onClick={() => {
                   setActiveTab("content");
-                  reset();
+                  setPrompt("Write a lesson plan for Class 5 Science — photosynthesis, 45 minutes, India syllabus, activity-based");
                   generatorRef.current?.scrollIntoView({ behavior: "smooth", block: "start" });
+                  setTimeout(() => textareaRef.current?.focus(), 400);
                 }}
-                className="group relative overflow-hidden rounded-2xl border border-violet-400/25 bg-gradient-to-br from-violet-400/10 via-stone-900/80 to-stone-900 p-5 text-left hover:border-violet-400/50 hover:from-violet-400/15 transition-all duration-300"
+                className="group relative overflow-hidden rounded-2xl border border-violet-500/25 bg-gradient-to-br from-violet-500/10 via-stone-900/80 to-stone-900 p-5 text-left hover:border-violet-500/50 hover:from-violet-500/15 transition-all duration-300"
               >
-                <div className="absolute top-0 right-0 w-24 h-24 bg-violet-400/5 rounded-full -translate-y-8 translate-x-8 group-hover:scale-125 transition-transform duration-500" />
-                <div className="w-10 h-10 rounded-xl bg-violet-400/15 text-violet-300 flex items-center justify-center mb-3">
+                <div className="absolute top-0 right-0 w-28 h-28 bg-violet-500/5 rounded-full -translate-y-10 translate-x-10 group-hover:scale-125 transition-transform duration-500" />
+                <div className="w-10 h-10 rounded-xl bg-violet-500/15 text-violet-300 flex items-center justify-center mb-3">
                   <Wand2 className="w-5 h-5" />
                 </div>
                 <div className="font-display text-lg font-semibold text-stone-100 mb-1">Create Content</div>
                 <div className="text-xs text-stone-400 leading-relaxed mb-3">Lesson plans, sermons, blogs, study notes & speeches</div>
-                <div className="flex items-center gap-1 text-xs text-violet-300/80 group-hover:gap-2 transition-all">
+                <div className="text-[11px] font-mono text-stone-600 mb-2 italic">"Lesson plan for Class 5 Science…"</div>
+                <div className="flex items-center gap-1 text-xs text-violet-300/80 font-medium group-hover:gap-2 transition-all">
                   Generate now <ArrowRight className="w-3.5 h-3.5" />
                 </div>
               </button>
@@ -1026,20 +1053,52 @@ npx cap open android
               {/* Explore Tools */}
               <a
                 href="/tools/"
-                className="group relative overflow-hidden rounded-2xl border border-emerald-400/25 bg-gradient-to-br from-emerald-400/10 via-stone-900/80 to-stone-900 p-5 text-left hover:border-emerald-400/50 hover:from-emerald-400/15 transition-all duration-300 block"
+                className="group relative overflow-hidden rounded-2xl border border-emerald-500/25 bg-gradient-to-br from-emerald-500/10 via-stone-900/80 to-stone-900 p-5 text-left hover:border-emerald-500/50 hover:from-emerald-500/15 transition-all duration-300 block"
               >
-                <div className="absolute top-0 right-0 w-24 h-24 bg-emerald-400/5 rounded-full -translate-y-8 translate-x-8 group-hover:scale-125 transition-transform duration-500" />
-                <div className="w-10 h-10 rounded-xl bg-emerald-400/15 text-emerald-300 flex items-center justify-center mb-3">
+                <div className="absolute top-0 right-0 w-28 h-28 bg-emerald-500/5 rounded-full -translate-y-10 translate-x-10 group-hover:scale-125 transition-transform duration-500" />
+                <div className="w-10 h-10 rounded-xl bg-emerald-500/15 text-emerald-300 flex items-center justify-center mb-3">
                   <Sparkles className="w-5 h-5" />
                 </div>
                 <div className="font-display text-lg font-semibold text-stone-100 mb-1">Explore Tools</div>
-                <div className="text-xs text-stone-400 leading-relaxed mb-3">Teacher, nursing, finance, civil & 40+ Indian tools</div>
-                <div className="flex items-center gap-1 text-xs text-emerald-300/80 group-hover:gap-2 transition-all">
+                <div className="text-xs text-stone-400 leading-relaxed mb-3">Teacher, nursing, priest, finance & 60+ Indian tools</div>
+                <div className="text-[11px] font-mono text-stone-600 mb-2 italic">EMI, BMI, GST, Sermon Builder…</div>
+                <div className="flex items-center gap-1 text-xs text-emerald-300/80 font-medium group-hover:gap-2 transition-all">
                   Browse all <ArrowRight className="w-3.5 h-3.5" />
                 </div>
               </a>
             </div>
           </section>
+
+          {/* ── CONTINUE WHERE YOU LEFT ───────────────────────────── */}
+          {history.length > 0 && (
+            <section className="mb-6 slide-up">
+              <div className="flex items-center gap-2 mb-3">
+                <History className="w-4 h-4 text-stone-500" />
+                <span className="text-[11px] font-mono uppercase tracking-widest text-stone-500">Continue where you left</span>
+              </div>
+              <div className="flex gap-2 flex-wrap">
+                {history.slice(0, 3).map((item) => {
+                  const tabColors2 = { app: "border-blue-500/30 bg-blue-500/5 text-blue-300", content: "border-violet-500/30 bg-violet-500/5 text-violet-300", planner: "border-emerald-500/30 bg-emerald-500/5 text-emerald-300", document: "border-sky-500/30 bg-sky-500/5 text-sky-300" };
+                  const tc = tabColors2[item.tab] || tabColors2.app;
+                  return (
+                    <button
+                      key={item.id}
+                      onClick={() => loadFromHistory(item)}
+                      className={`group px-3 py-2 rounded-xl border ${tc} hover:brightness-125 transition-all text-left max-w-xs`}
+                    >
+                      <div className="text-[11px] font-mono uppercase tracking-wide opacity-60 mb-0.5">{TABS[item.tab]?.label || item.tab}</div>
+                      <div className="text-xs font-medium truncate max-w-[200px] group-hover:text-stone-100 transition">{item.prompt}</div>
+                    </button>
+                  );
+                })}
+                {history.length > 3 && (
+                  <button onClick={() => setShowHistory(true)} className="px-3 py-2 rounded-xl border border-stone-800 hover:border-stone-700 text-xs text-stone-500 hover:text-stone-300 transition">
+                    +{history.length - 3} more
+                  </button>
+                )}
+              </div>
+            </section>
+          )}
 
           {/* MAIN TABS */}
           <section className="mb-5" ref={generatorRef}>
@@ -1106,11 +1165,23 @@ npx cap open android
               <div className="flex items-center justify-between px-4 py-3 border-t border-stone-800/70 gap-2">
                 <div className="flex items-center gap-2">
                   {activeTab === "app" && (
+                    <span className="text-[11px] text-stone-500">Describe the app you want to build</span>
+                  )}
+                  {activeTab === "content" && (
+                    <span className="text-[11px] text-stone-500">Describe the content you want to generate</span>
+                  )}
+                  {activeTab === "planner" && (
+                    <span className="text-[11px] text-stone-500">Describe your planning needs</span>
+                  )}
+                  {activeTab === "document" && (
+                    <span className="text-[11px] text-stone-500">Describe the document to create</span>
+                  )}
+                  {activeTab === "app" && (
                     <button onClick={() => setShowUpload(true)} disabled={busy} className="px-2.5 py-1.5 text-xs text-stone-400 hover:text-amber-300 hover:bg-stone-800/50 rounded transition flex items-center gap-1.5 disabled:opacity-40">
                       <Upload className="w-3.5 h-3.5" /> <span className="hidden sm:inline">Upload</span>
                     </button>
                   )}
-                  <span className="hidden sm:inline text-[11px] font-mono text-stone-600">⌘/Ctrl+Enter</span>
+                  <span className="hidden sm:inline text-[11px] font-mono text-stone-700">⌘/Ctrl+Enter</span>
                 </div>
                 <div className="flex items-center gap-2">
                   {(output || prompt) && !busy && (
@@ -1298,113 +1369,43 @@ npx cap open android
           <section className="mt-14 mb-2 slide-up">
             <div className="flex items-center justify-between mb-4">
               <div>
-                <h2 className="font-display text-xl font-semibold text-stone-100">Explore Tools</h2>
-                <p className="text-xs text-stone-500 mt-0.5">Specialized tools built for India</p>
+                <h2 className="font-display text-xl font-semibold text-stone-100">Specialized Tools</h2>
+                <p className="text-xs text-stone-500 mt-0.5">60+ free tools built for India — no login required</p>
               </div>
-              <a href="/tools/" className="flex items-center gap-1.5 text-xs text-amber-300 hover:text-amber-200 border border-amber-400/20 hover:border-amber-400/40 px-3 py-1.5 rounded-lg transition">
-                View all <ArrowRight className="w-3.5 h-3.5" />
+              <a href="/tools/" className="flex items-center gap-1.5 text-xs text-stone-400 hover:text-amber-300 border border-stone-800 hover:border-amber-400/30 px-3 py-1.5 rounded-lg transition">
+                All tools <ArrowRight className="w-3.5 h-3.5" />
               </a>
             </div>
 
-            {/* Mobile: horizontal scroll · Desktop: grid */}
             <div className="-mx-4 px-4 md:mx-0 md:px-0 overflow-x-auto md:overflow-visible scrollbar-thin">
               <div className="flex md:grid md:grid-cols-3 gap-3 pb-2 md:pb-0 min-w-max md:min-w-0">
 
-                {/* Teacher Tools */}
-                <a href="/tools/?cat=teacher" className="group flex-shrink-0 w-64 md:w-auto rounded-xl border border-stone-800 hover:border-amber-400/30 bg-stone-900/50 hover:bg-amber-400/5 p-4 transition-all duration-200 block">
-                  <div className="flex items-center gap-3 mb-2">
-                    <span className="text-2xl">👩‍🏫</span>
-                    <div>
-                      <div className="font-medium text-stone-200 text-sm group-hover:text-amber-200 transition">Teacher Tools</div>
-                      <div className="text-[10px] text-stone-500">Lesson plans, question papers, rubrics</div>
-                    </div>
-                  </div>
-                  <div className="flex flex-wrap gap-1">
-                    {["Lesson Plan", "Question Paper", "MCQ Generator"].map(t => (
-                      <span key={t} className="px-1.5 py-0.5 rounded text-[10px] bg-amber-400/10 text-amber-400/70">{t}</span>
-                    ))}
-                  </div>
-                </a>
-
-                {/* Nursing Tools */}
-                <a href="/tools/?cat=health" className="group flex-shrink-0 w-64 md:w-auto rounded-xl border border-stone-800 hover:border-sky-400/30 bg-stone-900/50 hover:bg-sky-400/5 p-4 transition-all duration-200 block">
-                  <div className="flex items-center gap-3 mb-2">
-                    <span className="text-2xl">🩺</span>
-                    <div>
-                      <div className="font-medium text-stone-200 text-sm group-hover:text-sky-200 transition">Nursing & Health</div>
-                      <div className="text-[10px] text-stone-500">BMI, drug dosage, vitals calculators</div>
-                    </div>
-                  </div>
-                  <div className="flex flex-wrap gap-1">
-                    {["BMI", "Calorie", "Water Intake"].map(t => (
-                      <span key={t} className="px-1.5 py-0.5 rounded text-[10px] bg-sky-400/10 text-sky-400/70">{t}</span>
-                    ))}
-                  </div>
-                </a>
-
-                {/* Civil Tools */}
-                <a href="/tools/?cat=civil" className="group flex-shrink-0 w-64 md:w-auto rounded-xl border border-stone-800 hover:border-stone-400/30 bg-stone-900/50 hover:bg-stone-400/5 p-4 transition-all duration-200 block">
-                  <div className="flex items-center gap-3 mb-2">
-                    <span className="text-2xl">🏗️</span>
-                    <div>
-                      <div className="font-medium text-stone-200 text-sm group-hover:text-stone-100 transition">Civil Engineering</div>
-                      <div className="text-[10px] text-stone-500">Concrete, steel, beam calculators</div>
-                    </div>
-                  </div>
-                  <div className="flex flex-wrap gap-1">
-                    {["Concrete Mix", "Steel Bar", "Beam Load"].map(t => (
-                      <span key={t} className="px-1.5 py-0.5 rounded text-[10px] bg-stone-400/10 text-stone-400/70">{t}</span>
-                    ))}
-                  </div>
-                </a>
-
-                {/* Finance Tools */}
-                <a href="/tools/?cat=finance" className="group flex-shrink-0 w-64 md:w-auto rounded-xl border border-stone-800 hover:border-emerald-400/30 bg-stone-900/50 hover:bg-emerald-400/5 p-4 transition-all duration-200 block">
-                  <div className="flex items-center gap-3 mb-2">
-                    <span className="text-2xl">💰</span>
-                    <div>
-                      <div className="font-medium text-stone-200 text-sm group-hover:text-emerald-200 transition">Finance & Investment</div>
-                      <div className="text-[10px] text-stone-500">EMI, SIP, FD, retirement calculators</div>
-                    </div>
-                  </div>
-                  <div className="flex flex-wrap gap-1">
-                    {["EMI", "SIP", "FD Calculator"].map(t => (
-                      <span key={t} className="px-1.5 py-0.5 rounded text-[10px] bg-emerald-400/10 text-emerald-400/70">{t}</span>
-                    ))}
-                  </div>
-                </a>
-
-                {/* India Specific */}
-                <a href="/tools/?cat=india" className="group flex-shrink-0 w-64 md:w-auto rounded-xl border border-stone-800 hover:border-amber-500/30 bg-stone-900/50 hover:bg-amber-500/5 p-4 transition-all duration-200 block">
-                  <div className="flex items-center gap-3 mb-2">
-                    <span className="text-2xl">🇮🇳</span>
-                    <div>
-                      <div className="font-medium text-stone-200 text-sm group-hover:text-amber-200 transition">India-Specific</div>
-                      <div className="text-[10px] text-stone-500">GST, income tax, PPF, HRA tools</div>
-                    </div>
-                  </div>
-                  <div className="flex flex-wrap gap-1">
-                    {["GST Calc", "Income Tax", "PPF"].map(t => (
-                      <span key={t} className="px-1.5 py-0.5 rounded text-[10px] bg-amber-500/10 text-amber-500/70">{t}</span>
-                    ))}
-                  </div>
-                </a>
-
-                {/* Blog/OTT */}
-                <a href="/tools/?cat=text" className="group flex-shrink-0 w-64 md:w-auto rounded-xl border border-stone-800 hover:border-pink-400/30 bg-stone-900/50 hover:bg-pink-400/5 p-4 transition-all duration-200 block">
-                  <div className="flex items-center gap-3 mb-2">
-                    <span className="text-2xl">✍️</span>
-                    <div>
-                      <div className="font-medium text-stone-200 text-sm group-hover:text-pink-200 transition">Blog & Writing</div>
-                      <div className="text-[10px] text-stone-500">Content, paraphraser, summaries</div>
-                    </div>
-                  </div>
-                  <div className="flex flex-wrap gap-1">
-                    {["Blog Writer", "Paraphraser", "Summary"].map(t => (
-                      <span key={t} className="px-1.5 py-0.5 rounded text-[10px] bg-pink-400/10 text-pink-400/70">{t}</span>
-                    ))}
-                  </div>
-                </a>
+                {[
+                  { href:"/tools/?cat=teacher", emoji:"👩‍🏫", title:"Teacher Tools", sub:"Lesson plans, question papers, rubrics", color:"amber", chips:["Lesson Plan","Question Paper","MCQ"] },
+                  { href:"/tools/?cat=priest",  emoji:"📖",  title:"Priest & Spiritual", sub:"Sermon builder, prayers, Bible verses", color:"orange", chips:["Sermon Builder","Prayer","Bible Verse"] },
+                  { href:"/tools/?cat=health",  emoji:"🩺",  title:"Nursing & Health", sub:"BMI, calorie, drug & vitals calculators", color:"blue", chips:["BMI","Calorie","Water Intake"] },
+                  { href:"/tools/?cat=finance", emoji:"💰",  title:"Finance & Investment", sub:"EMI, SIP, FD, PPF calculators", color:"emerald", chips:["EMI","SIP","FD Calc"] },
+                  { href:"/tools/?cat=india",   emoji:"🇮🇳",  title:"India-Specific", sub:"GST, income tax, salary, HRA tools", color:"amber", chips:["GST","Income Tax","PPF"] },
+                  { href:"/tools/?cat=civil",   emoji:"🏗️",  title:"Civil Engineering", sub:"Concrete, steel, beam calculators", color:"stone", chips:["Concrete Mix","Steel Bar","Beam Load"] },
+                ].map(({ href, emoji, title, sub, color, chips }) => {
+                  const border = { amber:"hover:border-amber-400/40 hover:bg-amber-400/5", orange:"hover:border-orange-400/40 hover:bg-orange-400/5", blue:"hover:border-blue-400/40 hover:bg-blue-400/5", emerald:"hover:border-emerald-400/40 hover:bg-emerald-400/5", stone:"hover:border-stone-400/30 hover:bg-stone-400/5" };
+                  const chipC = { amber:"bg-amber-400/10 text-amber-400/80", orange:"bg-orange-400/10 text-orange-400/80", blue:"bg-blue-400/10 text-blue-400/80", emerald:"bg-emerald-400/10 text-emerald-400/80", stone:"bg-stone-400/10 text-stone-400/70" };
+                  const titleC = { amber:"group-hover:text-amber-200", orange:"group-hover:text-orange-200", blue:"group-hover:text-blue-200", emerald:"group-hover:text-emerald-200", stone:"group-hover:text-stone-100" };
+                  return (
+                    <a key={href} href={href} className={`group flex-shrink-0 w-60 md:w-auto rounded-xl border border-stone-800 ${border[color]} bg-stone-900/50 p-4 transition-all duration-200 block`}>
+                      <div className="flex items-center gap-3 mb-2.5">
+                        <span className="text-2xl leading-none">{emoji}</span>
+                        <div>
+                          <div className={`font-medium text-stone-200 text-sm ${titleC[color]} transition leading-tight`}>{title}</div>
+                          <div className="text-[10px] text-stone-500 mt-0.5">{sub}</div>
+                        </div>
+                      </div>
+                      <div className="flex flex-wrap gap-1">
+                        {chips.map(t => <span key={t} className={`px-1.5 py-0.5 rounded text-[10px] ${chipC[color]}`}>{t}</span>)}
+                      </div>
+                    </a>
+                  );
+                })}
 
               </div>
             </div>

@@ -145,7 +145,7 @@ const CONTENT_ICON_MAP = { GraduationCap, BookOpen, PenLine, NotebookPen, Mic, S
 export function ContentSubTypeSelector({ contentType, setContentType }) {
   return (
     <div className="mb-4 -mx-2 px-2 overflow-x-auto scrollbar-thin">
-      <div className="flex items-center gap-1.5 pb-1 min-w-max justify-center flex-wrap">
+      <div className="flex items-center gap-1.5 pb-1 min-w-max">
         {Object.entries(CONTENT_TYPES).map(([key, t]) => {
           const active = contentType === key;
           const IconComp = CONTENT_ICON_MAP[t.icon] || FileText;
@@ -153,14 +153,19 @@ export function ContentSubTypeSelector({ contentType, setContentType }) {
             <button
               key={key}
               onClick={() => setContentType(key)}
-              className={`px-3 py-1.5 rounded-md text-xs font-medium border transition flex items-center gap-1.5 whitespace-nowrap ${
+              className={`px-3 py-2 rounded-lg text-xs font-medium border transition flex items-center gap-1.5 whitespace-nowrap ${
                 active
-                  ? "bg-violet-400 text-stone-950 border-violet-400"
-                  : "bg-stone-900 border-stone-800 text-stone-400 hover:border-stone-700"
+                  ? "bg-violet-500 text-white border-violet-500 shadow-md shadow-violet-500/20"
+                  : "bg-stone-900 border-stone-800 text-stone-400 hover:border-stone-700 hover:text-stone-200"
               }`}
             >
-              <IconComp className="w-3.5 h-3.5" />
-              {t.label}
+              <IconComp className="w-3.5 h-3.5 shrink-0" />
+              <span>{t.label}</span>
+              {t.sublabel && (
+                <span className={`text-[9px] px-1.5 py-0.5 rounded font-medium uppercase tracking-wide ${
+                  active ? "bg-white/20 text-white" : "bg-stone-800 text-stone-500"
+                }`}>{t.sublabel}</span>
+              )}
             </button>
           );
         })}

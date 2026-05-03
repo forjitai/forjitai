@@ -54,6 +54,23 @@
 .fade-in-up-2 { animation: fade-in-up 0.5s 0.10s ease-out both; }
 .fade-in-up-3 { animation: fade-in-up 0.5s 0.15s ease-out both; }
 
+/* Gradient text */
+.grad-text {
+  background: linear-gradient(135deg, #3b82f6, #8b5cf6, #f59e0b);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+}
+
+/* Tool category card hover lift */
+.tool-cat-card {
+  transition: transform 0.2s ease, box-shadow 0.2s ease;
+}
+.tool-cat-card:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 8px 32px -8px rgba(0,0,0,0.4);
+}
+
 .prose-md {
   font-family: 'Inter', system-ui, sans-serif;
   line-height: 1.6;

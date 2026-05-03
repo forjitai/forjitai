@@ -31,6 +31,7 @@ export const CATEGORIES = {
   text:     { label: "Text & Writing",        color: "purple", emoji: "✍️"  },
   dev:      { label: "Developer Tools",       color: "purple", emoji: "👨‍💻" },
   teacher:  { label: "Teacher Tools",         color: "amber",  emoji: "👩‍🏫" },
+  priest:   { label: "Priest & Spiritual",    color: "orange", emoji: "🙏"   },
   civil:    { label: "Civil Engineering",     color: "stone",  emoji: "🏗️"  },
 };
 
@@ -513,5 +514,38 @@ export const TOOLS = [
     icon: "⚖️", cat: "civil",
     tags: "steel bar weight TMT rebar d squared 162 bar bending schedule BBS IS 1786 civil engineering",
     priority: 0.92, changefreq: "monthly", new: true,
+  },
+  /* ── Priest & Spiritual ──────────────────────────────────────────────── */
+  {
+    slug: "priest/sermon-builder",
+    name: "Sermon Builder",
+    desc: "AI-powered sermon builder — enter a scripture or theme and get a complete structured sermon with intro, 3 points, illustrations, and closing.",
+    icon: "📖", cat: "priest",
+    tags: "sermon builder church pastor priest scripture Bible spiritual message sunday",
+    priority: 0.88, changefreq: "monthly", new: true,
+  },
+  {
+    slug: "priest/prayer-generator",
+    name: "Prayer Generator",
+    desc: "Generate heartfelt prayers for any occasion — service, wedding, funeral, thanksgiving, healing, or daily morning prayer.",
+    icon: "🙏", cat: "priest",
+    tags: "prayer generator church pastor priest morning evening wedding funeral healing christian",
+    priority: 0.85, changefreq: "monthly", new: true,
+  },
+  {
+    slug: "priest/bible-verse-finder",
+    name: "Bible Verse Finder",
+    desc: "Find relevant Bible verses for any topic, emotion, or life situation. Perfect for sermons, counselling, and daily devotion.",
+    icon: "✝️", cat: "priest",
+    tags: "bible verse finder scripture reference christian pastor priest devotion counselling topic",
+    priority: 0.85, changefreq: "monthly", new: true,
+  },
+  {
+    slug: "priest/devotional-notes",
+    name: "Devotional Notes Maker",
+    desc: "Create weekly devotional notes, Bible study materials, and Sunday School lessons for your congregation.",
+    icon: "📿", cat: "priest",
+    tags: "devotional notes bible study sunday school church congregation weekly pastor priest",
+    priority: 0.82, changefreq: "monthly", new: true,
   },
 ];

@@ -210,31 +210,37 @@ export const ITERATE_SYSTEM_PROMPT_MD = `You are refining existing Markdown. App
 export const CONTENT_TYPES = {
   lesson_plan: {
     label:       "Lesson Plan",
+    sublabel:    "Teacher",
     icon:        "GraduationCap",
     placeholder: "Class 8 Science — photosynthesis, 45 min period, activity-based",
   },
   sermon: {
-    label:       "Sermon / Discourse",
+    label:       "Sermon",
+    sublabel:    "Priest",
     icon:        "BookOpen",
     placeholder: "Sunday sermon on gratitude and faith, 15 minutes, Bible-based",
   },
-  blog: {
-    label:       "Blog Post",
-    icon:        "PenLine",
-    placeholder: "Benefits of yoga for office workers, 800 words, SEO-friendly",
-  },
   notes: {
     label:       "Study Notes",
+    sublabel:    "Student",
     icon:        "NotebookPen",
     placeholder: "UPSC notes on Indian Constitution — Fundamental Rights, concise",
   },
+  blog: {
+    label:       "Blog Post",
+    sublabel:    "SEO",
+    icon:        "PenLine",
+    placeholder: "Benefits of yoga for office workers, 800 words, SEO-friendly",
+  },
   speech: {
-    label:       "Speech / Script",
+    label:       "Speech",
+    sublabel:    "Public",
     icon:        "Mic",
     placeholder: "Farewell speech for a teacher, 5 minutes, emotional and heartfelt",
   },
   social: {
     label:       "Social Media",
+    sublabel:    "Marketing",
     icon:        "Share2",
     placeholder: "Instagram captions for a bakery launch, 5 creative posts with hashtags",
   },

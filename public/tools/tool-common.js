@@ -72,11 +72,14 @@
     { slug:'base64-encoder',              name:'Base64 Encoder',         icon:'🔢', cat:'dev'     },
     { slug:'number-converter',            name:'Number System Converter',icon:'💻', cat:'dev'     },
     { slug:'json-formatter',              name:'JSON Formatter',         icon:'🗂️', cat:'dev'     },
+    { slug:'civil/house-floor-plan-generator', name:'House Floor Plan Generator',    icon:'🏠', cat:'civil' },
+    { slug:'civil/steel-bar-weight-calculator',name:'Steel Bar Weight Calculator',   icon:'⚖️', cat:'civil' },
+    { slug:'concrete-mix-calculator',          name:'Concrete Mix Calculator',       icon:'🏗️', cat:'civil' },
   ];
 
   const CAT_LABELS = {
     finance:'Finance', india:'India', health:'Health',
-    utility:'Utility', text:'Text', dev:'Developer',
+    utility:'Utility', text:'Text', dev:'Developer', civil:'Civil Engineering',
   };
 
   /* ── Detect current tool slug from URL ──────────────────────────────── */

@@ -526,6 +526,14 @@ export const TOOLS = [
     priority: 0.90, changefreq: "monthly", new: true,
   },
   {
+    slug: "civil/house-floor-plan-generator",
+    name: "House Floor Plan Generator",
+    desc: "AI-powered 2D house floor plan generator. Enter plot size, rooms & entrance direction — get instant SVG floor plan with optional Vastu Shastra compliance.",
+    icon: "🏠", cat: "civil",
+    tags: "house floor plan generator AI Vastu 2D plan Indian home design plot plan bedroom layout civil engineering architecture",
+    priority: 0.95, changefreq: "monthly", new: true,
+  },
+  {
     slug: "civil/steel-bar-weight-calculator",
     name: "Steel Bar Weight Calculator",
     desc: "TMT rebar weight using d²/162 formula. Quick calc, full bar bending schedule (BBS) & unit weight table. IS 1786:2008.",

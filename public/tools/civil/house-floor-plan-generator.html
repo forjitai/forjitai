@@ -111,7 +111,7 @@ header{background:var(--sur);border-bottom:1px solid var(--bor);padding:12px 20p
 .output-card{background:var(--sur);border:1px solid var(--bor);border-radius:12px;overflow:hidden;display:none}
 .output-header{padding:14px 20px;border-bottom:1px solid var(--bor);display:flex;align-items:center;justify-content:space-between;flex-wrap:wrap;gap:8px}
 .output-title{font-size:14px;font-weight:600;color:var(--fg);display:flex;align-items:center;gap:8px}
-.plan-iframe{width:100%;border:none;background:#fff;display:block;min-height:520px}
+.plan-iframe{width:100%;border:none;background:#fff;display:block;min-height:640px}
 
 /* ── Progress ── */
 .progress-area{background:var(--sur2);border-radius:8px;padding:20px;text-align:center;display:none}
@@ -384,11 +384,13 @@ async function generatePlan() {
   outputCard.style.display = 'none';
 
   const progressMessages = [
-    '🏗️ AI is designing your floor plan…',
-    '📐 Calculating room sizes and positions…',
-    '🧿 Applying Vastu principles…',
-    '✏️ Drawing walls and doors…',
-    '🎨 Adding room labels and dimensions…',
+    '🏗️ AI architect is laying out your floor plan…',
+    '📐 Calculating room sizes and proportions…',
+    '🧿 Applying Vastu Shastra principles…',
+    '🚪 Drawing doors, windows and walls…',
+    '🪑 Placing furniture and fixtures…',
+    '📊 Calculating room areas (sq ft)…',
+    '🎨 Adding colors, labels and legend…',
   ];
   let pmIdx = 0;
   const pmTimer = setInterval(() => {
@@ -406,7 +408,7 @@ async function generatePlan() {
       body: JSON.stringify({
         messages: [{ role: 'user', content: prompt }],
         model: 'smart',
-        maxTokens: 4000,
+        maxTokens: 6000,
       }),
     });
 
@@ -497,69 +499,183 @@ function printPlan() {
 }
 
 function buildPrompt(p) {
-  const vastuBlock = p.vastu === 'Yes' ? `
-🧭 VASTU RULES TO APPLY:
-- Entrance: ${p.direction} side (${p.direction === 'North' || p.direction === 'East' ? 'auspicious' : 'apply Vastu remedies'})
-- Living Room: North or East side of plot
-- Kitchen: South-East corner (Agni corner)
-- Master Bedroom: South-West corner
-- Bathrooms: West or North-West side
+  const totalArea = (p.width * p.length).toLocaleString();
+
+  const entranceSide = { North:'top', South:'bottom', East:'right', West:'left' }[p.direction];
+  const entranceSVG  = { North:'top side of the SVG (low Y)', South:'bottom side of the SVG (high Y)', East:'right side of the SVG (high X)', West:'left side of the SVG (low X)' }[p.direction];
+
+  const vastuRules = p.vastu === 'Yes' ? `
+VASTU SHASTRA RULES (MANDATORY — Vastu = Yes):
+- Entrance: ${p.direction} facing — door on the ${entranceSide} wall
+- Living Room: North or East zone of plot
+- Kitchen: South-East corner (Agni / Fire corner)
+- Master Bedroom: South-West corner (heaviest, most stable zone)
+- Additional Bedrooms: South or West zone
+- Bathrooms/Toilets: West or North-West — NEVER in North-East
 - Parking: North or East side
-- DO NOT place kitchen or toilet in North-East` : `
-LAYOUT STYLE: Modern practical layout — no direction constraints. Optimize for usability.`;
+- Pooja/Meditation: North-East corner (if space available)
+- Passage/Corridor: Central spine running North-South or East-West` : `
+LAYOUT STYLE: Modern efficient layout — optimize for traffic flow and natural light. No directional constraints.`;
 
-  const entrancePlacement = {
-    North: 'top side of the SVG',
-    South: 'bottom side of the SVG',
-    East:  'right side of the SVG',
-    West:  'left side of the SVG',
-  }[p.direction];
+  return `You are an expert civil engineer, architect, interior designer, and Vastu consultant. Generate a DETAILED, REALISTIC 2D house floor plan as a complete standalone HTML page with embedded SVG.
 
-  return `You are a civil engineer and Vastu expert. Generate a realistic 2D house floor plan as a complete HTML file with embedded SVG.
+═══════════════════════════════════════════════
+PLOT & REQUIREMENTS
+═══════════════════════════════════════════════
+Plot Size  : ${p.width} ft wide × ${p.length} ft long
+Total Area : ${totalArea} sq ft
+Entrance   : ${p.direction} facing → place main door on the ${entranceSide} wall (${entranceSVG})
+Floors     : ${p.floors} (draw Ground Floor plan)
+Bedrooms   : ${p.bedrooms}
+Bathrooms  : ${p.bathrooms}
+Kitchen    : ${p.kitchen}
+Living Rm  : ${p.living}
+Parking    : ${p.parking}
+Vastu      : ${p.vastu}
+${vastuRules}
 
-PLOT: ${p.width} ft wide × ${p.length} ft long
-ROOMS NEEDED:
-- Bedrooms: ${p.bedrooms}
-- Bathrooms: ${p.bathrooms}
-- Kitchen: ${p.kitchen}
-- Living Room: ${p.living}
-- Parking: ${p.parking}
-- Floors: ${p.floors} floor(s) (show ground floor plan)
-ENTRANCE FACING: ${p.direction} → place entrance on the ${entrancePlacement}
-VASTU: ${p.vastu}
-${vastuBlock}
+═══════════════════════════════════════════════
+ROOM SIZE MINIMUMS (scale proportionally to plot)
+═══════════════════════════════════════════════
+- Living Room    : 12×14 ft minimum
+- Master Bedroom : 12×14 ft minimum
+- Other Bedrooms : 10×12 ft minimum
+- Kitchen        : 8×10 ft minimum
+- Bathroom       : 4×6 ft minimum
+- Passage/Hall   : 3.5 ft wide minimum
+- Parking        : 9×18 ft minimum
+Use at least 85% of total plot area. No wasted space.
 
-STRICT OUTPUT RULES:
-1. Return ONLY the complete HTML file — no explanations, no markdown fences
-2. Use SVG (800px wide, proportional height) with proper scale
-3. Draw: outer plot boundary, all rooms as <rect>, entrance door, walls
-4. Label every room with name + dimensions (e.g. "Master Bedroom 12×14 ft")
-5. Use different pastel fill colors per room type:
-   - Living Room: #dbeafe (light blue)
-   - Bedroom: #dcfce7 (light green)
-   - Kitchen: #fef9c3 (light yellow)
-   - Bathroom: #f3e8ff (light purple)
-   - Parking: #e5e7eb (light gray)
-   - Hallway/Passage: #fff7ed (light orange)
-6. Black (#1a1a1a) stroke for walls (stroke-width="3")
-7. Center all text labels in rooms — use <text> with dominant-baseline="middle" text-anchor="middle"
-8. Mark entrance clearly with an arrow or arc symbol and "Entrance ↑" label
-9. Add title at top: "${p.vastu === 'Yes' ? 'Vastu Floor Plan' : 'Generated Floor Plan'} — ${p.width}×${p.length} ft, ${p.bedrooms} BHK"
-10. Add a subtle grid (light gray lines every 20px) behind the plan
-11. Add a north arrow indicator in the top-right corner
-12. Add a scale bar at the bottom
-13. Make rooms realistic — NO overlapping, all rooms inside plot boundary
-14. Add a legend at the bottom listing room types and colors
-15. The HTML must work standalone in a browser — use inline CSS in <style> tag
+═══════════════════════════════════════════════
+CONNECTIVITY RULES (MANDATORY)
+═══════════════════════════════════════════════
+- Main Entrance → Living Room (direct connection)
+- Living Room → all Bedrooms (via passage or direct)
+- Living Room → Kitchen (adjacent or connected)
+- Each Bedroom → attached or nearby Bathroom
+- NO isolated rooms — every room must be reachable
 
-ROOM SIZE GUIDELINES (scale to plot):
-- Living Room: 12×14 ft minimum (scale to plot)
-- Bedroom: 10×12 ft minimum
-- Kitchen: 8×10 ft minimum  
-- Bathroom: 4×6 ft minimum
-- Leave passage/corridor space between rooms
+═══════════════════════════════════════════════
+DOORS & WINDOWS (DRAW ALL OF THESE)
+═══════════════════════════════════════════════
+DOORS — draw as a gap in the wall + quarter-circle arc (door swing):
+- Main entrance door: large (3 ft wide), with arc
+- Bedroom doors: 2.5 ft wide with arc
+- Kitchen door: 2.5 ft wide with arc
+- Bathroom doors: 2 ft wide with arc
+- Show door swing direction with a <path> arc
 
-Return ONLY the complete HTML. Start with <!DOCTYPE html>.`;
+WINDOWS — draw as 3 parallel lines on outer walls:
+- Living Room: 1–2 windows on outer wall
+- Each Bedroom: 1 window on outer wall
+- Kitchen: 1 window (ventilation)
+- Use 3 short parallel lines to represent window
+
+═══════════════════════════════════════════════
+FURNITURE & FIXTURES (DRAW ALL OF THESE)
+═══════════════════════════════════════════════
+Living Room:
+  - Sofa: large rectangle (6×2.5 ft) with label "Sofa"
+  - Coffee table: small rect (3×1.5 ft)
+  - TV unit: thin rect on wall (4×1 ft) with "TV" label
+
+Each Bedroom:
+  - Bed: rectangle (5×6.5 ft for master, 4×6 ft for others) with "Bed" label
+  - Wardrobe: thin rect on wall (4×1.5 ft) with "WRB" label
+  - Side tables: tiny squares beside bed
+
+Kitchen:
+  - L-shaped or straight counter/slab along 2 walls
+  - Sink: small square on counter with "⊠" or "Sink" label
+  - Stove area: small rect labeled "Stove"
+  - Refrigerator: small rect labeled "Fridge" near entrance
+
+Bathroom:
+  - Toilet/WC: small rect (1.5×2 ft) with "WC" label
+  - Shower: square in corner (2.5×2.5 ft) with diagonal lines or "Shower"
+  - Wash basin: small rect labeled "Basin"
+
+Parking (if included):
+  - Car outline: rectangle (6×13 ft) with rounded corners or label "Car"
+
+═══════════════════════════════════════════════
+AREA LABELS (MANDATORY IN EVERY ROOM)
+═══════════════════════════════════════════════
+Show inside each room (3 lines of text):
+  Line 1: Room Name (bold, e.g. "Master Bedroom")
+  Line 2: Dimensions (e.g. "12 × 14 ft")
+  Line 3: Area (e.g. "168 sq ft")
+Also show total plot area in title area.
+
+═══════════════════════════════════════════════
+SVG VISUAL SPECIFICATIONS
+═══════════════════════════════════════════════
+Canvas: 900px wide, auto height (proportional to plot ratio)
+Scale: fit entire plot in SVG with 40px margin on all sides
+Coordinate system: Top = North, Right = East, Bottom = South, Left = West
+
+COLORS (use exactly these):
+  - Living Room    : fill="#dbeafe" (light blue)
+  - Master Bedroom : fill="#dcfce7" (light green)
+  - Other Bedrooms : fill="#d1fae5" (mint green)
+  - Kitchen        : fill="#fef9c3" (light yellow)
+  - Bathroom/WC    : fill="#f3e8ff" (light purple)
+  - Parking        : fill="#e5e7eb" (light gray)
+  - Passage/Hall   : fill="#fff7ed" (light orange)
+  - Furniture      : fill="#94a3b8" opacity="0.5" (gray)
+  - Plot boundary  : fill="none" stroke="#1a1a1a" stroke-width="4"
+  - Room walls     : stroke="#1a1a1a" stroke-width="2.5"
+  - Windows        : stroke="#3b82f6" stroke-width="2"
+
+GRID: Draw a light grid (stroke="#e2e8f0" stroke-width="0.5") every 20px behind all rooms.
+
+TEXT: All room labels — text-anchor="middle" dominant-baseline="middle", font-family="Segoe UI, sans-serif"
+  - Room name: font-size="13" font-weight="bold" fill="#1e293b"
+  - Dimensions: font-size="11" fill="#475569"
+  - Area: font-size="10" fill="#64748b"
+
+═══════════════════════════════════════════════
+PAGE ELEMENTS (ADD ALL)
+═══════════════════════════════════════════════
+1. TITLE BAR at top of page:
+   - Title: "${p.vastu === 'Yes' ? '🧿 Vastu Floor Plan' : '🏠 Generated Floor Plan'}"
+   - Subtitle: "${p.width} × ${p.length} ft Plot · ${p.bedrooms} BHK · Total: ${totalArea} sq ft"
+   - Style: dark background (#1e293b), white text, padding
+
+2. NORTH ARROW: top-right of SVG — draw a simple ↑ arrow with "N" label
+
+3. SCALE BAR: bottom of SVG — "Scale: 1 cm = X ft" with a drawn bar
+
+4. ENTRANCE MARKER: bold arrow + "MAIN ENTRANCE" text on the correct wall
+
+5. LEGEND at bottom of page (outside SVG):
+   Color swatches + labels for: Living, Bedroom, Kitchen, Bathroom, Parking, Passage
+
+6. FOOTER: "© 2025 Forjit AI · forjitai.in · All rights reserved"
+
+═══════════════════════════════════════════════
+HTML/CSS REQUIREMENTS
+═══════════════════════════════════════════════
+- Complete standalone HTML (no external dependencies)
+- Inline <style> in <head>
+- Body background: #f8fafc
+- Page font: Segoe UI, system-ui, sans-serif
+- SVG must be responsive: width="100%" viewBox="0 0 900 [height]"
+- Print-friendly: @media print styles
+
+═══════════════════════════════════════════════
+ABSOLUTE RULES
+═══════════════════════════════════════════════
+✅ Return ONLY the complete HTML — no explanations, no markdown
+✅ All rooms must fit INSIDE the plot boundary
+✅ Zero room overlaps
+✅ Every room gets furniture/fixtures drawn
+✅ Every room gets a door with arc
+✅ Every outer room gets a window
+✅ Area calculated correctly (width × length)
+✅ HTML must render directly in browser without modification
+
+Start output with: <!DOCTYPE html>`;
 }
 </script>
 </body>

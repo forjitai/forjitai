@@ -1,0 +1,1246 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="UTF-8"/>
+<meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+<title>People's Wishes Map — Reveal the Champion 🇮🇳 | Forjit AI</title>
+<meta name="description" content="Join thousands! Add your wish on the interactive India map and help reveal the People's Champion mosaic. A viral fan experience powered by Forjit AI."/>
+<meta name="keywords" content="peoples wishes map, fan wishes india, interactive map india, reveal mosaic, forjit ai"/>
+<link rel="canonical" href="https://www.forjitai.in/tools/peoples-wishes-map.html"/>
+<meta property="og:title" content="People's Wishes Map — Reveal the Champion 🇮🇳"/>
+<meta property="og:description" content="Add your wish. Unlock a tile. Reveal the image together!"/>
+<meta property="og:image" content="https://www.forjitai.in/og-image.png"/>
+<meta property="og:url" content="https://www.forjitai.in/tools/peoples-wishes-map.html"/>
+<meta name="twitter:card" content="summary_large_image"/>
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-DYR402JFVG"></script>
+<script>window.dataLayer=window.dataLayer||[];function gtag(){dataLayer.push(arguments);}gtag('js',new Date());gtag('config','G-DYR402JFVG');</script>
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/leaflet/1.9.4/leaflet.min.css"/>
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/leaflet.markercluster/1.5.3/MarkerCluster.css"/>
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/leaflet.markercluster/1.5.3/MarkerCluster.Default.css"/>
+<style>
+/* ── Reset & Variables ──────────────────────────────────────────────── */
+*{box-sizing:border-box;margin:0;padding:0}
+:root{
+  --bg:#0c0a09;--s1:#1c1917;--s2:#292524;--s3:#3c3836;
+  --text:#e7e5e4;--muted:#a8a29e;--faint:#57534e;
+  --saffron:#f97316;--green:#16a34a;--white:#f5f5f4;
+  --gold:#f59e0b;--gold2:#fbbf24;
+  --glow:rgba(245,158,11,0.35);
+  --red:#ef4444;--purple:#a855f7;
+}
+html{scroll-behavior:smooth}
+body{font-family:'Segoe UI',system-ui,sans-serif;background:var(--bg);color:var(--text);min-height:100vh;overflow-x:hidden}
+
+/* ── Header ─────────────────────────────────────────────────────────── */
+header{background:var(--s1);border-bottom:1px solid var(--s2);padding:13px 20px;display:flex;align-items:center;justify-content:space-between;position:sticky;top:0;z-index:1100}
+.logo{display:flex;align-items:center;gap:9px;text-decoration:none;color:var(--text)}
+.logo-mark{width:32px;height:32px;background:var(--gold);border-radius:6px;display:flex;align-items:center;justify-content:center;font-weight:800;font-size:17px;color:#0c0a09;flex-shrink:0}
+.logo-text{font-size:15px;font-weight:700}
+.back{color:var(--muted);text-decoration:none;font-size:13px}
+.back:hover{color:var(--gold)}
+
+/* ── Hero ────────────────────────────────────────────────────────────── */
+.hero{background:linear-gradient(160deg,#12080020,#08120820,#0c0a0980);padding:36px 20px 28px;text-align:center;position:relative;overflow:hidden}
+.hero::before{content:'';position:absolute;inset:0;background:radial-gradient(ellipse 80% 60% at 50% 0%,rgba(249,115,22,.1) 0%,transparent 65%)}
+.tribar{height:4px;background:linear-gradient(90deg,var(--saffron) 33.3%,#e5e5e5 33.3%,#e5e5e5 66.6%,var(--green) 66.6%);border-radius:2px;margin-bottom:22px}
+.hero-flag{font-size:44px;display:block;margin-bottom:10px;animation:wave 3s ease-in-out infinite}
+@keyframes wave{0%,100%{transform:rotate(-4deg) scale(1)}50%{transform:rotate(4deg) scale(1.08)}}
+.hero h1{font-size:clamp(22px,5vw,40px);font-weight:800;line-height:1.2;margin-bottom:8px}
+.hero h1 em{font-style:normal;background:linear-gradient(135deg,var(--saffron),var(--gold));-webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text}
+.hero-sub{color:var(--muted);font-size:clamp(13px,3vw,16px);margin-bottom:20px}
+.live-pill{display:inline-flex;align-items:center;gap:8px;background:rgba(249,115,22,.12);border:1px solid rgba(249,115,22,.3);border-radius:40px;padding:9px 20px;font-size:17px;font-weight:700;color:var(--saffron);animation:heartbeat 2s ease-in-out infinite}
+@keyframes heartbeat{0%,100%{box-shadow:0 0 0 0 rgba(249,115,22,.3)}50%{box-shadow:0 0 0 10px rgba(249,115,22,0)}}
+.live-dot{width:7px;height:7px;background:var(--saffron);border-radius:50%;animation:blink 1s step-end infinite;flex-shrink:0}
+@keyframes blink{0%,100%{opacity:1}50%{opacity:0}}
+
+/* ── Main Layout ─────────────────────────────────────────────────────── */
+.main{max-width:1280px;margin:0 auto;padding:24px 16px;display:grid;grid-template-columns:1fr 380px;gap:24px;align-items:start}
+@media(max-width:960px){.main{grid-template-columns:1fr}}
+
+/* ── Face Reveal Section ─────────────────────────────────────────────── */
+.reveal-card{background:var(--s1);border:1px solid var(--s2);border-radius:18px;overflow:hidden}
+.reveal-header{padding:16px 20px 12px;display:flex;align-items:center;justify-content:space-between;flex-wrap:wrap;gap:10px}
+.reveal-title{font-size:14px;font-weight:700;text-transform:uppercase;letter-spacing:.09em;color:var(--gold);display:flex;align-items:center;gap:6px}
+.zoom-tabs{display:flex;gap:6px}
+.zoom-tab{background:var(--s2);border:1px solid var(--s3);color:var(--muted);padding:5px 12px;border-radius:6px;font-size:12px;font-weight:600;cursor:pointer;transition:all .2s}
+.zoom-tab.active,.zoom-tab:hover{background:var(--gold);color:#0c0a09;border-color:var(--gold)}
+
+/* Canvas + Grid Wrapper */
+.canvas-wrap{position:relative;width:100%;aspect-ratio:16/9;background:#0a0a0a}
+#baseCanvas{width:100%;height:100%;display:block}
+#tileGrid{position:absolute;inset:0;display:grid}
+.tile{transition:background .8s ease, box-shadow .8s ease;cursor:default}
+.tile.locked{background:rgba(12,10,9,.82)}
+.tile.unlocking{animation:tileReveal .9s ease forwards}
+@keyframes tileReveal{
+  0%{background:rgba(12,10,9,.82);box-shadow:inset 0 0 0 0 rgba(245,158,11,0)}
+  30%{background:rgba(245,158,11,.5);box-shadow:inset 0 0 20px 4px rgba(245,158,11,.6)}
+  100%{background:rgba(0,0,0,0);box-shadow:inset 0 0 0 0 rgba(245,158,11,0)}
+}
+.tile.unlocked{background:rgba(0,0,0,0)}
+
+/* Progress */
+.progress-wrap{padding:14px 20px}
+.progress-label{display:flex;justify-content:space-between;align-items:center;margin-bottom:8px;font-size:13px}
+.progress-pct{font-size:18px;font-weight:800;color:var(--gold)}
+.progress-track{height:8px;background:var(--s2);border-radius:4px;overflow:hidden}
+.progress-fill{height:100%;background:linear-gradient(90deg,var(--saffron),var(--gold));border-radius:4px;transition:width .6s ease;min-width:2px}
+.user-reveal-msg{margin-top:10px;background:rgba(22,163,74,.1);border:1px solid rgba(22,163,74,.3);border-radius:8px;padding:9px 14px;font-size:13px;color:#86efac;display:none;animation:fadeIn .4s ease}
+@keyframes fadeIn{from{opacity:0;transform:translateY(4px)}to{opacity:1;transform:translateY(0)}}
+
+/* ── Map ─────────────────────────────────────────────────────────────── */
+.map-wrap{position:relative;border:1px solid var(--s2);border-radius:18px;overflow:hidden;height:480px;margin-top:0}
+#map{width:100%;height:100%}
+.map-btns{position:absolute;top:12px;right:12px;z-index:500;display:flex;flex-direction:column;gap:7px}
+.map-btn{background:var(--s1);border:1px solid var(--s2);color:var(--text);padding:7px 13px;border-radius:7px;font-size:12px;font-weight:600;cursor:pointer;transition:all .2s;white-space:nowrap}
+.map-btn.active,.map-btn:hover{background:var(--gold);color:#0c0a09;border-color:var(--gold)}
+
+/* ── Sidebar / Form ──────────────────────────────────────────────────── */
+.sidebar{display:flex;flex-direction:column;gap:18px}
+.card{background:var(--s1);border:1px solid var(--s2);border-radius:16px;padding:18px}
+.card-title{font-size:13px;font-weight:700;text-transform:uppercase;letter-spacing:.08em;color:var(--gold);margin-bottom:14px;display:flex;align-items:center;gap:6px}
+
+/* Avatar Picker */
+.avatar-tabs{display:flex;gap:6px;margin-bottom:10px;overflow-x:auto;padding-bottom:2px}
+.avatar-tabs::-webkit-scrollbar{display:none}
+.avtab{background:var(--s2);border:1px solid var(--s3);color:var(--muted);padding:5px 11px;border-radius:6px;font-size:12px;font-weight:600;cursor:pointer;white-space:nowrap;transition:all .2s;flex-shrink:0}
+.avtab.active{background:rgba(245,158,11,.15);border-color:rgba(245,158,11,.4);color:var(--gold)}
+.avatar-grid{display:grid;grid-template-columns:repeat(8,1fr);gap:4px;margin-bottom:10px}
+@media(max-width:480px){.avatar-grid{grid-template-columns:repeat(7,1fr)}}
+.av-btn{background:var(--s2);border:2px solid transparent;border-radius:8px;font-size:20px;aspect-ratio:1;cursor:pointer;transition:all .15s;display:flex;align-items:center;justify-content:center}
+.av-btn:hover{background:var(--s3);transform:scale(1.1)}
+.av-btn.selected{border-color:var(--gold);background:rgba(245,158,11,.12);transform:scale(1.15)}
+
+/* Role Picker */
+.role-grid{display:grid;grid-template-columns:repeat(2,1fr);gap:7px;margin-bottom:4px}
+.role-btn{background:var(--s2);border:2px solid transparent;border-radius:9px;padding:8px 10px;font-size:13px;cursor:pointer;text-align:center;transition:all .2s;color:var(--text);display:flex;align-items:center;gap:6px;justify-content:center}
+.role-btn:hover{background:var(--s3)}
+.role-btn.selected{border-color:var(--gold);background:rgba(245,158,11,.1);color:var(--gold);font-weight:600}
+
+/* City */
+.form-group{margin-bottom:13px}
+.form-label{display:block;font-size:12px;font-weight:600;text-transform:uppercase;letter-spacing:.06em;color:var(--muted);margin-bottom:6px}
+.form-select,.form-input,.form-textarea{
+  width:100%;background:#0c0a09;border:1px solid var(--s2);border-radius:8px;
+  color:var(--text);font-size:15px;padding:10px 13px;outline:none;font-family:inherit;
+  transition:border-color .2s;
+}
+.form-select:focus,.form-input:focus,.form-textarea:focus{border-color:var(--gold)}
+.form-textarea{resize:vertical;min-height:72px}
+select option{background:#1c1917}
+
+/* Wish Cards */
+.wish-list{display:flex;flex-direction:column;gap:7px}
+.wish-card{background:var(--s2);border:2px solid transparent;border-radius:10px;padding:10px 13px;cursor:pointer;font-size:13px;line-height:1.4;color:var(--text);transition:all .2s;text-align:left}
+.wish-card:hover{background:var(--s3)}
+.wish-card.selected{border-color:var(--gold);background:rgba(245,158,11,.1);color:var(--gold);font-weight:600}
+.custom-wish-wrap{margin-top:8px}
+.char-count{font-size:11px;color:var(--muted);text-align:right;margin-top:3px}
+.char-count.warn{color:var(--red)}
+
+/* Submit */
+.submit-btn{width:100%;background:linear-gradient(135deg,var(--saffron),var(--gold));color:#0c0a09;border:none;border-radius:11px;padding:14px;font-size:16px;font-weight:800;cursor:pointer;transition:all .2s;letter-spacing:.02em;margin-top:6px}
+.submit-btn:hover:not(:disabled){transform:translateY(-2px);box-shadow:0 8px 28px rgba(249,115,22,.35)}
+.submit-btn:disabled{opacity:.5;cursor:not-allowed}
+.form-note{font-size:11px;color:var(--faint);text-align:center;margin-top:8px}
+
+/* ── Top Regions ─────────────────────────────────────────────────────── */
+.regions-grid{display:flex;flex-direction:column;gap:8px}
+.region-row{display:flex;align-items:center;gap:10px}
+.region-rank{font-size:14px;width:22px;text-align:center;flex-shrink:0}
+.region-name{flex:1;font-size:14px;font-weight:600;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+.region-bar{flex:2;height:6px;background:var(--s2);border-radius:3px;overflow:hidden}
+.region-fill{height:100%;background:linear-gradient(90deg,var(--saffron),var(--gold));border-radius:3px;transition:width .6s ease}
+.region-count{font-size:12px;color:var(--muted);white-space:nowrap;min-width:38px;text-align:right}
+
+/* ── Recent Feed ─────────────────────────────────────────────────────── */
+.feed{display:flex;flex-direction:column;gap:9px;max-height:300px;overflow-y:auto}
+.feed::-webkit-scrollbar{width:3px}
+.feed::-webkit-scrollbar-thumb{background:var(--s3);border-radius:2px}
+.wish-item{background:#0c0a09;border:1px solid var(--s2);border-radius:10px;padding:11px;animation:popIn .4s ease}
+@keyframes popIn{from{opacity:0;transform:translateY(-6px)}to{opacity:1;transform:translateY(0)}}
+.wish-top{display:flex;justify-content:space-between;align-items:center;margin-bottom:5px;gap:8px}
+.wish-who{display:flex;align-items:center;gap:5px;font-size:13px;font-weight:600}
+.wish-avatar{font-size:16px}
+.wish-role{color:var(--gold);font-size:11px}
+.wish-city-tag{font-size:11px;color:var(--muted);display:flex;align-items:center;gap:3px;white-space:nowrap}
+.wish-msg{font-size:13px;line-height:1.4;color:var(--text)}
+.wish-time{font-size:10px;color:var(--faint);margin-top:4px}
+
+/* ── Sticky Mobile Button ────────────────────────────────────────────── */
+.sticky-fab{position:fixed;bottom:18px;right:18px;z-index:900;background:linear-gradient(135deg,var(--saffron),var(--gold));color:#0c0a09;border:none;border-radius:50px;padding:13px 20px;font-size:14px;font-weight:800;cursor:pointer;box-shadow:0 8px 28px rgba(249,115,22,.45);transition:all .2s;display:flex;align-items:center;gap:7px}
+.sticky-fab:hover{transform:translateY(-3px) scale(1.04)}
+@media(min-width:961px){.sticky-fab{display:none}}
+
+/* ── Modal ───────────────────────────────────────────────────────────── */
+.overlay{position:fixed;inset:0;background:rgba(0,0,0,.8);z-index:9000;display:flex;align-items:center;justify-content:center;padding:16px;backdrop-filter:blur(6px)}
+.overlay.hidden{display:none}
+.modal{background:var(--s1);border:1px solid var(--s2);border-radius:20px;padding:28px;max-width:420px;width:100%;text-align:center;animation:modalPop .35s cubic-bezier(.34,1.56,.64,1)}
+@keyframes modalPop{from{opacity:0;transform:scale(.8)}to{opacity:1;transform:scale(1)}}
+.modal-emoji{font-size:54px;margin-bottom:10px;display:block}
+.modal h3{font-size:22px;font-weight:800;margin-bottom:6px}
+.modal-sub{color:var(--muted);font-size:14px;margin-bottom:20px;line-height:1.5}
+.modal-btns{display:flex;flex-direction:column;gap:9px}
+.btn-wa{background:#25D366;color:#fff;border:none;border-radius:10px;padding:13px;font-size:15px;font-weight:700;cursor:pointer;display:flex;align-items:center;justify-content:center;gap:8px;transition:all .2s}
+.btn-wa:hover{background:#128C7E}
+.btn-cp{background:var(--s2);color:var(--text);border:none;border-radius:10px;padding:13px;font-size:15px;font-weight:700;cursor:pointer;display:flex;align-items:center;justify-content:center;gap:8px;transition:all .2s}
+.btn-cp:hover{background:var(--s3)}
+.btn-close{background:transparent;color:var(--muted);border:none;font-size:13px;cursor:pointer;margin-top:6px;padding:4px}
+.btn-close:hover{color:var(--text)}
+.reveal-highlight{background:rgba(22,163,74,.1);border:1px solid rgba(22,163,74,.3);border-radius:10px;padding:12px;margin:12px 0;font-size:13px;color:#86efac;font-weight:600}
+
+/* ── Alert Toast ─────────────────────────────────────────────────────── */
+#toast{position:fixed;top:76px;left:50%;transform:translateX(-50%);background:var(--s1);border:1px solid var(--red);color:#fca5a5;padding:11px 20px;border-radius:10px;font-size:14px;z-index:9999;max-width:340px;text-align:center;box-shadow:0 8px 28px rgba(0,0,0,.5);display:none}
+
+/* ── Disclaimer ──────────────────────────────────────────────────────── */
+.disclaimer{background:rgba(245,158,11,.05);border:1px solid rgba(245,158,11,.15);border-radius:10px;padding:11px 15px;font-size:11px;color:var(--faint);text-align:center;line-height:1.6;margin-top:16px}
+
+/* ── Footer ──────────────────────────────────────────────────────────── */
+footer{text-align:center;padding:28px 16px;border-top:1px solid var(--s2);color:var(--muted);font-size:13px}
+footer a{color:var(--gold);text-decoration:none}
+footer a:hover{text-decoration:underline}
+
+/* ── Loader ──────────────────────────────────────────────────────────── */
+.loader{text-align:center;padding:32px;color:var(--muted);font-size:13px}
+.spin{display:inline-block;width:18px;height:18px;border:2px solid var(--s2);border-top-color:var(--gold);border-radius:50%;animation:spin .7s linear infinite;margin-right:7px;vertical-align:middle}
+@keyframes spin{to{transform:rotate(360deg)}}
+
+/* ── Popup Leaflet ───────────────────────────────────────────────────── */
+.leaflet-popup-content-wrapper{background:var(--s1)!important;color:var(--text)!important;border:1px solid var(--s2)!important;border-radius:10px!important;box-shadow:0 8px 24px rgba(0,0,0,.6)!important}
+.leaflet-popup-tip{background:var(--s1)!important}
+.leaflet-popup-content{margin:12px 14px!important}
+</style>
+</head>
+<body>
+
+<!-- HEADER -->
+<header>
+  <a class="logo" href="/">
+    <div class="logo-mark">F</div>
+    <span class="logo-text">Forjit AI</span>
+  </a>
+  <a class="back" href="/">← All Tools</a>
+</header>
+
+<!-- HERO -->
+<div class="hero">
+  <div class="tribar"></div>
+  <span class="hero-flag">🇮🇳</span>
+  <h1>Wishes Pouring Across <em>India</em></h1>
+  <p class="hero-sub">Add your wish · Unlock a tile · Reveal the People's Champion together</p>
+  <div class="live-pill">
+    <span class="live-dot"></span>
+    🔥 <span id="totalCount">...</span> Wishes · <span id="pctDisplay">0%</span> Revealed
+  </div>
+</div>
+
+<!-- MAIN GRID -->
+<div class="main">
+
+  <!-- LEFT COLUMN -->
+  <div style="display:flex;flex-direction:column;gap:18px">
+
+    <!-- FACE REVEAL CARD -->
+    <div class="reveal-card">
+      <div class="reveal-header">
+        <div class="reveal-title">🎭 People's Champion Reveal</div>
+        <div class="zoom-tabs">
+          <button class="zoom-tab" id="ztWorld" onclick="setZoom('world')">🌎 World</button>
+          <button class="zoom-tab active" id="ztCountry" onclick="setZoom('country')">🇮🇳 Country</button>
+          <button class="zoom-tab" id="ztRegion" onclick="setZoom('region')">📍 Region</button>
+        </div>
+      </div>
+      <div class="canvas-wrap">
+        <canvas id="baseCanvas"></canvas>
+        <div id="tileGrid"></div>
+      </div>
+      <div class="progress-wrap">
+        <div class="progress-label">
+          <span style="color:var(--muted);font-size:13px">Tiles Revealed</span>
+          <span class="progress-pct" id="progPct">0%</span>
+        </div>
+        <div class="progress-track"><div class="progress-fill" id="progFill" style="width:0%"></div></div>
+        <div class="user-reveal-msg" id="revealMsg">🎉 You revealed part of the image! Keep adding wishes!</div>
+      </div>
+    </div>
+
+    <!-- MAP CARD -->
+    <div class="map-wrap">
+      <div id="map"></div>
+      <div class="map-btns">
+        <button class="map-btn active" id="btnMap" onclick="setMapMode('normal')">🗺️ Map</button>
+        <button class="map-btn" id="btnHeat" onclick="setMapMode('heat')">🌡️ Heatmap</button>
+      </div>
+    </div>
+
+    <!-- BOTTOM STATS ROW -->
+    <div style="display:grid;grid-template-columns:1fr 1fr;gap:18px">
+      <div class="card">
+        <div class="card-title">🏙️ Top Cities</div>
+        <div class="regions-grid" id="topRegions"><div class="loader"><span class="spin"></span>Loading</div></div>
+      </div>
+      <div class="card">
+        <div class="card-title">💬 Recent Wishes</div>
+        <div class="feed" id="recentFeed"><div class="loader"><span class="spin"></span>Loading</div></div>
+      </div>
+    </div>
+    @media(max-width:600px){.bottom-stats{grid-template-columns:1fr!important}}
+
+    <!-- DISCLAIMER -->
+    <div class="disclaimer">
+      ⚠️ <strong>Fan-Made Platform.</strong> This is not affiliated with, endorsed by, or representing any real public figure.
+      No real person's likeness is used. The image is purely symbolic artistic content.
+      We store only your selected city — no GPS or precise location data is collected. (DPDP Act 2023 compliant)
+      · <strong>Grievance:</strong> forjitai@gmail.com · IT Rules 2021 compliant · Content violating SC/ST (POA) Act removed within 24h.
+    </div>
+  </div>
+
+  <!-- RIGHT SIDEBAR: FORM -->
+  <div class="sidebar">
+    <div class="card" id="wishFormCard">
+      <div class="card-title">📍 Add Your Wish</div>
+
+      <!-- AVATAR PICKER -->
+      <div class="form-group">
+        <div class="form-label">Pick Your Avatar</div>
+        <div class="avatar-tabs" id="avTabs">
+          <button class="avtab active" onclick="switchAvTab('people',this)">👥 People</button>
+          <button class="avtab" onclick="switchAvTab('feelings',this)">😊 Feelings</button>
+          <button class="avtab" onclick="switchAvTab('culture',this)">🎭 Culture</button>
+          <button class="avtab" onclick="switchAvTab('pride',this)">🇮🇳 Pride</button>
+        </div>
+        <div class="avatar-grid" id="avatarGrid"></div>
+        <div style="font-size:12px;color:var(--muted)">Selected: <span id="avPreview" style="font-size:18px">👨</span></div>
+      </div>
+
+      <!-- ROLE PICKER -->
+      <div class="form-group">
+        <div class="form-label">I am a...</div>
+        <div class="role-grid" id="roleGrid"></div>
+      </div>
+
+      <!-- CITY -->
+      <div class="form-group">
+        <div class="form-label">Your City <span style="color:var(--red)">*</span></div>
+        <select class="form-select" id="inputCity" onchange="onCityChange()">
+          <option value="">Select city...</option>
+          <optgroup label="Tamil Nadu">
+            <option>Chennai</option><option>Coimbatore</option><option>Madurai</option>
+            <option>Tiruchirappalli</option><option>Salem</option><option>Tirunelveli</option>
+            <option>Erode</option><option>Vellore</option><option>Thoothukudi</option>
+            <option>Thanjavur</option><option>Dindigul</option><option>Kancheepuram</option>
+            <option>Nagercoil</option><option>Kumbakonam</option><option>Hosur</option>
+            <option>Cuddalore</option><option>Tiruppur</option><option>Karur</option>
+          </optgroup>
+          <optgroup label="Other States">
+            <option>Bangalore</option><option>Mumbai</option><option>Delhi</option>
+            <option>Hyderabad</option><option>Kolkata</option><option>Pune</option>
+            <option>Ahmedabad</option><option>Jaipur</option><option>Lucknow</option>
+            <option>Surat</option><option>Kochi</option><option>Thiruvananthapuram</option>
+            <option>Visakhapatnam</option><option>Chandigarh</option><option>Bhopal</option>
+            <option>Nagpur</option><option>Indore</option><option>Patna</option>
+          </optgroup>
+          <option value="other">📍 Other city...</option>
+        </select>
+        <div id="otherCityWrap" style="display:none;margin-top:7px">
+          <input class="form-input" type="text" id="inputOtherCity" placeholder="Type your city name" maxlength="40"/>
+        </div>
+      </div>
+
+      <!-- PREDEFINED WISHES -->
+      <div class="form-group">
+        <div class="form-label">Your Wish <span style="color:var(--red)">*</span></div>
+        <div class="wish-list" id="wishList"></div>
+        <div class="custom-wish-wrap" id="customWishWrap" style="display:none">
+          <textarea class="form-textarea" id="customWishText" maxlength="150" placeholder="Write your wish (max 150 chars)..." oninput="updateCharCount()"></textarea>
+          <div class="char-count" id="charCount">0 / 150</div>
+        </div>
+      </div>
+
+      <button class="submit-btn" id="submitBtn" onclick="submitWish()">
+        📍 Add My Wish to the Map
+      </button>
+      <p class="form-note">1 submission per minute · Moderated content only</p>
+    </div>
+
+    <!-- MINI STATS -->
+    <div class="card" style="text-align:center">
+      <div style="font-size:32px;font-weight:800;color:var(--gold)" id="sideCount">0</div>
+      <div style="font-size:12px;color:var(--muted);margin-bottom:12px">Total Wishes Added</div>
+      <div style="height:1px;background:var(--s2);margin-bottom:12px"></div>
+      <div style="font-size:24px;font-weight:800;color:var(--green)" id="sidePct">0%</div>
+      <div style="font-size:12px;color:var(--muted)">Image Revealed</div>
+    </div>
+  </div>
+</div>
+
+<!-- FOOTER -->
+<footer>
+  <p style="margin-bottom:5px">🔥 People's Wishes Map — Fan Experience</p>
+  <p>Powered by <a href="/">Forjit AI</a> · Free Tools for India</p>
+  <p style="margin-top:5px">© 2025 Forjit AI · All rights reserved · <a href="/privacy.html">Privacy</a> · <a href="/disclaimer.html">Disclaimer</a></p>
+</footer>
+
+<!-- STICKY FAB -->
+<button class="sticky-fab" onclick="document.getElementById('wishFormCard').scrollIntoView({behavior:'smooth'})">
+  📍 Add My Wish
+</button>
+
+<!-- SUCCESS MODAL -->
+<div class="overlay hidden" id="successModal">
+  <div class="modal">
+    <span class="modal-emoji">🎉</span>
+    <h3>Your Wish is Live!</h3>
+    <p class="modal-sub">Your pin is on the map — visible to everyone across India 🇮🇳</p>
+    <div class="reveal-highlight" id="revealHighlight">✨ You unlocked <strong id="unlockedCount">2</strong> tiles on the mosaic!</div>
+    <div class="modal-btns">
+      <button class="btn-wa" onclick="shareWhatsApp()">
+        <svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.890-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/></svg>
+        Share on WhatsApp
+      </button>
+      <button class="btn-cp" id="copyBtn" onclick="copyLink()">📋 Copy Link</button>
+      <button class="btn-close" onclick="closeModal()">Maybe later</button>
+    </div>
+  </div>
+</div>
+
+<!-- TOAST -->
+<div id="toast"></div>
+
+<!-- ═══════════════════════════════════════════════════════════════════ -->
+<!-- SCRIPTS                                                             -->
+<!-- ═══════════════════════════════════════════════════════════════════ -->
+<script src="https://cdnjs.cloudflare.com/ajax/libs/leaflet/1.9.4/leaflet.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/leaflet.markercluster/1.5.3/leaflet.markercluster.min.js"></script>
+<script src="https://www.gstatic.com/firebasejs/9.23.0/firebase-app-compat.js"></script>
+<script src="https://www.gstatic.com/firebasejs/9.23.0/firebase-firestore-compat.js"></script>
+
+<script>
+'use strict';
+/* ═══════════════════════════════════════════════════════════════════════
+   FIREBASE CONFIG
+   Replace with your real project config from https://console.firebase.google.com
+   ═══════════════════════════════════════════════════════════════════════ */
+const FB_CFG = {
+  apiKey:"AIzaSyDemoKeyReplaceWithRealOneFromFirebaseConsole",
+  authDomain:"forjitai-wishes.firebaseapp.com",
+  projectId:"forjitai-wishes",
+  storageBucket:"forjitai-wishes.appspot.com",
+  messagingSenderId:"000000000000",
+  appId:"1:000000000000:web:000000000000000000000000"
+};
+let db = null;
+try{ firebase.initializeApp(FB_CFG); db = firebase.firestore(); }
+catch(e){ console.warn('Firebase offline — demo mode'); }
+
+/* ═══════════════════════════════════════════════════════════════════════
+   CONSTANTS
+   ═══════════════════════════════════════════════════════════════════════ */
+const PAGE_URL = 'https://www.forjitai.in/tools/peoples-wishes-map.html';
+
+const AVATARS = {
+  people: ['👨','👩','👴','👵','👦','👧','🧑','👲','👳','🧕','👮','🧑‍🌾','👨‍⚕️','👩‍🏫','👨‍💼','👩‍💻'],
+  feelings:['😊','😍','🥰','💪','🙏','🤩','😎','🥳','🤗','❤️','🔥','⭐','🌟','💫','✨','🎉'],
+  culture: ['🎬','🎭','🥁','🪘','🌺','🏛️','🐚','🎪','🎵','🏆','👑','🎊','🪅','🎨','🪷','🌸'],
+  pride:   ['🇮🇳','🏅','🌄','⚡','🦁','🦚','🌻','🪔','🕌','🛕','⛩️','🌊','🏔️','🌈','🎯','💎']
+};
+
+const ROLES = [
+  {emoji:'🎓',label:'Student'},{emoji:'👨‍💼',label:'Professional'},
+  {emoji:'🧑‍🌾',label:'Farmer'},{emoji:'👩‍⚕️',label:'Doctor'},
+  {emoji:'👨‍🏫',label:'Teacher'},{emoji:'🧑‍💻',label:'Engineer'},
+  {emoji:'👮',label:'Officer'},{emoji:'🙏',label:'Common Person'},
+];
+
+const PREDEFINED_WISHES = [
+  '🎉 Congratulations! May your leadership bring great progress!',
+  '🙏 Wishing a successful and prosperous tenure ahead!',
+  '🇮🇳 Proud to see this moment for our people!',
+  '💪 A people\'s leader — we stand with you always!',
+  '🌟 A new era of progress and development begins today!',
+  '❤️ From our city with love, pride and full support!',
+  '🏆 You earned this — lead us to greatness!',
+  '🌺 May this leadership bring prosperity to every home!',
+  '✏️ Write my own wish...',
+];
+
+const CITY_COORDS = {
+  Chennai:[13.0827,80.2707],Coimbatore:[11.0168,76.9558],Madurai:[9.9252,78.1198],
+  Tiruchirappalli:[10.7905,78.7047],Salem:[11.6643,78.1460],Tirunelveli:[8.7139,77.7567],
+  Erode:[11.3410,77.7172],Vellore:[12.9165,79.1325],Thoothukudi:[8.7642,78.1348],
+  Thanjavur:[10.7870,79.1378],Dindigul:[10.3624,77.9695],Kancheepuram:[12.8185,79.6947],
+  Nagercoil:[8.1833,77.4119],Kumbakonam:[10.9601,79.3845],Hosur:[12.7409,77.8253],
+  Cuddalore:[11.7480,79.7714],Tiruppur:[11.1075,77.3398],Karur:[10.9601,78.0766],
+  Bangalore:[12.9716,77.5946],Mumbai:[19.0760,72.8777],Delhi:[28.6139,77.2090],
+  Hyderabad:[17.3850,78.4867],Kolkata:[22.5726,88.3639],Pune:[18.5204,73.8567],
+  Ahmedabad:[23.0225,72.5714],Jaipur:[26.9124,75.7873],Lucknow:[26.8467,80.9462],
+  Surat:[21.1702,72.8311],Kochi:[9.9312,76.2673],Thiruvananthapuram:[8.5241,76.9366],
+  Visakhapatnam:[17.6868,83.2185],Chandigarh:[30.7333,76.7794],Bhopal:[23.2599,77.4126],
+  Nagpur:[21.1458,79.0882],Indore:[22.7196,75.8577],Patna:[25.5941,85.1376],
+};
+
+// ── Profanity filter (English + Tamil + Hindi caste slurs) ───────────────
+const BLOCKED = [
+  // English
+  'fuck','shit','bastard','asshole','bitch','cunt','dick','pussy','nigger','faggot','rape','slut','whore','kill','murder',
+  // Caste-related (transliterated)
+  'dalit','paraiyar','pallar','chakkiliyar','untouchable','harijan','chamar','bhangi','mahar','dhed',
+  // Tamil caste abuse (common transliterations)
+  'paraya','palla','sakki','totti','nayee','kazhudai',
+  // Hindi caste abuse
+  'chamaar','bhangi','dom','mushar','dusadh'
+];
+function hasBadWord(t){
+  const l = t.toLowerCase().replace(/[^a-z0-9 ]/g,' ');
+  return BLOCKED.some(w => l.includes(w));
+}
+
+// ── Rate limit ────────────────────────────────────────────────────────────
+function canSubmit(){ const t=localStorage.getItem('pwm_last'); return !t||(Date.now()-+t)>60000; }
+function markSubmit(){ localStorage.setItem('pwm_last',Date.now()); }
+
+/* ═══════════════════════════════════════════════════════════════════════
+   CANVAS — SYMBOLIC FACE
+   ═══════════════════════════════════════════════════════════════════════ */
+const CW = 960, CH = 540; // base resolution (16:9)
+const baseCanvas = document.getElementById('baseCanvas');
+baseCanvas.width = CW; baseCanvas.height = CH;
+
+function drawSymbolicImage(){
+  const ctx = baseCanvas.getContext('2d');
+
+  // ── 1. Background gradient (deep night sky) ──────────────────────────
+  const bg = ctx.createLinearGradient(0,0,CW,CH);
+  bg.addColorStop(0,'#060a18');
+  bg.addColorStop(0.5,'#080e0a');
+  bg.addColorStop(1,'#100806');
+  ctx.fillStyle = bg;
+  ctx.fillRect(0,0,CW,CH);
+
+  // ── 2. Golden horizon glow ────────────────────────────────────────────
+  const hor = ctx.createRadialGradient(CW/2,CH*0.72,0,CW/2,CH*0.72,CW*0.65);
+  hor.addColorStop(0,'rgba(245,158,11,0.38)');
+  hor.addColorStop(0.4,'rgba(249,115,22,0.18)');
+  hor.addColorStop(1,'rgba(0,0,0,0)');
+  ctx.fillStyle = hor;
+  ctx.fillRect(0,0,CW,CH);
+
+  // ── 3. Sun ────────────────────────────────────────────────────────────
+  const sun = ctx.createRadialGradient(CW/2,CH*0.72,0,CW/2,CH*0.72,CW*0.12);
+  sun.addColorStop(0,'rgba(255,236,153,0.95)');
+  sun.addColorStop(0.4,'rgba(245,158,11,0.7)');
+  sun.addColorStop(1,'rgba(249,115,22,0)');
+  ctx.fillStyle = sun;
+  ctx.beginPath();
+  ctx.arc(CW/2, CH*0.72, CW*0.12, 0, Math.PI*2);
+  ctx.fill();
+
+  // Sun circle hard edge
+  ctx.fillStyle = 'rgba(255,230,100,0.9)';
+  ctx.beginPath();
+  ctx.arc(CW/2, CH*0.72, CW*0.055, 0, Math.PI*2);
+  ctx.fill();
+
+  // ── 4. Light rays from sun ────────────────────────────────────────────
+  ctx.save();
+  ctx.translate(CW/2, CH*0.72);
+  for(let i=0;i<16;i++){
+    const a = (i/16)*Math.PI*2;
+    const r = ctx.createLinearGradient(0,0,Math.cos(a)*CW*0.55,Math.sin(a)*CW*0.55);
+    r.addColorStop(0,'rgba(245,158,11,0.18)');
+    r.addColorStop(1,'rgba(245,158,11,0)');
+    ctx.fillStyle = r;
+    ctx.beginPath();
+    ctx.moveTo(0,0);
+    ctx.arc(0,0, CW*0.55, a-0.06, a+0.06);
+    ctx.closePath();
+    ctx.fill();
+  }
+  ctx.restore();
+
+  // ── 5. Horizon line with tricolor bands ───────────────────────────────
+  const hY = CH*0.72;
+  ctx.fillStyle = 'rgba(249,115,22,0.35)';
+  ctx.fillRect(0,hY-2,CW,5);
+  ctx.fillStyle = 'rgba(255,255,255,0.15)';
+  ctx.fillRect(0,hY+4,CW,4);
+  ctx.fillStyle = 'rgba(22,163,74,0.25)';
+  ctx.fillRect(0,hY+9,CW,4);
+
+  // Landscape silhouette hills
+  ctx.fillStyle = 'rgba(0,0,0,0.6)';
+  ctx.beginPath();
+  ctx.moveTo(0,CH);
+  ctx.lineTo(0,hY+30);
+  ctx.bezierCurveTo(CW*0.15,hY-20,CW*0.25,hY+40,CW*0.4,hY+20);
+  ctx.bezierCurveTo(CW*0.55,hY,CW*0.65,hY+30,CW*0.8,hY+10);
+  ctx.bezierCurveTo(CW*0.9,hY-10,CW*0.95,hY+20,CW,hY+15);
+  ctx.lineTo(CW,CH);
+  ctx.closePath();
+  ctx.fill();
+
+  // ── 6. Stars ──────────────────────────────────────────────────────────
+  const stars = [[0.07,0.08],[0.18,0.05],[0.3,0.12],[0.45,0.04],[0.6,0.09],[0.72,0.06],
+    [0.85,0.11],[0.93,0.05],[0.12,0.22],[0.38,0.18],[0.55,0.25],[0.78,0.19],[0.92,0.24],
+    [0.04,0.38],[0.22,0.32],[0.48,0.35],[0.68,0.30],[0.88,0.37],[0.15,0.48],[0.35,0.42]];
+  stars.forEach(([sx,sy],i)=>{
+    const size = i%3===0?2.5:1.5;
+    ctx.fillStyle = `rgba(255,245,200,${0.4+Math.random()*0.5})`;
+    ctx.beginPath();
+    ctx.arc(CW*sx, CH*sy, size, 0, Math.PI*2);
+    ctx.fill();
+  });
+
+  // ── 7. Human silhouette (back view, fist raised) ──────────────────────
+  const figX = CW/2, figBase = CH*0.96, figH = CH*0.62;
+
+  // Legs
+  ctx.fillStyle = '#0a0a12';
+  // Left leg
+  ctx.beginPath();
+  ctx.moveTo(figX-CW*0.06,figBase);
+  ctx.lineTo(figX-CW*0.025,figBase-figH*0.38);
+  ctx.lineTo(figX+CW*0.015,figBase-figH*0.38);
+  ctx.lineTo(figX+CW*0.04,figBase);
+  ctx.closePath(); ctx.fill();
+  // Right leg
+  ctx.beginPath();
+  ctx.moveTo(figX-CW*0.04,figBase);
+  ctx.lineTo(figX+CW*0.015,figBase-figH*0.38);
+  ctx.lineTo(figX+CW*0.055,figBase-figH*0.38);
+  ctx.lineTo(figX+CW*0.085,figBase);
+  ctx.closePath(); ctx.fill();
+
+  // Body
+  ctx.beginPath();
+  ctx.moveTo(figX-CW*0.09,figBase-figH*0.36);
+  ctx.quadraticCurveTo(figX-CW*0.04,figBase-figH*0.44,figX-CW*0.04,figBase-figH*0.58);
+  ctx.lineTo(figX+CW*0.04,figBase-figH*0.58);
+  ctx.quadraticCurveTo(figX+CW*0.04,figBase-figH*0.44,figX+CW*0.09,figBase-figH*0.36);
+  ctx.closePath(); ctx.fill();
+
+  // Left arm (down)
+  ctx.beginPath();
+  ctx.moveTo(figX-CW*0.09,figBase-figH*0.36);
+  ctx.quadraticCurveTo(figX-CW*0.14,figBase-figH*0.22,figX-CW*0.115,figBase-figH*0.08);
+  ctx.lineTo(figX-CW*0.075,figBase-figH*0.08);
+  ctx.quadraticCurveTo(figX-CW*0.09,figBase-figH*0.22,figX-CW*0.055,figBase-figH*0.36);
+  ctx.closePath(); ctx.fill();
+
+  // Right arm (raised — fist up) ─────────────────────────────────────
+  ctx.save();
+  ctx.translate(figX+CW*0.09, figBase-figH*0.36);
+  // Upper arm
+  ctx.fillStyle = '#0a0a12';
+  ctx.beginPath();
+  ctx.moveTo(0,0);
+  ctx.quadraticCurveTo(CW*0.07,-figH*0.15,CW*0.05,-figH*0.35);
+  ctx.lineTo(CW*0.09,-figH*0.35);
+  ctx.quadraticCurveTo(CW*0.11,-figH*0.15,CW*0.04,0);
+  ctx.closePath(); ctx.fill();
+  // Fist
+  ctx.beginPath();
+  ctx.roundRect(CW*0.04,-figH*0.46,CW*0.055,CW*0.04,6);
+  ctx.fill();
+  // Thumb hint
+  ctx.beginPath();
+  ctx.arc(CW*0.04,-figH*0.42,CW*0.014,0,Math.PI*2);
+  ctx.fill();
+  ctx.restore();
+
+  // Head
+  ctx.fillStyle = '#0a0a12';
+  ctx.beginPath();
+  ctx.ellipse(figX, figBase-figH*0.73, CW*0.042, CH*0.065, 0, 0, Math.PI*2);
+  ctx.fill();
+
+  // ── 8. Golden glow around figure ─────────────────────────────────────
+  const figGlow = ctx.createRadialGradient(figX,figBase-figH*0.5,0,figX,figBase-figH*0.5,CW*0.22);
+  figGlow.addColorStop(0,'rgba(245,158,11,0.08)');
+  figGlow.addColorStop(1,'rgba(245,158,11,0)');
+  ctx.fillStyle = figGlow;
+  ctx.beginPath();
+  ctx.ellipse(figX,figBase-figH*0.5,CW*0.22,CH*0.42,0,0,Math.PI*2);
+  ctx.fill();
+
+  // ── 9. Star above fist ───────────────────────────────────────────────
+  drawStar(ctx, figX+CW*0.135, figBase-figH*0.62, 5, CW*0.038, CW*0.016, '#f59e0b', 0.9);
+
+  // ── 10. Title text ────────────────────────────────────────────────────
+  ctx.textAlign = 'center';
+  ctx.font = `bold ${CW*0.045}px 'Segoe UI', system-ui, sans-serif`;
+  ctx.fillStyle = 'rgba(245,158,11,0.8)';
+  ctx.fillText("PEOPLE'S CHAMPION", CW/2, CH*0.1);
+
+  ctx.font = `${CW*0.022}px 'Segoe UI', system-ui, sans-serif`;
+  ctx.fillStyle = 'rgba(165,163,160,0.5)';
+  ctx.fillText("Reveal this image with your wishes", CW/2, CH*0.16);
+}
+
+function drawStar(ctx,cx,cy,pts,r,ir,color,alpha=1){
+  ctx.fillStyle = color;
+  ctx.globalAlpha = alpha;
+  ctx.beginPath();
+  for(let i=0;i<pts*2;i++){
+    const a = (i*Math.PI/pts) - Math.PI/2;
+    const rad = i%2===0 ? r : ir;
+    i===0 ? ctx.moveTo(cx+rad*Math.cos(a), cy+rad*Math.sin(a))
+           : ctx.lineTo(cx+rad*Math.cos(a), cy+rad*Math.sin(a));
+  }
+  ctx.closePath(); ctx.fill();
+  ctx.globalAlpha = 1;
+}
+
+// Draw on load
+drawSymbolicImage();
+
+/* ═══════════════════════════════════════════════════════════════════════
+   TILE GRID SYSTEM
+   ═══════════════════════════════════════════════════════════════════════ */
+const ZOOM_CONFIGS = {
+  world:   { cols:8,  rows:5,  threshold:8,  label:'World View' },
+  country: { cols:16, rows:10, threshold:4,  label:'Country View' },
+  region:  { cols:32, rows:20, threshold:2,  label:'Region View' },
+};
+let currentZoom = 'country';
+let tileData = {}; // key:"r_c" → {contributions, unlocked}
+
+function initTileData(cfg){
+  const newData = {};
+  for(let r=0;r<cfg.rows;r++){
+    for(let c=0;c<cfg.cols;c++){
+      const k=`${r}_${c}`;
+      newData[k]= tileData[k] || {contributions:0, unlocked:false};
+    }
+  }
+  tileData = newData;
+}
+
+function buildTileGrid(){
+  const cfg = ZOOM_CONFIGS[currentZoom];
+  const grid = document.getElementById('tileGrid');
+  grid.style.gridTemplateColumns = `repeat(${cfg.cols},1fr)`;
+  grid.style.gridTemplateRows = `repeat(${cfg.rows},1fr)`;
+  grid.innerHTML = '';
+  for(let r=0;r<cfg.rows;r++){
+    for(let c=0;c<cfg.cols;c++){
+      const k=`${r}_${c}`;
+      const d = document.createElement('div');
+      d.className = 'tile ' + (tileData[k]?.unlocked ? 'unlocked' : 'locked');
+      d.dataset.key = k;
+      grid.appendChild(d);
+    }
+  }
+}
+
+function setZoom(z){
+  currentZoom = z;
+  ['world','country','region'].forEach(id=>{
+    document.getElementById('zt'+id.charAt(0).toUpperCase()+id.slice(1)).classList.toggle('active',id===z);
+  });
+  initTileData(ZOOM_CONFIGS[z]);
+  buildTileGrid();
+  // Re-apply unlocks from wishes
+  reapplyTileUnlocks();
+  updateProgress();
+}
+
+function getProgressPercent(){
+  const vals = Object.values(tileData);
+  if(!vals.length) return 0;
+  return Math.round(vals.filter(t=>t.unlocked).length/vals.length*100);
+}
+
+function updateProgress(){
+  const pct = getProgressPercent();
+  document.getElementById('progFill').style.width = pct+'%';
+  document.getElementById('progPct').textContent = pct+'%';
+  document.getElementById('pctDisplay').textContent = pct+'%';
+  document.getElementById('sidePct').textContent = pct+'%';
+}
+
+function unlockTilesForContribution(lat, lng){
+  const cfg = ZOOM_CONFIGS[currentZoom];
+  // Map lat/lng to a tile approximately
+  // India bounds: lat 8-37, lng 68-97
+  const latN=37, latS=8, lngW=68, lngE=97;
+  const col = Math.floor((lng-lngW)/(lngE-lngW)*cfg.cols);
+  const row = Math.floor((latN-lat)/(latN-latS)*cfg.rows);
+  const cc = Math.max(0,Math.min(cfg.cols-1,col));
+  const rr = Math.max(0,Math.min(cfg.rows-1,row));
+
+  const newUnlocks = [];
+  // Unlock surrounding tiles
+  for(let dr=-1;dr<=1;dr++){
+    for(let dc=-1;dc<=1;dc++){
+      const k=`${rr+dr}_${cc+dc}`;
+      if(tileData[k] && !tileData[k].unlocked){
+        tileData[k].contributions++;
+        if(tileData[k].contributions >= cfg.threshold){
+          tileData[k].unlocked = true;
+          newUnlocks.push(k);
+        }
+      }
+    }
+  }
+  // Always unlock at least 1 (centre) for good UX
+  const centreKey = `${rr}_${cc}`;
+  if(tileData[centreKey] && !tileData[centreKey].unlocked){
+    tileData[centreKey].unlocked = true;
+    newUnlocks.push(centreKey);
+  }
+
+  animateTileUnlocks(newUnlocks);
+  return newUnlocks.length;
+}
+
+function animateTileUnlocks(keys){
+  keys.forEach((k,i)=>{
+    setTimeout(()=>{
+      const el = document.querySelector(`[data-key="${k}"]`);
+      if(!el) return;
+      el.className = 'tile unlocking';
+      playUnlockSound();
+      setTimeout(()=>{ el.className='tile unlocked'; }, 900);
+    }, i * 150);
+  });
+}
+
+function reapplyTileUnlocks(){
+  // Re-render tile states after zoom change
+  const cfg = ZOOM_CONFIGS[currentZoom];
+  document.querySelectorAll('.tile').forEach(el=>{
+    const k = el.dataset.key;
+    if(tileData[k]?.unlocked) el.className = 'tile unlocked';
+  });
+}
+
+// Pre-unlock some tiles to show demo state
+function seedDemoTiles(wishes){
+  wishes.forEach(w=>{
+    if(w.lat && w.lng) unlockTilesForContributionSilent(w.lat, w.lng);
+  });
+  updateProgress();
+}
+function unlockTilesForContributionSilent(lat,lng){
+  const cfg = ZOOM_CONFIGS[currentZoom];
+  const latN=37,latS=8,lngW=68,lngE=97;
+  const col=Math.floor((lng-lngW)/(lngE-lngW)*cfg.cols);
+  const row=Math.floor((latN-lat)/(latN-latS)*cfg.rows);
+  const cc=Math.max(0,Math.min(cfg.cols-1,col));
+  const rr=Math.max(0,Math.min(cfg.rows-1,row));
+  const centreKey=`${rr}_${cc}`;
+  if(tileData[centreKey]){
+    tileData[centreKey].contributions++;
+    if(tileData[centreKey].contributions >= ZOOM_CONFIGS[currentZoom].threshold)
+      tileData[centreKey].unlocked=true;
+  }
+}
+
+/* ═══════════════════════════════════════════════════════════════════════
+   SOUND — Web Audio API (tile unlock chime)
+   ═══════════════════════════════════════════════════════════════════════ */
+let audioCtx = null;
+function playUnlockSound(){
+  try{
+    if(!audioCtx) audioCtx = new (window.AudioContext||window.webkitAudioContext)();
+    const osc = audioCtx.createOscillator();
+    const gain = audioCtx.createGain();
+    osc.connect(gain); gain.connect(audioCtx.destination);
+    osc.type = 'sine';
+    osc.frequency.setValueAtTime(880, audioCtx.currentTime);
+    osc.frequency.exponentialRampToValueAtTime(1320, audioCtx.currentTime+0.15);
+    gain.gain.setValueAtTime(0.08, audioCtx.currentTime);
+    gain.gain.exponentialRampToValueAtTime(0.001, audioCtx.currentTime+0.4);
+    osc.start(); osc.stop(audioCtx.currentTime+0.4);
+  }catch(e){}
+}
+
+/* ═══════════════════════════════════════════════════════════════════════
+   MAP
+   ═══════════════════════════════════════════════════════════════════════ */
+const map = L.map('map',{zoomControl:false}).setView([20.5937,78.9629],5);
+L.control.zoom({position:'bottomright'}).addTo(map);
+L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png',{
+  attribution:'© OpenStreetMap',maxZoom:18
+}).addTo(map);
+
+const clusterGroup = L.markerClusterGroup({
+  chunkedLoading:true, showCoverageOnHover:false, maxClusterRadius:55,
+  iconCreateFunction(cluster){
+    const n = cluster.getChildCount();
+    const sz = n>99?44:36;
+    return L.divIcon({
+      html:`<div style="background:linear-gradient(135deg,#f97316,#f59e0b);color:#0c0a09;border-radius:50%;width:${sz}px;height:${sz}px;display:flex;align-items:center;justify-content:center;font-weight:800;font-size:${n>99?11:12}px;box-shadow:0 4px 14px rgba(249,115,22,.45);border:2px solid rgba(255,255,255,.25)">${n}</div>`,
+      className:'',iconSize:[sz,sz],iconAnchor:[sz/2,sz/2]
+    });
+  }
+});
+map.addLayer(clusterGroup);
+
+const pinIcon = L.divIcon({
+  html:`<div style="font-size:24px;filter:drop-shadow(0 2px 5px rgba(0,0,0,.6));line-height:1">📍</div>`,
+  className:'',iconSize:[28,28],iconAnchor:[14,28]
+});
+
+let heatLayer = null, heatMode = false, allWishes = [];
+
+function addMapPin(w){
+  if(!w.lat||!w.lng) return;
+  const m = L.marker([w.lat,w.lng],{icon:pinIcon});
+  const time = w.timestamp ? timeAgo(w.timestamp.toDate?w.timestamp.toDate():new Date(w.timestamp)) : '';
+  m.bindPopup(`
+    <div style="min-width:190px;font-family:'Segoe UI',system-ui,sans-serif">
+      <div style="font-size:15px;font-weight:700;color:#f59e0b;margin-bottom:5px">
+        ${w.avatar||'📍'} ${w.role||''} · ${esc(w.city)}
+      </div>
+      <div style="font-size:13px;margin-bottom:7px;line-height:1.4;color:#e7e5e4">"${esc(w.message)}"</div>
+      <div style="display:flex;justify-content:space-between;align-items:center">
+        <span style="font-size:11px;color:#a8a29e">${time}</span>
+        <button onclick="reportWish('${w.id}')" style="background:none;border:1px solid #3c3836;color:#a8a29e;padding:3px 8px;border-radius:4px;font-size:10px;cursor:pointer">⚑ Report</button>
+      </div>
+    </div>`);
+  clusterGroup.addLayer(m);
+}
+
+function setMapMode(mode){
+  heatMode = mode==='heat';
+  document.getElementById('btnMap').classList.toggle('active',!heatMode);
+  document.getElementById('btnHeat').classList.toggle('active',heatMode);
+  if(heatMode){
+    map.removeLayer(clusterGroup);
+    if(heatLayer) map.removeLayer(heatLayer);
+    const circles = allWishes.map(w=>
+      L.circleMarker([w.lat,w.lng],{radius:18,color:'transparent',fillColor:'#f97316',fillOpacity:.18,weight:0})
+    );
+    heatLayer = L.layerGroup(circles).addTo(map);
+    allWishes.forEach(w=>{
+      L.circleMarker([w.lat,w.lng],{radius:6,color:'transparent',fillColor:'#f97316',fillOpacity:.7,weight:0}).addTo(heatLayer);
+    });
+  } else {
+    if(heatLayer){map.removeLayer(heatLayer);heatLayer=null;}
+    map.addLayer(clusterGroup);
+  }
+}
+
+/* ═══════════════════════════════════════════════════════════════════════
+   AVATAR + ROLE BUILDERS
+   ═══════════════════════════════════════════════════════════════════════ */
+let selectedAvatar = '👨';
+let selectedAvatarTab = 'people';
+let selectedRole = '';
+
+function switchAvTab(tab, btn){
+  selectedAvatarTab = tab;
+  document.querySelectorAll('.avtab').forEach(b=>b.classList.remove('active'));
+  btn.classList.add('active');
+  renderAvatars();
+}
+function renderAvatars(){
+  const grid = document.getElementById('avatarGrid');
+  grid.innerHTML = AVATARS[selectedAvatarTab].map(a=>`
+    <button class="av-btn${a===selectedAvatar?' selected':''}" onclick="selectAvatar('${a}')" title="${a}">${a}</button>
+  `).join('');
+}
+function selectAvatar(a){
+  selectedAvatar = a;
+  document.getElementById('avPreview').textContent = a;
+  renderAvatars();
+}
+
+function renderRoles(){
+  const g = document.getElementById('roleGrid');
+  g.innerHTML = ROLES.map(r=>`
+    <button class="role-btn${r.label===selectedRole?' selected':''}" onclick="selectRole('${r.label}',this)">
+      ${r.emoji} ${r.label}
+    </button>
+  `).join('');
+}
+function selectRole(label){
+  selectedRole = label;
+  renderRoles();
+}
+
+/* ═══════════════════════════════════════════════════════════════════════
+   PREDEFINED WISHES BUILDER
+   ═══════════════════════════════════════════════════════════════════════ */
+let selectedWish = '';
+
+function renderWishes(){
+  const wl = document.getElementById('wishList');
+  wl.innerHTML = PREDEFINED_WISHES.map((w,i)=>`
+    <button class="wish-card${w===selectedWish?' selected':''}" onclick="selectWish(${i})">${w}</button>
+  `).join('');
+}
+function selectWish(i){
+  const w = PREDEFINED_WISHES[i];
+  selectedWish = w;
+  renderWishes();
+  const isCustom = w.includes('Write my own');
+  document.getElementById('customWishWrap').style.display = isCustom?'block':'none';
+  if(!isCustom) document.getElementById('customWishText').value='';
+}
+
+function updateCharCount(){
+  const n = document.getElementById('customWishText').value.length;
+  const el = document.getElementById('charCount');
+  el.textContent = n+' / 150';
+  el.className = 'char-count'+(n>130?' warn':'');
+}
+
+/* ═══════════════════════════════════════════════════════════════════════
+   CITY FORM
+   ═══════════════════════════════════════════════════════════════════════ */
+function onCityChange(){
+  document.getElementById('otherCityWrap').style.display =
+    document.getElementById('inputCity').value==='other'?'block':'none';
+}
+
+/* ═══════════════════════════════════════════════════════════════════════
+   SUBMIT
+   ═══════════════════════════════════════════════════════════════════════ */
+async function submitWish(){
+  let city = document.getElementById('inputCity').value;
+  if(city==='other') city = document.getElementById('inputOtherCity').value.trim();
+
+  // Get actual wish text
+  let msg = selectedWish.includes('Write my own')
+    ? document.getElementById('customWishText').value.trim()
+    : selectedWish;
+
+  if(!city){ showToast('Please select your city! 📍'); return; }
+  if(!selectedWish){ showToast('Please pick a wish! 💬'); return; }
+  if(selectedWish.includes('Write my own') && msg.length<5){ showToast('Please write at least 5 characters.'); return; }
+  if(hasBadWord(msg)){ showToast('⚠️ Message contains inappropriate content. Please keep it respectful.'); return; }
+  if(!canSubmit()){ showToast('⏱️ Please wait 1 minute before submitting again.'); return; }
+
+  // Strip custom prefix if present
+  msg = msg.replace('✏️ Write my own wish...','').trim() || msg;
+
+  // Coords
+  let coords = CITY_COORDS[city];
+  coords = coords
+    ? [coords[0]+(Math.random()-.5)*.3, coords[1]+(Math.random()-.5)*.3]
+    : [20.5937+(Math.random()-.5)*8, 78.9629+(Math.random()-.5)*8];
+
+  const btn = document.getElementById('submitBtn');
+  btn.disabled=true; btn.textContent='⏳ Adding...';
+
+  const wish = {
+    avatar: selectedAvatar||'📍',
+    role: selectedRole||'Fan',
+    city, message:msg,
+    lat:coords[0], lng:coords[1],
+    timestamp: new Date()
+  };
+
+  try{
+    if(db){
+      wish.timestamp = firebase.firestore.FieldValue.serverTimestamp();
+      const ref = await db.collection('wishes').add(wish);
+      wish.id = ref.id; wish.timestamp = new Date();
+    } else {
+      wish.id = 'local_'+Date.now();
+      allWishes.unshift(wish);
+      addMapPin(wish);
+      updateCounter(allWishes.length);
+      renderTopRegions(allWishes);
+      renderFeed(allWishes);
+    }
+
+    markSubmit();
+
+    // Unlock tiles
+    const unlocked = unlockTilesForContribution(coords[0], coords[1]);
+    updateProgress();
+
+    // Fly map
+    map.flyTo([coords[0],coords[1]], 9, {duration:1.5});
+
+    // Show user message on canvas area
+    const revMsg = document.getElementById('revealMsg');
+    revMsg.style.display='block';
+    revMsg.textContent = `🎉 You revealed ${unlocked} tile${unlocked!==1?'s':''} on the mosaic!`;
+    setTimeout(()=>revMsg.style.display='none', 5000);
+
+    // Modal
+    document.getElementById('unlockedCount').textContent = unlocked;
+    showModal();
+
+    // Reset form
+    selectedWish=''; selectedRole='';
+    renderWishes(); renderRoles();
+    document.getElementById('inputCity').value='';
+    document.getElementById('customWishText').value='';
+    document.getElementById('customWishWrap').style.display='none';
+    document.getElementById('otherCityWrap').style.display='none';
+
+  }catch(e){
+    console.error(e);
+    showToast('Something went wrong. Please try again!');
+  }
+
+  btn.disabled=false; btn.textContent='📍 Add My Wish to the Map';
+}
+
+/* ═══════════════════════════════════════════════════════════════════════
+   DATA LOADING
+   ═══════════════════════════════════════════════════════════════════════ */
+function rnd(){ return (Math.random()-.5)*.4; }
+
+const DEMO_WISHES = [
+  {id:'d1',avatar:'👨',role:'Student',city:'Chennai',message:'🎉 Congratulations! May your leadership bring great progress!',lat:13.0827+rnd(),lng:80.2707+rnd(),timestamp:new Date(Date.now()-3e4)},
+  {id:'d2',avatar:'👩',role:'Teacher',city:'Coimbatore',message:'🙏 Wishing a successful and prosperous tenure ahead!',lat:11.0168+rnd(),lng:76.9558+rnd(),timestamp:new Date(Date.now()-9e4)},
+  {id:'d3',avatar:'🎓',role:'Student',city:'Madurai',message:'🇮🇳 Proud to see this moment for our people!',lat:9.9252+rnd(),lng:78.1198+rnd(),timestamp:new Date(Date.now()-18e4)},
+  {id:'d4',avatar:'👮',role:'Officer',city:'Bangalore',message:'💪 A people\'s leader — we stand with you always!',lat:12.9716+rnd(),lng:77.5946+rnd(),timestamp:new Date(Date.now()-27e4)},
+  {id:'d5',avatar:'🧑‍🌾',role:'Farmer',city:'Salem',message:'🌟 A new era of progress and development begins today!',lat:11.6643+rnd(),lng:78.1460+rnd(),timestamp:new Date(Date.now()-36e4)},
+  {id:'d6',avatar:'❤️',role:'Fan',city:'Mumbai',message:'❤️ From our city with love, pride and full support!',lat:19.0760+rnd(),lng:72.8777+rnd(),timestamp:new Date(Date.now()-45e4)},
+  {id:'d7',avatar:'🏆',role:'Fan',city:'Tiruchirappalli',message:'🏆 You earned this — lead us to greatness!',lat:10.7905+rnd(),lng:78.7047+rnd(),timestamp:new Date(Date.now()-54e4)},
+  {id:'d8',avatar:'🌺',role:'Common Person',city:'Thanjavur',message:'🌺 May this leadership bring prosperity to every home!',lat:10.7870+rnd(),lng:79.1378+rnd(),timestamp:new Date(Date.now()-63e4)},
+  {id:'d9',avatar:'🇮🇳',role:'Professional',city:'Delhi',message:'🎉 Congratulations! May your leadership bring great progress!',lat:28.6139+rnd(),lng:77.2090+rnd(),timestamp:new Date(Date.now()-72e4)},
+  {id:'d10',avatar:'⭐',role:'Fan',city:'Vellore',message:'💪 A people\'s leader — we stand with you always!',lat:12.9165+rnd(),lng:79.1325+rnd(),timestamp:new Date(Date.now()-81e4)},
+  {id:'d11',avatar:'👩‍⚕️',role:'Doctor',city:'Kochi',message:'🙏 Wishing a successful and prosperous tenure ahead!',lat:9.9312+rnd(),lng:76.2673+rnd(),timestamp:new Date(Date.now()-90e4)},
+  {id:'d12',avatar:'🎬',role:'Fan',city:'Hyderabad',message:'🌟 A new era of progress and development begins today!',lat:17.3850+rnd(),lng:78.4867+rnd(),timestamp:new Date(Date.now()-99e4)},
+];
+
+function loadData(){
+  if(db){
+    try{
+      db.collection('wishes').orderBy('timestamp','desc').limit(300)
+        .onSnapshot(snap=>{
+          const wishes=[];
+          clusterGroup.clearLayers();
+          snap.forEach(doc=>{ const w={id:doc.id,...doc.data()}; wishes.push(w); addMapPin(w); });
+          allWishes=wishes;
+          updateCounter(wishes.length);
+          renderTopRegions(wishes);
+          renderFeed(wishes);
+          seedDemoTiles(wishes.slice(0,50));
+          buildTileGrid();
+          updateProgress();
+        }, ()=>{ useDemoData(); });
+    }catch(e){ useDemoData(); }
+  } else { useDemoData(); }
+}
+
+function useDemoData(){
+  allWishes = DEMO_WISHES;
+  DEMO_WISHES.forEach(addMapPin);
+  updateCounter(DEMO_WISHES.length);
+  renderTopRegions(DEMO_WISHES);
+  renderFeed(DEMO_WISHES);
+  seedDemoTiles(DEMO_WISHES);
+  buildTileGrid();
+  updateProgress();
+}
+
+/* ═══════════════════════════════════════════════════════════════════════
+   UI RENDERERS
+   ═══════════════════════════════════════════════════════════════════════ */
+function updateCounter(n){
+  document.getElementById('totalCount').textContent = n.toLocaleString('en-IN');
+  document.getElementById('sideCount').textContent = n.toLocaleString('en-IN');
+}
+
+function renderTopRegions(wishes){
+  const counts={};
+  wishes.forEach(w=>{ counts[w.city]=(counts[w.city]||0)+1; });
+  const sorted=Object.entries(counts).sort((a,b)=>b[1]-a[1]).slice(0,7);
+  const max=sorted[0]?.[1]||1;
+  const medals=['🥇','🥈','🥉','4️⃣','5️⃣','6️⃣','7️⃣'];
+  const el=document.getElementById('topRegions');
+  if(!sorted.length){el.innerHTML='<p style="color:var(--muted);font-size:13px">No data yet</p>';return;}
+  el.innerHTML=sorted.map(([city,count],i)=>`
+    <div class="region-row">
+      <span class="region-rank">${medals[i]}</span>
+      <span class="region-name">${city}</span>
+      <div class="region-bar"><div class="region-fill" style="width:${(count/max*100).toFixed(0)}%"></div></div>
+      <span class="region-count">${count.toLocaleString('en-IN')}</span>
+    </div>
+  `).join('');
+}
+
+function renderFeed(wishes){
+  const el=document.getElementById('recentFeed');
+  if(!wishes.length){el.innerHTML='<p style="color:var(--muted);font-size:13px;text-align:center">Be the first! 🎉</p>';return;}
+  el.innerHTML=wishes.slice(0,12).map(w=>{
+    const t=w.timestamp?timeAgo(w.timestamp.toDate?w.timestamp.toDate():new Date(w.timestamp)):'';
+    return `
+      <div class="wish-item">
+        <div class="wish-top">
+          <div class="wish-who">
+            <span class="wish-avatar">${esc(w.avatar||'📍')}</span>
+            <span class="wish-role">${esc(w.role||'Fan')}</span>
+          </div>
+          <span class="wish-city-tag">📍 ${esc(w.city)}</span>
+        </div>
+        <div class="wish-msg">${esc(w.message)}</div>
+        ${t?`<div class="wish-time">${t}</div>`:''}
+      </div>
+    `;
+  }).join('');
+}
+
+/* ═══════════════════════════════════════════════════════════════════════
+   SHARE + MODAL
+   ═══════════════════════════════════════════════════════════════════════ */
+function shareWhatsApp(){
+  const msg = `I just added my wish and revealed part of the People's Champion mosaic 🇮🇳✨\nJoin me here: ${PAGE_URL}`;
+  window.open('https://wa.me/?text='+encodeURIComponent(msg),'_blank');
+}
+async function copyLink(){
+  try{
+    await navigator.clipboard.writeText(PAGE_URL);
+    const b=document.getElementById('copyBtn');
+    b.textContent='✅ Copied!';
+    setTimeout(()=>b.textContent='📋 Copy Link',2000);
+  }catch(e){prompt('Copy this link:',PAGE_URL);}
+}
+function showModal(){ document.getElementById('successModal').classList.remove('hidden'); }
+function closeModal(){ document.getElementById('successModal').classList.add('hidden'); }
+document.getElementById('successModal').addEventListener('click',function(e){if(e.target===this)closeModal();});
+
+/* ═══════════════════════════════════════════════════════════════════════
+   REPORT
+   ═══════════════════════════════════════════════════════════════════════ */
+function reportWish(id){
+  if(!id) return;
+  if(db){ db.collection('reports').add({wishId:id,reportedAt:firebase.firestore.FieldValue.serverTimestamp()}); }
+  showToast('✅ Reported. We review flagged content within 24h. Thank you!');
+}
+
+/* ═══════════════════════════════════════════════════════════════════════
+   HELPERS
+   ═══════════════════════════════════════════════════════════════════════ */
+function showToast(msg){
+  const t=document.getElementById('toast');
+  t.textContent=msg; t.style.display='block';
+  setTimeout(()=>t.style.display='none',3500);
+}
+function timeAgo(d){
+  const s=Math.floor((Date.now()-(d instanceof Date?d:new Date(d)))/1000);
+  if(s<60)return'just now'; if(s<3600)return Math.floor(s/60)+'m ago';
+  if(s<86400)return Math.floor(s/3600)+'h ago'; return Math.floor(s/86400)+'d ago';
+}
+function esc(s){ return String(s||'').replace(/&/g,'&amp;').replace(/</g,'&lt;').replace(/>/g,'&gt;').replace(/"/g,'&quot;'); }
+
+/* ═══════════════════════════════════════════════════════════════════════
+   INIT
+   ═══════════════════════════════════════════════════════════════════════ */
+(function init(){
+  initTileData(ZOOM_CONFIGS[currentZoom]);
+  buildTileGrid();
+  renderAvatars();
+  renderRoles();
+  renderWishes();
+  loadData();
+
+  // Analytics visit
+  if(db){
+    try{ db.collection('analytics').doc('visits').set({count:firebase.firestore.FieldValue.increment(1),lastSeen:firebase.firestore.FieldValue.serverTimestamp()},{merge:true}); }catch(e){}
+  }
+})();
+</script>
+<script src="tool-common.js"></script>
+</body>
+</html>

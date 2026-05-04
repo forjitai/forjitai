@@ -120,6 +120,15 @@ export const TOOLS = [
 
   /* ── India-specific ─────────────────────────────────────────────────── */
   {
+    slug: "peoples-wishes-map",
+    name: "People's Wishes Map",
+    desc: "Add your wish on India's interactive map and help reveal the People's Champion mosaic. Tile-by-tile reveal experience!",
+    icon: "🗺️", cat: "india",
+    tags: "wishes map india reveal mosaic fan interactive peoples champion",
+    priority: 0.95, changefreq: "daily",
+    new: true,
+  },
+  {
     slug: "cm-vijay-wishes",
     name: "CM Vijay Wishes Map",
     desc: "Interactive fan wishes map — congratulate CM Vijay. Add your message on the India map, share with friends!",

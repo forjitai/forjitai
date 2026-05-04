@@ -149,6 +149,12 @@
     <priority>0.6</priority>
   </url>
   <url>
+    <loc>https://www.forjitai.in/tools/peoples-wishes-map.html</loc>
+    <lastmod>2026-04-26</lastmod>
+    <changefreq>daily</changefreq>
+    <priority>0.95</priority>
+  </url>
+  <url>
     <loc>https://www.forjitai.in/tools/cm-vijay-wishes.html</loc>
     <lastmod>2026-04-26</lastmod>
     <changefreq>daily</changefreq>

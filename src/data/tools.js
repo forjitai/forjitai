@@ -120,6 +120,15 @@ export const TOOLS = [
 
   /* ── India-specific ─────────────────────────────────────────────────── */
   {
+    slug: "cm-vijay-wishes",
+    name: "CM Vijay Wishes Map",
+    desc: "Interactive fan wishes map — congratulate CM Vijay. Add your message on the India map, share with friends!",
+    icon: "🗺️", cat: "india",
+    tags: "cm vijay fan wishes map congratulations tamil nadu thalapathy",
+    priority: 0.9, changefreq: "daily",
+    new: true,
+  },
+  {
     slug: "gst-calculator",
     name: "GST Calculator",
     desc: "Add or remove GST. All slabs (5%, 12%, 18%, 28%). CGST, SGST, IGST.",

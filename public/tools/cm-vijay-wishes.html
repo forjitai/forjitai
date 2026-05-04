@@ -1,0 +1,817 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="UTF-8"/>
+<meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+<title>Fan Wishes Map – Congratulations CM Vijay 🇮🇳 | Forjit AI</title>
+<meta name="description" content="Join thousands of fans congratulating CM Vijay. Add your wish on the interactive map. Wishes pouring in from across India!"/>
+<meta name="keywords" content="CM Vijay congratulations, Thalapathy Vijay CM, fan wishes map, congratulate CM Vijay Tamil Nadu"/>
+<link rel="canonical" href="https://www.forjitai.in/tools/cm-vijay-wishes.html"/>
+<meta property="og:title" content="Fan Wishes Map – Congratulations CM Vijay 🇮🇳"/>
+<meta property="og:description" content="Wishes pouring in from across India! Add yours on the map."/>
+<meta property="og:image" content="https://www.forjitai.in/og-image.png"/>
+<meta property="og:url" content="https://www.forjitai.in/tools/cm-vijay-wishes.html"/>
+<meta name="twitter:card" content="summary_large_image"/>
+
+<!-- Google Analytics -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-DYR402JFVG"></script>
+<script>window.dataLayer=window.dataLayer||[];function gtag(){dataLayer.push(arguments);}gtag('js',new Date());gtag('config','G-DYR402JFVG');</script>
+
+<!-- Leaflet CSS -->
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/leaflet/1.9.4/leaflet.min.css"/>
+<!-- Leaflet Markercluster CSS -->
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/leaflet.markercluster/1.5.3/MarkerCluster.css"/>
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/leaflet.markercluster/1.5.3/MarkerCluster.Default.css"/>
+
+<style>
+*{box-sizing:border-box;margin:0;padding:0}
+:root{
+  --bg:#0c0a09;--surface:#1c1917;--border:#292524;--text:#e7e5e4;--muted:#a8a29e;
+  --saffron:#f97316;--green:#16a34a;--white:#f5f5f4;--accent:#f59e0b;
+  --red:#ef4444;
+}
+body{font-family:'Segoe UI',system-ui,sans-serif;background:var(--bg);color:var(--text);min-height:100vh;overflow-x:hidden}
+
+/* HEADER */
+header{background:var(--surface);border-bottom:1px solid var(--border);padding:14px 20px;display:flex;align-items:center;justify-content:space-between;position:sticky;top:0;z-index:1000}
+.logo{display:flex;align-items:center;gap:10px;text-decoration:none;color:var(--text)}
+.logo-mark{width:34px;height:34px;background:var(--accent);border-radius:6px;display:flex;align-items:center;justify-content:center;font-weight:800;font-size:18px;color:#0c0a09}
+.logo-text{font-size:16px;font-weight:600}
+.back{color:var(--muted);text-decoration:none;font-size:13px;display:flex;align-items:center;gap:4px}
+.back:hover{color:var(--accent)}
+
+/* HERO */
+.hero{background:linear-gradient(135deg,#1a0a00,#0c1a08,#0c0a09);padding:48px 20px 40px;text-align:center;position:relative;overflow:hidden}
+.hero::before{content:'';position:absolute;inset:0;background:radial-gradient(ellipse at 50% 0%,rgba(249,115,22,0.12) 0%,transparent 60%)}
+.tricolor-bar{height:4px;background:linear-gradient(90deg,var(--saffron) 33.3%,var(--white) 33.3%,var(--white) 66.6%,var(--green) 66.6%);margin-bottom:28px;border-radius:2px}
+.hero-flag{font-size:48px;margin-bottom:12px;animation:floatFlag 3s ease-in-out infinite}
+@keyframes floatFlag{0%,100%{transform:translateY(0) rotate(-2deg)}50%{transform:translateY(-8px) rotate(2deg)}}
+.hero h1{font-size:clamp(24px,5vw,42px);font-weight:800;line-height:1.2;margin-bottom:10px}
+.hero h1 span{background:linear-gradient(135deg,var(--saffron),var(--accent));-webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text}
+.hero-sub{color:var(--muted);font-size:clamp(14px,3vw,17px);margin-bottom:24px}
+.live-counter{display:inline-flex;align-items:center;gap:10px;background:rgba(249,115,22,0.12);border:1px solid rgba(249,115,22,0.3);border-radius:50px;padding:10px 22px;font-size:18px;font-weight:700;color:var(--saffron);animation:pulse 2s ease-in-out infinite}
+@keyframes pulse{0%,100%{box-shadow:0 0 0 0 rgba(249,115,22,0.3)}50%{box-shadow:0 0 0 8px rgba(249,115,22,0)}}
+.live-dot{width:8px;height:8px;background:var(--saffron);border-radius:50%;animation:blink 1s step-end infinite}
+@keyframes blink{0%,100%{opacity:1}50%{opacity:0}}
+
+/* MAIN LAYOUT */
+.main{max-width:1200px;margin:0 auto;padding:24px 16px;display:grid;grid-template-columns:1fr 380px;gap:24px}
+@media(max-width:900px){.main{grid-template-columns:1fr}}
+
+/* MAP */
+.map-wrap{position:relative;border-radius:16px;overflow:hidden;border:1px solid var(--border);height:500px}
+#map{width:100%;height:100%}
+.map-controls{position:absolute;top:12px;right:12px;z-index:500;display:flex;flex-direction:column;gap:8px}
+.map-btn{background:var(--surface);border:1px solid var(--border);color:var(--text);padding:8px 14px;border-radius:8px;font-size:12px;font-weight:600;cursor:pointer;transition:all .2s;white-space:nowrap}
+.map-btn:hover,.map-btn.active{background:var(--accent);color:#0c0a09;border-color:var(--accent)}
+
+/* SIDEBAR */
+.sidebar{display:flex;flex-direction:column;gap:20px}
+.card{background:var(--surface);border:1px solid var(--border);border-radius:16px;padding:20px}
+.card-title{font-size:14px;font-weight:700;text-transform:uppercase;letter-spacing:.08em;color:var(--accent);margin-bottom:16px;display:flex;align-items:center;gap:6px}
+
+/* FORM */
+.form-group{margin-bottom:14px}
+.form-group label{display:block;font-size:12px;font-weight:600;text-transform:uppercase;letter-spacing:.06em;color:var(--muted);margin-bottom:6px}
+.form-group input,.form-group select,.form-group textarea{
+  width:100%;background:#0c0a09;border:1px solid var(--border);border-radius:8px;
+  color:var(--text);font-size:15px;padding:11px 14px;outline:none;font-family:inherit;
+  transition:border-color .2s;
+}
+.form-group input:focus,.form-group select:focus,.form-group textarea:focus{border-color:var(--accent)}
+.form-group textarea{resize:vertical;min-height:80px}
+.char-count{font-size:11px;color:var(--muted);text-align:right;margin-top:4px}
+.char-count.warn{color:var(--red)}
+.submit-btn{
+  width:100%;background:linear-gradient(135deg,var(--saffron),var(--accent));
+  color:#0c0a09;border:none;border-radius:10px;padding:14px;font-size:16px;
+  font-weight:800;cursor:pointer;transition:all .2s;letter-spacing:.02em;
+}
+.submit-btn:hover{transform:translateY(-1px);box-shadow:0 8px 24px rgba(249,115,22,0.3)}
+.submit-btn:active{transform:translateY(0)}
+.submit-btn:disabled{opacity:.5;cursor:not-allowed;transform:none}
+
+/* TOP CITIES */
+.city-bar{display:flex;flex-direction:column;gap:8px}
+.city-row{display:flex;align-items:center;gap:10px}
+.city-name{flex:1;font-size:14px;font-weight:600}
+.city-count{font-size:12px;color:var(--muted);white-space:nowrap;min-width:50px;text-align:right}
+.city-progress{flex:2;height:6px;background:var(--border);border-radius:3px;overflow:hidden}
+.city-fill{height:100%;background:linear-gradient(90deg,var(--saffron),var(--accent));border-radius:3px;transition:width .6s ease}
+.city-rank{font-size:14px;width:20px;text-align:center}
+
+/* RECENT FEED */
+.feed{display:flex;flex-direction:column;gap:10px;max-height:320px;overflow-y:auto}
+.feed::-webkit-scrollbar{width:4px}
+.feed::-webkit-scrollbar-track{background:transparent}
+.feed::-webkit-scrollbar-thumb{background:var(--border);border-radius:2px}
+.wish-item{background:#0c0a09;border:1px solid var(--border);border-radius:10px;padding:12px;animation:popIn .4s ease}
+@keyframes popIn{from{opacity:0;transform:translateY(-8px)}to{opacity:1;transform:translateY(0)}}
+.wish-meta{display:flex;justify-content:space-between;align-items:center;margin-bottom:4px}
+.wish-name{font-size:12px;font-weight:700;color:var(--accent)}
+.wish-city{font-size:11px;color:var(--muted);display:flex;align-items:center;gap:3px}
+.wish-msg{font-size:13px;line-height:1.4;color:var(--text)}
+.wish-time{font-size:10px;color:var(--border);margin-top:4px}
+
+/* MODAL */
+.modal-overlay{position:fixed;inset:0;background:rgba(0,0,0,.75);z-index:9000;display:flex;align-items:center;justify-content:center;padding:16px;backdrop-filter:blur(4px)}
+.modal-overlay.hidden{display:none}
+.modal{background:var(--surface);border:1px solid var(--border);border-radius:20px;padding:28px;max-width:420px;width:100%;text-align:center;animation:modalIn .3s cubic-bezier(.34,1.56,.64,1)}
+@keyframes modalIn{from{opacity:0;transform:scale(.85)}to{opacity:1;transform:scale(1)}}
+.modal-emoji{font-size:52px;margin-bottom:12px}
+.modal h3{font-size:22px;font-weight:800;margin-bottom:6px}
+.modal p{color:var(--muted);font-size:14px;margin-bottom:20px;line-height:1.5}
+.modal-btns{display:flex;flex-direction:column;gap:10px}
+.btn-whatsapp{background:#25D366;color:#fff;border:none;border-radius:10px;padding:13px;font-size:15px;font-weight:700;cursor:pointer;display:flex;align-items:center;justify-content:center;gap:8px;transition:all .2s}
+.btn-whatsapp:hover{background:#128C7E}
+.btn-copy{background:var(--border);color:var(--text);border:none;border-radius:10px;padding:13px;font-size:15px;font-weight:700;cursor:pointer;display:flex;align-items:center;justify-content:center;gap:8px;transition:all .2s}
+.btn-copy:hover{background:#3f3c3a}
+.btn-poster{background:linear-gradient(135deg,#7c3aed,#a855f7);color:#fff;border:none;border-radius:10px;padding:13px;font-size:15px;font-weight:700;cursor:pointer;display:flex;align-items:center;justify-content:center;gap:8px;transition:all .2s}
+.btn-poster:hover{filter:brightness(1.1)}
+.btn-close{background:transparent;color:var(--muted);border:none;font-size:13px;cursor:pointer;margin-top:8px;padding:4px}
+.btn-close:hover{color:var(--text)}
+
+/* POSTER CANVAS */
+#posterCanvas{display:none}
+.poster-preview{max-width:100%;border-radius:10px;margin:12px 0}
+
+/* STICKY ADD WISH */
+.sticky-add{position:fixed;bottom:20px;right:20px;z-index:800;background:linear-gradient(135deg,var(--saffron),var(--accent));color:#0c0a09;border:none;border-radius:50px;padding:14px 22px;font-size:15px;font-weight:800;cursor:pointer;box-shadow:0 8px 24px rgba(249,115,22,0.4);transition:all .2s;display:flex;align-items:center;gap:8px}
+.sticky-add:hover{transform:translateY(-2px) scale(1.04);box-shadow:0 12px 32px rgba(249,115,22,0.5)}
+@media(min-width:901px){.sticky-add{display:none}}
+
+/* DISCLAIMER */
+.disclaimer{background:rgba(245,158,11,.06);border:1px solid rgba(245,158,11,.2);border-radius:10px;padding:12px 16px;font-size:12px;color:var(--muted);text-align:center;margin-top:8px}
+
+/* FOOTER */
+footer{text-align:center;padding:32px 16px;border-top:1px solid var(--border);color:var(--muted);font-size:13px}
+footer a{color:var(--accent);text-decoration:none}
+footer a:hover{text-decoration:underline}
+
+/* LOADING */
+.loader{text-align:center;padding:40px;color:var(--muted);font-size:14px}
+.spinner{display:inline-block;width:20px;height:20px;border:2px solid var(--border);border-top-color:var(--accent);border-radius:50%;animation:spin .7s linear infinite;margin-right:8px;vertical-align:middle}
+@keyframes spin{to{transform:rotate(360deg)}}
+
+/* HEATMAP TOGGLE */
+.heatmap-note{background:rgba(99,102,241,.1);border:1px solid rgba(99,102,241,.3);border-radius:8px;padding:8px 12px;font-size:12px;color:#a5b4fc;text-align:center;margin-top:8px}
+
+select option{background:#1c1917}
+</style>
+</head>
+<body>
+
+<header>
+  <a class="logo" href="/">
+    <div class="logo-mark">F</div>
+    <span class="logo-text">Forjit AI</span>
+  </a>
+  <a class="back" href="/">← All Tools</a>
+</header>
+
+<!-- HERO -->
+<div class="hero">
+  <div class="tricolor-bar"></div>
+  <div class="hero-flag">🇮🇳</div>
+  <h1>Wishes Pouring Across <span>India</span></h1>
+  <p class="hero-sub">Join thousands congratulating CM Vijay · Add your wish on the map</p>
+  <div class="live-counter">
+    <span class="live-dot"></span>
+    🔥 <span id="totalCount">...</span> Wishes Added Across India
+  </div>
+</div>
+
+<!-- MAIN -->
+<div class="main">
+
+  <!-- LEFT: MAP -->
+  <div>
+    <div class="map-wrap">
+      <div id="map"></div>
+      <div class="map-controls">
+        <button class="map-btn active" id="btnNormal" onclick="toggleMapMode('normal')">🗺️ Map</button>
+        <button class="map-btn" id="btnHeat" onclick="toggleMapMode('heat')">🌡️ Heatmap</button>
+      </div>
+    </div>
+    <div class="heatmap-note" id="heatNote" style="display:none">🌡️ Heatmap mode — intensity shows density of wishes</div>
+    <div class="disclaimer">⚠️ This is a fan-made platform powered by Forjit AI · Not affiliated with any political party · forjitai@gmail.com</div>
+  </div>
+
+  <!-- RIGHT: SIDEBAR -->
+  <div class="sidebar">
+
+    <!-- FORM -->
+    <div class="card" id="wishFormCard">
+      <div class="card-title">📍 Add Your Wish</div>
+      <div class="form-group">
+        <label>Your Name (optional)</label>
+        <input type="text" id="inputName" placeholder="e.g. Rajesh Kumar" maxlength="40"/>
+      </div>
+      <div class="form-group">
+        <label>City <span style="color:var(--red)">*</span></label>
+        <select id="inputCity" onchange="onCityChange()">
+          <option value="">Select your city...</option>
+          <option value="Chennai">Chennai</option>
+          <option value="Coimbatore">Coimbatore</option>
+          <option value="Madurai">Madurai</option>
+          <option value="Tiruchirappalli">Tiruchirappalli</option>
+          <option value="Salem">Salem</option>
+          <option value="Tirunelveli">Tirunelveli</option>
+          <option value="Erode">Erode</option>
+          <option value="Vellore">Vellore</option>
+          <option value="Thoothukudi">Thoothukudi</option>
+          <option value="Thanjavur">Thanjavur</option>
+          <option value="Dindigul">Dindigul</option>
+          <option value="Kancheepuram">Kancheepuram</option>
+          <option value="Nagercoil">Nagercoil</option>
+          <option value="Kumbakonam">Kumbakonam</option>
+          <option value="Hosur">Hosur</option>
+          <option value="other">Other (type below)</option>
+          <option disabled>────────</option>
+          <option value="Bangalore">Bangalore</option>
+          <option value="Mumbai">Mumbai</option>
+          <option value="Delhi">Delhi</option>
+          <option value="Hyderabad">Hyderabad</option>
+          <option value="Kolkata">Kolkata</option>
+          <option value="Pune">Pune</option>
+          <option value="Ahmedabad">Ahmedabad</option>
+          <option value="Jaipur">Jaipur</option>
+          <option value="Lucknow">Lucknow</option>
+          <option value="Surat">Surat</option>
+          <option value="Kochi">Kochi</option>
+          <option value="Thiruvananthapuram">Thiruvananthapuram</option>
+          <option value="Visakhapatnam">Visakhapatnam</option>
+          <option value="Chandigarh">Chandigarh</option>
+          <option value="Bhopal">Bhopal</option>
+          <option value="Nagpur">Nagpur</option>
+          <option value="Indore">Indore</option>
+          <option value="Patna">Patna</option>
+          <option value="Vadodara">Vadodara</option>
+          <option value="Rajkot">Rajkot</option>
+        </select>
+        <div id="otherCityWrap" style="display:none;margin-top:8px">
+          <input type="text" id="inputOtherCity" placeholder="Type your city name" maxlength="40"/>
+        </div>
+      </div>
+      <div class="form-group">
+        <label>Your Wish <span style="color:var(--red)">*</span></label>
+        <textarea id="inputMessage" placeholder="Write your congratulations message here..." maxlength="150" oninput="updateCharCount()"></textarea>
+        <div class="char-count" id="charCount">0 / 150</div>
+      </div>
+      <button class="submit-btn" id="submitBtn" onclick="submitWish()">
+        📍 Add My Wish to the Map
+      </button>
+      <p style="font-size:11px;color:var(--muted);text-align:center;margin-top:10px">1 submission per minute · Basic moderation applied</p>
+    </div>
+
+    <!-- TOP CITIES -->
+    <div class="card">
+      <div class="card-title">🏙️ Top Cities</div>
+      <div class="city-bar" id="topCities">
+        <div class="loader"><span class="spinner"></span>Loading...</div>
+      </div>
+    </div>
+
+    <!-- RECENT WISHES -->
+    <div class="card">
+      <div class="card-title">💬 Recent Wishes</div>
+      <div class="feed" id="recentFeed">
+        <div class="loader"><span class="spinner"></span>Loading...</div>
+      </div>
+    </div>
+
+  </div>
+</div>
+
+<!-- FOOTER -->
+<footer>
+  <p style="margin-bottom:6px">🔥 Wishes Map – Congratulations CM Vijay</p>
+  <p>Powered by <a href="/">Forjit AI</a> · Free tools for India</p>
+  <p style="margin-top:6px">© 2025 Forjit AI · All rights reserved · <a href="/privacy.html">Privacy</a></p>
+</footer>
+
+<!-- STICKY ADD WISH (MOBILE) -->
+<button class="sticky-add" onclick="document.getElementById('wishFormCard').scrollIntoView({behavior:'smooth'})">
+  📍 Add My Wish
+</button>
+
+<!-- SUCCESS MODAL -->
+<div class="modal-overlay hidden" id="successModal">
+  <div class="modal">
+    <div class="modal-emoji">🎉</div>
+    <h3>Your Wish is Live!</h3>
+    <p>Your message is now on the map — visible to everyone across India 🇮🇳</p>
+    <div class="modal-btns">
+      <button class="btn-whatsapp" onclick="shareWhatsApp()">
+        <svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.890-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/></svg>
+        Share on WhatsApp
+      </button>
+      <button class="btn-copy" onclick="copyLink()" id="copyBtn">
+        📋 Copy Link
+      </button>
+      <button class="btn-poster" onclick="generatePoster()">
+        🎨 Download Wish Poster
+      </button>
+      <button class="btn-close" onclick="closeModal()">Close</button>
+    </div>
+    <canvas id="posterCanvas" width="800" height="450"></canvas>
+  </div>
+</div>
+
+<!-- Scripts -->
+<script src="https://cdnjs.cloudflare.com/ajax/libs/leaflet/1.9.4/leaflet.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/leaflet.markercluster/1.5.3/leaflet.markercluster.min.js"></script>
+
+<!-- Firebase v9 compat -->
+<script src="https://www.gstatic.com/firebasejs/9.23.0/firebase-app-compat.js"></script>
+<script src="https://www.gstatic.com/firebasejs/9.23.0/firebase-firestore-compat.js"></script>
+
+<script>
+/* ─── Firebase Config ──────────────────────────────────────────────────── */
+const firebaseConfig = {
+  apiKey: "AIzaSyDemoKeyForjitAI2025ReplaceThis",
+  authDomain: "forjitai-wishes.firebaseapp.com",
+  projectId: "forjitai-wishes",
+  storageBucket: "forjitai-wishes.appspot.com",
+  messagingSenderId: "123456789",
+  appId: "1:123456789:web:abcdef"
+};
+
+// NOTE: Replace firebaseConfig above with your actual Firebase project config.
+// Create a Firestore database at https://console.firebase.google.com
+// Collection: "wishes" with rules allowing public read + write (with rate limiting)
+
+let db;
+try {
+  firebase.initializeApp(firebaseConfig);
+  db = firebase.firestore();
+} catch(e) {
+  console.warn('Firebase init failed — running in demo mode');
+}
+
+/* ─── City Coordinates ─────────────────────────────────────────────────── */
+const CITY_COORDS = {
+  Chennai:[13.0827,80.2707],Coimbatore:[11.0168,76.9558],Madurai:[9.9252,78.1198],
+  Tiruchirappalli:[10.7905,78.7047],Salem:[11.6643,78.1460],Tirunelveli:[8.7139,77.7567],
+  Erode:[11.3410,77.7172],Vellore:[12.9165,79.1325],Thoothukudi:[8.7642,78.1348],
+  Thanjavur:[10.7870,79.1378],Dindigul:[10.3624,77.9695],Kancheepuram:[12.8185,79.6947],
+  Nagercoil:[8.1833,77.4119],Kumbakonam:[10.9601,79.3845],Hosur:[12.7409,77.8253],
+  Bangalore:[12.9716,77.5946],Mumbai:[19.0760,72.8777],Delhi:[28.6139,77.2090],
+  Hyderabad:[17.3850,78.4867],Kolkata:[22.5726,88.3639],Pune:[18.5204,73.8567],
+  Ahmedabad:[23.0225,72.5714],Jaipur:[26.9124,75.7873],Lucknow:[26.8467,80.9462],
+  Surat:[21.1702,72.8311],Kochi:[9.9312,76.2673],Thiruvananthapuram:[8.5241,76.9366],
+  Visakhapatnam:[17.6868,83.2185],Chandigarh:[30.7333,76.7794],Bhopal:[23.2599,77.4126],
+  Nagpur:[21.1458,79.0882],Indore:[22.7196,75.8577],Patna:[25.5941,85.1376],
+  Vadodara:[22.3072,73.1812],Rajkot:[22.3039,70.8022]
+};
+
+/* ─── Profanity Filter ─────────────────────────────────────────────────── */
+const BLOCKED_WORDS = ['fuck','shit','bastard','asshole','bitch','cunt','dick','pussy','nigger','faggot','abuse','kill','murder','rape','slut','whore'];
+function hasProfanity(text) {
+  const lower = text.toLowerCase().replace(/[^a-z0-9 ]/g,'');
+  return BLOCKED_WORDS.some(w => lower.includes(w));
+}
+
+/* ─── Rate Limiter (localStorage) ─────────────────────────────────────── */
+function canSubmit() {
+  const last = localStorage.getItem('fw_last_submit');
+  if (!last) return true;
+  return (Date.now() - parseInt(last)) > 60000; // 1 min
+}
+function recordSubmit() {
+  localStorage.setItem('fw_last_submit', Date.now().toString());
+}
+
+/* ─── Map Init ─────────────────────────────────────────────────────────── */
+const map = L.map('map', {zoomControl: false}).setView([20.5937, 78.9629], 5);
+L.control.zoom({position:'bottomright'}).addTo(map);
+L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
+  attribution:'© OpenStreetMap contributors',
+  maxZoom:18
+}).addTo(map);
+
+const markers = L.markerClusterGroup({
+  chunkedLoading: true,
+  showCoverageOnHover: false,
+  maxClusterRadius: 50,
+  iconCreateFunction: function(cluster) {
+    const count = cluster.getChildCount();
+    return L.divIcon({
+      html: `<div style="background:linear-gradient(135deg,#f97316,#f59e0b);color:#0c0a09;border-radius:50%;width:${count>99?44:36}px;height:${count>99?44:36}px;display:flex;align-items:center;justify-content:center;font-weight:800;font-size:${count>99?11:12}px;box-shadow:0 4px 12px rgba(249,115,22,.4);border:2px solid rgba(255,255,255,.3)">${count}</div>`,
+      className:'',
+      iconSize:[count>99?44:36,count>99?44:36],
+      iconAnchor:[count>99?22:18,count>99?22:18]
+    });
+  }
+});
+map.addLayer(markers);
+
+const wishIcon = L.divIcon({
+  html:`<div style="font-size:22px;filter:drop-shadow(0 2px 4px rgba(0,0,0,.5))">📍</div>`,
+  className:'',iconSize:[28,28],iconAnchor:[14,28]
+});
+
+/* ─── Heatmap Mode ─────────────────────────────────────────────────────── */
+let heatMode = false;
+let heatLayer = null;
+let allWishData = [];
+
+function toggleMapMode(mode) {
+  heatMode = (mode === 'heat');
+  document.getElementById('btnNormal').classList.toggle('active', !heatMode);
+  document.getElementById('btnHeat').classList.toggle('active', heatMode);
+  document.getElementById('heatNote').style.display = heatMode ? 'block' : 'none';
+  if (heatMode) {
+    map.removeLayer(markers);
+    if (heatLayer) map.removeLayer(heatLayer);
+    if (allWishData.length > 0) {
+      const pts = allWishData.map(w => L.circleMarker([w.lat,w.lng], {
+        radius:20,color:'transparent',fillColor:'#f97316',fillOpacity:.15,weight:0
+      }));
+      heatLayer = L.layerGroup(pts).addTo(map);
+      // Draw actual heat circles
+      allWishData.forEach(w => {
+        L.circleMarker([w.lat,w.lng], {
+          radius:8,color:'#f97316',fillColor:'#f97316',fillOpacity:.6,weight:0
+        }).addTo(heatLayer);
+      });
+    }
+  } else {
+    if (heatLayer) { map.removeLayer(heatLayer); heatLayer = null; }
+    map.addLayer(markers);
+  }
+}
+
+/* ─── Add Marker ───────────────────────────────────────────────────────── */
+function addMarker(wish) {
+  if (!wish.lat || !wish.lng) return;
+  const m = L.marker([wish.lat, wish.lng], {icon: wishIcon});
+  const name = wish.name || 'Anonymous Fan';
+  const time = wish.timestamp ? new Date(wish.timestamp.toDate ? wish.timestamp.toDate() : wish.timestamp).toLocaleDateString('en-IN',{day:'numeric',month:'short'}) : '';
+  m.bindPopup(`
+    <div style="min-width:180px;font-family:'Segoe UI',system-ui,sans-serif">
+      <div style="font-size:15px;font-weight:700;color:#f59e0b;margin-bottom:4px">📍 ${wish.city}</div>
+      <div style="font-size:13px;margin-bottom:6px;line-height:1.4">"${wish.message}"</div>
+      <div style="font-size:11px;color:#a8a29e">— ${name}${time?' · '+time:''}</div>
+    </div>
+  `, {className:'wish-popup'});
+  markers.addLayer(m);
+}
+
+/* ─── Live Data ────────────────────────────────────────────────────────── */
+function updateCounter(n) {
+  document.getElementById('totalCount').textContent = n.toLocaleString('en-IN');
+}
+
+function renderTopCities(wishes) {
+  const counts = {};
+  wishes.forEach(w => { counts[w.city] = (counts[w.city]||0)+1; });
+  const sorted = Object.entries(counts).sort((a,b)=>b[1]-a[1]).slice(0,5);
+  const max = sorted[0]?.[1] || 1;
+  const medals = ['🥇','🥈','🥉','4️⃣','5️⃣'];
+  const el = document.getElementById('topCities');
+  if (!sorted.length) { el.innerHTML='<p style="color:var(--muted);font-size:13px">No data yet</p>'; return; }
+  el.innerHTML = sorted.map(([ city, count ],i) => `
+    <div class="city-row">
+      <span class="city-rank">${medals[i]}</span>
+      <span class="city-name">${city}</span>
+      <div class="city-progress"><div class="city-fill" style="width:${(count/max*100).toFixed(0)}%"></div></div>
+      <span class="city-count">${count.toLocaleString('en-IN')}</span>
+    </div>
+  `).join('');
+}
+
+function renderRecentFeed(wishes) {
+  const el = document.getElementById('recentFeed');
+  if (!wishes.length) { el.innerHTML='<p style="color:var(--muted);font-size:13px;text-align:center">Be the first to add a wish! 🎉</p>'; return; }
+  el.innerHTML = wishes.slice(0,10).map(w => {
+    const name = w.name || 'Anonymous';
+    const time = w.timestamp ? timeAgo(w.timestamp.toDate ? w.timestamp.toDate() : new Date(w.timestamp)) : '';
+    return `
+      <div class="wish-item">
+        <div class="wish-meta">
+          <span class="wish-name">👤 ${escHtml(name)}</span>
+          <span class="wish-city">📍 ${escHtml(w.city)}</span>
+        </div>
+        <div class="wish-msg">"${escHtml(w.message)}"</div>
+        ${time?`<div class="wish-time">${time}</div>`:''}
+      </div>
+    `;
+  }).join('');
+}
+
+function timeAgo(date) {
+  const d = date instanceof Date ? date : new Date(date);
+  const s = Math.floor((Date.now()-d)/1000);
+  if(s<60) return 'just now';
+  if(s<3600) return Math.floor(s/60)+'m ago';
+  if(s<86400) return Math.floor(s/3600)+'h ago';
+  return Math.floor(s/86400)+'d ago';
+}
+
+function escHtml(s) {
+  return String(s).replace(/&/g,'&amp;').replace(/</g,'&lt;').replace(/>/g,'&gt;').replace(/"/g,'&quot;');
+}
+
+/* ─── Load Wishes ──────────────────────────────────────────────────────── */
+function loadDemoData() {
+  const demo = [
+    {id:'d1',name:'Rajesh K',city:'Chennai',message:'Congratulations CM Vijay! Tamil Nadu will rise! 🇮🇳',lat:13.0827+rnd(),lng:80.2707+rnd(),timestamp:new Date(Date.now()-60000)},
+    {id:'d2',name:'Priya S',city:'Coimbatore',message:'Viva CM Vijay! A new era begins today!',lat:11.0168+rnd(),lng:76.9558+rnd(),timestamp:new Date(Date.now()-120000)},
+    {id:'d3',name:'Kumar M',city:'Madurai',message:'Thalapathy for the people! Congrats 🎉',lat:9.9252+rnd(),lng:78.1198+rnd(),timestamp:new Date(Date.now()-200000)},
+    {id:'d4',name:'Anitha R',city:'Bangalore',message:'From Bangalore we congratulate CM Vijay! 🙏',lat:12.9716+rnd(),lng:77.5946+rnd(),timestamp:new Date(Date.now()-300000)},
+    {id:'d5',name:'Suresh P',city:'Salem',message:'Best wishes for a successful tenure!',lat:11.6643+rnd(),lng:78.1460+rnd(),timestamp:new Date(Date.now()-400000)},
+    {id:'d6',name:'Meena V',city:'Mumbai',message:'All the best CM Vijay! India supports you 🇮🇳',lat:19.0760+rnd(),lng:72.8777+rnd(),timestamp:new Date(Date.now()-500000)},
+    {id:'d7',name:'Karthik T',city:'Tiruchirappalli',message:'Congratulations! You earned this! 🏆',lat:10.7905+rnd(),lng:78.7047+rnd(),timestamp:new Date(Date.now()-600000)},
+    {id:'d8',name:'Lakshmi D',city:'Thanjavur',message:'May your leadership bring prosperity to TN!',lat:10.7870+rnd(),lng:79.1378+rnd(),timestamp:new Date(Date.now()-700000)},
+    {id:'d9',name:'Balaji N',city:'Vellore',message:'CM Vijay — the people\'s choice! 🌟',lat:12.9165+rnd(),lng:79.1325+rnd(),timestamp:new Date(Date.now()-800000)},
+    {id:'d10',name:'Deepa K',city:'Kochi',message:'Wishing you success! 🎊',lat:9.9312+rnd(),lng:76.2673+rnd(),timestamp:new Date(Date.now()-900000)},
+  ];
+  allWishData = demo;
+  demo.forEach(addMarker);
+  updateCounter(demo.length);
+  renderTopCities(demo);
+  renderRecentFeed(demo);
+}
+
+function rnd() { return (Math.random()-0.5)*0.4; }
+
+// Try Firebase, fallback to demo
+if (db) {
+  try {
+    db.collection('wishes').orderBy('timestamp','desc').limit(200)
+      .onSnapshot(snap => {
+        const wishes = [];
+        markers.clearLayers();
+        snap.forEach(doc => {
+          const w = { id: doc.id, ...doc.data() };
+          wishes.push(w);
+          addMarker(w);
+        });
+        allWishData = wishes;
+        updateCounter(wishes.length);
+        renderTopCities(wishes);
+        renderRecentFeed(wishes);
+      }, err => {
+        console.warn('Firestore error, using demo:', err);
+        loadDemoData();
+      });
+  } catch(e) { loadDemoData(); }
+} else {
+  loadDemoData();
+}
+
+/* ─── Form ─────────────────────────────────────────────────────────────── */
+function onCityChange() {
+  const v = document.getElementById('inputCity').value;
+  document.getElementById('otherCityWrap').style.display = (v==='other') ? 'block' : 'none';
+}
+
+function updateCharCount() {
+  const len = document.getElementById('inputMessage').value.length;
+  const el = document.getElementById('charCount');
+  el.textContent = len + ' / 150';
+  el.className = 'char-count' + (len>130?' warn':'');
+}
+
+let lastSubmittedWish = null;
+
+async function submitWish() {
+  const nameVal = document.getElementById('inputName').value.trim();
+  let cityVal = document.getElementById('inputCity').value;
+  if (cityVal === 'other') cityVal = document.getElementById('inputOtherCity').value.trim();
+  const msgVal = document.getElementById('inputMessage').value.trim();
+
+  if (!cityVal) { showAlert('Please select or enter your city! 📍'); return; }
+  if (!msgVal) { showAlert('Please write your wish message! 💬'); return; }
+  if (msgVal.length < 5) { showAlert('Message too short — write at least 5 characters.'); return; }
+  if (hasProfanity(msgVal) || hasProfanity(nameVal)) { showAlert('⚠️ Message contains inappropriate content. Please keep it respectful.'); return; }
+  if (!canSubmit()) { showAlert('⏱️ Please wait 1 minute before submitting another wish.'); return; }
+
+  // Get coords
+  let coords = CITY_COORDS[cityVal];
+  if (!coords) {
+    // Default to centre of India with slight randomisation
+    coords = [20.5937 + (Math.random()-0.5)*8, 78.9629 + (Math.random()-0.5)*8];
+  } else {
+    coords = [coords[0]+(Math.random()-0.5)*0.3, coords[1]+(Math.random()-0.5)*0.3];
+  }
+
+  const btn = document.getElementById('submitBtn');
+  btn.disabled = true;
+  btn.textContent = '⏳ Adding wish...';
+
+  const wish = {
+    name: nameVal || '',
+    city: cityVal,
+    message: msgVal,
+    lat: coords[0],
+    lng: coords[1],
+    timestamp: new Date()
+  };
+
+  try {
+    if (db) {
+      wish.timestamp = firebase.firestore.FieldValue.serverTimestamp();
+      const ref = await db.collection('wishes').add(wish);
+      wish.id = ref.id;
+      wish.timestamp = new Date();
+    } else {
+      // Demo mode
+      wish.id = 'local_' + Date.now();
+      allWishData.unshift(wish);
+      addMarker(wish);
+      updateCounter(allWishData.length);
+      renderTopCities(allWishData);
+      renderRecentFeed(allWishData);
+    }
+
+    lastSubmittedWish = wish;
+    recordSubmit();
+
+    // Fly to marker
+    map.flyTo([coords[0], coords[1]], 10, {duration:1.5});
+
+    // Reset form
+    document.getElementById('inputName').value = '';
+    document.getElementById('inputCity').value = '';
+    document.getElementById('inputMessage').value = '';
+    document.getElementById('charCount').textContent = '0 / 150';
+    document.getElementById('otherCityWrap').style.display = 'none';
+
+    showModal();
+  } catch(e) {
+    console.error(e);
+    showAlert('Something went wrong. Please try again!');
+  }
+
+  btn.disabled = false;
+  btn.textContent = '📍 Add My Wish to the Map';
+}
+
+/* ─── Alert ────────────────────────────────────────────────────────────── */
+function showAlert(msg) {
+  const existing = document.getElementById('alertBox');
+  if (existing) existing.remove();
+  const el = document.createElement('div');
+  el.id = 'alertBox';
+  el.style.cssText='position:fixed;top:80px;left:50%;transform:translateX(-50%);background:#1c1917;border:1px solid #ef4444;color:#fca5a5;padding:12px 20px;border-radius:10px;font-size:14px;z-index:9999;max-width:320px;text-align:center;box-shadow:0 8px 24px rgba(0,0,0,.5)';
+  el.textContent = msg;
+  document.body.appendChild(el);
+  setTimeout(() => el.remove(), 3500);
+}
+
+/* ─── Modal ────────────────────────────────────────────────────────────── */
+function showModal() {
+  document.getElementById('successModal').classList.remove('hidden');
+}
+function closeModal() {
+  document.getElementById('successModal').classList.add('hidden');
+}
+document.getElementById('successModal').addEventListener('click', function(e) {
+  if (e.target === this) closeModal();
+});
+
+/* ─── Share ────────────────────────────────────────────────────────────── */
+const PAGE_URL = 'https://www.forjitai.in/tools/cm-vijay-wishes.html';
+const SHARE_MSG = `I just congratulated CM Vijay 🇮🇳 Add your wish on the map!\n${PAGE_URL}`;
+
+function shareWhatsApp() {
+  window.open('https://wa.me/?text=' + encodeURIComponent(SHARE_MSG), '_blank');
+}
+
+async function copyLink() {
+  try {
+    await navigator.clipboard.writeText(PAGE_URL);
+    const btn = document.getElementById('copyBtn');
+    btn.textContent = '✅ Copied!';
+    setTimeout(() => { btn.innerHTML = '📋 Copy Link'; }, 2000);
+  } catch(e) {
+    prompt('Copy this link:', PAGE_URL);
+  }
+}
+
+/* ─── Poster Generator ─────────────────────────────────────────────────── */
+function generatePoster() {
+  const wish = lastSubmittedWish;
+  if (!wish) return;
+  const canvas = document.getElementById('posterCanvas');
+  const ctx = canvas.getContext('2d');
+  const W = 800, H = 450;
+
+  // Background gradient
+  const grad = ctx.createLinearGradient(0,0,W,H);
+  grad.addColorStop(0,'#1a0800');
+  grad.addColorStop(0.5,'#0c1a08');
+  grad.addColorStop(1,'#0c0a09');
+  ctx.fillStyle = grad;
+  ctx.fillRect(0,0,W,H);
+
+  // Tricolor stripe top
+  ctx.fillStyle='#f97316'; ctx.fillRect(0,0,W,8);
+  ctx.fillStyle='#f5f5f4'; ctx.fillRect(0,8,W,8);
+  ctx.fillStyle='#16a34a'; ctx.fillRect(0,16,W,8);
+
+  // Tricolor stripe bottom
+  ctx.fillStyle='#f97316'; ctx.fillRect(0,H-24,W,8);
+  ctx.fillStyle='#f5f5f4'; ctx.fillRect(0,H-16,W,8);
+  ctx.fillStyle='#16a34a'; ctx.fillRect(0,H-8,W,8);
+
+  // Flag emoji area
+  ctx.font='48px serif';
+  ctx.textAlign='center';
+  ctx.fillText('🇮🇳',W/2,90);
+
+  // Title
+  ctx.font='bold 36px Segoe UI, system-ui, sans-serif';
+  ctx.fillStyle='#f59e0b';
+  ctx.textAlign='center';
+  ctx.fillText('Congratulations CM Vijay!',W/2,150);
+
+  // Subtitle
+  ctx.font='18px Segoe UI, system-ui, sans-serif';
+  ctx.fillStyle='#a8a29e';
+  ctx.fillText('Fan Wishes Map · India 2025',W/2,180);
+
+  // Divider
+  ctx.strokeStyle='rgba(245,158,11,0.3)';
+  ctx.lineWidth=1;
+  ctx.beginPath(); ctx.moveTo(60,200); ctx.lineTo(W-60,200); ctx.stroke();
+
+  // Message box
+  ctx.fillStyle='rgba(249,115,22,0.08)';
+  roundRect(ctx,60,215,W-120,140,12);
+  ctx.fill();
+  ctx.strokeStyle='rgba(249,115,22,0.3)'; ctx.lineWidth=1;
+  roundRect(ctx,60,215,W-120,140,12);
+  ctx.stroke();
+
+  // Quote mark
+  ctx.font='bold 64px Georgia, serif';
+  ctx.fillStyle='rgba(245,158,11,0.15)';
+  ctx.textAlign='left';
+  ctx.fillText('"',68,280);
+
+  // Message text (wrapped)
+  ctx.font='500 20px Segoe UI, system-ui, sans-serif';
+  ctx.fillStyle='#e7e5e4';
+  ctx.textAlign='center';
+  wrapText(ctx, wish.message, W/2, 265, W-160, 28);
+
+  // Name + City
+  ctx.font='bold 15px Segoe UI, system-ui, sans-serif';
+  ctx.fillStyle='#f59e0b';
+  ctx.textAlign='center';
+  const byLine = '— ' + (wish.name||'Anonymous Fan') + '  ·  📍 ' + wish.city;
+  ctx.fillText(byLine, W/2, 370);
+
+  // Footer
+  ctx.font='13px Segoe UI, system-ui, sans-serif';
+  ctx.fillStyle='#78716c';
+  ctx.fillText('Powered by Forjit AI · www.forjitai.in', W/2, 415);
+
+  // Download
+  const link = document.createElement('a');
+  link.download = 'cm-vijay-wish.png';
+  link.href = canvas.toDataURL('image/png');
+  link.click();
+}
+
+function roundRect(ctx, x, y, w, h, r) {
+  ctx.beginPath();
+  ctx.moveTo(x+r,y); ctx.lineTo(x+w-r,y); ctx.quadraticCurveTo(x+w,y,x+w,y+r);
+  ctx.lineTo(x+w,y+h-r); ctx.quadraticCurveTo(x+w,y+h,x+w-r,y+h);
+  ctx.lineTo(x+r,y+h); ctx.quadraticCurveTo(x,y+h,x,y+h-r);
+  ctx.lineTo(x,y+r); ctx.quadraticCurveTo(x,y,x+r,y);
+  ctx.closePath();
+}
+
+function wrapText(ctx, text, x, y, maxW, lineH) {
+  const words = text.split(' ');
+  let line = '';
+  for (let i=0;i<words.length;i++) {
+    const test = line + words[i] + ' ';
+    if (ctx.measureText(test).width > maxW && i > 0) {
+      ctx.fillText(line.trim(), x, y);
+      line = words[i] + ' ';
+      y += lineH;
+    } else { line = test; }
+  }
+  ctx.fillText(line.trim(), x, y);
+}
+
+/* ─── Analytics / Visit Count ──────────────────────────────────────────── */
+(function trackVisit() {
+  if (!db) return;
+  try {
+    db.collection('analytics').doc('visits').set({
+      count: firebase.firestore.FieldValue.increment(1),
+      lastSeen: firebase.firestore.FieldValue.serverTimestamp()
+    }, {merge:true});
+  } catch(e) {}
+})();
+</script>
+
+<script src="tool-common.js"></script>
+</body>
+</html>

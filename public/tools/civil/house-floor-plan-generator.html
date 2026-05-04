@@ -506,7 +506,7 @@ function drawDoor(parts, door, room, px, py, f) {
 function drawWindow(parts, win, room, px, py, f, plot) {
   const rx=+(room.x??0), ry=+(room.y??0);
   const rw=+(room.w??room.width??10), rh=+(room.h??room.height??10);
-  const wx=+(win.x??0), wy=+(win.y??0), ww=+(win.w??3);
+  const wx=+(win.x??0), wy=+(win.y??0), ww=+(win.w??win.width??3);
 
   const snaps = [
     {wall:'top',    d:Math.abs(wy-ry),      outer: ry<=0.5},
@@ -764,77 +764,103 @@ function printPlan(){
 
 // ─── Prompt builder (requests JSON from AI) ────────────────────────────────
 function buildPrompt(p) {
-  const dir=p.direction;
-  const dirCoord={North:'top (y=0)',South:'bottom (y=length)',East:'right (x=width)',West:'left (x=0)'};
-  const vastuZones=p.vastu==='Yes'?`
-VASTU ZONES (STRICTLY FOLLOW):
-Coordinate origin is North-West (0,0). X→East, Y→South.
-- North zone  = low Y values (y near 0)
-- South zone  = high Y values (y near ${p.length})
-- East zone   = high X values (x near ${p.width})
-- West zone   = low X values (x near 0)
+  const dir   = p.direction;
+  const W     = +p.width, L = +p.length;
+  const minArea = Math.floor(W * L * 0.90);
 
-Required placements:
-- Kitchen      → South-East corner (high X, high Y) — x near ${p.width}, y near ${p.length}
-- Master Bed   → South-West corner (low X, high Y)  — x near 0, y near ${p.length}
-- Living Room  → ${dir==='North'||dir==='East'?'North or East zone':'near entrance, '+dir+' side'}
-- Bathrooms    → West or North-West (low X) — NEVER place in North-East (high X, low Y)
-- Parking      → ${dir} side (${dirCoord[dir]})`:
-`LAYOUT: Modern practical. Optimize for flow and natural light. No Vastu constraints.`;
+  // Coordinate orientation
+  const dirCoord = {North:'top (y=0)', South:'bottom (y='+L+')', East:'right (x='+W+')', West:'left (x=0)'};
 
-  const roomList=[
-    p.living==='Yes'?`Living Room (min 12×14 ft)`:'',
-    p.kitchen==='Yes'?`Kitchen (min 8×10 ft)`:'',
-    ...[...Array(+p.bedrooms)].map((_,i)=>i===0?'Master Bedroom (min 12×14 ft)':`Bedroom ${i+1} (min 10×12 ft)`),
-    ...[...Array(+p.bathrooms)].map((_,i)=>`Bathroom ${i+1} (min 4×6 ft)`),
-    p.parking==='Yes'?'Parking (min 9×18 ft)':'',
-    'Passage/Lobby (3.5 ft wide minimum)',
-  ].filter(Boolean);
+  // Build ONLY the rooms the user requested — strict conditional
+  const rooms = [];
+  if (p.living   === 'Yes') rooms.push(`- Living Room    : min 12×14 ft`);
+  if (p.kitchen  === 'Yes') rooms.push(`- Kitchen        : min 8×10 ft`);
+  for (let i = 0; i < +p.bedrooms; i++)
+    rooms.push(`- ${i===0?'Master Bedroom':'Bedroom '+(i+1)} : min ${i===0?'12×14':'10×12'} ft`);
+  for (let i = 0; i < +p.bathrooms; i++)
+    rooms.push(`- Bathroom ${i+1}     : min 4×6 ft`);
+  if (p.parking  === 'Yes') rooms.push(`- Parking        : min 9×18 ft`);
+  rooms.push(`- Passage/Lobby  : 3–4 ft wide corridor`);
 
-  return `You are a senior civil engineer. Return a VALID JSON floor plan. ONLY JSON — no explanation, no markdown.
+  // Strict exclusion warnings
+  const exclusions = [];
+  if (p.parking !== 'Yes') exclusions.push('DO NOT include Parking or reserve any space for it');
+  if (p.kitchen !== 'Yes') exclusions.push('DO NOT include Kitchen');
+  if (p.living  !== 'Yes') exclusions.push('DO NOT include Living Room');
 
-PLOT: ${p.width} ft wide (X-axis) × ${p.length} ft long (Y-axis)
-ENTRANCE FACING: ${dir} side — main door on the ${dirCoord[dir]} wall
+  // Vastu zone instructions
+  const vastuBlock = p.vastu === 'Yes' ? `
+VASTU RULES (MANDATORY — Vastu = Yes):
+Origin (0,0) = North-West corner. X increases East, Y increases South.
+Zone reference for ${W}×${L} ft plot:
+  North zone  : y < ${Math.round(L*0.33)} ft
+  South zone  : y > ${Math.round(L*0.67)} ft
+  East zone   : x > ${Math.round(W*0.60)} ft
+  West zone   : x < ${Math.round(W*0.40)} ft
+
+Placement rules:
+  Kitchen      → South-East  (x≥${Math.round(W*0.55)}, y≥${Math.round(L*0.55)})
+  Master Bed   → South-West  (x≤${Math.round(W*0.45)}, y≥${Math.round(L*0.55)})
+  Living Room  → ${dir==='North'||dir==='East'?'North or East zone (near entrance)':'near entrance on '+dir+' side'}
+  Bathrooms    → West or North-West (x≤${Math.round(W*0.40)}) — NEVER North-East
+  Parking      → ${dir} side (near entrance)
+  Passage      → central spine` : `
+LAYOUT STYLE: Modern practical — no Vastu constraints. Maximise natural light and logical flow.`;
+
+  return `You are a senior civil engineer designing a real house. Return ONLY valid JSON — no explanation, no markdown, no text outside JSON.
+
+═══════════════════════════════
+PLOT: ${W} ft wide (X) × ${L} ft tall (Y)
+ENTRANCE: ${dir} facing — main door on ${dirCoord[dir]} wall
 VASTU: ${p.vastu}
-${vastuZones}
+TARGET BUILT-UP AREA: ≥ ${minArea} sq ft (90% of ${W*L} sq ft plot)
+═══════════════════════════════
 
-ROOMS TO INCLUDE:
-${roomList.map(r=>'- '+r).join('\n')}
+ROOMS TO INCLUDE (EXACTLY THESE — NO MORE, NO LESS):
+${rooms.join('\n')}
 
-HARD RULES:
-1. ALL rooms must fit inside: 0 ≤ x+w ≤ ${p.width} and 0 ≤ y+h ≤ ${p.length}
-2. NO room overlaps — check every pair
-3. Rooms must share walls (no empty gaps between rooms)
-4. Use ≥ 90% of plot area: ${Math.floor(+p.width * +p.length * 0.9)} sq ft minimum
-5. Each room needs ≥ 1 door
-6. Rooms on outer walls need ≥ 1 window
-7. Living room must be adjacent to entrance
+${exclusions.length ? '🚫 STRICT EXCLUSIONS:\n' + exclusions.map(e=>'  ✗ '+e).join('\n') : ''}
+${vastuBlock}
 
-DOOR POSITIONS — absolute coordinates in feet:
-- Door on top wall of room:    set y = room.y (exactly)
-- Door on bottom wall:         set y = room.y + room.h (exactly)
-- Door on left wall:           set x = room.x (exactly)
-- Door on right wall:          set x = room.x + room.w (exactly)
-- x/y is the door's corner (not center)
+═══════════════════════════════
+LAYOUT RULES (ALL MANDATORY):
+1. Every room: 0 ≤ x ≤ ${W}, 0 ≤ y ≤ ${L}, x+width ≤ ${W}, y+height ≤ ${L}
+2. Zero overlaps — rooms share walls, not space
+3. No floating rooms — every room must touch at least one other room or plot boundary
+4. No large empty gaps — use every sq ft efficiently
+5. Entrance → Living Room (must be adjacent) ${p.living==='Yes'?'':'— no Living Room, entrance leads to passage'}
+6. Bedrooms accessible from passage or living room
+7. Each room needs ≥ 1 door (coordinates on the room wall, not interior)
+8. Each outer-wall room needs ≥ 1 window
 
-WINDOW POSITIONS — on outer plot walls only:
-- { "x": number, "y": number, "w": windowWidthFeet }
-- Only on walls touching x=0, x=${p.width}, y=0, or y=${p.length}
+DOOR COORDINATE RULES (absolute feet, not relative):
+  Top wall door:    y = room.y exactly,           x = somewhere along room top wall
+  Bottom wall door: y = room.y + room.height,     x = somewhere along room bottom wall
+  Left wall door:   x = room.x exactly,           y = somewhere along room left wall
+  Right wall door:  x = room.x + room.width,      y = somewhere along room right wall
 
-RETURN THIS EXACT JSON STRUCTURE:
+WINDOW COORDINATE RULES:
+  { "x": number, "y": number, "width": windowWidthFt }
+  Only on outer plot walls: y=0, y=${L}, x=0, or x=${W}
+
+═══════════════════════════════
+RETURN THIS JSON SCHEMA EXACTLY:
 {
-  "plot": { "width": ${p.width}, "length": ${p.length} },
+  "plot": { "width": ${W}, "length": ${L} },
   "rooms": [
     {
       "name": "Living Room",
-      "x": 0, "y": 0, "w": 16, "h": 18,
+      "x": 0,
+      "y": 0,
+      "width": 16,
+      "height": 18,
       "doors": [{ "x": 7, "y": 0 }],
-      "windows": [{ "x": 2, "y": 0, "w": 4 }]
+      "windows": [{ "x": 2, "y": 0, "width": 4 }]
     }
   ]
 }
 
-Start output with { and end with }. No other text.`;
+Output starts with { and ends with }. Absolutely nothing else.`;
 }
 </script>
 </body>

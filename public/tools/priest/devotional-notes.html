@@ -193,40 +193,28 @@ Structure the sermon as follows:
 Write in a warm, conversational, and spiritually uplifting tone. Make it genuine, not generic.`;
 
   try {
-    const res = await fetch('https://api.groq.com/openai/v1/chat/completions', {
+    const res = await fetch('/api/groq-proxy', {
       method: 'POST',
-      headers: { 'Content-Type': 'application/json', 'Authorization': 'Bearer ' + (window.GROQ_KEY || '') },
+      headers: { 'Content-Type': 'application/json' },
       body: JSON.stringify({
-        model: 'llama-3.3-70b-versatile',
         messages: [{ role: 'user', content: prompt }],
-        max_tokens: 2000,
-        temperature: 0.75,
-      })
+        model: 'smart',
+        maxTokens: 2000,
+      }),
     });
 
-    if (!res.ok) throw new Error('API error ' + res.status);
+    if (!res.ok) {
+      const errData = await res.json().catch(() => ({}));
+      throw new Error(errData.error || 'Error ' + res.status);
+    }
     const data = await res.json();
-    const text = data.choices?.[0]?.message?.content || '';
+    const text = data.content || '';
     if (!text) throw new Error('Empty response');
 
     generatedText = text;
     renderOutput(text, `Sermon: ${scripture}`);
   } catch (e) {
-    // Fallback: use proxy if available
-    try {
-      const res2 = await fetch('/api/llm', {
-        method: 'POST',
-        headers: { 'Content-Type': 'application/json' },
-        body: JSON.stringify({ prompt, model: 'llama-3.3-70b-versatile' }),
-      });
-      if (!res2.ok) throw new Error('Proxy error');
-      const data2 = await res2.json();
-      const text2 = data2.content || data2.text || '';
-      generatedText = text2;
-      renderOutput(text2, `Sermon: ${scripture}`);
-    } catch {
-      alert('Generation failed. Please check your connection or try again.');
-    }
+    alert('Generation failed: ' + e.message + '. Please try again.');
   } finally {
     btn.disabled = false;
     spinner.style.display = 'none';

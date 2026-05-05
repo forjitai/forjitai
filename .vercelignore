@@ -1,0 +1,7 @@
+# Exclude Android app from Vercel deployment
+android-app/
+android-app/node_modules/
+
+# Dev artifacts
+*.log
+.DS_Store

@@ -324,6 +324,17 @@
   <body>
     <div id="root"></div>
 
+    <!-- Skeleton shown BEFORE React loads — prevents blank black screen -->
+    <div id="app-skeleton" style="position:fixed;inset:0;background:#0c0a09;z-index:9999;display:flex;flex-direction:column;align-items:center;justify-content:center;font-family:system-ui,sans-serif;">
+      <div style="font-size:48px;margin-bottom:16px;animation:sk-pulse 1.5s ease-in-out infinite">⚡</div>
+      <div style="color:#f59e0b;font-size:24px;font-weight:700;margin-bottom:6px">Forjit AI</div>
+      <div style="color:#78716c;font-size:13px;margin-bottom:32px">Free Indian AI Tools</div>
+      <div style="width:48px;height:3px;background:#1c1917;border-radius:2px;overflow:hidden">
+        <div style="width:40%;height:100%;background:#f59e0b;border-radius:2px;animation:sk-slide 1s ease-in-out infinite"></div>
+      </div>
+      <style>@keyframes sk-pulse{0%,100%{opacity:1}50%{opacity:.5}}@keyframes sk-slide{0%{transform:translateX(-100%)}100%{transform:translateX(350%)}}</style>
+    </div>
+
     <!-- Fallback content for SEO (crawlers that don't run JS) -->
     <noscript>
       <div style="font-family: system-ui, sans-serif; max-width: 720px; margin: 40px auto; padding: 24px; color: #1c1917;">

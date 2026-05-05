@@ -19,7 +19,7 @@ import {
   APP_NAME, APP_TAG, APP_URL, ADMIN_EMAIL,
   PROVIDERS, TABS, PLANNER_TYPES, DOC_TYPES, CONTENT_TYPES,
   APP_SYSTEM_PROMPT, MOBILE_SYSTEM_PROMPT, PLANNER_SYSTEM_PROMPT,
-  DOCUMENT_SYSTEM_PROMPT_MARKDOWN, CONTENT_SYSTEM_PROMPT,
+  DOCUMENT_SYSTEM_PROMPT_MARKDOWN, CONTENT_SYSTEM_PROMPT, REEL_SYSTEM_PROMPT,
   ITERATE_SYSTEM_PROMPT_HTML, ITERATE_SYSTEM_PROMPT_MD,
 } from "./constants";
 
@@ -37,6 +37,7 @@ import {
 } from "./components/SubTypeSelector";
 import AuthModal from "./components/AuthModal";
 import SharePanel from "./components/SharePanel";
+import ReelOutput from "./components/ReelOutput";
 
 /* ── Phase 3: utilities ─────────────────────────────────────────────────── */
 import {
@@ -136,6 +137,11 @@ export default function ForjitAI() {
   const [zipping, setZipping] = useState(false);
   const [copied, setCopied] = useState(false);
   const [copiedField, setCopiedField] = useState("");
+
+  /* ----- Reel Engine state ----- */
+  const [reelData, setReelData] = useState(null);
+  const [reelTone, setReelTone] = useState("emotional");
+  const [reelCopied, setReelCopied] = useState("");
 
   /* ----- Data manager ----- */
   const [showDataManager, setShowDataManager] = useState(false);
@@ -361,6 +367,7 @@ export default function ForjitAI() {
     setGenerating(true);
     setError("");
     setOutput("");
+    setReelData(null);
     setDeployResult(null);
     setIterations([]);
 
@@ -370,11 +377,17 @@ export default function ForjitAI() {
         sysPrompt = appSubType === "mobile" ? MOBILE_SYSTEM_PROMPT : APP_SYSTEM_PROMPT;
         expectedType = "html";
       } else if (activeTab === "content") {
-        sysPrompt = CONTENT_SYSTEM_PROMPT;
-        expectedType = "markdown";
-        const ctype = CONTENT_TYPES[contentType];
-        if (ctype) {
-          sysPrompt = CONTENT_SYSTEM_PROMPT + `\n\n[CONTENT TYPE: ${ctype.label}]`;
+        if (contentType === "social") {
+          // Reel Engine — special JSON mode
+          sysPrompt = REEL_SYSTEM_PROMPT;
+          expectedType = "reel";
+        } else {
+          sysPrompt = CONTENT_SYSTEM_PROMPT;
+          expectedType = "markdown";
+          const ctype = CONTENT_TYPES[contentType];
+          if (ctype) {
+            sysPrompt = CONTENT_SYSTEM_PROMPT + `\n\n[CONTENT TYPE: ${ctype.label}]`;
+          }
         }
       } else if (activeTab === "planner") {
         sysPrompt = PLANNER_SYSTEM_PROMPT;
@@ -404,7 +417,20 @@ export default function ForjitAI() {
 
       let cleaned = expectedType === "html" ? stripCodeFences(text) : stripMarkdownFences(text);
 
-      if (expectedType === "html") {
+      if (expectedType === "reel") {
+        // Parse JSON reel output
+        try {
+          const raw = text.replace(/```json|```/g, "").trim();
+          const parsed = JSON.parse(raw);
+          setReelData(parsed);
+          setReelTone("emotional");
+          setOutput("__reel__");
+          setOutputType("reel");
+          setView("rendered");
+        } catch {
+          throw new Error("Reel engine couldn't parse output. Try rephrasing your input.");
+        }
+      } else if (expectedType === "html") {
         if (!cleaned.toLowerCase().includes("<!doctype") && !cleaned.toLowerCase().includes("<html")) {
           throw new Error("Model didn't return HTML. Try a different model or rephrase.");
         }
@@ -414,9 +440,11 @@ export default function ForjitAI() {
         }
       }
 
-      setOutput(cleaned);
-      setOutputType(expectedType);
-      setView(expectedType === "html" ? "preview" : "rendered");
+      if (expectedType !== "reel") {
+        setOutput(cleaned);
+        setOutputType(expectedType);
+        setView(expectedType === "html" ? "preview" : "rendered");
+      }
       const id = Date.now();
       setCurrentId(id);
       const entry = {
@@ -877,7 +905,7 @@ npx cap open android
   }
 
   function reset() {
-    setPrompt(""); setOutput(""); setError(""); setCurrentId(null); setIterations([]); setIterPrompt(""); setDeployResult(null);
+    setPrompt(""); setOutput(""); setError(""); setCurrentId(null); setIterations([]); setIterPrompt(""); setDeployResult(null); setReelData(null);
   }
 
   function handleKeyDown(e) {
@@ -1021,7 +1049,8 @@ npx cap open android
               <button
                 onClick={() => {
                   setActiveTab("content");
-                  setPrompt("Write a lesson plan for Class 5 Science — photosynthesis, 45 minutes, India syllabus, activity-based");
+                  setContentType("lesson_plan");
+                  setPrompt("");
                   generatorRef.current?.scrollIntoView({ behavior: "smooth", block: "start" });
                   setTimeout(() => textareaRef.current?.focus(), 400);
                 }}
@@ -1193,7 +1222,9 @@ npx cap open android
                     <span className="text-[11px] text-stone-500">Describe the app you want to build</span>
                   )}
                   {activeTab === "content" && (
-                    <span className="text-[11px] text-stone-500">Describe the content you want to generate</span>
+                    <span className="text-[11px] text-stone-500">
+                      {contentType === "social" ? "Share a real-life situation or feeling — AI turns it into a viral reel 🔥" : "Describe the content you want to generate"}
+                    </span>
                   )}
                   {activeTab === "planner" && (
                     <span className="text-[11px] text-stone-500">Describe your planning needs</span>
@@ -1246,12 +1277,16 @@ npx cap open android
           )}
 
           {/* OUTPUT */}
-          {(output || generating) && (
+          {(output || generating || reelData) && (
             <section className="slide-up">
               <div className="rounded-xl border border-stone-800 bg-stone-900/40 overflow-hidden">
                 <div className="flex items-center justify-between border-b border-stone-800 bg-stone-900/60 px-3 py-2 gap-2 flex-wrap">
                   <div className="flex items-center gap-1">
-                    {outputType === "html" ? (
+                    {outputType === "reel" ? (
+                      <div className="flex items-center gap-1.5 px-2 py-1 rounded-md bg-orange-500/15 border border-orange-500/30">
+                        <span className="text-[11px] font-semibold text-orange-300">🔥 Reel Package</span>
+                      </div>
+                    ) : outputType === "html" ? (
                       <>
                         <TabBtn active={view === "preview"} onClick={() => setView("preview")} icon={<Eye className="w-3.5 h-3.5" />} label="Preview" />
                         <TabBtn active={view === "code"} onClick={() => setView("code")} icon={<Code2 className="w-3.5 h-3.5" />} label="Code" />
@@ -1321,6 +1356,9 @@ npx cap open android
                   {view === "rendered" && output && outputType === "markdown" && (
                     <div className="prose-md bg-white text-stone-900 p-6 md:p-10 overflow-auto scrollbar-thin" style={{ maxHeight: "540px" }} dangerouslySetInnerHTML={{ __html: renderMarkdown(output) }} />
                   )}
+                  {view === "rendered" && outputType === "reel" && reelData && (
+                    <ReelOutput data={reelData} tone={reelTone} setTone={setReelTone} reelCopied={reelCopied} setReelCopied={setReelCopied} />
+                  )}
                   {view === "code" && output && (
                     <pre className="font-mono text-xs text-stone-300 bg-stone-950 p-5 overflow-auto scrollbar-thin whitespace-pre-wrap" style={{ maxHeight: "540px" }}><code>{output}</code></pre>
                   )}
@@ -1333,11 +1371,15 @@ npx cap open android
                   <AlertCircle className="w-4 h-4 text-amber-400/80 mt-0.5 shrink-0" />
                   <p className="text-[12px] text-stone-400 leading-relaxed">
                     <span className="text-amber-300/90 font-semibold">AI-generated — verify before use.</span>{" "}
-                    {activeTab === "document"
+                    {contentType === "social" && activeTab === "content"
+                      ? "This reel content is AI-generated and may not reflect real situations or verified facts. Always review before posting. Forjit AI is not responsible for any harm, misunderstanding, or controversy caused by content you publish. You are solely responsible for what you post."
+                      : activeTab === "document"
                       ? "Review all content carefully before submitting to employers, clients, or filing with any authority. AI may produce inaccurate details, dates, or figures."
                       : "Results may contain errors, outdated information, or inaccuracies. Review all content before using professionally or making decisions based on it."
                     }{" "}
                     <a href="/terms" className="text-amber-400/70 hover:text-amber-300 underline underline-offset-2" target="_blank" rel="noreferrer">Terms</a>
+                    {" · "}
+                    <a href="/privacy" className="text-amber-400/70 hover:text-amber-300 underline underline-offset-2" target="_blank" rel="noreferrer">Privacy</a>
                   </p>
                 </div>
               )}

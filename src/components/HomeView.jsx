@@ -13,7 +13,7 @@ import React from "react";
 import {
   ArrowRight, Zap, FileText, Code2, Calendar, Wand2,
   TrendingUp, Hash, Camera, Film, UserCircle2, Share2,
-  Dumbbell, NotebookPen, BookOpen, Sparkles, ChevronRight,
+  Dumbbell, NotebookPen, BookOpen, Sparkles, ChevronRight, Search,
 } from "lucide-react";
 import ForjitLogo from "./ForjitLogo";
 import { TABS, CONTENT_TYPES, DOC_TYPES, PLANNER_TYPES } from "../constants";
@@ -151,7 +151,7 @@ const TOOL_CATEGORIES = [
 /* ═══════════════════════════════════════════════════════════════════════════
    MAIN COMPONENT
 ═══════════════════════════════════════════════════════════════════════════ */
-export default function HomeView({ onGoToCreate, history, lastSession, loadFromHistory }) {
+export default function HomeView({ onGoToCreate, history, lastSession, loadFromHistory, onOpenSearch }) {
 
   /* Navigate to create view with correct tab/type pre-selected */
   const go = (actionStr) => {
@@ -186,6 +186,18 @@ export default function HomeView({ onGoToCreate, history, lastSession, loadFromH
         <p className="text-stone-400 text-sm max-w-xl hero-2">
           60+ tools. No login. Generate reels, build apps, create resumes, plan meals — powered by open-source AI.
         </p>
+
+        {/* Search bar */}
+        <button
+          onClick={onOpenSearch}
+          className="mt-5 hero-3 w-full max-w-lg flex items-center gap-3 px-4 py-3 rounded-2xl border border-stone-700 bg-stone-900/80 hover:border-amber-400/40 hover:bg-stone-900 transition-all group text-left"
+        >
+          <Search className="w-4 h-4 text-stone-500 group-hover:text-amber-400 transition-colors shrink-0" />
+          <span className="text-stone-500 text-sm group-hover:text-stone-400 transition-colors flex-1">
+            Ask anything — fitness, finance, content ideas, career...
+          </span>
+          <span className="text-[10px] font-mono px-2 py-1 rounded-md bg-stone-800 text-stone-600 shrink-0 hidden sm:block">AI Search</span>
+        </button>
       </section>
 
       {/* ── 2. 🔥 Hot Tools ─────────────────────────────────────────────── */}

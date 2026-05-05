@@ -418,6 +418,21 @@ export default function ForjitAI() {
       let cleaned = expectedType === "html" ? stripCodeFences(text) : stripMarkdownFences(text);
 
       if (expectedType === "reel") {
+        // Detect LLM content refusals FIRST
+        const refusalPhrases = [
+          "i'm sorry", "i cannot", "i can't", "i'm not able",
+          "i am not able", "i won't", "i will not",
+          "not able to help", "can't help", "cannot help",
+          "against my", "not appropriate", "not something i",
+          "unable to", "i apologize", "i must decline",
+        ];
+        const lowerText = text.toLowerCase().trim();
+        const isRefusal = refusalPhrases.some(p => lowerText.startsWith(p) || lowerText.includes(p)) && !text.includes("{");
+
+        if (isRefusal) {
+          throw new Error("⚠️ This topic can't be turned into a reel. Try a personal situation, emotion, or everyday life moment instead — e.g. \"Worked all day and got no credit\" or \"Finally hit the gym after months\".");
+        }
+
         // Robust JSON extraction — handle markdown fences, extra text, partial wrapping
         try {
           let raw = text;
@@ -462,11 +477,8 @@ export default function ForjitAI() {
           setOutputType("reel");
           setView("rendered");
         } catch (e) {
-          // Show raw output so user can see what model returned
-          setOutput(text);
-          setOutputType("markdown");
-          setView("rendered");
-          throw new Error("Reel engine got an unexpected response. Shown below — try again or switch model.");
+          if (e.message.startsWith("⚠️")) throw e; // re-throw refusal errors
+          throw new Error("Reel generation failed — try again or rephrase as a personal feeling or moment.");
         }
       } else if (expectedType === "html") {
         if (!cleaned.toLowerCase().includes("<!doctype") && !cleaned.toLowerCase().includes("<html")) {
@@ -1310,6 +1322,27 @@ npx cap open android
                     {app.name}
                   </button>
                 ))}
+              </div>
+            </div>
+          )}
+
+          {/* REEL TOPIC GUIDE — shown only on viral reel tab, before generation */}
+          {activeTab === "content" && contentType === "social" && !output && !reelData && !generating && (
+            <div className="mb-4 rounded-xl border border-stone-800 bg-stone-900/40 p-4">
+              <div className="text-[11px] font-semibold text-stone-400 uppercase tracking-wider mb-2.5">✅ Works great with</div>
+              <div className="flex flex-wrap gap-1.5 mb-3">
+                {["Worked all day, got no credit", "Finally hit the gym", "Friend betrayed me", "Boss shouted at me", "Feeling demotivated", "Broke but happy", "First salary feeling", "Failed an exam"].map(ex => (
+                  <button key={ex} onClick={() => setPrompt(ex)}
+                    className="text-[11px] px-2.5 py-1 rounded-full bg-stone-800 hover:bg-amber-400/15 border border-stone-700 hover:border-amber-400/40 text-stone-400 hover:text-amber-300 transition">
+                    {ex}
+                  </button>
+                ))}
+              </div>
+              <div className="flex items-start gap-2 rounded-lg bg-rose-500/5 border border-rose-500/15 px-3 py-2">
+                <span className="text-rose-400 text-xs mt-0.5">✕</span>
+                <p className="text-[11px] text-stone-500 leading-relaxed">
+                  <span className="text-rose-300/80 font-medium">Avoid:</span> Political parties, elections, religion, celebrities, or any controversial public figures — the AI will decline these topics.
+                </p>
               </div>
             </div>
           )}

@@ -1,0 +1,38 @@
+{
+  "appId": "in.forjitai.app",
+  "appName": "Forjit AI",
+  "webDir": "www",
+  "server": {
+    "url": "https://forjitai.in",
+    "cleartext": false,
+    "allowNavigation": [
+      "forjitai.in",
+      "*.forjitai.in"
+    ]
+  },
+  "android": {
+    "allowMixedContent": false,
+    "captureInput": true,
+    "webContentsDebuggingEnabled": false,
+    "loggingBehavior": "none",
+    "backgroundColor": "#0c0a09"
+  },
+  "plugins": {
+    "SplashScreen": {
+      "launchShowDuration": 2000,
+      "launchAutoHide": true,
+      "launchFadeOutDuration": 500,
+      "backgroundColor": "#0c0a09",
+      "androidSplashResourceName": "splash",
+      "androidScaleType": "CENTER_CROP",
+      "showSpinner": false,
+      "splashFullScreen": true,
+      "splashImmersive": true
+    },
+    "StatusBar": {
+      "style": "DARK",
+      "backgroundColor": "#0c0a09",
+      "overlaysWebView": false
+    }
+  }
+}

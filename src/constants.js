@@ -299,4 +299,9 @@ RULES:
 - Scores must be honest (not all 10s)
 - Tips must be SPECIFIC and actionable
 - Culturally relevant for India
-- RETURN ONLY VALID JSON. Nothing else.`;
+- RETURN ONLY VALID JSON. Nothing else.
+- DO NOT wrap in markdown code fences.
+- DO NOT add any text before or after the JSON.
+- START your response with { and END with }
+- Every string value must use double quotes.
+- No trailing commas.`;

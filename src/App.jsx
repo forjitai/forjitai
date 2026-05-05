@@ -418,17 +418,55 @@ export default function ForjitAI() {
       let cleaned = expectedType === "html" ? stripCodeFences(text) : stripMarkdownFences(text);
 
       if (expectedType === "reel") {
-        // Parse JSON reel output
+        // Robust JSON extraction — handle markdown fences, extra text, partial wrapping
         try {
-          const raw = text.replace(/```json|```/g, "").trim();
-          const parsed = JSON.parse(raw);
+          let raw = text;
+
+          // 1. Strip ```json ... ``` or ``` ... ``` fences
+          raw = raw.replace(/```json\s*/gi, "").replace(/```\s*/g, "");
+
+          // 2. Try to find the first { ... } block (handles text before/after JSON)
+          const firstBrace = raw.indexOf("{");
+          const lastBrace = raw.lastIndexOf("}");
+          if (firstBrace !== -1 && lastBrace !== -1 && lastBrace > firstBrace) {
+            raw = raw.slice(firstBrace, lastBrace + 1);
+          }
+
+          raw = raw.trim();
+
+          let parsed;
+          try {
+            parsed = JSON.parse(raw);
+          } catch {
+            // 3. Last resort: fix common JSON issues (trailing commas, smart quotes)
+            const fixed = raw
+              .replace(/,\s*([}\]])/g, "$1")       // trailing commas
+              .replace(/[\u201C\u201D]/g, '"')       // smart double quotes
+              .replace(/[\u2018\u2019]/g, "'");      // smart single quotes
+            parsed = JSON.parse(fixed);
+          }
+
+          // 4. Validate required fields exist, fill defaults if missing
+          if (!parsed.hooks || !Array.isArray(parsed.hooks)) parsed.hooks = ["Feeling this way? You're not alone."];
+          if (!parsed.script) parsed.script = parsed.tones?.emotional || "Real talk — " + prompt.trim();
+          if (!parsed.tones) parsed.tones = { emotional: parsed.script, funny: parsed.script, motivational: parsed.script };
+          if (!parsed.caption) parsed.caption = prompt.trim() + " 💯 Drop a ❤️ if you relate!";
+          if (!parsed.hashtags) parsed.hashtags = ["#ReelsIndia", "#ViralReel", "#Relatable"];
+          if (!parsed.music) parsed.music = "Trending emotional beat";
+          if (!parsed.viralScore) parsed.viralScore = { hook: 7, relatability: 8, shareability: 7, overall: 7 };
+          if (!parsed.tips) parsed.tips = ["Add text overlays on key lines", "Film with good lighting", "Use trending audio"];
+
           setReelData(parsed);
           setReelTone("emotional");
           setOutput("__reel__");
           setOutputType("reel");
           setView("rendered");
-        } catch {
-          throw new Error("Reel engine couldn't parse output. Try rephrasing your input.");
+        } catch (e) {
+          // Show raw output so user can see what model returned
+          setOutput(text);
+          setOutputType("markdown");
+          setView("rendered");
+          throw new Error("Reel engine got an unexpected response. Shown below — try again or switch model.");
         }
       } else if (expectedType === "html") {
         if (!cleaned.toLowerCase().includes("<!doctype") && !cleaned.toLowerCase().includes("<html")) {

@@ -36,9 +36,9 @@ const HOT_ITEMS = [
   { icon: "#️⃣", label: "Hashtag Generator",    action: "content/hashtag"             },
   { icon: "⚡", label: "Viral Hook",           action: "content/viral_hook"          },
   { icon: "📄", label: "Resume Builder",       action: "document/resume_pdf"         },
-  { icon: "🏠", label: "AI Floor Plan",        href: "/tools/civil/house-floor-plan-generator" },
-  { icon: "💰", label: "EMI Calculator",       href: "/tools/emi-calculator"         },
-  { icon: "📋", label: "Lesson Plan",          href: "/tools/teacher/lesson-plan-generator" },
+  { icon: "🏠", label: "AI Floor Plan",        href: "/tools/civil/house-floor-plan-generator.html" },
+  { icon: "💰", label: "EMI Calculator",       href: "/tools/emi-calculator.html"         },
+  { icon: "📋", label: "Lesson Plan",          href: "/tools/teacher/lesson-plan-generator.html" },
 ];
 
 const TOOLS_CATS = [

@@ -63,7 +63,7 @@ const HOT_TOOLS = [
     color: "from-amber-500/20 to-yellow-500/10 border-amber-500/30 hover:border-amber-400/60",
     badge: "🆕 NEW",
     badgeColor: "bg-amber-500/20 text-amber-300",
-    href: "/tools/civil/house-floor-plan-generator",
+    href: "/tools/civil/house-floor-plan-generator.html",
   },
   {
     key: "emi",
@@ -72,7 +72,7 @@ const HOT_TOOLS = [
     color: "from-emerald-500/20 to-green-500/10 border-emerald-500/30 hover:border-emerald-400/60",
     badge: "🇮🇳 INDIA",
     badgeColor: "bg-emerald-500/20 text-emerald-300",
-    href: "/tools/emi-calculator",
+    href: "/tools/emi-calculator.html",
   },
   {
     key: "lesson-plan",
@@ -81,7 +81,7 @@ const HOT_TOOLS = [
     color: "from-teal-500/20 to-cyan-500/10 border-teal-500/30 hover:border-teal-400/60",
     badge: "👩‍🏫 EDU",
     badgeColor: "bg-teal-500/20 text-teal-300",
-    href: "/tools/teacher/lesson-plan-generator",
+    href: "/tools/teacher/lesson-plan-generator.html",
   },
   {
     key: "viral-hook",
@@ -140,12 +140,12 @@ const AI_GENERATORS = [
 const TOOL_CATEGORIES = [
   { emoji: "💰", label: "Finance",    sub: "EMI, SIP, GST, Tax",   href: "/tools/?cat=finance"  },
   { emoji: "🏥", label: "Health",     sub: "BMI, Calories, Water",  href: "/tools/?cat=health"   },
-  { emoji: "👩‍🏫", label: "Teachers",   sub: "Lesson plans, MCQ",     href: "/tools/teacher/lesson-plan-generator" },
-  { emoji: "🏗️", label: "Civil",      sub: "Floor plans, Concrete", href: "/tools/civil/house-floor-plan-generator" },
+  { emoji: "👩‍🏫", label: "Teachers",   sub: "Lesson plans, MCQ",     href: "/tools/teacher/lesson-plan-generator.html" },
+  { emoji: "🏗️", label: "Civil",      sub: "Floor plans, Concrete", href: "/tools/civil/house-floor-plan-generator.html" },
   { emoji: "🔧", label: "Utilities",  sub: "Password, QR, JSON",    href: "/tools/?cat=utility"  },
   { emoji: "🇮🇳", label: "India",      sub: "GST, HRA, Gratuity",    href: "/tools/?cat=india"    },
   { emoji: "📝", label: "Text Tools", sub: "Word count, Case, Lorem", href: "/tools/?cat=text"   },
-  { emoji: "🙏", label: "Spiritual",  sub: "Prayer, Bible Verse",   href: "/tools/priest/prayer-generator" },
+  { emoji: "🙏", label: "Spiritual",  sub: "Prayer, Bible Verse",   href: "/tools/priest/prayer-generator.html" },
 ];
 
 /* ═══════════════════════════════════════════════════════════════════════════

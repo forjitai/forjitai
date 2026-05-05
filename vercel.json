@@ -6,6 +6,22 @@
   "public": true,
   "rewrites": [
     {
+      "source": "/tools/:tool",
+      "destination": "/tools/:tool.html"
+    },
+    {
+      "source": "/tools/teacher/:tool",
+      "destination": "/tools/teacher/:tool.html"
+    },
+    {
+      "source": "/tools/civil/:tool",
+      "destination": "/tools/civil/:tool.html"
+    },
+    {
+      "source": "/tools/priest/:tool",
+      "destination": "/tools/priest/:tool.html"
+    },
+    {
       "source": "/api/groq-proxy",
       "destination": "/api/groq-proxy"
     },

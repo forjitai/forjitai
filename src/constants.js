@@ -244,10 +244,42 @@ export const CONTENT_TYPES = {
     icon:        "Share2",
     placeholder: "I worked all day and still feel like I did nothing",
   },
+
+  /* ── Instagram / Viral Tools ────────────────────────────────────────── */
+  instagram_caption: {
+    label:       "Instagram Caption",
+    sublabel:    "Instagram",
+    icon:        "Camera",
+    placeholder: "Photo at Marine Drive, Mumbai at sunset with friends",
+  },
+  hashtag: {
+    label:       "Hashtag Generator",
+    sublabel:    "Instagram",
+    icon:        "Hash",
+    placeholder: "Travel blogger, Indian mountains, adventure photography",
+  },
+  bio: {
+    label:       "Bio Generator",
+    sublabel:    "Instagram",
+    icon:        "UserCircle2",
+    placeholder: "Fitness coach in Delhi, helping people lose 10 kg naturally, 3 years experience",
+  },
+  reel_idea: {
+    label:       "Reel Ideas",
+    sublabel:    "Instagram",
+    icon:        "Film",
+    placeholder: "I'm a food blogger making street food videos in Mumbai",
+  },
+  viral_hook: {
+    label:       "Viral Hook",
+    sublabel:    "Instagram",
+    icon:        "TrendingUp",
+    placeholder: "I want to talk about morning routines of successful people",
+  },
 };
 
 /* ── Content system prompt ──────────────────────────────────────────────── */
-export const CONTENT_SYSTEM_PROMPT = `You are an expert Indian content writer. Generate high-quality, well-structured Markdown content.
+export const CONTENT_SYSTEM_PROMPT = `You are an expert Indian content writer and Instagram growth specialist. Generate high-quality content.
 
 RULES:
 1. Return ONLY Markdown. No code fences wrapping the whole response.
@@ -258,8 +290,12 @@ RULES:
 6. For study notes: Concise bullet points, key terms bolded, tables for comparisons, mnemonics where helpful.
 7. For speeches: Opening hook, 3 main points with transitions, personal anecdotes, strong closing.
 8. For social media: Platform-aware tone, emojis where appropriate, hashtags, call-to-action.
-9. Write in clear English unless the user specifies another language.
-10. Be culturally relevant for Indian audience when appropriate.
+9. For instagram_caption: Generate 3 caption variants (Casual / Emotive / Inspirational). Each under 150 words. Include emojis, a CTA, and 5 relevant hashtags per caption.
+10. For hashtag: Generate 30 hashtags in 3 groups — ## 🔥 Trending (10), ## 🎯 Niche (10), ## 🇮🇳 Indian Community (10). Format as #tag.
+11. For bio: Generate 3 Instagram bio options — Fun, Professional, Creative. Max 150 chars each. Include emoji, value prop, niche keyword.
+12. For reel_idea: Generate 5 reel ideas. Each with: Hook (first 3 sec), Structure (30-60 sec), Caption, and 8 Hashtags.
+13. For viral_hook: Generate 10 scroll-stopping opening hooks using psychological triggers (curiosity, fear of missing out, surprise). Number them. No fluff.
+14. Write in clear English unless the user specifies another language. Be culturally relevant for Indian audience.
 Return ONLY the Markdown content.`;
 
 /* ── Viral Reel Engine system prompt ────────────────────────────────────── */

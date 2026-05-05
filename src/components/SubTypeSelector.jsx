@@ -6,7 +6,11 @@
  * ──────────────────────────────────────────────────────────────────────────*/
 
 import React from "react";
-import { Monitor, Smartphone, Calendar, FileText, GraduationCap, BookOpen, PenLine, NotebookPen, Mic, Share2 } from "lucide-react";
+import {
+  Monitor, Smartphone, Calendar, FileText,
+  GraduationCap, BookOpen, PenLine, NotebookPen, Mic, Share2,
+  Camera, Hash, UserCircle2, Film, TrendingUp,
+} from "lucide-react";
 import { PLANNER_TYPES, DOC_TYPES, CONTENT_TYPES } from "../constants";
 
 const ICON_MAP = {
@@ -139,36 +143,65 @@ export function DocSubTypeSelector({ docType, setDocType }) {
   );
 }
 
-/* ── Content tab: lesson/sermon/blog/notes/speech/social buttons ─────────── */
-const CONTENT_ICON_MAP = { GraduationCap, BookOpen, PenLine, NotebookPen, Mic, Share2 };
+/* ── Content tab: grouped by category ───────────────────────────────────── */
+
+const CONTENT_ICON_MAP = {
+  GraduationCap, BookOpen, PenLine, NotebookPen, Mic, Share2,
+  Camera, Hash, UserCircle2, Film, TrendingUp,
+};
+
+const INSTA_KEYS = new Set(["instagram_caption", "hashtag", "bio", "reel_idea", "viral_hook", "social"]);
 
 export function ContentSubTypeSelector({ contentType, setContentType }) {
+  const instaEntries  = Object.entries(CONTENT_TYPES).filter(([k]) => INSTA_KEYS.has(k));
+  const contentEntries = Object.entries(CONTENT_TYPES).filter(([k]) => !INSTA_KEYS.has(k));
+
+  const Btn = ([key, t]) => {
+    const active = contentType === key;
+    const IconComp = CONTENT_ICON_MAP[t.icon] || FileText;
+    const isInsta = INSTA_KEYS.has(key);
+    return (
+      <button
+        key={key}
+        onClick={() => setContentType(key)}
+        className={`px-3 py-2 rounded-lg text-xs font-medium border transition flex items-center gap-1.5 whitespace-nowrap ${
+          active
+            ? isInsta
+              ? "bg-pink-500 text-white border-pink-500 shadow-md shadow-pink-500/20"
+              : "bg-violet-500 text-white border-violet-500 shadow-md shadow-violet-500/20"
+            : "bg-stone-900 border-stone-800 text-stone-400 hover:border-stone-700 hover:text-stone-200"
+        }`}
+      >
+        <IconComp className="w-3.5 h-3.5 shrink-0" />
+        <span>{t.label}</span>
+        {t.sublabel && (
+          <span className={`text-[9px] px-1.5 py-0.5 rounded font-medium uppercase tracking-wide ${
+            active ? "bg-white/20 text-white" : isInsta ? "bg-pink-500/10 text-pink-400" : "bg-stone-800 text-stone-500"
+          }`}>{t.sublabel}</span>
+        )}
+      </button>
+    );
+  };
+
   return (
-    <div className="mb-4 -mx-2 px-2 overflow-x-auto scrollbar-thin">
-      <div className="flex items-center gap-1.5 pb-1 min-w-max">
-        {Object.entries(CONTENT_TYPES).map(([key, t]) => {
-          const active = contentType === key;
-          const IconComp = CONTENT_ICON_MAP[t.icon] || FileText;
-          return (
-            <button
-              key={key}
-              onClick={() => setContentType(key)}
-              className={`px-3 py-2 rounded-lg text-xs font-medium border transition flex items-center gap-1.5 whitespace-nowrap ${
-                active
-                  ? "bg-violet-500 text-white border-violet-500 shadow-md shadow-violet-500/20"
-                  : "bg-stone-900 border-stone-800 text-stone-400 hover:border-stone-700 hover:text-stone-200"
-              }`}
-            >
-              <IconComp className="w-3.5 h-3.5 shrink-0" />
-              <span>{t.label}</span>
-              {t.sublabel && (
-                <span className={`text-[9px] px-1.5 py-0.5 rounded font-medium uppercase tracking-wide ${
-                  active ? "bg-white/20 text-white" : "bg-stone-800 text-stone-500"
-                }`}>{t.sublabel}</span>
-              )}
-            </button>
-          );
-        })}
+    <div className="mb-4 space-y-2">
+      {/* Instagram / Viral Tools group */}
+      <div className="-mx-2 px-2 overflow-x-auto scrollbar-thin">
+        <div className="flex items-center gap-1 mb-1.5">
+          <span className="text-[9px] font-bold uppercase tracking-widest text-pink-400/70 px-1">📸 Instagram</span>
+        </div>
+        <div className="flex items-center gap-1.5 pb-1 min-w-max">
+          {instaEntries.map(Btn)}
+        </div>
+      </div>
+      {/* Content creation group */}
+      <div className="-mx-2 px-2 overflow-x-auto scrollbar-thin">
+        <div className="flex items-center gap-1 mb-1.5">
+          <span className="text-[9px] font-bold uppercase tracking-widest text-violet-400/70 px-1">✍️ Content</span>
+        </div>
+        <div className="flex items-center gap-1.5 pb-1 min-w-max">
+          {contentEntries.map(Btn)}
+        </div>
       </div>
     </div>
   );

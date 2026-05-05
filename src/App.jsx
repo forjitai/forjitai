@@ -9,6 +9,7 @@ import {
   UtensilsCrossed, Dumbbell, NotebookPen, FilePlus, FileDown, User,
   Calendar, Layers, GraduationCap, BookOpen, PenLine, Mic, Share2,
   ArrowRight, BookMarked, Stethoscope, HardHat, Tv2, PencilRuler, ChevronDown,
+  Home, PenSquare,
 } from "lucide-react";
 
 /* ── Phase 1 modules ────────────────────────────────────────────────────── */
@@ -26,6 +27,7 @@ import {
 /* ── Phase 2 components ─────────────────────────────────────────────────── */
 import { Modal, Drawer, TabBtn, LinkRow, Stat } from "./components/ui";
 import ForjitLogo from "./components/ForjitLogo";
+import HomeView from "./components/HomeView";
 import SettingsPanel from "./components/SettingsPanel";
 import AdminPanel from "./components/AdminPanel";
 import { HistoryPanel, GalleryPanel } from "./components/HistoryPanel";
@@ -56,6 +58,7 @@ const ICON_MAP = {
 export default function ForjitAI() {
   /* ----- Auth ----- */
   const [user, setUser] = useState(null); // { id, email, name, isAdmin, createdAt }
+  const [activeView, setActiveView] = useState("home"); // "home" | "create"
   const [showAuth, setShowAuth] = useState(false);
   const [authEmail, setAuthEmail] = useState("");
   const [authName, setAuthName] = useState("");
@@ -988,65 +991,138 @@ npx cap open android
     violet: { btn: "bg-violet-400 text-stone-950 border-violet-400",  badge: "bg-violet-400/20 text-violet-300" },
   };
 
+  /* ----- Navigate to create view with pre-selected tab/type -----
+   * tab:         "app" | "content" | "planner" | "document"
+   * subtype:     contentType key | docType key | plannerType key
+   */
+  const goToCreate = (tab, subtype) => {
+    if (tab) setActiveTab(tab);
+    if (subtype) {
+      if (tab === "content"  || CONTENT_TYPES[subtype])  setContentType(subtype);
+      if (tab === "document" || DOC_TYPES[subtype])       setDocType(subtype);
+      if (tab === "planner"  || PLANNER_TYPES[subtype])   setPlannerType(subtype);
+    }
+    setActiveView("create");
+    setTimeout(() => generatorRef.current?.scrollIntoView({ behavior: "smooth", block: "start" }), 80);
+  };
+
   /* ---------- RENDER ---------- */
   return (
     <div className="min-h-screen w-full bg-stone-950 text-stone-100 font-sans antialiased">
       <div className="grain min-h-screen">
         {/* HEADER */}
         <header className="border-b border-stone-800/80 px-4 md:px-10 py-4 flex items-center justify-between backdrop-blur-sm sticky top-0 z-30 bg-stone-950/85">
-          <div className="flex items-center gap-3">
-            <ForjitLogo size="md" showTag={false} />
+          {/* Left: Logo + primary nav */}
+          <div className="flex items-center gap-1">
+            <button onClick={() => setActiveView("home")} className="flex items-center gap-2 mr-2">
+              <ForjitLogo size="md" showTag={false} />
+            </button>
+            {/* Desktop primary nav */}
+            <nav className="hidden md:flex items-center gap-0.5 ml-2">
+              <button
+                onClick={() => setActiveView("home")}
+                className={`px-3 py-1.5 rounded-md text-xs font-medium transition flex items-center gap-1.5 ${activeView === "home" ? "bg-stone-800 text-stone-100" : "text-stone-400 hover:text-stone-200 hover:bg-stone-800/60"}`}
+              >
+                <Home className="w-3.5 h-3.5" /> Home
+              </button>
+              <a href="/tools/" className="px-3 py-1.5 rounded-md text-xs font-medium text-stone-400 hover:text-stone-200 hover:bg-stone-800/60 transition flex items-center gap-1.5">
+                🔧 Tools
+              </a>
+              <button
+                onClick={() => goToCreate("content", "instagram_caption")}
+                className="px-3 py-1.5 rounded-md text-xs font-medium text-pink-400/80 hover:text-pink-300 hover:bg-pink-500/10 transition flex items-center gap-1.5"
+              >
+                📸 Instagram
+              </button>
+              <button
+                onClick={() => goToCreate("document", "resume_pdf")}
+                className="px-3 py-1.5 rounded-md text-xs font-medium text-sky-400/80 hover:text-sky-300 hover:bg-sky-500/10 transition flex items-center gap-1.5"
+              >
+                📄 Resume
+              </button>
+              <button
+                onClick={() => goToCreate("planner", "diary")}
+                className="px-3 py-1.5 rounded-md text-xs font-medium text-emerald-400/80 hover:text-emerald-300 hover:bg-emerald-500/10 transition flex items-center gap-1.5"
+              >
+                📓 Diary
+              </button>
+            </nav>
           </div>
-          <div className="flex items-center gap-1.5 md:gap-2">
+
+          {/* Right: utility buttons */}
+          <div className="flex items-center gap-1.5">
+            {/* Create button — always visible */}
+            <button
+              onClick={() => setActiveView(activeView === "create" ? "home" : "create")}
+              className={`px-3 py-1.5 rounded-md text-xs font-medium border transition flex items-center gap-1.5 ${
+                activeView === "create"
+                  ? "border-amber-400/50 bg-amber-400/10 text-amber-300"
+                  : "border-amber-400 bg-amber-400 text-stone-950 hover:bg-amber-300"
+              }`}
+            >
+              <PenSquare className="w-3.5 h-3.5" />
+              <span className="hidden sm:inline">{activeView === "create" ? "← Home" : "Create"}</span>
+            </button>
+
             {showInstallBtn && (
-              <button onClick={handleInstall} className="px-3 py-1.5 rounded-md border border-emerald-500/40 bg-emerald-500/10 text-xs text-emerald-300 hover:bg-emerald-500/20 transition flex items-center gap-1.5">
-                <Smartphone className="w-4 h-4" />
-                <span className="hidden sm:inline">Install</span>
+              <button onClick={handleInstall} className="px-3 py-1.5 rounded-md border border-emerald-500/40 bg-emerald-500/10 text-xs text-emerald-300 hover:bg-emerald-500/20 transition hidden sm:flex items-center gap-1.5">
+                <Smartphone className="w-3.5 h-3.5" />
+                <span className="hidden md:inline">Install</span>
               </button>
             )}
             {user?.isAdmin && (
-              <button onClick={() => setShowAdmin(true)} className="px-3 py-1.5 rounded-md border border-purple-500/40 bg-purple-500/10 text-xs text-purple-300 hover:bg-purple-500/20 transition flex items-center gap-1.5">
-                <Shield className="w-4 h-4" />
-                <span className="hidden sm:inline">Admin</span>
+              <button onClick={() => setShowAdmin(true)} className="px-2.5 py-1.5 rounded-md border border-purple-500/40 bg-purple-500/10 text-xs text-purple-300 hover:bg-purple-500/20 transition flex items-center gap-1.5">
+                <Shield className="w-3.5 h-3.5" />
               </button>
             )}
-            <a href="/tools/" className="px-3 py-1.5 rounded-md border border-stone-800 hover:border-stone-700 text-xs text-stone-400 hover:text-stone-200 transition hidden md:flex items-center gap-1.5">Tools</a>
-            <a href="/blog/" className="px-3 py-1.5 rounded-md border border-stone-800 hover:border-stone-700 text-xs text-stone-400 hover:text-stone-200 transition hidden md:flex items-center gap-1.5">Blog</a>
-            <a href="/ott/" className="px-3 py-1.5 rounded-md border border-amber-500/40 bg-amber-500/10 text-xs text-amber-300 hover:bg-amber-500/20 transition hidden md:flex items-center gap-1.5">🎬 OTT</a>
-            <button onClick={() => setShowRepo(true)} className="px-3 py-1.5 rounded-md border border-stone-800 hover:border-stone-700 text-xs text-stone-400 hover:text-stone-200 transition flex items-center gap-1.5">
-              <Package className="w-4 h-4" />
-              <span className="hidden sm:inline">Gallery</span>
-            </button>
-            <button onClick={() => setShowHistory(true)} className="px-3 py-1.5 rounded-md border border-stone-800 hover:border-stone-700 text-xs text-stone-400 hover:text-stone-200 transition flex items-center gap-1.5">
-              <History className="w-4 h-4" />
+            <button onClick={() => setShowHistory(true)} className="px-2.5 py-1.5 rounded-md border border-stone-800 hover:border-stone-700 text-xs text-stone-400 hover:text-stone-200 transition flex items-center gap-1.5">
+              <History className="w-3.5 h-3.5" />
               {history.length > 0 && <span className="text-[10px] bg-amber-400/20 text-amber-300 px-1 rounded">{history.length}</span>}
             </button>
             {errorLog.length > 0 && (
-              <button onClick={() => setShowErrorLog(true)} className="px-3 py-1.5 rounded-md border border-rose-500/30 text-xs text-rose-300 hover:bg-rose-500/10 transition flex items-center gap-1.5">
-                <Bug className="w-4 h-4" />
-                <span className="hidden sm:inline">{errorLog.length}</span>
+              <button onClick={() => setShowErrorLog(true)} className="px-2.5 py-1.5 rounded-md border border-rose-500/30 text-xs text-rose-300 hover:bg-rose-500/10 transition hidden md:flex items-center gap-1.5">
+                <Bug className="w-3.5 h-3.5" />
               </button>
             )}
-            <button onClick={() => setShowDataManager(true)} className="px-3 py-1.5 rounded-md border border-stone-800 hover:border-stone-700 text-xs text-stone-400 hover:text-stone-200 transition hidden md:flex items-center gap-1.5">
-              <Download className="w-4 h-4" />
-            </button>
-            <button onClick={() => setShowSettings(true)} className="px-3 py-1.5 rounded-md border text-xs transition flex items-center gap-1.5 border-stone-800 hover:border-stone-700 text-stone-400 hover:text-stone-200">
-              <Settings className="w-4 h-4" />
-              <span className="hidden sm:inline">Settings</span>
+            <button onClick={() => setShowSettings(true)} className="px-2.5 py-1.5 rounded-md border border-stone-800 hover:border-stone-700 text-xs text-stone-400 hover:text-stone-200 transition flex items-center gap-1.5">
+              <Settings className="w-3.5 h-3.5" />
             </button>
             {user ? (
               <button onClick={() => setShowAuth(true)} className="px-3 py-1.5 rounded-md bg-emerald-500/10 border border-emerald-500/30 text-xs text-emerald-300 hover:bg-emerald-500/20 transition flex items-center gap-1.5">
-                <User className="w-4 h-4" />
+                <User className="w-3.5 h-3.5" />
                 <span className="hidden sm:inline">{user.name.split(" ")[0]}</span>
               </button>
             ) : (
-              <button onClick={() => setShowAuth(true)} className="px-3 py-1.5 rounded-md bg-amber-400 hover:bg-amber-300 text-stone-950 font-medium text-xs transition flex items-center gap-1.5">
-                <LogIn className="w-4 h-4" />
-                <span className="hidden sm:inline">Sign in</span>
+              <button onClick={() => setShowAuth(true)} className="px-3 py-1.5 rounded-md border border-stone-800 hover:border-stone-700 text-xs text-stone-400 hover:text-stone-200 transition hidden md:flex items-center gap-1.5">
+                <LogIn className="w-3.5 h-3.5" /> Sign in
               </button>
             )}
           </div>
         </header>
+
+        {/* ── Mobile bottom nav ─────────────────────────────────────────── */}
+        <nav className="fixed bottom-0 left-0 right-0 z-40 md:hidden flex items-center justify-around bg-stone-950/95 border-t border-stone-800 py-2 backdrop-blur-sm">
+          <button onClick={() => setActiveView("home")} className={`flex flex-col items-center gap-0.5 px-3 py-1 rounded-lg transition ${activeView === "home" ? "text-amber-400" : "text-stone-500"}`}>
+            <Home className="w-5 h-5" />
+            <span className="text-[9px]">Home</span>
+          </button>
+          <button onClick={() => goToCreate("content", "instagram_caption")} className="flex flex-col items-center gap-0.5 px-3 py-1 rounded-lg text-stone-500 hover:text-pink-300 transition">
+            <span className="text-lg leading-none">📸</span>
+            <span className="text-[9px]">Instagram</span>
+          </button>
+          <button onClick={() => goToCreate("document", "resume_pdf")} className="flex flex-col items-center gap-0.5 px-3 py-1 rounded-lg text-stone-500 hover:text-sky-300 transition">
+            <span className="text-lg leading-none">📄</span>
+            <span className="text-[9px]">Resume</span>
+          </button>
+          <button onClick={() => setActiveView("create")} className={`flex flex-col items-center gap-0.5 px-3 py-1 rounded-lg transition ${activeView === "create" ? "text-amber-400" : "text-stone-500"}`}>
+            <PenSquare className="w-5 h-5" />
+            <span className="text-[9px]">Create</span>
+          </button>
+          <a href="/tools/" className="flex flex-col items-center gap-0.5 px-3 py-1 rounded-lg text-stone-500 hover:text-stone-200 transition">
+            <span className="text-lg leading-none">🔧</span>
+            <span className="text-[9px]">Tools</span>
+          </a>
+        </nav>
 
         <main className="max-w-6xl mx-auto px-4 md:px-10 py-6 md:py-10 pb-24 md:pb-10">
           {/* Connect prompt for new users */}
@@ -1072,155 +1148,16 @@ npx cap open android
             </section>
           )}
 
-          {/* Hero */}
-          <section className="mb-8 hero-1">
-            <h1 className="font-display text-3xl md:text-5xl font-semibold tracking-tight leading-tight mb-3">
-              <span className="bg-gradient-to-r from-blue-400 via-violet-400 to-amber-400 bg-clip-text text-transparent">Forjit AI</span>
-              <br />
-              <span className="text-stone-200 text-2xl md:text-4xl font-normal italic">Build apps, generate content, and use<br className="hidden md:block" /> smart tools — all in one place.</span>
-            </h1>
-            <p className="text-stone-400 text-sm md:text-base max-w-2xl font-sans mt-2 hero-2">
-              Free AI platform for India — app generator, content creator, 60+ smart tools. No login needed.
-            </p>
-            <div className="mt-4 inline-flex items-center gap-2 px-3 py-1.5 rounded-full bg-blue-500/10 border border-blue-500/20 text-[11px] font-mono text-blue-300 hero-3">
-              <span className="w-1.5 h-1.5 rounded-full bg-blue-400 pulse-dot" />
-              Initial phase — actively evolving · not production-ready yet
-            </div>
-          </section>
-
-          {/* ── QUICK ACTIONS ─────────────────────────────────────────── */}
-          <section className="mb-8 hero-4">
-            <div className="grid grid-cols-1 sm:grid-cols-3 gap-3">
-              {/* Create App */}
-              <button
-                onClick={() => {
-                  setActiveTab("app");
-                  setPrompt("Build a Pomodoro timer app with dark theme, circular progress ring, and sound alert");
-                  generatorRef.current?.scrollIntoView({ behavior: "smooth", block: "start" });
-                  setTimeout(() => textareaRef.current?.focus(), 400);
-                }}
-                className="card-shine group relative overflow-hidden rounded-2xl border border-blue-500/25 bg-gradient-to-br from-blue-500/10 via-stone-900/80 to-stone-900 p-5 text-left hover:border-blue-500/50 hover:from-blue-500/15 transition-all duration-300"
-              >
-                <div className="absolute top-0 right-0 w-28 h-28 bg-blue-500/5 rounded-full -translate-y-10 translate-x-10 group-hover:scale-125 transition-transform duration-500" />
-                <div className="w-10 h-10 rounded-xl bg-blue-500/15 text-blue-300 flex items-center justify-center mb-3">
-                  <Code2 className="w-5 h-5" />
-                </div>
-                <div className="font-display text-lg font-semibold text-stone-100 mb-1">Create App</div>
-                <div className="text-xs text-stone-400 leading-relaxed mb-3">Web apps, mobile UIs, dashboards — from one prompt</div>
-                <div className="text-[11px] font-mono text-stone-600 mb-2 italic">"Build a Pomodoro timer app…"</div>
-                <div className="flex items-center gap-1 text-xs text-blue-300/80 font-medium group-hover:gap-2 transition-all">
-                  Start building <ArrowRight className="w-3.5 h-3.5" />
-                </div>
-              </button>
-
-              {/* Create Content */}
-              <button
-                onClick={() => {
-                  setActiveTab("content");
-                  setContentType("lesson_plan");
-                  setPrompt("");
-                  generatorRef.current?.scrollIntoView({ behavior: "smooth", block: "start" });
-                  setTimeout(() => textareaRef.current?.focus(), 400);
-                }}
-                className="card-shine group relative overflow-hidden rounded-2xl border border-violet-500/25 bg-gradient-to-br from-violet-500/10 via-stone-900/80 to-stone-900 p-5 text-left hover:border-violet-500/50 hover:from-violet-500/15 transition-all duration-300"
-              >
-                <div className="absolute top-0 right-0 w-28 h-28 bg-violet-500/5 rounded-full -translate-y-10 translate-x-10 group-hover:scale-125 transition-transform duration-500" />
-                <div className="w-10 h-10 rounded-xl bg-violet-500/15 text-violet-300 flex items-center justify-center mb-3">
-                  <Wand2 className="w-5 h-5" />
-                </div>
-                <div className="font-display text-lg font-semibold text-stone-100 mb-1">Create Content</div>
-                <div className="text-xs text-stone-400 leading-relaxed mb-3">Lesson plans, sermons, blogs, study notes & speeches</div>
-                <div className="text-[11px] font-mono text-stone-600 mb-2 italic">"Lesson plan for Class 5 Science…"</div>
-                <div className="flex items-center gap-1 text-xs text-violet-300/80 font-medium group-hover:gap-2 transition-all">
-                  Generate now <ArrowRight className="w-3.5 h-3.5" />
-                </div>
-              </button>
-
-              {/* Explore Tools */}
-              <a
-                href="/tools/"
-                className="card-shine group relative overflow-hidden rounded-2xl border border-emerald-500/25 bg-gradient-to-br from-emerald-500/10 via-stone-900/80 to-stone-900 p-5 text-left hover:border-emerald-500/50 hover:from-emerald-500/15 transition-all duration-300 block"
-              >
-                <div className="absolute top-0 right-0 w-28 h-28 bg-emerald-500/5 rounded-full -translate-y-10 translate-x-10 group-hover:scale-125 transition-transform duration-500" />
-                <div className="w-10 h-10 rounded-xl bg-emerald-500/15 text-emerald-300 flex items-center justify-center mb-3">
-                  <Sparkles className="w-5 h-5" />
-                </div>
-                <div className="font-display text-lg font-semibold text-stone-100 mb-1">Explore Tools</div>
-                <div className="text-xs text-stone-400 leading-relaxed mb-3">Teacher, nursing, priest, finance & 60+ Indian tools</div>
-                <div className="text-[11px] font-mono text-stone-600 mb-2 italic">EMI, BMI, GST, Sermon Builder…</div>
-                <div className="flex items-center gap-1 text-xs text-emerald-300/80 font-medium group-hover:gap-2 transition-all">
-                  Browse all <ArrowRight className="w-3.5 h-3.5" />
-                </div>
-              </a>
-            </div>
-          </section>
-
-          {/* ── CONTINUE WHERE YOU LEFT ───────────────────────────── */}
-          {(history.length > 0 || lastSession) && (
-            <section className="mb-6 hero-5">
-              <div className="flex items-center gap-2 mb-3">
-                <History className="w-4 h-4 text-stone-500" />
-                <span className="text-[11px] font-mono uppercase tracking-widest text-stone-500">Continue where you left</span>
-              </div>
-
-              {/* lastSession banner — shown when no in-memory history yet (fresh page load) */}
-              {lastSession && history.length === 0 && (
-                <div className="mb-3 flex items-center gap-3 px-4 py-3 rounded-xl border border-amber-400/20 bg-amber-400/5 hover:border-amber-400/35 transition-all group cursor-pointer"
-                  onClick={() => {
-                    setActiveTab(lastSession.tab || "app");
-                    if (lastSession.contentType) setContentType(lastSession.contentType);
-                    setPrompt(lastSession.prompt || "");
-                    generatorRef.current?.scrollIntoView({ behavior: "smooth", block: "start" });
-                    setTimeout(() => textareaRef.current?.focus(), 400);
-                  }}
-                >
-                  <div className="w-8 h-8 rounded-lg bg-amber-400/15 text-amber-300 flex items-center justify-center shrink-0">
-                    <Zap className="w-4 h-4" />
-                  </div>
-                  <div className="flex-1 min-w-0">
-                    <div className="text-[10px] font-mono uppercase tracking-widest text-amber-400/70 mb-0.5">
-                      {TABS[lastSession.tab]?.label || "Last session"}
-                      {lastSession.contentType && ` · ${CONTENT_TYPES[lastSession.contentType]?.label || ""}`}
-                    </div>
-                    <div className="text-sm text-stone-200 truncate font-medium group-hover:text-white transition">{lastSession.prompt}</div>
-                  </div>
-                  <div className="flex items-center gap-1 text-xs text-amber-400/60 group-hover:gap-2 transition-all shrink-0">
-                    Resume <ArrowRight className="w-3.5 h-3.5" />
-                  </div>
-                </div>
-              )}
-
-              {/* In-memory history chips */}
-              {history.length > 0 && (
-                <div className="flex gap-2 flex-wrap">
-                  {history.slice(0, 3).map((item) => {
-                    const tabColors2 = {
-                      app:      "border-blue-500/30 bg-blue-500/5 text-blue-300",
-                      content:  "border-violet-500/30 bg-violet-500/5 text-violet-300",
-                      planner:  "border-emerald-500/30 bg-emerald-500/5 text-emerald-300",
-                      document: "border-sky-500/30 bg-sky-500/5 text-sky-300",
-                    };
-                    const tc = tabColors2[item.tab] || tabColors2.app;
-                    return (
-                      <button
-                        key={item.id}
-                        onClick={() => loadFromHistory(item)}
-                        className={`group px-3 py-2 rounded-xl border ${tc} hover:brightness-125 transition-all text-left max-w-xs`}
-                      >
-                        <div className="text-[11px] font-mono uppercase tracking-wide opacity-60 mb-0.5">{TABS[item.tab]?.label || item.tab}</div>
-                        <div className="text-xs font-medium truncate max-w-[200px] group-hover:text-stone-100 transition">{item.prompt}</div>
-                      </button>
-                    );
-                  })}
-                  {history.length > 3 && (
-                    <button onClick={() => setShowHistory(true)} className="px-3 py-2 rounded-xl border border-stone-800 hover:border-stone-700 text-xs text-stone-500 hover:text-stone-300 transition">
-                      +{history.length - 3} more
-                    </button>
-                  )}
-                </div>
-              )}
-            </section>
-          )}
+          {/* ── HOME VIEW or CREATE VIEW ─────────────────────────────── */}
+          {activeView === "home" ? (
+            <HomeView
+              onGoToCreate={goToCreate}
+              history={history}
+              lastSession={lastSession}
+              loadFromHistory={loadFromHistory}
+            />
+          ) : (
+            <>
 
           {/* MAIN TABS */}
           <section className="mb-5" ref={generatorRef}>
@@ -1603,86 +1540,9 @@ npx cap open android
               </div>
             </div>
           </footer>
+            </>
+          )}
         </main>
-
-        {/* ── MOBILE BOTTOM NAV ─────────────────────────────────────
-             Only visible on mobile (md:hidden). 5 tabs: Home · Create App ·
-             Content · Tools · History                                       */}
-        <nav className="md:hidden fixed bottom-0 inset-x-0 z-40 bg-stone-950/95 backdrop-blur-md border-t border-stone-800/80 safe-bottom">
-          <div className="flex items-stretch">
-
-            {/* Home */}
-            <a href="/" className={`flex-1 flex flex-col items-center justify-center gap-1 py-2.5 text-stone-500 hover:text-stone-200 transition-colors`}>
-              <svg className="w-5 h-5" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
-                <path d="M3 9.5L12 3l9 6.5V20a1 1 0 01-1 1H4a1 1 0 01-1-1V9.5z"/>
-                <path d="M9 21V12h6v9"/>
-              </svg>
-              <span className="text-[10px] font-medium">Home</span>
-            </a>
-
-            {/* Create App */}
-            <button
-              onClick={() => {
-                setActiveTab("app");
-                reset();
-                generatorRef.current?.scrollIntoView({ behavior: "smooth", block: "start" });
-              }}
-              className={`flex-1 flex flex-col items-center justify-center gap-1 py-2.5 transition-colors ${
-                activeTab === "app" && !output ? "text-amber-400" : "text-stone-500 hover:text-stone-200"
-              }`}
-            >
-              <Code2 className="w-5 h-5" />
-              <span className="text-[10px] font-medium">App</span>
-              {activeTab === "app" && !output && (
-                <span className="absolute bottom-0 w-8 h-0.5 rounded-full bg-amber-400" />
-              )}
-            </button>
-
-            {/* Create — centre pill (main CTA) */}
-            <button
-              onClick={() => {
-                setActiveTab("content");
-                reset();
-                generatorRef.current?.scrollIntoView({ behavior: "smooth", block: "start" });
-                setTimeout(() => textareaRef.current?.focus(), 400);
-              }}
-              className="flex-1 flex flex-col items-center justify-center gap-1 py-2 -mt-3 relative"
-            >
-              <div className={`w-12 h-12 rounded-2xl flex items-center justify-center shadow-lg transition-all ${
-                activeTab === "content"
-                  ? "bg-violet-500 shadow-violet-500/40"
-                  : "bg-gradient-to-br from-amber-400 to-violet-500 shadow-amber-400/30"
-              }`}>
-                <Wand2 className="w-5 h-5 text-white" />
-              </div>
-              <span className="text-[10px] font-medium text-stone-400 mt-0.5">Create</span>
-            </button>
-
-            {/* Tools */}
-            <a
-              href="/tools/"
-              className="flex-1 flex flex-col items-center justify-center gap-1 py-2.5 text-stone-500 hover:text-stone-200 transition-colors"
-            >
-              <Sparkles className="w-5 h-5" />
-              <span className="text-[10px] font-medium">Tools</span>
-            </a>
-
-            {/* History */}
-            <button
-              onClick={() => setShowHistory(true)}
-              className="flex-1 flex flex-col items-center justify-center gap-1 py-2.5 text-stone-500 hover:text-stone-200 transition-colors relative"
-            >
-              <History className="w-5 h-5" />
-              <span className="text-[10px] font-medium">History</span>
-              {history.length > 0 && (
-                <span className="absolute top-2 right-[calc(50%-14px)] min-w-[16px] h-4 px-1 rounded-full bg-amber-400 text-stone-950 text-[9px] font-bold flex items-center justify-center leading-none">
-                  {history.length > 9 ? "9+" : history.length}
-                </span>
-              )}
-            </button>
-
-          </div>
-        </nav>
 
         {/* AUTH MODAL */}
         {showAuth && (

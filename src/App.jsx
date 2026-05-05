@@ -580,18 +580,36 @@ export default function ForjitAI() {
 
   /* ----- Copy / Download ----- */
   function copyContent() {
-    if (!output) return;
-    navigator.clipboard.writeText(output);
+    if (!output && !reelData) return;
+    let textToCopy = output;
+    if (outputType === "reel" && reelData) {
+      const hook = reelData.hooks?.[0] || "";
+      const script = reelData.tones?.[reelTone] || reelData.script || "";
+      textToCopy = [
+        `🔥 HOOK\n${hook}`,
+        `\n🎬 SCRIPT\n${script}`,
+        `\n📝 CAPTION\n${reelData.caption || ""}`,
+        `\n🔖 HASHTAGS\n${(reelData.hashtags || []).join(" ")}`,
+        `\n🎵 MUSIC: ${reelData.music || ""}`,
+        `\n📊 VIRAL SCORE: ${reelData.viralScore?.overall ?? "?"}/10`,
+        `\n⚡ TIPS\n${(reelData.tips || []).map((t, i) => `${i + 1}. ${t}`).join("\n")}`,
+      ].join("\n");
+    }
+    navigator.clipboard.writeText(textToCopy);
     setCopied(true);
     setTimeout(() => setCopied(false), 1500);
   }
 
   function downloadRaw() {
-    if (!output) return;
-    const isHtml = outputType === "html";
-    const ext = isHtml ? "html" : "md";
-    const mime = isHtml ? "text/html" : "text/markdown";
-    const blob = new Blob([output], { type: mime });
+    if (!output && !reelData) return;
+    let content = output;
+    let ext = outputType === "html" ? "html" : "md";
+    let mime = outputType === "html" ? "text/html" : "text/markdown";
+    if (outputType === "reel" && reelData) {
+      content = JSON.stringify(reelData, null, 2);
+      ext = "json"; mime = "application/json";
+    }
+    const blob = new Blob([content], { type: mime });
     const url = URL.createObjectURL(blob);
     const a = document.createElement("a");
     a.href = url; a.download = `${slugify(prompt)}.${ext}`; a.click();
@@ -1403,7 +1421,7 @@ npx cap open android
                     <button onClick={downloadRaw} disabled={!output} className="px-2.5 py-1.5 rounded text-xs text-stone-400 hover:text-stone-100 hover:bg-stone-800 transition flex items-center gap-1.5 disabled:opacity-40">
                       <Download className="w-3.5 h-3.5" /> <span className="hidden sm:inline">{outputType === "html" ? ".html" : ".md"}</span>
                     </button>
-                    <button onClick={copyContent} disabled={!output} className="px-2.5 py-1.5 rounded text-xs text-stone-400 hover:text-stone-100 hover:bg-stone-800 transition flex items-center gap-1.5 disabled:opacity-40">
+                    <button onClick={copyContent} disabled={!output && !reelData} className="px-2.5 py-1.5 rounded text-xs text-stone-400 hover:text-stone-100 hover:bg-stone-800 transition flex items-center gap-1.5 disabled:opacity-40">
                       {copied ? <Check className="w-3.5 h-3.5 text-emerald-400" /> : <Copy className="w-3.5 h-3.5" />}
                     </button>
                   </div>

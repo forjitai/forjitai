@@ -29,6 +29,7 @@ import { Modal, Drawer, TabBtn, LinkRow, Stat } from "./components/ui";
 import ForjitLogo from "./components/ForjitLogo";
 import HomeView from "./components/HomeView";
 import GlobalSearch from "./components/GlobalSearch";
+import Navbar from "./components/Navbar";
 import SettingsPanel from "./components/SettingsPanel";
 import AdminPanel from "./components/AdminPanel";
 import { HistoryPanel, GalleryPanel } from "./components/HistoryPanel";
@@ -1012,137 +1013,28 @@ npx cap open android
   return (
     <div className="min-h-screen w-full bg-stone-950 text-stone-100 font-sans antialiased">
       <div className="grain min-h-screen">
-        {/* HEADER */}
-        <header className="border-b border-stone-800/80 px-4 md:px-10 py-4 flex items-center justify-between backdrop-blur-sm sticky top-0 z-30 bg-stone-950/85">
-          {/* Left: Logo + primary nav */}
-          <div className="flex items-center gap-1">
-            <button onClick={() => setActiveView("home")} className="flex items-center gap-2 mr-2">
-              <ForjitLogo size="md" showTag={false} />
-            </button>
-            {/* Desktop primary nav */}
-            <nav className="hidden md:flex items-center gap-0.5 ml-2">
-              <button
-                onClick={() => setActiveView("home")}
-                className={`px-3 py-1.5 rounded-md text-xs font-medium transition flex items-center gap-1.5 ${activeView === "home" ? "bg-stone-800 text-stone-100" : "text-stone-400 hover:text-stone-200 hover:bg-stone-800/60"}`}
-              >
-                <Home className="w-3.5 h-3.5" /> Home
-              </button>
-              <a href="/tools/" className="px-3 py-1.5 rounded-md text-xs font-medium text-stone-400 hover:text-stone-200 hover:bg-stone-800/60 transition flex items-center gap-1.5">
-                🔧 Tools
-              </a>
-              <button
-                onClick={() => setShowSearch(true)}
-                className="px-3 py-1.5 rounded-md text-xs font-medium text-stone-400 hover:text-stone-200 hover:bg-stone-800/60 transition flex items-center gap-1.5"
-              >
-                <Search className="w-3.5 h-3.5" /> Search
-              </button>
-              <a href="https://www.youtube.com/@forjitai" target="_blank" rel="noreferrer"
-                className="px-3 py-1.5 rounded-md text-xs font-medium flex items-center gap-1.5 text-red-400/80 hover:text-red-300 hover:bg-red-500/10 transition">
-                <svg className="w-3.5 h-3.5" viewBox="0 0 24 24" fill="currentColor"><path d="M23.498 6.186a3.016 3.016 0 0 0-2.122-2.136C19.505 3.545 12 3.545 12 3.545s-7.505 0-9.377.505A3.017 3.017 0 0 0 .502 6.186C0 8.07 0 12 0 12s0 3.93.502 5.814a3.016 3.016 0 0 0 2.122 2.136c1.871.505 9.376.505 9.376.505s7.505 0 9.377-.505a3.015 3.015 0 0 0 2.122-2.136C24 15.93 24 12 24 12s0-3.93-.502-5.814zM9.545 15.568V8.432L15.818 12l-6.273 3.568z"/></svg>
-                YouTube
-              </a>
-              <a href="https://www.instagram.com/forjitai" target="_blank" rel="noreferrer"
-                className="px-3 py-1.5 rounded-md text-xs font-medium flex items-center gap-1.5 text-pink-400/80 hover:text-pink-300 hover:bg-pink-500/10 transition">
-                <svg className="w-3.5 h-3.5" viewBox="0 0 24 24" fill="currentColor"><path d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.849-.07-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.849 0-3.204.013-3.583.07-4.849.149-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.849-.069zm0-2.163c-3.259 0-3.667.014-4.947.072-4.358.2-6.78 2.618-6.98 6.98-.059 1.281-.073 1.689-.073 4.948 0 3.259.014 3.668.072 4.948.2 4.358 2.618 6.78 6.98 6.98 1.281.058 1.689.072 4.948.072 3.259 0 3.668-.014 4.948-.072 4.354-.2 6.782-2.618 6.979-6.98.059-1.28.073-1.689.073-4.948 0-3.259-.014-3.667-.072-4.947-.196-4.354-2.617-6.78-6.979-6.98-1.281-.059-1.69-.073-4.949-.073zm0 5.838c-3.403 0-6.162 2.759-6.162 6.162s2.759 6.163 6.162 6.163 6.162-2.759 6.162-6.163c0-3.403-2.759-6.162-6.162-6.162zm0 10.162c-2.209 0-4-1.79-4-4 0-2.209 1.791-4 4-4s4 1.791 4 4c0 2.21-1.791 4-4 4zm6.406-11.845c-.796 0-1.441.645-1.441 1.44s.645 1.44 1.441 1.44c.795 0 1.439-.645 1.439-1.44s-.644-1.44-1.439-1.44z"/></svg>
-                Instagram
-              </a>
-              <button
-                onClick={() => goToCreate("content", "instagram_caption")}
-                className="px-3 py-1.5 rounded-md text-xs font-medium text-pink-400/80 hover:text-pink-300 hover:bg-pink-500/10 transition flex items-center gap-1.5"
-              >
-                📸 Instagram
-              </button>
-              <button
-                onClick={() => goToCreate("document", "resume_pdf")}
-                className="px-3 py-1.5 rounded-md text-xs font-medium text-sky-400/80 hover:text-sky-300 hover:bg-sky-500/10 transition flex items-center gap-1.5"
-              >
-                📄 Resume
-              </button>
-              <button
-                onClick={() => goToCreate("planner", "diary")}
-                className="px-3 py-1.5 rounded-md text-xs font-medium text-emerald-400/80 hover:text-emerald-300 hover:bg-emerald-500/10 transition flex items-center gap-1.5"
-              >
-                📓 Diary
-              </button>
-            </nav>
-          </div>
+        <Navbar
+          activeView={activeView}
+          setActiveView={setActiveView}
+          goToCreate={goToCreate}
+          showSearch={showSearch}
+          setShowSearch={setShowSearch}
+          showSettings={showSettings}
+          setShowSettings={setShowSettings}
+          showHistory={showHistory}
+          setShowHistory={setShowHistory}
+          showAuth={showAuth}
+          setShowAuth={setShowAuth}
+          showAdmin={showAdmin}
+          setShowAdmin={setShowAdmin}
+          user={user}
+          history={history}
+          errorLog={errorLog}
+          showInstallBtn={showInstallBtn}
+          handleInstall={handleInstall}
+        />
 
-          {/* Right: utility buttons */}
-          <div className="flex items-center gap-1.5">
-            {/* Create button — always visible */}
-            <button
-              onClick={() => setActiveView(activeView === "create" ? "home" : "create")}
-              className={`px-3 py-1.5 rounded-md text-xs font-medium border transition flex items-center gap-1.5 ${
-                activeView === "create"
-                  ? "border-amber-400/50 bg-amber-400/10 text-amber-300"
-                  : "border-amber-400 bg-amber-400 text-stone-950 hover:bg-amber-300"
-              }`}
-            >
-              <PenSquare className="w-3.5 h-3.5" />
-              <span className="hidden sm:inline">{activeView === "create" ? "← Home" : "Create"}</span>
-            </button>
-
-            {showInstallBtn && (
-              <button onClick={handleInstall} className="px-3 py-1.5 rounded-md border border-emerald-500/40 bg-emerald-500/10 text-xs text-emerald-300 hover:bg-emerald-500/20 transition hidden sm:flex items-center gap-1.5">
-                <Smartphone className="w-3.5 h-3.5" />
-                <span className="hidden md:inline">Install</span>
-              </button>
-            )}
-            {user?.isAdmin && (
-              <button onClick={() => setShowAdmin(true)} className="px-2.5 py-1.5 rounded-md border border-purple-500/40 bg-purple-500/10 text-xs text-purple-300 hover:bg-purple-500/20 transition flex items-center gap-1.5">
-                <Shield className="w-3.5 h-3.5" />
-              </button>
-            )}
-            <button onClick={() => setShowHistory(true)} className="px-2.5 py-1.5 rounded-md border border-stone-800 hover:border-stone-700 text-xs text-stone-400 hover:text-stone-200 transition flex items-center gap-1.5">
-              <History className="w-3.5 h-3.5" />
-              {history.length > 0 && <span className="text-[10px] bg-amber-400/20 text-amber-300 px-1 rounded">{history.length}</span>}
-            </button>
-            {errorLog.length > 0 && (
-              <button onClick={() => setShowErrorLog(true)} className="px-2.5 py-1.5 rounded-md border border-rose-500/30 text-xs text-rose-300 hover:bg-rose-500/10 transition hidden md:flex items-center gap-1.5">
-                <Bug className="w-3.5 h-3.5" />
-              </button>
-            )}
-            <button onClick={() => setShowSettings(true)} className="px-2.5 py-1.5 rounded-md border border-stone-800 hover:border-stone-700 text-xs text-stone-400 hover:text-stone-200 transition flex items-center gap-1.5">
-              <Settings className="w-3.5 h-3.5" />
-            </button>
-            {user ? (
-              <button onClick={() => setShowAuth(true)} className="px-3 py-1.5 rounded-md bg-emerald-500/10 border border-emerald-500/30 text-xs text-emerald-300 hover:bg-emerald-500/20 transition flex items-center gap-1.5">
-                <User className="w-3.5 h-3.5" />
-                <span className="hidden sm:inline">{user.name.split(" ")[0]}</span>
-              </button>
-            ) : (
-              <button onClick={() => setShowAuth(true)} className="px-3 py-1.5 rounded-md border border-stone-800 hover:border-stone-700 text-xs text-stone-400 hover:text-stone-200 transition hidden md:flex items-center gap-1.5">
-                <LogIn className="w-3.5 h-3.5" /> Sign in
-              </button>
-            )}
-          </div>
-        </header>
-
-        {/* ── Mobile bottom nav ─────────────────────────────────────────── */}
-        <nav className="fixed bottom-0 left-0 right-0 z-40 md:hidden flex items-center justify-around bg-stone-950/95 border-t border-stone-800 py-2 backdrop-blur-sm">
-          <button onClick={() => setActiveView("home")} className={`flex flex-col items-center gap-0.5 px-3 py-1 rounded-lg transition ${activeView === "home" ? "text-amber-400" : "text-stone-500"}`}>
-            <Home className="w-5 h-5" />
-            <span className="text-[9px]">Home</span>
-          </button>
-          <button onClick={() => setShowSearch(true)} className="flex flex-col items-center gap-0.5 px-3 py-1 rounded-lg text-stone-500 hover:text-amber-300 transition">
-            <Search className="w-5 h-5" />
-            <span className="text-[9px]">Search</span>
-          </button>
-          <button onClick={() => goToCreate("document", "resume_pdf")} className="flex flex-col items-center gap-0.5 px-3 py-1 rounded-lg text-stone-500 hover:text-sky-300 transition">
-            <span className="text-lg leading-none">📄</span>
-            <span className="text-[9px]">Resume</span>
-          </button>
-          <button onClick={() => setActiveView("create")} className={`flex flex-col items-center gap-0.5 px-3 py-1 rounded-lg transition ${activeView === "create" ? "text-amber-400" : "text-stone-500"}`}>
-            <PenSquare className="w-5 h-5" />
-            <span className="text-[9px]">Create</span>
-          </button>
-          <a href="/tools/" className="flex flex-col items-center gap-0.5 px-3 py-1 rounded-lg text-stone-500 hover:text-stone-200 transition">
-            <span className="text-lg leading-none">🔧</span>
-            <span className="text-[9px]">Tools</span>
-          </a>
-        </nav>
-
-        {/* Global Search Modal */}
+        {/* Global Search */}
         <GlobalSearch
           isOpen={showSearch}
           onClose={() => setShowSearch(false)}

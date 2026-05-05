@@ -1,6 +1,7 @@
 apply plugin: 'com.android.application'
 
 android {
+    namespace "in.forjitai.app"
     compileSdkVersion 34
     defaultConfig {
         applicationId "in.forjitai.app"

@@ -11,9 +11,12 @@ const GROQ_ENDPOINT = "https://api.groq.com/openai/v1/chat/completions";
 const ALLOWED_MODELS = new Set([
   "llama-3.1-8b-instant",
   "llama-3.3-70b-versatile",
+  "llama3-70b-8192",
+  "fast",
+  "smart",
 ]);
 
-const MAX_TOKENS_CAP = 800;
+const MAX_TOKENS_CAP = 4000;
 
 const CORS_HEADERS = {
   "Access-Control-Allow-Origin":  "*",
@@ -45,8 +48,10 @@ export const handler = async (event) => {
   catch { return { statusCode: 400, headers: CORS_HEADERS, body: JSON.stringify({ error: "Invalid JSON" }) }; }
 
   const { messages, model, maxTokens } = body;
-  const safeModel  = ALLOWED_MODELS.has(model) ? model : "llama-3.1-8b-instant";
-  const safeTokens = Math.min(Number(maxTokens) || 500, MAX_TOKENS_CAP);
+  const MODEL_MAP = { fast: "llama-3.1-8b-instant", smart: "llama-3.3-70b-versatile" };
+  const resolvedModel = MODEL_MAP[model] || model;
+  const safeModel = ALLOWED_MODELS.has(resolvedModel) ? resolvedModel : "llama-3.1-8b-instant";
+  const safeTokens = Math.min(Number(maxTokens) || 2000, MAX_TOKENS_CAP);
   const safeMessages = (messages || [])
     .filter(m => m?.role && m?.content)
     .map(m => ({ role: String(m.role), content: String(m.content).slice(0, 4000) }))

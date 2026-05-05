@@ -26,7 +26,7 @@ export default async function handler(req, res) {
     return res.status(400).json({ error: "messages required" });
   }
 
-  const safeTokens   = Math.min(parseInt(maxTokens) || 700, 8000);
+  const safeTokens   = Math.min(parseInt(maxTokens) || 2000, 8000);
   const safeMessages = messages
     .filter(m => m && typeof m.role === "string" && typeof m.content === "string")
     .map(m => ({ role: m.role, content: String(m.content).slice(0, 5000) }))

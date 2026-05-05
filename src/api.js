@@ -26,22 +26,32 @@ function withTimeout(promise, ms) {
 
 /* ── Tier 1: Server proxy ───────────────────────────────────────────────── */
 async function callProxy(messages, model) {
-  try {
-    const res = await withTimeout(
-      fetch(PROXY_URL, {
-        method:  "POST",
-        headers: { "Content-Type": "application/json" },
-        body: JSON.stringify({ model: model || "llama-3.1-8b-instant", maxTokens: 8000, messages }),
-      }),
-      PROXY_TIMEOUT
-    );
-    if (!res.ok) return null;
-    const text = await res.text();
-    const data = JSON.parse(text);
-    return data?.content || null;
-  } catch {
-    return null;
+  async function attempt() {
+    try {
+      const res = await withTimeout(
+        fetch(PROXY_URL, {
+          method:  "POST",
+          headers: { "Content-Type": "application/json" },
+          body: JSON.stringify({ model: model || "llama-3.1-8b-instant", maxTokens: 4000, messages }),
+        }),
+        PROXY_TIMEOUT
+      );
+      if (!res.ok) return null;
+      const text = await res.text();
+      const data = JSON.parse(text);
+      return data?.content || null;
+    } catch {
+      return null;
+    }
   }
+
+  // First attempt
+  const r1 = await attempt();
+  if (r1) return r1;
+
+  // Retry once after 1.5s delay (handles transient failures)
+  await new Promise(resolve => setTimeout(resolve, 1500));
+  return attempt();
 }
 
 /* ── Tier 2: User's own key ─────────────────────────────────────────────── */
@@ -97,25 +107,29 @@ async function callWithKey({ provider, model, apiKey, messages, onFallback }) {
 
 /* ── Tier 3: Pollinations free fallback ─────────────────────────────────── */
 async function callPollinations(messages) {
-  // POST
-  try {
-    const res = await withTimeout(
-      fetch("https://text.pollinations.ai/", {
-        method: "POST",
-        headers: { "Content-Type": "application/json" },
-        body: JSON.stringify({ messages, model: "openai", private: true }),
-      }),
-      POLL_TIMEOUT
-    );
-    if (res.ok) { const t = (await res.text()).trim(); if (t.length > 20) return t; }
-  } catch {}
+  const POLL_MODELS = ["openai", "openai-large", "mistral"];
 
-  // GET fallback
+  for (const pollModel of POLL_MODELS) {
+    // POST attempt
+    try {
+      const res = await withTimeout(
+        fetch("https://text.pollinations.ai/", {
+          method: "POST",
+          headers: { "Content-Type": "application/json" },
+          body: JSON.stringify({ messages, model: pollModel, private: true }),
+        }),
+        POLL_TIMEOUT
+      );
+      if (res.ok) { const t = (await res.text()).trim(); if (t.length > 20) return t; }
+    } catch {}
+  }
+
+  // GET fallback with last message
   try {
     const user = messages.filter((m) => m.role === "user").map((m) => m.content).join(" ");
     const q    = encodeURIComponent(user.slice(0, 500));
     const res  = await withTimeout(
-      fetch(`https://text.pollinations.ai/${q}?model=openai&private=true`),
+      fetch(`https://text.pollinations.ai/${q}?model=openai-large&private=true`),
       POLL_TIMEOUT
     );
     if (res.ok) { const t = (await res.text()).trim(); if (t.length > 20) return t; }

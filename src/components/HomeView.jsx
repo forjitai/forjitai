@@ -16,6 +16,7 @@ import {
   Dumbbell, NotebookPen, BookOpen, Sparkles, ChevronRight, Search,
 } from "lucide-react";
 import ForjitLogo from "./ForjitLogo";
+import ExperimentalSection from "./ExperimentalSection";
 import { TABS, CONTENT_TYPES, DOC_TYPES, PLANNER_TYPES } from "../constants";
 
 /* ── Hot Tools data ─────────────────────────────────────────────────────── */
@@ -104,7 +105,7 @@ const INSTA_TOOLS = [
   { key: "social",            icon: Share2,      label: "Reel Script", sub: "Full script" },
 ];
 
-/* ── AI Generators ──────────────────────────────────────────────────────── */
+/* ── AI Generators — NO planners (moved to Experimental) ───────────────── */
 const AI_GENERATORS = [
   {
     icon: Code2,
@@ -121,18 +122,18 @@ const AI_GENERATORS = [
     action: "document/resume_pdf",
   },
   {
-    icon: NotebookPen,
-    label: "Daily Diary",
-    sub: "Journal with mood tracking",
-    color: "border-emerald-500/25 from-emerald-500/10 text-emerald-300",
-    action: "planner/diary",
+    icon: BookOpen,
+    label: "Blog / Essay",
+    sub: "SEO-ready content",
+    color: "border-violet-500/25 from-violet-500/10 text-violet-300",
+    action: "content/blog",
   },
   {
-    icon: Dumbbell,
-    label: "Workout Plan",
-    sub: "Weekly or monthly plan",
-    color: "border-orange-500/25 from-orange-500/10 text-orange-300",
-    action: "planner/workout_week",
+    icon: Wand2,
+    label: "Lesson Plan",
+    sub: "CBSE/ICSE, any subject",
+    color: "border-teal-500/25 from-teal-500/10 text-teal-300",
+    action: "content/lesson_plan",
   },
 ];
 
@@ -334,7 +335,10 @@ export default function HomeView({ onGoToCreate, history, lastSession, loadFromH
         </div>
       </section>
 
-      {/* ── 6. Continue where you left off ──────────────────────────────── */}
+      {/* ── 6. 🧪 Experimental Tools (Planner) ──────────────────────────── */}
+      <ExperimentalSection onGoToCreate={onGoToCreate} />
+
+      {/* ── 7. Continue where you left off ──────────────────────────────── */}
       {(history?.length > 0 || lastSession) && (
         <section className="pb-4">
           <div className="flex items-center gap-2 mb-3">

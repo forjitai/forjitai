@@ -54,25 +54,20 @@ const TOOLS_CATS = [
 ];
 
 const CREATE_ITEMS = [
-  { icon: Code2,     label: "Build an App",       sub: "Web & mobile",         action: "app"                       },
+  { icon: Code2,     label: "Build an App",       sub: "Web & mobile",          action: "app"                       },
   { icon: Camera,    label: "Instagram Tools",     sub: "Caption, Hashtag, Bio", action: "content/instagram_caption" },
-  { icon: FileText,  label: "Resume PDF",          sub: "Download instantly",   action: "document/resume_pdf"       },
-  { icon: FileText,  label: "Resume DOCX",         sub: "Word format",          action: "document/resume_docx"      },
-  { icon: PenSquare, label: "Cover Letter",        sub: "Tailored to job",      action: "document/cover_letter"     },
-  { icon: BookOpen,  label: "Blog / Essay",        sub: "SEO-ready",            action: "content/blog"              },
-  { icon: Wand2,     label: "Lesson Plan",         sub: "CBSE/ICSE",            action: "content/lesson_plan"       },
-  { icon: NotebookPen, label: "Diary",             sub: "Daily journal",        action: "planner/diary"             },
-  { icon: Dumbbell,  label: "Workout Plan",        sub: "Weekly/monthly",       action: "planner/workout_week"      },
-  { icon: UtensilsCrossed, label: "Meal Plan",     sub: "Indian + healthy",     action: "planner/meal_week"         },
+  { icon: FileText,  label: "Resume PDF",          sub: "Download instantly",    action: "document/resume_pdf"       },
+  { icon: FileText,  label: "Resume DOCX",         sub: "Word format",           action: "document/resume_docx"      },
+  { icon: PenSquare, label: "Cover Letter",        sub: "Tailored to job",       action: "document/cover_letter"     },
+  { icon: BookOpen,  label: "Blog / Essay",        sub: "SEO-ready",             action: "content/blog"              },
+  { icon: Wand2,     label: "Lesson Plan",         sub: "CBSE/ICSE",             action: "content/lesson_plan"       },
 ];
 
 const LIFE_ITEMS = [
-  { icon: NotebookPen,       label: "Daily Diary",      action: "planner/diary"          },
-  { icon: Dumbbell,          label: "Workout Plan",     action: "planner/workout_week"   },
-  { icon: UtensilsCrossed,   label: "Meal Plan",        action: "planner/meal_week"      },
-  { icon: "🍳",              label: "Recipe Generator", action: "planner/recipe", emoji: true },
-  { icon: "💰",              label: "Finance Tools",    href: "/tools/?cat=finance", emoji: true },
-  { icon: "🙏",              label: "Spiritual Tools",  href: "/tools/priest/",    emoji: true },
+  { icon: "💰", label: "Finance Tools",     href: "/tools/?cat=finance", emoji: true },
+  { icon: "🏥", label: "Health Tools",      href: "/tools/?cat=health",  emoji: true },
+  { icon: "🙏", label: "Spiritual Tools",   href: "/tools/priest/",      emoji: true },
+  { icon: "🧪", label: "Experimental Tools (Planner)", experimental: true, emoji: true },
 ];
 
 /* ── Dropdown wrapper ───────────────────────────────────────────────────── */
@@ -317,7 +312,9 @@ export default function Navbar({
                   const Icon = typeof c.icon === "string" ? null : c.icon;
                   return (
                     <button key={c.label}
-                      onClick={() => c.action ? go(c.action) : visit(c.href)}
+                      onClick={() => c.experimental
+                        ? (setDrawerOpen(false), setActiveView?.("home"))
+                        : c.action ? go(c.action) : visit(c.href)}
                       className="w-full flex items-center gap-3 px-3 py-2 rounded-lg hover:bg-stone-800 transition group text-left">
                       {Icon ? (
                         <Icon className="w-4 h-4 text-stone-500 group-hover:text-emerald-400 transition shrink-0" />
@@ -325,6 +322,7 @@ export default function Navbar({
                         <span className="text-sm shrink-0">{c.icon}</span>
                       )}
                       <span className="text-xs text-stone-300 group-hover:text-stone-100 font-medium transition">{c.label}</span>
+                      {c.experimental && <span className="ml-auto text-[9px] px-1 py-0.5 rounded bg-violet-500/20 text-violet-400">Beta</span>}
                     </button>
                   );
                 })}
@@ -527,17 +525,24 @@ export default function Navbar({
               <section>
                 <div className="text-[10px] font-mono uppercase tracking-widest text-emerald-500/70 mb-2">🌿 Life</div>
                 <div className="space-y-0.5">
-                  {LIFE_ITEMS.map(c => {
-                    const Icon = typeof c.icon === "string" ? null : c.icon;
-                    return (
-                      <button key={c.label}
-                        onClick={() => c.action ? go(c.action) : visit(c.href)}
-                        className="w-full flex items-center gap-3 px-3 py-2.5 rounded-xl hover:bg-stone-800/60 text-stone-300 hover:text-emerald-200 transition text-sm">
-                        {Icon ? <Icon className="w-4 h-4 text-stone-500 shrink-0" /> : <span className="w-5 text-center">{c.icon}</span>}
-                        {c.label}
-                      </button>
-                    );
-                  })}
+                  {[
+                    { icon: "💰", label: "Finance Tools",   href: "/tools/?cat=finance" },
+                    { icon: "🏥", label: "Health Tools",    href: "/tools/?cat=health"  },
+                    { icon: "🙏", label: "Spiritual Tools", href: "/tools/priest/"      },
+                  ].map(c => (
+                    <button key={c.label} onClick={() => visit(c.href)}
+                      className="w-full flex items-center gap-3 px-3 py-2.5 rounded-xl hover:bg-stone-800/60 text-stone-300 hover:text-emerald-200 transition text-sm">
+                      <span className="w-5 text-center">{c.icon}</span>
+                      {c.label}
+                    </button>
+                  ))}
+                  {/* Experimental link */}
+                  <button onClick={() => { setDrawerOpen(false); }}
+                    className="w-full flex items-center gap-3 px-3 py-2.5 rounded-xl hover:bg-violet-500/10 text-stone-400 hover:text-violet-300 transition text-sm border border-dashed border-stone-800 mt-1">
+                    <span className="w-5 text-center">🧪</span>
+                    Experimental Tools
+                    <span className="ml-auto text-[9px] px-1.5 py-0.5 rounded bg-violet-500/20 text-violet-400 font-bold">Beta</span>
+                  </button>
                 </div>
               </section>
 

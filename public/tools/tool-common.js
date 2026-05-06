@@ -257,7 +257,7 @@
         <a href="/community">Community</a> · 
         <a href="/community#errors">Report Bug</a> · 
         All calculations run 100% in your browser<br/>
-        <span style="font-size:10px;color:#78716c">© 2025 Forjit AI · All rights reserved · forjitai@gmail.com</span>
+        <span style="font-size:10px;color:#78716c">© 2026 Forjit AI · All rights reserved · forjitai@gmail.com</span>
       </div>
     `;
 

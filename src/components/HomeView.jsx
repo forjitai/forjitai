@@ -425,7 +425,7 @@ export default function HomeView({ onGoToCreate, history, lastSession, loadFromH
 
         {/* Copyright */}
         <div className="text-[11px] font-mono text-stone-700 border-t border-stone-800/40 pt-3">
-          <p>© 2025 Forjit AI · All rights reserved</p>
+          <p>© 2026 Forjit AI · All rights reserved</p>
           <p className="mt-0.5">Made with ❤️ in India 🇮🇳 · <a href="mailto:forjitai@gmail.com" className="hover:text-stone-500 transition">forjitai@gmail.com</a></p>
           <p className="mt-1 text-stone-800 text-[10px]">⚠ AI results may be inaccurate. Always verify before professional use. Governed by Indian IT laws.</p>
         </div>

@@ -42,7 +42,7 @@ class ErrorBoundary extends React.Component {
             Reload Page
           </button>
           <p style={{ color: '#57534e', fontSize: '12px', marginTop: '32px' }}>
-            © 2025 Forjit AI · forjitai@gmail.com
+            © 2026 Forjit AI · forjitai@gmail.com
           </p>
         </div>
       );

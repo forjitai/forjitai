@@ -625,7 +625,7 @@ export default function Navbar({
 
             {/* Footer */}
             <div className="p-4 border-t border-stone-800 text-[11px] text-stone-600 text-center">
-              © 2025 Forjit AI · All rights reserved
+              © 2026 Forjit AI · All rights reserved
             </div>
           </div>
         </div>

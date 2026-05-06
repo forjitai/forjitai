@@ -175,18 +175,23 @@ export default function GlobalSearch({ onGoToCreate, isOpen, onClose }) {
 
   return (
     <div className="fixed inset-0 z-50 flex flex-col bg-stone-950/98 backdrop-blur-md" onClick={(e) => e.target === e.currentTarget && onClose()}>
-      <div className="flex flex-col h-full max-w-3xl mx-auto w-full px-4 py-4">
+      <div className="flex flex-col h-full max-w-3xl mx-auto w-full px-4" style={{ paddingTop: 'max(16px, env(safe-area-inset-top, 16px))', paddingBottom: 'max(16px, env(safe-area-inset-bottom, 16px))' }}>
 
         {/* ── Header ── */}
-        <div className="flex items-center gap-3 mb-4">
-          <div className="flex items-center gap-2 flex-1">
+        <div className="flex items-center justify-between mb-4 py-2">
+          <div className="flex items-center gap-2">
             <div className="w-8 h-8 rounded-lg bg-amber-400/15 flex items-center justify-center shrink-0">
               <Zap className="w-4 h-4 text-amber-400" />
             </div>
             <span className="font-display text-sm font-semibold text-stone-200">Forjit AI Search</span>
             <span className="text-[10px] px-2 py-0.5 rounded-full bg-amber-400/10 text-amber-400 font-mono hidden sm:block">Powered by AI</span>
           </div>
-          <button onClick={onClose} className="p-2 rounded-lg hover:bg-stone-800 text-stone-400 hover:text-stone-200 transition">
+          {/* Close button — large tap target */}
+          <button
+            onClick={onClose}
+            className="flex items-center justify-center w-10 h-10 rounded-xl bg-stone-800 hover:bg-stone-700 text-stone-300 hover:text-white transition active:scale-95"
+            aria-label="Close search"
+          >
             <X className="w-5 h-5" />
           </button>
         </div>

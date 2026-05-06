@@ -63,6 +63,7 @@ export default function ForjitAI() {
   const [user, setUser] = useState(null); // { id, email, name, isAdmin, createdAt }
   const [activeView, setActiveView] = useState("home"); // "home" | "create"
   const [showSearch, setShowSearch] = useState(false);
+  const [focusedTool, setFocusedTool] = useState(false); // true = hide tab/subtype grid, show only input
   const [showAuth, setShowAuth] = useState(false);
   const [authEmail, setAuthEmail] = useState("");
   const [authName, setAuthName] = useState("");
@@ -1005,11 +1006,12 @@ npx cap open android
       if (tab === "content"  || CONTENT_TYPES[subtype])  setContentType(subtype);
       if (tab === "document" || DOC_TYPES[subtype])       setDocType(subtype);
       if (tab === "planner"  || PLANNER_TYPES[subtype])   setPlannerType(subtype);
+      setFocusedTool(true); // hide irrelevant UI
+    } else {
+      setFocusedTool(false); // tab-level nav — show full UI
     }
-    // Clear previous output when navigating to a new tool
     reset();
     setActiveView("create");
-    // Scroll to top first, then generator section
     window.scrollTo({ top: 0, behavior: "smooth" });
     setTimeout(() => {
       generatorRef.current?.scrollIntoView({ behavior: "smooth", block: "start" });
@@ -1023,7 +1025,7 @@ npx cap open android
       <div className="grain min-h-screen">
         <Navbar
           activeView={activeView}
-          setActiveView={setActiveView}
+          setActiveView={(v) => { setActiveView(v); if (v === "create") setFocusedTool(false); }}
           goToCreate={goToCreate}
           showSearch={showSearch}
           setShowSearch={setShowSearch}
@@ -1101,7 +1103,8 @@ npx cap open android
             )}
           </nav>
 
-          {/* MAIN TABS */}
+          {/* MAIN TABS — hidden in focused tool mode */}
+          {!focusedTool && (
           <section className="mb-5" ref={generatorRef}>
             <div className="grid grid-cols-2 md:grid-cols-4 gap-2 bg-stone-900/60 border border-stone-800 p-1 rounded-xl">
               {Object.entries(TABS).map(([key, tab]) => {
@@ -1110,7 +1113,7 @@ npx cap open android
                 return (
                   <button
                     key={key}
-                    onClick={() => { setActiveTab(key); reset(); }}
+                    onClick={() => { setActiveTab(key); setFocusedTool(false); reset(); }}
                     disabled={busy}
                     className={`px-2 md:px-4 py-3 rounded-lg text-xs md:text-sm font-medium transition flex flex-col md:flex-row items-center justify-center gap-1.5 ${
                       active ? tabColors[tab.color].btn + " shadow-lg" : "text-stone-400 hover:text-stone-200 hover:bg-stone-800/50"
@@ -1126,21 +1129,36 @@ npx cap open android
               {TABS[activeTab].description}
             </div>
           </section>
+          )}
 
-          {/* SUB-TYPE SELECTOR */}
-          {activeTab === "app" && (
+          {/* FOCUSED MODE — compact tool bar replaces tab grid */}
+          {focusedTool && (
+            <div className="mb-4 flex items-center gap-2 flex-wrap" ref={generatorRef}>
+              <button
+                onClick={() => setFocusedTool(false)}
+                className="flex items-center gap-1.5 px-3 py-1.5 rounded-lg border border-stone-800 bg-stone-900/60 hover:border-stone-700 text-xs text-stone-400 hover:text-stone-200 transition"
+              >
+                ⊞ All Tools
+              </button>
+              <span className="text-stone-700 text-xs">|</span>
+              <span className="text-xs text-stone-500">{TABS[activeTab]?.label}</span>
+            </div>
+          )}
+
+          {/* SUB-TYPE SELECTOR — hidden in focused mode */}
+          {!focusedTool && activeTab === "app" && (
             <AppSubTypeSelector appSubType={appSubType} setAppSubType={setAppSubType} />
           )}
 
-          {activeTab === "content" && (
+          {!focusedTool && activeTab === "content" && (
             <ContentSubTypeSelector contentType={contentType} setContentType={setContentType} />
           )}
 
-          {activeTab === "planner" && (
+          {!focusedTool && activeTab === "planner" && (
             <PlannerSubTypeSelector plannerType={plannerType} setPlannerType={setPlannerType} />
           )}
 
-          {activeTab === "document" && (
+          {!focusedTool && activeTab === "document" && (
             <DocSubTypeSelector docType={docType} setDocType={setDocType} />
           )}
 

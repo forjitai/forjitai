@@ -1042,24 +1042,22 @@ npx cap open android
         />
 
         <main className="max-w-6xl mx-auto px-4 md:px-10 py-6 md:py-10 pb-24 md:pb-10">
-          {/* Connect prompt for new users */}
-          {!hasOwnKey && (
-            <section className="mb-8 slide-up">
-              <div className="rounded-xl border border-stone-800 bg-stone-900/40 p-4 flex items-center justify-between gap-4 flex-wrap">
-                <div className="flex items-center gap-3">
-                  <div className="w-8 h-8 shrink-0 rounded-md bg-amber-400/10 text-amber-300 flex items-center justify-center">
-                    <Zap className="w-4 h-4" />
-                  </div>
-                  <div>
-                    <p className="text-sm font-medium text-stone-200">Working free — add your key for unlimited use</p>
-                    <p className="text-[11px] text-stone-500">Free Groq key at console.groq.com · Takes 30 seconds · Better quality + no limits</p>
-                  </div>
+          {/* Connect prompt — only on create view, compact and dismissible */}
+          {!hasOwnKey && activeView === "create" && (
+            <section className="mb-4 slide-up">
+              <div className="rounded-xl border border-stone-800/60 bg-stone-900/30 px-4 py-2.5 flex items-center justify-between gap-3">
+                <div className="flex items-center gap-2 min-w-0">
+                  <Zap className="w-3.5 h-3.5 text-amber-400 shrink-0" />
+                  <p className="text-xs text-stone-400 truncate">
+                    Add free Groq key for unlimited use →
+                    <span className="text-stone-600"> console.groq.com</span>
+                  </p>
                 </div>
                 <button
                   onClick={() => setShowSettings(true)}
-                  className="shrink-0 px-3 py-1.5 rounded-md border border-amber-400/30 text-amber-300 text-xs hover:bg-amber-400/10 transition"
+                  className="shrink-0 px-2.5 py-1 rounded-md border border-amber-400/30 text-amber-300 text-[11px] hover:bg-amber-400/10 transition"
                 >
-                  Add key ↗
+                  Add key
                 </button>
               </div>
             </section>

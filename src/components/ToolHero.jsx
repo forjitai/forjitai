@@ -51,73 +51,37 @@ function getActiveTool(tab, subtype) {
    MAIN COMPONENT
 ═══════════════════════════════════════════════════════════════════════════ */
 export default function ToolHero({ activeTab, activeSubtype, onSelectTool }) {
-  const colors = TAB_COLORS[activeTab] || TAB_COLORS.content;
-  const selected = getActiveTool(activeTab, activeSubtype);
   const allTools = getTabTools(activeTab);
   const others = allTools.filter(t => t.key !== activeSubtype);
 
-  if (activeTab === "app" || !selected) return null;
-
-  const SelectedIcon = ICON_MAP[selected.icon] || Zap;
-  const isInsta = INSTA_KEYS.has(activeSubtype);
+  if (activeTab === "app" || !activeSubtype || others.length === 0) return null;
 
   return (
-    <div className="mb-5">
-
-      {/* ── Selected Tool Hero ── */}
-      <div className={`rounded-2xl border ${colors.border} bg-gradient-to-br ${colors.bg} via-stone-900/60 to-stone-950 px-5 py-4 mb-4`}>
-        <div className="flex items-center gap-2 mb-1">
-          <div className={`w-7 h-7 rounded-lg flex items-center justify-center ${isInsta ? "bg-pink-500/15" : `bg-stone-800`}`}>
-            <SelectedIcon className={`w-3.5 h-3.5 ${isInsta ? "text-pink-300" : colors.accent}`} />
-          </div>
-          <div className="flex items-center gap-2">
-            <span className="text-sm font-semibold text-stone-100">{selected.label}</span>
-            {isInsta && (
-              <span className="text-[9px] font-bold uppercase tracking-widest px-1.5 py-0.5 rounded-full bg-pink-500/20 text-pink-300">
-                Instagram
-              </span>
-            )}
-            {selected.sublabel && !isInsta && (
-              <span className={`text-[9px] font-bold uppercase tracking-widest px-1.5 py-0.5 rounded ${colors.badge}`}>
-                {selected.sublabel}
-              </span>
-            )}
-          </div>
-        </div>
-        <p className="text-[11px] text-stone-500 pl-9">
-          e.g. {selected.placeholder}
-        </p>
+    <div className="mt-6 mb-2">
+      <div className="flex items-center gap-2 mb-3">
+        <div className="h-px flex-1 bg-stone-800" />
+        <span className="text-[10px] font-mono uppercase tracking-widest text-stone-600 px-2">
+          Explore More Tools
+        </span>
+        <div className="h-px flex-1 bg-stone-800" />
       </div>
-
-      {/* ── Explore More Tools ── */}
-      {others.length > 0 && (
-        <div>
-          <div className="flex items-center gap-2 mb-2">
-            <div className="h-px flex-1 bg-stone-800" />
-            <span className="text-[10px] font-mono uppercase tracking-widest text-stone-600">
-              Explore More Tools
-            </span>
-            <div className="h-px flex-1 bg-stone-800" />
-          </div>
-          <div className="flex flex-wrap gap-1.5">
-            {others.map(tool => {
-              const Icon = ICON_MAP[tool.icon] || Zap;
-              const toolIsInsta = INSTA_KEYS.has(tool.key);
-              return (
-                <button
-                  key={tool.key}
-                  onClick={() => onSelectTool(tool.tab, tool.key)}
-                  className="flex items-center gap-1.5 px-2.5 py-1.5 rounded-lg border border-stone-800 bg-stone-900/60 hover:border-amber-400/30 hover:bg-amber-400/5 text-xs text-stone-400 hover:text-stone-200 transition group"
-                >
-                  <Icon className={`w-3 h-3 shrink-0 ${toolIsInsta ? "text-pink-400/60 group-hover:text-pink-300" : "text-stone-600 group-hover:text-amber-400"} transition`} />
-                  {tool.label}
-                  <ArrowRight className="w-3 h-3 text-stone-700 group-hover:text-stone-400 transition" />
-                </button>
-              );
-            })}
-          </div>
-        </div>
-      )}
+      <div className="flex flex-wrap gap-1.5">
+        {others.map(tool => {
+          const Icon = ICON_MAP[tool.icon] || Zap;
+          const toolIsInsta = INSTA_KEYS.has(tool.key);
+          return (
+            <button
+              key={tool.key}
+              onClick={() => onSelectTool(tool.tab, tool.key)}
+              className="flex items-center gap-1.5 px-2.5 py-1.5 rounded-lg border border-stone-800 bg-stone-900/60 hover:border-amber-400/30 hover:bg-amber-400/5 text-xs text-stone-400 hover:text-stone-200 transition group"
+            >
+              <Icon className={`w-3 h-3 shrink-0 ${toolIsInsta ? "text-pink-400/60 group-hover:text-pink-300" : "text-stone-600 group-hover:text-amber-400"} transition`} />
+              {tool.label}
+              <ArrowRight className="w-3 h-3 text-stone-700 group-hover:text-stone-400 transition" />
+            </button>
+          );
+        })}
+      </div>
     </div>
   );
 }

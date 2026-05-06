@@ -1144,19 +1144,8 @@ npx cap open android
             <DocSubTypeSelector docType={docType} setDocType={setDocType} />
           )}
 
-          {/* TOOL HERO — selected tool prominent + explore more */}
-          <ToolHero
-            activeTab={activeTab}
-            activeSubtype={
-              activeTab === "content"  ? contentType  :
-              activeTab === "document" ? docType      :
-              activeTab === "planner"  ? plannerType  : null
-            }
-            onSelectTool={goToCreate}
-          />
-
           {/* PROMPT INPUT */}
-          <div className="relative mb-4">
+          <div className="relative mb-4" id="tool-input" style={{ scrollMarginTop: "80px" }}>
             <div className={`rounded-xl border transition-all bg-stone-900/60 ${generating ? "border-amber-400/40 glow-amber" : "border-stone-800 hover:border-stone-700 focus-within:border-amber-400/50"}`}>
               <textarea
                 ref={textareaRef}
@@ -1456,6 +1445,17 @@ npx cap open android
               </div>
             </div>
           </section>
+
+          {/* EXPLORE MORE TOOLS — after output, before footer */}
+          <ToolHero
+            activeTab={activeTab}
+            activeSubtype={
+              activeTab === "content"  ? contentType  :
+              activeTab === "document" ? docType      :
+              activeTab === "planner"  ? plannerType  : null
+            }
+            onSelectTool={goToCreate}
+          />
 
           {/* FOOTER */}
           <footer className="mt-12 pt-6 border-t border-stone-800/50 pb-6">

@@ -6,6 +6,18 @@
   "public": true,
   "rewrites": [
     {
+      "source": "/ai-disclaimer",
+      "destination": "/ai-disclaimer.html"
+    },
+    {
+      "source": "/acceptable-use",
+      "destination": "/acceptable-use.html"
+    },
+    {
+      "source": "/content-policy",
+      "destination": "/content-policy.html"
+    },
+    {
       "source": "/tools/:tool",
       "destination": "/tools/:tool.html"
     },

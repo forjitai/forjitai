@@ -150,7 +150,7 @@ ${tools.map(toolCard).join("\n")}
 :root{--bg:#0c0a09;--surface:#1c1917;--border:#292524;--fg:#e7e5e4;--muted:#a8a29e;--subtle:#78716c;--accent:#f59e0b}
 html,body{width:100%;max-width:100vw;overflow-x:hidden}
 body{font-family:'Segoe UI',system-ui,sans-serif;background:var(--bg);color:var(--fg);min-height:100vh;padding-bottom:80px}
-header{background:rgba(12,10,9,.95);border-bottom:1px solid var(--border);padding:10px 16px;display:flex;align-items:center;justify-content:space-between;position:sticky;top:0;z-index:50;backdrop-filter:blur(12px);-webkit-backdrop-filter:blur(12px)}
+header{background:rgba(12,10,9,.95);border-bottom:1px solid var(--border);padding:10px 16px;padding-top:max(10px,env(safe-area-inset-top,10px));display:flex;align-items:center;justify-content:space-between;position:sticky;top:0;z-index:50;backdrop-filter:blur(12px);-webkit-backdrop-filter:blur(12px)}
 .logo{display:flex;align-items:center;gap:8px;text-decoration:none;color:var(--fg)}
 .logo-mark{width:34px;height:34px;background:linear-gradient(135deg,#f59e0b,#d97706);border-radius:10px;display:flex;align-items:center;justify-content:center;font-size:18px;box-shadow:0 2px 8px rgba(245,158,11,.3)}
 .logo-name{font-size:15px;font-weight:700}.logo-name span{color:var(--accent)}
@@ -159,9 +159,9 @@ header{background:rgba(12,10,9,.95);border-bottom:1px solid var(--border);paddin
 .back:hover{color:var(--accent);border-color:var(--accent)}
 .back-primary{background:var(--accent);color:#0c0a09;border-color:var(--accent);font-weight:700}
 .back-primary:hover{background:#d97706;color:#0c0a09}
-.breadcrumb{font-size:11px;font-family:monospace;color:var(--subtle);padding:7px 16px;background:var(--surface);border-bottom:1px solid var(--border)}
+.breadcrumb{font-size:11px;font-family:monospace;color:var(--subtle);padding:7px 16px;background:var(--surface);border-bottom:1px solid var(--border);position:relative;z-index:40}
 .breadcrumb a{color:var(--subtle);text-decoration:none}.breadcrumb a:hover{color:var(--accent)}
-.container{max-width:1100px;margin:0 auto;padding:20px 16px 20px}
+.container{max-width:1100px;margin:0 auto;padding:20px 16px 20px;scroll-margin-top:60px}
 h1{font-size:22px;font-weight:700;margin-bottom:4px;letter-spacing:-.02em}
 @media(min-width:640px){h1{font-size:28px}}
 .subtitle{color:var(--muted);font-size:13px;margin-bottom:8px;line-height:1.5}
@@ -187,13 +187,27 @@ h1{font-size:22px;font-weight:700;margin-bottom:4px;letter-spacing:-.02em}
 .tool-name{font-size:13px;font-weight:600;line-height:1.3}
 .tool-desc{font-size:11px;color:var(--muted);line-height:1.5;flex:1}
 .tool-tag{align-self:flex-start;font-size:9px;font-weight:600;padding:2px 7px;border-radius:999px;text-transform:uppercase;letter-spacing:.04em}
-.ad-slot{border-radius:10px;margin:10px 0;overflow:hidden;min-height:90px;display:flex;align-items:center;justify-content:center;background:var(--surface)}
+.ad-slot{border-radius:10px;margin:10px 0;overflow:hidden;max-height:120px;display:block;background:transparent}
 .no-results{text-align:center;padding:40px;color:var(--muted);font-size:14px;display:none}
 footer{text-align:center;padding:16px;font-size:11px;color:var(--subtle);font-family:monospace;border-top:1px solid var(--border);margin-top:8px}
 footer a{color:var(--muted);text-decoration:none}footer a:hover{color:var(--accent)}
 .mobile-nav{position:fixed;bottom:0;left:0;right:0;z-index:40;display:flex;align-items:center;justify-content:space-around;background:rgba(12,10,9,.96);border-top:1px solid var(--border);padding:8px 0;padding-bottom:calc(8px + env(safe-area-inset-bottom,0px));backdrop-filter:blur(12px);-webkit-backdrop-filter:blur(12px)}
 .mobile-nav a{display:flex;flex-direction:column;align-items:center;gap:2px;text-decoration:none;color:var(--subtle);font-size:9px;padding:4px 12px;transition:color .15s}
 .mobile-nav a:hover,.mobile-nav a.active{color:var(--accent)}
+@media(max-width:768px){
+  header{padding:8px 12px;padding-top:max(8px,env(safe-area-inset-top,8px))}
+  .logo-name{font-size:13px}
+  .back{font-size:11px;padding:4px 10px}
+  .container{padding:14px 12px 20px}
+  h1{font-size:20px}
+  .ad-slot{max-height:60px;margin:6px 0}
+  .cat-tabs{gap:5px;margin-bottom:12px}
+  .cat-tab{padding:5px 11px;font-size:11px}
+  .mobile-nav{display:flex}
+}
+@media(min-width:769px){
+  .mobile-nav{display:none}
+}
 .mobile-nav .create-pill{margin-top:-16px}
 .mobile-nav .create-pill div{width:46px;height:46px;background:linear-gradient(135deg,#f59e0b,#d97706);border-radius:14px;display:flex;align-items:center;justify-content:center;box-shadow:0 4px 14px rgba(245,158,11,.4)}
 </style>
@@ -228,7 +242,7 @@ footer a{color:var(--muted);text-decoration:none}footer a:hover{color:var(--acce
     }).join("\n    ")}
   </div>
 
-  <div class="ad-slot"><ins class="adsbygoogle" style="display:block;width:100%;min-height:90px" data-ad-client="ca-pub-5102938260449475" data-ad-format="auto" data-full-width-responsive="true"></ins><script>(adsbygoogle=window.adsbygoogle||[]).push({});</script></div>
+  <div class="ad-slot"><ins class="adsbygoogle" style="display:block;height:90px;max-height:90px" data-ad-client="ca-pub-5102938260449475" data-ad-slot="auto" data-ad-format="horizontal" data-full-width-responsive="true"></ins><script>(adsbygoogle=window.adsbygoogle||[]).push({});</script></div>
 
   <!-- Civil Engineering Hub Banner -->
   <a href="/tools/civil/" style="display:flex;align-items:center;gap:16px;background:linear-gradient(135deg,rgba(251,191,36,.1),rgba(245,158,11,.04));border:1px solid rgba(251,191,36,.28);border-radius:14px;padding:18px 22px;margin-bottom:22px;text-decoration:none;color:var(--fg);transition:all .2s;flex-wrap:wrap" onmouseover="this.style.borderColor='var(--accent)';this.style.boxShadow='0 8px 28px rgba(251,191,36,.12)'" onmouseout="this.style.borderColor='rgba(251,191,36,.28)';this.style.boxShadow=''">

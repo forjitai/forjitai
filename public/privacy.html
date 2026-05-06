@@ -189,7 +189,25 @@ footer a{color:#a8a29e;text-decoration:none;margin:0 8px}
   <h2>9. Children's Privacy</h2>
   <p>Forjit AI is not directed at children under 18 years of age. We do not knowingly collect personal data from minors. If you believe a minor has provided us personal data, contact <a href="mailto:forjitai@gmail.com">forjitai@gmail.com</a> and we will take appropriate action.</p>
 
-  <h2>10. Security</h2>
+  <h2>10. Android App — Permissions &amp; Data</h2>
+  <p>The Forjit AI Android app (<strong>package: in.forjitai.app</strong>) is a WebView wrapper that loads <strong>forjitai.in</strong>. It requests only the minimum permissions required:</p>
+  <table style="width:100%;border-collapse:collapse;margin-bottom:16px;">
+    <tr style="background:#1c1917;"><th style="padding:8px;text-align:left;border:1px solid #292524;">Permission</th><th style="padding:8px;text-align:left;border:1px solid #292524;">Reason</th></tr>
+    <tr><td style="padding:8px;border:1px solid #292524;"><code>INTERNET</code></td><td style="padding:8px;border:1px solid #292524;">Load the Forjit AI website</td></tr>
+    <tr><td style="padding:8px;border:1px solid #292524;"><code>ACCESS_NETWORK_STATE</code></td><td style="padding:8px;border:1px solid #292524;">Detect offline mode to show error screen</td></tr>
+    <tr><td style="padding:8px;border:1px solid #292524;"><code>ACCESS_WIFI_STATE</code></td><td style="padding:8px;border:1px solid #292524;">Detect WiFi connectivity</td></tr>
+  </table>
+  <p><strong>The app does NOT:</strong></p>
+  <ul>
+    <li>Record audio or access microphone</li>
+    <li>Access camera</li>
+    <li>Read or write files on your device</li>
+    <li>Collect any personal data natively</li>
+    <li>Track your location</li>
+  </ul>
+  <p>All data handling is governed by this Privacy Policy as accessed through the web interface. The app stores your AI-generated outputs locally in your browser's IndexedDB only — never on our servers.</p>
+
+  <h2>11. Security</h2>
   <ul>
     <li>All traffic is served over HTTPS (TLS encryption)</li>
     <li>No passwords — email-only optional login prevents password database risks</li>

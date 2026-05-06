@@ -378,6 +378,60 @@ export default function HomeView({ onGoToCreate, history, lastSession, loadFromH
         </section>
       )}
 
+      {/* ── Footer ──────────────────────────────────────────────────────── */}
+      <footer className="mt-10 pt-6 border-t border-stone-800/60 pb-4">
+
+        {/* Logo + tagline */}
+        <div className="flex items-center gap-2 mb-3">
+          <div className="w-7 h-7 rounded-lg bg-gradient-to-br from-amber-400 to-orange-500 flex items-center justify-center text-sm font-bold text-stone-950">⚡</div>
+          <span className="font-semibold text-stone-200 text-sm">Forjit AI</span>
+          <span className="text-[10px] text-stone-600 font-mono ml-1">Free Indian AI Tools</span>
+        </div>
+
+        {/* Social links */}
+        <div className="flex items-center gap-2 mb-5">
+          <a href="https://www.youtube.com/@forjitai" target="_blank" rel="noreferrer"
+            className="flex items-center gap-1.5 px-3 py-1.5 rounded-lg border border-red-500/20 bg-red-500/8 text-xs text-red-400 hover:bg-red-500/15 hover:text-red-300 transition">
+            <svg className="w-3.5 h-3.5" viewBox="0 0 24 24" fill="currentColor"><path d="M23.498 6.186a3.016 3.016 0 0 0-2.122-2.136C19.505 3.545 12 3.545 12 3.545s-7.505 0-9.377.505A3.017 3.017 0 0 0 .502 6.186C0 8.07 0 12 0 12s0 3.93.502 5.814a3.016 3.016 0 0 0 2.122 2.136c1.871.505 9.376.505 9.376.505s7.505 0 9.377-.505a3.015 3.015 0 0 0 2.122-2.136C24 15.93 24 12 24 12s0-3.93-.502-5.814zM9.545 15.568V8.432L15.818 12l-6.273 3.568z"/></svg>
+            YouTube
+          </a>
+          <a href="https://www.instagram.com/forjitai" target="_blank" rel="noreferrer"
+            className="flex items-center gap-1.5 px-3 py-1.5 rounded-lg border border-pink-500/20 bg-pink-500/8 text-xs text-pink-400 hover:bg-pink-500/15 hover:text-pink-300 transition">
+            <svg className="w-3.5 h-3.5" viewBox="0 0 24 24" fill="currentColor"><path d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.849-.07-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.849 0-3.204.013-3.583.07-4.849.149-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.849-.069zm0-2.163c-3.259 0-3.667.014-4.947.072-4.358.2-6.78 2.618-6.98 6.98-.059 1.281-.073 1.689-.073 4.948 0 3.259.014 3.668.072 4.948.2 4.358 2.618 6.78 6.98 6.98 1.281.058 1.689.072 4.948.072 3.259 0 3.668-.014 4.948-.072 4.354-.2 6.782-2.618 6.979-6.98.059-1.28.073-1.689.073-4.948 0-3.259-.014-3.667-.072-4.947-.196-4.354-2.617-6.78-6.979-6.98-1.281-.059-1.69-.073-4.949-.073zm0 5.838c-3.403 0-6.162 2.759-6.162 6.162s2.759 6.163 6.162 6.163 6.162-2.759 6.162-6.163c0-3.403-2.759-6.162-6.162-6.162zm0 10.162c-2.209 0-4-1.79-4-4 0-2.209 1.791-4 4-4s4 1.791 4 4c0 2.21-1.791 4-4 4zm6.406-11.845c-.796 0-1.441.645-1.441 1.44s.645 1.44 1.441 1.44c.795 0 1.439-.645 1.439-1.44s-.644-1.44-1.439-1.44z"/></svg>
+            Instagram
+          </a>
+        </div>
+
+        {/* Navigation links */}
+        <div className="flex flex-wrap gap-x-3 gap-y-1.5 mb-4 text-[11px] text-stone-600">
+          <a href="/tools/" className="hover:text-amber-400 transition">🔧 Tools</a>
+          <a href="/blog/" className="hover:text-amber-400 transition">📰 Blog</a>
+          <a href="/ott/" className="hover:text-amber-400 transition">🎬 OTT</a>
+          <a href="/community" className="hover:text-amber-400 transition">👥 Community</a>
+          <a href="/about" className="hover:text-amber-400 transition">ℹ️ About</a>
+          <a href="/contact" className="hover:text-amber-400 transition">📧 Contact</a>
+        </div>
+
+        {/* Legal links */}
+        <div className="flex flex-wrap gap-x-3 gap-y-1.5 mb-4 text-[11px] text-stone-600 border-t border-stone-800/40 pt-3">
+          <span className="text-stone-700 font-mono uppercase tracking-widest text-[9px] w-full mb-0.5">Legal</span>
+          <a href="/privacy" className="hover:text-stone-400 transition">Privacy Policy</a>
+          <a href="/terms" className="hover:text-stone-400 transition">Terms of Service</a>
+          <a href="/ai-disclaimer" className="hover:text-stone-400 transition">AI Disclaimer</a>
+          <a href="/acceptable-use" className="hover:text-stone-400 transition">Acceptable Use</a>
+          <a href="/content-policy" className="hover:text-stone-400 transition">Content Policy</a>
+          <a href="/disclaimer" className="hover:text-stone-400 transition">Disclaimer</a>
+        </div>
+
+        {/* Copyright */}
+        <div className="text-[11px] font-mono text-stone-700 border-t border-stone-800/40 pt-3">
+          <p>© 2025 Forjit AI · All rights reserved</p>
+          <p className="mt-0.5">Made with ❤️ in India 🇮🇳 · <a href="mailto:forjitai@gmail.com" className="hover:text-stone-500 transition">forjitai@gmail.com</a></p>
+          <p className="mt-1 text-stone-800 text-[10px]">⚠ AI results may be inaccurate. Always verify before professional use. Governed by Indian IT laws.</p>
+        </div>
+
+      </footer>
+
     </div>
   );
 }

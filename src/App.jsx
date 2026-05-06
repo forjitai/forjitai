@@ -1518,6 +1518,12 @@ npx cap open android
                 <span>·</span>
                 <a href="/terms" className="hover:text-stone-400">Terms</a>
                 <span>·</span>
+                <a href="/ai-disclaimer" className="hover:text-stone-400">AI Disclaimer</a>
+                <span>·</span>
+                <a href="/acceptable-use" className="hover:text-stone-400">Acceptable Use</a>
+                <span>·</span>
+                <a href="/content-policy" className="hover:text-stone-400">Content Policy</a>
+                <span>·</span>
                 <a href="/contact" className="hover:text-stone-400">Contact</a>
                 <span>·</span>
                 <a href="mailto:forjitai@gmail.com" className="hover:text-stone-400">forjitai@gmail.com</a>

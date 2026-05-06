@@ -567,18 +567,38 @@ export default function Navbar({
                 <div className="text-[10px] font-mono uppercase tracking-widest text-stone-600 mb-2">Discover</div>
                 <div className="space-y-0.5">
                   {[
-                    { emoji: "📰", label: "Blog",         href: "/blog" },
-                    { emoji: "🎬", label: "OTT Releases", href: "/ott"  },
-                    { emoji: "👥", label: "Community",    href: "/community" },
-                    { emoji: "ℹ️",  label: "About",        href: "/about" },
-                    { emoji: "📧", label: "Contact",      href: "/contact" },
-                    { emoji: "🗺️", label: "Sitemap",      href: "/sitemap" },
+                    { emoji: "📰", label: "Blog",            href: "/blog" },
+                    { emoji: "🎬", label: "OTT Releases",    href: "/ott"  },
+                    { emoji: "👥", label: "Community",        href: "/community" },
+                    { emoji: "ℹ️",  label: "About",            href: "/about" },
+                    { emoji: "📧", label: "Contact",          href: "/contact" },
+                    { emoji: "🗺️", label: "Sitemap",          href: "/sitemap" },
                   ].map(item => (
                     <a key={item.label} href={item.href}
                       className="flex items-center gap-3 px-3 py-2.5 rounded-xl hover:bg-stone-800/60 text-stone-400 hover:text-stone-200 transition text-sm">
                       <span className="w-5 text-center">{item.emoji}</span>
                       {item.label}
                       <ExternalLink className="w-3 h-3 ml-auto text-stone-700" />
+                    </a>
+                  ))}
+                </div>
+              </section>
+
+              {/* Legal */}
+              <section>
+                <div className="text-[10px] font-mono uppercase tracking-widest text-stone-600 mb-2">⚖️ Legal</div>
+                <div className="grid grid-cols-2 gap-1">
+                  {[
+                    { label: "Privacy Policy",    href: "/privacy"         },
+                    { label: "Terms of Service",  href: "/terms"           },
+                    { label: "AI Disclaimer",     href: "/ai-disclaimer"   },
+                    { label: "Acceptable Use",    href: "/acceptable-use"  },
+                    { label: "Content Policy",    href: "/content-policy"  },
+                    { label: "Disclaimer",        href: "/disclaimer"      },
+                  ].map(item => (
+                    <a key={item.label} href={item.href}
+                      className="text-xs text-stone-500 hover:text-amber-300 px-2 py-1.5 rounded-lg hover:bg-stone-800/40 transition">
+                      {item.label}
                     </a>
                   ))}
                 </div>

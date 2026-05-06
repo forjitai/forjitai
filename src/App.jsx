@@ -30,6 +30,7 @@ import ForjitLogo from "./components/ForjitLogo";
 import HomeView from "./components/HomeView";
 import GlobalSearch from "./components/GlobalSearch";
 import Navbar from "./components/Navbar";
+import ToolHero from "./components/ToolHero";
 import SettingsPanel from "./components/SettingsPanel";
 import AdminPanel from "./components/AdminPanel";
 import { HistoryPanel, GalleryPanel } from "./components/HistoryPanel";
@@ -1008,7 +1009,8 @@ npx cap open android
     // Clear previous output when navigating to a new tool
     reset();
     setActiveView("create");
-    // Scroll to generator and focus textarea
+    // Scroll to top first, then generator section
+    window.scrollTo({ top: 0, behavior: "smooth" });
     setTimeout(() => {
       generatorRef.current?.scrollIntoView({ behavior: "smooth", block: "start" });
       setTimeout(() => textareaRef.current?.focus(), 300);
@@ -1141,6 +1143,17 @@ npx cap open android
           {activeTab === "document" && (
             <DocSubTypeSelector docType={docType} setDocType={setDocType} />
           )}
+
+          {/* TOOL HERO — selected tool prominent + explore more */}
+          <ToolHero
+            activeTab={activeTab}
+            activeSubtype={
+              activeTab === "content"  ? contentType  :
+              activeTab === "document" ? docType      :
+              activeTab === "planner"  ? plannerType  : null
+            }
+            onSelectTool={goToCreate}
+          />
 
           {/* PROMPT INPUT */}
           <div className="relative mb-4">

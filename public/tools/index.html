@@ -48,56 +48,79 @@
 <script>window.dataLayer=window.dataLayer||[];function gtag(){dataLayer.push(arguments);}gtag('js',new Date());gtag('config','G-DYR402JFVG');</script>
 <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-5102938260449475" crossorigin="anonymous"></script>
 <!-- Last generated: 2026-04-26 from src/data/tools.js — run: npm run gen-tools -->
-<!-- NOTE: When creating a new tool HTML file, add before </body>:  <script src="tool-common.js"></script> -->
+<!-- NOTE: When creating a new tool HTML file, add before <nav class="mobile-nav">
+  <a href="/"><svg width="20" height="20" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path d="M3 9.5L12 3l9 6.5V20a1 1 0 01-1 1H4a1 1 0 01-1-1V9.5z"/><path d="M9 21V12h6v9"/></svg>Home</a>
+  <a href="/?search=1"><svg width="20" height="20" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><circle cx="11" cy="11" r="8"/><path d="m21 21-4.35-4.35"/></svg>Search</a>
+  <a href="/" class="create-pill"><div><svg width="20" height="20" fill="none" stroke="#0c0a09" stroke-width="2.5" viewBox="0 0 24 24"><path d="M11 4H4a2 2 0 00-2 2v14a2 2 0 002 2h14a2 2 0 002-2v-7"/><path d="M18.5 2.5a2.121 2.121 0 013 3L12 15l-4 1 1-4 9.5-9.5z"/></svg></div><span>Create</span></a>
+  <a href="/tools/" class="active"><svg width="20" height="20" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path d="M14.7 6.3a1 1 0 000 1.4l1.6 1.6a1 1 0 001.4 0l3.77-3.77a6 6 0 01-7.94 7.94l-6.91 6.91a2.12 2.12 0 01-3-3l6.91-6.91a6 6 0 017.94-7.94l-3.76 3.76z"/></svg>Tools</a>
+  <a href="/"><svg width="20" height="20" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><line x1="3" y1="6" x2="21" y2="6"/><line x1="3" y1="12" x2="21" y2="12"/><line x1="3" y1="18" x2="21" y2="18"/></svg>More</a>
+</nav>
+</body>:  <script src="tool-common.js"></script> -->
 <style>
 *{box-sizing:border-box;margin:0;padding:0}
-:root{--bg:#0c0a09;--surface:#1c1917;--border:#292524;--fg:#e7e5e4;--muted:#a8a29e;--subtle:#78716c;--accent:#fbbf24}
-body{font-family:'Segoe UI',system-ui,sans-serif;background:var(--bg);color:var(--fg);min-height:100vh}
-header{background:var(--surface);border-bottom:1px solid var(--border);padding:12px 20px;display:flex;align-items:center;justify-content:space-between;position:sticky;top:0;z-index:10}
-.logo{display:flex;align-items:center;gap:10px;text-decoration:none;color:var(--fg)}
-.logo-mark{width:32px;height:32px;background:var(--accent);border-radius:6px;display:flex;align-items:center;justify-content:center;font-weight:800;font-size:16px;color:var(--bg)}
-.logo-name{font-size:15px;font-weight:600}
-.back{color:var(--muted);text-decoration:none;font-size:13px}
-.back:hover{color:var(--accent)}
-.container{max-width:1100px;margin:0 auto;padding:28px 16px}
-h1{font-size:28px;font-weight:700;margin-bottom:6px}
-.subtitle{color:var(--muted);font-size:15px;margin-bottom:8px}
-.badge{display:inline-block;background:rgba(251,191,36,.15);border:1px solid rgba(251,191,36,.3);color:var(--accent);padding:4px 12px;border-radius:999px;font-size:13px;font-weight:600;margin-bottom:20px}
-.search-wrap{margin-bottom:20px;position:relative}
-.search-wrap input{width:100%;background:var(--surface);border:1px solid var(--border);border-radius:10px;padding:13px 16px 13px 44px;color:var(--fg);font-size:15px;outline:none;transition:border-color .15s;font-family:inherit}
-.search-wrap input:focus{border-color:var(--accent)}
-.search-wrap::before{content:'🔍';position:absolute;left:14px;top:50%;transform:translateY(-50%);font-size:17px;pointer-events:none}
-.cat-tabs{display:flex;gap:6px;flex-wrap:wrap;margin-bottom:20px}
-.cat-tab{padding:7px 14px;background:var(--surface);border:1px solid var(--border);border-radius:999px;cursor:pointer;font-size:13px;color:var(--muted);transition:all .15s;font-family:inherit}
-.cat-tab:hover,.cat-tab.on{background:var(--accent);color:var(--bg);border-color:var(--accent);font-weight:700}
-.section-label{font-size:11px;font-weight:700;color:var(--subtle);text-transform:uppercase;letter-spacing:.1em;margin-bottom:12px;padding-bottom:8px;border-bottom:1px solid var(--border);display:flex;justify-content:space-between;align-items:center}
+:root{--bg:#0c0a09;--surface:#1c1917;--border:#292524;--fg:#e7e5e4;--muted:#a8a29e;--subtle:#78716c;--accent:#f59e0b}
+html,body{width:100%;max-width:100vw;overflow-x:hidden}
+body{font-family:'Segoe UI',system-ui,sans-serif;background:var(--bg);color:var(--fg);min-height:100vh;padding-bottom:80px}
+header{background:rgba(12,10,9,.95);border-bottom:1px solid var(--border);padding:10px 16px;display:flex;align-items:center;justify-content:space-between;position:sticky;top:0;z-index:50;backdrop-filter:blur(12px);-webkit-backdrop-filter:blur(12px)}
+.logo{display:flex;align-items:center;gap:8px;text-decoration:none;color:var(--fg)}
+.logo-mark{width:34px;height:34px;background:linear-gradient(135deg,#f59e0b,#d97706);border-radius:10px;display:flex;align-items:center;justify-content:center;font-size:18px;box-shadow:0 2px 8px rgba(245,158,11,.3)}
+.logo-name{font-size:15px;font-weight:700}.logo-name span{color:var(--accent)}
+.header-nav{display:flex;align-items:center;gap:6px}
+.back{color:var(--fg);text-decoration:none;font-size:12px;font-weight:500;background:var(--surface);border:1px solid var(--border);padding:5px 12px;border-radius:8px;transition:all .15s}
+.back:hover{color:var(--accent);border-color:var(--accent)}
+.back-primary{background:var(--accent);color:#0c0a09;border-color:var(--accent);font-weight:700}
+.back-primary:hover{background:#d97706;color:#0c0a09}
+.breadcrumb{font-size:11px;font-family:monospace;color:var(--subtle);padding:7px 16px;background:var(--surface);border-bottom:1px solid var(--border)}
+.breadcrumb a{color:var(--subtle);text-decoration:none}.breadcrumb a:hover{color:var(--accent)}
+.container{max-width:1100px;margin:0 auto;padding:20px 16px 20px}
+h1{font-size:22px;font-weight:700;margin-bottom:4px;letter-spacing:-.02em}
+@media(min-width:640px){h1{font-size:28px}}
+.subtitle{color:var(--muted);font-size:13px;margin-bottom:8px;line-height:1.5}
+.badge{display:inline-flex;align-items:center;gap:4px;background:rgba(245,158,11,.12);border:1px solid rgba(245,158,11,.25);color:var(--accent);padding:4px 12px;border-radius:999px;font-size:12px;font-weight:600;margin-bottom:16px}
+.search-wrap{margin-bottom:14px;position:relative}
+.search-wrap input{width:100%;background:var(--surface);border:1px solid var(--border);border-radius:12px;padding:12px 16px 12px 42px;color:var(--fg);font-size:14px;outline:none;transition:border-color .15s;font-family:inherit}
+.search-wrap input:focus{border-color:rgba(245,158,11,.5);box-shadow:0 0 0 2px rgba(245,158,11,.08)}
+.search-wrap::before{content:'🔍';position:absolute;left:14px;top:50%;transform:translateY(-50%);font-size:15px;pointer-events:none}
+.cat-tabs{display:flex;gap:6px;margin-bottom:16px;overflow-x:auto;-webkit-overflow-scrolling:touch;scrollbar-width:none;padding-bottom:2px}
+.cat-tabs::-webkit-scrollbar{display:none}
+.cat-tab{padding:6px 14px;background:var(--surface);border:1px solid var(--border);border-radius:999px;cursor:pointer;font-size:12px;color:var(--muted);transition:all .15s;font-family:inherit;white-space:nowrap;flex-shrink:0}
+.cat-tab:hover{color:var(--fg);border-color:var(--muted)}
+.cat-tab.on{background:var(--accent);color:#0c0a09;border-color:var(--accent);font-weight:700}
+.section-label{font-size:11px;font-weight:700;color:var(--subtle);text-transform:uppercase;letter-spacing:.08em;margin-bottom:10px;padding-bottom:6px;border-bottom:1px solid var(--border);display:flex;justify-content:space-between;align-items:center}
 .section-count{color:var(--accent);font-size:11px}
-.grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(230px,1fr));gap:12px;margin-bottom:24px}
-.tool-card{background:var(--surface);border:1px solid var(--border);border-radius:12px;padding:18px;text-decoration:none;color:var(--fg);transition:all .15s;display:flex;flex-direction:column;gap:8px}
-.tool-card:hover{border-color:var(--accent);transform:translateY(-2px);box-shadow:0 8px 24px rgba(0,0,0,.3)}
+.grid{display:grid;grid-template-columns:1fr 1fr;gap:10px;margin-bottom:20px}
+@media(min-width:480px){.grid{grid-template-columns:repeat(auto-fill,minmax(180px,1fr));gap:12px}}
+@media(min-width:768px){.grid{grid-template-columns:repeat(auto-fill,minmax(220px,1fr))}}
+.tool-card{background:var(--surface);border:1px solid var(--border);border-radius:12px;padding:14px;text-decoration:none;color:var(--fg);transition:all .15s;display:flex;flex-direction:column;gap:6px}
+.tool-card:hover{border-color:var(--accent);transform:translateY(-1px);box-shadow:0 6px 20px rgba(0,0,0,.35)}
 .tool-card.hidden{display:none}
-.tool-icon{font-size:26px;line-height:1}
-.tool-name{font-size:14px;font-weight:600}
-.tool-desc{font-size:12px;color:var(--muted);line-height:1.5;flex:1}
-.tool-tag{align-self:flex-start;font-size:10px;font-weight:600;padding:3px 8px;border-radius:999px;text-transform:uppercase;letter-spacing:.04em}
-.ad-slot{background:var(--surface);border:1px dashed var(--border);border-radius:8px;padding:14px;text-align:center;color:var(--subtle);font-size:11px;margin:14px 0}
-.ad-slot a{color:var(--accent);text-decoration:none}
-.ai-banner{background:linear-gradient(135deg,rgba(251,191,36,.1),rgba(251,191,36,.04));border:1px solid rgba(251,191,36,.3);border-radius:12px;padding:20px;margin-bottom:20px;display:flex;align-items:center;justify-content:space-between;gap:16px;flex-wrap:wrap}
-.ai-banner h2{font-size:16px;font-weight:700;margin-bottom:4px}
-.ai-banner p{color:var(--muted);font-size:13px}
-.ai-btn{padding:10px 20px;background:var(--accent);color:var(--bg);border:none;border-radius:8px;font-weight:700;text-decoration:none;font-size:14px}
-.no-results{text-align:center;padding:40px;color:var(--muted);font-size:15px;display:none}
-footer{text-align:center;padding:20px;font-size:12px;color:var(--subtle)}
-footer a{color:var(--muted);text-decoration:none}
-@media(max-width:600px){h1{font-size:22px}.grid{grid-template-columns:1fr 1fr}}
-@media(max-width:380px){.grid{grid-template-columns:1fr}}
+.tool-icon{font-size:22px;line-height:1}
+.tool-name{font-size:13px;font-weight:600;line-height:1.3}
+.tool-desc{font-size:11px;color:var(--muted);line-height:1.5;flex:1}
+.tool-tag{align-self:flex-start;font-size:9px;font-weight:600;padding:2px 7px;border-radius:999px;text-transform:uppercase;letter-spacing:.04em}
+.ad-slot{border-radius:10px;margin:10px 0;overflow:hidden;min-height:90px;display:flex;align-items:center;justify-content:center;background:var(--surface)}
+.no-results{text-align:center;padding:40px;color:var(--muted);font-size:14px;display:none}
+footer{text-align:center;padding:16px;font-size:11px;color:var(--subtle);font-family:monospace;border-top:1px solid var(--border);margin-top:8px}
+footer a{color:var(--muted);text-decoration:none}footer a:hover{color:var(--accent)}
+.mobile-nav{position:fixed;bottom:0;left:0;right:0;z-index:40;display:flex;align-items:center;justify-content:space-around;background:rgba(12,10,9,.96);border-top:1px solid var(--border);padding:8px 0;padding-bottom:calc(8px + env(safe-area-inset-bottom,0px));backdrop-filter:blur(12px);-webkit-backdrop-filter:blur(12px)}
+.mobile-nav a{display:flex;flex-direction:column;align-items:center;gap:2px;text-decoration:none;color:var(--subtle);font-size:9px;padding:4px 12px;transition:color .15s}
+.mobile-nav a:hover,.mobile-nav a.active{color:var(--accent)}
+.mobile-nav .create-pill{margin-top:-16px}
+.mobile-nav .create-pill div{width:46px;height:46px;background:linear-gradient(135deg,#f59e0b,#d97706);border-radius:14px;display:flex;align-items:center;justify-content:center;box-shadow:0 4px 14px rgba(245,158,11,.4)}
 </style>
 </head>
 <body>
 <header>
-  <a class="logo" href="/"><div class="logo-mark">F</div><div class="logo-name">Forjit AI</div></a>
-  <a class="back" href="/">← Home</a>
+  <a class="logo" href="/">
+    <div class="logo-mark">⚡</div>
+    <div class="logo-name">Forjit <span>AI</span></div>
+  </a>
+  <nav class="header-nav">
+    <a class="back" href="/">← Home</a>
+    <a class="back back-primary" href="/">✨ Create</a>
+  </nav>
 </header>
+<div class="breadcrumb"><a href="/">Home</a> › <span style="color:var(--fg)">Free Tools</span></div>
 <div class="container">
   <h1>Free Online Tools</h1>
   <p class="subtitle">Calculators, converters, generators — all free, no signup required.</p>
@@ -121,7 +144,7 @@ footer a{color:var(--muted);text-decoration:none}
     <button class="cat-tab" data-catkey="civil" onclick="filterCat('civil',this)">🏗️ Civil Engineering (3)</button>
   </div>
 
-  <div class="ad-slot">Advertisement · <a href="https://adsense.google.com" target="_blank">Connect AdSense</a></div>
+  <div class="ad-slot"><ins class="adsbygoogle" style="display:block;width:100%;min-height:90px" data-ad-client="ca-pub-5102938260449475" data-ad-format="auto" data-full-width-responsive="true"></ins><script>(adsbygoogle=window.adsbygoogle||[]).push({});</script></div>
 
   <!-- Civil Engineering Hub Banner -->
   <a href="/tools/civil/" style="display:flex;align-items:center;gap:16px;background:linear-gradient(135deg,rgba(251,191,36,.1),rgba(245,158,11,.04));border:1px solid rgba(251,191,36,.28);border-radius:14px;padding:18px 22px;margin-bottom:22px;text-decoration:none;color:var(--fg);transition:all .2s;flex-wrap:wrap" onmouseover="this.style.borderColor='var(--accent)';this.style.boxShadow='0 8px 28px rgba(251,191,36,.12)'" onmouseout="this.style.borderColor='rgba(251,191,36,.28)';this.style.boxShadow=''">

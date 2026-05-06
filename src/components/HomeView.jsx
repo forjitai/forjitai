@@ -17,6 +17,7 @@ import {
 } from "lucide-react";
 import ForjitLogo from "./ForjitLogo";
 import ExperimentalSection from "./ExperimentalSection";
+import ScrollRow from "./ScrollRow";
 import { TABS, CONTENT_TYPES, DOC_TYPES, PLANNER_TYPES } from "../constants";
 
 /* ── Hot Tools data ─────────────────────────────────────────────────────── */
@@ -227,13 +228,13 @@ export default function HomeView({ onGoToCreate, history, lastSession, loadFromH
             View all <ChevronRight className="w-3.5 h-3.5" />
           </a>
         </div>
-        <div className="-mx-4 md:mx-0 px-4 md:px-0 overflow-x-auto scrollbar-thin pb-2">
-          <div className="flex gap-3 min-w-max md:min-w-0 md:grid md:grid-cols-4">
+        <ScrollRow gap={12}>
             {HOT_TOOLS.map((tool) => (
               <button
                 key={tool.key}
                 onClick={() => handleHotTool(tool)}
-                className={`card-shine group relative overflow-hidden rounded-2xl border bg-gradient-to-br ${tool.color} to-stone-950 p-4 text-left transition-all duration-200 w-44 md:w-auto flex-shrink-0 md:flex-shrink`}
+                className={`card-shine group relative overflow-hidden rounded-2xl border bg-gradient-to-br ${tool.color} to-stone-950 p-4 text-left transition-all duration-200 flex-shrink-0 w-44`}
+                style={{ flexShrink: 0 }}
               >
                 <div className={`inline-flex items-center gap-1 px-1.5 py-0.5 rounded text-[9px] font-bold uppercase tracking-wide mb-2 ${tool.badgeColor}`}>
                   {tool.badge}
@@ -244,8 +245,7 @@ export default function HomeView({ onGoToCreate, history, lastSession, loadFromH
                 <ArrowRight className="absolute bottom-3 right-3 w-4 h-4 text-stone-600 group-hover:text-stone-300 group-hover:translate-x-0.5 transition-all" />
               </button>
             ))}
-          </div>
-        </div>
+        </ScrollRow>
       </section>
 
       {/* ── 3. 📸 Instagram / Viral Tools ───────────────────────────────── */}
@@ -256,15 +256,15 @@ export default function HomeView({ onGoToCreate, history, lastSession, loadFromH
             <h2 className="font-display text-base font-semibold text-stone-100">Instagram &amp; Viral Tools</h2>
             <span className="text-[9px] font-bold uppercase tracking-widest px-2 py-0.5 rounded-full bg-pink-500/20 text-pink-300">NEW</span>
           </div>
-          <div className="-mx-1 overflow-x-auto scrollbar-thin pb-1">
-            <div className="flex gap-2 min-w-max px-1">
+          <ScrollRow gap={8} hint={true}>
               {INSTA_TOOLS.map((t) => {
                 const Icon = t.icon;
                 return (
                   <button
                     key={t.key}
                     onClick={() => go(`content/${t.key}`)}
-                    className="group flex flex-col items-center gap-1.5 px-4 py-3 rounded-xl bg-stone-900/60 border border-stone-800 hover:border-pink-500/40 hover:bg-pink-500/8 transition-all min-w-[80px]"
+                    className="group flex flex-col items-center gap-1.5 px-4 py-3 rounded-xl bg-stone-900/60 border border-stone-800 hover:border-pink-500/40 hover:bg-pink-500/8 transition-all flex-shrink-0"
+                    style={{ minWidth: 80, flexShrink: 0 }}
                   >
                     <div className="w-9 h-9 rounded-xl bg-stone-800 group-hover:bg-pink-500/15 flex items-center justify-center transition-colors">
                       <Icon className="w-4 h-4 text-stone-400 group-hover:text-pink-300 transition-colors" />
@@ -274,8 +274,7 @@ export default function HomeView({ onGoToCreate, history, lastSession, loadFromH
                   </button>
                 );
               })}
-            </div>
-          </div>
+          </ScrollRow>
           <p className="mt-3 text-[11px] text-stone-600">
             Generate captions, hashtags, bios and reel scripts tailored for Indian creators 🇮🇳
           </p>

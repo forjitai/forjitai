@@ -160,6 +160,18 @@
 .prose-md a { color: #0284c7; text-decoration: underline; }
 .prose-md a:hover { color: #0369a1; }
 
+/* ── Scroll utilities ────────────────────────────────────────── */
+.scrollbar-none {
+  scrollbar-width: none;
+  -ms-overflow-style: none;
+}
+.scrollbar-none::-webkit-scrollbar {
+  display: none;
+}
+.-webkit-overflow-scrolling-touch {
+  -webkit-overflow-scrolling: touch;
+}
+
 /* ── Safe area + Mobile bottom nav ───────────────────────────── */
 .safe-bottom {
   padding-bottom: env(safe-area-inset-bottom, 0px);

@@ -5,7 +5,7 @@
  *  Document tab → resume/letter/report/presentation buttons
  * ──────────────────────────────────────────────────────────────────────────*/
 
-import React from "react";
+import React, { useEffect, useRef } from "react";
 import {
   Monitor, Smartphone, Calendar, FileText,
   GraduationCap, BookOpen, PenLine, NotebookPen, Mic, Share2,
@@ -118,14 +118,21 @@ export function PlannerSubTypeSelector({ plannerType, setPlannerType }) {
 
 /* ── Document tab: resume/letter/report/presentation buttons ────────────── */
 export function DocSubTypeSelector({ docType, setDocType }) {
+  const rowRef = useRef(null);
+  useEffect(() => {
+    const active = rowRef.current?.querySelector('[data-active="true"]');
+    if (active) active.scrollIntoView({ behavior: "smooth", inline: "center", block: "nearest" });
+  }, [docType]);
+
   return (
-    <div className="mb-4 -mx-2 px-2 overflow-x-auto scrollbar-thin">
+    <div className="mb-4 -mx-2 px-2 overflow-x-auto scrollbar-none" ref={rowRef}>
       <div className="flex items-center gap-1.5 pb-1 min-w-max justify-center">
         {Object.entries(DOC_TYPES).map(([key, t]) => {
           const active = docType === key;
           return (
             <button
               key={key}
+              data-active={active}
               onClick={() => setDocType(key)}
               className={`px-3 py-1.5 rounded-md text-xs font-medium border transition flex items-center gap-1.5 whitespace-nowrap ${
                 active
@@ -153,6 +160,18 @@ const CONTENT_ICON_MAP = {
 const INSTA_KEYS = new Set(["instagram_caption", "hashtag", "bio", "reel_idea", "viral_hook", "social"]);
 
 export function ContentSubTypeSelector({ contentType, setContentType }) {
+  const rowRef = useRef(null);
+
+  // Auto-scroll active button into view when contentType changes
+  useEffect(() => {
+    const row = rowRef.current;
+    if (!row) return;
+    const active = row.querySelector('[data-active="true"]');
+    if (active) {
+      active.scrollIntoView({ behavior: "smooth", inline: "center", block: "nearest" });
+    }
+  }, [contentType]);
+
   const instaEntries  = Object.entries(CONTENT_TYPES).filter(([k]) => INSTA_KEYS.has(k));
   const contentEntries = Object.entries(CONTENT_TYPES).filter(([k]) => !INSTA_KEYS.has(k));
 
@@ -163,6 +182,7 @@ export function ContentSubTypeSelector({ contentType, setContentType }) {
     return (
       <button
         key={key}
+        data-active={active}
         onClick={() => setContentType(key)}
         className={`px-3 py-2 rounded-lg text-xs font-medium border transition flex items-center gap-1.5 whitespace-nowrap ${
           active
@@ -184,9 +204,9 @@ export function ContentSubTypeSelector({ contentType, setContentType }) {
   };
 
   return (
-    <div className="mb-4 space-y-2">
+    <div className="mb-4 space-y-2" ref={rowRef}>
       {/* Instagram / Viral Tools group */}
-      <div className="-mx-2 px-2 overflow-x-auto scrollbar-thin">
+      <div className="-mx-2 px-2 overflow-x-auto scrollbar-none">
         <div className="flex items-center gap-1 mb-1.5">
           <span className="text-[9px] font-bold uppercase tracking-widest text-pink-400/70 px-1">📸 Instagram</span>
         </div>
@@ -195,7 +215,7 @@ export function ContentSubTypeSelector({ contentType, setContentType }) {
         </div>
       </div>
       {/* Content creation group */}
-      <div className="-mx-2 px-2 overflow-x-auto scrollbar-thin">
+      <div className="-mx-2 px-2 overflow-x-auto scrollbar-none">
         <div className="flex items-center gap-1 mb-1.5">
           <span className="text-[9px] font-bold uppercase tracking-widest text-violet-400/70 px-1">✍️ Content</span>
         </div>

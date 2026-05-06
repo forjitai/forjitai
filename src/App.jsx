@@ -1005,8 +1005,14 @@ npx cap open android
       if (tab === "document" || DOC_TYPES[subtype])       setDocType(subtype);
       if (tab === "planner"  || PLANNER_TYPES[subtype])   setPlannerType(subtype);
     }
+    // Clear previous output when navigating to a new tool
+    reset();
     setActiveView("create");
-    setTimeout(() => generatorRef.current?.scrollIntoView({ behavior: "smooth", block: "start" }), 80);
+    // Scroll to generator and focus textarea
+    setTimeout(() => {
+      generatorRef.current?.scrollIntoView({ behavior: "smooth", block: "start" });
+      setTimeout(() => textareaRef.current?.focus(), 300);
+    }, 80);
   };
 
   /* ---------- RENDER ---------- */
@@ -1074,6 +1080,24 @@ npx cap open android
             />
           ) : (
             <>
+
+          {/* BREADCRUMB */}
+          <nav className="flex items-center gap-1.5 mb-4 text-[11px] font-mono text-stone-600 flex-wrap">
+            <button onClick={() => setActiveView("home")} className="hover:text-amber-400 transition flex items-center gap-1">
+              🏠 Home
+            </button>
+            <span>›</span>
+            <span className="text-stone-400">{TABS[activeTab]?.label}</span>
+            {activeTab === "content" && contentType && CONTENT_TYPES[contentType] && (
+              <><span>›</span><span className="text-amber-400">{CONTENT_TYPES[contentType].label}</span></>
+            )}
+            {activeTab === "document" && docType && DOC_TYPES[docType] && (
+              <><span>›</span><span className="text-amber-400">{DOC_TYPES[docType].label}</span></>
+            )}
+            {activeTab === "planner" && plannerType && PLANNER_TYPES[plannerType] && (
+              <><span>›</span><span className="text-amber-400">{PLANNER_TYPES[plannerType].label}</span></>
+            )}
+          </nav>
 
           {/* MAIN TABS */}
           <section className="mb-5" ref={generatorRef}>

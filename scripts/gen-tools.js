@@ -187,7 +187,7 @@ h1{font-size:22px;font-weight:700;margin-bottom:4px;letter-spacing:-.02em}
 .tool-name{font-size:13px;font-weight:600;line-height:1.3}
 .tool-desc{font-size:11px;color:var(--muted);line-height:1.5;flex:1}
 .tool-tag{align-self:flex-start;font-size:9px;font-weight:600;padding:2px 7px;border-radius:999px;text-transform:uppercase;letter-spacing:.04em}
-.ad-slot{border-radius:10px;margin:10px 0;overflow:hidden;max-height:120px;display:block;background:transparent}
+.ad-slot{margin:0;padding:0;overflow:hidden;display:none;background:transparent}.ad-slot.loaded{display:block;margin:8px 0}
 .no-results{text-align:center;padding:40px;color:var(--muted);font-size:14px;display:none}
 footer{text-align:center;padding:16px;font-size:11px;color:var(--subtle);font-family:monospace;border-top:1px solid var(--border);margin-top:8px}
 footer a{color:var(--muted);text-decoration:none}footer a:hover{color:var(--accent)}
@@ -200,7 +200,6 @@ footer a{color:var(--muted);text-decoration:none}footer a:hover{color:var(--acce
   .back{font-size:11px;padding:4px 10px}
   .container{padding:14px 12px 20px}
   h1{font-size:20px}
-  .ad-slot{max-height:60px;margin:6px 0}
   .cat-tabs{gap:5px;margin-bottom:12px}
   .cat-tab{padding:5px 11px;font-size:11px}
   .mobile-nav{display:flex}
@@ -242,7 +241,24 @@ footer a{color:var(--muted);text-decoration:none}footer a:hover{color:var(--acce
     }).join("\n    ")}
   </div>
 
-  <div class="ad-slot"><ins class="adsbygoogle" style="display:block;height:90px;max-height:90px" data-ad-client="ca-pub-5102938260449475" data-ad-slot="auto" data-ad-format="horizontal" data-full-width-responsive="true"></ins><script>(adsbygoogle=window.adsbygoogle||[]).push({});</script></div>
+  <div class="ad-slot" id="adSlot">
+    <ins class="adsbygoogle" style="display:block" data-ad-client="ca-pub-5102938260449475" data-ad-format="auto" data-full-width-responsive="true"></ins>
+  </div>
+  <script>
+  (function(){
+    var ins = document.querySelector('#adSlot ins');
+    var slot = document.getElementById('adSlot');
+    if(!ins||!slot) return;
+    try {
+      (adsbygoogle = window.adsbygoogle || []).push({});
+      // Check after 2s if ad filled — if not, keep slot hidden
+      setTimeout(function(){
+        var h = ins.offsetHeight || ins.clientHeight || 0;
+        if(h > 10) slot.classList.add('loaded');
+      }, 2000);
+    } catch(e) {}
+  })();
+  </script>
 
   <!-- Civil Engineering Hub Banner -->
   <a href="/tools/civil/" style="display:flex;align-items:center;gap:16px;background:linear-gradient(135deg,rgba(251,191,36,.1),rgba(245,158,11,.04));border:1px solid rgba(251,191,36,.28);border-radius:14px;padding:18px 22px;margin-bottom:22px;text-decoration:none;color:var(--fg);transition:all .2s;flex-wrap:wrap" onmouseover="this.style.borderColor='var(--accent)';this.style.boxShadow='0 8px 28px rgba(251,191,36,.12)'" onmouseout="this.style.borderColor='rgba(251,191,36,.28)';this.style.boxShadow=''">
@@ -267,7 +283,6 @@ ${sections}
 
   <div class="no-results" id="noResults">No tools found. Try a different search.</div>
 
-  <div class="ad-slot">Advertisement</div>
 
   <div class="ai-banner">
     <div>

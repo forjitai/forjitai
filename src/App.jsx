@@ -19,6 +19,7 @@ import "./errorLogger.js"; // Global error capture - auto-logs all JS errors
 import {
   APP_NAME, APP_TAG, APP_URL, ADMIN_EMAIL,
   PROVIDERS, TABS, PLANNER_TYPES, DOC_TYPES, CONTENT_TYPES,
+  SAFETY_PROMPT,
   APP_SYSTEM_PROMPT, MOBILE_SYSTEM_PROMPT, PLANNER_SYSTEM_PROMPT,
   DOCUMENT_SYSTEM_PROMPT_MARKDOWN, CONTENT_SYSTEM_PROMPT, REEL_SYSTEM_PROMPT,
   ITERATE_SYSTEM_PROMPT_HTML, ITERATE_SYSTEM_PROMPT_MD,
@@ -386,7 +387,6 @@ export default function ForjitAI() {
         expectedType = "html";
       } else if (activeTab === "content") {
         if (contentType === "social") {
-          // Reel Engine — special JSON mode
           sysPrompt = REEL_SYSTEM_PROMPT;
           expectedType = "reel";
         } else {
@@ -400,7 +400,6 @@ export default function ForjitAI() {
       } else if (activeTab === "planner") {
         sysPrompt = PLANNER_SYSTEM_PROMPT;
         expectedType = "html";
-        // Enhance prompt with specific sub-type
         const ptype = PLANNER_TYPES[plannerType];
         if (ptype) {
           const enhancement = `[PLANNER TYPE: ${ptype.label}] — ` +
@@ -414,6 +413,9 @@ export default function ForjitAI() {
         sysPrompt = DOCUMENT_SYSTEM_PROMPT_MARKDOWN;
         expectedType = "markdown";
       }
+
+      // Prepend global safety rules to every prompt
+      sysPrompt = SAFETY_PROMPT + "\n\n" + sysPrompt;
 
       const text = await callLLM([
         { role: "system", content: sysPrompt },

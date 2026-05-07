@@ -136,6 +136,17 @@
   ],
   "redirects": [
     {
+      "source": "/:path*",
+      "has": [
+        {
+          "type": "host",
+          "value": "forjitai.in"
+        }
+      ],
+      "destination": "https://www.forjitai.in/:path*",
+      "permanent": true
+    },
+    {
       "source": "/(.*)",
       "has": [
         {
